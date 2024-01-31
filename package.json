@@ -1,0 +1,22 @@
+{
+  "name": "mgcd",
+  "version": "2.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@vuepress/plugin-docsearch": "^2.0.0-rc.0",
+    "@vuepress/plugin-register-components": "^2.0.0-rc.0",
+    "vuepress": "^2.0.0-rc.0"
+  },
+  "dependencies": {
+    "@vuepress/theme-default": "^2.0.0-rc.0",
+    "@vuepress/utils": "^2.0.0-rc.0"
+  }
+}

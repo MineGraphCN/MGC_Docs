@@ -1,0 +1,12 @@
+:root {
+  scroll-behavior: smooth;
+  --c-brand: #FEA815;
+  --c-brand-light: #FBC420;
+  --font-family: 'Noto Sans SC', 'Source Han Sans SC VF', 'Source Han Sans SC', 'Source Han Sans TC VF', 'Source Han Sans TC', 'Source Han Sans VF', 'Source Han Sans', sans-serif;
+  --font-family-code: 'JetBrains Mono', 'JetBrains Mono NL', 'Fira Code', 'Fira Mono', 'Cascadia Code', 'Cascadia Mono', 'Consolas', 'Courier New', Courier, monospace;
+}
+
+html.dark {
+  --c-brand: #FBC420;
+  --c-brand-light: #FEA815;
+}

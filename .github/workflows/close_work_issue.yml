@@ -1,0 +1,26 @@
+name: Close Issue After Publish Work
+on:
+  pull_request:
+    types:
+      - closed
+
+jobs:
+  closeIssue:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Close Issue
+        if: |
+          contains(github.event.pull_request.labels.*.name, 'Java Shader') ||
+          contains(github.event.pull_request.labels.*.name, 'Java ResourcePack') ||
+          contains(github.event.pull_request.labels.*.name, 'Bedrock Shader') ||
+          contains(github.event.pull_request.labels.*.name, 'Bedrock ResourcePack')
+        run: |
+          ref_data="${{ toJson(github.event.pull_request.head.ref) }}"
+          issue_id="${ref_data#*work-issue-}"
+          echo "Issue ID: $issue_id"
+          gh issue close --comment "Auto-closing issue" "$issue_id"
+        env:
+          GH_TOKEN: ${{ secrets.THEWORD_TOKEN }}

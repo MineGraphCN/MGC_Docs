@@ -1,0 +1,43 @@
+name: Publish Work By Issue
+on:
+  issues:
+    types:
+      - opened
+      - edited
+
+jobs:
+  extract_fields:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Check Labels
+        if: |
+          !(contains(github.event.pull_request.labels.*.name, 'Java Shader') ||
+          contains(github.event.pull_request.labels.*.name, 'Java ResourcePack') ||
+          contains(github.event.pull_request.labels.*.name, 'Bedrock Shader') ||
+          contains(github.event.pull_request.labels.*.name, 'Bedrock ResourcePack'))
+        run: exit 0
+
+      - name: Run JavaScript
+        env:
+          WORK_INFO: ${{ runner.workspace }}/.env
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          ISSUE_LABELS: ${{ toJson(github.event.issue.labels) }}
+        run: |
+          cd ./.github/actions/
+          node extract_fields.js
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          token: ${{ secrets.THEWORD_TOKEN }}
+          commit-message: "Publish New Work: ${{ github.event.issue.title }}"
+          title: "Work: ${{ github.event.issue.title }}"
+          body: |
+            New Work: ${{ github.event.issue.title }}"
+          branch: work-issue-${{ github.event.issue.number }}
+          base: main
+          labels: ${{ join(github.event.issue.labels.*.name, ',') }}

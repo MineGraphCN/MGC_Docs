@@ -1,0 +1,76 @@
+name: 投稿Bedrock材质
+title: "ResourcePack: {name}"
+description: 投稿Bedrock材质到文档作品列表
+labels: [ "Bedrock ResourcePack" ]
+body:
+  - type: input
+    id: name
+    attributes:
+      label: 名称
+      description: 材质名称
+    validations:
+      required: true
+
+  - type: input
+    id: author
+    attributes:
+      label: 作者
+      description: 作品的作者
+    validations:
+      required: true
+
+  - type: input
+    id: style
+    attributes:
+      label: 风格
+      description: 作品的风格
+    validations:
+      required: true
+
+  - type: input
+    id: status
+    attributes:
+      label: 状态
+      description: 作品的当前状态
+    validations:
+      required: true
+
+  - type: input
+    id: price
+    attributes:
+      label: 价格
+      description: 作品的参考价格
+    validations:
+      required: true
+
+  - type: input
+    id: platform
+    attributes:
+      label: 平台
+      description: 作品所发布的平台
+    validations:
+      required: true
+
+  - type: input
+    id: platform_link
+    attributes:
+      label: 平台链接
+      description: 作品所发布平台的链接
+    validations:
+      required: false
+
+#  - type: input
+#    id: guide
+#    attributes:
+#      label: 手册
+#      description: 作品的手册名或文档名
+#    validations:
+#      required: false
+#
+#  - type: input
+#    id: guide_link
+#    attributes:
+#      label: 手册
+#      description: 作品的手册或文档链接
+#    validations:
+#      required: false

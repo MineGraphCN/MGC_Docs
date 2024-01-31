@@ -1,0 +1,38 @@
+name: 【错误反馈】
+description: 在文档中发现错误
+title: '【错误反馈】（在此简单文档的错误）'
+labels: [ "bug" ]
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 请补全标题并认真填写下方内容
+
+  - type: input
+    id: bug_nav
+    attributes:
+      label: 模块
+      description: 从导航栏的哪个模块进入的？
+      placeholder: 如"大众科普"或"误区纠正 -> 歧义观点"
+    validations:
+      required: true
+
+
+  - type: input
+    id: bug_url
+    attributes:
+      label: URL
+      description: 错误页面的具体地址
+      placeholder: 如：https://mgcd.hypercol.com/library/#基础概念
+    validations:
+      required: true
+
+  - type: textarea
+    id: bug_info
+    attributes:
+      label: 错误描述
+      description: 具体描述你遇到的问题
+      placeholder: 在此填写
+    validations:
+      required: true
