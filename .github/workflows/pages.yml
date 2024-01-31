@@ -21,9 +21,11 @@ jobs:
       - name: Deploy to Tencent Cloud
         uses: SamKirkland/FTP-Deploy-Action@3.1.1
         with:
-        server: ${{ secrets.FTP_ADDRESS }} # 腾讯云FTP服务器的地址
-        username: ${{ secrets.FTP_ACCOUNT }} # 腾讯云FTP服务器的用户名
-        password: ${{ secrets.FTP_PASSWORD }} # 腾讯云FTP服务器的密码
-        local-dir: "docs/.vuepress/dist" # vuepress生成的静态文件存放的路径
-        remote-dir: "/" # 腾讯云FTP服务器上的目标路径，用于存放静态文件
+          server: ${{ secrets.FTP_ADDRESS }} # 腾讯云FTP服务器的地址
+          username: ${{ secrets.FTP_ACCOUNT }} # 腾讯云FTP服务器的用户名
+          password: ${{ secrets.FTP_PASSWORD }} # 腾讯云FTP服务器的密码
+          local-dir: "docs/.vuepress/dist" # vuepress生成的静态文件存放的路径
+          remote-dir: "/" # 腾讯云FTP服务器上的目标路径，用于存放静态文件
+
+
 
