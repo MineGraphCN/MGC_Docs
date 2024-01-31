@@ -7,6 +7,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: MGC Docs
     steps:
       - uses: actions/checkout@v3
       - name: Build
@@ -21,7 +22,7 @@ jobs:
       - name: Deploy to Tencent Cloud
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
-          server: bt.skiesworld.com # 腾讯云FTP服务器的地址
+          server: ${{ secrets.FTP_ADDRESS }} # 腾讯云FTP服务器的地址
           port: ${{ secrets.FTP_PORT }}
           username: ${{ secrets.FTP_ACCOUNT }} # 腾讯云FTP服务器的用户名
           password: ${{ secrets.FTP_PASSWORD }} # 腾讯云FTP服务器的密码
