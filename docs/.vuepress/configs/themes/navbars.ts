@@ -181,7 +181,7 @@ const navbarConfig: NavbarConfig = [
             },
             {
                 text: '测试版文档',
-                link: 'https://dev.mgcd.pages.dev',
+                link: 'https://dev.mgcdocs.pages.dev/',
             },
         ]
     },
