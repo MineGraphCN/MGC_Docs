@@ -124,7 +124,7 @@
 - 如果添加了 OptiFabric ，但 **仍然无法启动游戏或游戏未读取高清修复** ，一般是因为 OptiFabric 更新较慢的缘故。此时需要等待作者发布更新或换为 `更旧版本` 的 OptiFine 。
 - 如果游戏正常进入，但 **主界面的中文变成了方块字** ，请尝试以下两种操作：
   - 移除游戏根目录下的 `.optifine` 文件夹；
-  - 降级 Fabric API 至旧版。
+  - 更换 Fabric API 不同的版本。
 
 ## OptiFine 如何搭配 Sodium / Iris 等模组
 
