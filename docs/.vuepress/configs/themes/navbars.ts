@@ -177,7 +177,7 @@ const navbarConfig: NavbarConfig = [
             '/about.md',
             {
                 text: 'GitHub',
-                link: 'https://github.com/HyperCol/MGCD',
+                link: 'https://github.com/MineGraphCN/MGC_Docs',
             },
             {
                 text: '测试版文档',
