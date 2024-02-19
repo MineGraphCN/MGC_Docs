@@ -168,7 +168,8 @@ const navbarConfig: NavbarConfig = [
             '/gallery/2022-spring.md',
             '/gallery/2022-summer.md',
             '/gallery/2022-autumn.md',
-            '/gallery/2023-spring.md'
+            '/gallery/2023-spring.md',
+            '/gallery/2024-spring.md'
         ]
     },
     {
