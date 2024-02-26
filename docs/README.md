@@ -19,7 +19,7 @@ features:
 footer: "Copyright&copy  2023-2024  
 <a href='https://minegraph.cn/' title='MGC图形学文档' target='_blank'>MineGraph</a>  All  Rights  Reserved.
 <br />      
-<a href='http://beian.miit.gov.cn/' title='beian' target='_blank'>沪ICP备2023036853号</a>
+<a href='http://beian.miit.gov.cn/' title='beian' target='_blank'>沪ICP备2023036853号</a>  
 <embed src='svg/police_budge.svg' type='image/svg+xml' pluginspage='http://www.adobe.com/svg/viewer/install/'>陕公网安备61019002002803号"
 footerHtml: true
 ---
