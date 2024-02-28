@@ -66,8 +66,8 @@
     "style": "模型 - 原版像素",
     "status": "技术性维护",
     "price": "免费",
-    "platform": "MCBBS",
-    "platform_link": "https://www.mcbbs.net/thread-914350-1-1.html",
+    "platform": "Modrinth",
+    "platform_link": "https://modrinth.com/resourcepack/3d-default",
     "guide": "",
     "guide_link": ""
   },
@@ -78,20 +78,8 @@
     "style": "卡通",
     "status": "正常更新",
     "price": "免费",
-    "platform": "MCBBS",
-    "platform_link": "https://www.mcbbs.net/thread-1270859-1-1.html",
-    "guide": "",
-    "guide_link": ""
-  },
-  {
-    "id": 8,
-    "name": "GridPixel - 方格概念材质",
-    "author": "Jakob.zero",
-    "style": "卡通",
-    "status": "正常更新",
-    "price": "免费",
-    "platform": "MCBBS",
-    "platform_link": "https://www.mcbbs.net/thread-1271173-1-1.html",
+    "platform": "CurseForge",
+    "platform_link": "https://www.curseforge.com/minecraft/texture-packs/blockpixel",
     "guide": "",
     "guide_link": ""
   },
@@ -126,7 +114,7 @@
     "style": "原版高清",
     "status": "正常更新",
     "price": "-",
-    "platform": "",
+    "platform": "网易内下载",
     "platform_link": "",
     "guide": "",
     "guide_link": ""
@@ -174,7 +162,7 @@
     "style": "卡通",
     "status": "正常更新",
     "price": "-",
-    "platform": "",
+    "platform": "QQ群634761643",
     "platform_link": "",
     "guide": "",
     "guide_link": ""
@@ -232,10 +220,10 @@
     "name": "TBC",
     "author": "瀧天遗迹",
     "style": "原版",
-    "status": "正常更新",
+    "status": "停止更新",
     "price": "免费",
-    "platform": "MCBBS",
-    "platform_link": "https://www.mcbbs.net/thread-1109161-1-1.html",
+    "platform": "暂未收录",
+    "platform_link": "",
     "guide": "",
     "guide_link": ""
   },
@@ -245,7 +233,7 @@
     "author": "TMEO丶",
     "style": "模型 - 现代高清",
     "status": "正常更新",
-    "price": "RMB 5.00",
+    "price": "RMB 8.00",
     "platform": "爱发电",
     "platform_link": "https://afdian.net/@TMEO123",
     "guide": "MGC-作品使用手册",
@@ -281,9 +269,9 @@
     "author": "静谧在秋雨中的妖姬",
     "style": "PBR - 中式写实",
     "status": "开发中",
-    "price": "免费",
-    "platform": "MCBBS",
-    "platform_link": "https://www.mcbbs.net/thread-1023520-1-1.html",
+    "price": "RMB 5.0.0",
+    "platform": "爱发电",
+    "platform_link": "https://afdian.net/a/YaoJi",
     "guide": "",
     "guide_link": ""
   },
@@ -298,18 +286,6 @@
     "platform_link": "https://afdian.net/@Fogg05",
     "guide": "MGC-作品使用手册",
     "guide_link": "/instructions/je/resourcepacks/05.html"
-  },
-  {
-    "id": 26,
-    "name": "乘方像素",
-    "author": "邹陈云飞",
-    "style": "原版高清",
-    "status": "正常更新",
-    "price": "免费",
-    "platform": "",
-    "platform_link": "",
-    "guide": "",
-    "guide_link": ""
   },
   {
     "id": 27,
@@ -366,7 +342,7 @@
     "style": "PBR - 原版",
     "status": "正常更新",
     "price": "免费",
-    "platform": "",
+    "platform": "QQ群289472018",
     "platform_link": "",
     "guide": "",
     "guide_link": ""
@@ -414,8 +390,8 @@
     "style": "模型 - 原版",
     "status": "暂停更新",
     "price": "免费",
-    "platform": "MCBBS",
-    "platform_link": "https://www.mcbbs.net/thread-1370835-1-1.html",
+    "platform": "暂未收录",
+    "platform_link": "",
     "guide": "",
     "guide_link": ""
   },
@@ -450,8 +426,8 @@
     "style": "卡通",
     "status": "正常更新",
     "price": "免费",
-    "platform": "MCBBS",
-    "platform_link": "https://www.mcbbs.net/thread-1030309-1-1.html",
+    "platform": "暂未收录",
+    "platform_link": "",
     "guide": "",
     "guide_link": ""
   },
@@ -486,9 +462,9 @@
     "style": "简洁",
     "status": "正常更新",
     "price": "免费/国服6元",
-    "platform": "MCBBS",
-    "platform_link": "https://www.mcbbs.net/thread-653595-1-1.html",
-    "guide": "_No response_",
+    "platform": "CurseForge",
+    "platform_link": "https://www.curseforge.com/minecraft/texture-packs/chocolate-bars-pack",
+    "guide": "",
     "guide_link": ""
   },
   {
@@ -500,7 +476,7 @@
     "price": "RMB5.00",
     "platform": "哔哩哔哩",
     "platform_link": "https://www.bilibili.com/video/BV1GW4y1d7LU?vd_source=d6cf51fe889d82f497fa4c4fbafca695",
-    "guide": "_No response_",
+    "guide": "",
     "guide_link": ""
   },
   {
@@ -512,7 +488,7 @@
     "price": "7 RMB",
     "platform": "爱发电",
     "platform_link": "https://afdian.net/a/fishpbr",
-    "guide": "_No response_",
+    "guide": "",
     "guide_link": ""
   },
   {
@@ -524,7 +500,7 @@
     "price": "免费",
     "platform": "哔哩哔哩",
     "platform_link": "https://www.bilibili.com/video/BV1vv4y1X7b2",
-    "guide": "_No response_",
+    "guide": "",
     "guide_link": ""
   },
   {
@@ -536,7 +512,7 @@
     "price": "免费",
     "platform": "苦力怕论坛",
     "platform_link": "https://klpbbs.com/thread-101104-1-1.html",
-    "guide": "_No response_",
+    "guide": "",
     "guide_link": ""
   },
   {
@@ -548,7 +524,7 @@
     "price": "RMB 19.80",
     "platform": "哔哩哔哩",
     "platform_link": "https://www.bilibili.com/video/BV1PN411B7xj/?spm_id_from=333.999.0.0&vd_source=ec1c54f2ec5fd8ae6ba217bd46b9ce86",
-    "guide": "_No response_",
+    "guide": "",
     "guide_link": ""
   }
 ]
