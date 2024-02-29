@@ -147,7 +147,7 @@ export default {
       const template = `publish_${this.work_type}.yml`;
       const title = `${this.label_name}: ${name}`;
 
-      const url = `https://github.com/HyperCol/MGCD/issues/new?&labels=${
+      const url = `https://github.com/MineGraphCN/MGC_Docs/issues/new?&labels=${
         this.label_name
       }&projects=&template=${template}&title=${encodeURIComponent(
         title
