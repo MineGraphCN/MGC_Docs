@@ -70,6 +70,19 @@ export default {
     };
   },
   mounted() {
+    for (let i = 0; i < javaShadersJsonData.length; i++) {
+      javaShadersJsonData[i].id = i + 1;
+    }
+    for (let i = 0; i < javaResourcePacksJsonData.length; i++) {
+      javaResourcePacksJsonData[i].id = i + 1;
+    }
+    for (let i = 0; i < bedrockShadersJsonData.length; i++) {
+      bedrockShadersJsonData[i].id = i + 1;
+    }
+    for (let i = 0; i < bedrockResourcePacksJsonData.length; i++) {
+      bedrockResourcePacksJsonData[i].id = i + 1;
+    }
+
     this.javaShadersData = javaShadersJsonData;
     this.javaResourcePacksData = javaResourcePacksJsonData;
     this.bedrockShadersData = bedrockShadersJsonData;
