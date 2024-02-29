@@ -6,8 +6,8 @@
     "style": "梦幻",
     "status": "正常更新",
     "price": "免费",
-    "platform": "MCBBS",
-    "platform_link": "https://www.mcbbs.net/thread-1248541-1-1.html",
+    "platform": "CurseForge",
+    "platform_link": "https://www.curseforge.com/minecraft/shaders/atlas-shader-by-huajijun",
     "guide": "",
     "guide_link": ""
   },
@@ -18,7 +18,7 @@
     "style": "写实",
     "status": "正常更新",
     "price": "免费",
-    "platform": "",
+    "platform": "QQ群602499334",
     "platform_link": "",
     "guide": "",
     "guide_link": ""
@@ -117,7 +117,7 @@
     "platform": "哔哩哔哩",
     "platform_link": "https://www.bilibili.com/read/cv15049938",
     "guide": "iterationT2.0.0使用手册",
-    "guide_link": "instructions/je/shaderpacks/itt2.html"
+    "guide_link": "/instructions/je/shaderpacks/itt2.html"
   },
   {
     "id": 11,
@@ -138,8 +138,8 @@
     "style": "光线追踪 - 写实",
     "status": "技术性维护",
     "price": "免费",
-    "platform": "MCBBS",
-    "platform_link": "https://www.mcbbs.net/thread-1211964-1-1.html",
+    "platform": "GitHub",
+    "platform_link": "https://github.com/GeForceLegend/SEUS_PTGI_GFME",
     "guide": "",
     "guide_link": ""
   },
@@ -158,7 +158,7 @@
   {
     "id": 14,
     "name": "JMSEUS FCM",
-    "author": "Ciitta シータ、sitinpeace卫星",
+    "author": "老鸽子、sitinpeace卫星",
     "style": "梦幻",
     "status": "技术性维护",
     "price": "免费",
@@ -258,14 +258,14 @@
     "style": "写实",
     "status": "正常更新",
     "price": "免费",
-    "platform": "MGC频道",
+    "platform": "MGC内对应子频道",
     "platform_link": "https://pd.qq.com/s/7lqo0embd",
     "guide": "",
     "guide_link": ""
   },
   {
     "id": 23,
-    "name": "Alternation",
+    "name": "Alternation（iterationT魔改）",
     "author": "/、FT_456/、",
     "style": "写实",
     "status": "正常更新",

@@ -394,5 +394,17 @@
     "platform_link": "",
     "guide": "",
     "guide_link": ""
+  },
+  {
+    "id": 40,
+    "name": "GridPixel - 方格概念材质",
+    "author": "Jakob.zero",
+    "style": "卡通",
+    "status": "正常更新",
+    "price": "免费",
+    "platform": "MCBBS",
+    "platform_link": "https://www.mcbbs.net/thread-1271173-1-1.html",
+    "guide": "",
+    "guide_link": ""
   }
 ]
