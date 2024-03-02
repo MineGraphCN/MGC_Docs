@@ -9,6 +9,7 @@ const themeConfig = defaultTheme(
         logoDark: '/images/MGC-darklogo.png',
         notFound: ["看起来你不小心踏入了虚空。"],
         backToHome: "←重生",
+        contributors: false,
         // repo: 'MineGraphCN/MGC_Docs',
 
         navbar: navbarConfig,
