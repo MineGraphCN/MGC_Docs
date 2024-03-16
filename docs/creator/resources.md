@@ -43,7 +43,11 @@ OptiFine 的渲染管线在 doc 文件夹里有一些文档：
 
 - [https://optifine.readthedocs.io/index.html](https://optifine.readthedocs.io/index.html)
 
-  - OptiFine 的 doc 文件夹的替代版本，比 Github 上的版本更直观。
+  - OptiFine 的 doc 文件夹的备用版本，比 Github 上的版本更直观。
+
+- [https://github.com/IrisShaders/ShaderDoc/blob/master/iris-features.md](https://github.com/IrisShaders/ShaderDoc/blob/master/iris-features.md)
+
+  - iris 中找到的额外功能。
 
 - [https://pastebin.com/aB5MJ7aN](https://pastebin.com/aB5MJ7aN)
 
@@ -51,17 +55,21 @@ OptiFine 的渲染管线在 doc 文件夹里有一些文档：
 
 - [https://github.com/Shadax-stack/MinecraftShaderProgramming/tree/master](https://github.com/Shadax-stack/MinecraftShaderProgramming/tree/master)
 
-  - Minecraft 渲染方式、缓冲区和一些示例效果的概述（含代码、图片和解释）。
+  - 介绍 Minecraft 渲染方式、缓冲区和一些示例效果的概述（含代码、图片和解释）。
 
-- [https://cdn.discordapp.com/attachments/237199950235041794/825483993951633438/base.zip](https://cdn.discordapp.com/attachments/237199950235041794/825483993951633438/base.zip)
+- [https://github.com/shaderLABS/Base-120](https://github.com/shaderLABS/Base-120)
 
-  - 模板包包括大部分的基本文件，但没有一个文件真正做什么。这使得它非常容易编辑。
+  - 模板包包括大部分的基本文件，但没有一个文件真正做了什么。这使得它非常容易编辑。
 
-- [https://cdn.discordapp.com/attachments/960320448594329630/960695935837548695/base150.zip](https://cdn.discordapp.com/attachments/960320448594329630/960695935837548695/base150.zip)
+- [https://github.com/shaderLABS/Base-150](https://github.com/shaderLABS/Base-150)
 
   - 同样的模板包，但使用 #版本150 。用于 MC 1.17 以上版本（但不是必须的）。
 
-- [https://cdn.discordapp.com/attachments/736928196162879510/856960040468873246/Shadow_tutorial.zip](https://cdn.discordapp.com/attachments/736928196162879510/856960040468873246/Shadow_tutorial.zip)
+- [https://github.com/shaderLABS/Base-330](https://github.com/shaderLABS/Base-330)
+
+  - 同样是模板包，但使用#version 330。同样适用于MC 1.17+。由Bálint制作。
+
+- [https://github.com/shaderLABS/Shadow-Tutorial](https://github.com/shaderLABS/Shadow-Tutorial)
 
   - 阴影的解释和示例代码。
 
@@ -118,10 +126,22 @@ OptiFine 的渲染管线在 doc 文件夹里有一些文档：
   - 目录结构是 `.minecraft/shaderpacks/<着色器名称>/shaders/<着色器代码>` 。
   - 不需要每次想改变什么的时候都解压和重新压缩你的着色器包。
 
-- 语法错误调试：
+- 语法错误调试（OptiFine）：
   - 在 `OptiFine` 上，如果你的着色器包有语法错误，你会在聊天菜单中看到 **无效的程序(invalid programs)** 提示；
   - 在写这篇文章的时候， `Iris` 没有这个错误信息。相反，如果你有任何无效的程序，`Iris` 将**完全禁用着色器**。
   - 无论如何，如果这两种情况发生在你身上，你可以在你的 `日志文件` 中找到更多关于导致程序错误的信息。
   - 日志可以在 `.minecraft/logs/latest.log` 找到。
     - 如果你使用 `Forge` ，那么日志文件将被 `.minecraft/logs/fml-client-latest.log` 代替。
   - 如果你不知道在你的日志文件中寻找什么，请在频道的 [求助问答平台](https://pd.qq.com/s/1dvabyzrt) 处寻求帮助，并确保在那里上传你的日志文件。
+
+- 语法错误调试（Iris）：
+  - 在着色器选择菜单中按下 `CTRL + D` 可以启用“调试模式”。
+  - 在调试模式下，如果您的着色器包中存在语法错误，Iris 会在每次加载着色器包时在游戏中显示错误信息。
+  - 请注意，当前版本的Iris可能会显示错误的文件名和行号，降低了其实用性。
+  - 调试模式还会将修补后的着色器包输出到 `.minecraft/patched_shaders/`，给出的行号将与修补后的着色器包相匹配。
+  - 修补后的着色器包通常类似于原始着色器包，这可以作为另一种跟踪语法错误的方法。
+
+- 快速查看日志文件：
+  - 如果您使用官方启动器，您可以在设置 -> 启动 Minecraft: Java Edition 时打开输出日志中启用选项，以在游戏运行时显示日志文件。
+  - 这样做可以更快地访问日志文件，尤其是当您没有一个与当前打开文件同步的文本编辑器时。
+  - MultiMC 和 Prism Launcher 都有类似的选项。其他启动器可能不支持此功能。
