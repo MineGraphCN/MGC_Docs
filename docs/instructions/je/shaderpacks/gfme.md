@@ -6,10 +6,10 @@
 
 ### 由于 PTGI 的最终用户许可协议（EULA）的限制，直接分发 PTGI 的代码是非法的，因此您需要按照以下步骤提取 SEUS PTGI GFME：
 
-1. 从发布页面下载 jar 文件，并从[ Cody 的 Patreon 页面](https://www.patreon.com/sonicether/posts) 下载一个未经编辑的基于 GFME 的 PTGI 版本（目前为 HRR 2.1），如果您没有的话。
-2. 将 jar 文件和 PTGI HRR 2.1 文件放在同一路径下，然后双击 jar 文件。如果一切正常，将会生成一个新的文件夹（旧版本的 GFME）或一个 zip 文件（更新的 GFME 版本），可以通过将此文件或文件夹移动到 .minecraft/shaderpacks 目录中直接使用作为着色器包。
+1. 从发布页面下载 jar 文件，并且如果没有 PTGI HRR 2.1 原版光影文件，请从 [ Cody 的 Patreon 页面](https://www.patreon.com/sonicether/posts) 下载； 
+2. 将 jar 文件和 PTGI HRR 2.1 光影放在同一目录，然后双击 jar 文件。如果一切正常，将会生成一个新的文件夹（旧版本的 GFME）或一个 zip 文件（更新的 GFME 版本），可以通过将此文件或文件夹移动到 `.minecraft/shaderpacks` 目录中直接使用。
 
-如果双击 jar 文件后没有任何反应，您可以在 CMD 或 Powershell 中通过 `java -jar "<您的 GFME jar 路径>"` 运行此 jar 文件以获取更多信息。
+如果双击 jar 文件后没有任何反应，可在 CMD 或 Powershell 中通过 `java -jar "<您的 GFME jar 路径>"` 运行此 jar 文件以获取更多信息。
 
 ![gfme-1.png](/images/instructions/gfme-1.png)
 
