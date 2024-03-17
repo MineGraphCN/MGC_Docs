@@ -22,7 +22,8 @@ const sidebarConfig: SidebarConfig = {
                     link: '/instructions/je/shaderpacks/README.md',
                 },
                 '/instructions/je/shaderpacks/itt2.md',
-                '/instructions/je/shaderpacks/itt3.md'
+                '/instructions/je/shaderpacks/itt3.md',
+                '/instructions/je/shaderpacks/gfme.md'
             ]
         },
         {

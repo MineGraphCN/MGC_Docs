@@ -79,6 +79,10 @@ const navbarConfig: NavbarConfig = [
                         link: '/instructions/je/shaderpacks/itt3.md',
                     },
                     {
+                        text: 'SEUS PTGI GFME',
+                        link: '/instructions/je/shaderpacks/gfme.md',
+                    },
+                    {
                         text: 'IT-Project',
                         link: '/instructions/je/resourcepacks/itp.md',
                     },
