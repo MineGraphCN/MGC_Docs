@@ -1,6 +1,6 @@
-# SEUS PTGI GeForceLegend's Modified Edition
+# SEUS PTGI GFME
 
-SEUS PTGI 深度魔改版本
+全称：Sonic Ether's Unbelievable Shader Path Tracing Global Illumination GeForceLegend's Modified Edition，SEUS PTGI 深度魔改版本
 
 ## 安装
 
