@@ -161,6 +161,12 @@ const navbarConfig: NavbarConfig = [
                     '/creator/shaders_tutorial/02-prepare.md',
                 ]
             },
+            {
+                text: '材质开发教程',
+                children: [
+                    '/creator/resource_tutorial/',
+                ]
+            },
         ]
     },
     {
