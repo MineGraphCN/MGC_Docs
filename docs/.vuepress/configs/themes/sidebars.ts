@@ -92,6 +92,9 @@ const sidebarConfig: SidebarConfig = {
         '/creator/shaders_tutorial/01-file_and_pipeline.md',
         '/creator/shaders_tutorial/02-prepare.md',
     ],
+    '/creator/resource_tutorial/': [
+        '/creator/resource_tutorial/01-basic_environment&preface.md',
+    ],
     '/gallery/': [
         '/gallery/2021-autumn.md',
         '/gallery/2021-winter.md',
