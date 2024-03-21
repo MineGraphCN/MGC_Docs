@@ -1,5 +1,5 @@
->本文由[FishBai](https://github.com/yubaibaifish)独立编写
->本文为 Minecraft JAVA 版教程
+>本文由[FishBai](https://github.com/yubaibaifish)独立编写  
+>本文为 Minecraft JAVA 版教程  
 >本文由 MGC 提供支持
 # 序言
 
