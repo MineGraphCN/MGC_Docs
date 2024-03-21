@@ -164,7 +164,7 @@ const navbarConfig: NavbarConfig = [
             {
                 text: '材质开发教程',
                 children: [
-                    '/creator/resource_tutorial/',
+                    '/creator/resource_tutorial/01-basic_environment&preface.md',
                 ]
             },
         ]
