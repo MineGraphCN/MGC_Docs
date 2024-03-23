@@ -150,6 +150,7 @@ const navbarConfig: NavbarConfig = [
             '/creator/resources.md',
             '/creator/film_and_anim.md',
             '/creator/model_and_rendering.md',
+            '/creator/labpbr_material_standard.md',
             {
                 text: '光影开发教程',
                 children: [
@@ -162,7 +163,7 @@ const navbarConfig: NavbarConfig = [
                 ]
             },
             {
-                text: '材质开发教程',
+                text: '纹理开发教程',
                 children: [
                     '/creator/resource_tutorial/01-basic_environment&preface.md',
                 ]

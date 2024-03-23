@@ -86,6 +86,7 @@ const sidebarConfig: SidebarConfig = {
         '/creator/resources.md',
         '/creator/film_and_anim.md',
         '/creator/model_and_rendering.md',
+        '/creator/labpbr_material_standard.md',
     ],
     '/creator/shaders_tutorial/': [
         '/creator/shaders_tutorial/README.md',
