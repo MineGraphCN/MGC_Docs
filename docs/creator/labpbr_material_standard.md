@@ -9,6 +9,10 @@
 这个格式由 shaderLABS Discord 服务器于 2019 年 4 月末发起创建并维护至今，旨在统一过去混乱的光影和资源包的材质格式。  
 为了便捷，这个 [转换器](https://github.com/flodri/RGBA-Formats-Converter/releases/tag/0.4) 可以帮助纹理创作家从绝大多数旧格式转换到 LabPBR 。
 
+::: details 目录
+[[toc]]
+:::
+
 ## 反射纹理 (_s)
 
 光影只需要满足能正确处理光滑度（红）和F0（绿）即为 LabPBR 完备，其他定义的材质信息是可选项。

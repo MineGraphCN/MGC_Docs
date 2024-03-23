@@ -78,7 +78,7 @@ $$ 1\text{k} = 1024 $$
 
 版本区间由资源包内一个名为 `pack.mcmeta` 的文件
 
-```json
+```json:no-line-numbers{3}
 {
   "pack": {
     "pack_format": N,
