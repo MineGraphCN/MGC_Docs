@@ -79,6 +79,10 @@ const navbarConfig: NavbarConfig = [
                         link: '/instructions/je/shaderpacks/itt3.md',
                     },
                     {
+                        text: 'SEUS PTGI GFME',
+                        link: '/instructions/je/shaderpacks/gfme.md',
+                    },
+                    {
                         text: 'IT-Project',
                         link: '/instructions/je/resourcepacks/itp.md',
                     },
@@ -146,6 +150,7 @@ const navbarConfig: NavbarConfig = [
             '/creator/resources.md',
             '/creator/film_and_anim.md',
             '/creator/model_and_rendering.md',
+            '/creator/labpbr_material_standard.md',
             {
                 text: '光影开发教程',
                 children: [
@@ -155,6 +160,12 @@ const navbarConfig: NavbarConfig = [
                     },
                     '/creator/shaders_tutorial/01-file_and_pipeline.md',
                     '/creator/shaders_tutorial/02-prepare.md',
+                ]
+            },
+            {
+                text: '纹理开发教程',
+                children: [
+                    '/creator/resource_tutorial/01-basic_environment&preface.md',
                 ]
             },
         ]

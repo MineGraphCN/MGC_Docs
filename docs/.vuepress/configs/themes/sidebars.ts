@@ -22,7 +22,8 @@ const sidebarConfig: SidebarConfig = {
                     link: '/instructions/je/shaderpacks/README.md',
                 },
                 '/instructions/je/shaderpacks/itt2.md',
-                '/instructions/je/shaderpacks/itt3.md'
+                '/instructions/je/shaderpacks/itt3.md',
+                '/instructions/je/shaderpacks/gfme.md'
             ]
         },
         {
@@ -85,11 +86,15 @@ const sidebarConfig: SidebarConfig = {
         '/creator/resources.md',
         '/creator/film_and_anim.md',
         '/creator/model_and_rendering.md',
+        '/creator/labpbr_material_standard.md',
     ],
     '/creator/shaders_tutorial/': [
         '/creator/shaders_tutorial/README.md',
         '/creator/shaders_tutorial/01-file_and_pipeline.md',
         '/creator/shaders_tutorial/02-prepare.md',
+    ],
+    '/creator/resource_tutorial/': [
+        '/creator/resource_tutorial/01-basic_environment&preface.md',
     ],
     '/gallery/': [
         '/gallery/2021-autumn.md',
