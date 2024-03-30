@@ -120,11 +120,11 @@
 
 ## OptiFine 搭配 Fabric
 
-- **添加 `OptiFabric` 模组。** Fabric 与 OptiFine 的兼容由 `OptiFabric` 模组负责，绕过该模组直接添加或尝试用 Forge 的安装方式安装皆不可行。唯一的解决方案是将 OptiFine 与 OptiFabric **一起放入** `mods` 文件夹，再由 Fabric 加载。
-- 如果添加了 OptiFabric ，但 **仍然无法启动游戏或游戏未读取高清修复** ，一般是因为 OptiFabric 更新较慢的缘故。此时需要等待作者发布更新或换为 `更旧版本` 的 OptiFine 。
-- 如果游戏正常进入，但 **主界面的中文变成了方块字** ，请尝试以下两种操作：
+- **添加 *OptiFabric* 模组。** *Fabric* 与 *OptiFine* 的兼容由 *OptiFabric* 模组负责，绕过该模组直接添加或尝试用 Forge 的安装方式安装皆不可行。唯一的解决方案是将 *OptiFine* 与 *OptiFabric* **一起放入** `mods` 文件夹，再由 Fabric 加载。
+- 如果添加了 *OptiFabric* ，但 **仍然无法启动游戏或游戏未读取高清修复** ，一般是因为 *OptiFabric* 更新较慢的缘故。此时需要等待作者发布更新或换为 `更旧版本` 的 *OptiFine* 。
+- 如果游戏正常进入，但 **主界面的中文变成了方块** ，请尝试以下两种操作：
   - 移除游戏根目录下的 `.optifine` 文件夹；
-  - 更换 Fabric API 不同的版本。
+  - 更换 *Fabric API* 不同的版本。
 
 ## OptiFine 如何搭配 Sodium / Iris 等模组
 
@@ -132,7 +132,7 @@
 
 ## OptiFine 无法与其他模组兼容
 
-- 国外光影社区 ShaderLABS 整理了一份`不兼容的模组名单`，并逐一写明了如何使它们与 OptiFine 光影兼容。我们将这些内容汉化并搬运到了 **MGC 答疑手册 - Java版着色器(Shader)**，并额外添加了一些后续发现的模组。内容如下：
+- 国外光影社区 shaderLABS 整理了一份`不兼容的模组名单`，并逐一写明了如何使它们与 OptiFine 光影兼容。我们将这些内容汉化并搬运到了 **MGC 答疑手册 - Java版着色器(Shader)**，并额外添加了一些后续发现的模组。内容如下：
 
 - [MGC 答疑手册 - Java版着色器(Shader)](../../../library/troubleshoot/je/mods_compatibility.md)
 

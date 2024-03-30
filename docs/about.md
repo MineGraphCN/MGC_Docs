@@ -4,9 +4,9 @@ Minecraft Graphics Community Documents (MGCD) 是由社区编写的关于 Minecr
 
 ## 获取帮助
 
-在 [GitHub Issues](https://github.com/HyperCol/MGCD/issues) 提出问题、意见或建议
+在 [GitHub Issues](https://github.com/MineGraphCN/MGC_Docs/issues) 提出问题、意见或建议
 加入 QQ 频道 [Minecraft 图形学社区](https://pd.qq.com/s/7lqo0embd) 获得更多帮助。
 
 ## 贡献与支持
 
-觉得好用可以为项目点上 *Star* 。有好的想法也欢迎提交 [Pull requests](https://github.com/HyperCol/MGCD/pulls)。
+觉得好用可以为项目点上 *Star* 。有好的想法也欢迎提交 [Pull requests](https://github.com/MineGraphCN/MGC_Docs/pulls) 。
