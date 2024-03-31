@@ -136,7 +136,7 @@ const navbarConfig: NavbarConfig = [
                 link: '/library/troubleshoot/',
                 children: [
                     '/library/troubleshoot/common.md',
-                    '/library/troubleshoot/je/shaders.md',
+                    '/library/troubleshoot/je/shaders_load.md',
                     '/library/troubleshoot/je/settings.md',
                     '/library/troubleshoot/je/mods_compatibility.md',
                 ]
@@ -158,8 +158,8 @@ const navbarConfig: NavbarConfig = [
                         text: '序言',
                         link: '/creator/shaders_tutorial/',
                     },
-                    '/creator/shaders_tutorial/01-file_and_pipeline.md',
-                    '/creator/shaders_tutorial/02-prepare.md',
+                    '/creator/shaders_tutorial/00-file_and_pipeline.md',
+                    '/creator/shaders_tutorial/01-prepare.md',
                 ]
             },
             {

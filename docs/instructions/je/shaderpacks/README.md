@@ -1,49 +1,41 @@
-# 光影包通用教程（新手必看）
+# 光影包通用教程
 
-::: warning 过时的文档
-这篇文档的内容在内容上部分过时。
+::: warning 正在重写的文档
+这篇文档正在重写中，可能无法流畅地阅读。
 :::
 
-## 新手指导
+这篇文档帮助新人从安装游戏所需的模组开始，直到最终成功运行光影为止。  
+阅读 [这篇文章](../../../library/shaders.md) 可以带你快速了解光影相关的基本概念。
 
-### 入门必看
+## 准备工作
 
-[#光影基础概念](#光影基础概念)
+这篇文章主要使用 **HMCL** 和 **PCL 2** 两款国产启动器进行教学，你可以在下面获取这些启动器：
 
-[#关于 OptiFine / Iris 如何搭配 Forge / Fabric](#关于-optifine-iris-如何搭配-forge-fabric)
+- [PCL2免费正式版](https://afdian.net/a/LTCat?tab=feed)
+- [PCL2付费快照版](https://afdian.net/a/LTCat)
+- [HMCL](https://hmcl.huangyuhui.net/download/)
 
-在了解以上两栏内容后，再根据自己的情况选择下方对应的安装指南。
+我们只着重于较为流行的 OptiFine 和 Iris。
 
-### 安装前的准备
+### 检查驱动程序
 
-鉴于 PCL2 其优秀的界面设计与逻辑，我们建议新手入门使用该启动器。以下是该启动器的两个版本：
+参考 [这篇文章](../../../library/troubleshoot/common.md#查询电脑显卡) 检查显卡以及是否安装显卡驱动程序。
 
-[PCL2免费正式版](https://afdian.net/p/0164034c016c11ebafcb52540025c377)
+## 安装游戏
 
-[PCL2付费快照版](https://afdian.net/a/LTCat)
+### 自动安装和手动安装的区别
 
-## 光影包前置知识
+## 安装光影模组
 
-光影的专业名称为着色器。它基于MC提供的接口修改了许多MC的光照效果。这些接口由一些渲染模组控制，关于着色器的渲染模组介绍如下：
+### 纯净版 OptiFine
 
->### 主要渲染模组
->
->- **`OptiFine` 是 Minecraft Java 版的一个 Mod** ，作者为 sp614x 。该模组属于独立开发者的闭源项目。其主要功能是加载光影包、性能优化与一些渲染改进功能，为玩家获得更好的视觉体验。其前身为 ShaderMod，目前 OptiFine 已将它集成进代码，并接管了它的后续更新工作。因此不建议玩家再去使用老旧的 ShaderMod。
->   - [相关链接 - OptiFine](https://www.optifine.net/home)
->- **`Iris` 是 OptiFine 的衍生物**，属于多人开发的开源项目。与 Sodium（钠）模组共同开启时可以获得更好的游玩体验，同时为了 **Fabric** 模组加载器社区的模组兼容性而生（ **Forge** 中也有移植版，名为 `Oculus` ，由于社区的一些特性，不推荐使用）。但其开发方向与 OptiFine 相反（适配现有的光影），而光影的开发是与 Optfine 或 Canvas 同向的。而且 Iris 到目前为止对开发者并不友好。但随着 Iris 慢慢增加新的光影接口，它的新光影功能已经逐渐追上并赶超 OptiFine 。或许在未来的某个时候，我们可以看到 Iris 取代 OptiFine 的一天。
->   - [相关链接 - Iris](https://irisshaders.net/)
->
->......
->
->### 辅助渲染模组
->
->- `AdvancedShader` 是一个 **OptiFine** 的辅助模组，仅在 `1.12.2` 可用。它能够允许用户使用**仅在更高版本中可用**的着色器（如 iterationT 3.0.0 ）。
->
->   - [相关链接 - AdvancedShader](https://www.curseforge.com/minecraft/mc-mods/advancedshader)
+### Forge 版 OptiFine
 
-—— 引用自 [MGC 大众科普](../../../library/shaders.md)
+### Fabric 版 OptiFine（不推荐）
 
----
+### Iris
+
+## 配置游戏
 
 ## 关于 OptiFine / Iris 如何搭配 Forge / Fabric
 

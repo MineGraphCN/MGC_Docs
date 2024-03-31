@@ -22,13 +22,9 @@
 
 - [【官方双语/合集】线性代数的本质 - 系列合集](https://www.bilibili.com/video/BV1ys411472E)
 
-**GLSL 是 OpenGL 的着色器语言。** 互联网上有不少这方面的教程，但 《Minecraft》 特别使用了一个旧的 OpenGL 版本，所以试着找到一个同样旧的 GLSL 教程可能是有用的。任何写着 #version 120 的东西都是没问题的。 Minecraft 1.17 将使用 #version 150 ，但你并不局限于这些特定的 #version 。你可以使用你的 GPU / 驱动支持的任何版本
+**GLSL 是 OpenGL 的着色器语言。** 互联网上有不少这方面的教程，但 Minecraft 特别使用了一个旧的 OpenGL 版本，所以如果找到一个同样旧的 GLSL 教程可能是有用的。任何写着 `#version 120` 的东西都是没问题的。 *JE 1.17+* 将使用 `#version 150` ，但你并不需要局限于这些特定的 `#version` ，你可以使用你的 GPU 驱动支持的任何版本。
 
-OptiFine 的渲染管线在 doc 文件夹里有一些文档：
-
-- [https://github.com/sp614x/optifine/tree/master/OptiFineDoc/doc](https://github.com/sp614x/optifine/tree/master/OptiFineDoc/doc)
-
-尤其是要看 `shaders.txt` 和 `shaders.properties` 。这些文档也可以在你下载的 `OptiFine.jar` 文件中找到。
+[OptiFine 的官方文档](https://github.com/sp614x/optifine/tree/master/OptiFineDoc/doc) 中也给出了不少开发细节，尤其是 `shaders.txt` 和 `shaders.properties` 。这些文档也可以在你下载的 OptiFine `.jar` 文件中找到。
 
 ## 着色器开发
 
@@ -109,11 +105,6 @@ OptiFine 的渲染管线在 doc 文件夹里有一些文档：
 - [http://sqwatermark.com/resguide/](http://sqwatermark.com/resguide/)
 
   - MCBBS 纹理版版主整理的资源包制作指南。
-
-- lab-pbr-docs
-[https://wiki.shaderlabs.org/wiki/LabPBR_Material_Standard](https://wiki.shaderlabs.org/wiki/LabPBR_Material_Standard)
-
-  - 关于使用资源包提供的 PBR 数据的信息。对于资源包开发者来说，这个链接对于将 PBR 数据添加到你的资源包中供着色器使用也很有用。
 
 ## 开发技巧和窍门
 
