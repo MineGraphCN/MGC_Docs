@@ -9,4 +9,4 @@ Minecraft Graphics Community Documents (MGCD) 是由社区编写的关于 Minecr
 
 ## 贡献与支持
 
-觉得好用可以为项目点上 *Star* 。有好的想法也欢迎提交 [Pull requests](https://github.com/MineGraphCN/MGC_Docs/pulls) 。
+觉得好用可以为项目点上 *Star*。有好的想法也欢迎提交 [Pull requests](https://github.com/MineGraphCN/MGC_Docs/pulls) 。
