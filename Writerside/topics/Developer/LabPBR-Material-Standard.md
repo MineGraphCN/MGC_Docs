@@ -1,6 +1,8 @@
 # LabPBR 材质标准
 
->这是一篇翻译文档
+<show-structure depth="2"></show-structure>
+
+>这是一篇翻译文档<br></br>
 >这篇文档翻译自 [LabPBR Material Standard](https://shaderlabs.org/wiki/LabPBR_Material_Standard) ，请以原文为准！
 {style="warning"}
 
@@ -8,10 +10,6 @@
 
 这个格式由 shaderLABS Discord 服务器于 2019 年 4 月末发起创建并维护至今，旨在统一过去混乱的光影和资源包的材质格式。  
 为了便捷，这个 [转换器](https://github.com/flodri/RGBA-Formats-Converter/releases/tag/0.4) 可以帮助纹理创作家从绝大多数旧格式转换到 LabPBR 。
-
-::: details 目录
-[[toc]]
-:::
 
 ## 反射纹理 (_s)
 
@@ -51,12 +49,12 @@
 
 孔隙率表示材质可以吸收多少水分，这个值越高，被打湿（如下雨时）后表面颜色就会更暗并产生更弱的反射。这可以让同时支持孔隙率和基于天气变化的湿度（如雨天水坑）的光影产生更加准确的效果。下面是一些示例值。
 
-| 材质 | 孔隙率 |
-| -- | -- |
-| 沙子 | 64 |
-| 羊毛 | 38 |
-| 木头 | 12 |
-| 金属和其他不透水材料 | 0 |
+| 材质         | 孔隙率 |
+|------------|-----|
+| 沙子         | 64  |
+| 羊毛         | 38  |
+| 木头         | 12  |
+| 金属和其他不透水材料 | 0   |
 
 孔隙率的示例可以在 [这里](https://github.com/rre36/lab-pbr/wiki/Porosity-Examples) 找到。
 
