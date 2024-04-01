@@ -9,5 +9,7 @@
     <toc-element topic="README.md"/>
     <toc-element topic="starter-topic.md"/>
     <toc-element topic="community.md"/>
-    <toc-element topic="creator.md"/>
+    <toc-element topic="creator.md">
+        <toc-element topic="LabPBR-texture-standard.md"/>
+    </toc-element>
 </instance-profile>
