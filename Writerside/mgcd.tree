@@ -2,9 +2,12 @@
 <!DOCTYPE instance-profile
         SYSTEM "https://resources.jetbrains.com/writerside/1.0/product-profile.dtd">
 
-<instance-profile id="md"
+<instance-profile id="mgcd"
                  name="MineGraph Docs"
-                 start-page="starter-topic.md">
+                 start-page="README.md">
 
+    <toc-element topic="README.md"/>
     <toc-element topic="starter-topic.md"/>
+    <toc-element topic="community.md"/>
+    <toc-element topic="creator.md"/>
 </instance-profile>
