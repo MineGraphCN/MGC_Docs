@@ -30,7 +30,7 @@
 
 - 若遇到脚本秒崩溃，请在 **具有管理员权限** 的 `PowerShell` 中运行此命令：
 
-```powershell
+```powershell:no-line-numbers
 Set-ExecutionPolicy -Scope CurrentUser Bypass
 ```
 
