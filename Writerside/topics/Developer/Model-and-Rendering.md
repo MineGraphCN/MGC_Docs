@@ -5,38 +5,38 @@
 >
 {style="warning"}
 
+<show-structure depth="2"></show-structure>
+
 ## 建模软件列表
 
 Minecraft 建模相关的软件较多，目前可用主要有：
 
-- Blockbench（[官网链接](https://www.blockbench.net/)）
-- Blockbuster（[Minecraft百科介绍页](https://www.mcmod.cn/class/2344.html)）
-- Blender（[官网链接](https://www.blender.org/)）
-- C4D（[官网链接](https://www.maxon.net/zh/cinema-4d)）
-- Cubik Studio（[官网链接](https://cubik.studio/)）
-- Trimble SketchUp（[官网链接](https://www.sketchup.com/zh-CN/plans-and-pricing/sketchup-free)）
-- Minecraft Model Maker（[Curseforge介绍页](https://www.curseforge.com/minecraft/mc-mods/model-creator-app?__cf_chl_captcha_tk__=bK64ZVC_xGHiWLhEVD0mOymH35BIUiELfJzSQTFbpks-1640959193-0-gaNycGzNDiU)）
+- Blockbench
+    - [官网链接](https://www.blockbench.net/)
+- Blockbuster
+    - [Minecraft 百科介绍页](https://www.mcmod.cn/class/2344.html)
+- Blender
+    - [官网链接](https://www.blender.org/)
+- C4D
+    - [官网链接](https://www.maxon.net/zh/cinema-4d)
+- Cubik Studio
+    - [官网链接](https://cubik.studio/)
+- Trimble SketchUp
+    - [官网链接](https://www.sketchup.com/zh-CN/plans-and-pricing/sketchup-free)
+- Minecraft Model Maker
+    - [CurseForge 介绍页](https://www.curseforge.com/minecraft/mc-mods/model-creator-app?__cf_chl_captcha_tk__=bK64ZVC_xGHiWLhEVD0mOymH35BIUiELfJzSQTFbpks-1640959193-0-gaNycGzNDiU)
 
-> 参考资料
-> [Minecraft Wiki 辅助程序与编辑器/3D建模工具](https://minecraft.fandom.com/zh/wiki/%E8%BE%85%E5%8A%A9%E7%A8%8B%E5%BA%8F%E4%B8%8E%E7%BC%96%E8%BE%91%E5%99%A8/3D%E5%BB%BA%E6%A8%A1%E5%B7%A5%E5%85%B7)
-> 
-{style="tip"}
+> 参考：[Minecraft Wiki 辅助程序与编辑器/3D建模工具](https://zh.minecraft.wiki/w/%E8%BE%85%E5%8A%A9%E7%A8%8B%E5%BA%8F%E4%B8%8E%E7%BC%96%E8%BE%91%E5%99%A8/3D%E5%BB%BA%E6%A8%A1%E5%B7%A5%E5%85%B7)
 
 ## 国内主流 Minecraft 建模软件
-
-- Blockbench（仅适用于 Minecraft 建模）
-- Blockbuster（仅适用于 Minecraft 建模的 MOD）
-- Blender（通用的生产力工具）
-- C4D（通用的生产力工具）
 
 ### Blockbench
 
 Blockbench 是一款**全平台支持**的模型编辑软件，支持编辑方块、物品模型，以及基岩版支持的实体模型。
 它是免费、开源的，无需担心病毒等问题，但请确认你是从正确的渠道下载的文件！
 
-- [MinecraftBBS介绍页](https://www.mcbbs.net/thread-809404-1-1.html)
-- [官网](https://www.blockbench.net/)**（可能无法正常连接）**
-- [Web版使用官网](https://web.blockbench.net/)
+- [官网](https://www.blockbench.net/)**（可能无法正常访问）**
+- [Web 版使用官网](https://web.blockbench.net/)
 
 ### Blockbuster
 
