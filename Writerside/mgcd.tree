@@ -9,6 +9,13 @@
     <toc-element topic="README.md"/>
     <toc-element topic="starter-topic.md"/>
     <toc-element topic="community.md"/>
+    <toc-element toc-title="知识库">
+        <toc-element toc-title="疑难解答">
+            <toc-element toc-title="Java 版">
+                <toc-element topic="video_settings.md"/>
+            </toc-element>
+        </toc-element>
+    </toc-element>
     <toc-element topic="creator.md">
         <toc-element topic="Develop-Tips.md"/>
         <toc-element topic="Film-and-Animation.md"/>
