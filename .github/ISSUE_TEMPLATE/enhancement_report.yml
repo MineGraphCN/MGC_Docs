@@ -31,7 +31,7 @@ body:
     attributes:
       label: 文档原址
       description: 选填，如果有
-      placeholder: 如：https://mgcd.hypercol.com/library/#阅读帮助
+      placeholder: 如：https://mgcd.hypercol.com/Library/#阅读帮助
 
   - type: textarea
     id: document_info

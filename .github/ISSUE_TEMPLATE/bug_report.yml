@@ -24,7 +24,7 @@ body:
     attributes:
       label: URL
       description: 错误页面的具体地址
-      placeholder: 如：https://mgcd.hypercol.com/library/#基础概念
+      placeholder: 如：https://mgcd.hypercol.com/Library/#基础概念
     validations:
       required: true
 
