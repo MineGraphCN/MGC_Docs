@@ -5,8 +5,6 @@
 >
 {style="warning"}
 
-<show-structure depth="2"></show-structure>
-
 ## 动画软件列表
 
 - Blockbuster

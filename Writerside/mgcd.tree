@@ -8,22 +8,25 @@
 
     <toc-element topic="README.md"/>
     <toc-element topic="starter-topic.md"/>
-    <toc-element toc-title="知识库">
+    <toc-element topic="Library.md">
+        <toc-element topic="Terms.md"/>
+        <toc-element toc-title="科普文档">
+            <toc-element topic="Resourcepack.md"/>
+            <toc-element topic="shaders.md"/>
+            <toc-element topic="shaders-advanced.md"/>
+        </toc-element>
         <toc-element toc-title="疑难解答">
             <toc-element toc-title="Java 版">
                 <toc-element topic="video_settings.md"/>
             </toc-element>
         </toc-element>
+        <toc-element topic="common.md"/>
     </toc-element>
     <toc-element topic="Community.md"/>
-    <toc-element topic="Library.md">
-        <toc-element topic="Resoucepack.md"/>
-        <toc-element topic="Terms.md"/>
-    </toc-element>
     <toc-element topic="Creator.md">
         <toc-element topic="Shader-Tutorial.md">
             <toc-element topic="Prepare-works.md"/>
-            <toc-element topic="File-and-Pipline.md"/>
+            <toc-element topic="File-and-Pipeline.md"/>
         </toc-element>
         <toc-element topic="Resource-Tutorial.md"/>
         <toc-element topic="Develop-Tips.md"/>

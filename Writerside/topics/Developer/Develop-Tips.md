@@ -5,8 +5,6 @@
 >
 {style="warning"}
 
-<show-structure depth="2"></show-structure>
-
 ## 开发之前的基础概念
 
 在编写着色器之前，我们需要了解最基础的概念。经过多个着色器作者的筛选，我们推荐观看以下视频：

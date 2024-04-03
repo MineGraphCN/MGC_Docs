@@ -44,7 +44,7 @@
 ### 光照改进
 
 第二代 iterationT 引入了 RSM（Reflective Shadow Maps） 全局光照
-有关 RSM 的简要技术原理说明，请见：[MGC 大众科普](../../../library/shaders-advanced.md)
+有关 RSM 的简要技术原理说明，请见：[MGC 大众科普](../../../../Writerside/topics/Library/shaders-advanced.md)
 在这里放几组图来直观感受一下：
 ![itt2-water-rsm-off.png](/images/instructions/itt2-water-rsm-off.png)
 水下，RSM关

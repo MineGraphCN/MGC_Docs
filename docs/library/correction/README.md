@@ -9,4 +9,4 @@
 
 - 这一板块总结了一些玩家中有歧义的图形学观点。
 - 如果在聊天时对某些解释有异议，请参照本文。
-- 若有需要，请阅读 [着色器 技术科普](../shaders-advanced.md) 。
+- 若有需要，请阅读 [着色器 技术科普](../../../Writerside/topics/Library/shaders-advanced.md) 。

@@ -5,7 +5,7 @@
 :::
 
 这篇文档帮助新人从安装游戏所需的模组开始，直到最终成功运行光影为止。  
-阅读 [这篇文章](../../../library/shaders.md) 可以带你快速了解光影相关的基本概念。
+阅读 [这篇文章](../../../../Writerside/topics/Library/shaders.md) 可以带你快速了解光影相关的基本概念。
 
 ## 准备工作
 
@@ -19,7 +19,7 @@
 
 ### 检查驱动程序
 
-参考 [这篇文章](../../../library/troubleshoot/common.md#查询电脑显卡) 检查显卡以及是否安装显卡驱动程序。
+参考 [这篇文章](../../../../Writerside/topics/Library/TroubleShoot/common.md#查询电脑显卡) 检查显卡以及是否安装显卡驱动程序。
 
 ## 安装游戏
 
@@ -166,13 +166,13 @@
 
 介绍了 `主要渲染模组引擎`、`基岩版的渲染引擎` 。
 
-- [MGC 大众科普 - 着色器基础概念](../../../library/shaders.md)
+- [MGC 大众科普 - 着色器基础概念](../../../../Writerside/topics/Library/shaders.md)
 
 ### 光影包进阶概念
 
 介绍了 `光线追踪在 MC 中的应用`、`全局光照简介` 。
 
-- [MGC 大众科普 - 着色器技术科普](../../../library/shaders-advanced.md)
+- [MGC 大众科普 - 着色器技术科普](../../../../Writerside/topics/Library/shaders-advanced.md)
 
 ### 光线追踪误区纠正
 
