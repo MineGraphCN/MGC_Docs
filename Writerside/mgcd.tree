@@ -11,22 +11,25 @@
     <toc-element topic="Library.md">
         <toc-element topic="Terms.md"/>
         <toc-element toc-title="科普文档">
+            <toc-element topic="Correction.md">
+                <toc-element topic="rt_misunderstanding.md"/>
+            </toc-element>
             <toc-element topic="Resourcepack.md"/>
-            <toc-element topic="shaders.md"/>
-            <toc-element topic="shaders-advanced.md"/>
+            <toc-element topic="Shader-basic.md"/>
+            <toc-element topic="Shader-tech.md"/>
         </toc-element>
         <toc-element toc-title="疑难解答">
             <toc-element toc-title="Java 版">
                 <toc-element topic="video_settings.md"/>
             </toc-element>
         </toc-element>
-        <toc-element topic="common.md"/>
+        <toc-element topic="ts_common.md"/>
     </toc-element>
     <toc-element topic="Community.md"/>
-    <toc-element topic="Creator.md">
+    <toc-element topic="Developer.md">
         <toc-element topic="Shader-Tutorial.md">
-            <toc-element topic="Prepare-works.md"/>
-            <toc-element topic="File-and-Pipeline.md"/>
+            <toc-element topic="00-file_and_pipeline.md"/>
+            <toc-element topic="01-prepare.md"/>
         </toc-element>
         <toc-element topic="Resource-Tutorial.md"/>
         <toc-element topic="Develop-Tips.md"/>

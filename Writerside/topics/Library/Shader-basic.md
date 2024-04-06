@@ -1,12 +1,12 @@
-# 着色器 基本概念
+# 着色器的基本概念和轶事
 
-> **已重写的文档**
+> **施工中**
 > 
-> 这篇文档在最近进行过重写，可以放心阅读。
+> 这篇文档正在添加新内容，可能无法流畅阅读。
 >
-{style="note"}
+{style="warning"}
 
-## 何谓着色器？ {id="here_sAnEzQuestion_whatIsShader"}
+## 何谓着色器？ {id="here_sAnSimpleQuestion_whatIsShader"}
 
 对于一个完整的现代图形应用程序（基于如 OpenGL、Vulkan、DirectX 等图形库）来说，着色器是它渲染场景的手段。  
 我们知道图形应用程序的目的是读取模型文件或硬编码几何体，并在屏幕上绘制。着色器就描述了我们传入的几何体在屏幕上的**何种位置**以**何种方式**绘制。
@@ -40,9 +40,13 @@
 计算着色器
 : **Compute Shader**，这个阶段是**可选的**，它负责进行抽象计算。计算着色器使 GPU 可以像 CPU 一样做通用计算的工作。计算着色器使开发者可以更随性地写东西，例如基于计算着色器的光线追踪程序。可以任意存取 [缓冲区](Terms.md#缓冲区 "存储图像的区域") ，但是不能传入自定义变量，也没有默认输出。
 
-当仅考虑顶点着色器和像素着色器时，在 [上文](#here_sAnEzQuestion_whatIsShader "何谓着色器") 中我们所提到的所谓“*何种位置*”大多数时候就在顶点着色器中进行处理，而以“*何种方式*”则是顶点着色器和像素着色器的共同作用。
+当仅考虑顶点着色器和像素着色器时，在 [上文](#here_sAnSimpleQuestion_whatIsShader "何谓着色器") 中我们所提到的所谓“*何种位置*”大多数时候就在顶点着色器中进行处理，而以“*何种方式*”则是顶点着色器和像素着色器的共同作用。
 
 > 2018 年英伟达提出了 [网格着色器（Mesh shader）](https://developer.nvidia.com/zh-cn/blog/introduction-turing-mesh-shaders/)，这让几何处理管线不再拘泥于传统的顶点着色器，拥有更强的可编程性和性能，这使得所有几何处理工作均可在 GPU 端完成，无需和 CPU 进行高延迟通信。它的本质是计算着色器。
+
+## OptiFine 的发家史
+
+_TODO_
 
 ## 渲染龙和它光影朋友们的爱恨纠葛
 
@@ -75,6 +79,6 @@
     <a href="Terms.md#渲染模组和引擎" summary="总结了大多常用的渲染模组和引擎">术语表 - 渲染模组和引擎</a>
   </category>
   <category ref="advance">
-    <a href="shaders-advanced.md" summary="对着色器的具体技术的科普">着色器 技术科普</a>
+    <a href="Shader-tech.md" summary="对着色器的具体技术的科普">着色器 技术科普</a>
   </category>
 </seealso>

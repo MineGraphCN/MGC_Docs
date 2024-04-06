@@ -11,13 +11,14 @@
 
 Texture Pack 的**错误译名**。
 - 在英文语境中，**材质**所对应的英文单词为 *Material*，在图形学中这用于描述物体的属性，如金属性、光滑度、自发光强度等。
-- 而**纹理**所对应的英文单词 *Texture*，这才是用于描述物体表面颜色的单词。
+- **纹理**所对应的英文单词 *Texture*，才是用于描述物体表面颜色的单词。
+
+截至 **JE 1.6** 纹理包被资源包所替代时，这个译名在游戏内仍旧没有修改，于是此翻译便流传了下来，并**逐渐波及相关领域**，现在 [Minecraft 中文 Wiki](https://zh.minecraft.wiki/w/%E7%BA%B9%E7%90%86%E5%8C%85) 已经将此翻译纠正，希望大家在以后的谈论中尽量**使用正确的译名**。
 </def>
 <def title="资源包" id="资源包">
 
 **Resource Pack**，是 **JE 1.6.1** 及以后使用的用于自定义游戏的**纹理**、**声音**、**模型**，乃至**渲染**的文件包。
 
-截至 **JE 1.6** 纹理包被资源包所替代时，这个译名在游戏内仍旧没有修改，于是此翻译便流传了下来，并**逐渐波及相关领域**，现在 [Minecraft 中文 Wiki](https://zh.minecraft.wiki/w/%E7%BA%B9%E7%90%86%E5%8C%85) 已经将此翻译纠正，希望大家在以后的谈论中尽量**使用正确的译名**。
 </def>
 </deflist>
 
@@ -75,10 +76,10 @@ Texture Pack 的**错误译名**。
 
 ```json
 {
-  "pack": {
-    "pack_format": N,
-    "description": "..."
-  }
+    "pack": {
+        "pack_format": N,
+        "description": "..."
+    }
 }
 ```
 
@@ -165,39 +166,40 @@ OptiFine 同时支持一些其它的特殊贴图，如 CTM、CIT、CEM 等。简
 
 ### 特殊贴图 <sup>OptiFine</sup> {id="特殊贴图"}
 
-| 名称                     | 简写  | 用途             |
-| ------------------------ | :---: | ---------------- |
-| Connected Textures Model |  CTM  | 方块间的纹理衔接 |
-| Custom Item Textures     |  CIT  | 自定义物品纹理   |
-| Custom Entity Models     |  CEM  | 自定义实体模型   |
-| Graphical User Interface |  GUI  | 自定义游戏界面   |
-| Animation                |   -   | 自定义动态纹理   |
-| Emissive Textures        |   -   | 自发光纹理       |
-| Random Entities          |   -   | 随机实体纹理     |
-| Natural Textures         |   -   | 自然纹理         |
-| Custom Sky               |   -   | 自定义天空       |
+| 名称                       | 简写  | 用途       |
+|--------------------------|:---:|----------|
+| Connected Textures Model | CTM | 方块间的纹理衔接 |
+| Custom Item Textures     | CIT | 自定义物品纹理  |
+| Custom Entity Models     | CEM | 自定义实体模型  |
+| Graphical User Interface | GUI | 自定义游戏界面  |
+| Animation                |  -  | 自定义动态纹理  |
+| Emissive Textures        |  -  | 自发光纹理    |
+| Random Entities          |  -  | 随机实体纹理   |
+| Natural Textures         |  -  | 自然纹理     |
+| Custom Sky               |  -  | 自定义天空    |
 
 这些贴图可以在 OptiFine 中使用，也可以使用其他 MOD 实现。  
 详细介绍可参考 MCBBS 纹理版版主 *SQwatermark* 翻译的 [OptiFine官方文档](http://sqwatermark.com/resguide/optifinedoc/) 。
 
 ## PBR 标准 {id="pbr标准"}
 
-参阅：[术语表 - PBR](Terms.md#pbr "一种着色和渲染的方法，更准确地表现光线如何与材料性质相互作用。")
+参阅：
+- [术语表 - PBR](Terms.md#pbr "一种着色和渲染的方法，更准确地表现光线如何与材料性质相互作用。")
 
-PBR 有两种工作流，一种是 ***金属／粗糙度*** ，另一种是 ***镜面反射／光泽度*** 。  
-对于 PBR 贴图上的通道的定义，在 MC 中有着不同的标准，例如 *OldPBR* <sup>JE</sup> 、*LabPBR* <sup>JE</sup> 、*四合一PBR* <sup>BE</sup>等。
+PBR 有两种工作流，一种是**金属／粗糙度**，另一种是**镜面反射／光泽度**。  
+对于 PBR 贴图上的通道的定义，在 MC 中有着不同的标准，例如 **OldPBR** <sup>JE</sup> 、**LabPBR** <sup>JE</sup> 、**四合一PBR** <sup>BE</sup>等。
 
-- *OldPBR* 是过时的 PBR 标准，在此不做讨论。
-- *LabPBR 1.3* 是 Java 版的约定现行标准，工作流为 ***金属／粗糙度*** 。其 *材质属性* 由 `_n` 和 `_s` 贴图**共同定义**。
+- **OldPBR** 是过时的 PBR 标准，在此不做讨论。
+- [LabPBR 1.3](LabPBR-Material-Standard.md "LabPBR 材质标准（译）") 是 Java 版的约定现行标准，工作流为**金属／粗糙度**。其 *材质属性* 由 `_n` 和 `_s` 贴图**共同定义**。
     - `_n` 贴图：
         - `R` `G` `A`：与 [前文](#法线贴图 "法线贴图") 一致。
-        - `B` ：[纹理环境光遮蔽](Terms.md#ao "间接光照在经过反弹之后逐渐被场景所吸收和遮挡的效果。")（Texture AO）强度。
+        - `B` ：[纹理环境光遮蔽](Terms.md#ao "间接光照在场景间经过各种反射之后逐渐被场景所吸收和遮挡的效果。")（Texture AO）强度。
     - `_s` 贴图：
         - `R` ：**感知平滑度**。
-        - `G` ：**金属性**，`230` 及以上的数值代表**特定金属**，**详见下方链接**。
-        - `B` ：[`0`, `64`] 表示**孔隙度**， [`65`, `255`] 表示**次表面散射强度**。
-        - `A` ：**自发光**，[`1`, `254`] 范围内数值越大发光越强，当值为 `255` （即完全不透明）时不发光。
+        - `G` ：**金属性**，230 及以上的数值代表**特定金属**，**详见下方链接**。
+        - `B` ：[0, 64] 表示**孔隙度**， [65, 255] 表示**次表面散射强度**。
+        - `A` ：**自发光**，[1, 254] 范围内数值越大发光越强，当值为255（即完全不透明）时不发光。
     - 关于 LabPBR 的更多详细介绍，可参考 [站内翻译文档](LabPBR-Material-Standard.md "LabPBR 材质格式") 。
-- `四合一PBR` 是目前BE的约定现行标准。
+- **四合一PBR**是目前基岩版的约定现行标准。
     - 主要为将 `主场景` 、`法线场景` 、`PBR贴图场景` 和附加的 `独立检测场景` 拼合到 [一张图](Terms.md#缓冲区 "缓冲区") 内，得以实现光影读取。
-    - **四合一标准详见 BE 光影 *YSS* 压缩包内的开发文档。**
+    - **四合一标准详见基岩版光影 *YSS* 压缩包内的开发文档。**

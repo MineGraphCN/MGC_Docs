@@ -108,4 +108,4 @@
 
 记录如 `伪光追`、`贴图光追` 等错误概念。
 
-- [MGC 歧义观点 - 光线追踪](../../../library/correction/rt_misunderstanding.md)
+- [MGC 歧义观点 - 光线追踪](../../../../Writerside/topics/Library/Correction/rt_misunderstanding.md)

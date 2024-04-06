@@ -1,7 +1,10 @@
->本文由[FishBai](https://github.com/yubaibaifish)独立编写  
->本文为 Minecraft JAVA 版教程  
->本文由 MGC 提供支持
-# 序言
+# 资源包开发教程
+
+> - 本文由 [FishBai](https://github.com/yubaibaifish) 独立编写  
+> - 本文为 JAVA 版教程  
+> - 本文由 MGC 提供支持
+> 
+{style="note"}
 
 资源包，也就是玩家口中的材质包。不过为什么正确的名称叫做资源包呢？
 
@@ -9,53 +12,53 @@
 
 那么资源包应该如何制作呢？
 
-# 框架搭建
+## 框架搭建
 
 在资源包的世界中，所谓的“框架搭建”不过是创建文件夹的过程，可以让你的资源包被游戏正确识别。
 
 首先我们需要新建一个空文件夹，然后在文件夹内准备一些东西：
 
-## assets
+### assets
 
 - 这是用于储存资源包内容的文件夹，你的所有文件几乎都在这里面。
 
-## pack.png
+### pack.png
 
 - 这一张图片是你的资源包显示的“名片”。
 
-![图片](/images/creator/resource_tutorial/1-1.jpg)
+![图片](1-1.jpg)
 
 （由本文作者创作的 VOXT PBR 材质包）
 
 显示在最左边的就是 pack.png 图片，这一张图片通常为 64x，128x，256x 等。
 
-## pack.mcmeta
+### pack.mcmeta
 
 - 该文件本质上是一个 json 文件，可以直接使用记事本、vscode 等软件编辑。
 
 他的内容一般是：
 
-```plain
+```json
 {
-"pack": {
-"pack_format": 15,
-"description": "作者信息"
-}
+  "pack": {
+    "pack_format": 15,
+    "description": "作者信息"
+    }
 }
 
 ```
 pack_format 所对应的“15”是所支持的版本，该知识点可以在[MGC Docs - 资源包](../../library/resourcepacks.md#准确区间)中找到。
 
-![图片](/images/creator/resource_tutorial/1-2.jpg)
+![图片](1-2.jpg)
 
 
 我们一般使用的是 15，该数据并不会影响资源包的加载。
 
-## minecraft
+### minecraft
 
 该文件夹位于 `.minecraft/assets` 内，是一个指向原版 mc 的空间，后面会讲到该层的其他用法。
 
-## 材质
+### 材质
 
 在 `.minecraft/assets/minecraft` 文件夹内就会储存材质文件，存于该部分的文件可以在原版包内找到相同路径，解压后放进该文件夹即可。
 
@@ -63,6 +66,6 @@ pack_format 所对应的“15”是所支持的版本，该知识点可以在[MG
 
 你的文件夹内结构，应该是这个样子：
 
-![图片](/images/creator/resource_tutorial/1-3.jpg)
+![图片](1-3.jpg)
 
 在下一章中，我们将会了解形象化你的创作思路，并且使用工具来制作你的第一张材质贴图。
