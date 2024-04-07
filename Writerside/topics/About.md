@@ -1,4 +1,4 @@
-# 关于本图书馆
+# 关于
 
 Minecraft Graphics Community Documents (MGCD) 是由社区编写的关于 Minecraft 图形学的文档项目。目的是帮助对 Minecraft 图形学有兴趣的爱好者了解更多有关图形学的知识。
 

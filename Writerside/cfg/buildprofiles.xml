@@ -3,13 +3,14 @@
     <variables>
         <primary-color>#fdb71b</primary-color>
         <color-preset>contrast</color-preset>
-        <custom-favicons>favicon.png</custom-favicons>
-        <header-logo>favicon.png</header-logo>
-        <download-title>MGC Docs</download-title>
+        <custom-favicons>MGC-darklogo.png</custom-favicons>
+        <header-logo>MGC-darklogo.png</header-logo>
+        <download-title>旧版 MGCD</download-title>
         <download-page>https://mgcd.hypercol.com/</download-page>
-        <showDownloadButton>True</showDownloadButton>
+        <showDownloadButton>true</showDownloadButton>
         <versions-switcher>https://mgcd.hypercol.com/</versions-switcher>
-    </variables><build-profile instance="MineGraph Docs"/>
+        <product-web-url>https://mgcd.hypercol.com/</product-web-url>
+    </variables>
     <build-profile instance="mgcd">
         <variables>
             <offline-docs>true</offline-docs>
@@ -18,7 +19,7 @@
         <footer>
             <copyright>HyperCol 2023-present</copyright>
             <icp>沪ICP备2023036853号</icp>
-            <social type="bilibili" href="https://space.bilibili.com/1499821905/">Minecraft图形学中文社区</social>
+            <social type="bilibili" href="https://space.bilibili.com/1499821905/">Minecraft 图形学中文社区</social>
         </footer>
     </build-profile>
 </buildprofiles>

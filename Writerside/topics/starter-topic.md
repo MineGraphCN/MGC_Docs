@@ -1,5 +1,9 @@
 # Writerside 写作格式参考
 
+> 更多语法请查阅 [官网](https://www.jetbrains.com/help/writerside/markup-reference.html) 。
+> 
+{style="note"}
+
 <!--Writerside adds this topic when you create a new documentation project.
 You can use it as a sandbox to play with Writerside features, and remove it from the TOC when you don't need it anymore.-->
 

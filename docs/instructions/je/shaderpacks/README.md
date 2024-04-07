@@ -126,7 +126,7 @@
 
 - 国外光影社区 shaderLABS 整理了一份`不兼容的模组名单`，并逐一写明了如何使它们与 OptiFine 光影兼容。我们将这些内容汉化并搬运到了 **MGC 答疑手册 - Java版着色器(Shader)**，并额外添加了一些后续发现的模组。内容如下：
 
-- [MGC 答疑手册 - Java版着色器(Shader)](../../../library/troubleshoot/je/mods_compatibility.md)
+- [MGC 答疑手册 - Java版着色器(Shader)](../../../../Writerside/topics/Library/TroubleShoot/JE/Mods_compatibility)
 
 - 此外，该文档还记录了许多 OptiFine 设置上的问题与解决方法。如果你的 OptiFine 光影表现不正常，请一定要认真看完上述文档。
 

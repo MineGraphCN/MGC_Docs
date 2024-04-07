@@ -4,28 +4,27 @@
 
 <instance-profile id="mgcd"
                  name="MineGraph Docs"
-                 start-page="README.md">
-
-    <toc-element topic="README.md"/>
-    <toc-element topic="starter-topic.md"/>
+                 start-page="About.md">
+    <toc-element topic="Community.md"/>
     <toc-element topic="Library.md">
         <toc-element topic="Terms.md"/>
         <toc-element toc-title="科普文档">
-            <toc-element topic="Correction.md">
-                <toc-element topic="rt_misunderstanding.md"/>
-            </toc-element>
             <toc-element topic="Resourcepack.md"/>
             <toc-element topic="Shader-basic.md"/>
             <toc-element topic="Shader-tech.md"/>
         </toc-element>
+        <toc-element topic="Correction.md">
+            <toc-element topic="rt_misunderstanding.md"/>
+        </toc-element>
         <toc-element toc-title="疑难解答">
+            <toc-element topic="ts_common.md"/>
             <toc-element toc-title="Java 版">
-                <toc-element topic="video_settings.md"/>
+                <toc-element topic="Video_settings.md"/>
+                <toc-element topic="Shaderpack_loading.md"/>
+                <toc-element topic="Mods_compatibility.md"/>
             </toc-element>
         </toc-element>
-        <toc-element topic="ts_common.md"/>
     </toc-element>
-    <toc-element topic="Community.md"/>
     <toc-element topic="Developer.md">
         <toc-element topic="Shader-Tutorial.md">
             <toc-element topic="00-file_and_pipeline.md"/>
@@ -33,8 +32,9 @@
         </toc-element>
         <toc-element topic="Resource-Tutorial.md"/>
         <toc-element topic="Develop-Tips.md"/>
-        <toc-element topic="Film-and-Animation.md"/>
         <toc-element topic="Model-and-Rendering.md"/>
         <toc-element topic="LabPBR-Material-Standard.md"/>
+        <toc-element topic="starter-topic.md"/>
     </toc-element>
+    <toc-element topic="About.md"/>
 </instance-profile>
