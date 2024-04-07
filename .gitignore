@@ -4,4 +4,4 @@ docs/.vuepress/dist/
 .gitignore/
 node_modules/
 *.code-workspace
-.idea/dictionaries
+/.idea/
