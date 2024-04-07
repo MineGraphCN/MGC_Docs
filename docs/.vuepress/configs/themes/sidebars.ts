@@ -75,7 +75,7 @@ const sidebarConfig: SidebarConfig = {
             text: "Java 版",
             collapsible: false,
             children: [
-                '/library/troubleshoot/je/shaders.md',
+                '/library/troubleshoot/je/shaders_load.md',
                 '/library/troubleshoot/je/settings.md',
                 '/library/troubleshoot/je/mods_compatibility.md',
             ]
@@ -90,8 +90,8 @@ const sidebarConfig: SidebarConfig = {
     ],
     '/creator/shaders_tutorial/': [
         '/creator/shaders_tutorial/README.md',
-        '/creator/shaders_tutorial/01-file_and_pipeline.md',
-        '/creator/shaders_tutorial/02-prepare.md',
+        '/creator/shaders_tutorial/00-file_and_pipeline.md',
+        '/creator/shaders_tutorial/01-prepare.md',
     ],
     '/creator/resource_tutorial/': [
         '/creator/resource_tutorial/01-basic_environment&preface.md',
