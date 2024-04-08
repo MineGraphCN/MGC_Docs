@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic
+        SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
+<topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
+       title="Section Starting Page" id="Home" help-id="Section-Starting-Page">
+
+<!--    A section combines multiple topics dedicated to a specific subject.
+            Add a starting page to provide an overview of the topics in the section.
+            Start with two topics you want to promote in the <spotlight> group,
+            several important topics in the <primary> group (for example, where to start),
+            several less important topics in the <secondary> group (for example, more advanced topics),
+            and optionally add any other relevant topics in the <misc> group as cards and lists of links
+            (maybe related topics from other sections).
+            Only the spotlight section is limited to two topics.
+            For other groups, try to keep the number between 2 and 6, but you can add more if necessary.-->
+
+    <section-starting-page>
+        <title>Minecraft 图形学社区文档</title>
+        <description>
+            这是隶属于 MineGraph 社区的图形学文档。
+        </description>
+
+        <!--    Add up to 2 topics that you want to promote. Use the "type" attribute to select an icon.    -->
+        <spotlight>
+            <a href="Community.md" type="navigation" summary="快速了解并加入我们的社区">社区入门</a>
+            <a href="Library.md" type="library" summary="这里汇集了由社区成员撰写的各种与 Minecraft 图形相关的知识、问答和解决方案。">知识库</a>
+        </spotlight>
+
+        <!--    Add several topics that are most important for this section.    -->
+        <primary>
+            <title>浏览作品</title>
+            <a href="itt3.md" summary="久负盛名的 iterationT，现已推出 3.0！">iterationT 3.0</a>
+            <a href="gfme.md" summary="由 GeForceLegend 魔改的 SEUS PTGI，拥有更强的可配置性和更好的质量。">SEUS PTGI GFME</a>
+            <a href="tmeo.md" summary="写实风格的现代 PBR 资源包，还有大量自定义模型等你探索。">TMEO 现代材质</a>
+            <a href="" summary="正在迁移中">获取更多</a>
+        </primary>
+
+        <!--    Add several topics that are less important or are relevant only for advanced/experienced users.    -->
+        <secondary>
+            <title>创作者文档</title>
+            <a href="shaderTutorial.md" summary=""/>
+            <a href="resourceTutorial.md" summary=""/>
+            <a href="developTips.md" summary=""/>
+            <a href="labpbrMaterialStandard.md" summary=""/>
+        </secondary>
+
+        <!--    Optionally add additional cards and links to topics that are not in this section but may be relevant.    -->
+        <misc>
+            <cards narrow="true">
+                <title>社区截图</title>
+                <a href="2024-spring.md" summary=""/>
+                <a href="2023-spring.md" summary=""/>
+                <a href="2022-autumn.md" summary=""/>
+                <a href="2022-summer.md" summary=""/>
+                <a href="2022-spring.md" summary=""/>
+                <a href="2021-winter.md" summary=""/>
+            </cards>
+
+            <links>
+                <group>
+                    <title>探索知识库</title>
+                    <a href="terms.md"/>
+                    <a href="irisAsOf.md"/>
+                    <a href="raytracingCorrection.md"/>
+                    <a href="je-resourcepack.md"/>
+                </group>
+                <group>
+                    <title>联系我们</title>
+                    <a href="https://pd.qq.com/s/lem9db">QQ 频道</a>
+                    <a href="https://space.bilibili.com/480528388" summary="Bilibili">工作室官方账号</a>
+                    <a href="https://github.com/MineGraphCN/MGC_Docs" summary="GitHub">项目仓库</a>
+                </group>
+            </links>
+        </misc>
+    </section-starting-page>
+
+</topic>

@@ -4,37 +4,73 @@
 
 <instance-profile id="mgcd"
                  name="MineGraph Docs"
-                 start-page="About.md">
+                 start-page="Home.topic">
+    <toc-element topic="Home.topic" toc-title="主页"/>
     <toc-element topic="Community.md"/>
+    <toc-element toc-title="作品收录"/>
+    <toc-element toc-title="作品指南和手册">
+        <toc-element toc-title="Java 版">
+            <toc-element toc-title="光影包" topic="shaderpacksCommon.md">
+                <toc-element topic="itt2.md"/>
+                <toc-element topic="itt3.md"/>
+                <toc-element topic="gfme.md"/>
+            </toc-element>
+            <toc-element toc-title="资源包" topic="resourcepacksCommon.md">
+                <toc-element topic="MTP.md"/>
+                <toc-element topic="tmeo.md"/>
+                <toc-element topic="qin.md"/>
+                <toc-element topic="itp.md"/>
+            </toc-element>
+        </toc-element>
+        <toc-element topic="bedrockResourceCommon.md"/>
+    </toc-element>
     <toc-element topic="Library.md">
-        <toc-element topic="Terms.md"/>
-        <toc-element toc-title="科普文档">
-            <toc-element topic="Resourcepack.md"/>
-            <toc-element topic="Shader-basic.md"/>
-            <toc-element topic="Shader-tech.md"/>
-        </toc-element>
+        <toc-element topic="terms.md"/>
+        <toc-element topic="resourcepackBasic.md"/>
+        <toc-element topic="shaderBasic.md"/>
+        <toc-element topic="shaderTech.md"/>
+        <toc-element topic="irisAsOf.md"/>
         <toc-element topic="Correction.md">
-            <toc-element topic="rt_misunderstanding.md"/>
+            <toc-element topic="raytracingCorrection.md"/>
         </toc-element>
-        <toc-element toc-title="疑难解答">
-            <toc-element topic="ts_common.md"/>
+        <toc-element topic="QAs.md">
+            <toc-element topic="be.md"/>
+            <toc-element topic="je-resourcepack.md"/>
+            <toc-element topic="je-shaderpack.md"/>
+        </toc-element>
+        <toc-element topic="Troubleshoot.md">
+            <toc-element topic="troubleshootCommon.md"/>
             <toc-element toc-title="Java 版">
-                <toc-element topic="Video_settings.md"/>
-                <toc-element topic="Shaderpack_loading.md"/>
-                <toc-element topic="Mods_compatibility.md"/>
+                <toc-element topic="videoSettings.md"/>
+                <toc-element toc-title="光影">
+                    <toc-element topic="shaderpackLoading.md"/>
+                    <toc-element topic="modsCompatibility.md"/>
+                </toc-element>
+                <toc-element toc-title="资源包">
+
+                </toc-element>
             </toc-element>
         </toc-element>
     </toc-element>
     <toc-element topic="Developer.md">
-        <toc-element topic="Shader-Tutorial.md">
-            <toc-element topic="00-file_and_pipeline.md"/>
+        <toc-element topic="developTips.md"/>
+        <toc-element topic="animation.md"/>
+        <toc-element topic="labpbrMaterialStandard.md"/>
+        <toc-element topic="shaderTutorial.md">
+            <toc-element topic="00-filePipeline.md"/>
             <toc-element topic="01-prepare.md"/>
         </toc-element>
-        <toc-element topic="Resource-Tutorial.md"/>
-        <toc-element topic="Develop-Tips.md"/>
-        <toc-element topic="Model-and-Rendering.md"/>
-        <toc-element topic="LabPBR-Material-Standard.md"/>
+        <toc-element topic="resourceTutorial.md"/>
         <toc-element topic="starter-topic.md"/>
+    </toc-element>
+    <toc-element topic="Gallery.md">
+        <toc-element topic="2021-autumn.md"/>
+        <toc-element topic="2021-winter.md"/>
+        <toc-element topic="2022-spring.md"/>
+        <toc-element topic="2022-summer.md"/>
+        <toc-element topic="2022-autumn.md"/>
+        <toc-element topic="2023-spring.md"/>
+        <toc-element topic="2024-spring.md"/>
     </toc-element>
     <toc-element topic="About.md"/>
 </instance-profile>
