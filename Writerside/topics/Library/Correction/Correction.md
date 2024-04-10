@@ -9,7 +9,7 @@
 
 这个板块总结了一些玩家中有**歧义**的图形学观点，如果在聊天时对某些解释有异议，请参照本文。
 
-<seealso>
+<seealso style="cards">
     <category ref="related">
         <a href="QAs.md" summary="这个板块总结了社区中经常有人提起的概念性问题。"/>
         <a href="Troubleshoot.md" summary="这个板块提供快速解决光影和资源包问题的办法。"/>
