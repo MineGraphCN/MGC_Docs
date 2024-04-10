@@ -33,7 +33,7 @@
 5. 保存后，重启电脑即可。
 
 > 如果你需要游玩 **JE 1.8** 及以前的版本，可以安装 [Java 8（Windows 64位 脱机安装包）](https://javadl.oracle.com/webapps/download/AutoDL?BundleId=249553_4d245f941845490c91360409ecffb3b4) 。
-> 
+>
 {style="note"}
 
 ## 安装游戏和光影模组
@@ -519,7 +519,10 @@ Java 路径
 
 启动游戏后，配置视频设置，参见 [视频设置和相关显示问题](videoSettings.md "这篇文章列出了整个视频设置选项卡中容易出现问题的设置以及修改建议。") 。
 
-配置完成之后，将光影放入光影包文件夹即可（你可以从 `视频设置` > `光影` > `光影包文件夹` <sup>OptiFine</sup> 或 `视频设置` > `光影包` > `打开光影包文件夹` <sup>Iris</sup> 打开光影包文件夹）。
+配置完成之后，将光影放入光影包文件夹并选中即可。
+> 你可以从 `视频设置` > `光影` > `光影包文件夹` <sup>OptiFine</sup> 或 `视频设置` > `光影包` > `打开光影包文件夹` <sup>Iris</sup> 打开光影包文件夹。
+> 
+{style="note"}
 
 <seealso>
     <category ref="related">
