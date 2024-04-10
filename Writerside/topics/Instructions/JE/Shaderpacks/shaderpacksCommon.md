@@ -189,7 +189,8 @@
 <procedure>
 
 像 `纯净版` > `嵌入式安装` 一样，在安装页面额外选择 Forge 版本即可。
-> 注意 OptiFine 更新日志中所能兼容的 Forge 版本，你可以在 `纯净版` > `手动安装` 提到的下载列表点击 `Changelog` 检查 `compatible with Forge <Forge 版本>` 。
+> 注意 OptiFine 更新日志中所能兼容的 Forge 版本，你可以在 `纯净版` > `手动安装` 提到的下载列表检查。
+> ![检查 OptiFine 兼容的 Forge 版本](of_forge_check_ver.png "检查 OptiFine 兼容的 Forge 版本")
 >
 {style="note"}
 </procedure>
@@ -200,7 +201,8 @@
                         <step>
 
 像 `纯净版` > `手动安装` 1 ~ 3 步一样，下载 OptiFine。
-> 注意 OptiFine 更新日志中所能兼容的 Forge 版本，你可以在下载列表点击 `Changelog` 检查 `compatible with Forge <Forge 版本>` 。
+> 注意 OptiFine 更新日志中所能兼容的 Forge 版本，你可以在下载列表检查。
+> ![检查 OptiFine 兼容的 Forge 版本](of_forge_check_ver.png "检查 OptiFine 兼容的 Forge 版本")
 >
 {style="note"}
 </step>
@@ -211,6 +213,7 @@
                         <step>
 
 运行第一步下载好的文件，点击 `Extract` 将路径定位到 `<你的游戏目录>/.minecraft/mods/` <sup>未启用版本隔离</sup> 或 `<你的游戏目录>/.minecraft/versions/<对应游戏版本文件夹>/mods/` <sup>启用版本隔离</sup>。
+![作为模组提取 OptiFine](of_forge_ofasmod.png "作为模组提取 OptiFine")
 
 安装成功后，OptiFine 会弹出提示：
 ```text
@@ -379,7 +382,7 @@ Successfully installed client profile forge for version <游戏版本>-forge-<Fo
         </tabs>
     </tab>
     <tab title="Iris" group-key="iris">
-        <format color="Red">不推荐！</format>仅当你确定你所使用的<b>光影与 Iris 兼容</b>且<b>需要 Iris 独占特性</b>，或需要运行**与 Sodium 兼容**的 Fabric 模组时才这样做。
+        <format color="Red">不推荐！</format>仅当你确定你所使用的<b>光影与 Iris 兼容</b>且<b>需要 Iris 独占特性</b>，或需要运行<b>与 Sodium 兼容</b>（通常还需要额外安装 Indium <a href="https://modrinth.com/mod/indium/versions">(Modrinth)</a> <a href="https://www.curseforge.com/minecraft/mc-mods/indium/files/all?page=1&pageSize=20">(CurseForge)</a> 来保证兼容性）的 Fabric 模组时才这样做。
         <procedure>
             <step>
 
