@@ -62,7 +62,7 @@
 作者：JustinBibab  
 作品名：无
 
-![图片](/images/gallery/2021-autumn/je/1.jpg)
+![图片](1.jpg)
 
 作品二：  
 作者：villa_qi  
@@ -71,20 +71,20 @@ mod：little tiles
 光影：ptgi e10（modified by tahnass）  
 场景：墨尔本山崖别墅 by villa-qi #GN work住宅服  
 
-![图片](/images/gallery/2021-autumn/je/2.png)
+![图片](2.png)
 
 作品三：  
 作者：秦千久  
 光影：BSL 8.1p1  
 场地：@TeaCon展馆服  
 
-![图片](/images/gallery/2021-autumn/je/3.png)
+![图片](3.png)
 
 作品四：  
 作者：™227  
 光影：BSL_Edit_Pasquale  
 
-![图片](/images/gallery/2021-autumn/je/4.png)
+![图片](4.png)
 
 作品五：  
 作者：ExDragine  
@@ -93,7 +93,7 @@ mod：little tiles
 材质：无  
 场地：TeaCon 2021 服务器  
 
-![图片](/images/gallery/2021-autumn/je/5.png)
+![图片](5.png)
 
 作品六：  
 作者：Ciitta シータ  
@@ -101,7 +101,7 @@ mod：little tiles
 材质：ion仿生自然  
 场地：斯卡纳托斯  
 
-![图片](/images/gallery/2021-autumn/je/6.jpg)
+![图片](6.jpg)
 
 作品七：  
 作者：因利索  
@@ -112,21 +112,21 @@ mod：little tiles
 场地：Ultimate Immersion by Hunger_Legend  
 截图分辨率：4096*2160  
 
-![图片](/images/gallery/2021-autumn/je/7.png)
+![图片](7.png)
 
 作品八：  
 作者：GeForceLegend  
 某未公开申必项目流出图像  
 使用Vanilla Normal Renewed纹理包  
 
-![图片](/images/gallery/2021-autumn/je/8.png)
+![图片](8.png)
 
 作品九：  
 作者：亚克  
 冬  
 光影：Nostalgia  
 
-![图片](/images/gallery/2021-autumn/je/9.png)
+![图片](9.png)
 
 作品十：  
 作者：ycat  
@@ -135,7 +135,7 @@ mod：little tiles
 光影：SEUS-v10.0   
 场地：云梦阁  
 
-![图片](/images/gallery/2021-autumn/je/10.png)
+![图片](10.png)
 
 作品十一：  
 作者：瀧天遗迹  
@@ -144,7 +144,7 @@ mod：little tiles
 光影：忘了  
 场地：随便开的图  
 
-![图片](/images/gallery/2021-autumn/je/11.png)
+![图片](11.png)
 
 作品十二：  
 作者：Lrbs_SC  
@@ -153,7 +153,7 @@ mod：little tiles
 光影：Lrbs SEUS MABS V3.2  
 地图：狞幕by冷冰  
 
-![图片](/images/gallery/2021-autumn/je/12.jpeg)
+![图片](12.jpeg)
 
 作品十三：  
 作者：重生老楚  
@@ -162,7 +162,7 @@ mod：little tiles
 光影：iterationT  
 地图：柏林大教堂  
 
-![图片](/images/gallery/2021-autumn/je/13.jpeg)
+![图片](13.jpeg)
 
 作品十四：  
 作者：Plants412  
@@ -171,7 +171,7 @@ mod：little tiles
 光影：Chocapic v8  
 地图：卡露蒂亚by 珀尔  
 
-![图片](/images/gallery/2021-autumn/je/14.png)
+![图片](14.png)
 
 作品十五：  
 作者：AkatZuma  
@@ -180,7 +180,7 @@ mod：little tiles
 地图：多人模式  
 地形使用TerraForge生成  
 
-![图片](/images/gallery/2021-autumn/je/15.png)
+![图片](15.png)
 
 作品十六：  
 作者：秋暮OVTG  
@@ -188,7 +188,7 @@ mod：little tiles
 材质：YuushyaMod配套纹理包  
 使用1.18ES6随机地图生成  
 
-![图片](/images/gallery/2021-autumn/je/16.png)
+![图片](16.png)
 
 作品十七：  
 作者：Voyager  
@@ -197,7 +197,7 @@ mod：little tiles
 作者：BojackWAF   
 名称：摸鱼的中式  
 
-![图片](/images/gallery/2021-autumn/je/17.png)
+![图片](17.png)
 
 作品十八：  
 作者：夜辰Sanatus  
@@ -206,7 +206,7 @@ mod：little tiles
 光影：ptgi e8  
 场景：Sanatus未完成的别墅  
 
-![图片](/images/gallery/2021-autumn/je/18.jpeg)
+![图片](18.jpeg)
 
 作品十九：  
 作者：mks  
@@ -215,7 +215,7 @@ mod：little tiles
 光影：ptgi e12  
 场景：暂未命名  
 
-![图片](/images/gallery/2021-autumn/je/19.jpeg)
+![图片](19.jpeg)
 
 作品二十：  
 作者：九十月  
@@ -224,7 +224,7 @@ mod：little tiles
 mod：Cocricot  
 场地：湖边木屋  
 
-![图片](/images/gallery/2021-autumn/je/20.png)
+![图片](20.png)
 
 作品二十一：  
 作者：　　　　　  
@@ -233,7 +233,7 @@ mod：Cocricot
 mod：无  
 场地：个人建筑  
 
-![图片](/images/gallery/2021-autumn/je/21.png)
+![图片](21.png)
 
 作品二十二：  
 作者：  _Duke___  
@@ -242,14 +242,14 @@ mod：无
 mod：无  
 场地：基姆城服务器ETC  
 
-![图片](/images/gallery/2021-autumn/je/22.png)
+![图片](22.png)
 
 作品二十三：  
 作者：冇欸  
 光影：seus dazzling 1.9  
 地图：卡露蒂亚  
 
-![图片](/images/gallery/2021-autumn/je/23.jpeg)
+![图片](23.jpeg)
 
 作品二十四：  
 作者：杜豫Isih  
@@ -257,7 +257,7 @@ mod：无
 地图：早期测试开发地图  
 模组：团队自研模组HE ENGINE  
 
-![图片](/images/gallery/2021-autumn/je/24.jpeg)
+![图片](24.jpeg)
 
 作品二十五：  
 作者：氪皮怪okami  
@@ -265,7 +265,7 @@ mod：无
 光影：SEUS DAZZING 1.9.9.1（frix）  
 地图：卡露蒂亚（珀尔）  
 
-![图片](/images/gallery/2021-autumn/je/25.png)
+![图片](25.png)
 
 作品二十六：  
 作者：阿南  
@@ -274,7 +274,7 @@ mod：无
 建筑：阿南  
 材质：原版  
 
-![图片](/images/gallery/2021-autumn/je/26.png)
+![图片](26.png)
 
 作品二十七：  
 作者：RW25G-552004（ZHYX）  
@@ -282,7 +282,7 @@ mod：无
 材质realistico-full  
 场景自制  
 
-![图片](/images/gallery/2021-autumn/je/27.png)
+![图片](27.png)
 
 ## Bedrock版赛道
 

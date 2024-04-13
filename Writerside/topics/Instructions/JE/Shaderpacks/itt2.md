@@ -11,7 +11,7 @@
 - 在使用光影之前，我们需要先了解 iterationT 的由来。相信在 **MGC频道** 里的很多小伙伴经历过月初的内测版外传事件（在此再次感谢机警的杜豫），命途多舛的 iterationT 内测活动仅一天就被迫暂停。随后发布消息更是传到了外网，我们差点和国外的光影社区 shaderLABS 正面交锋。好在创作者 GeForceLegend 从中斡旋，管理层及时补救，最终消弭了危机。
 - 时至今日，我们总算是苦尽甘来，迎来了 iterationT 的正式发布。由于版权的特殊性，我们需要在开头说清楚关于 iterationT 的版权问题。以下是关于它的起源：
 
-![origin.png](/images/instructions/origin.png)
+![origin.png](origin.png)
 
 - 由于 Cody 作者本人的协议限制，其他人在获得授权前，不允许公开发布魔改文件。国内的绝大部分 SEUS 魔改版本均不符合此要求。因此我们也希望大家不要再把光影的发布消息或文件散布到国外社交平台上。
 - 同时，我们也在逐步改进这个问题，下一代的 iterationT RP 将会完全原创，敬请期待。
@@ -27,17 +27,17 @@
 ### 色调调整
 
 - 本次更新，色调全面改为写实风格
-![itt2-sunrise.png](/images/instructions/itt2-sunrise.png)
+![itt2-sunrise.png](itt2-sunrise.png)
 - 日出，万象初开
-![itt2-day.png](/images/instructions/itt2-day.png)
+![itt2-day.png](itt2-day.png)
 正午，阳光明媚
-![itt2-sunset.png](/images/instructions/itt2-sunset.png)
+![itt2-sunset.png](itt2-sunset.png)
 黄昏，晚霞辉光
-![itt2-night.png](/images/instructions/itt2-night.png)
+![itt2-night.png](itt2-night.png)
 夜晚，月光皎洁
-![itt2-moon.png](/images/instructions/itt2-moon.png)
+![itt2-moon.png](itt2-moon.png)
 极地月夜，极光之舞（这一代默认不开启极光，需要手动打开，会在大气板块讲解）
-![itt2-aurora.png](/images/instructions/itt2-aurora.png)
+![itt2-aurora.png](itt2-aurora.png)
 雨天，弥漫的雾气模糊着远处的景色，光线照亮云层之间的缝隙
 **⚙️雨天到晴天的过渡可能时间较长，可以前往：材质 -> 水面与雨雪 进行设置**
 
@@ -46,17 +46,17 @@
 第二代 iterationT 引入了 RSM（Reflective Shadow Maps） 全局光照
 有关 RSM 的简要技术原理说明，请见：[MGC 大众科普](../../../../Writerside/topics/Library/shaderTech)
 在这里放几组图来直观感受一下：
-![itt2-water-rsm-off.png](/images/instructions/itt2-water-rsm-off.png)
+![itt2-water-rsm-off.png](itt2-water-rsm-off.png)
 水下，RSM关
-![itt2-water-rsm-on.png](/images/instructions/itt2-water-rsm-on.png)
+![itt2-water-rsm-on.png](itt2-water-rsm-on.png)
 水下，RSM开
-![itt2-cave-rsm-off.png](/images/instructions/itt2-cave-rsm-off.png)
+![itt2-cave-rsm-off.png](itt2-cave-rsm-off.png)
 粘土山矿洞，RSM关
-![itt2-cave-rsm-on.png](/images/instructions/itt2-cave-rsm-on.png)
+![itt2-cave-rsm-on.png](itt2-cave-rsm-on.png)
 粘土山矿洞，RSM开
-![itt2-jungle-rsm-off.png](/images/instructions/itt2-jungle-rsm-off.png)
+![itt2-jungle-rsm-off.png](itt2-jungle-rsm-off.png)
 丛林，RSM关
-![itt2-jungle-rsm-on.png](/images/instructions/itt2-jungle-rsm-on.png)
+![itt2-jungle-rsm-on.png](itt2-jungle-rsm-on.png)
 丛林，RSM开
 
 ⚙️自定义位置：光照 -> 全局光照设置（关闭可提升一部分性能，但部分场景的感知可能较差）
@@ -66,9 +66,9 @@
 尤其是1.18的巨型洞穴系统
 （关闭全局光照可以直接解决，但得不偿失，对吧）
 所以本次更新引入了漏光修复
-![itt2-lightfix-off.png](/images/instructions/itt2-lightfix-off.png)
+![itt2-lightfix-off.png](itt2-lightfix-off.png)
 漏光修复关
-![itt2-lightfix-on.png](/images/instructions/itt2-lightfix-on.png)
+![itt2-lightfix-on.png](itt2-lightfix-on.png)
 漏光修复开
 
 ⚙️自定义位置：光照 -> 全局光照设置 -> 漏光修复（注：水下无法修复）
@@ -81,9 +81,9 @@
 所以，此次加入了一些实用的小功能
 主要是亮度权重
 可以直接改善有光源处的暗处体验
-![itt2-exposure-off.png](/images/instructions/itt2-exposure-off.png)
+![itt2-exposure-off.png](itt2-exposure-off.png)
 亮度权重关
-![itt2-exposure-on.png](/images/instructions/itt2-exposure-on.png)
+![itt2-exposure-on.png](itt2-exposure-on.png)
 亮度权重开
 
 ⚙️自定义位置：快捷选项 -> 亮度权重（建议在嗑夜视时打开此选项，否则光源处仍会较暗）
@@ -102,7 +102,7 @@
 
 与此同时，在这一代中，彩色玻璃的染色阴影迎来了重大变动
 一改旧版的简陋方案，将效果提升到了写实的水平
-![itt2-shadow.png](/images/instructions/itt2-shadow.png)
+![itt2-shadow.png](itt2-shadow.png)
 
 ---
 
@@ -113,16 +113,16 @@
 本次的水波改回了 SEUS Renewed 的形式
 但是增加了更多的细节与调整
 使得本来就生动写实的 SEUS 原版水波更加讨喜
-![itt2-waves-1.png](/images/instructions/itt2-waves-1.png)
-![itt2-waves-2.png](/images/instructions/itt2-waves-2.png)
+![itt2-waves-1.png](itt2-waves-1.png)
+![itt2-waves-2.png](itt2-waves-2.png)
 
 此外，本代中反射还增加了一个大部分光影都没做到但很影响观感的细节
 那就是大气反射
 可以显著的解决日出日落时水面反射的失真问题
 效果如下 ：
-![itt2-atmospheric-reflection-off.png](/images/instructions/itt2-atmospheric-reflection-off.png)
+![itt2-atmospheric-reflection-off.png](itt2-atmospheric-reflection-off.png)
 大气反射关
-![itt2-atmospheric-reflection-on.png](/images/instructions/itt2-atmospheric-reflection-on.png)
+![itt2-atmospheric-reflection-on.png](itt2-atmospheric-reflection-on.png)
 大气反射开
 
 **注意：此效果也会应用在PBR反射中**
@@ -132,15 +132,15 @@
 
 ### 水下重置
 
-![itt2-underwater-1.png](/images/instructions/itt2-underwater-1.png)
+![itt2-underwater-1.png](itt2-underwater-1.png)
 本次的水下可以说是几乎完全重置
 恰当的水雾模糊，梦幻一般的水下丁达尔，改进的水面全反射，加以RSM全局光照带来的绚丽色彩
 没什么可以详细介绍的
 但确实是本次更新里最美的地方之一
 放几张图供各位欣赏一下
-![itt2-underwater-2.png](/images/instructions/itt2-underwater-2.png)
-![itt2-underwater-3.png](/images/instructions/itt2-underwater-3.png)
-![itt2-underwater-4.png](/images/instructions/itt2-underwater-4.png)
+![itt2-underwater-2.png](itt2-underwater-2.png)
+![itt2-underwater-3.png](itt2-underwater-3.png)
+![itt2-underwater-4.png](itt2-underwater-4.png)
 
 ---
 
@@ -149,13 +149,13 @@
 ### PBR 反射
 
 完全重写的PTGI级反射过滤！
-![itt1-pbr-reflection-1.png](/images/instructions/itt1-pbr-reflection-1.png)
+![itt1-pbr-reflection-1.png](itt1-pbr-reflection-1.png)
 itt1
-![itt2-pbr-reflection-1.png](/images/instructions/itt2-pbr-reflection-1.png)
+![itt2-pbr-reflection-1.png](itt2-pbr-reflection-1.png)
 itt2
-![itt1-pbr-reflection-2.png](/images/instructions/itt1-pbr-reflection-2.png)
+![itt1-pbr-reflection-2.png](itt1-pbr-reflection-2.png)
 itt1
-![itt2-pbr-reflection-2.png](/images/instructions/itt2-pbr-reflection-2.png)
+![itt2-pbr-reflection-2.png](itt2-pbr-reflection-2.png)
 itt2
 （材质： Vanilla  Normals Renewed）
 
@@ -171,7 +171,7 @@ itt2
 
 此外，本次还加入了玻璃的折射系统（仅限染色玻璃）
 效果如下 ：
-![itt2-refraction.png](/images/instructions/itt2-refraction.png)
+![itt2-refraction.png](itt2-refraction.png)
 
 ---
 
@@ -186,8 +186,8 @@ itt2
 所以这里介绍一个新的效果：云影
 这个效果在体积云遮挡阳光时会显现出来
 效果参考：
-![itt2-cloudshadow-1.png](/images/instructions/itt2-cloudshadow-1.png)
-![itt2-cloudshadow-2.png](/images/instructions/itt2-cloudshadow-2.png)
+![itt2-cloudshadow-1.png](itt2-cloudshadow-1.png)
+![itt2-cloudshadow-2.png](itt2-cloudshadow-2.png)
 
 ⚙️自定义位置：快捷选项 -> 云影
 
@@ -214,8 +214,8 @@ itt2
 ⚙️如果你调整雾的高度，可以在 体积渲染 -> 体积雾下面的设置 -> 衰减高度 设置
 
 本次我们还带来了染色玻璃对体积光与体积雾的染色！
-![itt2-stain-1.png](/images/instructions/itt2-stain-1.png)
-![itt2-stain-2.png](/images/instructions/itt2-stain-2.png)
+![itt2-stain-1.png](itt2-stain-1.png)
+![itt2-stain-2.png](itt2-stain-2.png)
 
 ⚙️自定义位置：体积渲染 -> 体积雾下面的设置 -> 半透明方块染色*
 
@@ -224,7 +224,7 @@ itt2
 **默认关闭，有需要可以打开**
 ⚙️自定义位置：体积渲染 -> 杂项 -> 极光（如果你想让极光照亮世界的话，拉高下面的极光亮度）
 
-![itt2-aurora-1.png](/images/instructions/itt2-aurora-1.png)
+![itt2-aurora-1.png](itt2-aurora-1.png)
 
 ---
 
@@ -232,22 +232,22 @@ itt2
 
 ### 下界群系支持
 
-![itt2-nether-1.png](/images/instructions/itt2-nether-1.png)
+![itt2-nether-1.png](itt2-nether-1.png)
 
-![itt2-nether-2.png](/images/instructions/itt2-nether-2.png)
+![itt2-nether-2.png](itt2-nether-2.png)
 
 ### 下界雾气PBR反射
 
-![itt1-netherpbr.png](/images/instructions/itt1-netherpbr.png)
+![itt1-netherpbr.png](itt1-netherpbr.png)
 itt1
-![itt2-netherpbr.png](/images/instructions/itt2-netherpbr.png)
+![itt2-netherpbr.png](itt2-netherpbr.png)
 itt2
 
 ### 末地渲染
 
 本次更新将虚空中的末地改造为了星环中的孤岛
-![itt2-end-1.png](/images/instructions/itt2-end-1.png)
-![itt2-end-2.png](/images/instructions/itt2-end-2.png)
+![itt2-end-1.png](itt2-end-1.png)
+![itt2-end-2.png](itt2-end-2.png)
 你可以借此拍摄科幻场景等
 
 **⚙️请注意！如果你觉得末地环境光过亮，请前往：后处理 -> 曝光 ，开启里面的 亮度权重 ，并将下方的 权重模式 调整为 高光优先
@@ -288,7 +288,7 @@ itt2
 
 ### 手电筒模式
 
-![itt2-flashlight.png](/images/instructions/itt2-flashlight.png)
+![itt2-flashlight.png](itt2-flashlight.png)
 给你的解密或恐怖地图加点料
 
 ⚙️自定义位置：光照 -> 手持光源设置 -> 手电筒模式
