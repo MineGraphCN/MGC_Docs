@@ -26,7 +26,7 @@
 #使用Apollo RT光影和Patrix 128x材质   
 #取景于《Broville v11.1》地图  
 
-![图片](/images/gallery/2021-winter/je/1.png)
+![图片](1.png)
 
 作品二：  
 作者：Tahnass   
@@ -34,7 +34,7 @@
 #iterationT   
 #地图：卡兰德 -Poer    
 
-![图片](/images/gallery/2021-winter/je/2.png)
+![图片](2.png)
 
 作品三：  
 作者：小凡Eric   
@@ -43,7 +43,7 @@
 #纹理包：XEHD  
 #地图：1.14.4原版随机生成    
 
-![图片](/images/gallery/2021-winter/je/3.jpg)
+![图片](3.jpg)
 
 作品四： 
 作者：ZHYX3423  
@@ -52,7 +52,7 @@
 #纹理包：Vanilla-Normals-Renewed  
 #地图：自制雪山  
 
-![图片](/images/gallery/2021-winter/je/4.png)
+![图片](4.png)
 
 作品五： 
 作者：243  
@@ -60,7 +60,7 @@
 #光影：Continuum 2.1 Alpha Build 12  
 #地图：自制  
 
-![图片](/images/gallery/2021-winter/je/5.jpg)
+![图片](5.jpg)
 
 作品六： 
 作者：白鲨摄影机  
@@ -69,7 +69,7 @@
 #光影：Kappa  
 #地图：雪中森林  
 
-![图片](/images/gallery/2021-winter/je/6.png)
+![图片](6.png)
 
 作品七：  
 作者：李华  
@@ -79,7 +79,7 @@
 #地图名称：忒亚Treeia  
 #游戏版本：1.17.1  
 
-![图片](/images/gallery/2021-winter/je/7.png)
+![图片](7.png)
 
 作品八：  
 作者：极光子  
@@ -89,7 +89,7 @@
 #地图名称：无  
 #游戏版本：1.12.2  
 
-![图片](/images/gallery/2021-winter/je/8.jpg)
+![图片](8.jpg)
 
 作品九：  
 作者：「 ○ 」   
@@ -98,7 +98,7 @@
 ＃材质:inception  
 ＃地图:自制雪山  
 
-![图片](/images/gallery/2021-winter/je/9.png)
+![图片](9.png)
 
 作品十： 
 作者：杜豫Isih  
@@ -109,7 +109,7 @@
 #模组:HE引擎（开发版本）  
 #游戏版本：1.12.2  
 
-![图片](/images/gallery/2021-winter/je/10.jpg)
+![图片](10.jpg)
 
 作品十一：  
 作者：littlewaffle  
@@ -119,7 +119,7 @@
 #地图名称:自制雪山  
 #版本1.12.2  
 
-![图片](/images/gallery/2021-winter/je/11.jpg)
+![图片](11.jpg)
 
 作品十二：  
 作者：Sanatus  
@@ -128,7 +128,7 @@
 ＃材质:inception  
 ＃地图:龍脉雪山@花shea  
 
-![图片](/images/gallery/2021-winter/je/12.jpg)
+![图片](12.jpg)
 
 作品十三：  
 作者：V Q   
@@ -137,7 +137,7 @@
 #材质：Inception材质包未公开系列  
 #地图：随便刷的看看就好   
 
-![图片](/images/gallery/2021-winter/je/13.jpg)
+![图片](13.jpg)
 
 作品十四：  
 作者：COHK晨哦凯  
@@ -147,7 +147,7 @@
 #地图：诺尔阿喀斯Norakias  
 #版本：1.12.2   
 
-![图片](/images/gallery/2021-winter/je/14.png)
+![图片](14.png)
 
 作品十五：  
 作者：九纳森九斯达  
@@ -159,7 +159,7 @@
 #mod：BlockBuster+Aperture  
 #这黑边是Aperture加的，不是后期   
 
-![图片](/images/gallery/2021-winter/je/15.png)
+![图片](15.png)
 
 作品十六：  
 作者：秋暮 奥维 利亚  
@@ -167,7 +167,7 @@
 #iterationT  
 #旧版Minecraft地形   
 
-![图片](/images/gallery/2021-winter/je/16.png)
+![图片](16.png)
 
 作品十七：  
 作者：中介  
@@ -176,7 +176,7 @@
 #材质 VNR  
 #地图 自制地形   
 
-![图片](/images/gallery/2021-winter/je/17.png)
+![图片](17.png)
 
 ## Bedrock版赛道
 

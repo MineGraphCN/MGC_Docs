@@ -24,14 +24,14 @@
 使用的光影：NostalgiaVX  
 使用的材质：Patrix    
 
-![图片](/images/gallery/2023-spring/1.jpg)
+![图片](1.jpg)
 
 作品二：  
 终末之前的挑战  
 投稿者：milk  
 使用的光影：Kappa 5.0    
 
-![图片](/images/gallery/2023-spring/2.png)
+![图片](2.png)
 
 作品三：  
 亭子里的火堆（重发）  
@@ -39,7 +39,7 @@
 使用的光影：sundial  
 使用的地图：CastleWithDragons    
 
-![图片](/images/gallery/2023-spring/3.jpg)
+![图片](3.jpg)
 
 作品四：  
 Floating Tower  
@@ -49,7 +49,7 @@ Floating Tower
 使用的mod: Iris 1.5.1  
 使用的地图: theFrontier服务器    
 
-![图片](/images/gallery/2023-spring/4.png)
+![图片](4.png)
 
 作品五：  
 标题：雨  
@@ -58,7 +58,7 @@ Floating Tower
 使用的 mod:iris  
 使用的地图:ihou2    
 
-![图片](/images/gallery/2023-spring/5.png)
+![图片](5.png)
 
 作品六：  
 归家  
@@ -66,7 +66,7 @@ Floating Tower
 使用的光影：Rethinking Voxels  
 使用的材质：光影内置的原版PBR    
 
-![图片](/images/gallery/2023-spring/6.png)
+![图片](6.png)
 
 作品七：  
 标题：煦色  
@@ -76,7 +76,7 @@ Floating Tower
 使用的mod：Optifine H9  
 自制地图    
 
-![图片](/images/gallery/2023-spring/7.png)
+![图片](7.png)
 
 作品八：  
 标题: 园林  
@@ -86,7 +86,7 @@ Floating Tower
 使用的mod: Optifine  
 使用的地图: 景园JingYuan    
 
-![图片](/images/gallery/2023-spring/8.png)
+![图片](8.png)
 
 作品九：  
 标题：薄暮  
@@ -95,7 +95,7 @@ Floating Tower
 使用的材质包：Conquest  
 使用的地图：Island    
 
-![图片](/images/gallery/2023-spring/9.png)
+![图片](9.png)
 
 作品十：  
 标题：晨曦  
@@ -104,7 +104,7 @@ Floating Tower
 使用的材质包：SPBR  
 使用的地图：cyberpunk    
 
-![图片](/images/gallery/2023-spring/10.jpg)
+![图片](10.jpg)
 
 作品十一：  
 标题：赛博电子  
@@ -113,7 +113,7 @@ Floating Tower
 使用的材质包：SPBR  
 使用的地图：二进制之城    
 
-![图片](/images/gallery/2023-spring/11.png)
+![图片](11.png)
 
 作品十二：  
 标题：圣骑士  
@@ -122,7 +122,7 @@ Floating Tower
 使用的材质包：SPBR  
 使用的地图：审判者    
 
-![图片](/images/gallery/2023-spring/12.jpg)
+![图片](12.jpg)
 
 作品十三：  
 标题：浔州镇  
@@ -131,7 +131,7 @@ Floating Tower
 使用的材质包：Stay True  
 使用的地图：枝江熠光    
 
-![图片](/images/gallery/2023-spring/13.png)
+![图片](13.png)
 
 作品十四：  
 慢时光  
@@ -140,7 +140,7 @@ Floating Tower
 使用的材质：Patrix32x  
 使用的地图：The Ceranese Hotel    
 
-![图片](/images/gallery/2023-spring/14.png)
+![图片](14.png)
 
 作品十五：  
 机械  
@@ -148,7 +148,7 @@ Floating Tower
 光影:Rethinking Voxels  
 材质:光影自带PBR  
 
-![图片](/images/gallery/2023-spring/15.jpg)
+![图片](15.jpg)
 
 作品十六：  
 那里......有什么......  
@@ -157,7 +157,7 @@ Floating Tower
 使用的材质：Ultimacarft  
 使用的地图：自制    
 
-![图片](/images/gallery/2023-spring/16.png)
+![图片](16.png)
 
 作品十七：  
 摆渡时光  
@@ -166,7 +166,7 @@ Floating Tower
 使用的材质：Kelly's RTX Vanilla  
 使用的地图：Tropical Survival    
 
-![图片](/images/gallery/2023-spring/17.png)
+![图片](17.png)
 
 作品十八：  
 丛林遗迹  
@@ -175,7 +175,7 @@ Floating Tower
 材质：patrix 32x  
 地图：forest    
 
-![图片](/images/gallery/2023-spring/18.png)
+![图片](18.png)
 
 作品十九：  
 晨曦下的小屋  
@@ -184,7 +184,7 @@ Floating Tower
 材质：patrix 128x  
 地图：自制    
 
-![图片](/images/gallery/2023-spring/19.jpg)
+![图片](19.jpg)
 
 作品二十：  
 影色空间  
@@ -193,4 +193,4 @@ Floating Tower
 材质：Inception 256x  
 地图：自制    
 
-![图片](/images/gallery/2023-spring/20.png)
+![图片](20.png)

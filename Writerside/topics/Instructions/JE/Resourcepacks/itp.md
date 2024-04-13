@@ -4,13 +4,13 @@
 
 - 前往 [爱发电](https://afdian.net/a/itproject) 赞助，随后在 **爱发电私信** 找到QQ群号，进入QQ群。
 
-![buy.png](/images/instructions/buy.png)
+![buy.png](buy.png)
 
 ## 下载
 
 - 在群文件中下载所需文件。
 
-![download.png](/images/instructions/download.png)
+![download.png](download.png)
 
 - V3整合包：适用于**1.12.2（Forge）**，将以往的拓展材质、模型以 Mod 方块的形式展现，使用更便捷！
 - BV3材质包：适用于 **1.11.x - 1.12.x**，请根据您的需要下载使用！

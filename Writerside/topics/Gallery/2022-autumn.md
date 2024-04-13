@@ -17,7 +17,7 @@
 #使用的材质：Synesthesia Pixel T3  
 #使用的地图：喜马拉雅 1.18    
 
-![图片](/images/gallery/2022-autumn/1.png)
+![图片](1.png)
 
 作品二：  
 #锦绣山河  
@@ -26,7 +26,7 @@
 #使用的材质：Misaka's Texture  
 #使用的地图：七彩丹霞    
 
-![图片](/images/gallery/2022-autumn/2.jpg)
+![图片](2.jpg)
 
 作品三：  
 #黄土高原  
@@ -35,7 +35,7 @@
 #使用的材质：无  
 #使用的地图：黄土高原    
 
-![图片](/images/gallery/2022-autumn/3.png)
+![图片](3.png)
 
 作品四：  
 #山眠  
@@ -44,7 +44,7 @@
 #使用的材质：Misaka's Texture  
 #使用的地图：张家界    
 
-![图片](/images/gallery/2022-autumn/4.png)
+![图片](4.png)
 
 作品五：  
 #争高直指，负势竞上  
@@ -53,7 +53,7 @@
 #使用的材质：SynesthesiaPixel T4  
 #使用的地图：张家界    
 
-![图片](/images/gallery/2022-autumn/5.png)
+![图片](5.png)
 
 作品六：  
 #东方红，太阳升  
@@ -62,7 +62,7 @@
 #使用的材质：无  
 #使用的地图：张家界  
 
-![图片](/images/gallery/2022-autumn/6.png)
+![图片](6.png)
 
 作品七：  
 #落霞  
@@ -71,7 +71,7 @@
 #使用的材质：无  
 #使用的地图：喜马拉雅 1.18    
 
-![图片](/images/gallery/2022-autumn/7.jpg)
+![图片](7.jpg)
 
 作品八：
 #群峦  
@@ -81,7 +81,7 @@ SEUS DAZZLING
 #使用的材质：无  
 #使用的地图：张家界    
 
-![图片](/images/gallery/2022-autumn/8.png)
+![图片](8.png)
 
 作品九：
 #晨曦  
@@ -90,4 +90,4 @@ SEUS DAZZLING
 #使用的材质：无  
 #使用的地图：自制    
 
-![图片](/images/gallery/2022-autumn/9.jpg)
+![图片](9.jpg)
