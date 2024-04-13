@@ -18,10 +18,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
       
-      - name: Set ALGOLIA_KEY environment variable
-        env:
-          ALGOLIA_KEY: ${{ secrets.ALGOLIA_KEY }}
-        run: echo "ALGOLIA_KEY is $ALGOLIA_KEY"
+      - name: Read ALGOLIA_KEY environment variable
+        run: echo "ALGOLIA_KEY is ${{ env.ALGOLIA_KEY }}"
 
       - name: Access ALGOLIA_KEY environment variable
         run: echo "ALGOLIA_KEY from env is $ALGOLIA_KEY"
