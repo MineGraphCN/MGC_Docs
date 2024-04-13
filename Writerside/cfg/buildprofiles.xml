@@ -10,6 +10,10 @@
         <showDownloadButton>true</showDownloadButton>
         <versions-switcher>https://mgcd.hypercol.com/</versions-switcher>
         <product-web-url>https://mgcd.hypercol.com/</product-web-url>
+        <algolia-api-key>${ALGOLIA-KEY}</algolia-api-key>
+        <algolia-id>${ALGOLIA-ID}</algolia-id>
+        <algolia-index>${ALGOLIA-INDEX}</algolia-index>
+        <web-root>https://mgcd.hypercol.com</web-root>
     </variables>
     <build-profile instance="mgcd">
         <variables>
