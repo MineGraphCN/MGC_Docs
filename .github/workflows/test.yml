@@ -9,7 +9,6 @@ env:
   INSTANCE: 'Writerside/mgcd'
   ARTIFACT: 'webHelpMGCD2-all.zip'
   DOCKER_VERSION: '233.14938'
-  ALGOLIA_KEY: ${{ secrets.ALGOLIA_KEY }}
 
 jobs:
   build:
@@ -17,12 +16,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      
-      - name: Read ALGOLIA_KEY environment variable
-        run: echo "ALGOLIA_KEY is ${{ env.ALGOLIA_KEY }}"
-
-      - name: Access ALGOLIA_KEY environment variable
-        run: echo "ALGOLIA_KEY from env is $ALGOLIA_KEY"
 
       - name: Build docs using Writerside Docker builder
         uses: JetBrains/writerside-github-action@v4
