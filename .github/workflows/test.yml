@@ -23,7 +23,7 @@ jobs:
         run: echo "ALGOLIA_KEY is $ALGOLIA_KEY"
 
       - name: Access ALGOLIA_KEY environment variable
-        run: echo "ALGOLIA_KEY from env is ${{ env.ALGOLIA_KEY }}"
+        run: echo "ALGOLIA_KEY from env is $ALGOLIA_KEY"
 
       - name: Build docs using Writerside Docker builder
         uses: JetBrains/writerside-github-action@v4
