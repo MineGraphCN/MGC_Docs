@@ -18,7 +18,7 @@
 #是否有对截图进行后处理：否   
 #地图链接：https://www.mcbbs.net/thread-1301277-1-1.html    
 
-![图片](/images/gallery/2022-spring/1.jpg)
+![图片](1.jpg)
 
 作品二：  
 江山如画  
@@ -29,7 +29,7 @@
 #地图链接：https://www.mcbbs.net/thread-1274744-1-1.html  
 #游戏版本：Java 1.18.1
 
-![图片](/images/gallery/2022-spring/2.jpg)
+![图片](2.jpg)
 
 作品三：  
 晨  
@@ -38,7 +38,7 @@
 #是否有对截图进行后处理:否   
 #地图链接:https://www.mcbbs.net/thread-1296851-1-1.html
 
-![图片](/images/gallery/2022-spring/3.jpg)
+![图片](3.jpg)
 
 作品四：  
 山花烂漫时  
@@ -47,7 +47,7 @@
 #是否后处理：否  
 #地图链接：https://www.mcbbs.net/forum.php?mod=viewthread&tid=1249353
 
-![图片](/images/gallery/2022-spring/4.jpg)
+![图片](4.jpg)
 
 作品五：  
 Foggy Sunrise  
@@ -56,7 +56,7 @@ Foggy Sunrise
 #是否有对截图进行后处理：是  
 #地图链接：https://www.mcbbs.net/thread-1296851-1-1.html     
 
-![图片](/images/gallery/2022-spring/5.jpg)
+![图片](5.jpg)
 
 作品六：  
 日上山融雪涨江。  
@@ -67,7 +67,7 @@ Foggy Sunrise
 #地图链接：https://www.mcbbs.net/thread-1296851-1-1.html  
 #游戏版本：Java 1.18.1
 
-![图片](/images/gallery/2022-spring/6.jpg)
+![图片](6.jpg)
 
 作品七：  
 天光  
@@ -77,7 +77,7 @@ Foggy Sunrise
 #地图链接：https://www.mcbbs.net/thread-1296851-1-1.html  
 #游戏版本：JAVA 1.18.1
 
-![图片](/images/gallery/2022-spring/7.jpg)
+![图片](7.jpg)
 
 作品八：  
 梦之林  
@@ -88,4 +88,4 @@ Foggy Sunrise
 #地图链接：https://www.mcbbs.net/thread-1301277-1-1.html  
 #游戏版本：1.16.4
 
-![图片](/images/gallery/2022-spring/8.jpg)
+![图片](8.jpg)

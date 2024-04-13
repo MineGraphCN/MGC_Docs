@@ -28,7 +28,7 @@
 #使用的地图：云中鲸（地图来自minecraft中文下载站）    
 建议原图欣赏    
 
-![图片](/images/gallery/2022-summer/je/1.jpg)
+![图片](1.jpg)
 
 作品二：    
 雨中水城    
@@ -37,7 +37,7 @@
 #使用纹理包：Vanilla     
 #使用地图：Venice（来自：MinecraftMap）    
 
-![图片](/images/gallery/2022-summer/je/2.jpg)
+![图片](2.jpg)
 
 作品三：    
 违法建筑    
@@ -47,7 +47,7 @@
 ＃使用的模组：无    
 ＃使用的地图：IHOU: 違法建築，链接：https://www.planetminecraft.com/project/ihou-download/    
 
-![图片](/images/gallery/2022-summer/je/3.jpg)
+![图片](3.jpg)
 
 作品四：    
 乐园    
@@ -59,7 +59,7 @@
 ＃鉴赏说明：使用大屏或手机横屏解锁最佳姿势    
 ＃备注：个人非常遗憾itt2.0取消了一代的各种滤镜    
 
-![图片](/images/gallery/2022-summer/je/4.jpg)
+![图片](4.jpg)
 
 作品五：    
 蓬莱仙岛    
@@ -68,7 +68,7 @@
 #使用的纹理包：Vanilla    
 #使用的地图：蓬莱仙岛(链接：https://www.mcbbs.net/thread-1171349-1-1.html)    
 
-![图片](/images/gallery/2022-summer/je/5.jpg)
+![图片](5.jpg)
 
 作品六：    
 苍雪龙城    
@@ -80,7 +80,7 @@
 ＃游戏版本：1.18.2    
 ＃鉴赏说明：重在参与，啥都没设置直接截图就来了，大家看后给点建议交流交流更好:)    
 
-![图片](/images/gallery/2022-summer/je/6.jpg)
+![图片](6.jpg)
 
 作品七：    
 阳故宫-鬼怪    
@@ -90,7 +90,7 @@
 ＃使用的地图：沈阳故宫     
 ＃游戏版本：1.16.2 
 
-![图片](/images/gallery/2022-summer/je/7.jpg)
+![图片](7.jpg)
 
 ## Bedrock版赛道
 

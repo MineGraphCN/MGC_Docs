@@ -11,27 +11,27 @@
 
 如果双击 jar 文件后没有任何反应，可在 CMD 或 Powershell 中通过 `java -jar "<您的 GFME jar 路径>"` 运行此 jar 文件以获取更多信息。
 
-![gfme-1.png](/images/instructions/gfme-1.png)
+![gfme-1.png](gfme-1.png)
 
-![gfme-2.png](/images/instructions/gfme-2.png)
+![gfme-2.png](gfme-2.png)
 
 ## 特性
 
 ### 逐像素渲染在光线追踪中，包括剪影、透明度甚至 PBR 支持
 
-![Per_pixel_rendering.png](/images/instructions/gfme_Per_pixel_rendering.png)
+![Per_pixel_rendering.png](gfme_Per_pixel_rendering.png)
 
 ### 更多色彩的原版光源和方块形状
 
-![More_vanilla_support.png](/images/instructions/gfme_More_vanilla_support.png)
+![More_vanilla_support.png](gfme_More_vanilla_support.png)
 
 ### 自动检测纹理分辨率，支持不完整的纹理包
 
-![Auto_resolution.png](/images/instructions/gfme_Auto_resolution.png)
+![Auto_resolution.png](gfme_Auto_resolution.png)
 
 ### 金属阳光焦散
 
-![Metal_caustics.png](/images/instructions/gfme_Metal_caustics.png)
+![Metal_caustics.png](gfme_Metal_caustics.png)
 
 ### 许多针对原版 PTGI 的小修复和改进...
 

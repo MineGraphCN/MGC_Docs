@@ -32,14 +32,14 @@
 使用的光影：iterationT 2.0.1  
 使用的地图：Norakias和中国龙
 
-![图片](/images/gallery/2024-spring/1.jpg)
+![图片](1.jpg)
 
 作品二：  
 投稿者：辰不YUE  
 使用的光影：iterationT 2.0.0  
 使用的地图：诺尔阿喀斯和龙  
 
-![图片](/images/gallery/2024-spring/2.jpg)
+![图片](2.jpg)
 
 作品三：  
 心之所向，亦与龙行 
@@ -47,7 +47,7 @@
 使用的光影：Derivative Rise SSPT Test 3  
 使用的地图：龙
 
-![图片](/images/gallery/2024-spring/3.jpg)
+![图片](3.jpg)
 
 作品四：  
 龙腾四海  
@@ -57,7 +57,7 @@
 使用的地图: 自建的  
 未使用任何后期处理。  
 
-![图片](/images/gallery/2024-spring/4.jpg)
+![图片](4.jpg)
 
 作品五：  
 投稿者：瑞克-瑞文[Ⅵ]  
@@ -65,7 +65,7 @@
 使用的材质：SPBR 13-13  
 光影参数小调，画面无任何内容修改  
 
-![图片](/images/gallery/2024-spring/5.png)
+![图片](5.png)
 
 作品六：  
 龙抬头  
@@ -73,7 +73,7 @@
 使用的光影：kappa5.2  
 使用的地图：龙  
 
-![图片](/images/gallery/2024-spring/6.jpg)
+![图片](6.jpg)
 
 作品七：  
 投稿者：HZYgrandma  
@@ -82,14 +82,14 @@
 地图作者：N1kuu  
 自制地图    
 
-![图片](/images/gallery/2024-spring/7.png)
+![图片](7.png)
 
 作品八：  
 投稿者: MoAoXnX  
 使用的光影: Chocapic13 v9.1 PBR test  
 使用的地图：龍   
 
-![图片](/images/gallery/2024-spring/8.png)
+![图片](8.png)
 
 作品九：  
 标题：飞龙在天  
@@ -97,7 +97,7 @@
 使用的光影：Kappa5.2  
 使用的地图：Xin Tiantang, an oriental utopia  
 
-![图片](/images/gallery/2024-spring/9.png)
+![图片](9.png)
 
 作品十：   
 投稿者：载纸y  
@@ -107,14 +107,14 @@
 使用的地图：中国龙  
 地图作者：Vision  
 
-![图片](/images/gallery/2024-spring/10.png)
+![图片](10.png)
 
 作品十一：  
 投稿者：qwertyuiop  
 使用的光影：Solas V2.0 BETA V0.6b  
 使用的地图：龙    
 
-![图片](/images/gallery/2024-spring/11.jpg)
+![图片](11.jpg)
 
 作品十二：  
 投稿者：factorization   
@@ -122,7 +122,7 @@
 使用的材质包：SPBR  
 使用的地图：龙  
 
-![图片](/images/gallery/2024-spring/12.png)
+![图片](12.png)
 
 作品十三：  
 标题：天龙之岛  
@@ -130,4 +130,4 @@
 使用的光影：Bliss  
 使用的模组：Distant Horizons    
 
-![图片](/images/gallery/2024-spring/13.png)
+![图片](13.png)
