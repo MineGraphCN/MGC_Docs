@@ -1,10 +1,8 @@
 # BetterRTX
 
-[前往 Bilibili 观看视频](https://b23.tv/BV1Z94y1H74o)
-
-<procedure title="观看视频【Bilibili】" collapsible="true">
-<iframe src="//player.bilibili.com/player.html?aid=375588815&bvid=BV1so4y1m7U5&cid=339262048&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"/>
-</procedure>
+::: details 展开视频【Bilibili】
+<iframe src="//player.bilibili.com/player.html?aid=363608376&bvid=BV1Z94y1H74o&cid=1270158044&p=1&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width:100%;height:420px"> </iframe>
+:::
 
 ## 前言
 
