@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE instance-profile
+        SYSTEM "https://resources.jetbrains.com/writerside/1.0/product-profile.dtd">
+
+<instance-profile id="mgcd"
+                 name="MineGraph Docs"
+                 start-page="Home.topic">
+    <toc-element topic="Home.topic" toc-title="主页"/>
+    <toc-element topic="Community.md"/>
+    <toc-element toc-title="作品收录"/>
+    <toc-element toc-title="作品指南和手册">
+        <toc-element toc-title="Java 版">
+            <toc-element toc-title="光影包" topic="shaderpacksCommon.md">
+                <toc-element topic="itt2.md"/>
+                <toc-element topic="itt3.md"/>
+                <toc-element topic="gfme.md"/>
+            </toc-element>
+            <toc-element toc-title="资源包" topic="resourcepacksCommon.md">
+                <toc-element topic="MTP.md"/>
+                <toc-element topic="tmeo.md"/>
+                <toc-element topic="qin.md"/>
+                <toc-element topic="itp.md"/>
+            </toc-element>
+        </toc-element>
+        <toc-element topic="bedrockResourceCommon.md"/>
+    </toc-element>
+    <toc-element topic="Library.md">
+        <toc-element topic="terms.md"/>
+        <toc-element topic="resourcepackBasic.md"/>
+        <toc-element topic="shaderBasic.md"/>
+        <toc-element topic="shaderTech.md"/>
+        <toc-element topic="irisAsOf.md"/>
+        <toc-element topic="Correction.md">
+            <toc-element topic="raytracingCorrection.md"/>
+        </toc-element>
+        <toc-element topic="QAs.md">
+            <toc-element topic="be.md"/>
+            <toc-element topic="je-resourcepack.md"/>
+            <toc-element topic="je-shaderpack.md"/>
+        </toc-element>
+        <toc-element topic="Troubleshoot.md">
+            <toc-element topic="troubleshootCommon.md"/>
+            <toc-element toc-title="Java 版">
+                <toc-element topic="videoSettings.md"/>
+                <toc-element toc-title="光影">
+                    <toc-element topic="shaderpackLoading.md"/>
+                    <toc-element topic="modsCompatibility.md"/>
+                </toc-element>
+                <toc-element toc-title="资源包">
+
+                </toc-element>
+            </toc-element>
+        </toc-element>
+    </toc-element>
+    <toc-element topic="Developer.md">
+        <toc-element topic="developTips.md"/>
+        <toc-element topic="animation.md"/>
+        <toc-element topic="labpbrMaterialStandard.md"/>
+        <toc-element topic="shaderTutorial.md">
+            <toc-element topic="00-filePipeline.md"/>
+            <toc-element topic="01-prepare.md"/>
+        </toc-element>
+        <toc-element topic="resourceTutorial.md"/>
+        <toc-element topic="starter-topic.md"/>
+    </toc-element>
+    <toc-element topic="Gallery.md">
+        <toc-element topic="2021-autumn.md"/>
+        <toc-element topic="2021-winter.md"/>
+        <toc-element topic="2022-spring.md"/>
+        <toc-element topic="2022-summer.md"/>
+        <toc-element topic="2022-autumn.md"/>
+        <toc-element topic="2023-spring.md"/>
+        <toc-element topic="2024-spring.md"/>
+    </toc-element>
+    <toc-element topic="About.md"/>
+</instance-profile>
