@@ -13,7 +13,7 @@
         <algolia-id>AMQJCXFVUL</algolia-id>
         <algolia-api-key>64206f0ec56ab84f94d171e5a39b6815</algolia-api-key>
         <algolia-index>mgcd-hypercol</algolia-index>
-        <web-root>https://mgcd.hypercol.com</web-root>
+        <web-root>https://minegraphcn.github.io</web-root>
     </variables>
     <build-profile instance="mgcd">
         <variables>
