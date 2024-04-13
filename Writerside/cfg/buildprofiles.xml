@@ -19,6 +19,10 @@
         <footer>
             <copyright>HyperCol 2023-present</copyright>
             <icp>沪ICP备2023036853号</icp>
+
+            <link href="https://pd.qq.com/s/lem9db">QQ 频道</link>
+            <link href="https://github.com/MineGraphCN/MGC_Docs">GitHub 项目仓库</link>
+
             <social type="bilibili" href="https://space.bilibili.com/1499821905/">Minecraft 图形学中文社区</social>
         </footer>
     </build-profile>
