@@ -9,6 +9,7 @@ env:
   INSTANCE: 'Writerside/mgcd'
   ARTIFACT: 'webHelpMGCD2-all.zip'
   DOCKER_VERSION: '233.14938'
+  ALGOLIA_KEY: ${{ secrets.ALGOLIA_KEY }}
 
 jobs:
   build:
