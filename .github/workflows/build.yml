@@ -48,19 +48,35 @@ jobs:
         id: set_branch
         run: |
           if [[ "${GITHUB_REF}" == "refs/heads/main" ]]; then
-            echo "::set-output name=branch::main-pages"
+            echo "TARGET_BRANCH=main-pages" >> $GITHUB_ENV
           elif [[ "${GITHUB_REF}" == "refs/heads/dev" ]]; then
-            echo "::set-output name=branch::dev-pages"
+            echo "TARGET_BRANCH=dev-pages" >> $GITHUB_ENV
           else
             echo "Unsupported branch, skipping deployment."
             exit 1
           fi
-      - name: Push to pages branches
+
+      - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.REPO_AND_PACKAGES }}
           publish_dir: ./dir
-          branch: ${{ steps.set_branch.outputs.branch }}
+          branch: ${{ env.TARGET_BRANCH }}
+
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: docs
+          path: artifacts
+
+      - name: Test documentation
+        uses: JetBrains/writerside-checker-action@v1
+        with:
+          instance: ${{ env.INSTANCE }}
 
   deploy:
     environment:
