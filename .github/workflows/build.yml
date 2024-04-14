@@ -2,7 +2,7 @@ name: Build documentation
 
 on:
   push:
-    branches: ["main"]
+    branches: ["main", "dev"]
   workflow_dispatch:
 
 permissions:
@@ -44,10 +44,25 @@ jobs:
             artifacts/${{ env.ALGOLIA_ARTIFACT }}
           retention-days: 7
 
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: docs
+          path: artifacts
+
+      - name: Test documentation
+        uses: JetBrains/writerside-checker-action@v1
+        with:
+          instance: ${{ env.INSTANCE }}
+
   deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+    # environment:
+    #   name: github-pages
+    #   url: ${{ steps.deployment.outputs.page_url }}
     needs: [build]
     runs-on: ubuntu-latest
     steps:
@@ -59,23 +74,33 @@ jobs:
       - name: Unzip artifact
         run: unzip -O UTF-8 -qq '${{ env.ARTIFACT }}' -d dir
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
+      - name: Set target branch
+        id: set_branch
+        run: |
+          if [[ "${GITHUB_REF}" == "refs/heads/main" ]]; then
+            echo "TARGET_BRANCH=main-pages" >> $GITHUB_ENV
+          elif [[ "${GITHUB_REF}" == "refs/heads/dev" ]]; then
+            echo "TARGET_BRANCH=dev-pages" >> $GITHUB_ENV
+          else
+            echo "Unsupported branch, skipping deployment."
+            exit 1
+          fi
 
-      - name: Deploy to gh-pages Branch
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Push pages to branch
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.REPO_AND_PACKAGES }}
-          publish_dir: ./dir # 静态文件的目录
+          publish_dir: ./dir
+          publish_branch: ${{ env.TARGET_BRANCH }}
+          destination_dir: ./dist
 
-      - name: Package and upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: dir
 
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      # - name: Setup Pages
+      #   uses: actions/configure-pages@v4
+
+      # - name: Deploy to GitHub Pages
+      #   id: deployment
+      #   uses: actions/deploy-pages@v4
 
   # publish-indexes:
   #   needs: [build, deploy]
