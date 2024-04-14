@@ -10,15 +10,15 @@ permissions:
   pages: write
 
 env:
-  INSTANCE: 'Writerside/mgcd'
-  ARTIFACT: 'webHelpMGCD2-all.zip'
-  DOCKER_VERSION: '233.14938'
-  ALGOLIA_ARTIFACT: 'algolia-indexes-MGCD.zip'
-  ALGOLIA_APP_NAME: 'AMQJCXFVUL'
-  ALGOLIA_INDEX_NAME: 'mgcd-hypercol'
-  ALGOLIA_KEY: '${{ secrets.ALGOLIA_KEY }}'
-  CONFIG_JSON_PRODUCT: 'mgcd'
-  CONFIG_JSON_VERSION: '2.0'
+  INSTANCE: "Writerside/mgcd"
+  ARTIFACT: "webHelpMGCD2-all.zip"
+  DOCKER_VERSION: "233.14938"
+  ALGOLIA_ARTIFACT: "algolia-indexes-MGCD.zip"
+  ALGOLIA_APP_NAME: "AMQJCXFVUL"
+  ALGOLIA_INDEX_NAME: "mgcd-hypercol"
+  ALGOLIA_KEY: "${{ secrets.ALGOLIA_KEY }}"
+  CONFIG_JSON_PRODUCT: "mgcd"
+  CONFIG_JSON_VERSION: "2.0"
 
 jobs:
   build:
@@ -61,6 +61,12 @@ jobs:
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
+
+      - name: Deploy to gh-pages Branch
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dir # 静态文件的目录
 
       - name: Package and upload Pages artifact
         uses: actions/upload-pages-artifact@v3
