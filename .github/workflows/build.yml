@@ -60,9 +60,6 @@ jobs:
           instance: ${{ env.INSTANCE }}
 
   deploy:
-    # environment:
-    #   name: github-pages
-    #   url: ${{ steps.deployment.outputs.page_url }}
     needs: [build]
     runs-on: ubuntu-latest
     steps:
@@ -92,15 +89,7 @@ jobs:
           github_token: ${{ secrets.REPO_AND_PACKAGES }}
           publish_dir: ./dir
           publish_branch: ${{ env.TARGET_BRANCH }}
-          destination_dir: ./dist
-
-
-      # - name: Setup Pages
-      #   uses: actions/configure-pages@v4
-
-      # - name: Deploy to GitHub Pages
-      #   id: deployment
-      #   uses: actions/deploy-pages@v4
+          destination_dir: ./docs
 
   # publish-indexes:
   #   needs: [build, deploy]
