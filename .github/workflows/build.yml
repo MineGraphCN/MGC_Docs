@@ -92,7 +92,7 @@ jobs:
           github_token: ${{ secrets.REPO_AND_PACKAGES }}
           publish_dir: ./dir
           publish_branch: ${{ env.TARGET_BRANCH }}
-          destination_dir: ./dist
+          destination_dir: ./docs
 
 
       # - name: Setup Pages
