@@ -44,26 +44,6 @@ jobs:
             artifacts/${{ env.ALGOLIA_ARTIFACT }}
           retention-days: 7
 
-      - name: Set target branch
-        id: set_branch
-        run: |
-          if [[ "${GITHUB_REF}" == "refs/heads/main" ]]; then
-            echo "TARGET_BRANCH=main-pages" >> $GITHUB_ENV
-          elif [[ "${GITHUB_REF}" == "refs/heads/dev" ]]; then
-            echo "TARGET_BRANCH=dev-pages" >> $GITHUB_ENV
-          else
-            echo "Unsupported branch, skipping deployment."
-            exit 1
-          fi
-
-      - name: Push pages to branch
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.REPO_AND_PACKAGES }}
-          publish_dir: ./dir
-          publish_branch: ${{ env.TARGET_BRANCH }}
-          destination_dir: ./dist
-
   test:
     needs: build
     runs-on: ubuntu-latest
@@ -94,14 +74,32 @@ jobs:
       - name: Unzip artifact
         run: unzip -O UTF-8 -qq '${{ env.ARTIFACT }}' -d dir
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-      
+      - name: Set target branch
+        id: set_branch
+        run: |
+          if [[ "${GITHUB_REF}" == "refs/heads/main" ]]; then
+            echo "TARGET_BRANCH=main-pages" >> $GITHUB_ENV
+          elif [[ "${GITHUB_REF}" == "refs/heads/dev" ]]; then
+            echo "TARGET_BRANCH=dev-pages" >> $GITHUB_ENV
+          else
+            echo "Unsupported branch, skipping deployment."
+            exit 1
+          fi
 
+      - name: Push pages to branch
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.REPO_AND_PACKAGES }}
+          publish_dir: ./dir
+          publish_branch: ${{ env.TARGET_BRANCH }}
+          destination_dir: ./dist
 
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      # - name: Setup Pages
+      #   uses: actions/configure-pages@v4
+
+      # - name: Deploy to GitHub Pages
+      #   id: deployment
+      #   uses: actions/deploy-pages@v4
 
   # publish-indexes:
   #   needs: [build, deploy]
