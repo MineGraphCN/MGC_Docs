@@ -60,9 +60,9 @@ jobs:
           instance: ${{ env.INSTANCE }}
 
   deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+    # environment:
+    #   name: github-pages
+    #   url: ${{ steps.deployment.outputs.page_url }}
     needs: [build]
     runs-on: ubuntu-latest
     steps:
