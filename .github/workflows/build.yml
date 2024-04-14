@@ -61,12 +61,24 @@ jobs:
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
-
-      - name: Deploy to gh-pages Branch
+      
+      - name: Set target branch
+        id: set_branch
+        run: |
+          if [[ "${GITHUB_REF}" == "refs/heads/main" ]]; then
+            echo "::set-output name=branch::main-pages"
+          elif [[ "${GITHUB_REF}" == "refs/heads/dev" ]]; then
+            echo "::set-output name=branch::dev-pages"
+          else
+            echo "Unsupported branch, skipping deployment."
+            exit 1
+          fi
+      - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.REPO_AND_PACKAGES }}
-          publish_dir: ./dir # 静态文件的目录
+          publish_dir: ./dir
+          branch: ${{ steps.set_branch.outputs.branch }}
 
       - name: Package and upload Pages artifact
         uses: actions/upload-pages-artifact@v3
