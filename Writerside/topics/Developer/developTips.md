@@ -1,26 +1,29 @@
 # 作品开发相关资料整理
 
-> 这篇文档的格式较为不规范，目前正在订正中。
+> 这篇文档已从旧平台完成迁移。
 >
-{style="warning" title="未经优化的文档"}
+{style="note" title="已订正的文档"}
 
-## 着色器开发
+<tabs>
+  <tab title="着色器开发">
 
-### 背景知识
+<chapter title="背景知识">
+<p>
 
-着色器开发一般有 3 套背景知识：**线性代数、 GLSL 和 OptiFine 的渲染管线**
+着色器开发至少需要三套背景知识：**线性代数**、**GLSL** 和 **OptiFine 的渲染管线**
 
-线性代数对着色器开发很有用，因为矢量和矩阵操作在着色器（以及一般的三维图形）中非常常见。
-
+线性代数对着色器开发很有用，因为矢量和矩阵操作在着色器（以及一般的三维图形）中非常常见。  
 3blue1brown 在这里有一个不错的系列介绍：
-
 - [【官方双语/合集】线性代数的本质 - 系列合集](https://www.bilibili.com/video/BV1ys411472E)
 
-**GLSL 是 OpenGL 的着色器语言**。互联网上有不少这方面的教程，但 Minecraft 特别使用了一个旧的 OpenGL 版本，所以如果找到一个同样旧的 GLSL 教程可能是有用的。任何写着 `#version 120` 的东西都是没问题的。 *JE 1.17+* 将使用 `#version 150` ，但你并不需要局限于这些特定的 `#version` ，你可以使用你的 GPU 驱动支持的任何版本。
+**GLSL 是 OpenGL 的着色器语言**。互联网上有不少这方面的教程，但 Minecraft 使用了一个旧的 OpenGL 版本，所以如果找到一个同样旧的 GLSL 教程可能是有用的。任何写着 `#version 120` 的东西都是没问题的。  
+原版自 **JE 1.17** 开始使用 `#version 150` ，但你并不需要局限于这些特定的 `#version` （OptiFine 也干了），你可以使用你的 GPU 驱动支持的任何版本。  
+[OptiFine 开发文档](https://github.com/sp614x/optifine/tree/master/OptiFineDoc/doc) 中也给出了不少开发细节，尤其是 `shaders.txt` 和 `shaders.properties` 。这些文档也可以在你下载的 OptiFine `.jar` 文件中找到。
 
-[OptiFine 的官方文档](https://github.com/sp614x/optifine/tree/master/OptiFineDoc/doc) 中也给出了不少开发细节，尤其是 `shaders.txt` 和 `shaders.properties` 。这些文档也可以在你下载的 OptiFine `.jar` 文件中找到。
-
-### 基础概念
+</p>
+</chapter>
+<chapter title="基本概念">
+<p>
 
 在编写着色器之前，我们需要了解最基础的概念。经过多个着色器作者的筛选，我们推荐观看以下视频：
 
@@ -35,104 +38,101 @@
 
 你将从这两种做法中学到不同的技能，所以建议至少尝试这两种做法，但从你更喜欢的那一种开始。**注意：魔改着色器包前需要了解相关版权问题，至少应该知道作者是否允许别人魔改后发布他的着色器。**
 
-### 第三方教程和对着色器开发的有用资源
+</p>
+</chapter>
+<chapter title="相关资料">
+<p>
 
-- [https://optifine.readthedocs.io/index.html](https://optifine.readthedocs.io/index.html)
+[OptiFine 开发文档 / 着色器](https://github.com/sp614x/optifine/blob/master/OptiFineDoc/doc/shaders.txt)
+: OptiFine 开发文档的着色器部分。
 
-  - OptiFine 的 doc 文件夹的备用版本，比 Github 上的版本更直观。
+  [OptiDocs](https://optifine.readthedocs.io/shaders_dev.html)
+  : OptiFine 开发文档的格式化编译版本，比 Github 上的版本更直观。
 
-- [https://github.com/IrisShaders/ShaderDoc/blob/master/iris-features.md](https://github.com/IrisShaders/ShaderDoc/blob/master/iris-features.md)
+[Iris 开发文档 / Iris 特性](https://github.com/IrisShaders/ShaderDoc/blob/master/iris-features.md)
+: Iris 提供的额外功能
 
-  - iris 中找到的额外功能。
+[//]: # (- [https://github.com/Shadax-stack/MinecraftShaderProgramming/tree/master]&#40;https://github.com/Shadax-stack/MinecraftShaderProgramming/tree/master&#41;)
 
-- [https://pastebin.com/aB5MJ7aN](https://pastebin.com/aB5MJ7aN)
+[//]: # (  - 介绍 Minecraft 渲染方式、缓冲区和一些示例效果的概述（含代码、图片和解释）。)
 
-  - OptiFine 的流水线、可用的程序和阶段、变化和缓冲区的概述。
+shaderLABS 提供的相关资料*
+:
+- [OpenGL 1.2 模板](https://github.com/shaderLABS/Base-120)
+- [OpenGL 1.5 模板](https://github.com/shaderLABS/Base-150)
+- [OpenGL 3.3 模板](https://github.com/shaderLABS/Base-330)
+- [阴影示例](https://github.com/shaderLABS/Shadow-Tutorial)
+- [光影编写技巧](https://wiki.shaderlabs.org/wiki/Shader_tricks)
 
-- [https://github.com/Shadax-stack/MinecraftShaderProgramming/tree/master](https://github.com/Shadax-stack/MinecraftShaderProgramming/tree/master)
+\* 我们预计未来将文档翻译到本站。
 
-  - 介绍 Minecraft 渲染方式、缓冲区和一些示例效果的概述（含代码、图片和解释）。
+原版着色器相关的信息
+:
+- [谷歌文档 - Minecraft Vanilla Shaders Guide](https://docs.google.com/document/d/15TOAOVLgSNEoHGzpNlkez5cryH3hFF3awXL5Py81EMk/edit#)
+- [GitHub - Better Environment](https://github.com/bradleyq/mc_vanilla_shaders/tree/dev/resourcepack-shaders)
+    - 这是一个开源的原版光影。
+- [GitHub - Minecraft Shaders Wiki](https://github.com/McTsts/Minecraft-Shaders-Wiki)
 
-- [https://github.com/shaderLABS/Base-120](https://github.com/shaderLABS/Base-120)
+[Learn OpenGL CN](https://learnopengl-cn.github.io/)
+: OpenGL 和 GLSL 的介绍性教程，你可以从着色器部分开始。
+- [英文原版](https://learnopengl.com/)
 
-  - 模板包包括大部分的基本文件，但没有一个文件真正做了什么。这使得它非常容易编辑。
+[hughsk.io - Fragment Foundry](https://hughsk.io/fragment-foundry/chapters/01-hello-world.html)
+: GLSL 的交互式教程，在测试中提升你的着色器编写技能。
 
-- [https://github.com/shaderLABS/Base-150](https://github.com/shaderLABS/Base-150)
+[The Book of Shaders](https://thebookofshaders.com/?lan=ch)
+: 着色器的技巧，网站允许在浏览器中编辑示例代码以实时查看其效果。
 
-  - 同样的模板包，但使用 #版本150 。用于 MC 1.17 以上版本（但不是必须的）。
+[Shadertoy](https://www.shadertoy.com/)
+: GLSL 沙盒，包含了很多人的示例代码。
 
-- [https://github.com/shaderLABS/Base-330](https://github.com/shaderLABS/Base-330)
+</p>
+</chapter>
+<chapter title="开发技巧">
 
-  - 同样是模板包，但使用#version 330。同样适用于MC 1.17+。由Bálint制作。
+快速重载
+:
+- 在 Iris 上，你可以按 <shortcut>R</shortcut> 来重新加载当前的着色器包。这是一个**可配置**的绑定键。
+- 在 OptiFine 上，该键位是 <shortcut>F3</shortcut><shortcut>R</shortcut> ，而且是**不可配置**的。不需要进入着色器选择菜单来重新加载着色器。
 
-- [https://github.com/shaderLABS/Shadow-Tutorial](https://github.com/shaderLABS/Shadow-Tutorial)
+使用文件夹
+:
+- 文件夹可以作为着色器包加载，**就像 zip 文件一样**。
+- 目录结构是 `.minecraft/shaderpacks/<着色器名称>/shaders/<着色器代码>` 。
+- 不需要每次想改变什么的时候都解压和重新压缩你的着色器包。
 
-  - 阴影的解释和示例代码。
+语法错误调试 <sup>OptiFine</sup>
+:
+- 在 OptiFine 上，如果你的着色器包有语法错误，你会在聊天菜单中看到 **无效的程序(invalid programs)** 提示，并跳过编译该着色器；
+    - 在写这篇文章的时候， Iris 没有这个错误信息。相反，如果你有任何无效的程序，Iris 将**完全禁用着色器**。
+- 无论如何，如果这两种情况发生在你身上，你可以在你的**日志文件**中找到更多关于导致程序错误的信息。
+- 日志可以在 `.minecraft/logs/latest.log` 找到。
+    - 如果你使用 Forge，那么日志文件将被 `.minecraft/logs/fml-client-latest.log` 代替。
+- 如果你不知道在你的日志文件中寻找什么，请在频道的 [求助问答平台](https://pd.qq.com/s/1dvabyzrt) 处寻求帮助，并确保在那里上传你的日志文件。
 
-- [https://docs.google.com/document/d/15TOAOVLgSNEoHGzpNlkez5cryH3hFF3awXL5Py81EMk/edit#](https://docs.google.com/document/d/15TOAOVLgSNEoHGzpNlkez5cryH3hFF3awXL5Py81EMk/edit#)\
-  [https://docs.google.com/document/d/18AhcnAI55liax72yh70njUomIzezOKshCurfdZPTKwM/edit#](https://docs.google.com/document/d/18AhcnAI55liax72yh70njUomIzezOKshCurfdZPTKwM/edit#)\
-  [https://github.com/bradleyq/mc_vanilla_shaders/tree/dev/resourcepack/assets/minecraft/shaders/program](https://github.com/bradleyq/mc_vanilla_shaders/tree/dev/resourcepack/assets/minecraft/shaders/program)\
-  [https://github.com/McTsts/Minecraft-Shaders-Wiki](https://github.com/McTsts/Minecraft-Shaders-Wiki)
+语法错误调试 <sup>Iris</sup>
+:
+- 在着色器选择菜单中按下 <shortcut>CTRL</shortcut><shortcut>D</shortcut> 可以启用 `调试模式` 。
+- 在调试模式下，如果您的着色器包中存在语法错误，Iris 会在每次加载着色器包时在游戏中显示错误信息。
+    - 请注意，当前版本的Iris可能会显示错误的文件名和行号，降低了其实用性。
+- 调试模式还会将修补后的着色器包输出到 `.minecraft/patched_shaders/` ，给出的行号将与修补后的着色器包相匹配。
+- 修补后的着色器包通常类似于原始着色器包，这可以作为另一种跟踪语法错误的方法。
 
-  - 有关 vanilla 着色器（非 OptiFine ）的信息。
+快速查看日志文件
+:
+- 如果您使用官方启动器，您可以启用 `设置` > `启动 Minecraft: Java Edition 时打开输出日志` ，以在游戏运行时显示日志文件。
+    - 这样做可以更快地访问日志文件，尤其是当您没有一个与当前打开文件同步的文本编辑器时。
+- MultiMC、 Prism Launcher、HMCL、PCL 2 都有类似的选项，其他启动器可能不支持此功能。
 
-- [https://wiki.shaderlabs.org/wiki/Shader_tricks](https://wiki.shaderlabs.org/wiki/Shader_tricks)
+</chapter>
+</tab>
+<tab title="资源包开发">
 
-  - 可用于 Minecraft 着色器的通用技巧和有用的知识。
+[Minecraft 中文 Wiki - 教程:制作资源包](https://zh.minecraft.wiki/w/Tutorial:%E5%88%B6%E4%BD%9C%E8%B5%84%E6%BA%90%E5%8C%85)
+: Minecraft Wiki 编写的资源包教程。
 
-- [https://learnopengl.com/Getting-started/Shaders](https://learnopengl.com/Getting-started/Shaders)\
-  [https://www.lighthouse3d.com/tutorials/glsl-12-tutorial](https://www.lighthouse3d.com/tutorials/glsl-12-tutorial)
+[森罗万象](http://sqwatermark.com/resguide/)
+: MCBBS 纹理版版主整理的资源包制作指南。
 
-  - OpenGL 和着色器的介绍性教程，不过你可以跳过 OpenGL 部分。
-
-- [https://hughsk.io/fragment-foundry/chapters/01-hello-world.html](https://hughsk.io/fragment-foundry/chapters/01-hello-world.html)
-
-  - GLSL 的交互式浏览器内教程，在阅读过程中测试你的技能。
-
-- [https://thebookofshaders.com/](https://thebookofshaders.com/)
-
-  - 高级着色器的技巧。网站允许在浏览器中编辑示例代码以实时查看其效果。
-
-- [https://www.shadertoy.com/](https://www.shadertoy.com/)
-
-  - 在浏览器中工作的 GLSL 沙盒。有点类似于合成通道。包含了很多人的示例代码。
-
-## 资源包开发
-
-- 对于想制作资源包，但不知道如何开始的人，请看下方文档：
-  - [https://minecraft.fandom.com/wiki/Tutorials/Creating_a_resource_pack](https://minecraft.fandom.com/wiki/Tutorials/Creating_a_resource_pack)
-
-- [http://sqwatermark.com/resguide/](http://sqwatermark.com/resguide/)
-
-  - MCBBS 纹理版版主整理的资源包制作指南。
-
-## 开发技巧和窍门
-
-- 快速重载：
-  - 在 `Iris` 上，你可以按 `R` 来重新加载当前的着色器包。事实上，这是一个**可配置**的绑定键。
-  - 在 `OptiFine` 上，该键位是 `F3+R` ，而且是**不可配置**的。不需要进入着色器选择菜单来重新加载着色器。
-
-- 文件夹：
-  - 文件夹可以作为着色器包加载，**就像 zip 文件一样**。
-  - 目录结构是 `.minecraft/shaderpacks/<着色器名称>/shaders/<着色器代码>` 。
-  - 不需要每次想改变什么的时候都解压和重新压缩你的着色器包。
-
-- 语法错误调试（OptiFine）：
-  - 在 `OptiFine` 上，如果你的着色器包有语法错误，你会在聊天菜单中看到 **无效的程序(invalid programs)** 提示；
-  - 在写这篇文章的时候， `Iris` 没有这个错误信息。相反，如果你有任何无效的程序，`Iris` 将**完全禁用着色器**。
-  - 无论如何，如果这两种情况发生在你身上，你可以在你的 `日志文件` 中找到更多关于导致程序错误的信息。
-  - 日志可以在 `.minecraft/logs/latest.log` 找到。
-    - 如果你使用 `Forge` ，那么日志文件将被 `.minecraft/logs/fml-client-latest.log` 代替。
-  - 如果你不知道在你的日志文件中寻找什么，请在频道的 [求助问答平台](https://pd.qq.com/s/1dvabyzrt) 处寻求帮助，并确保在那里上传你的日志文件。
-
-- 语法错误调试（Iris）：
-  - 在着色器选择菜单中按下 `CTRL + D` 可以启用“调试模式”。
-  - 在调试模式下，如果您的着色器包中存在语法错误，Iris 会在每次加载着色器包时在游戏中显示错误信息。
-  - 请注意，当前版本的Iris可能会显示错误的文件名和行号，降低了其实用性。
-  - 调试模式还会将修补后的着色器包输出到 `.minecraft/patched_shaders/`，给出的行号将与修补后的着色器包相匹配。
-  - 修补后的着色器包通常类似于原始着色器包，这可以作为另一种跟踪语法错误的方法。
-
-- 快速查看日志文件：
-  - 如果您使用官方启动器，您可以在设置 -> 启动 Minecraft: Java Edition 时打开输出日志中启用选项，以在游戏运行时显示日志文件。
-  - 这样做可以更快地访问日志文件，尤其是当您没有一个与当前打开文件同步的文本编辑器时。
-  - MultiMC 和 Prism Launcher 都有类似的选项。其他启动器可能不支持此功能。
+</tab>
+</tabs>

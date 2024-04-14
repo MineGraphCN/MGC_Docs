@@ -14,9 +14,9 @@
 
 这篇文章主要使用 **HMCL** 和 **PCL 2** 两款国产启动器进行教学，你可以在下面获取这些启动器：
 
-- [PCL2 免费正式版](https://afdian.net/a/LTCat?tab=feed)
-  - [付费快照版](https://afdian.net/a/LTCat)
 - [HMCL](https://hmcl.huangyuhui.net/download/)
+- [PCL2 免费正式版](https://afdian.net/a/LTCat?tab=feed)
+    - [付费快照版](https://afdian.net/a/LTCat)
 
 我们只着重于较为流行的 OptiFine 和 Iris。
 

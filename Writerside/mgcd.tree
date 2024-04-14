@@ -65,13 +65,13 @@
         <toc-element topic="starter-topic.md"/>
     </toc-element>
     <toc-element topic="Gallery.md">
-        <toc-element topic="2021-autumn.md"/>
-        <toc-element topic="2021-winter.md"/>
-        <toc-element topic="2022-spring.md"/>
-        <toc-element topic="2022-summer.md"/>
-        <toc-element topic="2022-autumn.md"/>
-        <toc-element topic="2023-spring.md"/>
         <toc-element topic="2024-spring.md"/>
+        <toc-element topic="2023-spring.md"/>
+        <toc-element topic="2022-autumn.md"/>
+        <toc-element topic="2022-summer.md"/>
+        <toc-element topic="2022-spring.md"/>
+        <toc-element topic="2021-winter.md"/>
+        <toc-element topic="2021-autumn.md"/>
     </toc-element>
     <toc-element topic="About.md"/>
 </instance-profile>
