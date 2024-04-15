@@ -9,7 +9,7 @@
         <download-page>https://mgcd.hypercol.com/</download-page>
         <showDownloadButton>true</showDownloadButton>
         <versions-switcher>https://mgcd.hypercol.com/</versions-switcher>
-        <product-web-url>https://mgcd.hypercol.com/</product-web-url>
+        <product-web-url>https://docs.minegraph.cn/home</product-web-url>
         <algolia-id>AMQJCXFVUL</algolia-id>
         <algolia-api-key>64206f0ec56ab84f94d171e5a39b6815</algolia-api-key>
         <algolia-index>mgcd-hypercol</algolia-index>
