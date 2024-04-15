@@ -104,7 +104,7 @@ shaderLABS 提供的相关资料*
 语法错误调试 <sup>OptiFine</sup>
 :
 - 在 OptiFine 上，如果你的着色器包有语法错误，你会在聊天菜单中看到 **无效的程序(invalid programs)** 提示，并跳过编译该着色器；
-    - 在写这篇文章的时候， Iris 没有这个错误信息。相反，如果你有任何无效的程序，Iris 将**完全禁用着色器**。
+    - 在写这篇文档的时候， Iris 没有这个错误信息。相反，如果你有任何无效的程序，Iris 将**完全禁用着色器**。
 - 无论如何，如果这两种情况发生在你身上，你可以在你的**日志文件**中找到更多关于导致程序错误的信息。
 - 日志可以在 `.minecraft/logs/latest.log` 找到。
     - 如果你使用 Forge，那么日志文件将被 `.minecraft/logs/fml-client-latest.log` 代替。

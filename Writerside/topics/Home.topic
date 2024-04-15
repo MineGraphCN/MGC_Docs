@@ -29,20 +29,20 @@
 
         <!--    Add several topics that are most important for this section.    -->
         <primary>
-            <title>浏览作品手册</title>
-            <a href="itt3.md" summary="久负盛名的 iterationT，现已推出 3.0！">iterationT 3.0</a>
-            <a href="gfme.md" summary="由 GeForceLegend 魔改的 SEUS PTGI，拥有更强的可配置性和更好的质量。">SEUS PTGI GFME</a>
-            <a href="tmeo.md" summary="写实风格的现代 PBR 资源包，还有大量自定义模型等你探索。">TMEO 现代材质</a>
+            <title>浏览作品</title>
+            <a href="itt3.md" summary="久负盛名的 iterationT，现已推出 3.0！">【手册】 iterationT 3.0</a>
+            <a href="gfme.md" summary="由 GeForceLegend 魔改的 SEUS PTGI，拥有更强的可配置性和更好的质量。">【手册】 SEUS PTGI GFME</a>
+            <a href="tmeo.md" summary="写实风格的现代 PBR 资源包，还有大量自定义模型等你探索。">【指南】 TMEO 现代材质</a>
             <a href="https://mgcd.hypercol.com/works/je_shaderpacks.html" summary="【临时】访问旧版 MGCD 查看作品表格。">获取更多</a>
         </primary>
 
         <!--    Add several topics that are less important or are relevant only for advanced/experienced users.    -->
         <secondary>
             <title>创作者文档</title>
-            <a href="shaderTutorial.md" summary=""/>
-            <a href="resourceTutorial.md" summary=""/>
-            <a href="developTips.md" summary=""/>
-            <a href="labpbrMaterialStandard.md" summary=""/>
+            <a href="shaderTutorial.md" summary="管线 | 程序 | 功能实现"/>
+            <a href="resourceTutorial.md" summary="基本概念 | 纹理绘制 | 特殊纹理制作"/>
+            <a href="developTips.md" summary="着色器 [概念 | 入门 | 开发资料] | 资源包 [开发资料]"/>
+            <a href="labpbrMaterialStandard.md" summary="shaderLABS 统一的着色器和资源包 PBR 格式。"/>
         </secondary>
 
         <!--    Optionally add additional cards and links to topics that are not in this section but may be relevant.    -->

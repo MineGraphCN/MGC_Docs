@@ -173,17 +173,17 @@ OptiFine 同时支持一些其它的特殊贴图，如 CTM、CIT、CEM 等。简
 
 ### 特殊纹理 <sup>OptiFine</sup> {id="特殊纹理"}
 
-| 名称                       | 简写  | 用途       |
-|--------------------------|:---:|----------|
-| Connected Textures Model | CTM | 方块间的纹理衔接 |
-| Custom Item Textures     | CIT | 自定义物品纹理  |
-| Custom Entity Models     | CEM | 自定义实体模型  |
-| Graphical User Interface | GUI | 自定义游戏界面  |
-| Animation                |  -  | 自定义动态纹理  |
-| Emissive Textures        |  -  | 自发光纹理    |
-| Random Entities          |  -  | 随机实体纹理   |
-| Natural Textures         |  -  | 自然纹理     |
-| Custom Sky               |  -  | 自定义天空    |
+| 名称                              | 简写  | 用途       |
+|---------------------------------|:---:|----------|
+| Connected Textures              | CTM | 方块间的纹理衔接 |
+| Custom Item Textures            | CIT | 自定义物品纹理  |
+| Custom Entity Models            | CEM | 自定义实体模型  |
+| Custom Graphical User Interface |  -  | 自定义游戏界面  |
+| Animated Textures               |  -  | 自定义动态纹理  |
+| Emissive Textures               |  -  | 自发光纹理    |
+| Random Entities                 |  -  | 随机实体纹理   |
+| Natural Textures                |  -  | 自然纹理     |
+| Custom Sky                      |  -  | 自定义天空    |
 
 这些贴图可以在 OptiFine 中使用，也可以使用其他 MOD 实现。  
 详细介绍可参考 MCBBS 纹理版版主 *SQwatermark* 翻译的 [OptiFine官方文档](http://sqwatermark.com/resguide/optifinedoc/) 。
