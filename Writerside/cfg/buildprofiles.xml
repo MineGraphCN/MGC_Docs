@@ -3,7 +3,7 @@
     <variables>
         <primary-color>#fdb71b</primary-color>
         <color-preset>contrast</color-preset>
-        <custom-favicons>MGC-darklogo.png</custom-favicons>
+        <custom-favicons>MGC-logo-白色背景.png</custom-favicons>
         <header-logo>MGC-darklogo.png</header-logo>
         <download-title>旧版 MGCD</download-title>
         <download-page>https://mgcd.hypercol.com/</download-page>
@@ -27,7 +27,7 @@
             <link href="https://pd.qq.com/s/lem9db">QQ 频道</link>
             <link href="https://github.com/MineGraphCN/MGC_Docs">GitHub 项目仓库</link>
 
-            <social type="bilibili" href="https://space.bilibili.com/1499821905/">Minecraft 图形学中文社区</social>
+            <social type="bilibili" href="https://space.bilibili.com/480528388/">HyperCol</social>
         </footer>
     </build-profile>
 </buildprofiles>
