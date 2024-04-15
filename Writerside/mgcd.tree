@@ -5,11 +5,11 @@
 <instance-profile id="mgcd"
                  name="MineGraph Docs"
                  start-page="Home.topic">
-    <toc-element topic="Home.topic" toc-title="主页"/>
+    <toc-element topic="Home.topic"/>
     <toc-element topic="Community.md"/>
     <toc-element toc-title="前往图形站" href="https://minegraph.cn/"/>
     <toc-element topic="betterRTX.md"/>
-    <toc-element toc-title="作品指南和手册">
+    <toc-element toc-title="作品手册和安装指南">
         <toc-element toc-title="Java 版">
             <toc-element toc-title="光影包" topic="shaderpacksCommon.md">
                 <toc-element topic="itt2.md"/>

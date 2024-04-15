@@ -1,16 +1,20 @@
 # BetterRTX
 
-[前往 Bilibili 观看视频](https://b23.tv/BV1Z94y1H74o)
+[【Bilibili】BetterRTX实验分支 | 发光实体效果展示 - Defined PBR v1.2.0正式版](https://b23.tv/BV1Z94y1H74o)
 
-<procedure title="观看视频【Bilibili】" collapsible="true">
-<iframe src="//player.bilibili.com/player.html?aid=375588815&bvid=BV1so4y1m7U5&cid=339262048&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"/>
-</procedure>
+[//]: # (<procedure title="【Bilibili】演示视频" collapsible="true">)
+
+[//]: # (<iframe src="//player.bilibili.com/player.html?aid=375588815&bvid=BV1so4y1m7U5&cid=339262048&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"/>)
+
+[//]: # (</procedure>)
+
+<!--如果将来 Writerside 支持了 <iframe/> 再取消上面的注释-->
 
 ## 前言
 
 感谢你选择 BetterRTX ，这是 Minecraft 基岩版上的首款光线追踪模组！
 
-这个项目由 Madlad 的团队成员 @Sleepi、@John Payne、@TheBlackDragon、@-jason 于 2022 年 11 月开始开发，他们与一批测试玩家和创作者合作，为 Minecraft RTX 带来了迄今最大的更新！他们不仅增加了许多新功能，还修复了一些已知的 bug！
+这个项目由 _Madlad_ 的团队成员 _@Sleepi_、_@John Payne_、_@TheBlackDragon_、_@-jason_ 于 2022 年 11 月开始开发，他们与一批测试玩家和创作者合作，为 Minecraft RTX 带来了迄今最大的更新！他们不仅增加了许多新功能，还修复了一些已知的 bug！
 
 我们希望 BetterRTX 能够让你满意或惊喜。虽然它只经过了6个月的开发，但我们已经为 Minecraft RTX 做出了一个非常棒的更新！
 
@@ -30,9 +34,9 @@
 
 - 以 **管理员身份** 运行脚本；
 
-- 若遇到脚本秒崩溃，请在 **具有管理员权限** 的 `PowerShell` 中运行此命令：
+- 若遇到脚本秒崩溃，请在 **具有管理员权限** 的 **PowerShell** 中运行此命令：
 
-```shell
+```Shell
 Set-ExecutionPolicy -Scope CurrentUser Bypass
 ```
 
@@ -46,7 +50,7 @@ Set-ExecutionPolicy -Scope CurrentUser Bypass
 
 本节介绍如何在读取安装列表或者自动下载时出现问题的情况下，使用半自动安装方式进行安装。
 
-- 请确保已安装 `IOBit Unlocker` ，且已阅读上方的注意事项；
+- 请确保已安装 **IOBit Unlocker** ，且已阅读上方的注意事项；
 
 - 点击 [此处](https://gxm13.lanzoub.com/b07v2jw2j) 打开蓝奏云，下载压缩包。密码为 `MGC`；
 
@@ -77,7 +81,7 @@ Set-ExecutionPolicy -Scope CurrentUser Bypass
 - 立方构想V4000：与平方构想相比，更加个性化、风格化，适合追求新颖的原版风格资源包爱好者。
   - 资源包链接：https://afdian.net/a/Fogg05
 
-国外（需自备翻墙工具）：
+国外（需自备代理）：
 -  DefinedPBR：BetterRTX作者开发，除PBR反射外，有实体发光（需搭配实验版Better RTX）。
    - 资源包链接：https://www.patreon.com/MADLAD3718
 
