@@ -1,5 +1,7 @@
 # Iris 等效 OptiFine 功能的模组
 
+<show-structure depth="2"/>
+
 > 这篇文档是近期新增的文档。
 >
 {style="note" title="新文档"}
@@ -11,7 +13,7 @@
 Sodium [(Modrinth)](https://modrinth.com/mod/sodium)
 : Iris 运行的必需品。
 
-Indium [(Modrinth)](https://modrinth.com/mod/indium)
+Indium [(CurseForge)](https://www.curseforge.com/minecraft/mc-mods/indium) [(Modrinth)](https://modrinth.com/mod/indium)
 : 确保 Sodium 和某些模组兼容性的必需品。
 
 ## 缩放

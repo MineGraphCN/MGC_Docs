@@ -2,11 +2,18 @@
 
 <show-structure depth="2"/>
 
+<tldr>
+
+**省流**
+
+安装 OptiFine 或 Iris，将光影放入 `shaderpacks` 文件夹。
+</tldr>
+
 > 这篇文档在最近进行过订正，可以放心阅读。
 >
 {style="note" title="已订正的文档"}
 
-这篇文档帮助新人从安装游戏开始，直到最终成功运行光影为止。  
+这篇文档帮助新人从安装游戏开始，直到最终成功运行光影为止。
 
 ## 准备工作
 
@@ -57,7 +64,7 @@
                                 <step>
 
 - 如果你想直接使用启动器所在目录，选择 `当前目录`
-- 如果你已有游戏目录，点击 `添加游戏目录` 并将路径引导到 `<你的游戏文件夹>\.minecraft` 。
+- 如果你已有游戏目录，点击 `添加游戏目录` 并将路径引导到 `<你的游戏文件夹>\.minecraft\` 。
 </step>
 <step>
 
@@ -86,7 +93,7 @@
 - 如果你想直接使用启动器所在目录，直接选择 `下载游戏` 。
 ![下载或选择位置](of_pure_builtin_pcl2_1.png "下载或选择位置")
     > 有一个例外是，如果你以前使用过 PCL 2 启动器，那么可能存在其他目录，如果此时你想在启动器所在目录安装游戏，那么你可以点击 `版本选择` > `新建 .minecraft 文件夹` 。
-- 如果你已有游戏目录，点击 `版本选择` > `添加已有文件夹` 并将路径引导到 `<你的游戏文件夹>\.minecraft` 。
+- 如果你已有游戏目录，点击 `版本选择` > `添加已有文件夹` 并将路径引导到 `<你的游戏文件夹>\.minecraft\` 。
 ![新建或添加现有](of_pure_builtin_pcl2_2.png "新建或添加现有")
 </step>
                                 <step>
@@ -100,7 +107,7 @@
 > PCL 2 不允许玩家安装游戏之后更换嵌入式安装的 OptiFine 和模组加载器，所以你需要确保你安装了正确的版本。
 >
 > - 如果你需要更新 OptiFine，那么需要重新下载该版本。
-> - 如果你开启了版本隔离，记得迁移 `<你的目录>/.minecraft/versions/<原本的游戏版本文件夹>/` 下的资源文件！
+> - 如果你开启了版本隔离，记得迁移 `<你的目录>\.minecraft\versions\<原本的游戏版本文件夹>\` 下的资源文件！
 >
 {style="note"}
 </step>
@@ -144,10 +151,10 @@
 </step>
                             <step>
 
-运行下载好的文件，点击 `...` 将路径定位到 `<你的游戏目录>/.minecraft/` ，然后点击 `Install` 。
+运行下载好的文件，点击 `...` 将路径定位到 `<你的游戏目录>\.minecraft\` ，然后点击 `Install` 。
 ![OptiFine 安装页面](of_pure_manual_2.png "OptiFine 安装页面")
 > - 如果你的文件图标不是 Java 或者 JDK，你需要右键选择 `打开方式` 。
-> - 如果你在你的打开方式中找不到 Java 或者 JDK，你需要通过 `选择其他应用` > `在电脑上选择应用` ，并将路径定位到 `<你的 Java 路径>/bin/javaw.exe`。
+> - 如果你在你的打开方式中找不到 Java 或者 JDK，你需要通过 `选择其他应用` > `在电脑上选择应用` ，并将路径定位到 `<你的 Java 路径>\bin\javaw.exe`。
 > 
 {style="note" title="你需要使用 Java 运行此文件。"}
 </step>
@@ -212,7 +219,7 @@
 </step>
                         <step>
 
-运行第一步下载好的文件，点击 `Extract` 将路径定位到 `<你的游戏目录>/.minecraft/mods/` <sup>未启用版本隔离</sup> 或 `<你的游戏目录>/.minecraft/versions/<对应游戏版本文件夹>/mods/` <sup>启用版本隔离</sup>。
+运行第一步下载好的文件，点击 `Extract` 将路径定位到 `<你的游戏目录>\.minecraft\mods\` <sup>未启用版本隔离</sup> 或 `<你的游戏目录>\.minecraft\versions\<对应游戏版本文件夹>\mods\` <sup>启用版本隔离</sup>。
 ![作为模组提取 OptiFine](of_forge_ofasmod.png "作为模组提取 OptiFine")
 
 安装成功后，OptiFine 会弹出提示：
@@ -273,13 +280,13 @@ OptiFine is successfully extracted.
 </step>
                         <step>
 
-运行下载好的文件，选择 `Install client` ，然后点击 `...` 将路径定位到 `<你的游戏目录>/.minecraft/` ，然后点击 `确定` 。
+运行下载好的文件，选择 `Install client` ，然后点击 `...` 将路径定位到 `<你的游戏目录>\.minecraft\` ，然后点击 `确定` 。
 ![安装 Forge](of_forge_manual_1.png "安装 Forge")
 </step>
                         <step>
 
 安装成功后，Forge 会弹出提示：
-```
+```Plain Text
 Successfully installed client profile forge for version <游戏版本>-forge-<Forge 版本> into launcher, and downloaded [N] libraries
 ```
 > 如果安装失败，请检查第五步你的游戏本体和 Forge 路径是否正确。
@@ -340,7 +347,7 @@ Successfully installed client profile forge for version <游戏版本>-forge-<Fo
 </step>
                                     <step>
 
-运行下载好的文件，选择 `客户端` ，将路径定位到 `<你的游戏目录>/.minecraft/` ，然后点击安装。
+运行下载好的文件，选择 `客户端` ，将路径定位到 `<你的游戏目录>\.minecraft\` ，然后点击安装。
 ![安装 Fabric](of_fabric_manual_1.png "安装 Fabric")
 
 安装成功后，Fabric 会弹出提示：
@@ -358,7 +365,7 @@ Successfully installed client profile forge for version <游戏版本>-forge-<Fo
 </step>
                                     <step>
 
-将下载的 Fabric API 拖入 `<你的游戏目录>/.minecraft/mods/` <sup>未启用版本隔离</sup> 或 `<你的游戏目录>/.minecraft/versions/<对应游戏版本文件夹>/mods/` <sup>启用版本隔离</sup> 。
+将下载的 Fabric API 拖入 `<你的游戏目录>\.minecraft\mods\` <sup>未启用版本隔离</sup> 或 `<你的游戏目录>\.minecraft\versions\<对应游戏版本文件夹>\mods\` <sup>启用版本隔离</sup> 。
 </step>
                                     <step>
 
@@ -371,7 +378,7 @@ Successfully installed client profile forge for version <游戏版本>-forge-<Fo
                     </step>
                     <step>
 
-将下载的 OptiFabric 拖入 `<你的游戏目录>/.minecraft/mods/` <sup>未启用版本隔离</sup> 或 `<你的游戏目录>/.minecraft/versions/<对应游戏版本文件夹>/mods/` <sup>启用版本隔离</sup> 。 
+将下载的 OptiFabric 拖入 `<你的游戏目录>\.minecraft\mods\` <sup>未启用版本隔离</sup> 或 `<你的游戏目录>\.minecraft\versions\<对应游戏版本文件夹>\mods\` <sup>启用版本隔离</sup> 。 
 </step>
                     <step>
 
@@ -395,7 +402,7 @@ Successfully installed client profile forge for version <游戏版本>-forge-<Fo
 </step>
             <step>
 
-将下载的 Iris 拖入 `<你的游戏目录>/.minecraft/mods/` <sup>未启用版本隔离</sup> 或 `<你的游戏目录>/.minecraft/versions/<对应游戏版本文件夹>/mods/` <sup>启用版本隔离</sup> 。
+将下载的 Iris 拖入 `<你的游戏目录>\.minecraft\mods\` <sup>未启用版本隔离</sup> 或 `<你的游戏目录>\.minecraft\versions\<对应游戏版本文件夹>\mods\` <sup>启用版本隔离</sup> 。
 </step>
             <step>
 
@@ -430,15 +437,15 @@ Java 路径
 
 版本隔离
 :
-- `默认` 模式将游戏的各种资源文件（光影、资源包、存档）放在 `<你的目录>/.minecraft/` 下，并且和其他未开启版本隔离的游戏共享。
-- `各版本独立` 模式将游戏的资源文件放在 `<你的目录>/.minecraft/versions/<对应游戏版本文件夹>/` 下，并且不与其他任何版本共享。
+- `默认` 模式将游戏的各种资源文件（光影、资源包、存档）放在 `<你的目录>\.minecraft\` 下，并且和其他未开启版本隔离的游戏共享。
+- `各版本独立` 模式将游戏的资源文件放在 `<你的目录>\.minecraft\versions\<对应游戏版本文件夹>\` 下，并且不与其他任何版本共享。
 - `自定义` 模式由你自己决定游戏资源文件的存放位置，并且与其他同位置的的版本共享。
 
 游戏内存
 : 决定游戏分配的内存，最好小于等于 `设备总内存` 的一半，且不大于 16 GB。
 
     自动分配内存
-    : 勾选后 `游戏内存` 选项变为 `最低内存分配` ，根据当前系统是否空闲和版本预估内存要求动态分配内存，但是不超过 `最低内存分配`
+    : 勾选后 `游戏内存` 选项变为 `最低内存分配` ，根据当前系统是否空闲和版本预估内存要求动态分配内存，但是不超过 `最低内存分配` 。
 
 启动器可见性
 : 决定游戏启动后启动器的行为，保留启动器可能在后台占用资源，但是如果游戏崩溃了，启动器可以输出崩溃日志。
@@ -490,8 +497,8 @@ Java 路径
 
 版本隔离
 :
-- `关闭` 模式将游戏的各种资源文件（光影、资源包、存档）放在 `<你的目录>/.minecraft/` 下，并且和其他未开启版本隔离的游戏共享。
-- `隔离<版本>` 模式将符合要求版本的资源文件放在 `<你的目录>/.minecraft/versions/<对应游戏版本文件夹>/` 下，并且不与其他任何版本共享。
+- `关闭` 模式将游戏的各种资源文件（光影、资源包、存档）放在 `<你的目录>\.minecraft\` 下，并且和其他未开启版本隔离的游戏共享。
+- `隔离<版本>` 模式将符合要求版本的资源文件放在 `<你的目录>\.minecraft\versions\<对应游戏版本文件夹>\` 下，并且不与其他任何版本共享。
 
 启动器可见性
 : 决定游戏启动后启动器的行为，保留启动器可能在后台占用资源，但是如果游戏崩溃了，启动器可以输出崩溃日志。
@@ -519,10 +526,33 @@ Java 路径
 
 启动游戏后，配置视频设置，参见 [视频设置和相关显示问题](videoSettings.md "这篇文档列出了整个视频设置选项卡中容易出现问题的设置以及修改建议。") 。
 
-配置完成之后，将光影放入光影包文件夹并选中即可。
-> 你可以从 `视频设置` > `光影` > `光影包文件夹` <sup>OptiFine</sup> 或 `视频设置` > `光影包` > `打开光影包文件夹` <sup>Iris</sup> 打开光影包文件夹。
-> 
-{style="note"}
+## 检查并安装光影
+
+检查你的光影是否符合下列要求：
+- 打开压缩包或文件夹后应**有名为 `shaders` 的文件夹。**
+    ```Shell
+    └─ <光影名称 | 光影名称.zip> # 仅支持未加密的 .zip 压缩包
+      └─ shaders # 重要！
+        └─ <着色器程序相关文件和文件夹>
+    ```
+  > 如果你没有解压缩软件，我们推荐 [7-zip](https://sparanoid.com/lab/7z/) 。
+- 确保不是原版光影或 Canvas 光影，否则你应当直接像 [安装资源包](resourcepacksCommon.md "资源包安装通用教程") 那样安装。
+
+检查完成之后，将光影放入光影包文件夹并选中即可。
+<note>
+你可以从
+<tabs group="A">
+<tab title="OptiFine" group-key="of">
+
+`视频设置` > `光影` > `光影包文件夹`
+</tab>
+<tab title="Iris" group-key="iris">
+
+`视频设置` > `光影包` > `打开光影包文件夹`
+</tab>
+</tabs>
+打开光影包文件夹。
+</note>
 
 <seealso>
     <category ref="related">

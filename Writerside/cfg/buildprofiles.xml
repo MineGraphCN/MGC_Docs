@@ -3,7 +3,7 @@
     <variables>
         <primary-color>#fdb71b</primary-color>
         <color-preset>contrast</color-preset>
-        <custom-favicons>MGC-logo-白色背景.png</custom-favicons>
+        <custom-favicons>page_logo.png</custom-favicons>
         <header-logo>MGC-darklogo.png</header-logo>
         <download-title>旧版 MGCD</download-title>
         <download-page>https://mgcd.hypercol.com/</download-page>
