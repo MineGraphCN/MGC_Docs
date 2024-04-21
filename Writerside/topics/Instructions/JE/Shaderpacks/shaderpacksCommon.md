@@ -284,7 +284,7 @@ OptiFine is successfully extracted.
                         <step>
 
 安装成功后，Forge 会弹出提示：
-```Plain Text
+```
 Successfully installed client profile forge for version <游戏版本>-forge-<Forge 版本> into launcher, and downloaded [N] libraries
 ```
 > 如果安装失败，请检查第五步你的游戏本体和 Forge 路径是否正确。

@@ -7,6 +7,156 @@
 <!--Writerside adds this topic when you create a new documentation project.
 You can use it as a sandbox to play with Writerside features, and remove it from the TOC when you don't need it anymore.-->
 
+## 常用格式速查
+
+> 快捷键以 [JetBrains Writerside IDE](https://www.jetbrains.com/zh-cn/writerside/download/#section=windows) 为准。
+
+### 标题
+```markdown
+# 文档标题
+## 二级标题
+...
+##### 五级标题
+```
+
+索引深度
+```xml
+<show-structure depth="正整数"/>
+```
+> 这条代码决定了文档索引（竖屏左侧顶部，横屏右侧）显示的最大标题级别。
+
+环绕插入 `<xml>代码</xml>` <shortcut>框选内容</shortcut>, <shortcut>Ctrl</shortcut><shortcut>Alt</shortcut><shortcut>T</shortcut>, <shortcut>T</shortcut>
+
+> 如果是设置类代码，可以使用 `<代码/>` 立即直接终止。
+
+_斜体_ <shortcut>Ctrl</shortcut><shortcut>I</shortcut>
+```markdown
+<*文字* | _文字_>
+```
+
+**粗体** <shortcut>Ctrl</shortcut><shortcut>B</shortcut>
+```markdown
+<**文字** | __文字__>
+```
+
+***粗斜体***
+```markdown
+<**_文字_** | ***文字*** | __*文字*__>
+```
+> Writerside IDE 从内向外，先检测斜体，如果使用类似 `_**文字**_` 格式，无法使用快捷键取消斜体。
+
+~~删除线~~ <shortcut>Ctrl</shortcut><shortcut>Shift</shortcut><shortcut>S</shortcut>
+```markdown
+~~文字~~
+```
+
+`行内代码块` <shortcut>Ctrl</shortcut><shortcut>Shift</shortcut><shortcut>C</shortcut>
+```markdown
+`文字`
+```
+
+[链接](https://b23.tv/BV1GJ411x7h7)
+```markdown
+[文字](<站内文档.md#章节 | 外部链接>)
+<外部链接>  <- 使用尖括号括起来即可
+```
+
+<sup>角标</sup>
+
+```xml
+<sup>文字</sup>
+```
+
+<shortcut>按键</shortcut>
+
+```xml
+<shortcut>文字</shortcut>
+```
+
+术语
+:
+    ```markdown
+    标题
+    : 内容
+    ```
+
+```markdown
+    代码块
+    ```编程语言
+    内容
+    ```
+```
+
+> 注释／提示／警告
+> ```markdown
+> > 内容
+> >             <- 留白一行
+> {style="<tip(默认，不需要留白和此属性框) | note | warning>"}
+> ```
+
+- 无序步骤
+```markdown
+- 步骤1
+- 步骤2
+    - 子步骤1
+- 步骤3
+```
+> 可以使用 `+` `-` `*` 。
+
+1. 有序步骤
+```markdown
+1. 步骤1
+2. 步骤2
+```
+> 可以和无序步骤混用
+
+<procedure>
+<title>步骤块</title>
+
+```xml
+<procedure type="<steps(有序，默认) | choices(无序)>">
+    <title>标题（可选）</title>
+    <step>步骤1</step>
+    <step>步骤2</step>
+</procedure>
+```
+</procedure>
+
+新起
+
+段落
+```markdown
+段落1
+
+段落2
+```
+
+不新起段落  
+换行
+```markdown
+行1  <-两个空格
+行2
+```
+{show-white-spaces="true"}
+
+| 表 |
+|---|
+| 格 |
+```markdown
+| 表头1 | 表头2 | ... |
+|:----|:----:|-----:|   <- 对齐行
+| 内容1 | 内容2 | ... |
+| 内容3 | 内容4 | ... |
+```
+> |:-| 表示左对齐，|:-:| 表示居中对齐，|-:| 表示右对齐，|-| 表示默认对齐。
+
+<tooltip term="缩写">缩写</tooltip>
+
+```xml
+<tooltip term="缩写">文本</tooltip>
+```
+> 你可以在 `Writerside/cfg/glossary.xml` 中查询和添加。
+
 ## Add new topics
 You can create empty topics, or choose a template for different types of content that contains some boilerplate structure to help you get started:
 
@@ -72,12 +222,3 @@ Before you do, please read our [Code of conduct](https://plugins.jetbrains.com/p
 We assume that you’ve read and acknowledged it before joining.
 
 You can also always email us at [writerside@jetbrains.com](mailto:writerside@jetbrains.com).
-
-<seealso>
-    <category ref="wrs">
-        <a href="https://plugins.jetbrains.com/plugin/20158-writerside/docs/markup-reference.html">Markup reference</a>
-        <a href="https://plugins.jetbrains.com/plugin/20158-writerside/docs/manage-table-of-contents.html">Reorder topics in the TOC</a>
-        <a href="https://plugins.jetbrains.com/plugin/20158-writerside/docs/local-build.html">Build and publish</a>
-        <a href="https://plugins.jetbrains.com/plugin/20158-writerside/docs/configure-search.html">Configure Search</a>
-    </category>
-</seealso>

@@ -51,7 +51,7 @@ iterationT在1.16.5以下的需要在光影设置内启用 `G7前兼容性` 选�
 
 **可参考以下视频：**
 
-<iframe src="//player.bilibili.com/player.html?aid=630543306&bvid=BV13b4y1f7m7&cid=338922619&page=1&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width:100%;height:420px"> </iframe>
+[//]: # (<iframe src="//player.bilibili.com/player.html?aid=630543306&bvid=BV13b4y1f7m7&cid=338922619&page=1&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width:100%;height:420px"> </iframe>)
 
 **注意：1.17.x和1.18.x可能会出现游戏资源包列表读取不到秦256x和1024x的情况，原因未知，mojang出来挨打！解压成文件夹形式可以读取**
 
@@ -61,25 +61,25 @@ iterationT在1.16.5以下的需要在光影设置内启用 `G7前兼容性` 选�
 
 **_（第二章内容非常重要！里面的问题老玩家也会犯）_**
 
-#### 1. 装载光影
+1. 装载光影
 
-[MGC Docs - 光影安装手册](../Shaderpacks/shaderpacksCommon)
+    [MGC Docs - 光影安装手册](shaderpacksCommon.md)
 
-#### 2. 选项→视频设置→光影→按照图片设置
+2. 选项→视频设置→光影→按照图片设置
 
-![图片](qin-1.png)
+    ![图片](qin-1.png)
 
-渲染精度和阴影精度你也可以拉到1x以上，总之不能低于1x
+    渲染精度和阴影精度你也可以拉到1x以上，总之不能低于1x
 
-#### 3. 选项→视频设置→性能→区域渲染→关
+3. 选项→视频设置→性能→区域渲染→关
 
-![图片](qin.png)
+    ![图片](qin.png)
 
-#### 4. 选项→视频设置→细节设置→树→高品质
+4. 选项→视频设置→细节设置→树→高品质
 
-![图片](qin-2.png)
+    ![图片](qin-2.png)
 
-#### 5. 选项→视频设置→细节设置→替选方块→关
+5. 选项→视频设置→细节设置→替选方块→关
 
 ![图片](qin-3.png)
 
@@ -182,7 +182,7 @@ Ps：**每个光影的选项位置不同**，有的光影设置还是英文的�
 
 **【注意】以下内容都在下列视频说清楚了**
 
-<iframe src="//player.bilibili.com/player.html?aid=630543306&bvid=BV13b4y1f7m7&cid=338922619&page=1&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width:100%;height:420px"> </iframe>
+[//]: # (<iframe src="//player.bilibili.com/player.html?aid=630543306&bvid=BV13b4y1f7m7&cid=338922619&page=1&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width:100%;height:420px"> </iframe>)
 
 #### 通过“解决视频”可解决的问题
 

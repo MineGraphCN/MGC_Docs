@@ -15,13 +15,16 @@
 : 表示*引用*或*人／团队名*。
 
 [跳转](#约定 "原地TP")
-: 作为 [跳转链接](#约定 "跳转链接描述") ，跳转到文档内其他位置，当链接后跟有 <a href="https://b23.tv/BV1GJ411x7h7">[</a>] 时，表示跳转站外链接。偶尔会替代掉*斜体*。
+: 作为 [跳转链接](#约定 "跳转链接描述") ，跳转到文档内其他位置，当链接后跟有 <a href="https://b23.tv/BV1GJ411x7h7">[</a>] 时，表示跳转站外链接。将鼠标停留在其上方会有和缩写一样的提示。偶尔会替代掉**粗体**。
 
 <sup>角标</sup>
 : 表示这只在对应环境中有效。
 > 目前角标在某些浏览器上暂时无法正确渲染。
 > 
 {style="warning"}
+
+<tooltip term="缩写">缩写</tooltip>
+: 将鼠标停留在缩写上可以查看术语的全称。
 
 `代码`
 : 表示这是程序运行时显示/日志/代码内容，或计算机行为。  
@@ -42,19 +45,21 @@
 ## 游戏相关 {id="游戏相关"}
 
 <deflist>
-<def title="JE" id="je">
-    <b>Minecraft Java Edition</b>，即 Java 版游戏，在本文档中，也可以表示只能在 Java 版渲染模组下有效。
-    <tip><b>原主机版</b>事实上基于 JE，也称之为 <b>CE</b>。</tip>
+<def id="je">
+<title><tooltip term="JE">JE</tooltip></title>
+Java 版游戏，在本文档中，也可以表示只能在 Java 版渲染模组下有效。
+<tip><b>原主机版</b>事实上基于 JE，也称之为 <b><tooltip term="CE">CE</tooltip></b>。</tip>
 </def>
 
-<def title="BE" id="be">
-    <p><b>Minecraft Bedrock Edition</b>，即基岩版游戏。</p>
-    这其中也包含了<b>原 Pocket Edition</b>，也就是通常所说的 <b>PE</b>。
-    <tip>现在的主机版也基于 BE。</tip>
+<def id="be">
+<title><tooltip term="BE">BE</tooltip></title>
+基岩版游戏，这其中也包含了<b>原 <tooltip term="PE">PE</tooltip></b>。
+<tip>现在的主机版也基于 BE。</tip>
 </def>
 
-<def title="NE" id="ne">
-    由<b>网易代理</b>的中国版（China Edition）游戏，也称<b>网易版</b>（Neteast Edition），表示为网易版独占，例：防沉迷 <sup>NE</sup>，延迟着色 API <sup>BE(NE)</sup>。
+<def id="ne">
+<title><tooltip term="NE">NE</tooltip></title>
+由<b>网易代理</b>的中国版游戏，也称<b>网易版</b>，表示为网易版独占，例：防沉迷 <sup>NE</sup>，延迟着色 API <sup>BE(NE)</sup>。
 </def>
 </deflist>
 
@@ -118,7 +123,8 @@
     <tip>它的名字来源于<i>末影龙</i>（Ender Dragon）和<i>渲染</i>（Render）。</tip>
 </def>
 
-<def title="GLSL Shader Core" id="glslShaderCore">
+<def id="glslShaderCore">
+<title><tooltip term="GLSL">GLSL</tooltip> Shader Core</title>
     <b>光影核心</b>模组，<b>最早</b>的 Java 版光影模组。
     <list>
     <li>
@@ -131,7 +137,7 @@
 </def>
 
 <def title="OptiFine" id="optifine">
-    <b>高清修复</b>，简称 <b>OF</b> ，老牌 Java 版优化模组。作者为 <i>sp614x</i>。
+    <b>高清修复</b>，简称 <b>OF</b>，老牌 Java 版优化模组。作者为 <i>sp614x</i>。
     <list>
         <li>最早是提供更大纹理分辨率支持的模组，这也是中文名被翻译为高清修复的原因。</li>
         <li>在 <b>JE 1.8</b> 之后集成了 GLSL Shader Core 的功能，开始提供光影支持。</li>
@@ -319,12 +325,14 @@
 <deflist>
 
 <def title="像素" id="像素">
-    <b>Pixel</b>，二维位图的最小显示单位。
-    <tip>在实际渲染或计算中，有<b>子像素</b>（Sub-Pixel）的概念，因此像素仅为位图的最小显示单位。</tip>
+
+**Pixel**，简称 **Px**，二维位图的最小显示单位。
+<tip>在实际渲染或计算中，有<b><tooltip term="subpx">子像素</tooltip></b>的概念，因此像素仅为位图的最小显示单位。</tip>
 </def>
 
 <def title="体素" id="体素">
-    <b>Voxel</b>，对应像素的定义，作为一种三维图形的表示方法，在此类空间中定义的三维图形，体素是最小坐标单位。
+
+**Voxel**，简称 **Vx**，对应像素的定义，作为一种三维图形的表示方法，在此类空间中定义的三维图形，体素是最小坐标单位。
 </def>
 
 <def title="位图" id="位图">
@@ -338,12 +346,11 @@
 
 <def title="分辨率" id="分辨率">
     <p>分辨率是表征位图大小的参数。</p>
-    视频文件和显示器中常用的分辨率 <b>1080p</b> 意为<b>纵向 1080px</b>、<b>逐行扫描</b>。
+    视频文件和显示器中常用的分辨率 <b>1080p</b> 意为<b>纵向 1080 <tooltip term="px">px</tooltip></b>、<b>逐行扫描</b>。
     <list>
-        <li><b>px</b> 为像素的缩写。</li>
         <li><b>p</b> 意为<b>逐行扫描</b>，而 <b>i</b> 则为<b>隔行扫描</b>。
             <list>
-                <li>扫描：即从上至下显示画面的过程，这个名词沿用自 CRT 显示器时代的画面显示方式。从左至右一排像素为一条扫描线。
+                <li>扫描：即从上至下显示画面的过程，这个名词沿用自 <tooltip term="CRT">CRT</tooltip> 显示器时代的画面显示方式。从左至右一排像素为一条扫描线。
                     <list>
                         <li>逐行扫描为从上至下依次显示每排像素，也是现代显示器和视频文件大多数情况下的显示方式。</li>
                         <li>
@@ -389,12 +396,14 @@
 </def>
 
 <def title="颜色通道" id="颜色通道">
-    颜色通道的数量表示色彩类型的数量，显示器的颜色通道为 RGB，也就是光学三原色<b>红绿蓝</b>。在此基础上再加上 A 通道，也就是<b>不透明度</b>，就构成了我们常用的 <code>RGBA格式</code> 。在没有特殊说明的情况下，我们都以 <code>RGBA 格式</code> 为准。
+    颜色通道的数量表示色彩类型的数量，显示器的颜色通道为 RGB，也就是光学三原色<b>红绿蓝</b>。在此基础上再加上 A 通道，也就是<b>不透明度</b>，就构成了我们常用的 <code>RGBA格式</code> 。在没有特殊说明的情况下，我们都以 <code>RGBA格式</code> 为准。
 </def>
 
-<def title="应用程序接口" id="应用程序接口">
-    <b>API</b>，应用程序接口提供特定的方法，让第三方代码通过它们修改程序。
-    <tip>具象化来说，这就好比给手机（游戏本体）扩展存储（想要达到的光影效果），需要 SD 卡（第三方代码），并且手机需要有 SD 卡槽（接口）才能插入。</tip>
+<def id="应用程序接口">
+<title><tooltip term="API">API</tooltip></title>
+
+**应用程序接口**，其提供特定的方法，让第三方代码通过它们修改程序。
+<tip>具象化来说，这就好比给手机（游戏本体）扩展存储（想要达到的光影效果），需要 SD 卡（第三方代码），并且手机需要有 SD 卡槽（接口）才能插入。</tip>
 </def>
 </deflist>
 
@@ -556,7 +565,7 @@ void main() {
 
 从自身向所有方向发射光照的光源。
 
-> 在MC中不存在严格意义上的点光源，但 OptiFine 提供的**动态光源**和一些光影提供的**手持光源**（实际上是摄像机光源）可以被认为是点光源。Iris 还提供了一个独占特性，让手持光源可以进行投影。
+> 在 Minecraft 中不存在严格意义上的点光源，但 OptiFine 提供的**动态光源**和一些光影提供的**手持光源**（实际上是摄像机光源）可以被认为是点光源。Iris 还提供了一个独占特性，让手持光源可以进行投影。
 
 </def>
 
@@ -649,15 +658,17 @@ void main() {
 #### OpenGL 相关 {id="opengl-相关"}
 
 <deflist>
-<def title="OpenGL" id="opengl">
+<def id="opengl">
+<title><tooltip term="OpenGL">OpenGL</tooltip></title>
 
-**Open Graphics Library**，**开源图形库**，Java 版所使用的图形函数库。
+**开源图形库**，Java 版所使用的图形函数库。
 
 </def>
 <def title="GLSL" id="glsl">
+<title><tooltip term="GLSL">GLSL</tooltip></title>
 
-**(Open)GL Shader Language**，**OpenGL 着色语言**，顾名思义，它是 OpenGL 的着色器所使用的语言，语法类似 C。
-- 其它的图形库还有如 Vulkan，它的着色器语言也是 GLSL；DirectX，它的着色器语言是 **HLSL**（High-Level Shader Language，高级着色语言）。
+**(Open)GL 着色语言**，顾名思义，它是 OpenGL 的着色器所使用的语言，语法类似 C。
+- 其它的图形库还有如 Vulkan，它的着色器语言也是 GLSL；DirectX，它的着色器语言是 **<tooltip term="HLSL">HLSL</term>**（高级着色语言）。
 
 <deflist>
 <def title="GLSL 类型" id="glsl类型">
@@ -731,23 +742,26 @@ void main() {
 参阅 [着色器 技术科普](shaderTech.md "这篇文档列出了常见的着色器技术，作为术语简短介绍的补充")
 
 <deflist>
-<def title="POM" id="pom">
+<def id="pom">
+<title><tooltip term="POM">POM</tooltip></title>
 
-**Parallax Occlusion Mapping**，即**视差遮蔽映射**，简称**视差**。
+**视差遮蔽映射**，简称**视差**。
 - 和法线相似，视差贴图通过**偏移表面的采样坐标**，让玩家从不同角度感觉到表面上某些纹理被其他纹理遮挡，从而创造凹凸的观感，这也是其名字中**映射**的含义。
 
 </def>
 <def title="PBR" id="pbr">
+<title><tooltip term="PBR">PBR</tooltip></title>
 
-**Physically-Based Rendering**，即**基于物理的渲染**。
+**基于物理的渲染**。
 - 它是一种着色的方法，更准确地表现光线如何与材料性质相互作用。
 - 它有一些传统着色中没有考虑到的部分，如**能量守恒**、**光电效应**等。
 > 传统着色是基于物理的方法的超级近似。例如理想漫反射分布模型 **Lambert BRDF** 就是对渲染方程在表面理想光滑时的近似。
 
 </def>
-<def title="GI" id="gi">
+<def id="gi">
+<title><tooltip term="GI">GI</tooltip></title>
 
-**Global Illumination**，即**全局光照**。是直接光照和间接光照的集合。
+**全局光照**。是直接光照和间接光照的集合。
 
 <deflist>
 <def title="直接光照" id="直接光照">
@@ -788,33 +802,38 @@ void main() {
 
 此简写包含以下两种概念
 <deflist>
-<def title="次表面散射" id="次表面散射">
+<def id="次表面散射">
+<title><tooltip term="SSS">次表面散射</tooltip></title>
 
-**Sub-surface Scattering**，模拟光线进入物体后在其内部经过多次散射后射出**照亮物体内部**的效果，允许某些材质（如纸、树叶、皮肤）的物体透过光线，从而产生更加通透真实的质感。
+模拟光线进入物体后在其内部经过多次散射后射出**照亮物体内部**的效果，允许某些材质（如纸、树叶、皮肤）的物体透过光线，从而产生更加通透真实的质感。
 
 </def>
 <def title="屏幕空间阴影" id="屏幕空间阴影">
+<title><tooltip term="SSSh">屏幕空间阴影</tooltip></title>
 
-**Screen-space Shadow**，由于阴影贴图的精度不足，容易在物体与表面接触的边缘产生锯齿和偏移。屏幕空间阴影就是用于这些地方来补足阴影的效果，因此也称为**接触阴影**（Contact Shadow）。
+由于阴影贴图的精度不足，容易在物体与表面接触的边缘产生锯齿和偏移。屏幕空间阴影就是用于这些地方来补足阴影的效果，因此也称为**接触阴影**（Contact Shadow）。
 
 </def>
 </deflist>
 </def>
-<def title="SSR" id="ssr">
+<def id="ssr">
+<title><tooltip term="SSR">SSR</tooltip></title>
 
-**Screen-space Reflection**，即**屏幕空间反射**。采样屏幕上的内容来绘制反射场景，其受限于 [屏幕空间](#屏幕空间) 。
+**屏幕空间反射**。采样屏幕上的内容来绘制反射场景，其受限于 [屏幕空间](#屏幕空间) 。
 </def>
-<def title="AO" id="ao">
+<def id="ao">
+<title><tooltip term="AO">AO</tooltip></title>
 
-**Ambient Occlusion**，即**环境光遮蔽**。间接光照在场景间经过各种反射之后逐渐被场景所吸收和遮挡的效果。
+**环境光遮蔽**。间接光照在场景间经过各种反射之后逐渐被场景所吸收和遮挡的效果。
 - 由于性能问题，很多游戏中通常使用了各种欺诈和近似来模拟间接光照，AO 就是为了让本应或者*似乎*应该为暗处的地方暗下去（通常是凹处和夹缝）而产生的技术。
     - 在光线追踪工作流中，环境光遮蔽伴随着全局光照自然产生，这种时候不会特别区分。
 - 绘制在 [着色贴图](resourcepackBasic.md#着色贴图 "由模组、资源包和着色器共同支持，用以存储表面材质的贴图") 上的 AO 被称为**纹理环境光遮蔽**（Texture AO）或**材质环境光遮蔽**（Material AO）。
 
 </def>
 <def title="光线追踪" id="光线追踪">
+<title><tooltip term="RT">RT</tooltip></title>
 
-**Ray Tracing**，模拟光子从光源到达表面的过程。
+**光线追踪**，模拟光子从光源到达表面的过程。
 
 <deflist>
 <def title="逆向光线追踪" id="逆向光线追踪">
@@ -823,9 +842,10 @@ void main() {
 > 逆向光线追踪可以避免投射很多无用的光子，是目前主流的光线追踪算法。
 
 </def>
-<def title="路径追踪" id="路径追踪">
+<def id="路径追踪">
+<title><tooltip term="PT">PT</tooltip></title>
 
-**Path Tracing**，模拟光子多次反弹，经由漫反射、镜面反射、折射等直到达到退出条件所最终产生的光照。
+**路径追踪**，使用蒙特卡洛随机采样并模拟光子多次反弹，经由漫反射、镜面反射、折射等直到达到退出条件所最终产生的光照。
 
 </def>
 </deflist>
@@ -835,30 +855,34 @@ void main() {
 #### 抗锯齿／升采样技术相关
 
 <deflist>
-<def title="DLSS" id="dlss">
+<def id="dlss">
+<title><tooltip term="DLSS">DLSS</tooltip></title>
 
-由*英伟达*开发的一种升采样技术。通过降低分辨率并调用显卡 <sup>Nvidia</sup> 的**张量核心**（Tensor Core）来猜测原始分辨率下该处像素的内容。
+**深度学习超级采样**，由*英伟达*开发的一种升采样技术。通过降低分辨率并调用显卡 <sup>Nvidia</sup> 的**张量核心**（Tensor Core）来猜测原始分辨率下该处像素的内容。
 - 在 2.0 以前，DLSS 主要是靠已有画面内容来“猜”剩下的场景应该是何样。
 - 自 2.0 开始，DLSS 主要是根据场景运动信息和历史帧来判断剩下的场景是何样，其计算方法从单一的空间域上升到了**时空域**，不再依赖于针对单个游戏的训练，产生的效果也比 1.0 好得多。
 
 <deflist>
-<def title="DLAA" id="dlaa">
+<def id="dlaa">
+<title><tooltip term="DLAA">DLAA</tooltip></title>
 
-在**原始分辨率**下进行 DLSS 来平滑边缘的抗锯齿方法。
+**深度学习抗锯齿**，在**原始分辨率**下进行 DLSS 来平滑边缘的抗锯齿方法。
 
 </def>
 </deflist>
 </def>
 
-<def title="FSR" id="fsr">
+<def id="fsr">
+<title><tooltip term="FSR">FSR</tooltip></title>
 
-由 *AMD* 开发的一种升采样技术。相比较 DLSS 来说更为常规，但效果要比其他传统升采样方法好。
+**FidelityFX 超级分辨率**，由 *AMD* 开发的一种升采样技术。相比较 DLSS 来说更为常规，但效果要比其他传统升采样方法好。
 
 </def>
 
-<def title="XeSS" id="xess">
+<def id="xess">
+<title><tooltip term="XeSS">XeSS</tooltip></title>
 
-由*英特尔*开发的一种升采样技术。在其他平台上和其本家含有特定核心的平台上所使用的算法有所区别，因而在其本家平台上能够获得更好的效果。
+**Xe 超级采样**，由*英特尔*开发的一种升采样技术。在其他平台上和其本家含有特定核心的平台上所使用的算法有所区别，因而在其本家平台上能够获得更好的效果。
 
 </def>
 </deflist>
