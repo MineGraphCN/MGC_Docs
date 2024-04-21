@@ -47,7 +47,7 @@
 }
 
 ```
-pack_format 所对应的“15”是所支持的版本，该知识点可以在[MGC Docs - 资源包](../../library/resourcepacks.md#准确区间)中找到。
+pack_format 所对应的“15”是所支持的版本，该知识点可以在[MGC Docs - 资源包](resourcepackBasic.md#pack-mcmeta)中找到。
 
 ![图片](1-2.jpg)
 

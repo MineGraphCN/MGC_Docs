@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE terms SYSTEM "https://resources.jetbrains.com/writerside/1.0/glossary.dtd">
+<terms>
+    <term name="GUI">Graphical User Interface</term>
+    <term name="HTTP">Hypertext Transfer Protocol</term>
+    <term name="API">Application Programming Interface</term>
+    <term name="GI">Global Illumination</term>
+    <term name="AO">Ambient Occlusion</term>
+    <term name="SSAO">Screen-space Ambient Occlusion</term>
+    <term name="HBAO">Horizon-Based Ambient Occlusion</term>
+    <term name="GTAO">Ground Truth Ambient Occlusion</term>
+    <term name="RTAO">Ray Tracing Ambient Occlusion</term>
+    <term name="SSPT">Screen-space Path Tracing</term>
+    <term name="SSR">Screen-space Reflection</term>
+    <term name="SSS">Sub-surface Scattering</term>
+    <term name="SSSh">Screen-space Shadow</term>
+    <term name="SVGF">Spatiotemporal Variance-Guided Filtering</term>
+    <term name="RSM">Reflective Shadow Maps</term>
+    <term name="LPV">Light Propagation Volumes</term>
+    <term name="PT">Path Tracing</term>
+    <term name="RT">Ray Tracing</term>
+    <term name="VXGI">Voxel (Path Tracing) Global Illumination</term>
+    <term name="PBR">Physically-Based Rendering</term>
+    <term name="POM">Parallax Occlusion Mapping</term>
+    <term name="缩写">缩写术语</term>
+    <term name="OpenGL">Open Graphics Library</term>
+    <term name="VK">Vulkan</term>
+    <term name="DX">DirectX</term>
+    <term name="GLSL">(Open)GL Shader Language</term>
+    <term name="HLSL">High-Level Shader Language</term>
+    <term name="JE">(Minecraft) Java Edition</term>
+    <term name="CE">(Minecraft) Console Edition</term>
+    <term name="BE">(Minecraft) Bedrock Edition</term>
+    <term name="PE">(Minecraft) Pocket Edition</term>
+    <term name="NE">(Minecraft) Neteast Edition</term>
+    <term name="px">Pixel</term>
+    <term name="vx">Voxel</term>
+    <term name="subpx">Sub-Pixel</term>
+    <term name="CRT">Cathode Ray Tube</term>
+    <term name="HRR">Half-Resolution Rendering</term>
+    <term name="DLSS">Deep Learning Super Sampling</term>
+    <term name="DLAA">Deep Learning Anti-Aliasing</term>
+    <term name="NIS">NVIDIA Image Scaling</term>
+    <term name="FSR">FidelityFX Super Resolution</term>
+    <term name="XeSS">Xe Super Sampling</term>
+    <term name="FXAA">Fast Approximate Anti-Aliasing</term>
+    <term name="MSAA">Multisampling Anti-Aliasing</term>
+    <term name="SSAA">Super-Sampling Anti-Aliasing</term>
+    <term name="SMAA">Subpixel Morphological Anti-Aliasing</term>
+    <term name="MLAA">Morphological Anti-Aliasing</term>
+    <term name="TAA">Temporal Anti-Aliasing</term>
+</terms>

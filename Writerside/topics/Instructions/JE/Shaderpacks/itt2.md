@@ -44,7 +44,7 @@
 ### 光照改进
 
 第二代 iterationT 引入了 RSM（Reflective Shadow Maps） 全局光照
-有关 RSM 的简要技术原理说明，请见：[MGC 大众科普](../../../../Writerside/topics/Library/shaderTech)
+有关 RSM 的简要技术原理说明，请见：[着色器 技术科普 - RSM](shaderTech.md#rsm)
 在这里放几组图来直观感受一下：
 ![itt2-water-rsm-off.png](itt2-water-rsm-off.png)
 水下，RSM关
@@ -146,7 +146,7 @@
 
 ## 材质
 
-### PBR 反射
+### PBR 反射 {id="pbrRef"}
 
 完全重写的PTGI级反射过滤！
 ![itt1-pbr-reflection-1.png](itt1-pbr-reflection-1.png)
