@@ -98,7 +98,7 @@
 
 <seealso>
   <category ref="related">
-    <a href="Video_settings.md" summary="这篇文章列出了整个视频设置选项卡中容易出现问题的设置以及修改建议。">视频设置和相关显示问题</a>
-    <a href="modsCompatibility.md" summary="这篇文章列出了我们所知的模组和光影间兼容性冲突的解决办法。">光影和模组兼容性</a>
+    <a href="videoSettings.md" summary="这篇文档列出了整个视频设置选项卡中容易出现问题的设置以及修改建议。">视频设置和相关显示问题</a>
+    <a href="modsCompatibility.md" summary="这篇文档列出了我们所知的模组和光影间兼容性冲突的解决办法。">光影和模组兼容性</a>
   </category>
 </seealso>

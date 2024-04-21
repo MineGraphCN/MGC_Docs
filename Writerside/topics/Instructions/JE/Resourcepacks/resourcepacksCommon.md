@@ -2,8 +2,6 @@
 
 <tldr>
 
-**省流**
-
 将资源包放入 `resourcepacks` 文件夹。
 </tldr>
 

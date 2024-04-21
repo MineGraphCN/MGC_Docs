@@ -4,8 +4,6 @@
 
 <tldr>
 
-**省流**
-
 安装 OptiFine 或 Iris，将光影放入 `shaderpacks` 文件夹。
 </tldr>
 
@@ -556,9 +554,9 @@ Java 路径
 
 <seealso>
     <category ref="related">
-        <a href="troubleshootCommon.md" summary="这篇文章记录了一些与游戏相关或会产生影响的常见问题。">疑难解答 - 通用问题</a>
-        <a href="videoSettings.md" summary="这篇文章列出了整个视频设置选项卡中容易出现问题的设置以及修改建议。">疑难解答 - 视频设置和相关显示问题</a>
-        <a href="shaderpackLoading.md" summary="这篇文章列出了光影加载后可能出现的问题以及解决办法。">疑难解答 - 光影加载问题</a>
+        <a href="troubleshootCommon.md" summary="这篇文档记录了一些与游戏相关或会产生影响的常见问题。">疑难解答 - 通用问题</a>
+        <a href="videoSettings.md" summary="这篇文档列出了整个视频设置选项卡中容易出现问题的设置以及修改建议。">疑难解答 - 视频设置和相关显示问题</a>
+        <a href="shaderpackLoading.md" summary="这篇文档列出了光影加载后可能出现的问题以及解决办法。">疑难解答 - 光影加载问题</a>
     </category>
     <category ref="advance">
         <a href="irisAsOf.md">Iris 下等效 OptiFine 功能的模组</a>

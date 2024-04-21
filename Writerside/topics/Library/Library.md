@@ -1,5 +1,17 @@
 # 知识库
 
+<tldr>
+<p><b>省流块</b></p>
+<p>省流块永远在文档顶部。</p>
+<tip>注解，引用和小贴士</tip>
+<note>提示和已订正标签</note>
+<warning>警告和未订正标签</warning>
+<p>在新建标签页打开：<shortcut>鼠标中键</shortcut></p>
+<p>搜索：<shortcut>Ctrl</shortcut><shortcut>K</shortcut></p>
+<p>深色模式：右上角 <img src="https://resources.jetbrains.com/help/img/writerside/systemTheme_dark.svg" alt="切换深色模式按钮"/><i>（需要横屏）</i></p>
+<p>选择文档：左侧栏</p>
+</tldr>
+
 > 目前社区文档正在进行大规模订正和重写，并从 VuePress 迁移至 Writerside。  
 > 你可以在随处看见所贴的红标，但是无需担心，这只是表明文档已进入迁移和重写队列。  
 > 当进入队列的文档重写完毕之后，我们会将其更换为绿标，欢迎随时回来查看。
@@ -15,6 +27,11 @@
 
 - 点击跳转链接时，默认在当前标签页内跳转。使用 <shortcut>鼠标中键</shortcut> 来新建标签页访问。
 - 使用 <shortcut>Ctrl</shortcut><shortcut>K</shortcut> 进行搜索。
+- 点击右上角 <img src="https://resources.jetbrains.com/help/img/writerside/systemTheme_dark.svg" alt="切换深色模式按钮"/> 将文档切换为深色模式获得最佳阅读体验。
+    > 在竖屏中可能不显示该按钮。
+    >
+    {style="note"}
+- 在**左侧栏**中选择你想阅读的文档。
 
 ## 基本术语
 

@@ -11,6 +11,7 @@
 
 <seealso style="cards">
     <category ref="related">
+        <a href="PopOfScience.md" summary="这个板块包含主要的科普内容。"/>
         <a href="QAs.md" summary="这个板块总结了社区中经常有人提起的概念性问题。"/>
         <a href="Troubleshoot.md" summary="这个板块提供快速解决光影和资源包问题的办法。"/>
     </category>

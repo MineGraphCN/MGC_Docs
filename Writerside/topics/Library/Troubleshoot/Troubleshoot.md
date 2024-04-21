@@ -6,6 +6,7 @@
 
 <seealso style="cards">
     <category ref="related">
+        <a href="PopOfScience.md" summary="这个板块包含主要的科普内容。"/>
         <a href="Correction.md" summary="这个板块总结了一些玩家中有歧义的图形学观点。"/>
         <a href="QAs.md" summary="这个板块总结了社区中经常有人提起的概念性问题。"/>
     </category>

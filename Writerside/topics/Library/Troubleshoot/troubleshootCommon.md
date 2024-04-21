@@ -70,7 +70,7 @@
 
 在 Windows 11 下，你可以直接在 `设置` > `系统` > `屏幕` > `相关设置 - 显示卡` 中调整 GPU。  
 - 对于 Java 版来说，选择 `应用的自定义选项 - 添加应用 <桌面应用> - 浏览` ，找到你的 **Java 安装路径**，添加 `bin/java.exe` ，然后在下面的列表中，将它们调整为 `高性能` 。
-![在 Windows 11 设置中更改 JE GPU](change_gpu_in_win11_je.png "在 Windows 11 设置中更改 JE GPU")
+![在 Windows 11 设置中更改 GPU](change_gpu_in_win11_je.png "在 Windows 11 设置中更改 GPU")
 - 对于基岩版来说，你通常可以在下方菜单栏中直接找到，并且它的默认模式是 `让 Windows 决定(高性能)` 。如果软件不存在，你可以在 `应用的自定义选项 - 添加应用 <Microsoft Store 应用> - 浏览` 弹出的列表中寻找并添加。你也可以将其设定为 `高性能` 来强制使用独立显卡运行，避免出现问题。
 ![更改为添加 Microsoft Store 应用](change_store_apps.png "更改为添加 Microsoft Store 应用")
 
