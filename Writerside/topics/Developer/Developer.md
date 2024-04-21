@@ -29,7 +29,7 @@
 
 - 创作流程图：
 
-![创作流程图](yuque_mind.jpeg "创作流程图")
+![创作流程图](yuque-mind.png "创作流程图"){thumbnail="true"}
 
 ### 轻松获取相关知识资料
 

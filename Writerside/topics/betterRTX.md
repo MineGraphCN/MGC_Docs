@@ -77,16 +77,16 @@ Set-ExecutionPolicy -Scope CurrentUser Bypass
 ## 搭配资源包
 
 国内：
-- 平方构想V2000：零雾〇五Fogg05 推荐的资源包，在原版风格的基础上增加诸多效果如PBR反射（如金属块）、PBR自发光（如紫水晶）；
+- 平方构想V2000：零雾〇五Fogg05 推荐的资源包，在原版风格的基础上增加诸多效果如 PBR 反射（如金属块）、PBR 自发光（如紫水晶）；
 - 立方构想V4000：与平方构想相比，更加个性化、风格化，适合追求新颖的原版风格资源包爱好者。
-  - 资源包链接：https://afdian.net/a/Fogg05
+  - 资源包链接：<https://afdian.net/a/Fogg05>
 
 国外（需自备代理）：
--  DefinedPBR：BetterRTX作者开发，除PBR反射外，有实体发光（需搭配实验版Better RTX）。
-   - 资源包链接：https://www.patreon.com/MADLAD3718
+-  DefinedPBR：BetterRTX作者开发，除PBR反射外，有实体发光（需搭配实验版 Better RTX）。
+   - 资源包链接：<https://www.patreon.com/MADLAD3718>
 
-- Kelly's RTX：知名资源包，可搭配Kelly版BetterRTX使用。
-  - 资源包链接：https://discord.gg/stw2JGjbWm
+- Kelly's RTX：知名资源包，可搭配 Kelly 版 BetterRTX 使用。
+  - 资源包链接：<https://discord.gg/stw2JGjbWm>
 
 ## 更新
 

@@ -7,7 +7,7 @@
                  start-page="Home.topic">
     <toc-element topic="Home.topic"/>
     <toc-element topic="Community.md"/>
-    <toc-element toc-title="前往图形站" href="https://minegraph.cn/"/>
+    <toc-element toc-title="光影汉化文件" href="https://github.com/NakiriRuri/Minecraft-Shaders-zh_CN-Lang-Files"/>
     <toc-element topic="betterRTX.md"/>
     <toc-element toc-title="作品手册和安装指南">
         <toc-element toc-title="Java 版">
