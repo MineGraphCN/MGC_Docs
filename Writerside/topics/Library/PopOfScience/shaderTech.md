@@ -408,15 +408,15 @@ LPV 首先将整个场景划分为体素，将整个场景离散开来（对 Min
 
 - 原生分辨率图像，画面清晰，但性能较差。
 
-  ![TAAU_OFF_100P.png](TAAU_OFF_100P.png "原生画面"){thumbnail="true"}
+  ![原生画面](TAAU_OFF_100P.png "原生画面"){thumbnail="true"}
 
 - 50% 渲染分辨率，禁用 TAAU，性能最好，但画面模糊。
 
-  ![TAAU_OFF_50P.png](TAAU_OFF_50P.png "50%分辨率画面"){thumbnail="true"}
+  ![50% 分辨率画面](TAAU_OFF_50P.png "50%分辨率画面"){thumbnail="true"}
 
 - 原生分辨率，启用 50% TAAU，性能和画质平衡。
 
-  ![TAAU_ON_50P.png](TAAU_ON_50P.png "50%分辨率+TAAU"){thumbnail="true"}
+  ![50% 分辨率 + TAAU](TAAU_ON_50P.png "50%分辨率+TAAU"){thumbnail="true"}
 
 </tab>
 </tabs>
