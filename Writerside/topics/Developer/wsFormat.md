@@ -1,15 +1,25 @@
-# Writerside 写作格式参考
+# Writerside 写作参考
 
-> 更多语法请查阅 [官方文档](https://www.jetbrains.com/help/writerside/markup-reference.html) 。
+> 更多语法和功能请查阅 [官方文档](https://www.jetbrains.com/help/writerside/markup-reference.html) 。
 > 
 {style="note"}
-
-<!--Writerside adds this topic when you create a new documentation project.
-You can use it as a sandbox to play with Writerside features, and remove it from the TOC when you don't need it anymore.-->
 
 ## 常用格式速查
 
 > 快捷键以 [JetBrains Writerside IDE](https://www.jetbrains.com/zh-cn/writerside/download/#section=windows) 为准。
+
+<tldr>
+<p><b>省流块</b></p>
+<p>省流块永远在章节顶部。</p>
+
+```xml
+<tldr>
+内容
+</tldr>
+```
+</tldr>
+
+========================
 
 ### 标题
 ```markdown
@@ -19,47 +29,78 @@ You can use it as a sandbox to play with Writerside features, and remove it from
 ##### 五级标题
 ```
 
+========================
+
 索引深度
 ```xml
 <show-structure depth="正整数"/>
 ```
-> 这条代码决定了文档索引（竖屏左侧顶部，横屏右侧）显示的最大标题级别。
+> 这是一条设置代码，决定了文档索引（竖屏左侧顶部，横屏右侧）显示的最大标题级别。
 
-环绕插入 `<xml>代码</xml>` <shortcut>框选内容</shortcut>, <shortcut>Ctrl</shortcut><shortcut>Alt</shortcut><shortcut>T</shortcut>, <shortcut>T</shortcut>
+========================
 
-> 如果是设置类代码，可以使用 `<代码/>` 立即直接终止。
+环绕插入行内代码 <shortcut>框选内容</shortcut>, <shortcut>Ctrl</shortcut><shortcut>Alt</shortcut><shortcut>T</shortcut>, <shortcut>T</shortcut>
+
+```xml
+<代码>内容</代码>
+```
+
+环绕插入代码块 <shortcut>框选内容</shortcut>, <shortcut>Ctrl</shortcut><shortcut>Alt</shortcut><shortcut>T</shortcut>, <shortcut>B</shortcut>
+
+```xml
+<代码>
+内容块
+</代码>
+```
+
+> 如果不包含具体内容，可以使用 `<代码/>` 。
+> 快捷键仅 xml 格式行有效，无法在 markdown 行中使用。
+
+========================
 
 _斜体_ <shortcut>Ctrl</shortcut><shortcut>I</shortcut>
 ```markdown
-<*文字* | _文字_>
+< *文字* | _文字_ >
 ```
+
+========================
 
 **粗体** <shortcut>Ctrl</shortcut><shortcut>B</shortcut>
 ```markdown
-<**文字** | __文字__>
+< **文字** | __文字__ >
 ```
+
+========================
 
 ***粗斜体***
 ```markdown
-<**_文字_** | ***文字*** | __*文字*__>
+< **_文字_** | ***文字*** | __*文字*__ | ... >
 ```
-> Writerside IDE 从内向外，先检测斜体，如果使用类似 `_**文字**_` 格式，无法使用快捷键取消斜体。
+> Writerside IDE 快捷键从内向外检测，如果使用类似 `_**文字**_` 格式，无法使用快捷键优先取消斜体，反之无法优先取消粗体。
+
+========================
 
 ~~删除线~~ <shortcut>Ctrl</shortcut><shortcut>Shift</shortcut><shortcut>S</shortcut>
 ```markdown
 ~~文字~~
 ```
 
+========================
+
 `行内代码块` <shortcut>Ctrl</shortcut><shortcut>Shift</shortcut><shortcut>C</shortcut>
 ```markdown
 `文字`
 ```
 
-[链接](https://b23.tv/BV1GJ411x7h7)
+========================
+
+[链接](https://b23.tv/BV1GJ411x7h7) <shortcut>Ctrl</shortcut><shortcut>Shift</shortcut><shortcut>U</shortcut>
 ```markdown
-[文字](<站内文档.md#章节 | 外部链接>)
+[文字](< 站内文档.md#章节 | 外部链接 >)
 <外部链接>  <- 使用尖括号括起来即可
 ```
+
+========================
 
 <sup>角标</sup>
 
@@ -67,11 +108,15 @@ _斜体_ <shortcut>Ctrl</shortcut><shortcut>I</shortcut>
 <sup>文字</sup>
 ```
 
+========================
+
 <shortcut>按键</shortcut>
 
 ```xml
 <shortcut>文字</shortcut>
 ```
+
+========================
 
 术语
 :
@@ -80,6 +125,8 @@ _斜体_ <shortcut>Ctrl</shortcut><shortcut>I</shortcut>
     : 内容
     ```
 
+========================
+
 ```markdown
     代码块
     ```编程语言
@@ -87,12 +134,25 @@ _斜体_ <shortcut>Ctrl</shortcut><shortcut>I</shortcut>
     ```
 ```
 
+========================
+
 > 注释／提示／警告
 > ```markdown
 > > 内容
 > >             <- 留白一行
-> {style="<tip(默认，不需要留白和此属性框) | note | warning>"}
+> {style="< tip(默认，不需要留白和此属性框) | note | warning >"}
 > ```
+
+========================
+
+<tooltip term="缩写">缩写</tooltip>
+
+```xml
+<tooltip term="缩写">文本</tooltip>
+```
+> 你可以在 `Writerside/cfg/glossary.xml` 中查询和添加。
+
+========================
 
 - 无序步骤
 ```markdown
@@ -103,24 +163,32 @@ _斜体_ <shortcut>Ctrl</shortcut><shortcut>I</shortcut>
 ```
 > 可以使用 `+` `-` `*` 。
 
+========================
+
 1. 有序步骤
 ```markdown
 1. 步骤1
 2. 步骤2
+    1. 子步骤1
+3. 步骤3
 ```
 > 可以和无序步骤混用
+
+========================
 
 <procedure>
 <title>步骤块</title>
 
 ```xml
-<procedure type="<steps(有序，默认) | choices(无序)>">
+<procedure type="< steps(有序，默认) | choices(无序) >">
     <title>标题（可选）</title>
     <step>步骤1</step>
     <step>步骤2</step>
 </procedure>
 ```
 </procedure>
+
+========================
 
 新起
 
@@ -131,13 +199,16 @@ _斜体_ <shortcut>Ctrl</shortcut><shortcut>I</shortcut>
 段落2
 ```
 
+========================
+
 不新起段落  
-换行
+仅换行
 ```markdown
 行1  <-两个空格
 行2
 ```
-{show-white-spaces="true"}
+
+========================
 
 | 表 |
 |---|
@@ -148,77 +219,129 @@ _斜体_ <shortcut>Ctrl</shortcut><shortcut>I</shortcut>
 | 内容1 | 内容2 | ... |
 | 内容3 | 内容4 | ... |
 ```
-> |:-| 表示左对齐，|:-:| 表示居中对齐，|-:| 表示右对齐，|-| 表示默认对齐。
+> `|:-|` 表示左对齐，`|:-:|` 表示居中对齐，`|-:|` 表示右对齐，`|-|` 表示默认对齐。
+> 
+> Writerside 的对齐模式暂时有问题。
 
-<tooltip term="缩写">缩写</tooltip>
-
-```xml
-<tooltip term="缩写">文本</tooltip>
-```
-> 你可以在 `Writerside/cfg/glossary.xml` 中查询和添加。
-
-## Add new topics
-You can create empty topics, or choose a template for different types of content that contains some boilerplate structure to help you get started:
-
-![Create new topic options](new_topic_options.png){ width=290 }{border-effect=line}
-
-## Write content
-%product% supports two types of markup: Markdown and XML.
-When you create a new help article, you can choose between two topic types, but this doesn't mean you have to stick to a single format.
-You can author content in Markdown and extend it with semantic attributes or inject entire XML elements.
-
-## Inject XML
-For example, this is how you inject a procedure:
-
-<procedure title="Inject a procedure" id="inject-a-procedure">
-    <step>
-        <p>Start typing and select a procedure type from the completion suggestions:</p>
-        <img src="completion_procedure.png" alt="completion suggestions for procedure" border-effect="line"/>
-    </step>
-    <step>
-        <p>Press <shortcut>Tab</shortcut> or <shortcut>Enter</shortcut> to insert the markup.</p>
-    </step>
-</procedure>
-
-## Add interactive elements
-
-### Tabs
-To add switchable content, you can make use of tabs (inject them by starting to type `tab` on a new line):
+=======
 
 <tabs>
-    <tab title="Markdown">
-        <code-block lang="plain text">![Alt Text](new_topic_options.png){ width=450 }</code-block>
+<tab title="并排选项卡">
+
+```xml
+<tabs>
+    <tab title="选项卡1标题">
+        内容
     </tab>
-    <tab title="Semantic markup">
-        <code-block lang="xml">
-            <![CDATA[<img src="new_topic_options.png" alt="Alt text" width="450px"/>]]></code-block>
+    <tab title="选项卡2标题">
+        内容
+    </tab>
+</tabs>
+```
+
+使用 `group` 和 `group-key` 同步切换标签页，当 `group` 和 `group-key` 值相同时，选项卡将会同步切换：
+
+```xml
+    <tabs group="A">
+        <tab title="选项卡1标题" group-key="a">
+            内容A
+        </tab>
+        <tab title="选项卡2标题" group-key="b">
+            内容B
+        </tab>
+    </tabs>
+    
+    <tabs group="A">
+        <tab title="选项卡1标题A" group-key="a">
+            内容C
+        </tab>
+        <tab title="选项卡2标题B" group-key="b">
+            内容D
+        </tab>
+    </tabs>
+```
+
+渲染结果：
+
+<tabs group="A">
+    <tab title="选项卡1标题" group-key="a">
+        内容A
+    </tab>
+    <tab title="选项卡2标题" group-key="b">
+        内容B
     </tab>
 </tabs>
 
-### Collapsible blocks
-Apart from injecting entire XML elements, you can use attributes to configure the behavior of certain elements.
-For example, you can collapse a chapter that contains non-essential information:
+<tabs group="A">
+    <tab title="选项卡1标题A" group-key="a">
+        内容C
+    </tab>
+    <tab title="选项卡2标题B" group-key="b">
+        内容D
+    </tab>
+</tabs>
 
-#### Supplementary info {collapsible="true"}
-Content under a collapsible header will be collapsed by default,
-but you can modify the behavior by adding the following attribute:
-`default-state="expanded"`
+</tab>
+</tabs>
 
-### Convert selection to XML
-If you need to extend an element with more functions, you can convert selected content from Markdown to semantic markup.
-For example, if you want to merge cells in a table, it's much easier to convert it to XML than do this in Markdown.
-Position the caret anywhere in the table and press <shortcut>Alt+Enter</shortcut>:
+### 可折叠块 {collapsible="true" default-state="expanded"}
 
-<img src="convert_table_to_xml.png" alt="Convert table to XML" width="706" border-effect="line"/>
+```markdown
+    ## 章节 {collapsible="true" default-state="< collapsed(默认) | expanded >"}
 
-## Feedback and support
-Please report any issues, usability improvements, or feature requests to our
-<a href="https://youtrack.jetbrains.com/newIssue?project=WRS">YouTrack project</a>
-(you will need to register).
+    =======
 
-You are welcome to join our
-<a href="https://jb.gg/WRS_Slack">public Slack workspace</a>.
-Before you do, please read our [Code of conduct](https://plugins.jetbrains.com/plugin/20158-writerside/docs/writerside-code-of-conduct.html).
-We assume that you’ve read and acknowledged it before joining.
+    ```
+    代码块
+    ```
+    {collapsible="true" default-state="< collapsed(默认) | expanded >"}
 
-You can also always email us at [writerside@jetbrains.com](mailto:writerside@jetbrains.com).
+    =======
+
+    <procedure collapsible="true" default-state="< collapsed(默认) | expanded >">
+    步骤块
+    </procedure>
+```
+
+## xml 代码注意事项
+
+如果你使用了 xml 代码，你需要空一行才能继续 markdown 格式。
+```markdown
+<procedure>
+<p>这段话**不能**正常使用 `markdown 格式` 。</p>
+</procedure>
+
+<procedure>
+
+这段话**可以**正常使用 `markdown 格式` 。
+</procedure>
+```
+
+渲染结果：
+<procedure>
+<p>这段话**不能**正常使用 `markdown 格式` 。</p>
+</procedure>
+
+<procedure>
+
+这段话**可以**正常使用 `markdown 格式` 。
+</procedure>
+
+## 快捷键
+
+文件内定位章节 <shortcut>Ctrl</shortcut><shortcut>F12</shortcut>  
+重命名文件 <shortcut>Shift</shortcut><shortcut>F6</shortcut>  
+文件内搜索 <shortcut>Ctrl</shortcut><shortcut>F</shortcut>  
+全局搜索 <shortcut>Shift</shortcut>, <shortcut>Shift</shortcut>
+
+## 添加新文件
+
+1. 在 `Writerside` 侧栏的正确目录下创建 Topic
+
+    ![create_topic_on_correct_directory](create_topic_on_correct_directory.png)
+
+2. 在 `项目` 侧栏将你的文档文件移入对应的文件夹
+
+    ![move_file_to_correct_folder](move_file_to_correct_folder.png)
+
+> 文件名应当使用**驼峰命名法**。
