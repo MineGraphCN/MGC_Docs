@@ -49,4 +49,5 @@
     <term name="SMAA">Subpixel Morphological Anti-Aliasing</term>
     <term name="MLAA">Morphological Anti-Aliasing</term>
     <term name="TAA">Temporal Anti-Aliasing</term>
+    <term name="SDF">Signed Distance Field</term>
 </terms>

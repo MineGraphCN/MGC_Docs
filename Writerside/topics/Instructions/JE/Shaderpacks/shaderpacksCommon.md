@@ -249,7 +249,8 @@ OptiFine is successfully extracted.
                         <step>
 
 访问 [Forge 官网](https://files.minecraftforge.net/net/minecraftforge/forge/) ，寻找**对应 OptiFine** 和游戏兼容版本的 Forge。
-> 你可以在 OptiFine 更新日志中查看所能兼容的 Forge 版本，你可以在下载列表点击 `Changelog` 检查 `compatible with Forge <Forge 版本>` 。
+> 注意 OptiFine 更新日志中所能兼容的 Forge 版本，你可以在下载列表检查。
+> ![检查 OptiFine 兼容的 Forge 版本](of_forge_check_ver.png "检查 OptiFine 兼容的 Forge 版本")
 >
 {style="note"}
 </step>
@@ -483,7 +484,7 @@ Java 路径
 离线皮肤
 : 离线模式下玩家所使用的皮肤
     - 随机：随机从 [默认皮肤和模型](https://zh.minecraft.wiki/w/%E7%9A%AE%E8%82%A4#%E9%BB%98%E8%AE%A4%E7%9A%AE%E8%82%A4) 中抽取。
-    - Steve／Alex：固定史蒂夫或艾利克斯皮肤。
+    - Steve / Alex：固定史蒂夫或艾利克斯皮肤。
     - 正版皮肤：使用下方 `正版玩家名` 所填玩家的皮肤。
     - 自定义：从电脑上选择其他皮肤。
 
