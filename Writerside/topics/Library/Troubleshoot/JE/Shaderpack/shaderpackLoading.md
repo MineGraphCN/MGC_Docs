@@ -34,7 +34,7 @@
   - 请检查你的光影包放置路径是否正确。
   - 如果开启了 `版本独立` ，则游戏的读取目录在 `.minecraft/versions/` 文件夹下对应的游戏版本文件夹中。
   - 建议在游戏内从 `视频设置` > `光影` > `光影包文件夹` <sup>OptiFine</sup> 或 `视频设置` > `光影包` > `打开光影包文件夹` <sup>Iris</sup> 直接访问。
-  - Canvas MOD 使用资源包作为光影加载途径，注意不要将 Canvas 光影与 OptiFine／Iris 光影混用，也不要将 Canvas 光影放入 `shaderpacks` 文件夹，或将 OptiFine／Iris 光影放入 `resourcepacks` 文件夹。
+  - Canvas MOD 使用资源包作为光影加载途径，注意不要将 Canvas 光影与 OptiFine / Iris 光影混用，也不要将 Canvas 光影放入 `shaderpacks` 文件夹，或将 OptiFine / Iris 光影放入 `resourcepacks` 文件夹。
 - **光影包读取出现问题**
   - 尝试将光影包解压之后再加载。有时光影包可能被有问题的压缩（如压缩为 `.rar` 或 `.7z` ），导致光影在压缩包状态下无法被正常读取。
   - 若使用的光影模组是 Iris，可尝试切换为其它光影如 BSL、Complementary Shader 等。该模组本身就不兼容许多光影，也不适合作为大多数入门玩家的第一选择。
