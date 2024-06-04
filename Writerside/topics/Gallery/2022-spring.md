@@ -1,91 +1,98 @@
 # 2022年春季赛
 
+> 此画廊留档有问题，有缺图情况。
+> 
+{title="缺图" style="warning"}
+
 ## 前三名
 
-第一名：作品一、作品十一
+第一名：[作品#1](#1) &nbsp; 作品#11
 
-第二名：作品六
+第二名：[作品#6](#6)
 
-第三名：作品十二
+第三名：作品#12
 
+## 作品展示
 
-## Java版赛道
+本次比赛仅 Java 版。
 
-作品一：  
-山，松，雾。  
-#作者：亚克   
-#光影包：iterationT 2   
-#是否有对截图进行后处理：否   
-#地图链接：https://www.mcbbs.net/thread-1301277-1-1.html    
+原文的 MCBBS 地图链接随其关站而移除。
 
-![图片](1.jpg)
+#### 作品#1
 
-作品二：  
-江山如画  
-#作者：pigeon  
-#光影包：iteration T 2.0.1  
-#纹理包：olostland 1.0   
-#是否有对截图进行后处理：是  
-#地图链接：https://www.mcbbs.net/thread-1274744-1-1.html  
-#游戏版本：Java 1.18.1
+_山，松，雾。_  
+作者：亚克  
+光影包：iterationT 2  
+是否有对截图进行后处理：否  
 
-![图片](2.jpg)
+![图片](2022-spring_1.jpg){thumbnail="true"}
 
-作品三：  
-晨  
-#作者:黑霞  
-#渲染软件:Terragen   
-#是否有对截图进行后处理:否   
-#地图链接:https://www.mcbbs.net/thread-1296851-1-1.html
+#### 作品#2
 
-![图片](3.jpg)
+_江山如画_  
+作者：pigeon  
+光影包：iteration T 2.0.1  
+纹理包：olostland 1.0  
+是否有对截图进行后处理：是  
+游戏版本：Java 1.18.1
 
-作品四：  
-山花烂漫时  
-#作者：奥斯熊洛夫  
-#光影包：iterationT Next 1.1.0  
-#是否后处理：否  
-#地图链接：https://www.mcbbs.net/forum.php?mod=viewthread&tid=1249353
+![图片](2022-spring_2.jpg){thumbnail="true"}
 
-![图片](4.jpg)
+#### 作品#3
 
-作品五：  
-Foggy Sunrise  
-#作者：AkatZuma  
-#渲染软件：Octane(C4D)  
-#是否有对截图进行后处理：是  
-#地图链接：https://www.mcbbs.net/thread-1296851-1-1.html     
+_晨_  
+作者：黑霞  
+渲染软件：Terragen  
+是否有对截图进行后处理：否  
 
-![图片](5.jpg)
+![图片](2022-spring_3.jpg){thumbnail="true"}
 
-作品六：  
-日上山融雪涨江。  
-#作者：  _Duke___  
-#光影包：iterationT 2.0.1  
-#纹理包：立方构想V3020 512x  
-#是否有对截图进行后处理：是  
-#地图链接：https://www.mcbbs.net/thread-1296851-1-1.html  
-#游戏版本：Java 1.18.1
+#### 作品#4
 
-![图片](6.jpg)
+_山花烂漫时_  
+作者：奥斯熊洛夫  
+光影包：iterationT Next 1.1.0  
+是否后处理：否  
 
-作品七：  
-天光  
-#作者：243  
-#光影包：iterationT 2.0.0  
-#是否后处理：否  
-#地图链接：https://www.mcbbs.net/thread-1296851-1-1.html  
-#游戏版本：JAVA 1.18.1
+![图片](2022-spring_4.jpg){thumbnail="true"}
 
-![图片](7.jpg)
+#### 作品#5
 
-作品八：  
-梦之林  
-#作者：COHK晨哦凯  
-#光影包：iterationT 2.0.1  
-#纹理包：幻梦TextureV1.0.0 TBC  
-#是否对截图进行后处理：是  
-#地图链接：https://www.mcbbs.net/thread-1301277-1-1.html  
-#游戏版本：1.16.4
+_Foggy Sunrise_  
+作者：AkatZuma  
+渲染软件：Octane(C4D)  
+是否有对截图进行后处理：是  
 
-![图片](8.jpg)
+![图片](2022-spring_5.jpg){thumbnail="true"}
+
+#### 作品#6
+
+_日上山融雪涨江。_  
+作者：&nbsp;&nbsp;&nbsp;\_Duke\_\_\_&nbsp;&nbsp;&nbsp;  
+光影包：iterationT 2.0.1  
+纹理包：立方构想V3020 512x  
+是否有对截图进行后处理：是  
+游戏版本：Java 1.18.1
+
+![图片](2022-spring_6.jpg){thumbnail="true"}
+
+#### 作品#7
+
+_天光_  
+作者：243  
+光影包：iterationT 2.0.0  
+是否后处理：否  
+游戏版本：JAVA 1.18.1
+
+![图片](2022-spring_7.jpg){thumbnail="true"}
+
+#### 作品#8
+
+_梦之林_  
+作者：COHK晨哦凯  
+光影包：iterationT 2.0.1  
+纹理包：幻梦TextureV1.0.0 TBC  
+是否对截图进行后处理：是  
+游戏版本：1.16.4
+
+![图片](2022-spring_8.jpg){thumbnail="true"}
