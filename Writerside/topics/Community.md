@@ -13,7 +13,7 @@
 
 - 什么是MGC？
   - Minecraft Graphics Community。是一个 **Minecraft 图形学交流社区**；
-  - 由国内工作室 **HyperCol** 发起建设；
+  - 由国内工作室 **_HyperCol_** 发起建设；
   - 爱好用 Minecraft 实践稀奇古怪的图形学理论，以**创建一个开发者与玩家之间的友好交流环境**为目标。
 
 - 我是玩家，我能在里面获得什么？
@@ -31,7 +31,7 @@
   - 可前往 [作品收录（旧版 MGCD）](https://mgcd.hypercol.com/works/je_shaderpacks.html) 了解。
 
 - 社区在哪里？
-  - MGC 最初建于开黑啦（现名Kook），于2021年11月迁移至 QQ 频道。
+  - MGC 最初建于开黑啦（现名 Kook），于 2021 年 11 月迁移至 QQ 频道。
 
 - 我可以通过什么方式进入社区？
   - 频道号：MineGraph101

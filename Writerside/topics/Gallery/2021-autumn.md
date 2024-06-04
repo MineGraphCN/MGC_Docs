@@ -1,5 +1,7 @@
 # 2021年秋季赛
 
+<show-structure depth="2"/>
+
 ## 比赛介绍
 
 **1stGr截图赛**
@@ -17,7 +19,7 @@
 **活动规则**
 
 1. Java版与基岩版的比试将被分为两个赛区，请勿在错误的赛区提交你的截图！ 
-2. 我们推荐使用社区内已进驻创作者（包括比赛期间新进驻的创作者）的任何已发布光影或材质，但付费的内容需要自行购买。 
+2. 我们推荐使用社区内已进驻创作者（包括比赛期间新进驻的创作者）的任何已发布光影或纹理，但付费的内容需要自行购买。 
 3. 不得进行外部/后期修改。你可以调整着色器的所有设置甚至魔改一些内部设置（需要自行取得作者同意，无需通知管理）。但是，截图在拍摄后不允许修改。 
 4. 每个用户只能提交一张，不允许额外提交。如果你违反了这个规则超过一次，你可能会被取消资格。 
 5. 允许使用自定义地图和Mods。（请在你的简短描述中说明你所使用的东西） 
@@ -40,321 +42,358 @@
 
 ## 前三名
 
-### JE赛道
+### Java 版赛道 {id=top3_je}
 
-第一名：作品二十
+第一名：[作品#20](#20)
 
-第二名：作品十九、作品二十四
+第二名：[作品#19](#19) &nbsp; [作品#24](#24)
 
-第三名：作品二
+第三名：[作品#2](#2)
 
-### BE赛道
+### 基岩版赛道
 
-第一名：作品十
+第一名：[作品#10](#be_10)
 
-第二名：作品九
+第二名：[作品#9](#be_9)
 
-第三名：作品四、作品八
+第三名：[作品#4](#be_4) &nbsp; [作品#8](#be_8)
 
-## Java版赛道
+## 作品展示
 
-作品一：  
-作者：JustinBibab  
-作品名：无
+排名按其在频道上发布时间，不代表名次。
 
-![图片](1.jpg)
+### Java 版赛道
 
-作品二：  
+#### 作品#1
+
+作者：JustinBibab
+
+![图片](2021-autumn_je_1.jpg){thumbnail="true"}{thumbnail="true"}
+
+#### 作品#2
+
 作者：villa_qi  
-mod：little tiles  
-材质：inceptionv1.1+itp v3  
-光影：ptgi e10（modified by tahnass）  
-场景：墨尔本山崖别墅 by villa-qi #GN work住宅服  
+模组：little tiles  
+纹理：inceptionv1.1 + itp v3  
+光影：ptgi e10 (modified by tahnass)  
+场景：墨尔本山崖别墅 by villa-qi #GN work住宅服
 
-![图片](2.png)
+![图片](2021-autumn_je_2.png){thumbnail="true"}
 
-作品三：  
+#### 作品#3
+
 作者：秦千久  
 光影：BSL 8.1p1  
-场地：@TeaCon展馆服  
+场地：@TeaCon展馆服
 
-![图片](3.png)
+![图片](2021-autumn_je_3.png){thumbnail="true"}
 
-作品四：  
+#### 作品#4
+
 作者：™227  
-光影：BSL_Edit_Pasquale  
+光影：BSL_Edit_Pasquale
 
-![图片](4.png)
+![图片](2021-autumn_je_4.png){thumbnail="true"}
 
-作品五：  
+#### 作品#5
+
+_烟花三月下扬州_  
 作者：ExDragine  
-“烟花三月下扬州”  
 光影：SEUS Renewed 1.0.1 修改版  
-材质：无  
-场地：TeaCon 2021 服务器  
+纹理：无  
+场地：TeaCon 2021 服务器
 
-![图片](5.png)
+![图片](2021-autumn_je_5.png){thumbnail="true"}
 
-作品六：  
+#### 作品#6
+
 作者：Ciitta シータ  
 光影：jmseus fcm  
-材质：ion仿生自然  
-场地：斯卡纳托斯  
+纹理：ion仿生自然  
+场地：斯卡纳托斯
 
-![图片](6.jpg)
+![图片](2021-autumn_je_6.jpg){thumbnail="true"}
 
-作品七：  
+#### 作品#7
+
+_好莱坞山极简主义之家，既造型独特又不失美感的豪华山区别墅_  
 作者：因利索  
-好莱坞山极简主义之家，既造型独特又不失美感的豪华山区别墅  
-材质：Ultimate Immersion v2.8 1024x  
+纹理：Ultimate Immersion v2.8 1024x  
 光影：iterationT Next 1.1.0  
 模组：Ultimate Immersion Modern Archviz v2.8  
 场地：Ultimate Immersion by Hunger_Legend  
-截图分辨率：4096*2160  
+截图分辨率：4096*2160
 
-![图片](7.png)
+![图片](2021-autumn_je_7.png){thumbnail="true"}
 
-作品八：  
+#### 作品#8
+
+_某未公开申必项目流出图像_  
 作者：GeForceLegend  
-某未公开申必项目流出图像  
-使用Vanilla Normal Renewed纹理包  
+纹理：Vanilla Normal Renewed
 
-![图片](8.png)
+![图片](2021-autumn_je_8.png){thumbnail="true"}
 
-作品九：  
+#### 作品#9
+
+_冬_  
 作者：亚克  
-冬  
-光影：Nostalgia  
+光影：Nostalgia
 
-![图片](9.png)
+![图片](2021-autumn_je_9.png){thumbnail="true"}
 
-作品十：  
+#### 作品#10
+
 作者：ycat  
-1.12 服务器 云梦阁  
-材质：原版  
-光影：SEUS-v10.0   
-场地：云梦阁  
+光影：SEUS-v10.0  
+场地：云梦阁
 
-![图片](10.png)
+![图片](2021-autumn_je_10.png){thumbnail="true"}
 
-作品十一：  
+#### 作品#11
+
+_暗夜星辰 峡湾天际_  
 作者：瀧天遗迹  
-暗夜星辰 峡湾天际  
-材质：忘了  
-光影：忘了  
-场地：随便开的图  
+纹理：<tooltip term="sic">忘了</tooltip>  
+光影：<tooltip term="sic">忘了</tooltip>  
+场地：<tooltip term="sic">随便开的图</tooltip>
 
-![图片](11.png)
+![图片](2021-autumn_je_11.png){thumbnail="true"}
 
-作品十二：  
+#### 作品#12
+
+_夕阳空中楼阁_  
 作者：Lrbs_SC  
-夕阳空中楼阁  
-材质：Soartex Fanver  
+纹理：Soartex Fanver  
 光影：Lrbs SEUS MABS V3.2  
-地图：狞幕by冷冰  
+地图：狞幕by冷冰
 
-![图片](12.jpeg)
+![图片](2021-autumn_je_12.jpeg){thumbnail="true"}
 
-作品十三：  
+#### 作品#13
+
+_教堂_  
 作者：重生老楚  
-教堂  
-材质：原版  
 光影：iterationT  
-地图：柏林大教堂  
+地图：柏林大教堂
 
-![图片](13.jpeg)
+![图片](2021-autumn_je_13.jpeg){thumbnail="true"}
 
-作品十四：  
+#### 作品#14
+
+_花田_  
 作者：Plants412  
-花田  
-材质：原版  
 光影：Chocapic v8  
-地图：卡露蒂亚by 珀尔  
+地图：卡露蒂亚by 珀尔
 
-![图片](14.png)
+![图片](2021-autumn_je_14.png){thumbnail="true"}
 
-作品十五：  
+#### 作品#15
+
 作者：AkatZuma  
 光影：BSL_v8.0.01 轻度自改  
-材质：Ultimate Immersion v2.8 1024x  
+纹理：Ultimate Immersion v2.8 1024x  
 地图：多人模式  
-地形使用TerraForge生成  
+地形使用TerraForge生成
 
-![图片](15.png)
+![图片](2021-autumn_je_15.png){thumbnail="true"}
 
-作品十六：  
+#### 作品#16
+
 作者：秋暮OVTG  
 光影：ComplementaryShaders  
-材质：YuushyaMod配套纹理包  
-使用1.18ES6随机地图生成  
+纹理：YuushyaMod配套纹理包  
+使用1.18ES6随机地图生成
 
-![图片](16.png)
+![图片](2021-autumn_je_16.png){thumbnail="true"}
 
-作品十七：  
+#### 作品#17
+
 作者：Voyager  
 光影：SEUS v11  
-材质：无  
-作者：BojackWAF   
-名称：摸鱼的中式  
+纹理：无  
+作者：BojackWAF  
+摸鱼的中式
 
-![图片](17.png)
+![图片](2021-autumn_je_17.png){thumbnail="true"}
 
-作品十八：  
+#### 作品#18
+
 作者：夜辰Sanatus  
-mod：little tiles  
-材质：inception+itp  
+模组：little tiles  
+纹理：inception+itp  
 光影：ptgi e8  
-场景：Sanatus未完成的别墅  
+场景：Sanatus未完成的别墅
 
-![图片](18.jpeg)
+![图片](2021-autumn_je_18.jpeg){thumbnail="true"}
 
-作品十九：  
+#### 作品#19
+
 作者：mks  
-mod：little tiles  
-材质：inception+itp  
+模组：little tiles  
+纹理：inception+itp  
 光影：ptgi e12  
-场景：暂未命名  
+场景：<tooltip term="sic">暂未命名</tooltip>
 
-![图片](19.jpeg)
+![图片](2021-autumn_je_19.jpeg){thumbnail="true"}
 
-作品二十：  
+#### 作品#20
+
 作者：九十月  
 光影：BSL＿v8.0.01  
-材质：Cocricot  
-mod：Cocricot  
-场地：湖边木屋  
+纹理：Cocricot  
+模组：Cocricot  
+场地：湖边木屋
 
-![图片](20.png)
+![图片](2021-autumn_je_20.png){thumbnail="true"}
 
-作品二十一：  
-作者：　　　　　  
-光影：seus ptgi e12(duke edit)
-材质：rtx pbr  
-mod：无  
-场地：个人建筑  
+#### 作品#21
 
-![图片](21.png)
+<p>
+作者：<tooltip term="sic">&ensp;&ensp;&ensp;&ensp;&ensp;</tooltip><br/>
+光影：seus ptgi e12(duke edit)<br/>
+纹理：rtx pbr<br/>
+场地：个人建筑<br/>
+</p>
 
-作品二十二：  
-作者：  _Duke___  
+![图片](2021-autumn_je_21.png){thumbnail="true"}
+
+#### 作品#22
+
+作者：&nbsp;&nbsp;\_Duke\_\_\_  
 光影：seus ptgi hrr GFME 1.4  
-材质：Nebby&#039;s Better PBR Release 1.0  
-mod：无  
-场地：基姆城服务器ETC  
+纹理：Nebby&#039;s Better PBR Release 1.0  
+场地：基姆城服务器ETC
 
-![图片](22.png)
+![图片](2021-autumn_je_22.png){thumbnail="true"}
 
-作品二十三：  
+#### 作品#23
+
 作者：冇欸  
 光影：seus dazzling 1.9  
-地图：卡露蒂亚  
+地图：卡露蒂亚
 
-![图片](23.jpeg)
+![图片](2021-autumn_je_23.jpeg){thumbnail="true"}
 
-作品二十四：  
+#### 作品#24
+
 作者：杜豫Isih  
 光影：自改光影【116工程】  
 地图：早期测试开发地图  
-模组：团队自研模组HE ENGINE  
+模组：团队自研模组HE ENGINE
 
-![图片](24.jpeg)
+![图片](2021-autumn_je_24.jpeg){thumbnail="true"}
 
-作品二十五：  
+#### 作品#25
+
+_走进梦中的仙境_  
 作者：氪皮怪okami  
-走进梦中的仙境  
 光影：SEUS DAZZING 1.9.9.1（frix）  
-地图：卡露蒂亚（珀尔）  
+地图：卡露蒂亚（珀尔）
 
-![图片](25.png)
+![图片](2021-autumn_je_25.png){thumbnail="true"}
 
-作品二十六：  
+#### 作品#26
+
+_图书馆_  
 作者：阿南  
-图书馆  
 光影：ptgi E12  
-建筑：阿南  
-材质：原版  
+建筑：阿南
 
-![图片](26.png)
+![图片](2021-autumn_je_26.png){thumbnail="true"}
 
-作品二十七：  
+#### 作品#27
+
 作者：RW25G-552004（ZHYX）  
 光影 IterationT 1.1.0  
-材质realistico-full  
-场景自制  
+纹理：realistico-full  
+场景自制
 
-![图片](27.png)
+![图片](2021-autumn_je_27.png){thumbnail="true"}
 
-## Bedrock版赛道
+### 基岩版赛道
 
-作品一：  
+#### 作品#1 {id=be_1}
+
 作者：sdog  
 光影：dspe10 冷色超配  
-地图：Stonehill Castle  
+地图：Stonehill Castle
 
-![图片](/images/gallery/2021-autumn/be/1.jpeg)
+![图片](2021-autumn_be_1.jpeg){thumbnail="true"}
 
-作品二：  
+#### 作品#2 {id=be_2}
+
 作者：zhoujiaxin66  
-光影：HSPEv9.4 地图自创  
+光影：HSPEv9.4 地图自创
 
-![图片](/images/gallery/2021-autumn/be/2.jpeg)
+![图片](2021-autumn_be_2.jpeg){thumbnail="true"}
 
-作品三：  
+#### 作品#3 {id=be_3}
+
 作者：Vivian  
 光影：重生LUX5  
-材质：舒服细致  
+纹理：舒服细致  
 地图：重生RSG服务器  
-建筑：自建服务器大厅  
+建筑：自建服务器大厅
 
-![图片](/images/gallery/2021-autumn/be/3.jpeg)
+![图片](2021-autumn_be_3.jpeg){thumbnail="true"}
 
-作品四：  
+#### 作品#4 {id=be_4}
+
 作者：多彩石  
 光影：GSPEV6.0  
-材质：乘方像素  
-下界门遗迹  
+纹理：乘方像素  
+下界门遗迹
 
-![图片](/images/gallery/2021-autumn/be/4.jpg)
+![图片](2021-autumn_be_4.jpg){thumbnail="true"}
 
-作品五：  
+#### 作品#5 {id=be_5}
+
 作者：kuuga  
 光影：cspe真实版  
-材质：itp材质包  
-地图：自创  
+纹理：IT-project  
+地图：自创
 
-![图片](/images/gallery/2021-autumn/be/5.jpeg)
+![图片](2021-autumn_be_5.jpeg){thumbnail="true"}
 
-作品六：  
+#### 作品#6 {id=be_6}
+
 作者：身旁  
-图片中材质贴图及模型均来自IT-project  
+图片中纹理贴图及模型均来自IT-project
 
-![图片](/images/gallery/2021-autumn/be/6.jpeg)
+![图片](2021-autumn_be_6.jpeg){thumbnail="true"}
 
-作品七：  
+#### 作品#7 {id=be_7}
+
 作者：肉炒生姜  
 光影：cspe7生存版  
 地图：原创  
-材质：自己改了一改冰块材质  
+纹理：自己改了一改冰块纹理
 
-![图片](/images/gallery/2021-autumn/be/7.jpeg)
+![图片](2021-autumn_be_7.jpeg){thumbnail="true"}
 
-作品八：  
+#### 作品#8 {id=be_8}
+
 作者：先知  
 光影：无  
-材质贴图及模型：IT-project  
+纹理贴图及模型：IT-project
 
-![图片](/images/gallery/2021-autumn/be/8.jpeg)
+![图片](2021-autumn_be_8.jpeg){thumbnail="true"}
 
-作品九：  
+#### 作品#9 {id=be_9}
+
 作者：夜辰Sanatus  
 光影：rtx  
-地图：原创，福州延安中学还原  
+地图：原创，福州延安中学还原
 
-![图片](/images/gallery/2021-autumn/be/9.jpeg)
+![图片](2021-autumn_be_9.jpeg){thumbnail="true"}
 
-作品十：  
-作者：　　　　　　　　  
-光影：rtx  
-地图：贫民窟  
+#### 作品#10 {id=be_10}
 
-![图片](/images/gallery/2021-autumn/be/10.png)
+<p>
+作者：<tooltip term="sic">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;</tooltip><br/>
+光影：rtx<br/>
+地图：贫民窟<br/>
+</p>
+
+![图片](2021-autumn_be_10.png){thumbnail="true"}

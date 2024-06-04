@@ -5,29 +5,17 @@
        xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
        title="主页" id="Home" help-id="Section-Starting-Page">
 
-<!--    A section combines multiple topics dedicated to a specific subject.
-            Add a starting page to provide an overview of the topics in the section.
-            Start with two topics you want to promote in the <spotlight> group,
-            several important topics in the <primary> group (for example, where to start),
-            several less important topics in the <secondary> group (for example, more advanced topics),
-            and optionally add any other relevant topics in the <misc> group as cards and lists of links
-            (maybe related topics from other sections).
-            Only the spotlight section is limited to two topics.
-            For other groups, try to keep the number between 2 and 6, but you can add more if necessary.-->
-
     <section-starting-page>
         <title>Minecraft 图形学社区文档</title>
         <description>
             这是隶属于 MineGraph 社区的文档。
         </description>
 
-        <!--    Add up to 2 topics that you want to promote. Use the "type" attribute to select an icon.    -->
         <spotlight>
             <a href="Community.md" type="navigation" summary="快速了解并加入我们的社区">社区入门</a>
             <a href="Library.md" type="library" summary="这里汇集了由社区成员撰写的各种与 Minecraft 图形相关的知识、问答和解决方案。">知识库</a>
         </spotlight>
 
-        <!--    Add several topics that are most important for this section.    -->
         <primary>
             <title>浏览作品</title>
             <a href="itt3.md" summary="久负盛名的 iterationT，现已推出 3.0！">【手册】 iterationT 3.0</a>
@@ -36,34 +24,36 @@
             <a href="https://mgcd.hypercol.com/works/je_shaderpacks.html" summary="【临时】访问旧版 MGCD 查看作品表格。">获取更多</a>
         </primary>
 
-        <!--    Add several topics that are less important or are relevant only for advanced/experienced users.    -->
         <secondary>
             <title>创作者文档</title>
             <a href="shaderTutorial.md" summary="管线 | 程序 | 功能实现"/>
             <a href="resourceTutorial.md" summary="基本概念 | 纹理绘制 | 特殊纹理制作"/>
-            <a href="developTips.md" summary="着色器 [概念 | 入门 | 开发资料] | 资源包 [开发资料]"/>
-            <a href="labpbrMaterialStandard.md" summary="shaderLABS 统一的着色器和资源包 PBR 格式。"/>
+            <a href="developTips.md" summary="着色器概念 | 入门 | 开发资料 &amp; 资源包开发资料"/>
+            <a href="labpbrMaterialStandard.md" summary="由 shaderLABS 统一的着色器和资源包 PBR 格式。"/>
         </secondary>
 
-        <!--    Optionally add additional cards and links to topics that are not in this section but may be relevant.    -->
         <misc>
-            <cards narrow="true">
-                <title>【迁移中】画廊</title>
-                <a href="2024-spring.md" summary=""/>
-                <a href="2023-spring.md" summary=""/>
-                <a href="2022-autumn.md" summary=""/>
-                <a href="2022-summer.md" summary=""/>
-                <a href="2022-spring.md" summary=""/>
-                <a href="2021-winter.md" summary=""/>
+            <cards narrow="false">
+                <title>画廊</title>
+                <a href="2024-spring.md" summary="仅 Java 版 | 龙年生肖主题赛"/>
+                <a href="2023-spring.md" summary="主题赛：光线追踪"/>
+                <a href="2022-autumn.md" summary="仅 Java 版 | 主题赛：山"/>
+                <a href="2022-summer.md" summary="主题赛：大型建筑群"/>
+                <a href="2022-spring.md" summary="仅 Java 版 | 限定地图赛 | 允许渲染器"/>
+                <a href="2021-winter.md" summary="自由赛"/>
             </cards>
 
             <links>
                 <group>
                     <title>探索知识库</title>
                     <a href="terms.md"/>
-                    <a href="irisAsOf.md"/>
-                    <a href="raytracingCorrection.md"/>
-                    <a href="je-resourcepack.md"/>
+                    <a href="irisAsOf.md" summary="在 Iris 下还原 OptiFine / MCPatcher 特性所必要的模组"/>
+                    <a href="raytracingCorrection.md" summary="这篇文档主要针对光线追踪的误区和伪光追相关的概念进行纠正。">误区纠正 - 光线追踪</a>
+                </group>
+                <group>
+                    <title>最近更新</title>
+                    <a href="shaderBasic.md" anchor="jeShaderEvo" summary="Java 版光影的发展简史"/>
+                    <a href="rayTracing.md" summary="什么是光线追踪？"/>
                 </group>
             </links>
         </misc>

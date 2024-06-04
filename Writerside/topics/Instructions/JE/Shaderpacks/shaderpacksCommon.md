@@ -185,7 +185,7 @@
                 <tab title="两者都嵌入式安装">
 
 嵌入式安装需要启动器的支持。
-> **JE 1.20.4** 以上只能将 OptiFine 以模组形式从 Forge 加载，不可以使用启动器一起嵌入式安装。
+> **JE 1.20.4** 及以上只能将 OptiFine 以模组形式从 Forge 加载，不可以使用启动器一起嵌入式安装。
 > 
 > 如果你试图在上述版本中安装 OptiFine，请切换至 `将 OptiFine 作为模组安装` 或 `手动安装` 。
 >
@@ -537,7 +537,7 @@ Java 路径
   > 如果你没有解压缩软件，我们推荐 [7-zip](https://sparanoid.com/lab/7z/) 。
 - 确保不是原版光影或 Canvas 光影，否则你应当直接像 [安装资源包](resourcepacksCommon.md "资源包安装通用教程") 那样安装。
 
-检查完成之后，将光影放入光影包文件夹并选中即可。
+检查完成之后，将**含有 `shaders` 的文件夹或压缩包**放入光影包文件夹并选中即可。
 <note>
 你可以从
 <tabs group="A">
@@ -561,6 +561,6 @@ Java 路径
     </category>
     <category ref="advance">
         <a href="irisAsOf.md">Iris 下等效 OptiFine 功能的模组</a>
-        <a href="shaderBasic.md" summary="着色器的基本概念和它们与 MC 的历史">着色器 基本概念和轶事</a>
+        <a href="shaderBasic.md" summary="着色器的基本概念和它们与 Minecraft 的历史">着色器 基本概念和轶事</a>
     </category>
 </seealso>

@@ -4,8 +4,8 @@
 > 
 {style="warning" title="多图"}
 
-> 画廊目前还没有完成迁移。你可以前往 [旧版 MGCD](https://mgcd.hypercol.com/gallery/) 查看。
+> 画廊已经迁移完毕。
 >
-{style="warning" title="迁移中"}
+{style="note" title="迁移完毕"}
 
 这里收录了每一届 1stGr 截图大赛的参赛作品，你可以在**左侧栏**选择你想看的一届。

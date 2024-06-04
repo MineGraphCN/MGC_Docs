@@ -51,7 +51,9 @@ iterationT在1.16.5以下的需要在光影设置内启用 `G7前兼容性` 选�
 
 **可参考以下视频：**
 
-[//]: # (<iframe src="//player.bilibili.com/player.html?aid=630543306&bvid=BV13b4y1f7m7&cid=338922619&page=1&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width:100%;height:420px"> </iframe>)
+[//]: # (<iframe src="//player.bilibili.com/player.html?aid=630543306&bvid=BV13b4y1f7m7&cid=338922619&page=1&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width:100%;height:420px"/>)
+
+[Bilibili - 【干货！萌新必看】萌新入坑mc材质包一定会碰到的问题](https://b23.tv/BV13b4y1f7m7)
 
 **注意：1.17.x和1.18.x可能会出现游戏资源包列表读取不到秦256x和1024x的情况，原因未知，mojang出来挨打！解压成文件夹形式可以读取**
 
@@ -182,7 +184,9 @@ Ps：**每个光影的选项位置不同**，有的光影设置还是英文的�
 
 **【注意】以下内容都在下列视频说清楚了**
 
-[//]: # (<iframe src="//player.bilibili.com/player.html?aid=630543306&bvid=BV13b4y1f7m7&cid=338922619&page=1&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width:100%;height:420px"> </iframe>)
+[//]: # (<iframe src="//player.bilibili.com/player.html?aid=630543306&bvid=BV13b4y1f7m7&cid=338922619&page=1&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width:100%;height:420px"/>)
+
+[Bilibili - 【干货！萌新必看】萌新入坑mc材质包一定会碰到的问题](https://b23.tv/BV13b4y1f7m7)
 
 #### 通过“解决视频”可解决的问题
 
