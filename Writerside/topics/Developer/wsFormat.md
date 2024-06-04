@@ -4,13 +4,13 @@
 > 
 {style="note"}
 
-## 常用格式速查
-
 > 快捷键以 [JetBrains Writerside IDE](https://www.jetbrains.com/zh-cn/writerside/download/#section=windows) 为准。
+
+## 常用格式速查
 
 <tldr>
 <p><b>省流块</b></p>
-<p>省流块永远在章节顶部。</p>
+<p>省流块永远紧跟最近的标题。</p>
 
 ```xml
 <tldr>
@@ -60,22 +60,40 @@
 
 _斜体_ <shortcut>Ctrl</shortcut><shortcut>I</shortcut>
 ```markdown
-< *文字* | _文字_ >
+*文字*
+```
+或
+```markdown
+_文字_
 ```
 
 ========================
 
 **粗体** <shortcut>Ctrl</shortcut><shortcut>B</shortcut>
 ```markdown
-< **文字** | __文字__ >
+**文字**
+```
+或
+```markdown
+__文字__
 ```
 
 ========================
 
 ***粗斜体***
 ```markdown
-< **_文字_** | ***文字*** | __*文字*__ | ... >
+**_文字_**
 ```
+或
+```markdown
+***文字***
+```
+或
+```markdown
+__*文字*__
+```
+...
+
 > Writerside IDE 快捷键从内向外检测，如果使用类似 `_**文字**_` 格式，无法使用快捷键优先取消斜体，反之无法优先取消粗体。
 
 ========================
@@ -96,7 +114,10 @@ _斜体_ <shortcut>Ctrl</shortcut><shortcut>I</shortcut>
 
 [链接](https://b23.tv/BV1GJ411x7h7) <shortcut>Ctrl</shortcut><shortcut>Shift</shortcut><shortcut>U</shortcut>
 ```markdown
-[文字](< 站内文档.md#章节 | 外部链接 >)
+[文字](<站内文档.md#章节 | 外部链接>)
+```
+或
+```markdown
 <外部链接>  <- 使用尖括号括起来即可
 ```
 
@@ -129,7 +150,9 @@ _斜体_ <shortcut>Ctrl</shortcut><shortcut>I</shortcut>
 
 ```markdown
     代码块
-    ```编程语言
+```
+```markdown
+    ```<编程语言>
     内容
     ```
 ```
@@ -140,7 +163,7 @@ _斜体_ <shortcut>Ctrl</shortcut><shortcut>I</shortcut>
 > ```markdown
 > > 内容
 > >             <- 留白一行
-> {style="< tip(默认，不需要留白和此属性框) | note | warning >"}
+> {style="<tip(默认，不需要留白行和此属性行) | note | warning>" title="<标题>"}
 > ```
 
 ========================
@@ -180,7 +203,7 @@ _斜体_ <shortcut>Ctrl</shortcut><shortcut>I</shortcut>
 <title>步骤块</title>
 
 ```xml
-<procedure type="< steps(有序，默认) | choices(无序) >">
+<procedure type="<steps(有序，默认) | choices(无序)>">
     <title>标题（可选）</title>
     <step>步骤1</step>
     <step>步骤2</step>
@@ -219,7 +242,7 @@ _斜体_ <shortcut>Ctrl</shortcut><shortcut>I</shortcut>
 | 内容1 | 内容2 | ... |
 | 内容3 | 内容4 | ... |
 ```
-> `|:-|` 表示左对齐，`|:-:|` 表示居中对齐，`|-:|` 表示右对齐，`|-|` 表示默认对齐。
+> `|:-|` 表示左对齐，`|:-:|` 表示居中对齐，`|-:|` 表示右对齐，`|-|` 表示默认对齐，`-` 数量不限。
 > 
 > Writerside 的对齐模式暂时有问题。
 
@@ -242,23 +265,23 @@ _斜体_ <shortcut>Ctrl</shortcut><shortcut>I</shortcut>
 使用 `group` 和 `group-key` 同步切换标签页，当 `group` 和 `group-key` 值相同时，选项卡将会同步切换：
 
 ```xml
-    <tabs group="A">
-        <tab title="选项卡1标题" group-key="a">
-            内容A
-        </tab>
-        <tab title="选项卡2标题" group-key="b">
-            内容B
-        </tab>
-    </tabs>
+<tabs group="A">
+    <tab title="选项卡1标题" group-key="a">
+        内容A
+    </tab>
+    <tab title="选项卡2标题" group-key="b">
+        内容B
+    </tab>
+</tabs>
     
-    <tabs group="A">
-        <tab title="选项卡1标题A" group-key="a">
-            内容C
-        </tab>
-        <tab title="选项卡2标题B" group-key="b">
-            内容D
-        </tab>
-    </tabs>
+<tabs group="A">
+    <tab title="选项卡1标题A" group-key="a">
+        内容C
+    </tab>
+    <tab title="选项卡2标题B" group-key="b">
+        内容D
+    </tab>
+</tabs>
 ```
 
 渲染结果：
@@ -287,18 +310,16 @@ _斜体_ <shortcut>Ctrl</shortcut><shortcut>I</shortcut>
 ### 可折叠块 {collapsible="true" default-state="expanded"}
 
 ```markdown
-    ## 章节 {collapsible="true" default-state="< collapsed(默认) | expanded >"}
-
-    =======
-
+    ## 章节 {collapsible="true" default-state="<collapsed(默认) | expanded>"}
+```
+```markdown
     ```
     代码块
     ```
-    {collapsible="true" default-state="< collapsed(默认) | expanded >"}
-
-    =======
-
-    <procedure collapsible="true" default-state="< collapsed(默认) | expanded >">
+    {collapsible="true" default-state="<collapsed(默认) | expanded>"}
+```
+```markdown
+    <procedure collapsible="true" default-state="<collapsed(默认) | expanded>">
     步骤块
     </procedure>
 ```
@@ -336,6 +357,10 @@ _斜体_ <shortcut>Ctrl</shortcut><shortcut>I</shortcut>
 
 ## 添加新文件
 
+> 文件名应当使用**驼峰命名法**。
+>
+{style="note"}
+
 1. 在 `Writerside` 侧栏的正确目录下创建 Topic
 
     ![create_topic_on_correct_directory](create_topic_on_correct_directory.png)
@@ -343,5 +368,3 @@ _斜体_ <shortcut>Ctrl</shortcut><shortcut>I</shortcut>
 2. 在 `项目` 侧栏将你的文档文件移入对应的文件夹
 
     ![move_file_to_correct_folder](move_file_to_correct_folder.png)
-
-> 文件名应当使用**驼峰命名法**。

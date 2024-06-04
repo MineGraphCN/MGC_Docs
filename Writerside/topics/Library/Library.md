@@ -48,7 +48,7 @@
 
 你可能会在一些文档开头或中间看见各种颜色的提示块：
 
-> - 表示引用
+> - 表示引用。
 > - 表示注解和小贴士。
 >
 {title="灰色提示块"}
@@ -67,5 +67,8 @@
 
 ## 计算机图形学（Computer Graphics）
 
-中国科学技术大学图形与几何计算实验室给予了比较明确的定义和解释。
-请参阅此文档：[什么是计算机图形学](http://staff.ustc.edu.cn/~lgliu/Resources/CG/What_is_CG.htm)
+中国科学技术大学图形与几何计算实验室给予了比较明确的定义和解释。  
+参阅：[什么是计算机图形学](http://staff.ustc.edu.cn/~lgliu/Resources/CG/What_is_CG.htm)
+
+## 入门 Windows……？
+推荐阅读《[你缺失的那门计算机课](https://www.criwits.top/missing/)》，快速上手电脑的教程。
