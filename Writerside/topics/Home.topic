@@ -35,7 +35,7 @@
         <misc>
             <cards narrow="false">
                 <title>画廊</title>
-                <a href="2024-spring.md" summary="仅 Java 版 | 龙年生肖主题赛"/>
+                <a href="2024-spring.md" summary="龙年生肖主题赛"/>
                 <a href="2023-spring.md" summary="主题赛：光线追踪"/>
                 <a href="2022-autumn.md" summary="仅 Java 版 | 主题赛：山"/>
                 <a href="2022-summer.md" summary="主题赛：大型建筑群"/>

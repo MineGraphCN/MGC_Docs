@@ -1,6 +1,6 @@
 # 社区入门
 
-<show-structure depth="2"></show-structure>
+<show-structure depth="2"/>
 
 这是 Minecraft 图形学社区的新人指南与行为规范，  
 介绍有关于 MGC 社区活动所需注意的事项。

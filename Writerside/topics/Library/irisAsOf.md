@@ -96,7 +96,7 @@ Mini Dynamic Lights [(CurseForge)](https://www.curseforge.com/minecraft/mc-mods/
 ### 更好的草地
 
 Fast Better Grass (资源包) [(CurseForge)](https://www.curseforge.com/minecraft/texture-packs/fast-better-grass) [(Modrinth)](https://modrinth.com/resourcepack/fast-better-grass)
-: 让草方块和相关的纹理侧面使用顶面纹理，可以与其他纹理包一起工作。**不像 OptiFine 在高品质下那样工作**。
+: 让草方块和相关的纹理侧面使用顶面纹理，可以与其他纹理包一起工作。**不像 OptiFine 的高品质模式那样工作（没有动态侧面纹理）**。
 
 ### 迷雾调整
 
