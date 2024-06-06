@@ -1,6 +1,6 @@
 # 2021年秋季赛
 
-<show-structure depth="2"/>
+<show-structure depth="0"/>
 
 ## 比赛介绍
 
@@ -68,7 +68,7 @@
 
 作者：JustinBibab
 
-![图片](2021-autumn_je_1.jpg){thumbnail="true"}{thumbnail="true"}
+![图片](2021-autumn_je_1.jpg){thumbnail="true"}
 
 #### 作品#2
 

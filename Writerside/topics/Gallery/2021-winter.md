@@ -1,6 +1,6 @@
 # 2021年冬季赛
 
-<show-structure depth="2"/>
+<show-structure depth="0"/>
 
 > 此画廊留档有问题，有缺图情况。
 >
@@ -32,7 +32,7 @@
 
 _雪山环绕的仙境之湖_  
 作者：Σοβιετική Ένωση  
-光影：Apollo RT
+光影：Apollo RT  
 纹理：Patrix 128x  
 取景于《Broville v11.1》地图
 
@@ -283,7 +283,7 @@ _覆雪之村_
 _寂夜_  
 作者：藤白巧  
 光影：BSBE  
-纹理：水野工艺(MizunoCraft)
+纹理：水野工艺(MizunoCraft)  
 取景于1.17地图Winter Towne
 
 ![图片](2021-winter_be_9.jpg){thumbnail="true"}

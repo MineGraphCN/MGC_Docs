@@ -56,7 +56,7 @@
 
 当仅考虑顶点着色器和像素着色器时，在 [上文](#here_sASimpleQuestion_whatIsShader "何谓着色器") 中我们所提到的所谓“*何种位置*”大多数时候就在顶点着色器中进行处理，而以“*何种方式*”则是顶点着色器和像素着色器的共同作用。
 
-> 2018 年英伟达提出了 [网格着色器（Mesh shader）](https://developer.nvidia.com/zh-cn/blog/introduction-turing-mesh-shaders/)，这让几何处理管线不再拘泥于传统的顶点着色器，拥有更强的可编程性和性能，这使得所有几何处理工作均可在 GPU 端完成，无需和 CPU 进行高延迟通信。它的本质是计算着色器。
+> 2018 年英伟达提出了 [网格着色器（Mesh shader）](https://developer.nvidia.com/zh-cn/blog/introduction-turing-mesh-shaders/)，这让几何处理管线不再拘泥于传统的管线顺序，拥有更强的可编程性和性能，使得所有几何处理工作均可在 GPU 端完成，无需和 CPU 进行高延迟通信。它的本质是计算着色器。
 
 ### 光栅化
 
@@ -123,11 +123,11 @@
 
 就像它的名字一样，Optimine 的主要目标就是 <tooltip term="Optimise">_**Opti**mise_</tooltip> _**Mine**craft_ ，提供了很多针对渲染管线的优化。
 
-Optimine 发布后不久，它被 _sp614x_ 接手，开始着手添加更多优化功能，并且开始吸收 MCPatcher 的功能来获取更好的兼容性和性能。同时它的名字也变成了我们所熟知的 Opti**F**ine。
+Optimine 发布后不久，它被 _sp614x_ 接手，开始着手添加更多优化功能并吸收 MCPatcher 的功能来获取更好的兼容性和性能，同时它的名字也变成了我们所熟知的 Opti**F**ine。
 
 随着 OptiFine 的更新，自 **JE 1.8** 起，它已经包含了 MCPatcher 的几乎所有功能，也标志着 MCPatcher 正式退出历史的舞台。
 
-如今 OptiFine 的文件通常是 `<preview>_OptiFine_<Minecraft版本>_HD_U_<OptiFine版本>.jar` ，事实上在 OptiFine 刚刚发布时，除了 文件名中 `U` 所代表的 **Ultra** 以外，还有更多其他的版本。这是 [OptiFine 的 MinecraftForum 发布页](https://www.minecraftforum.net/forums/mapping-and-modding-java-edition/minecraft-mods/1272953-optifine-hd-fps-boost-dynamic-lights-shaders-and) 上对以前存在的各个 OptiFine 版本所提供功能的列表：
+如今 OptiFine 的文件通常是 `<preview_>OptiFine_<Minecraft版本>_HD_U_<OptiFine版本>.jar` ，事实上在 OptiFine 刚刚发布时，除了 文件名中 `U` 所代表的 **Ultra** 以外，还有更多其他的版本。这是 [OptiFine 的 MinecraftForum 发布页](https://www.minecraftforum.net/forums/mapping-and-modding-java-edition/minecraft-mods/1272953-optifine-hd-fps-boost-dynamic-lights-shaders-and) 上对以前存在的各个 OptiFine 版本所提供功能的列表：
 
 | 功能＼版本      | 轻量 (Light) | 标准 (Standard) | 平滑 (Smooth) | 多核 (Multi-Core) | 抗锯齿 (AA) | 极致 (Ultra) |
 |------------|:----------:|:-------------:|:-----------:|:---------------:|:--------:|:----------:|
@@ -150,7 +150,7 @@ Optimine 发布后不久，它被 _sp614x_ 接手，开始着手添加更多优�
 
 > 有些玩家可能会好奇，为什么这些模组都在 2011 年初扎堆出现。这是因为那时候 Minecraft 刚刚结束 Alpha 进入 Beta 阶段，正在经历第一个上升期，并在 2013 年中附近达到顶峰。
 
-自 **JE 1.8** 起，OptiFine 合并了光影核心的功能并继续开发，也首次推出了光影设置功能。由于其本身对原版进行了深度魔改，因而能提供很多相关变量，OptiFine 光影也由此开始快速发展。而光影核心则仍针对基于其编写的老旧光影进行兼容性更新，直到 **JE 1.12** 正式停更。
+自 **JE 1.8** 起，OptiFine 合并了光影核心的功能并继续开发，也首次推出了光影设置功能。由于其本身对原版进行了深度魔改，因而能提供很多相关变量，OptiFine 光影也由此开始快速发展。而光影核心则仍由 *karyonix* 针对基于其编写的老旧光影进行兼容性更新，直到 **JE 1.12** 正式停更。
 
 > 在这期间，OptiFine 还顺便合并了动态光源的功能，并将其与光影进行了兼容。
 
@@ -176,7 +176,7 @@ Optimine 发布后不久，它被 _sp614x_ 接手，开始着手添加更多优�
 
 ### 脚镣之舞
 
-最早的基岩版光影基于 OpenGL ES 的 GLSL 或 DirectX 的 HLSL <sup>Windows / XBox</sup> 。由于接口限制，基岩版光影可以实现的效果非常少（甚至比 **JE 1.16** 之后的原版资源包着色器还少），并且为 [向前渲染管线](terms.md#向前渲染法 "在每个着色器中，立即在传入的几何体上计算诸如阴影和反射等效果。") ，但仍可以通过一系列奇技淫巧实现基于物理的渲染。平和的日子就这样过去，直到 <tooltip term="SDGP">SDGP</tooltip> 宣布胎死腹中，而微软宣布和英伟达为 Minecraft 基岩版带来光线追踪。
+最早的基岩版光影基于 OpenGL ES 的 GLSL 或 DirectX 的 HLSL <sup>Windows / XBox</sup> 。由于接口限制，基岩版光影可以实现的效果非常少（甚至比 **JE 1.16** 之后的原版资源包着色器还少），并且为 [向前渲染管线](#向前渲染法 "在每个着色器中，立即在传入的几何体上计算诸如阴影和反射等效果。") ，但仍可以通过一系列奇技淫巧实现基于物理的渲染。平和的日子就这样过去，直到 <tooltip term="SDGP">SDGP</tooltip> 宣布胎死腹中，而微软宣布和英伟达为 Minecraft 基岩版带来光线追踪。
 
 ### 恶龙降临
 
@@ -195,7 +195,7 @@ _理想情况下_，Windows 版本能够通过其调用 **RTX 2000** <sup>Nvidia
 | XBox                                                      | **1.13.0.13**   |                                 |
 | PS4                                                       | **1.14.0**      |                                 |
 | Windows 10                                                | **1.15.0.8**    | 仅在 RTX Beta 版本上启用               |
-| Windows 10                                                | **1.16.200.51** | 期间经历多次反复禁用和启用，这里只给出最终启用时间       |
+| Windows 10                                                | **1.16.200.51** | 期间经历多次反复禁用和启用，此处仅给出最终启用时间       |
 | Android / iOS / iPadOS                                    | **1.18.30.20**  | Android 经历多次反复禁用和启用，最终和苹果平台一起推出 |
 | Fire / <tooltip term="NS">NS</tooltip> / Windows 10 (x86) | **1.18.30**     |                                 |
 _渲染龙在各平台基岩版的启用时间表（按版本顺序）_
@@ -204,6 +204,8 @@ _渲染龙在各平台基岩版的启用时间表（按版本顺序）_
 
 > 意外的是，渲染龙一开始是给 Java 版设计的，而目前只在基岩版中起到了负优化作用。XBox 版本在渲染龙推出之初就已经有带有光线追踪的预览版，而在这之后也被移除了。
 
+### 屠龙之路
+
 在此之后，渲染龙虽被成功破解，但由于破解团队收到微软的 DMCA 致函 <sup><b>1</b></sup>，以及新的光影编写方法过于麻烦 <sup><b>2</b></sup>，基岩版光影仍然沉寂。
 
 - **[1]** DMCA 致函是一种版权警告，当时团队将代码上传到了 Github，被致函删库。
@@ -211,7 +213,7 @@ _渲染龙在各平台基岩版的启用时间表（按版本顺序）_
 -
 {type="none"}
 
-不过事情在 2023 年迎来了转机。基岩版在这年 7 月发布了 [延迟渲染](terms.md#延迟渲染法 "将场景的各种信息存储起来，再在之后的着色器中统一计算。") 更新，提供了各种接口和信息。久旱逢甘霖，基岩版光影自此开始进入了新的时代。
+不过事情在 2023 年迎来了转机。基岩版在这年 7 月发布了 [延迟渲染](#延迟渲染法 "将场景的各种信息存储起来，再在之后的着色器中统一计算。") 更新，提供了各种接口和信息。久旱逢甘霖，基岩版光影自此开始进入了新的时代。
 
 > 网易的延迟处理接口来得要比渲染龙更早，自由度也相对当时的渲染龙更高，在很长一段时间里，网易版的光影繁荣一度超过了国际版。
 

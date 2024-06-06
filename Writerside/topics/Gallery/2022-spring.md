@@ -1,5 +1,7 @@
 # 2022年春季赛
 
+<show-structure depth="0"/>
+
 > 此画廊留档有问题，有缺图情况。
 > 
 {title="缺图" style="warning"}
