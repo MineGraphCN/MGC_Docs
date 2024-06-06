@@ -21,7 +21,7 @@
 : 表示这只在对应环境中有效。
 
 <tooltip term="缩写">缩写</tooltip>
-: 将鼠标停留在缩写上可以查看术语的全称。
+: 将鼠标停留在其上或点击 <sup>触屏设备</sup> 可以查看术语的全称。
 
 `代码`
 : 表示这是程序运行时显示/日志/代码内容，或计算机行为。  
@@ -51,7 +51,7 @@ Java 版游戏，在本文档中，也可以表示只能在 Java 版渲染模组
 <def id="be">
 <title><tooltip term="BE">BE</tooltip></title>
 基岩版游戏，这其中也包含了<b>原 <tooltip term="PE">PE</tooltip></b>。
-<tip>现在的主机版也基于 BE。</tip>
+<tip>现在的主机版也属于 BE。</tip>
 </def>
 
 <def id="ne">
@@ -69,7 +69,7 @@ Java 版游戏，在本文档中，也可以表示只能在 Java 版渲染模组
 <deflist>
 
 <def title="模组／模组加载器" id="模组">
-    <b>MOD</b> / <b>MOD Loader</b>，由<b>第三方</b>提供的接口在原版游戏基础上运行由<b>社区玩家编写</b>的扩展内容，目前主流的加载器有 <b>Forge</b> 和 <b>Fabric</b> ，此外还有 Fabric 的分支版本 <b>Quilt</b> 以及自 <b>JE 1.12.2</b> 停止更新的 <b>LiteLoader</b> ，现在还有从 Forge 独立出来的 <b>Neo Forge</b> ，它的目标是做一个可以通用的加载器。
+    <b>MOD</b> / <b>MOD Loader</b>，由<b>第三方</b>提供的接口在原版游戏基础上运行由<b>社区玩家编写</b>的扩展内容，目前主流的加载器有 <b>Forge</b> 和 <b>Fabric</b> ，此外还有 Fabric 的分支版本 <b>Quilt</b> 以及自 <b>JE 1.12.2</b> 停止更新的 <b>LiteLoader</b> ，现在还有从 Forge 独立出来的 <b>NeoForge</b> ，它的目标是做一个可以通用的加载器。
     <list>
         <li>Fabric 的接口（API）和加载器本身是独立的，而其他加载器均内置了接口。</li>
     </list>
@@ -136,7 +136,7 @@ Java 版游戏，在本文档中，也可以表示只能在 Java 版渲染模组
 <def title="OptiFine" id="optifine">
     <b>高清修复</b>，简称 <b>OF</b>，老牌 Java 版优化模组。作者为 <i>sp614x</i>。
     <list>
-        <li>最早是提供更大纹理分辨率支持的模组，这也是中文名被翻译为高清修复的原因。</li>
+        <li>最早是提供优化并合并了 MCPatcher 的更大纹理分辨率支持的模组，这也是中文名被翻译为高清修复的原因。</li>
         <li>在 <b>JE 1.8</b> 之后集成了 GLSL Shader Core 的功能，开始提供光影支持。</li>
         <li>在某一版本中整合了<b>动态光源</b>模组，让世界中的实体光源可用于照明。</li>
     </list>

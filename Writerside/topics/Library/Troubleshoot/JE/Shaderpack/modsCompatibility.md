@@ -1,8 +1,6 @@
 # 光影和模组兼容性
 
-> 这篇文档已从旧平台完成迁移。
->
-{style="note" title="已订正的文档"}
+<include from="contentsLibrary.md" element-id="h_note_corrected"></include>
 
 这篇文档列出了我们所知的模组和光影间兼容性冲突的解决办法。
 
@@ -31,7 +29,7 @@
   - 删除 `skySupportedDimensions = [0]` 中的 `0` ；
   - 在 `weakSkyRenders` 中添加 `0` 。它应该看起来像这样：
   ```yaml
-  skySupportedDimensions = [ ]
+  skySupportedDimensions = []
   weakSkyRenders = [0]
   ```
 
@@ -40,7 +38,7 @@
   - 删除 `skyRenderingEnabled = ["minecraft: overworld"]` 中的 `minecraft: overworld` ；
   - 在 `skyRenderingConstellations` 中添加 `"minecraft:overworld"` 。它应该看起来像这样：
   ```yaml
-  skyRenderingEnabled = [ ]
+  skyRenderingEnabled = []
   skyRenderingConstellations = ["minecraft:overworld"]
   ```
 
@@ -50,7 +48,7 @@
 更好的树叶 Better Foliage <sup>1.12</sup>
 : 不一定会崩溃，但在某些光影包中会导致树叶断裂。
 要解决这个问题，你需要去确定主界面的 `Mods` > `Better Foliage` > `Shader Configuration` 是否与你的光影包的 `block.properties` 文件中的指定值相匹配。
-> `block.properties` 可以包含多个游戏版本的 ID 映射，所以一定要确定你使用了正确版本的 ID。如果你不确定要使用什么 ID，请询问光影包的创作者。
+> `block.properties` 可以包含多个游戏版本的 ID 映射，所以一定要确定你使用了正确版本的 ID。如果你不确定要使用什么 ID，请询问光影作者。
 > 
 {style="note"}
 

@@ -5,11 +5,8 @@
 <tldr>
 
 安装 OptiFine 或 Iris，将光影放入 `shaderpacks` 文件夹。
-</tldr>
 
-> 这篇文档在最近进行过订正，可以放心阅读。
->
-{style="note" title="已订正的文档"}
+</tldr>
 
 这篇文档帮助新人从安装游戏开始，直到最终成功运行光影为止。
 
@@ -529,12 +526,8 @@ Java 路径
 
 检查你的光影是否符合下列要求：
 - 打开压缩包或文件夹后应**有名为 `shaders` 的文件夹。**
-    ```Shell
-    └─ <光影名称 | 光影名称.zip> # 仅支持未加密的 .zip 压缩包
-      └─ shaders # 重要！
-        └─ <着色器程序相关文件和文件夹>
-    ```
-  > 如果你没有解压缩软件，我们推荐 [7-zip](https://sparanoid.com/lab/7z/) 。
+  <include from="contentsLibrary.md" element-id="shaderpack_structure_simple"/>
+  <include from="contentsLibrary.md" element-id="recommend_unzipApp"/>
 - 确保不是原版光影或 Canvas 光影，否则你应当直接像 [安装资源包](resourcepacksCommon.md "资源包安装通用教程") 那样安装。
 
 检查完成之后，将**含有 `shaders` 的文件夹或压缩包**放入光影包文件夹并选中即可。

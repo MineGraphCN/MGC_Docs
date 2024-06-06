@@ -1,5 +1,13 @@
 # 资源包开发教程
 
+<var name="topic" value="资源包编写的实际教程"/>
+<var name="goal" value="仅想对资源包有大致的了解"/>
+<var name="target_name" value=""/>
+<var name="target_topic" value="resourcepackBasic.md"/>
+<var name="target_description" value=""/>
+
+<include from="contentsLibrary.md" element-id="h_note_readingTips"/>
+
 > - 本文由 [FishBai](https://github.com/yubaibaifish) 独立编写  
 > - 本文为 JAVA 版教程  
 > - 本文由 MGC 提供支持
@@ -47,10 +55,11 @@
 }
 
 ```
-pack_format 所对应的“15”是所支持的版本，该知识点可以在[MGC Docs - 资源包](resourcepackBasic.md#pack-mcmeta)中找到。
+pack_format 所对应的“15”是所支持的版本。
 
-![图片](1-2.jpg)
-
+<procedure collapsible="true" title="兼容性表格">
+<include from="contentsLibrary.md" element-id="resourcepack_versions"/>
+</procedure>
 
 我们一般使用的是 15，该数据并不会影响资源包的加载。
 
@@ -66,6 +75,6 @@ pack_format 所对应的“15”是所支持的版本，该知识点可以在[MG
 
 你的文件夹内结构，应该是这个样子：
 
-![图片](1-3.jpg)
+<include from="contentsLibrary.md" element-id="resourcepack_structure_dev"/>
 
 在下一章中，我们将会了解形象化你的创作思路，并且使用工具来制作你的第一张材质贴图。

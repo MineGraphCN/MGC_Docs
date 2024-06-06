@@ -2,9 +2,7 @@
 
 <show-structure depth="2"/>
 
-> 这篇文档正在编写中，可能会出现内容较少、不全和缺漏。
->
-{style="warning" title="施工中"}
+<include from="contentsLibrary.md" element-id="h_warning_zero"/>
 
 这篇文档记录了一些与游戏相关或会产生影响的常见问题。
 
@@ -22,7 +20,10 @@
 ![在计算机属性中查询配置](check_set.png "在计算机属性中查询配置")
 
 > 在 Windows 10 / 11 中，还可以右击任务栏或按 <shortcut>Ctrl</shortcut><shortcut>Shift</shortcut><shortcut>Esc</shortcut> 打开任务管理器，在 `性能` 选项卡中查看 **CPU**、**内存**、**硬盘**、**网络**和**显卡**信息。
-![在任务管理器中查询配置](tskmgr_check_set.png "在任务管理器中查询配置")
+>
+> ![在任务管理器中查询配置](tskmgr_check_set.png "在任务管理器中查询配置")
+> 
+> - 在 CPU 图表上 <shortcut>右键</shortcut> 即可切换查看每个 CPU 核心的占用率。
 > 
 {style="note"}
 
@@ -87,3 +88,5 @@
   >
   {style="note"}
 - Intel 独立显卡 Intel Arc 系列极其罕见，大多数时候都是核心显卡，安装驱动之后不需要设置就可以直接使用。
+
+[//]: # (TODO: RTSS 使用教程)

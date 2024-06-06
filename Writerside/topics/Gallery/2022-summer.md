@@ -43,9 +43,8 @@ _鲸·城_
 
 _雨中水城_  
 作者：Lork  
-使用光影：SEUS-DAZZLING  
-使用纹理：Vanilla  
-使用地图：Venice（来自：MinecraftMap）
+光影：SEUS-DAZZLING  
+地图：Venice（来自：MinecraftMap）
 
 ![图片](2022-summer_je_2.jpg){thumbnail="true"}
 
@@ -55,7 +54,7 @@ _违法建筑_
 作者：&ensp;&ensp;&ensp;&ensp;\_Duke\_\_\_&ensp;&ensp;&ensp;  
 光影：Kappa v4.2  
 纹理：avpbr  
-地图：IHOU： 違法建築，链接：https://www.planetminecraft.com/project/ihou-download/
+地图：IHOU： 違法建築，链接：<https://www.planetminecraft.com/project/ihou-download/>
 
 ![图片](2022-summer_je_3.jpg){thumbnail="true"}
 
@@ -78,7 +77,7 @@ _蓬莱仙岛_
 作者：Allen  
 光影：Kappa v4.2  
 纹理：Vanilla  
-地图：蓬莱仙岛(链接：https://www.mcbbs.net/thread-1171349-1-1.html)
+地图：蓬莱仙岛(链接：<https://www.mcbbs.net/thread-1171349-1-1.html>)
 
 ![图片](2022-summer_je_5.jpg){thumbnail="true"}
 
@@ -154,7 +153,7 @@ _霍格沃兹的夜晚_
 光影：Enhanced Visual Beta 0.9  
 纹理：Hogwarts Resource V4-3  
 模组：Brooms Add-on V5  
-地图： HoggywartyHogwarts 作者：PoeticWhisper 原链接：https://mcpedl.com/hogwarts-the-surrounding-areas-map/  
+地图： HoggywartyHogwarts 作者：PoeticWhisper 原链接：<https://mcpedl.com/hogwarts-the-surrounding-areas-map/>  
 游戏版本：1.18.12  
 鉴赏说明：建议横屏观看
 

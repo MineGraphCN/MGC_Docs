@@ -1,8 +1,6 @@
 # 资源包加载问题
 
-> _常回家看看~_
-> 
-{style="warning" title="施工中"}
+<include from="contentsLibrary.md" element-id="h_warning_zero"/>
 
 ## 高清资源包读取失败
 

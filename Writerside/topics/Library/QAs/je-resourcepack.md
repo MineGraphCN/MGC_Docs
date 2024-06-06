@@ -1,8 +1,6 @@
 # Java 版资源包（纹理包）问答
 
-> 这篇文档的格式较为不规范，目前正在订正中。
->
-{style="warning" title="未经优化的文档"}
+<include from="contentsLibrary.md" element-id="h_warning_uncorrected"></include>
 
 ## 资源包 / 纹理包是否有优化空间？
 

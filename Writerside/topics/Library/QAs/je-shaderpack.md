@@ -1,8 +1,6 @@
 # Java 版光影问答
 
-> 这篇文档的格式较为不规范，目前正在订正中。
->
-{style="warning" title="未经优化的文档"}
+<include from="contentsLibrary.md" element-id="h_warning_uncorrected"></include>
 
 ## 为什么 MC 的光影优化如此糟糕？
 
