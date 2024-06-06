@@ -2,9 +2,7 @@
 
 <show-structure depth="2"/>
 
-> 这篇文档是近期新增的文档。
->
-{style="note" title="新文档"}
+<include from="contentsLibrary.md" element-id="h_note_newT"/>
 
 > 资料来源：[Fabric Wiki - OptiFine alternatives](https://fabricmc.net/wiki/community:optifine_alternatives#performance)
 

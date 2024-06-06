@@ -4,9 +4,13 @@
 >
 {style="warning" title="施工中"}
 
-> 这是着色器编写的实际教程，如果你仅想对着色器有大致的了解，可以阅读 [这篇文档](shaderBasic.md "着色器 基本概念和轶事") 。
->
-{style="note" title="阅读建议"}
+<var name="topic" value="着色器编写的实际教程"/>
+<var name="goal" value="仅想对着色器有大致的了解"/>
+<var name="target_name" value=""/>
+<var name="target_topic" value="shaderBasic.md"/>
+<var name="target_description" value=""/>
+
+<include from="contentsLibrary.md" element-id="h_note_readingTips"/>
 
 苦于国内没有系统性和标准化的光影教程，仅存的教程除了特化严重（魔改和目标性实现）还存在诸多不良编程习惯（使用老旧的 OpenGL 内置变量、声明变量不规范），而且不符合现代 OptiFine GLSL 规范，让光影开发有一个较高的门槛。为了解决这个问题，我们决定推出这个系列教程。这个教程也受到了诸多国内大佬的批评指正，我们对此表示由衷的感谢。
 

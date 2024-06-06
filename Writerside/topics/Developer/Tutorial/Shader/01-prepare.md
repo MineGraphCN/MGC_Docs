@@ -1,5 +1,3 @@
 # 准备工作
 
-> *常回家看看~*
-> 
-{style="warning" title="施工中"}
+<include from="contentsLibrary.md" element-id="h_warning_zero"/>

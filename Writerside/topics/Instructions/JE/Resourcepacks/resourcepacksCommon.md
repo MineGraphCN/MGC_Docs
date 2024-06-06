@@ -24,14 +24,8 @@
 
 检查你的资源包是否符合下列要求：
 - 打开压缩包或文件夹后应该**至少有名为 `assets` 的文件夹和 `pack.mcmeta` 的文件**，同时大多数资源包还有 `pack.png` 的封面。
-  ```Shell
-  └─ <资源包名称 | 资源包名称.zip> # 仅支持未加密的 .zip 压缩包
-    ├─ assets # 重要！
-    │ └─ <资源包相关文件和文件夹>
-    ├─ pack.mcmeta # 重要！资源包版本号和描述
-    └─ pack.png # 资源包封面
-  ```
-  > 如果你没有解压缩软件，我们推荐 [7-zip](https://sparanoid.com/lab/7z/) 。
+  <include from="contentsLibrary.md" element-id="resourcepack_structure_simple"/>
+  <include from="contentsLibrary.md" element-id="recommend_unzipApp"/>
 - 确保不是 Canvas 光影包，否则你应当安装 Canvas。
 
 ## 安装资源包
@@ -96,7 +90,7 @@
 
 - 确保你知晓 [所用资源包所对应的游戏版本](resourcepackBasic.md#versionComp "资源包 基本概念 - 资源包的版本兼容性") ，即使游戏提示 `适用于<新 | 旧>版本的Minecraft` 也可以忽略。
 - 确保你正确安装了有多个分包的资源包，资源包自上而下加载，你应该将附属包置于基础包上部。
-  ![资源包排序](pack_order.png "资源包排序")
+  ![资源包排序](pack_order.png "资源包排序"){width="500"}
 - 一些资源包可能不支持从压缩包状态加载，你需要解压缩它们，同时也要注意 [先前提到的问题](#check "检查资源包") 。
 
 <seealso>

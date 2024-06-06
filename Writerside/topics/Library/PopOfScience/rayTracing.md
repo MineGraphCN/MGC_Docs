@@ -1,8 +1,6 @@
 # 光线追踪专题
 
-> 这篇文档的格式较为不规范，目前正在订正中。
->
-{style="warning" title="未经优化的文档"}
+<include from="contentsLibrary.md" element-id="h_warning_uncorrected"/>
 
 > 在三维计算机图形学中，光线追踪是一种**对光线传输进行建模**的技术，用于生成数字图像的各种渲染算法。
 > 

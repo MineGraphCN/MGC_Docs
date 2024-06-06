@@ -233,7 +233,7 @@ _万丈雪峰_
 
 _极地木屋_  
 作者：一只臭虫milk  
-使用：YSS  
+光影：YSS  
 地图：Snow Globe House —By Luma  
 游戏版本：1.17.34
 

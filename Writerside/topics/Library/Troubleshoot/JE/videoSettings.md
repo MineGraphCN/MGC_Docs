@@ -1,8 +1,10 @@
 # 视频设置和相关显示问题
 
-> 这篇文档在最近进行过订正，可以放心阅读。  
-> 
-{style="note" title="已订正的文档"}
+<show-structure for="chapter,tab"/>
+
+[//]: # (TODO: 列出每个设置的具体画面变化)
+
+<include from="contentsLibrary.md" element-id="h_note_corrected"></include>
 
 这篇文档列出了整个视频设置选项卡中容易出现问题的设置以及修改建议。
 
@@ -133,15 +135,19 @@
 <tab title="品质" group-key="quality">
 
 Mipmap 级别
-: 有时会在 **JE 1.19** 以上的 OptiFine 中破坏光影包。
+: 决定远处纹理的过滤分级数量，有时会在 **JE 1.19** 以上的 OptiFine 中破坏光影包。
 - 比如所有方块的面都被从对角线切割成了两个三角形，并且有一半的三角形被对角线的平行线填充，或者方块边缘出现细线。  
 - MipMap 还会破坏一些光影的自发光渲染。一旦光影支持自发光，视差所有凹下去的地方边缘都会异常发光。
-> 如果你遇到了这些问题，请把它拉至 `关` 。
+> 推荐仅在光影要求（比如 Complementary 打开光影内置各向异性过滤时）开启或使用高清纹理且光影没有 [TAA](shaderTech.md#taa) 时才设置为 `开` 。如果你遇到了这些问题，请把它拉至 `关` 。
 >
 {style="note"}
 
     ![贴图显示错误](mipmap.png "问题截图1 - 贴图显示错误")
     ![方块边缘的横线](line.png "问题截图2 - 方块边缘的横线")
+
+Mipmap 类型
+: 决定远处纹理的过滤方法，越高的值在各级过渡之间越平滑。只在 Mipmap 级别不为 `关` 的时候有效。
+> 如果需要使用 Mipmap 则设置为 `三线性` 。
 
 各向异性过滤
 : 有时会破坏着色器的纹理采样（特别是体素和 3D 噪声）。
@@ -224,6 +230,20 @@ Mipmap 级别
 </tab>
 <tab title="性能" group-key="performance">
 
+区域渲染
+: 这个选项长期未维护，可能在长渲染距离下降低性能。
+> 推荐为 `关` 。
+> 
+{style="note"}
+
+平滑 FPS
+: 这个选项通过降低帧率来提升 FPS 稳定性。
+> 若游戏出现顿卡，可以尝试将此选项设置为 `开` 。
+> 
+> 若希望游戏以最大帧率运行，则设置为 `关` 。
+> 
+{style="note"}
+
 快速渲染
 : 这有时会以不可预知的方式破坏光影包。
 > 如果你有这方面的问题，请将其设置为 `关` 。
@@ -268,10 +288,4 @@ Mipmap 级别
 >   - 如果此时你需要使用原版光影，可以直接将光影切换至 `关闭` ，并将 `图像品质` 切换为 *`极佳！`* 。
 
 </tab>
-</tabs>
-<tabs group="videoSettings">
-<tab title="品质" group-key="quality"></tab>
-<tab title="细节" group-key="detail"></tab>
-<tab title="性能" group-key="performance"></tab>
-<tab title="光影" group-key="shader"></tab>
 </tabs>

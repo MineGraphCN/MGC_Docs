@@ -10,4 +10,8 @@
         <description>Created after removal of "Iris 【不】兼容的着色器" from MineGraph Docs</description>
         <accepts>irisIncompatibly.html</accepts>
     </rule>
+    <rule id="76ea862c">
+        <description>Created after removal of "延迟渲染与基岩版光影" from MineGraph Docs</description>
+        <accepts>deferredShading.html</accepts>
+    </rule>
 </rules>

@@ -1,8 +1,6 @@
 # 文件结构和渲染管线
 
-> *常回家看看~*
->
-{style="warning" title="施工中"}
+<include from="contentsLibrary.md" element-id="h_warning_writing"/>
 
 ## 光影包文件结构
 
@@ -37,26 +35,7 @@
 
 这里列出了 OptiFine 光影的目录，不包含自定义文件和文件夹。
 
-```Shell
-└─ shaderpacks
-  └─ <光影名称 | 光影名称.zip>
-    └─ shaders
-      ├─ lang
-      │   └─ <语言文件>
-      ├─ world-1
-      │   └─ <下界着色器程序>
-      ├─ world0
-      │   └─ <主世界着色器程序>
-      ├─ world1
-      │   └─ <末地着色器程序>
-      ├─ world<ID>
-      │   └─ <其他模组世界着色器程序>
-      ├─ <通用着色器程序>
-      ├─ block.properties
-      ├─ entities.properties
-      ├─ item.properties
-      └─ shaders.properties
-```
+<include from="contentsLibrary.md" element-id="shaderpack_structure_dev"/>
 
 ## 渲染管线
 

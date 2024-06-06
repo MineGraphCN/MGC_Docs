@@ -2,9 +2,7 @@
 
 <show-structure depth="2"/>
 
-> 这篇文档已从旧平台完成迁移。
->
-{style="note" title="已订正的文档"}
+<include from="contentsLibrary.md" element-id="h_note_corrected"></include>
 
 这篇文档主要针对光线追踪的误区和伪光追相关的概念进行纠正。
 

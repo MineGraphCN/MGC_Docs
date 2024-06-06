@@ -246,7 +246,7 @@ __*文字*__
 > 
 > Writerside 的对齐模式暂时有问题。
 
-=======
+========================
 
 <tabs>
 <tab title="并排选项卡">
@@ -273,7 +273,7 @@ __*文字*__
         内容B
     </tab>
 </tabs>
-    
+
 <tabs group="A">
     <tab title="选项卡1标题A" group-key="a">
         内容C
@@ -306,6 +306,58 @@ __*文字*__
 
 </tab>
 </tabs>
+
+========================
+
+### 复用块
+
+```xml
+<include from="源文件" element-id="复用块ID"/>
+```
+
+#### 变量
+
+1. 在定义的复用块中任意位置使用 `%变量名%`
+2. 在调用复用块的文档中使用
+    ```xml
+    <var name="变量名，和复用块中一致" value="不包含任何xml/md格式的文本"/>
+    ```
+
+    <procedure>
+    
+    <snippet id="t">
+    
+    试图在%fVar%使用%lang%语法。
+    
+    </snippet>
+    
+    <var name="fVar" value="<b>这里</b>"/>
+    <var name="lang" value="xml"/>
+    <include from="wsFormat.md" element-id="t"/>
+    <var name="fVar" value="**这里**"/>
+    <var name="lang" value="md"/>
+    <include from="wsFormat.md" element-id="t"/>
+    </procedure>
+
+> Markdown 链接要将其拆分为三个变量 
+> ```markdown
+> [%文本%](%链接%){summary="%停留时描述%"}
+> ```
+> 
+{style="note"}
+
+目前我们的复用块全部保存于 `topics/contentsLibrary.md` ，如果你需要调用复用块，请访问该文件。
+
+添加新的复用块（请添加到 `contentsLibrary.md` 以便管理）
+
+```xml
+<snippet id="复用块ID">
+    复用块内容
+</snippet>
+
+```
+
+========================
 
 ### 可折叠块 {collapsible="true" default-state="expanded"}
 

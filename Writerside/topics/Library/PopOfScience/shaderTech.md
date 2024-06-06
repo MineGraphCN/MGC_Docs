@@ -2,9 +2,15 @@
 
 <show-structure depth="3"/>
 
-> 这篇文档是技术的实际应用，在阅读前你可以先阅读 [这篇文档](shaderBasic.md "着色器 基本概念") 来了解其基本概念。
->
-{style="note" title="阅读建议"}
+<include from="contentsLibrary.md" element-id="h_note_corrected"/>
+
+<var name="topic" value="着色器应用技术的解释"/>
+<var name="goal" value="不了解其基本概念"/>
+<var name="target_name" value=""/>
+<var name="target_topic" value="shaderBasic.md"/>
+<var name="target_description" value=""/>
+
+<include from="contentsLibrary.md" element-id="h_note_readingTips"/>
 
 [//]: # (## 阴影)
 
@@ -107,6 +113,7 @@ LPV 首先将整个场景划分为体素，将整个场景离散开来（对 Min
 > int B;
 > [...];
 > mod(A, float(B));
+>        ^^^^^^ ^
 > ```
 
 <tabs>
@@ -323,7 +330,7 @@ MSAA 是一种 [向前渲染](shaderBasic.md#向前渲染法 "在每个着色器
 
 SMAA 是一种后处理抗锯齿。
 
-### 时域抗锯齿
+### 时域抗锯齿 {id=taa}
 
 时域抗锯齿通常指 **<tooltip term="TAA">TAA</tooltip>**。其原理是在时间上分散采样点，然后将当前帧的渲染结果与前一帧进行比较，以确定物体的运动和变化，之后进行混合以平滑图像并减少锯齿。
 

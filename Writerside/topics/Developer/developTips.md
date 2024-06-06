@@ -1,8 +1,6 @@
 # 作品开发相关资料整理
 
-> 这篇文档已从旧平台完成迁移。
->
-{style="note" title="已订正的文档"}
+<include from="contentsLibrary.md" element-id="h_note_corrected"/>
 
 <tabs>
   <tab title="着色器开发">
@@ -17,7 +15,7 @@
 [Bilibili - 【官方双语/合集】线性代数的本质 - 系列合集](https://www.bilibili.com/video/BV1ys411472E)
 
 **GLSL 是 OpenGL 的着色器语言**。互联网上有不少这方面的教程，但 Minecraft 使用了一个旧的 OpenGL 版本，所以如果找到一个同样旧的 GLSL 教程可能是有用的。任何写着 `#version 120` 的东西都是没问题的。  
-原版自 **JE 1.17** 开始强制使用 OpenGL 3.3，同时 GLSL 版本最低提高到了 `#version 150` ，但你并不需要局限于这些特定的 `#version` （OptiFine 也干了），你可以使用你的 GPU 驱动支持的任何版本。
+原版自 **JE 1.17** 开始强制使用 OpenGL 3.2，同时 GLSL 版本最低提高到了 `#version 150` ，但你并不需要局限于这些特定的 `#version` （OptiFine 也干了），你可以使用你的 GPU 驱动支持的任何版本。
 
 [OptiFine 开发文档](https://github.com/sp614x/optifine/tree/master/OptiFineDoc/doc) 中也给出了不少开发细节，尤其是 `shaders.txt` 和 `shaders.properties` 。这些文档也可以在你下载的 OptiFine `.jar` 文件中找到。
 

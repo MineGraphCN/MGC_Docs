@@ -2,9 +2,7 @@
 
 <show-structure depth="2"/>
 
-> 这篇文档在最近添加过新内容。
->
-{style="note" title="已更新的文档"}
+<include from="contentsLibrary.md" element-id="h_note_new"/>
 
 ## 何谓着色器？ {id="here_sASimpleQuestion_whatIsShader"}
 
@@ -171,6 +169,8 @@ Optimine 发布后不久，它被 _sp614x_ 接手，开始着手添加更多优�
 如今，Iris 已经将重心放在了开发独占特性上，但是其对 OptiFine 光影功能的还原并不尽如人意，当修改 Iris 代码使其独立运行时，它的性能表现也难以言喻。Iris 优先兼容模组的策略也让其和 OptiFine 对待管线冲突的方法不尽相同，过于保守的策略反而产生了某些渲染缺陷，比如植物魔法的魔力池中的魔力无法正确渲染。更有一些长期占据 Issue 的问题也没能得到及时解决（几何缓冲混合方式下溢到延迟处理，以及最近才被解决的 `block.properties` 中的宏直接被删除而不是解析并替换）。
 
 2022 年 7 月，Iris 的 Forge 非官方移植版 Oculus 在 Modrinth 上架，其目的与 Iris 一致，为 Forge 模组提供更好的光影兼容性。
+
+[//]: # (TODO: 番外：Continuum 和 NovaRender/Focal 以及 Canvas 的故事)
 
 ## 渲染龙和基岩版的光影朋友们
 

@@ -1,8 +1,6 @@
 # 基岩版相关问答
 
-> 这篇文档的格式较为不规范，目前正在订正中。
->
-{style="warning" title="未经优化的文档"}
+<include from="contentsLibrary.md" element-id="h_warning_uncorrected"></include>
 
 ## 延迟渲染光影用了光线追踪技术吗？
 
