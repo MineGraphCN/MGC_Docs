@@ -4,6 +4,13 @@
 
 <include from="contentsLibrary.md" element-id="h_note_corrected"></include>
 
+<var name="topic" value="针对大众对光线追踪误解的纠正"/>
+<var name="goal" value="想了解什么是光线追踪"/>
+<var name="target_name" value="科普文档 - 光线追踪专题"/>
+<var name="target_topic" value="rayTracing.md"/>
+<var name="target_description" value=""/>
+<include from="contentsLibrary.md" element-id="h_note_readingTips"/>
+
 这篇文档主要针对光线追踪的误区和伪光追相关的概念进行纠正。
 
 ## 光线追踪与着色器

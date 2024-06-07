@@ -4,7 +4,6 @@
 
 <var name="src_name" value="LabPBR Material Standard"/>
 <var name="src_link" value="https://shaderlabs.org/wiki/LabPBR_Material_Standard"/>
-
 <include from="contentsLibrary.md" element-id="h_note_translated"/>
 
 这是一个利用资源包中仅有的两张纹理存储材质信息的标准。其信息由光影进行解码，并使用这些信息进行基于物理的渲染（<tooltip term="PBR">PBR</tooltip>）。但是需要注意法线纹理和反射纹理本身并不与 PBR 有任何直接关联。

@@ -9,7 +9,6 @@
 <var name="target_name" value=""/>
 <var name="target_topic" value="shaderBasic.md"/>
 <var name="target_description" value=""/>
-
 <include from="contentsLibrary.md" element-id="h_note_readingTips"/>
 
 [//]: # (## 阴影)
