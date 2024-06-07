@@ -45,21 +45,21 @@
 ```Shell
 └─ resourcepacks
   └─ <资源包名称 | 资源包名称.zip>
-    ├─ assets
-    │ ├─ minecraft
-    │ │ ├─ textures
-    │ │ │ ├─ block
-    │ │ │ │   └─ <方块纹理文件>
-    │ │ │ ├─ item
-    │ │ │ │   └─ <物品纹理文件>
-    │ │ │ ├─ models
-    │ │ │ │   └─ <盔甲纹理文件>
-    │ │ │ └─ ...
-    │ │ │     └─ <其他纹理文件>
-    │ │ └─ <其他自定义资源>
-    │ └─ <其他模组对应的文件夹>
-    ├─ pack.mcmeta
-    └─ pack.png
+      ├─ assets
+      │  ├─ minecraft
+      │  │  ├─ textures
+      │  │  │  ├─ block
+      │  │  │  │   └─ <方块纹理文件>
+      │  │  │  ├─ item
+      │  │  │  │   └─ <物品纹理文件>
+      │  │  │  ├─ models
+      │  │  │  │   └─ <盔甲纹理文件>
+      │  │  │  └─ ...
+      │  │  │      └─ <其他纹理文件>
+      │  │  └─ <其他自定义资源>
+      │  └─ <其他模组对应的文件夹>
+      ├─ pack.mcmeta
+      └─ pack.png
 ```
 
 </snippet>
@@ -69,10 +69,10 @@
 
 ```Shell
 └─ <资源包名称 | 资源包名称.zip> # 仅支持未加密的 .zip 压缩包
-  ├─ assets # 重要！
-  │ └─ <资源包相关文件和文件夹>
-  ├─ pack.mcmeta # 重要！资源包版本号和描述
-  └─ pack.png # 资源包封面
+    ├─ assets # 重要！
+    │   └─ <资源包相关文件和文件夹>
+    ├─ pack.mcmeta # 重要！资源包版本号和描述
+    └─ pack.png # 资源包封面
 ```
 
 </snippet>
