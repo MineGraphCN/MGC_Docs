@@ -6,7 +6,7 @@
 <var name="src_link" value="https://shaderlabs.org/wiki/LabPBR_Material_Standard"/>
 <include from="contentsLibrary.md" element-id="h_note_translated"/>
 
-这是一个利用资源包中仅有的两张纹理存储材质信息的标准。其信息由光影进行解码，并使用这些信息进行基于物理的渲染（<tooltip term="PBR">PBR</tooltip>）。但是需要注意法线纹理和反射纹理本身并不与 PBR 有任何直接关联。
+这是一个利用资源包中仅有的两张纹理存储材质信息的标准。其信息由光影进行解码，并使用这些信息进行基于物理的渲染 (<tooltip term="PBR">PBR</tooltip>) 。但是需要注意法线纹理和反射纹理本身并不与 PBR 有任何直接关联。
 
 这个格式由 shaderLABS Discord 服务器于 2019 年 4 月末发起创建并维护至今，旨在统一过去混乱的光影和资源包的材质格式。  
 为了便捷，这个 [转换器](https://github.com/flodri/RGBA-Formats-Converter/releases/tag/0.4) 可以帮助纹理创作家从绝大多数旧格式转换到 LabPBR。
