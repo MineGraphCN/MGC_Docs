@@ -31,9 +31,10 @@
 <snippet id="shaderpack_structure_simple">
 
 ```Shell
-└─ <光影名称 | 光影名称.zip> # 仅支持未加密的 .zip 压缩包
-  └─ shaders # 重要！
-    └─ <着色器程序相关文件和文件夹>
+└─ shaderpacks
+  └─ <光影名称 | 光影名称.zip> # 仅支持未加密的 .zip 压缩包
+        └─ shaders # 重要！
+          └─ <着色器程序相关文件和文件夹>
 ```
 
 </snippet>
@@ -68,11 +69,12 @@
 <snippet id="resourcepack_structure_simple">
 
 ```Shell
-└─ <资源包名称 | 资源包名称.zip> # 仅支持未加密的 .zip 压缩包
-    ├─ assets # 重要！
-    │   └─ <资源包相关文件和文件夹>
-    ├─ pack.mcmeta # 重要！资源包版本号和描述
-    └─ pack.png # 资源包封面
+└─ resourcepacks
+  └─ <资源包名称 | 资源包名称.zip> # 仅支持未加密的 .zip 压缩包
+      ├─ assets # 重要！
+      │   └─ <资源包相关文件和文件夹>
+      ├─ pack.mcmeta # 重要！资源包版本号和描述
+      └─ pack.png # 资源包封面
 ```
 
 </snippet>

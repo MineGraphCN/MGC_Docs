@@ -6,11 +6,15 @@
 
 > 快捷键以 [JetBrains Writerside IDE](https://www.jetbrains.com/zh-cn/writerside/download/#section=windows) 为准。
 
+请在 Writerside IDE 中查看渲染结果。
+
 ## 常用格式速查
 
 <tldr>
-<p><b>省流块</b></p>
-<p>省流块永远紧跟最近的标题。</p>
+
+**省流块**
+
+省流块永远紧跟最近的标题。
 
 ```xml
 <tldr>
@@ -28,6 +32,8 @@
 ...
 ##### 五级标题
 ```
+
+---
 
 ========================
 
@@ -114,11 +120,24 @@ __*文字*__
 
 [链接](https://b23.tv/BV1GJ411x7h7) <shortcut>Ctrl</shortcut><shortcut>Shift</shortcut><shortcut>U</shortcut>
 ```markdown
-[文字](<站内文档.md#章节 | 外部链接>)
+[文字](<站内文档文件名#章节 | 外部链接>)
 ```
 或
 ```markdown
 <外部链接>  <- 使用尖括号括起来即可
+```
+
+鼠标悬停在站内文档链接上时默认弹出跳转处的标题栏下第一段文字作为快速总结，如果想自定义内容，可以使用
+```markdown
+[文字](<站内文档文件名#章节 | 外部链接> "描述")
+```
+或
+```markdown
+[文字](<站内文档文件名#章节 | 外部链接>){summary="描述"}
+```
+想要禁用总结，请直接在 `[]()` 后加 `{summary=""}`
+```markdown
+[文字](<站内文档文件名#章节 | 外部链接>){summary=""}
 ```
 
 ========================
@@ -419,3 +438,19 @@ __*文字*__
 2. 在 `项目` 侧栏将你的文档文件移入对应的文件夹
 
     ![move_file_to_correct_folder](move_file_to_correct_folder.png)
+
+## 注释和待办事项
+
+新起一行并使用
+```
+[//]: # (注释内容)
+```
+进行注释，或直接按下 <shortcut>Ctrl</shortcut><shortcut>/</shortcut>
+
+在注释内容中写入 `TODO` 字段自动标记待办事项，没有大小写限制，`TODO` 后需要接空格或者符号才能继续写注释  
+例：
+```
+[//]: # (TODO)
+[//]: # (toDO: 概念)
+[//]: # (TOdO-概念)
+```

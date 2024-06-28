@@ -63,9 +63,9 @@ Texture Pack 的**错误译名**。
 
 ## 资源包的版本兼容性 <sup>JE</sup> {id="versionComp"}
 
-### 粗略区间
+### 粗略区间 {id="roughComp"}
 
-在 **JE 1.13** 时，Mojang 进行了一轮游戏代码重写，这轮重写包含了一次对方块 ID 和命名方法的统一修改，称为**扁平化**，这也导致了自 **JE 1.13** 开始，资源包的兼容性出现了**断层**：
+在 **JE 1.13** 时，Mojang 进行了一轮游戏代码重写，这轮重写包含了一次对方块 ID 和命名方法的统一修改，称为**扁平化**，这也导致了自 **JE 1.13** 开始，资源包的兼容性出现了**断层**
 
 <include from="contentsLibrary.md" element-id="resourcepack_versions_simple"/>
 

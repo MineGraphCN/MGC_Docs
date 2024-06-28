@@ -11,19 +11,23 @@
     <toc-element topic="betterRTX.md"/>
     <toc-element toc-title="作品手册和安装指南">
         <toc-element toc-title="Java 版">
-            <toc-element toc-title="光影包" topic="shaderpacksCommon.md">
+            <toc-element toc-title="光影包">
+                <toc-element topic="shaderpacksCommon.md"/>
                 <toc-element topic="itt2.md"/>
                 <toc-element topic="itt3.md"/>
                 <toc-element topic="gfme.md"/>
             </toc-element>
-            <toc-element toc-title="资源包" topic="resourcepacksCommon.md">
+            <toc-element toc-title="资源包">
+                <toc-element topic="resourcepacksCommon.md"/>
                 <toc-element topic="MTP.md"/>
                 <toc-element topic="tmeo.md"/>
                 <toc-element topic="qin.md"/>
                 <toc-element topic="itp.md"/>
             </toc-element>
         </toc-element>
-        <toc-element topic="bedrockResourceCommon.md"/>
+        <toc-element toc-title="基岩版">
+            <toc-element topic="bedrockResourceCommon.md"/>
+        </toc-element>
     </toc-element>
     <toc-element topic="Library.md">
         <toc-element topic="terms.md"/>
@@ -36,7 +40,8 @@
             <toc-element topic="rayTracing.md"/>
         </toc-element>
         <toc-element topic="Correction.md">
-            <toc-element topic="raytracingCorrection.md"/>
+            <toc-element topic="raytracingCorrection.md" toc-title="光线追踪"/>
+            <toc-element topic="irisVsOF.md" hidden="true"/>
         </toc-element>
         <toc-element topic="QAs.md">
             <toc-element topic="be.md"/>
@@ -45,6 +50,7 @@
         </toc-element>
         <toc-element topic="Troubleshoot.md">
             <toc-element topic="troubleshootCommon.md"/>
+            <toc-element topic="artOfAsking.md" hidden="true"/>
             <toc-element toc-title="Java 版">
                 <toc-element topic="videoSettings.md"/>
                 <toc-element toc-title="光影">
@@ -62,11 +68,14 @@
         <toc-element topic="developTips.md"/>
         <toc-element topic="animation.md"/>
         <toc-element topic="labpbrMaterialStandard.md"/>
-        <toc-element topic="shaderTutorial.md">
+        <toc-element toc-title="着色器开发教程">
+            <toc-element topic="shaderTutorial.md" toc-title="序言"/>
             <toc-element topic="00-filePipeline.md"/>
             <toc-element topic="01-prepare.md" hidden="true"/>
         </toc-element>
-        <toc-element topic="resourceTutorial.md"/>
+        <toc-element toc-title="资源包开发教程">
+            <toc-element topic="resourceTutorial.md"/>
+        </toc-element>
     </toc-element>
     <toc-element topic="Gallery.md">
         <toc-element topic="2024-spring.md"/>
