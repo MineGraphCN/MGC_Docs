@@ -12,6 +12,8 @@
 
 ## 准备工作
 
+由于光影需要用到模组，教程从安装游戏开始。
+
 ### 启动器
 
 这篇文档主要使用 **HMCL** 和 **PCL 2** 两款国产启动器进行教学，你可以在下面获取这些启动器：
@@ -69,6 +71,15 @@
 <step>
 
 选择你需要的游戏版本。为了确保 OptiFine 特性完全，我们推荐游戏和 OptiFine 均为**最新正式版**。
+
+<snippet id="latestOfFirst">
+
+> 如果你发现游戏最新正式版没有 OptiFine 的正式版 ~~（有时 OptiFine 会难产）~~，可以向前寻找，直到找到有正式版 OptiFine 的版本。
+>
+{style="note"}
+
+</snippet>
+
 </step>
 <step>
 
@@ -94,6 +105,7 @@
                                 <step>
 
 在 `自动安装` 选项卡下，选择你需要的游戏版本。为了确保 OptiFine 特性完全，我们推荐游戏和 OptiFine 均为**最新正式版**。
+<include from="shaderpacksCommon.md" element-id="latestOfFirst"/>
 </step>
 <step>
 
@@ -109,11 +121,7 @@
                             </procedure>
                         </tab>
                     </tabs>
-
-> 如果你发现游戏最新正式版没有 OptiFine 的正式版 ~~（有时 OptiFine 会难产）~~，可以向前寻找，直到找到有正式版 OptiFine 的版本。
->
-{style="note"}
-</tab>
+                    </tab>
                     <tab title="手动安装">
 
 手动安装仅推荐在你使用 `嵌入式安装` 出现问题时使用。
@@ -129,6 +137,9 @@
 
 寻找**最新正式版**的 OptiFine，点击 `Download` 并等待下载页面弹出，然后再次点击 `Download` <sup>官网</sup> 或 点击 `下载` 直接获取文件 <sup>中文站</sup> 。
 ![OptiFine 官网下载页面](of_pure_manual_1.png "OptiFine 官网下载页面")
+
+<snippet id="whenMirror">
+
 > 如果你在官网点击 `Download` 之后卡住了，可能是你的网络不好，无法访问 OptiFine 设置的广告跳转链接，此时你可以点击 `(Mirror)` 直接转到下载页面。
 > 
 > > 仅当你多次下载或无法访问 `Download` 所指向的页面才这样做！广告跳转链接是作者维持模组更新的收入来源。
@@ -136,13 +147,13 @@
 > {style="warning"}
 > 
 {style="note"}
+
+</snippet>
 </step>
                             <step>
 
 像 `嵌入式安装` 一样，**仅安装**最新 OptiFine 对应版本的**游戏本体**。
-> 如果你发现 OptiFine 的最新正式版不对应游戏最新的正式版，那么你需要下载 OptiFine 要求的游戏版本。~~（有时 OptiFine 会难产）~~
->
-{style="note"}
+<include from="shaderpacksCommon.md" element-id="latestOfFirst"/>
 </step>
                             <step>
 
@@ -168,7 +179,11 @@
                             <step>
 
 当你安装成功之后，你的启动器版本列表里应该会新增一个 `<原始游戏版本>-<已安装的 OptiFine>` 的游戏，这是安装了 OptiFine 的版本。
-> 原本的游戏版本依然会被保留，当你启动它时，它就像原版一样运行（它本身就是原版）。
+<snippet id="keptVanilla">
+
+> 原版游戏依然会被保留，如果你启动的是不带后缀的版本，那么它将会按原版运行。
+
+</snippet>
 </step>
                         </procedure>
                     </tab>
@@ -246,10 +261,15 @@ OptiFine is successfully extracted.
                         <step>
 
 访问 [Forge 官网](https://files.minecraftforge.net/net/minecraftforge/forge/) ，寻找**对应 OptiFine** 和游戏兼容版本的 Forge。
+
+<snippet id="ForgeVer">
+
 > 注意 OptiFine 更新日志中所能兼容的 Forge 版本，你可以在下载列表检查。
 > ![检查 OptiFine 兼容的 Forge 版本](of_forge_check_ver.png "检查 OptiFine 兼容的 Forge 版本")
 >
 {style="note"}
+
+</snippet>
 </step>
                         <step>
 
@@ -270,7 +290,7 @@ OptiFine is successfully extracted.
                         <step>
 
 像 `纯净版` > `嵌入式安装` 一样，但是**仅安装**对应版本的**游戏本体**。
-> 如果你发现 OptiFine 的最新正式版不对应游戏最新的正式版，那么你需要下载 OptiFine 要求的游戏版本。~~（有时 OptiFine 会难产）~~
+> 如果你发现 OptiFine 的最新正式版不对应游戏最新的正式版 ~~（有时 OptiFine 会难产）~~，那么你需要下载 OptiFine 要求的游戏版本。
 >
 {style="note"}
 </step>
@@ -296,7 +316,7 @@ Successfully installed client profile forge for version <游戏版本>-forge-<Fo
                         <step>
 
 当你安装成功之后，你的启动器版本列表里应该会新增一个 `<原始游戏版本>-<已安装的 Forge>` 的游戏，这是安装了 Forge 的版本。
-> 原本的游戏版本依然会被保留，当你启动它时，它就像原版一样运行（它本身就是原版）。
+<include from="shaderpacksCommon.md" element-id="keptVanilla"/>
 </step>
                     </procedure>
                 </tab>
@@ -530,7 +550,7 @@ Java 路径
   <include from="contentsLibrary.md" element-id="recommend_unzipApp"/>
 - 确保不是原版光影或 Canvas 光影，否则你应当直接像 [安装资源包](resourcepacksCommon.md "资源包安装通用教程") 那样安装。
 
-检查完成之后，将**含有 `shaders` 的文件夹或压缩包**放入光影包文件夹并选中即可。
+检查完成之后，将**含有 `shaders` 的文件夹或压缩包**放入 `shaderpacks` 文件夹并选中即可。
 <note>
 你可以从
 <tabs group="A">
@@ -543,7 +563,8 @@ Java 路径
 `视频设置` > `光影包` > `打开光影包文件夹`
 </tab>
 </tabs>
-打开光影包文件夹。
+
+打开 `shaderpacks` 文件夹。
 </note>
 
 <seealso>

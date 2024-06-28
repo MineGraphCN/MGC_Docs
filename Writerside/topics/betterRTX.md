@@ -73,6 +73,7 @@ Set-ExecutionPolicy -Scope CurrentUser Bypass
 - Kelly's Better RTX Preset：调整了色调，增加了明暗度，调整了灯光，有景深。
 - Realistic RTX (TheBlackDragon's Edit)：将许多参数调整为贴近生活色调，有运动模糊。
 - BetterRTX Prizma Preset：具有不同的风格，不追求极致真实的画面。
+- BetterRTX JG's Cinematic Presets：提供了全彩与去饱和两种版本，提供景深、ACES色调映射、太阳角度修改、锐利阴影、雨天湿润度与小水坑，**不适用于生存模式**。
 
 ## 搭配资源包
 

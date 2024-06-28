@@ -9,8 +9,9 @@
 <var name="target_name" value=""/>
 <var name="target_topic" value="shaderBasic.md"/>
 <var name="target_description" value=""/>
-
 <include from="contentsLibrary.md" element-id="h_note_readingTips"/>
+
+[//]: # (TODO)
 
 [//]: # (## 阴影)
 
@@ -20,7 +21,7 @@
 
 [//]: # (## 视差)
 
-## 全局光照
+## 全局光照 {id="gi"}
 
 **<tooltip term="GI">GI</tooltip>**，表现了直接光照和间接光照的综合效果，但在渲染中，全局光照通常仅包括间接光照。它有多种实现方法，例如辐照度、光线追踪、光子贴图、光照探针等。
 

@@ -46,7 +46,7 @@
 : OptiFine 开发文档的着色器部分。
 
   [OptiDocs](https://optifine.readthedocs.io/shaders_dev.html)
-  : OptiFine 开发文档的格式化编译版本，比 Github 上的版本更直观。
+  : OptiFine 开发文档的格式化编译版本，比 GitHub 上的版本更直观。
 
 [Iris 开发文档 / Iris 特性](https://github.com/IrisShaders/ShaderDoc/blob/master/iris-features.md)
 : Iris 提供的额外功能

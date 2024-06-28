@@ -63,16 +63,11 @@ Texture Pack 的**错误译名**。
 
 ## 资源包的版本兼容性 <sup>JE</sup> {id="versionComp"}
 
-### 粗略区间
+### 粗略区间 {id="roughComp"}
 
-在 **JE 1.13** 时，Mojang 进行了一轮游戏代码重写，这轮重写包含了一次对方块 ID 和命名方法的统一修改，称为**扁平化**，这也导致了自 **JE 1.13** 开始，资源包的兼容性出现了**断层**：
+在 **JE 1.13** 时，Mojang 进行了一轮游戏代码重写，这轮重写包含了一次对方块 ID 和命名方法的统一修改，称为**扁平化**，这也导致了自 **JE 1.13** 开始，资源包的兼容性出现了**断层**
 
-|                兼容范围                 | 备注       |
-|:-----------------------------------:|----------|
-| **Alpha v1.2.2** ~ **1.6.1 13w23a** | 纹理包      |
-|    **1.6.1 13w24a** ~ **1.6.4**     | 资源包（单选）  |
-| **1.7.2 13w36a** ~ **1.13 17w46a**  | 资源包      |
-|         **1.13 17w47a** 至今          | 扁平化后的资源包 |
+<include from="contentsLibrary.md" element-id="resourcepack_versions_simple"/>
 
 对于**大部分**的资源包，只需要选择在区间内的正确版本，即可正常加载。
 
@@ -86,31 +81,20 @@ Texture Pack 的**错误译名**。
 
 版本区间由资源包内名为 `pack.mcmeta` 的文件
 
-```JSON
-{
-    "pack": {
-        "pack_format": 34,
-        "description": "This is a MGC pack.",
-        "supported_formats": {  // 23w31a+
-            "min_inclusive": 17,
-            "max_inclusive": 34
-        }
-    }
-}
-```
+<include from="contentsLibrary.md" element-id="pack.format"/>
 
 中 `pack_format` 的值定义，`descripton` 则是该资源包的**描述**。  
 此外，自 **JE 1.20.2 23w31a** 开始，其加入了 `supported_formats` 字段，可以指定兼容版本的上下限。
 - `min_inclusive` 指定版本下限，`max_inclusive` 指定版本上限。
 - 也可简写为 `"supported_formats": [17, 34]` 。
 
-以下是的资源包版本号与对应游戏版本的表格：
+以下是资源包版本号对应游戏版本的表格：
 
 <include from="contentsLibrary.md" element-id="resourcepack_versions"/>
 
 *什么？你问我 23 去哪了？可能是因为今年是 24 年，Mojang 跳过了吧（笑）。~~怎么 27 也跳了啊（恼）~~*
 
-从 **JE 1.15** 开始，版本之间只要存在不兼容的地方，资源包版本号就会更新。
+从 **JE 1.15** 开始，版本之间只要存在资源更新，资源包版本号就会随之更新。
 
 - 例如 **JE 1.15** 与 **JE 1.16** 之间更新了墙类方块的方块状态，即便有些资源包并未涉及此内容，只要 `pack.mcmeta` 内的版本号不同，游戏内依然会显示不兼容。
 

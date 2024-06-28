@@ -46,13 +46,10 @@
     - 老版本的 OptiFine 会认为前者的名字就叫 *shaders*，并把它视为外壳文件夹，然后试图寻找这个外壳文件夹中的 `shaders` 文件夹；如果是后者的情况，由于 OptiFine 只会试图在第一层外壳下寻找 `shaders` 文件夹。这两种情况都会导致光影虽然显示在列表中，却无法正确加载。
 
 你可以按照这个目录来检查你的光影是否安装正确：
-```Shell
-└─ <.minecraft | .minecraft/versions> # 取决于你的游戏是否开启版本独立
-  └─ shaderpacks
-    └─ <光影名称 | 光影名称.zip>
-      └─ shaders
-        └─ <着色器程序相关文件和文件夹>
-```
+
+<include from="contentsLibrary.md" element-id="shaderpack_structure_simple"/>
+
+## 启用光影后画面出现问题／出现了不兼容的情况
 
 ## 游戏聊天栏报告 `OpenGL ERROR`
 
