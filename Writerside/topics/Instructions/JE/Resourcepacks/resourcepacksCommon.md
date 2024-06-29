@@ -13,12 +13,12 @@
 
 使用资源包之前你需要先进行以下准备
 
-- 如果你所使用的资源包支持 OptiFine 特性，那么你需要确保你已经 [正确安装 OptiFine](shaderpacksCommon.md "光影包安装通用教程 - 安装光影模组") 。  
+- 如果你所使用的资源包支持 OptiFine 特性，那么你需要确保你已经 [正确安装 OptiFine](shaderpacksCommon.md){summary=""} 。  
   - 如果你使用 Iris 进行游玩，你可以查看 [这篇文档](irisAsOf.md "Iris 等效 OptiFine 功能的模组") 来安装支持对应特性的模组。
-- 如果你所使用的资源包支持 [法线纹理](resourcepackBasic.md#法线纹理  "资源包 基本概念 - 法线纹理") 和 [反射纹理](resourcepackBasic.md#反射纹理 "资源包 基本概念 - 反射纹理") ，那么你需要使用一个支持法线和 [PBR](terms.md#pbr "术语表 - PBR") 着色的光影。
+- 如果你所使用的资源包支持 [法线纹理](resourcepackBasic.md#法线纹理){summary=""} 和 [反射纹理](resourcepackBasic.md#反射纹理){summary=""} ，那么你需要使用一个支持法线和 [PBR](terms.md#pbr){summary=""} 着色的光影。
 - 如果你所使用的资源包有模组扩展，你需要正确安装 Forge 或 Fabric 。
 
-> 如果你不知道如何安装游戏，请前往 [光影包安装通用教程](shaderpacksCommon.md "这篇文档帮助新人从安装游戏开始，直到最终成功运行光影为止。") 。
+> 如果你不知道如何安装游戏，请前往 [光影包安装通用教程](shaderpacksCommon.md){summary=""} 。
 
 ## 检查资源包 {id="check"}
 
@@ -30,65 +30,11 @@
 
 ## 安装资源包
 
-<tabs>
-<tab title="拖拽安装">
-
-> 适用于 **JE 1.16+**
-> 
-{style="note"}
-
-<procedure>
-<step>
-
-点击 `选项` > `资源包`
-</step>
-<step>
-
-将包直接拖入该页面。
-</step>
-<step>
-
-将 `可用` 资源包置于 `已选` 。
-</step>
-<step>
-
-**点击完成**，在老版本中使用 <shortcut>Esc</shortcut> 返回上一页可能导致直接取消资源包更改。
-</step>
-
-![拖拽安装](install_by_drag.gif "拖拽安装")
-</procedure>
-</tab>
-<tab title="导入文件夹">
-<procedure>
-<step>
-
-点击 `选项` > `资源包` > `打开包文件夹`
-</step>
-<step>
-
-将包拖入该文件夹。
-> 在老版本中，拖入文件夹之后可能需要重新进入资源包页面才会显示。
-> 
-{style="note"}
-> 你可以通过按住 <shortcut>Ctrl</shortcut> 拖拽来复制文件，而不是移动文件。
-</step>
-<step>
-
-将 `可用` 资源包置于 `已选` 。
-</step>
-<step>
-
-**点击完成**，在老版本中使用 <shortcut>Esc</shortcut> 返回上一页可能导致直接取消资源包更改。
-</step>
-
-![导入文件夹](install_by_folder.gif "导入文件夹")
-</procedure>
-</tab>
-</tabs>
+<include from="contentsLibrary.md" element-id="install_RP"/>
 
 ## 使用时的注意事项
 
-- 确保你知晓 [所用资源包所对应的游戏版本](resourcepackBasic.md#versionComp "资源包 基本概念 - 资源包的版本兼容性") ，即使游戏提示 `适用于<新 | 旧>版本的Minecraft` 也可以忽略。
+- 确保你知晓 [所用资源包所对应的游戏版本](resourcepackBasic.md#versionComp){summary=""} ，即使游戏提示 `适用于<新 | 旧>版本的Minecraft` 也可以忽略。
 - 确保你正确安装了有多个分包的资源包，资源包自上而下加载，你应该将附属包置于基础包上部。
   ![资源包排序](pack_order.png "资源包排序"){width="500"}
 - 一些资源包可能不支持从压缩包状态加载，你需要解压缩它们，同时也要注意 [先前提到的问题](#check "检查资源包") 。

@@ -540,7 +540,7 @@ Java 路径
 </tab>
 </tabs>
 
-启动游戏后，配置视频设置，参见 [视频设置和相关显示问题](videoSettings.md "这篇文档列出了整个视频设置选项卡中容易出现问题的设置以及修改建议。") 。
+启动游戏后，配置视频设置，参见 [视频设置和相关显示问题](videoSettings.md){summary=""} 。
 
 ## 检查并安装光影
 
@@ -548,7 +548,7 @@ Java 路径
 - 打开压缩包或文件夹后应**有名为 `shaders` 的文件夹。**
   <include from="contentsLibrary.md" element-id="shaderpack_structure_simple"/>
   <include from="contentsLibrary.md" element-id="recommend_unzipApp"/>
-- 确保不是原版光影或 Canvas 光影，否则你应当直接像 [安装资源包](resourcepacksCommon.md "资源包安装通用教程") 那样安装。
+- 确保不是原版光影或 Canvas 光影，否则你应当直接像 [安装资源包](resourcepacksCommon.md){summary=""} 那样安装。
 
 检查完成之后，将**含有 `shaders` 的文件夹或压缩包**放入 `shaderpacks` 文件夹并选中即可。
 <note>
