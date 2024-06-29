@@ -19,7 +19,7 @@
 这里对社区内常见的图形学知识进行了总结，如果对图形学概念不了解或模糊，欢迎查阅。
 
 善用目录来检索你所想要了解的知识，**知识库仅供科普，不作深度教学**。  
-如需学习可前往我们正在编写的新板块 [着色器开发教程](shaderTutorial.md "编写中") 和 [资源包开发教程](resourceTutorial.md "编写中") 。
+如需学习可前往我们正在编写的新板块 [着色器开发教程](shaderTutorial.md){summary=""} 和 [资源包开发教程](resourceTutorial.md){summary=""} 。
 
 ## 操作
 
@@ -30,6 +30,7 @@
     >
     {style="note"}
 - 在**左侧栏**中选择你想阅读的文档。
+- 点击代码块右上角按钮可以拷贝代码
 
 ## 基本术语
 
@@ -71,4 +72,5 @@
 参阅：[什么是计算机图形学](http://staff.ustc.edu.cn/~lgliu/Resources/CG/What_is_CG.htm)
 
 ## 入门 Windows……？
+
 推荐阅读《[你缺失的那门计算机课](https://www.criwits.top/missing/)》，快速上手电脑的教程。
