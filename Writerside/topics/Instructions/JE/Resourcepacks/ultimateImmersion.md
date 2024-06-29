@@ -2,7 +2,7 @@
 
 <tldr>
 
-如何正确使用 Ultimate immersion？／如何解决使用过程出现的问题？
+如何正确使用 Ultimate immersion？如何解决使用过程出现的问题？
 </tldr>
 
 <include from="contentsLibrary.md" element-id="h_note_newT"/>
