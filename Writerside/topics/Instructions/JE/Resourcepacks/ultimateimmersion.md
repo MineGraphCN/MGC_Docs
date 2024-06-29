@@ -1,4 +1,4 @@
-# Ultimate Immersion 使用手册
+# Ultimate Immersion
 
 <tldr>
 
