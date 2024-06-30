@@ -20,7 +20,7 @@
             <toc-element toc-title="资源包">
                 <toc-element topic="resourcepacksCommon.md" toc-title="通用安装教程"/>
                 <toc-element topic="ui.md"/>
-                <toc-element topic="MTP.md"/>
+                <toc-element topic="mtp.md"/>
                 <toc-element topic="tmeo.md"/>
                 <toc-element topic="qin.md"/>
                 <toc-element topic="itp.md"/>
