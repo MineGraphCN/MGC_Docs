@@ -179,11 +179,13 @@
                             <step>
 
 当你安装成功之后，你的启动器版本列表里应该会新增一个 `<原始游戏版本>-<已安装的 OptiFine>` 的游戏，这是安装了 OptiFine 的版本。
+
 <snippet id="keptVanilla">
 
 > 原版游戏依然会被保留，如果你启动的是不带后缀的版本，那么它将会按原版运行。
 
 </snippet>
+
 </step>
                         </procedure>
                     </tab>
