@@ -140,7 +140,7 @@
 <tr><td>34</td><td>1.21 24w21a</td><td><emphasis>最新</emphasis></td></tr>
 </table>
 
-_截止 2024 年 6 月 6 日，数据来源于 [Minecraft Wiki](https://zh.minecraft.wiki/w/%E6%95%99%E7%A8%8B/%E5%88%B6%E4%BD%9C%E8%B5%84%E6%BA%90%E5%8C%85#pack_format) 。_
+_截止 2024 年 6 月 30 日，数据来源于 [Minecraft Wiki](https://zh.minecraft.wiki/w/%E8%B5%84%E6%BA%90%E5%8C%85#%E8%B5%84%E6%BA%90%E5%8C%85%E6%A0%BC%E5%BC%8F%E7%89%88%E6%9C%AC) 。_
 
 </procedure>
 
@@ -249,3 +249,63 @@ _截止 2024 年 6 月 6 日，数据来源于 [Minecraft Wiki](https://zh.minec
 
 </snippet>
 
+
+<snippet id="install_RP">
+
+<tabs>
+<tab title="拖拽安装">
+
+> 适用于 **JE 1.16+**
+>
+{style="note"}
+
+<procedure>
+<step>
+
+点击 `选项` > `资源包`
+</step>
+<step>
+
+将包直接拖入该页面。
+</step>
+<step>
+
+将 `可用` 资源包置于 `已选` 。
+</step>
+<step>
+
+**点击完成**，在老版本中使用 <shortcut>Esc</shortcut> 返回上一页可能导致直接取消资源包更改。
+</step>
+
+![拖拽安装](install_by_drag.gif "拖拽安装")
+</procedure>
+</tab>
+<tab title="导入文件夹">
+<procedure>
+<step>
+
+点击 `选项` > `资源包` > `打开包文件夹`
+</step>
+<step>
+
+将包拖入该文件夹。
+> 在老版本中，拖入文件夹之后可能需要重新进入资源包页面才会显示。
+>
+{style="note"}
+> 你可以通过按住 <shortcut>Ctrl</shortcut> 拖拽来复制文件，而不是移动文件。
+</step>
+<step>
+
+将 `可用` 资源包置于 `已选` 。
+</step>
+<step>
+
+**点击完成**，在老版本中使用 <shortcut>Esc</shortcut> 返回上一页可能导致直接取消资源包更改。
+</step>
+
+![导入文件夹](install_by_folder.gif "导入文件夹")
+</procedure>
+</tab>
+</tabs>
+
+</snippet>

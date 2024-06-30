@@ -6,10 +6,14 @@
 
 <include from="contentsLibrary.md" element-id="h_note_corrected"></include>
 
+> 本文以 OptiFine 设置为准
+> 
+{style="note"}
+
 这篇文档列出了整个视频设置选项卡中容易出现问题的设置以及修改建议。
 
 图像品质
-: 这个选项是统一设置，它影响 [`细节`](#细节 "子选项卡 - 细节") 选项卡中所有设置为 `默认` 的图形品质，但当它们更改时，会覆盖掉此选项。
+: 这个选项是统一设置，它影响 [`细节`](#detail){summary=""} 选项卡中所有设置为 `默认` 的图形品质，但当它们更改时，会覆盖掉此选项。
 > 确保此选项为 `高品质` 。
 > 
 {style="note"}
@@ -27,7 +31,7 @@
 
 最大帧率
 : 大多数现代光影都使用了时间性效果，如 TAA。帧率锁在过低的值上可能导致拖影。
-> 设置为 `无限制` 以保证最佳画质
+> 设置为 `无限制` 以保证最佳质量。
 > 
 {style="note"}
 
@@ -132,13 +136,13 @@
 ## 子选项卡 {id="子选项卡"}
 
 <tabs group="videoSettings">
-<tab title="品质" group-key="quality">
+<tab title="品质" id="quality">
 
 Mipmap 级别
 : 决定远处纹理的过滤分级数量，有时会在 **JE 1.19** 以上的 OptiFine 中破坏光影包。
 - 比如所有方块的面都被从对角线切割成了两个三角形，并且有一半的三角形被对角线的平行线填充，或者方块边缘出现细线。  
 - MipMap 还会破坏一些光影的自发光渲染。一旦光影支持自发光，视差所有凹下去的地方边缘都会异常发光。
-> 推荐仅在光影要求（比如 Complementary 打开光影内置各向异性过滤时）开启或使用高清纹理且光影没有 [TAA](shaderTech.md#taa) 时才设置为 `开` 。如果你遇到了这些问题，请把它拉至 `关` 。
+> 推荐仅在光影要求（比如 Complementary 打开光影内置各向异性过滤时）开启或使用高清纹理且光影没有 [TAA](shaderTech.md#taa){summary=""} 时才设置为 `开` 。如果你遇到了这些问题，请把它拉至 `关` 。
 >
 {style="note"}
 
@@ -182,7 +186,7 @@ Mipmap 类型
 {style="note"}
 
 </tab>
-<tab title="细节" group-key="detail" id="细节">
+<tab title="细节" id="detail">
 
 云
 : 原版云总是不能与光影包兼容，特别是在旧版本中。
@@ -228,7 +232,7 @@ Mipmap 类型
     {style="note"}
 
 </tab>
-<tab title="性能" group-key="performance">
+<tab title="性能" id="performance">
 
 区域渲染
 : 这个选项长期未维护，可能在长渲染距离下降低性能。
@@ -251,7 +255,7 @@ Mipmap 类型
 {style="note"}
 
 </tab>
-<tab title="光影" group-key="shader">
+<tab title="光影" id="shader">
 
 抗锯齿
 : 会在光影渲染结束后额外添加一层抗锯齿效果来平滑画面。
@@ -286,6 +290,9 @@ Mipmap 类型
 > - 如果设置为 `默认` ，在切换各种光影时可能会由于不同光影对该选项的设置不同导致**资源包被不断重载**。
 > - 如果你不使用 `（内置）` 光影进行游玩（便于使用高渲染精细度和内置 FXAA 抗锯齿），可以直接将其设置为 `关` 。
 >   - 如果此时你需要使用原版光影，可以直接将光影切换至 `关闭` ，并将 `图像品质` 切换为 *`极佳！`* 。
+
+</tab>
+<tab title="Quick Info">
 
 </tab>
 </tabs>
