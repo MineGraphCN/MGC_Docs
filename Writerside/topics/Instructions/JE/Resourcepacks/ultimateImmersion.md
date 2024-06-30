@@ -26,15 +26,11 @@
 <tr><td>2048x</td><td>&gt; 64 GiB</td><td>&gt; 60 GiB</td><td>&gt; 16 GiB</td></tr>
 </table>
 
-<<<<<<< Updated upstream
 > 内存分配仅供参考，可能会在之后的更新迭代中有所变动。
 >
-{style="note" title="内存分配提醒"}
+{style="note"}
 
-> 如果你不知道如何安装光影，请前往 [光影包安装通用教程](shaderpacksCommon.md "这篇文档帮助新人从安装游戏开始，直到最终成功运行光影为止。") 。
-=======
-> 如果你不知道如何安装光影，请前往 [光影包安装通用教程](shaderpacksCommon.md){summary=""} 。
->>>>>>> Stashed changes
+> 如果你不知道如何安装光影，请前往 [](shaderpacksCommon.md){summary=""} 。
 
 ## 安装资源包
 
