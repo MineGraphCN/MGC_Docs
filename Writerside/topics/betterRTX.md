@@ -2,7 +2,7 @@
 
 [Bilibili - BetterRTX实验分支 | 发光实体效果展示 - Defined PBR v1.2.0正式版](https://b23.tv/BV1Z94y1H74o)
 
-[//]: # (<procedure title="【Bilibili】演示视频" collapsible="true">)
+[//]: # (<procedure title="Bilibili 演示视频" collapsible="true">)
 
 [//]: # (<iframe src="//player.bilibili.com/player.html?aid=375588815&bvid=BV1so4y1m7U5&cid=339262048&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"/>)
 

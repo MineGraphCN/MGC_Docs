@@ -411,12 +411,12 @@ Successfully installed client profile forge for version <游戏版本>-forge-<Fo
         <procedure>
             <step>
 
-像 `OptiFine` > `和 Fabric 一同安装` 第三步一样，安装 Fabric。
+访问 [Iris 的 Modrinth 页面](https://modrinth.com/mod/iris/versions) ，选择对应游戏版本的 Iris，点击 `Download` 。
+![Iris 的 Modrinth 页面](iris_1.png "Iris 的 Modrinth 页面")
 </step>
             <step>
 
-访问 [Iris 的 Modrinth 页面](https://modrinth.com/mod/iris/versions) ，选择对应游戏版本的 Iris，点击 `Download` 。
-![Iris 的 Modrinth 页面](iris_1.png "Iris 的 Modrinth 页面")
+像 `OptiFine` > `和 Fabric 一同安装` 第三步一样，安装 Iris 对应游戏版本的 Fabric。
 </step>
             <step>
 
