@@ -1,6 +1,6 @@
 # 光线追踪专题
 
-<include from="contentsLibrary.md" element-id="h_warning_uncorrected"/>
+<include from="contentsLibrary.md" element-id="h_warning_writing"/>
 
 > 在三维计算机图形学中，光线追踪是一种**对光线传输进行建模**的技术，用于生成数字图像的各种渲染算法。
 > 
@@ -89,13 +89,10 @@ PTGI 的思路也与此类似：使用传统阴影贴图渲染太阳阴影，然
 [//]: # (TODO)
 [//]: # (## 数据存储方案)
 
-[//]: # ()
 [//]: # (### 直接访问顶点)
 
-[//]: # ()
 [//]: # (### 体素化)
 
-[//]: # ()
 [//]: # (### 距离场)
 
 ## 相关资料
