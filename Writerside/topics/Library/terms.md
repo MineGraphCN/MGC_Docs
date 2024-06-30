@@ -760,7 +760,7 @@ void main() {
 
 #### 渲染技术相关 {id="渲染技术相关"}
 
-参阅 [着色器 技术科普](shaderTech.md "这篇文档列出了常见的着色器技术，作为术语简短介绍的补充")
+参阅 [](shaderTech.md){summary=""}
 
 <deflist>
 <def id="pom">
@@ -846,10 +846,8 @@ void main() {
 <title><tooltip term="AO">AO</tooltip></title>
 
 **环境光遮蔽**。间接光照在场景间经过各种反射之后逐渐被场景所吸收和遮挡的效果。
-- 由于性能问题，很多游戏中通常使用了各种欺诈和近似来模拟间接光照，AO 就是为了让本应或者*似乎*应该为暗处的地方暗下去（通常是凹处和夹缝）而产生的技术。
-    - 在光线追踪工作流中，环境光遮蔽伴随着全局光照自然产生，这种时候不会特别区分。
-- 绘制在 [着色贴图](resourcepackBasic.md#着色贴图 "由模组、资源包和着色器共同支持，用以存储表面材质的贴图") 上的 AO 被称为**纹理环境光遮蔽**（Texture AO）或**材质环境光遮蔽**（Material AO）。
 
+相关文档：[着色器 技术科普 - 环境光遮蔽](shaderTech.md#AO){summary=""}
 </def>
 <def title="光线追踪" id="光线追踪">
 <title><tooltip term="RT">RT</tooltip></title>
@@ -874,6 +872,8 @@ void main() {
 </deflist>
 
 #### 抗锯齿／升采样技术相关
+
+参阅 [](shaderTech.md#AA){summary=""}
 
 <deflist>
 <def id="dlss">

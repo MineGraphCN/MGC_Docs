@@ -4,11 +4,11 @@
 
 > 更多语法和功能请查阅 [官方文档](https://www.jetbrains.com/help/writerside/markup-reference.html) 。
 > 
-{style="note"}
-
 > 快捷键以 [JetBrains Writerside IDE](https://www.jetbrains.com/zh-cn/writerside/download/#section=windows) 为准。
-
-请在 Writerside IDE 中查看渲染结果。
+> 
+> 请在 Writerside IDE 中查看渲染结果。
+>
+{style="note"}
 
 ## IDE 快捷键
 
@@ -206,8 +206,7 @@ __*文字*__
 
 这些文本块请结合源文件和预览页面进行阅读
 
-这些块大多数可以嵌套，如果遇到问题请使用 xml 语法。
-
+这些块大多数可以嵌套或通过 <shortcut>Tab</shortcut> 缩进进行悬挂，如果遇到问题请使用 xml 语法。
 
 #### 省流块
 <tldr>
@@ -300,11 +299,7 @@ __*文字*__
 >   可以隐藏点号。
 > - `type` 可用字段：`bullet` (默认) 点号，`decimal` 同有序步骤，`alpha-lower` 使用小写字母的有序步骤，`none` 没有前缀。
 >   - 不推荐使用除 `none` 以外的字段，否则可能导致渲染额外的一个步骤，如果你想要小写字母或者其他变量，请使用 xml 的 `<list/>` 代码。
-
-> `columns` ：决定列表分几列渲染，多列渲染时强制无前缀。
-> `start` ：决定开始的序号。
-> 
-{title="部分可用变量"}
+> - 使用 <shortcut>Tab</shortcut> 缩进可以将其他内容悬挂到当前步骤下。
 
 ##### 有序步骤
 
@@ -333,6 +328,12 @@ __*文字*__
 步骤 4
 </li>
 </list>
+
+> `columns` ：决定列表分几列渲染，多列渲染时强制无前缀。
+>
+> `start` ：决定开始的序号。
+>
+{title="部分可用变量"}
 
 #### 步骤块
 
@@ -437,22 +438,33 @@ __*文字*__
 
 #### 复用块
 
+插入复用块
+
 ```xml
 <include from="源文件" element-id="复用块ID"/>
 ```
 
-目前我们的复用块全部保存于 `topics/contentsLibrary.md` ，如果你需要调用复用块，请访问该文件。
+> 目前我们的复用块全部保存于 `topics/contentsLibrary.md` ，如果你需要调用复用块，请访问该文件。
 
-添加新的复用块（如果要在多个文档中使用，请添加到 `contentsLibrary.md` 以便管理）
+添加新的复用块
 
 ```xml
 <snippet id="复用块ID">
+    
     复用块内容
+    
 </snippet>
-
 ```
 
+> 如果要在多个文档中使用，请添加到 [](contentsLibrary.md){summary=""} 以便管理。
+
+> 若 `<snippet/>` 的上一行是 markdown 行，则应当多加一行空格，复用块里的内容也应当在开头和末尾加空行！
+> 
+{style="warning"}
+
 #### 变量
+
+变量主要用于使用复用块时更改块内的内容。
 
 1. 在调用变量名之前使用
     ```xml
@@ -533,7 +545,7 @@ __*文字*__
 
 ## 编写时的注意事项
 
-- 如果你使用了 xml 代码，你需要空一行才能继续 markdown 格式。
+- 如果使用了 xml 代码，你需要空一行才能继续 markdown 格式。
    <procedure>
    <step>
    这段话**不能**正常使用 `markdown 格式` 。
@@ -548,7 +560,8 @@ __*文字*__
    </procedure>
 - 在西文和中文之间应添加空格。
 - 不要滥用**特***殊*~~字~~`形`。
-- 涉及文件路径的格式应当统一（至少在单个文档内统一）。
+- 涉及文件路径的格式应当统一（至少在单个文档内统一）。例如 `F:/Codes/hw.cpp` `C:\Windows\`
+- 涉及点击次序（多级菜单）的，顺序中间使用 `>` 或 `→` ，**不要使用 `->`！** 同时也应当注意同文档内统一。
 
 ## 注释和待办事项（TODO）
 

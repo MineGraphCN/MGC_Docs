@@ -26,11 +26,15 @@
 <tr><td>2048x</td><td>&gt; 64 GiB</td><td>&gt; 60 GiB</td><td>&gt; 16 GiB</td></tr>
 </table>
 
+<<<<<<< Updated upstream
 > 内存分配仅供参考，可能会在之后的更新迭代中有所变动。
 >
 {style="note" title="内存分配提醒"}
 
 > 如果你不知道如何安装光影，请前往 [光影包安装通用教程](shaderpacksCommon.md "这篇文档帮助新人从安装游戏开始，直到最终成功运行光影为止。") 。
+=======
+> 如果你不知道如何安装光影，请前往 [光影包安装通用教程](shaderpacksCommon.md){summary=""} 。
+>>>>>>> Stashed changes
 
 ## 安装资源包
 
@@ -92,7 +96,7 @@
 4. 你正在使用盗版资源包。
 5. 你正在使用不受支持的 Forge 版本。通常最新版本并不是最好的，可能仍然存在错误，因此建议选择一个稳定的 Forge 版本。
 
-为什么使用2048x时崩溃了？
+为什么使用 2048x 时崩溃了？
 : 目前 2048x 已经超过了 OptiFine 可以加载的限制，但这仅仅是因为 OptiFine 存在的一个 bug，Ultimate Immersion 已经提交并正在等待解决。当你尝试使用 <shortcut>F3</shortcut><shortcut>T</shortcut> 重新加载 CTM 纹理，比如道路沥青时，这对引擎的压力太大了。由于 Minecraft 和 OptiFine 引擎在纹理加载方面非常有限，它们很快就会填满你分配的运行内存，更重要的是你的显存，这主要是导致崩溃的原因。基本上，当使用 <shortcut>F3</shortcut><shortcut>T</shortcut> 重新加载包时，它会再次加载整个包，并且会将你的内存和显存的使用量翻倍，而不会清除旧数据。这最终会导致资源限制并崩溃。
 <p>因此，在 OptiFine 解决加载 bug 之前，2048x 将需要保持分割，并且一次只能使用一个。然而，512x 和 1024x 没有这样的问题。</p>
 

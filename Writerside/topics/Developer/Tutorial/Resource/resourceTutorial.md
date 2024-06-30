@@ -9,7 +9,7 @@
 
 > 本教程由 [FishBai](https://github.com/yubaibaifish) 独立编写，MGC 提供支持。
 > 
-> 是 **JAVA 版教程**
+> 是 **JAVA 版教程**。
 > 
 {style="note"}
 
