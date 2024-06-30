@@ -26,11 +26,19 @@
 <tr><td>2048x</td><td>&gt; 64 GiB</td><td>&gt; 60 GiB</td><td>&gt; 16 GiB</td></tr>
 </table>
 
+> 内存分配仅供参考，可能会在之后的更新迭代中有所变动。
+>
+{style="note" title="内存分配提醒"}
+
 > 如果你不知道如何安装光影，请前往 [光影包安装通用教程](shaderpacksCommon.md "这篇文档帮助新人从安装游戏开始，直到最终成功运行光影为止。") 。
 
 ## 安装资源包
 
 <include from="contentsLibrary.md" element-id="install_RP"/>
+
+> 如果仍然显示有紫黑色方块，请使用 <shortcut>F3</shortcut><shortcut>T</shortcut> 重载资源包。
+> 
+{style="note"}
 
 ## 安装模组
 
