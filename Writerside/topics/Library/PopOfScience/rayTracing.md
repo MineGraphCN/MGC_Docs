@@ -86,15 +86,19 @@ PTGI 的思路也与此类似：使用传统阴影贴图渲染太阳阴影，然
 - 另外，手机芯片厂商也陆续推出了支持光线追踪的手机芯片，尽管实现方案可能有所差异，但这并不影响**光线追踪能够在手机上运行**的事实；**光线追踪本质上是一种通用算法**，仍属于数学计算，在`CPU`上运行也是可行的，且已有 up主 演示过了运行在`CPU`上的光线追踪，像目前的`人工智能`也一样能依靠纯`CPU`运行，甚至还有人展示过用纸笔演算`挖矿`的方式，尽管效率极低。因此，凭借 **“能在手机/CPU上运行”，仍然无法说明一个光影是`伪光追`。**
 - 最后要说的是，**`伪光追`这个概念在图形学专业领域中实际上是不存在的**，它主要源于**民间社区中的以谣传遥**。**英伟达在商业营销宣传中对光线追踪技术的命名和解释不恰当，导致定义模糊**，也是这一错误概念广泛流传的可能原因。因此，我们希望大家能够正视社区中的光线追踪光影，不要被错误概念所迷惑，在发现这一概念被误用时，积极进行科普解释，维护社区和圈子的环境。
 
-## 数据存储方案
+[//]: # (TODO)
+[//]: # (## 数据存储方案)
 
-### 直接访问顶点
+[//]: # ()
+[//]: # (### 直接访问顶点)
 
-### 体素化
+[//]: # ()
+[//]: # (### 体素化)
 
-### 距离场
+[//]: # ()
+[//]: # (### 距离场)
 
-### 相关资料
+## 相关资料
 
 - [BSL到底是不是光追？光追为mc带来了什么？【素影之下 #2】×【光影实验室 #3】](https://www.bilibili.com/video/BV1X54y1v7za?zw)
 - 以下图片摘自`20系显卡`发布会，提到了`RTX显卡`是`GTX显卡`光追性能的数倍，可见即使是`GTX显卡`也有光追能力
@@ -166,7 +170,9 @@ _反射_ 仅针对世界空间反射
 - 
 {type="none"}
 
-## 延伸阅读
-混合追踪管线 (Ray Tracing Gems, EA SEED)：https://media.contentapi.ea.com/content/dam/ea/seed/presentations/2019-ray-tracing-gems-chapter-25-barre-brisebois-et-al.pdf
-
-光线追踪加速结构 (PBRT v4, Matt Pharr et al.): https://www.pbr-book.org/4ed/Primitives_and_Intersection_Acceleration/Bounding_Volume_Hierarchies
+<seealso>
+  <category ref="advance">
+    <a href="https://media.contentapi.ea.com/content/dam/ea/seed/presentations/2019-ray-tracing-gems-chapter-25-barre-brisebois-et-al.pdf">混合追踪管线 (Ray Tracing Gems, EA SEED)</a>
+    <a href="https://www.pbr-book.org/4ed/Primitives_and_Intersection_Acceleration/Bounding_Volume_Hierarchies">光线追踪加速结构 (PBRT v4, Matt Pharr et al.)</a>
+  </category>
+</seealso>
