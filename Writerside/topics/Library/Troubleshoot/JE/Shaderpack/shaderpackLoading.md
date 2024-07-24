@@ -1,6 +1,13 @@
 # 光影加载问题
 
-<include from="contentsLibrary.md" element-id="h_warning_writing"/>
+<primary-label ref="manual"/>
+
+<secondary-label ref="corrected"/>
+
+<secondary-label ref="jedoc"/>
+<secondary-label ref="ofdoc"/>
+<secondary-label ref="irisdoc"/>
+<secondary-label ref="shaderdoc"/>
 
 ## 加载光影后帧率远低于预期
 
@@ -8,7 +15,7 @@
 
 1. 检查 **GPU 占用** ：
    - 在游戏内的 <shortcut>F3</shortcut> 信息界面或任务管理器 GPU 页可查看显卡使用率；
-   - 若发现核显运行满载而独立显卡空闲，则需在系统设置中启用高性能电源计划，或 [检查你的 GPU 驱动和 Windows 设置是否正确](troubleshootCommon.md#selGPU "通用问题 - 选择运行 GPU") 。
+   - 若发现核显运行满载而独立显卡空闲，则需在系统设置中启用高性能电源计划，或 [检查你的 GPU 驱动和 Windows 设置是否正确](troubleshootCommon.md#selGPU){summary=""} 。
    - 若独显使用率为 **100%** ，但帧率仍然低于同水平硬件，则可直接跳至第三步检查 RAM 占用；
    - 若独显使用率低于 **80%** ，则可能是下方两个部件达到了瓶颈状态，或是第四点的特殊情况。 
 2. 检查 **CPU 占用** ：
@@ -37,9 +44,9 @@
   - 尝试将光影包解压之后再加载。有时光影包可能被压缩为错误的格式（如 `.rar` 或 `.7z` ）或进行了加密，导致光影在压缩包状态下无法被正常读取。
     > 光影作者通常不会这样做，如果你获取到了这两种压缩包，可能并非作者渠道，甚至涉嫌倒卖！
   - 若使用的光影模组是 Iris，可尝试切换为其它光影如 BSL、Complementary Shader 等。该模组本身就不兼容许多光影，也不适合作为大多数入门玩家的第一选择。
-  - 若同时伴随着左下角的**一大串报错**，同时在切换光影界面的底部看到显卡型号为 Intel 核心显卡（非 Arc 系列的显卡），同时如果你**确认**你的电脑有独立显卡，则可能说明你没有正确配置显卡。参考 [通用问题 - 独立显卡没有正确启用](troubleshootCommon.md#独立显卡没有正确启用) 解决。
+  - 若同时伴随着左下角的**一大串报错**，同时在切换光影界面的底部看到显卡型号为 Intel 核心显卡（非 Arc 系列的显卡），同时如果你**确认**你的电脑有独立显卡，则可能说明你没有正确配置显卡。参考 [通用问题 - 独立显卡没有正确启用](troubleshootCommon.md#独立显卡没有正确启用){summary=""} 解决。
     > 事实上比较新的核心显卡已经不会在大多数时候报错了，如果你确认你的核心显卡型号比较新，则可能是其他原因。
-  - 若读取时提示 `需要更新至 OptiFine Z1 版本` ，而 OptiFine 已发布的最新版本号**远低于**该版本时，意味着这个光影可能只支持 **JE 1.16.5 G7** 及以上的 OptiFine。如果目前使用的是 **JE 1.12.2** 客户端，可以尝试通过添加 [Advanced Shader](terms.md#advancedShader) 模组来解决问题。
+  - 若读取时提示 `需要更新至 OptiFine Z1 版本` ，而 OptiFine 已发布的最新版本号**远低于**该版本时，意味着这个光影可能只支持 **JE 1.16.5 G7** 及以上的 OptiFine。如果目前使用的是 **JE 1.12.2** 客户端，可以尝试通过添加 [Advanced Shader](terms.md#advancedShader){summary=""} 模组来解决问题。
 - **光影包的结构错误**
   - OptiFine 和 Iris 会遍历 `shaderpacks` 下的文件夹和 `.zip` 压缩包，将所有包含 `shaders` 文件夹的内容都视为光影外壳（下称**外壳文件夹**）。
   - OptiFine 会先寻找外壳文件夹，然后在外壳内寻找 `shaders` 文件夹，因此，如果将一个包含着色器文件的 `shaders` 文件夹直接放在 `shaderpacks` 下，或者外壳文件夹内还嵌套了一个文件夹，则不会读取。
@@ -49,7 +56,9 @@
 
 <include from="contentsLibrary.md" element-id="shaderpack_structure_simple"/>
 
-## 启用光影后画面出现问题／出现了不兼容的情况
+[//]: # (TODO)
+
+[//]: # (## 启用光影后画面出现问题／出现了不兼容的情况)
 
 ## 游戏聊天栏报告 `OpenGL ERROR`
 

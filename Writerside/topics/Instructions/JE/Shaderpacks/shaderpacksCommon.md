@@ -1,5 +1,10 @@
 # 光影包安装通用教程
 
+<primary-label ref="manual"/>
+
+<secondary-label ref="jedoc"/>
+<secondary-label ref="shaderdoc"/>
+
 <show-structure depth="2"/>
 
 <tldr>

@@ -1,8 +1,12 @@
 # 光线追踪相关误区
 
-<show-structure depth="2"/>
+<primary-label ref="basic"/>
 
-<include from="contentsLibrary.md" element-id="h_note_corrected"></include>
+<secondary-label ref="corrected"/>
+
+<secondary-label ref="shaderdoc"/>
+
+<show-structure depth="2"/>
 
 <var name="topic" value="针对大众对光线追踪误解的纠正"/>
 <var name="goal" value="想了解什么是光线追踪"/>
@@ -22,9 +26,9 @@
 
 **两者包含而非对立，只是一些人喜欢将后者贴上 *非光线追踪* 的标签，概念理解错误而不自知。**
 
-## 基岩版相关
+## 官方光线追踪
 
-### 官方光线追踪
+<primary-label ref="be"/>
 
 下称 **BERTX**
 
@@ -37,7 +41,9 @@
 
 光影的喜好**由个人决定**，我们不在此强求别人改变观点，但是希望大家对待不同光影有一个正确的态度。
 
-### 延迟渲染 {id="beDeferred"}
+## 延迟渲染 {id="beDeferred"}
+
+<primary-label ref="be"/>
 
 顾名思义，在延迟渲染中，渲染将延迟至所有物体绘制到屏幕空间的缓冲中。在最后逐光源着色，计算阴影，生成最终图像。
 - 该技术于 Java 版光影中应用已久，存在于市面上几乎所有已发布的 Java 版光影。
@@ -47,7 +53,7 @@
 
 ## 伪光追 {id="伪光追"}
 
-_伪光追_ 或称 _假光追_、_拟光追_、_类光追_。
+_伪光追_ 或称 _假光追_、_拟光追_、_类光追_，是光线追踪相关误区的**重灾区**。
 
 - 本文仅解释 Minecraft 中的 _伪光追_ 说法，其他游戏尚对其有不同解释。
 - 是对在国内光影界流行的涉及光线追踪技术所谓**真伪问题**的多种**错误说法**的总称。
@@ -171,7 +177,9 @@ SSPT 是受限于 [屏幕空间](terms.md#屏幕空间 "以窗口为基准，以
 
 你可以在 [这里](rayTracing.md#JEPT "Java 版光线追踪光影特性表") 查找一些我们目前收集到的光影的光线追踪信息。
 
-## Java 版光影的那些事
+## 那些年被误会的光影
+
+<primary-label ref="je"/>
 
 时至今日，有一些光影和光线追踪相关的趣事，在此记录：
 - Sildur's Vibrant Shaders - _《田园光追级光影》_

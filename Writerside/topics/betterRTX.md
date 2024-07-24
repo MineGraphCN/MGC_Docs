@@ -1,5 +1,10 @@
 # BetterRTX
 
+<primary-label ref="manual"/>
+
+<secondary-label ref="bedoc"/>
+<secondary-label ref="moddoc"/>
+
 [Bilibili - BetterRTX实验分支 | 发光实体效果展示 - Defined PBR v1.2.0正式版](https://b23.tv/BV1Z94y1H74o)
 
 [//]: # (<procedure title="Bilibili 演示视频" collapsible="true">)

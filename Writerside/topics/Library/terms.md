@@ -1,5 +1,7 @@
 # 术语表
 
+<primary-label ref="manual"/>
+
 这篇文档列出了整个图书馆中可能会出现的术语，这些术语或常见或罕见，我们会尽可能多地收录。在遇到不能理解的术语时，可以到此文档中进行查阅。
 
 如果你有更多想要提供的术语，或者发现了术语中的疏漏，可以在 [GitHub](https://github.com/MineGraphCN/MGC_Docs/issues) 上为我们提交 Issue 和 Pull Request。
@@ -59,11 +61,11 @@ Java 版游戏，在本文档中，也可以表示只能在 Java 版渲染模组
 
 <def id="ne">
 <title><tooltip term="NE">NE</tooltip></title>
-由<b>网易代理</b>的中国版游戏，也称<b>网易版</b>，表示为网易版独占，例：防沉迷 <sup>NE</sup>，延迟着色 API <sup>BE(NE)</sup>。
+由<b>网易代理</b>的中国版游戏，也称<b>网易版</b>，表示为网易版独占，例：防沉迷 <sup>NE</sup>，延迟渲染 API <sup>BE(NE)</sup>。
 </def>
 </deflist>
 
-> 这些版本主要用作角标，**自此开始无特殊说明的名词均以 Java 版为准。**
+> 这些版本主要用作角标和标签，**自此开始无特殊说明的名词均以 Java 版为准。**
 > 
 {style="note"}
 
@@ -215,12 +217,11 @@ Java 版游戏，在本文档中，也可以表示只能在 Java 版渲染模组
 </def>
 
 <def title="区间" id="区间">
-    即取值范围
-    <list>
-        <li>x∈[a, b] 表示 a ≤ x ≤ b；</li>
-        <li>x∈(a, b) 表示 a &lt; x &lt; b；</li>
-        <li>x∈[a, b) 表示 a ≤ x &lt; b。</li>
-    </list>
+
+即取值范围
+- $x \in [a, b]$ 表示 $ a \leq x \leq b $；
+- $x \in (a, b)$ 表示 $ a < x < b $；
+- $x \in [a, b)$ 表示 $ a \leq x < b $。
 </def>
 
 <def title="向量" id="向量">
@@ -244,21 +245,22 @@ Java 版游戏，在本文档中，也可以表示只能在 Java 版渲染模组
 </def>
 
 <def title="点乘" id="点乘">
-    两个向量运算为一个标量，得到的值称为内积。
-    <code-block lang="tex">
-        \vec{\mathbf{a}} \cdot \vec{\mathbf{b}} = n
-    </code-block>
-    <tip>算法详见 <a anchor="矩阵乘法">矩阵乘法</a> 。</tip>
+
+两个向量运算为一个标量，得到的值称为内积。
+$$ \vec{a} \cdot \vec{b} = n $$
+
+> 算法详见 [](#矩阵乘法){summary=""} 。
 </def>
 
 <def title="叉乘" id="叉乘">
-    向量之间的<b>有序</b>乘法，得到的向量称为外积。
-    <code-block lang="tex">
-        \vec{\mathbf{a}} \times \vec{\mathbf{b}} = \vec{\mathbf{c}} ,
-        |\vec{\mathbf{c}}| = |\vec{\mathbf{a}}| |\vec{\mathbf{b}}| \sin(\theta) ,
-        \vec{\mathbf{c}} \bot \vec{\mathbf{a}} , \vec{\mathbf{c}} \bot \vec{\mathbf{b}}
-    </code-block>
-    其中 <i>θ</i> 为向量 <b><i>a</i></b>、<b><i>b</i></b> 的夹角，方向遵循<b>右手螺旋定则</b>。
+
+向量之间的<b>有序</b>乘法，得到的向量称为外积。
+$$
+    \vec{a} \times \vec{b} = \vec{c} ,
+    |\vec{c}| = |\vec{a}| |\vec{b}| \sin(\theta) ,
+    \vec{c} \bot \vec{a} , \vec{c} \bot \vec{b}
+$$
+其中 $ \theta $ 为向量 $ \vec{a} $、$ \vec{b} $ 的夹角，方向遵循**右手螺旋定则**。
 </def>
 
 <def title="向量的普通四则运算" id="向量的普通四则运算">
@@ -284,41 +286,44 @@ Java 版游戏，在本文档中，也可以表示只能在 Java 版渲染模组
 </def>
 
 <def title="矩阵乘法" id="矩阵乘法">
-    <p>矩阵乘法是矩阵间的<b>有序</b>乘法。</p>
-    矩阵乘法中<b>左侧</b>矩阵的<b>列</b>必须等于<b>右侧</b>矩阵的<b>行</b>，做积所得矩阵为<b>右侧</b>矩阵的<b>列</b>和<b>左侧</b>矩阵的<b>行</b>，即：一个 A 行 C 列的矩阵与一个 C 行 B 列矩阵相乘，所得矩阵为 A 行 B 列。  
-    当向量与矩阵做积时，应该将向量视作一个 1 列的矩阵：
-    <code-block lang="tex">
-    \begin{bmatrix}
-    a & b & c \\
-    d & e & f
-    \end{bmatrix}
-    (x, y, z)^T
-    = \begin{bmatrix}
-    a & b & c \\
-    d & e & f
-    \end{bmatrix}
-    \begin{pmatrix}
-    x \\
-    y \\
-    z
-    \end{pmatrix}
-    = \begin{pmatrix}
-    ax + by + cz = u \\
-    dx + ey + fz = v
-    \end{pmatrix}
-    = (u, v)^T
-    </code-block>
-    当向量与向量进行点乘时，实际上就是进行了矩阵乘法：
-    <code-block lang="tex">
-    (a, b, c) \cdot (x, y, z)^T =
-    \begin{pmatrix}
-    a & b & c
-    \end{pmatrix}
-    \begin{pmatrix}
-    x \\ y \\ z
-    \end{pmatrix}
-    = ax+by+cz
-    </code-block>
+
+矩阵乘法是矩阵间的**有序**乘法。
+
+矩阵乘法中**左侧**矩阵的**列**必须等于**右侧**矩阵的**行**，做积所得矩阵为**右侧**矩阵的**列**和**左侧**矩阵的**行**，即：一个 $A$ 行 $C$ 列的矩阵与一个 $C$ 行 $B$ 列矩阵相乘，所得矩阵为 $A$ 行 $B$ 列。  
+当向量与矩阵做积时，应该将向量视作一个 1 列的矩阵：
+<code-block lang="tex">
+\begin{bmatrix}
+a & b & c \\
+d & e & f
+\end{bmatrix}
+(x, y, z)^T
+= \begin{bmatrix}
+a & b & c \\
+d & e & f
+\end{bmatrix}
+\begin{pmatrix}
+x \\
+y \\
+z
+\end{pmatrix}
+= \begin{pmatrix}
+ax + by + cz = u \\
+dx + ey + fz = v
+\end{pmatrix}
+= (u, v)^T
+</code-block>
+当向量与向量进行点乘时，实际上就是进行了矩阵乘法：
+<code-block lang="tex">
+(a, b, c) \cdot (x, y, z)^T =
+\begin{pmatrix}
+a & b & c
+\end{pmatrix}
+\begin{pmatrix}
+x \\ y \\ z
+\end{pmatrix}
+= ax+by+cz
+</code-block>
+
 </def>
 </deflist>
 
@@ -347,49 +352,50 @@ Java 版游戏，在本文档中，也可以表示只能在 Java 版渲染模组
 </def>
 
 <def title="分辨率" id="分辨率">
-    <p>分辨率是表征位图大小的参数。</p>
-    视频文件和显示器中常用的分辨率 <b>1080p</b> 意为<b>纵向 1080 <tooltip term="px">px</tooltip></b>、<b>逐行扫描</b>。
-    <list>
-        <li><b>p</b> 意为<b>逐行扫描</b>，而 <b>i</b> 则为<b>隔行扫描</b>。
-            <list>
-                <li>扫描：即从上至下显示画面的过程，这个名词沿用自 <tooltip term="CRT">CRT</tooltip> 显示器时代的画面显示方式。从左至右一排像素为一条扫描线。
-                    <list>
-                        <li>逐行扫描为从上至下依次显示每排像素，也是现代显示器和视频文件大多数情况下的显示方式。</li>
-                        <li>
-                            隔行扫描以两条扫描线为一组，上面一条称<b>上场</b> ，下面一条称<b>下场</b> 。上场和下场依次更新，每一轮画面显示只会更新一个场。
-                            <tip>这种方法可以减轻 GPU 压力，同时提高画面流畅度，然而其所带来的伪影也较为严重。</tip>
-                        </li>
-                    </list>
-                </li>
-            </list>
-        </li>
-        <li>伴随此种简写的分辨率出现的还常有<b>画面比例</b>（画幅）。
-            <list>
-                <li>
-                    你可以使用这个公式来计算<b>横向分辨率</b>：
-                    <code-block lang="tex"> 纵向分辨率 \times 画面比例 = 横向分辨率 </code-block>
-                </li>
-            </list>
-        </li>
-        <li>
-            <i>2k</i>、<i>4k</i> 等的定义：
-            <list>
-                <li>
-                    由标准情况下的横向分辨率决定，k 的换算公式为：
-                    <code-block lang="tex"> 1\text{k} = 1024</code-block>
-                </li>
-                <li>
-                    标准的 4k 分辨率为 4096 * 2160 ，在 16:9 下为 3840 * 2160 ，由此我们可以知道
-                    <code-block lang="tex"> N\text{k} = \frac{横向分辨率\text{(16:9)}}{960} = \frac{纵向分辨率}{540} </code-block>
-                </li>
-                <li>
-                    从这个公式还可以知道，所谓 2k 指的实际上是 2048 * 1080，而 2560 * 1440 是 2.67k 。
-                    <note>这在大多数时候是适用的，然而对于超宽屏和方形屏，我们通常直接将其横向分辨率视为 Nk。</note>
-                </li>
-            </list>
-        </li>
-    </list>
-    <tip>关于资源包分辨率，参阅：<a href="resourcepackBasic.md#资源包分辨率">资源包 基本概念 - 资源包分辨率</a> 。</tip>
+
+<p>分辨率是表征位图大小的参数。</p>
+视频文件和显示器中常用的分辨率 <i>1080p</i> 意为<b>纵向 1080 <tooltip term="px">px</tooltip></b>、<b>逐行扫描</b>。
+<list>
+    <li><b>p</b> 意为<b>逐行扫描</b>，而 <b>i</b> 则为<b>隔行扫描</b>。
+        <list>
+            <li>扫描：即从上至下显示画面的过程，这个名词沿用自 <tooltip term="CRT">CRT</tooltip> 显示器时代的画面显示方式。从左至右一排像素为一条扫描线。
+                <list>
+                    <li>逐行扫描为从上至下依次显示每排像素，也是现代显示器和视频文件大多数情况下的显示方式。</li>
+                    <li>
+                        隔行扫描以两条扫描线为一组，上面一条称<b>上场</b> ，下面一条称<b>下场</b> 。上场和下场依次更新，每一轮画面显示只会更新一个场。
+                        <tip>这种方法可以减轻 GPU 压力，同时提高画面流畅度，然而其所带来的伪影也较为严重。</tip>
+                    </li>
+                </list>
+            </li>
+        </list>
+    </li>
+    <li>伴随此种简写的分辨率出现的还常有<b>画面比例</b>（画幅）。
+        <list>
+            <li>
+                你可以使用这个公式来计算<b>横向分辨率</b>：
+                <code-block lang="tex"> 纵向分辨率 \times 画面比例 = 横向分辨率 </code-block>
+            </li>
+        </list>
+    </li>
+    <li>
+        <i>2k</i>、<i>4k</i> 等的定义：
+        <list>
+            <li>
+                由标准情况下的横向分辨率决定，k 的换算公式为：
+                <code-block lang="tex"> 1\text{k} = 1024</code-block>
+            </li>
+            <li>
+                标准的 4k 分辨率为 <math>4096 \times 2160</math> ，在 16:9 下为 <math>3840 \times 2160</math> ，由此我们可以知道 <math>N\text{k} = \frac{横向分辨率\text{(16:9)}}{960} = \frac{纵向分辨率}{540}</math>
+            </li>
+            <li>
+                从这个公式还可以知道，所谓 <i>2k</i> 指的实际上是 <math>2048 \times 1080</math>，而 <math>2560 \times 1440</math> 是 <b>2.67k</b> 。
+                <note>这在大多数时候是适用的，然而对于超宽屏和方形屏，我们通常直接将其横向分辨率视为 <i>Nk</i>。</note>
+            </li>
+        </list>
+    </li>
+</list>
+
+> 关于资源包分辨率，参阅：[资源包 基本概念 - 资源包分辨率](resourcepackBasic.md#资源包分辨率)。
 </def>
 
 <def title="离散和连续" id="离散和连续">
@@ -777,6 +783,26 @@ void main() {
 - 它是一种着色的方法，更准确地表现光线如何与材料性质相互作用。
 - 它有一些传统着色中没有考虑到的部分，如**能量守恒**、**光电效应**等。
 > 传统着色是基于物理的方法的超级近似。例如理想漫反射分布模型 **Lambert BRDF** 就是对渲染方程在表面理想光滑时的近似。
+
+<deflist>
+<def title="渲染方程" id="render_equ">
+
+渲染方程用来描述场景中每个点如何物理地与光照交互，是 PBR 的核心算法。
+$$
+L_o(p,\omega_o)=L_e(p,\omega_o) + \int\limits_\Omega f_r(p,\omega_i,\omega_o) L_i(p,\omega_i) n\cdot\omega_i d\omega_i
+$$
+其中：  
+$p$ 表示 [着色点](#着色目标){summary=""}；  
+$\omega_o$ 表示观察方向；  
+$\omega_i$ 表示光照方向；  
+$n$ 表示表面法线；  
+$L_e()$ 表示着色点的自发光函数；  
+$f_r()$ 表示 <tooltip term="BRDF">BRDF</tooltip> （双向反射分布函数）；  
+$L_i()$ 表示光源的辐射率函数，主要用于距离衰减；  
+$\int_{\Omega} d\omega_i$ 表示在法半球所有方向上计算结果的积分。
+
+</def>
+</deflist>
 
 </def>
 <def id="gi">

@@ -1,5 +1,9 @@
 # 资源包 基本概念
 
+<primary-label ref="basic"/>
+
+<secondary-label ref="resourcedoc"/>
+
 <show-structure depth="2"/>
 
 ## 写在前面
@@ -47,21 +51,14 @@ Texture Pack 的**错误译名**。
 
 资源包中的纹理通常为**正方形**，在**动态纹理贴图**中，纵向分辨率是横向分辨率的**整数倍**。这使得纹理的分辨率标注相比较通常意义上有一些区别
 
-- *32x*、*64x*、*128x*... *Nx*：表示该资源包的基本贴图尺寸均为
-    ```tex
-    N \times N
-    ```
-    - 在动态纹理贴图中，纵向分辨率还需要乘以动态纹理的帧数 ***F*** ，于是最终我们的贴图分辨率为：
-    ```tex
-    N \times N \times F
-    ```
-- *1k*、*2k*、*4k*... *Nk*：表示所有贴图均为 *Nk \* Nk* 像素的尺寸：
-    ```tex
-    1\text{k} = 1024
-    ```
-- *N* 在 Java 版中必须为**2的整数次幂**。
+- *32x*、*64x*、*128x*... *Nx*：表示该资源包的基本贴图尺寸均为 $ N \times N $；
+    - 在动态纹理贴图中，纵向分辨率还需要乘以动态纹理的帧数 $F$ ，于是最终我们的贴图分辨率为 $N \times N \times F$。
+- *1k*、*2k*、*4k*... *Nk*：表示所有贴图均为 $ N\text{k} \times N\text{k} $ 像素的尺寸，其中 $1\text{k} = 1024$ ；
+- 在 Java 版中， $ N = 2^x $，其中$x$为自然数。
 
-## 资源包的版本兼容性 <sup>JE</sup> {id="versionComp"}
+## 资源包的版本兼容性 {id="versionComp"}
+
+<primary-label ref="je"/>
 
 ### 粗略区间 {id="roughComp"}
 
@@ -119,7 +116,12 @@ Texture Pack 的**错误译名**。
 
 原版贴图由 Minecraft 原生提供支持。许多老牌资源包如**舒服细致**（Soartex）、**五边形**（BDCraft）等即为只提供原版贴图的资源包。
 
-### 着色贴图 <sup>MOD</sup> {id="着色贴图"}
+### 着色贴图 {id="着色贴图"}
+
+<primary-label ref="je"/>
+
+<secondary-label ref="of"/>
+<secondary-label ref="iris"/>
 
 **读取这些贴图需要模组支持，具体作用需要光影支持。**
 
@@ -128,7 +130,7 @@ Texture Pack 的**错误译名**。
 - 法线贴图的命名方法为 `<name>_n.png` 。
 - 反射贴图的命名方法为 `<name>_s.png` 。
 
-OptiFine 同时支持一些其它的特殊贴图，如 CTM、CIT、CEM 等，见 [#特殊贴图](#特殊纹理 "这些贴图可以在 OptiFine 中使用，也可以使用其他 MOD 实现。") 。
+OptiFine 同时支持一些其它的特殊贴图，如 CTM、CIT、CEM 等，见 [](#特殊纹理){summary=""} 。
 
 #### 法线纹理（贴图） {id="法线纹理"}
 
@@ -145,9 +147,14 @@ OptiFine 同时支持一些其它的特殊贴图，如 CTM、CIT、CEM 等，见
 
 #### 反射纹理（贴图） {id="反射纹理"}
 
-用于告诉着色器物体的性质，每个颜色通道在不同的标准中有着不同的定义，详见 [#PBR 标准](#pbr标准 "PBR 工作流和格式") 。
+用于告诉着色器物体的性质，每个颜色通道在不同的标准中有着不同的定义，详见 [](#pbr标准){summary=""} 。
 
-### 特殊纹理／模型 <sup>OptiFine</sup> {id="特殊纹理"}
+### 特殊纹理／模型 {id="特殊纹理"}
+
+<primary-label ref="je"/>
+
+<secondary-label ref="of"/>
+<secondary-label ref="mod"/>
 
 | 名称                              | 简写  | 用途       |
 |---------------------------------|:---:|----------|
@@ -161,8 +168,10 @@ OptiFine 同时支持一些其它的特殊贴图，如 CTM、CIT、CEM 等，见
 | Natural Textures                |  -  | 自然纹理     |
 | Custom Sky                      |  -  | 自定义天空    |
 
-这些贴图可以在 OptiFine 中使用，也可以使用其他 MOD 实现。  
+这些贴图可以在 OptiFine 中使用，也可以由其他模组实现。  
 详细介绍可参考 MCBBS 纹理版版主 *SQwatermark* 翻译的 [OptiFine官方文档](http://sqwatermark.com/resguide/optifinedoc/) 。
+
+[//]: # (TODO: 资源包技术科普完成后迁移至其中)
 
 ## PBR 标准 {id="pbr标准"}
 

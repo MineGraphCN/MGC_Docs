@@ -1,5 +1,7 @@
 # Writerside 写作参考
 
+<primary-label ref="dev"/>
+
 <show-structure depth="3"/>
 
 > 更多语法和功能请查阅 [官方文档](https://www.jetbrains.com/help/writerside/markup-reference.html) 。
@@ -38,7 +40,7 @@
 
 > 这是一条设置符，决定了文档索引（竖屏左侧顶部，横屏右侧）显示的最大标题级别。
 
-### xml / html 代码
+### XML / HTML 代码
 
 环绕插入行内代码 <shortcut>框选内容</shortcut>, <shortcut>Ctrl</shortcut><shortcut>Alt</shortcut><shortcut>T</shortcut>, <shortcut>T</shortcut>
 
@@ -206,7 +208,7 @@ __*文字*__
 
 这些文本块请结合源文件和预览页面进行阅读
 
-这些块大多数可以嵌套或通过 <shortcut>Tab</shortcut> 缩进进行悬挂，如果遇到问题请使用 xml 语法。
+这些块大多数可以嵌套或通过 <shortcut>Tab</shortcut> 缩进进行悬挂，如果遇到问题请使用 XML 语法。
 
 #### 省流块
 <tldr>
@@ -242,19 +244,29 @@ __*文字*__
 ```markdown
     内容
 ```
-或
+> ` ``` ` 后紧跟编程语言。
 
-<code-block lang="xml">
+##### `<code-block>` 块
+
+<code-block lang="markdown">
 内容
 </code-block>
 
-> - ` ``` ` 后紧跟编程语言
-> - markdown 格式虽然在 IDE 补全范围内，但是编译器却无法识别此语言。
->   ```
->   CDE016: Unknown language is specified for a code block
->     · "markdown": ...
->   ```
->   Writerside，很神奇吧。
+> 使用 `<code-block>` 块时 XML 和 HTML 会自动处理，如果你需要原文，请额外使用 `<![CDATA[]]>` 环绕。
+> ```xml
+> <code-block lang="xml">
+> <![CDATA[
+> 内容
+> ]]>
+> </code-block>
+> ```
+
+> markdown 格式虽然在 IDE 补全范围内，但是编译器却无法识别此语言。
+> ```
+> CDE016: Unknown language is specified for a code block
+>   · "markdown": ...
+> ```
+> Writerside，很神奇吧。
 
 #### 注释／提示／警告
 
@@ -272,7 +284,7 @@ __*文字*__
 内容
 </warning>
 
-> - `style` 可用字段：`tip` (默认), `note` , `warning`；当使用 xml 块时，直接使用 `<tip/>` `<note/>` `<warning/>` 。
+> - `style` 可用字段：`tip` (默认), `note` , `warning`；当使用 XML 块时，直接使用 `<tip/>` `<note/>` `<warning/>` 。
 > - 当使用 markdown 格式时，应当多空出一行。
 
 #### 缩写
@@ -298,7 +310,7 @@ __*文字*__
 >   ```
 >   可以隐藏点号。
 > - `type` 可用字段：`bullet` (默认) 点号，`decimal` 同有序步骤，`alpha-lower` 使用小写字母的有序步骤，`none` 没有前缀。
->   - 不推荐使用除 `none` 以外的字段，否则可能导致渲染额外的一个步骤，如果你想要小写字母或者其他变量，请使用 xml 的 `<list/>` 代码。
+>   - 不推荐使用除 `none` 以外的字段，否则可能导致渲染额外的一个步骤，如果你想要小写字母或者其他变量，请使用 XML 的 `<list/>` 代码。
 > - 使用 <shortcut>Tab</shortcut> 缩进可以将其他内容悬挂到当前步骤下。
 
 ##### 有序步骤
@@ -349,7 +361,7 @@ __*文字*__
 </procedure>
 
 > - `type` 变量的 `steps` 表示有序步骤(默认)，`choices` 表示无序步骤
-> - 当 `title` 作为 `<title/>` 块时可以使用 xml 代码为其添加 [文字格式](#format){summary=""}
+> - 当 `title` 作为 `<title/>` 块时可以使用 XML 代码为其添加 [文字格式](#format){summary=""}
 > - 步骤块会作为当前标题的下一级内容
 
 #### 新起段落
@@ -385,7 +397,7 @@ __*文字*__
 > - 第二行为对齐行／表头分隔行
 >   - `|:-|` 表示左对齐，`|:-:|` 表示居中对齐，`|-:|` 表示右对齐，`|-|` 表示默认对齐，`-` 数量不限。
 >   - Writerside 暂时不支持对齐，你可以使用这些对齐定义作保留。
-> - 如果你想使用单元格合并等复杂功能，请使用 xml 的 `<table/>` 块。
+> - 如果你想使用单元格合并等复杂功能，请使用 XML 的 `<table/>` 块。
  
 ##### `<table/>` 块
 
@@ -473,7 +485,7 @@ __*文字*__
    ，或将全局变量保存至 `v.list`
 2. 在任意位置使用 `%变量名%`
 
-变量名中不可包含任何 markdown 语法或 xml 语法。
+变量名中不可包含任何 markdown 语法或 XML 语法。
 
 <procedure>
 
@@ -506,7 +518,7 @@ __*文字*__
 
 内容
 
-> 此处为了方便使用 xml 的章节块，你也可以正常使用 [markdown 标题代码](#title){summary=""}。
+> 此处为了方便使用 XML 的章节块，你也可以正常使用 [markdown 标题代码](#title){summary=""}。
 
 </chapter>
 
@@ -529,6 +541,44 @@ __*文字*__
 > 
 > `default-state` 指定默认状态，`collapsed` (默认) 表示默认折叠，`expanded` 表示默认展开。
 
+#### 数学公式
+
+##### 行内公式
+
+文本，$ y=kx+b $，另外一些文本
+
+或使用 `<math/>` 标签环绕。
+
+##### 公式块
+
+文本，
+$$
+y=kx+b
+$$
+另一些文本<br/>
+再来一些文本，
+$$
+\begin{equation}
+y=ax^2+bx+c
+\end{equation}
+$$
+更多的文本
+
+或使用代码块环绕，并将语言设置为 `tex` 。
+
+## 标签
+
+<primary-label ref="sample"/>
+
+<secondary-label ref="red"/>
+<secondary-label ref="blue"/>
+<secondary-label ref="purple"/>
+<secondary-label ref="strawberry"/>
+<secondary-label ref="tangerine"/>
+<secondary-label ref="auto"/>
+
+对应颜色示例见上方，标签存储于 `Writerside/labels.list` 。
+
 ## 添加新文件
 
 > 文件名应当使用**驼峰命名法**。
@@ -545,7 +595,7 @@ __*文字*__
 
 ## 编写时的注意事项
 
-- 如果使用了 xml 代码，你需要空一行才能继续 markdown 格式。
+- 如果使用了 XML 代码，你需要空一行才能继续 markdown 格式。
    <procedure>
    <step>
    这段话**不能**正常使用 `markdown 格式` 。

@@ -1,5 +1,10 @@
 # 秦
 
+<primary-label ref="manual"/>
+
+<secondary-label ref="jedoc"/>
+<secondary-label ref="resourcedoc"/>
+
 ## 序言
 
 ### 关于秦材质包

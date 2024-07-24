@@ -1,5 +1,10 @@
 # 2023年春季赛
 
+<primary-label ref="23sp"/>
+
+<secondary-label ref="jegallery"/>
+<secondary-label ref="begallery"/>
+
 <show-structure depth="0"/>
 
 ## 前三名 <sup>大众投票</sup>

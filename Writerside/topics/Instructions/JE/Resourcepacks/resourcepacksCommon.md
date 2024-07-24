@@ -1,5 +1,10 @@
 # 资源包安装通用教程
 
+<primary-label ref="manual"/>
+
+<secondary-label ref="jedoc"/>
+<secondary-label ref="resourcedoc"/>
+
 <tldr>
 
 将资源包放入 `resourcepacks` 文件夹。

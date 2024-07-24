@@ -1,8 +1,11 @@
 # Iris 等效 OptiFine 功能的模组
 
-<show-structure depth="2"/>
+<primary-label ref="manual"/>
 
-<include from="contentsLibrary.md" element-id="h_note_newT"/>
+<secondary-label ref="jedoc"/>
+<secondary-label ref="irisdoc"/>
+
+<show-structure depth="2"/>
 
 > 资料来源：[Fabric Wiki - OptiFine alternatives](https://fabricmc.net/wiki/community:optifine_alternatives#performance)
 

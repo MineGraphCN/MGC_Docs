@@ -1,6 +1,14 @@
 # 着色器开发教程
 
-<include from="contentsLibrary.md" element-id="h_warning_writing"/>
+<primary-label ref="dev"/>
+
+<secondary-label ref="wip"/>
+
+<secondary-label ref="jedoc"/>
+<secondary-label ref="ofdoc"/>
+<secondary-label ref="shaderdoc"/>
+
+<show-structure depth="0"/>
 
 <var name="topic" value="着色器编写的实际教程"/>
 <var name="goal" value="仅想对着色器有大致的了解"/>

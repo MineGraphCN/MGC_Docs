@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE labels SYSTEM "https://resources.jetbrains.com/writerside/1.0/labels-list.dtd">
+<labels xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/labels.xsd">
+
+<!--文档类型-->
+
+    <primary-label id="basic" short-name="基础" name="基础科普">
+        这篇文档主要面向大众进行基础知识科普。
+    </primary-label>
+
+    <primary-label id="adv" short-name="技术" name="技术科普" color="tangerine">
+        这篇文档主要面向进阶玩家进行技术科普。
+    </primary-label>
+
+    <primary-label id="dev" short-name="开发" name="开发文档" color="red">
+        这篇文档主要面向开发人员。
+    </primary-label>
+
+    <primary-label id="manual" short-name="功能" name="功能性文档" color="purple">
+        这篇文档是特定资源的说明书或以辅助性内容为主。
+    </primary-label>
+
+    <secondary-label id="jedoc" name="Java 版" color="tangerine">这篇文档的主要内容适用于 Java 版。</secondary-label>
+    <secondary-label id="bedoc" name="基岩版" color="tangerine">这篇文档的主要内容适用于基岩版。</secondary-label>
+    <secondary-label id="ofdoc" name="OptiFine" color="purple">这篇文档的内容适用于 OptiFine，或该资源适用于 OptiFine。</secondary-label>
+    <secondary-label id="irisdoc" name="Iris" color="purple">这篇文档的内容适用于 Iris，或该资源适用于 Iris。</secondary-label>
+    <secondary-label id="moddoc" name="模组" color="blue">这篇文档的内容适用于模组，或该资源为模组。</secondary-label>
+    <secondary-label id="shaderdoc" name="光影" color="blue">这篇文档的内容适用于光影，或该资源为光影。</secondary-label>
+    <secondary-label id="resourcedoc" name="资源包" color="blue">这篇文档的内容适用于资源包，或该资源为资源包。</secondary-label>
+    <secondary-label id="multiImg" name="多图" color="red">该板块高清图片较多，计费流量用户请谨慎浏览。</secondary-label>
+
+    <!--施工状态-->
+
+        <secondary-label id="corrected" name="订" color="blue">这篇文档在最近进行过订正或重写。</secondary-label>
+        <secondary-label id="old" name="旧" color="red">这篇文档很长时间没有进行过订正，或内容有过时。</secondary-label>
+        <secondary-label id="new" name="新" color="blue">这是最近添加的新文档，或文档中有新内容。</secondary-label>
+        <secondary-label id="wip" name="施" color="red">这篇文档处于施工中。</secondary-label>
+        <secondary-label id="translated" name="译" color="purple">这是一篇译文。</secondary-label>
+
+<!--章节类型-->
+
+    <primary-label id="je" short-name="JE" name="Java 版" color="tangerine">
+        这个章节的内容适用于 Java 版。
+    </primary-label>
+
+    <primary-label id="be" short-name="BE" name="基岩版" color="tangerine">
+        这个章节的内容适用于基岩版。
+    </primary-label>
+
+    <secondary-label id="of" name="OptiFine" color="purple">这个章节的内容适用于 OptiFine。</secondary-label>
+    <secondary-label id="iris" name="Iris" color="purple">这个章节的内容适用于 Iris。</secondary-label>
+    <secondary-label id="mod" name="模组" color="purple">这个章节的内容适用于模组。</secondary-label>
+    <secondary-label id="shader" name="光影" color="blue">这个章节的内容适用于光影。</secondary-label>
+    <secondary-label id="resource" name="资源包" color="blue">这个章节的内容适用于资源包。</secondary-label>
+
+<!--画廊标签-->
+
+    <!--通用-->
+    <secondary-label id="lack" name="缺" color="red">此画廊留档有问题，有缺图情况。</secondary-label>
+    <secondary-label id="jegallery" name="Java 版" color="tangerine">本次比赛有 Java 版参与。</secondary-label>
+    <secondary-label id="begallery" name="基岩版" color="tangerine">本次比赛有基岩版参与。</secondary-label>
+    <secondary-label id="render" name="渲染器" color="tangerine">本次比赛允许渲染器。</secondary-label>
+
+    <primary-label short-name="自由" id="unlimited" name="自由赛">
+        本次比赛为自由赛，不限定主题。
+    </primary-label>
+
+    <!--逐年主题-->
+    <primary-label id="22sp" short-name="限定地图" name="限定地图赛" color="purple">
+        本次比赛限定了参赛用地图。
+    </primary-label>
+    <primary-label id="22su" short-name="建筑群" name="大型建筑群" color="purple">
+        本次比赛限定主题为大型建筑群。
+    </primary-label>
+    <primary-label id="22au" short-name="山" name="山" color="purple">
+        本次比赛限定主题为山。
+    </primary-label>
+    <primary-label id="23sp" short-name="光追" name="光线追踪" color="purple">
+        本次比赛限定主题为光线追踪。
+    </primary-label>
+    <primary-label id="24sp" short-name="龙" name="龙" color="purple">
+        本次比赛限定主题为龙。
+    </primary-label>
+
+    <!--模板，请勿直接使用！-->
+    <primary-label id="_年份季度_" short-name="主题" name="主题" color="purple">
+        本次比赛限定主题为_主题_。
+    </primary-label>
+
+<!--杂项-->
+
+    <secondary-label id="whats_new" name="2024.7.25">夺新↑鲜↓哪。</secondary-label>
+
+    <primary-label id="sample" short-name="标签" name="标签示例，默认颜色为主题色">
+        标签悬停文本
+    </primary-label>
+
+    <primary-label id="warehouse" short-name="仓库" name="仓库重地，闲人免进" color="red">
+        你是怎么访问到这个页面的？
+    </primary-label>
+
+    <secondary-label id="red" name="红色" color="red"/>
+    <secondary-label id="tangerine" name="橙色" color="tangerine"/>
+    <secondary-label id="blue" name="蓝色" color="blue"/>
+    <secondary-label id="purple" name="紫色" color="purple"/>
+    <secondary-label id="strawberry" name="粉色（草莓色）" color="strawberry"/>
+    <secondary-label id="auto" name="自适应颜色（根据深色模式而定）"/>
+
+</labels>

@@ -1,5 +1,12 @@
 # SEUS PTGI GFME
 
+<primary-label ref="manual"/>
+
+<secondary-label ref="jedoc"/>
+<secondary-label ref="shaderdoc"/>
+<secondary-label ref="ofdoc"/>
+<secondary-label ref="irisdoc"/>
+
 全称：Sonic Ether's Unbelievable Shader Path Tracing Global Illumination GeForceLegend's Modified Edition，SEUS PTGI 深度魔改版本
 
 ## 安装

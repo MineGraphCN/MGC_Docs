@@ -1,5 +1,10 @@
 # 2021年秋季赛
 
+<primary-label ref="unlimited"/>
+
+<secondary-label ref="jegallery"/>
+<secondary-label ref="begallery"/>
+
 <show-structure depth="0"/>
 
 ## 比赛介绍

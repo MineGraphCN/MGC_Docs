@@ -1,5 +1,10 @@
 # 2024年春季赛
 
+<primary-label ref="24sp"/>
+
+<secondary-label ref="jegallery"/>
+<secondary-label ref="begallery"/>
+
 <show-structure depth="0"/>
 
 ## 规则

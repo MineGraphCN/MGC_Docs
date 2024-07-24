@@ -1,8 +1,10 @@
 # 通用问题
 
-<show-structure depth="2"/>
+<primary-label ref="manual"/>
 
-<include from="contentsLibrary.md" element-id="h_warning_zero"/>
+<secondary-label ref="wip"/>
+
+<show-structure depth="2"/>
 
 这篇文档记录了一些与游戏相关或会产生影响的常见问题。
 

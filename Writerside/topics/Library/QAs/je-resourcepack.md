@@ -1,6 +1,11 @@
 # Java 版资源包（纹理包）问答
 
-<include from="contentsLibrary.md" element-id="h_warning_uncorrected"></include>
+<primary-label ref="basic"/>
+
+<secondary-label ref="old"/>
+
+<secondary-label ref="jedoc"/>
+<secondary-label ref="resourcedoc"/>
 
 ## 资源包 / 纹理包是否有优化空间？
 

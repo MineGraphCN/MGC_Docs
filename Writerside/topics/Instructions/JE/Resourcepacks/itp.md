@@ -1,5 +1,11 @@
 # IT-Project
 
+<primary-label ref="manual"/>
+
+<secondary-label ref="jedoc"/>
+<secondary-label ref="resourcedoc"/>
+<secondary-label ref="moddoc"/>
+
 ## 购买
 
 - 前往 [爱发电](https://afdian.net/a/itproject) 赞助，随后在 **爱发电私信** 找到QQ群号，进入QQ群。

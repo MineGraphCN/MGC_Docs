@@ -1,5 +1,13 @@
 # LabPBR 材质标准
 
+<primary-label ref="dev"/>
+
+<secondary-label ref="translated"/>
+
+<secondary-label ref="jedoc"/>
+<secondary-label ref="shaderdoc"/>
+<secondary-label ref="resourcedoc"/>
+
 <show-structure depth="2"/>
 
 <var name="src_name" value="LabPBR Material Standard"/>

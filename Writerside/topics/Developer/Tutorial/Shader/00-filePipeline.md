@@ -1,6 +1,6 @@
 # 文件结构和渲染管线
 
-<include from="contentsLibrary.md" element-id="h_warning_writing"/>
+<secondary-label ref="wip"/>
 
 ## 光影加载方法
 

@@ -1,5 +1,9 @@
 # 2022年秋季赛
 
+<primary-label ref="22au"/>
+
+<secondary-label ref="jegallery"/>
+
 <show-structure depth="0"/>
 
 ## 前三名

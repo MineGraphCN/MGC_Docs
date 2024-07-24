@@ -1,5 +1,11 @@
 # iterationT 2.0.0 使用手册
 
+<primary-label ref="manual"/>
+
+<secondary-label ref="jedoc"/>
+<secondary-label ref="shaderdoc"/>
+<secondary-label ref="ofdoc"/>
+
 ## 3.0.0 已发布
 
 - 目前 iterationT 3.0.0 已正式发布。点击此处前往它的使用手册：[《iterationT 3.0.0 使用手册》](itt3.md)

@@ -1,6 +1,12 @@
 # 资源包（光影）通用安装教程
 
-<include from="contentsLibrary.md" element-id="h_warning_zero"/>
+<primary-label ref="manual"/>
+
+<secondary-label ref="wip"/>
+
+<secondary-label ref="bedoc"/>
+<secondary-label ref="shaderdoc"/>
+<secondary-label ref="resourcedoc"/>
 
 <tldr>
 

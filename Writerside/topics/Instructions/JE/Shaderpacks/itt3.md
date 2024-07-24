@@ -1,5 +1,11 @@
 # iterationT 3.0.0 使用手册
 
+<primary-label ref="manual"/>
+
+<secondary-label ref="jedoc"/>
+<secondary-label ref="shaderdoc"/>
+<secondary-label ref="ofdoc"/>
+
 ## iterationT 的由来及版权信息 （必读）
 
 - 在使用光影之前，我们需要先了解 iterationT 的由来。以下是关于它的起源：
