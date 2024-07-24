@@ -2,6 +2,8 @@
 
 <primary-label ref="manual"/>
 
+<secondary-label ref="new"/>
+
 <secondary-label ref="jedoc"/>
 <secondary-label ref="resourcedoc"/>
 <secondary-label ref="moddoc"/>
@@ -10,8 +12,6 @@
 
 如何正确使用 Ultimate immersion？如何解决使用过程出现的问题？
 </tldr>
-
-<include from="contentsLibrary.md" element-id="h_note_newT"/>
 
 ## 准备工作 {id="prepare"}
 

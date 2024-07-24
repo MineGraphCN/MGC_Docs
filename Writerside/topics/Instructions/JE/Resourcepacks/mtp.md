@@ -5,7 +5,7 @@
 <secondary-label ref="jedoc"/>
 <secondary-label ref="resourcedoc"/>
 
-- **当前说明书版本为V1.6.1，材质版本为V1.6.1，更新于2022/8/10**
+**当前说明书版本为V1.6.1，材质版本为V1.6.1，更新于2022/8/10**
 
 ---
 
