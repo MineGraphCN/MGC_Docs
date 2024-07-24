@@ -1,14 +1,18 @@
 # 视频设置和相关显示问题
 
+<primary-label ref="manual"/>
+
+<secondary-label ref="wip"/>
+
+<secondary-label ref="jedoc"/>
+<secondary-label ref="ofdoc"/>
+<secondary-label ref="shaderdoc"/>
+<secondary-label ref="resourcedoc"/>
+
 <show-structure for="chapter,tab"/>
 
 [//]: # (TODO: 列出每个设置的具体画面变化)
 
-<include from="contentsLibrary.md" element-id="h_note_corrected"></include>
-
-> 本文以 OptiFine 设置为准
-> 
-{style="note"}
 
 这篇文档列出了整个视频设置选项卡中容易出现问题的设置以及修改建议。
 

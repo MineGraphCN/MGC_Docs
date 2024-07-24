@@ -6,9 +6,8 @@
         <custom-favicons>page_logo.png</custom-favicons>
         <header-logo>MGC-darklogo.png</header-logo>
         <download-title>旧版 MGCD</download-title>
-        <download-page>https://mgcd.hypercol.com/</download-page>
+        <download-page>https://mgcd.hypercol.com/works/</download-page>
         <showDownloadButton>true</showDownloadButton>
-        <versions-switcher>https://mgcd.hypercol.com/</versions-switcher>
         <product-web-url>https://docs.minegraph.cn/home</product-web-url>
         <algolia-id>AMQJCXFVUL</algolia-id>
         <algolia-api-key>64206f0ec56ab84f94d171e5a39b6815</algolia-api-key>
@@ -22,7 +21,7 @@
         </variables>
         <footer>
             <copyright>HyperCol 2023-2024</copyright>
-            <icp>沪ICP备2023036853号</icp>
+            <icp>备2023036853号</icp>
 
             <link href="https://pd.qq.com/s/lem9db">QQ 频道</link>
             <link href="https://github.com/MineGraphCN/MGC_Docs">GitHub 项目仓库</link>

@@ -1,8 +1,12 @@
 # 着色器 技术科普
 
-<show-structure depth="3"/>
+<primary-label ref="adv"/>
 
-<include from="contentsLibrary.md" element-id="h_note_corrected"/>
+<secondary-label ref="new"/>
+
+<secondary-label ref="shaderdoc"/>
+
+<show-structure depth="3"/>
 
 <var name="topic" value="着色器应用技术的解释"/>
 <var name="goal" value="不了解其基本概念"/>

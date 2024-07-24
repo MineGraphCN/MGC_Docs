@@ -1,5 +1,7 @@
 # Writerside 写作参考
 
+<primary-label ref="dev"/>
+
 <show-structure depth="3"/>
 
 > 更多语法和功能请查阅 [官方文档](https://www.jetbrains.com/help/writerside/markup-reference.html) 。
@@ -38,7 +40,7 @@
 
 > 这是一条设置符，决定了文档索引（竖屏左侧顶部，横屏右侧）显示的最大标题级别。
 
-### xml / html 代码
+### XML / HTML 代码
 
 环绕插入行内代码 <shortcut>框选内容</shortcut>, <shortcut>Ctrl</shortcut><shortcut>Alt</shortcut><shortcut>T</shortcut>, <shortcut>T</shortcut>
 
@@ -563,6 +565,19 @@ $$
 更多的文本
 
 或使用代码块环绕，并将语言设置为 `tex` 。
+
+## 标签
+
+<primary-label ref="sample"/>
+
+<secondary-label ref="red"/>
+<secondary-label ref="blue"/>
+<secondary-label ref="purple"/>
+<secondary-label ref="strawberry"/>
+<secondary-label ref="tangerine"/>
+<secondary-label ref="auto"/>
+
+对应颜色示例见上方，标签存储于 `Writerside/labels.list` 。
 
 ## 添加新文件
 

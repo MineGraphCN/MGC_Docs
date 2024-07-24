@@ -1,12 +1,6 @@
 # 画廊
 
-> 该板块高清图片较多，计费流量用户请谨慎浏览。
-> 
-{style="warning" title="多图"}
-
-> 画廊已经迁移完毕。
->
-{style="note" title="迁移完毕"}
+<secondary-label ref="multiImg"/>
 
 这里收录了每一届 1stGr 截图大赛的参赛作品，你可以在**左侧栏**选择你想看的一届。
 

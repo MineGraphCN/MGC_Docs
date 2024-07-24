@@ -1,6 +1,12 @@
 # 作品开发相关资料整理
 
-<include from="contentsLibrary.md" element-id="h_note_corrected"/>
+<primary-label ref="manual"/>
+
+<secondary-label ref="corrected"/>
+
+<secondary-label ref="jedoc"/>
+
+<show-structure depth="0"/>
 
 <tabs>
   <tab title="着色器开发">

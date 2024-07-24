@@ -1,6 +1,11 @@
 # Java 版光影问答
 
-<include from="contentsLibrary.md" element-id="h_warning_writing"/>
+<primary-label ref="basic"/>
+
+<secondary-label ref="corrected"/>
+
+<secondary-label ref="jedoc"/>
+<secondary-label ref="shaderdoc"/>
 
 ## 为什么 Java 版光影优化如此糟糕？ {id="whyJEPerformanceSoTerrible"}
 
@@ -19,7 +24,7 @@
 - 再看看渲染代码：_It just works_；
 - 最后看总体：屎山堆积，一代不如一代。
 
-## 什么光影最好？X 光影是高配还是低配？
+## 什么光影最好？某某光影是高配还是低配？
 
 **光影不存在最好，只存在最适合自己**，包括所谓光追，并不是带有先进技术的才是好的。你可能会想在光源复杂巨型建筑群上运行带有路径追踪光影，也有可能会想在自己的生存小屋里开上一个原版风味光影。
 

@@ -1,5 +1,9 @@
 # 着色器 基本概念和轶事
 
+<primary-label ref="basic"/>
+
+<secondary-label ref="shaderdoc"/>
+
 <show-structure depth="2"/>
 
 <include from="contentsLibrary.md" element-id="h_note_new"/>
@@ -99,7 +103,9 @@
 -
 {type="none"}
 
-## Java 版光影的发家史 {id="jeShaderEvo"}
+## 光影的发家史 {id="jeShaderEvo"}
+
+<primary-label ref="je"/>
 
 ### 开端之前
 
@@ -176,7 +182,9 @@ Optimine 发布后不久，它被 _sp614x_ 接手，开始着手添加更多优�
 
 [//]: # (TODO: 番外：Continuum 和 NovaRender/Focal 以及 Canvas 的故事)
 
-## 渲染龙和基岩版的光影朋友们
+## 渲染龙和它的光影朋友们
+
+<primary-label ref="be"/>
 
 ### 脚镣之舞
 
@@ -222,6 +230,8 @@ _渲染龙在各平台基岩版的启用时间表（按版本顺序）_
 > 网易的延迟处理接口来得要比渲染龙更早，自由度也相对当时的渲染龙更高，在很长一段时间里，网易版的光影繁荣一度超过了国际版。
 
 ## 附录：光影加载器圣经
+
+<primary-label ref="je"/>
 
 关于光影加载器我有四不用。
 

@@ -1,5 +1,7 @@
 # 术语表
 
+<primary-label ref="manual"/>
+
 这篇文档列出了整个图书馆中可能会出现的术语，这些术语或常见或罕见，我们会尽可能多地收录。在遇到不能理解的术语时，可以到此文档中进行查阅。
 
 如果你有更多想要提供的术语，或者发现了术语中的疏漏，可以在 [GitHub](https://github.com/MineGraphCN/MGC_Docs/issues) 上为我们提交 Issue 和 Pull Request。
@@ -59,11 +61,11 @@ Java 版游戏，在本文档中，也可以表示只能在 Java 版渲染模组
 
 <def id="ne">
 <title><tooltip term="NE">NE</tooltip></title>
-由<b>网易代理</b>的中国版游戏，也称<b>网易版</b>，表示为网易版独占，例：防沉迷 <sup>NE</sup>，延迟着色 API <sup>BE(NE)</sup>。
+由<b>网易代理</b>的中国版游戏，也称<b>网易版</b>，表示为网易版独占，例：防沉迷 <sup>NE</sup>，延迟渲染 API <sup>BE(NE)</sup>。
 </def>
 </deflist>
 
-> 这些版本主要用作角标，**自此开始无特殊说明的名词均以 Java 版为准。**
+> 这些版本主要用作角标和标签，**自此开始无特殊说明的名词均以 Java 版为准。**
 > 
 {style="note"}
 

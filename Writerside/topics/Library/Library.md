@@ -2,8 +2,8 @@
 
 <tldr>
 <tip>注解，引用和小贴士</tip>
-<note>提示和已订正标签</note>
-<warning>警告和未订正标签</warning>
+<note>提示</note>
+<warning>警告</warning>
 <p>在新建标签页打开：<shortcut>鼠标中键</shortcut></p>
 <p>搜索：<shortcut>Ctrl</shortcut><shortcut>K</shortcut></p>
 <p>深色模式：右上角 <img src="https://resources.jetbrains.com/help/img/writerside/systemTheme_dark.svg" alt="切换深色模式按钮"/><i>（需要横屏）</i></p>
@@ -11,8 +11,8 @@
 </tldr>
 
 > 目前社区文档正在进行大规模订正和重写，并从 VuePress 迁移至 Writerside。  
-> 你可以在随处看见所贴的红标，但是无需担心，这只是表明文档已进入迁移和重写队列。  
-> 当进入队列的文档重写完毕之后，我们会将其更换为绿标，欢迎随时回来查看。
+> 你可以在随处看见文章标题下所贴的红标，但是无需担心，这只是表明文档已进入迁移和重写队列。  
+> 当进入队列的文档重写完毕之后，我们会将其更换为蓝标，欢迎随时回来查看。
 >
 {style="warning" title="施工公告"}
 
@@ -54,15 +54,11 @@
 >
 {title="灰色提示块"}
 
-> - 表示这篇文档已经被重写和订正过以确保内容正确性。
-> - 表示提示。
+> 表示提示。
 > 
-> > 重写完毕的绿标最多公示三个月。
->
 {style="note" title="绿色提示块"}
 
-> - 表示这篇文档没有被完全重写，内容过时或格式上存在瑕疵。
-> - 表示注意。
+> 表示注意。
 >
 {style="warning" title="红色提示块"}
 

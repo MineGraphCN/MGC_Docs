@@ -1,6 +1,10 @@
 # 光线追踪专题
 
-<include from="contentsLibrary.md" element-id="h_warning_writing"/>
+<primary-label ref="basic"/>
+
+<secondary-label ref="wip"/>
+
+<secondary-label ref="shaderdoc"/>
 
 > 在三维计算机图形学中，光线追踪是一种**对光线传输进行建模**的技术，用于生成数字图像的各种渲染算法。
 > 
@@ -142,7 +146,9 @@ PTGI 的思路也与此类似：使用传统阴影贴图渲染太阳阴影，然
   >
   > NVIDIA 的一篇博客文档详细介绍了这个话题 - 包括解释“路径追踪”术语的实际历史：[What Is Path Tracing? | NVIDIA Blog](https://blogs.nvidia.com/blog/what-is-path-tracing/)
 
-## 附录：Java 版光影路径追踪特性表 {id="JEPT"}
+## 附录：路径追踪特性表 {id="JEPT"}
+
+<primary-label ref="je"/>
 
 这里列举了一些已知光影的光线追踪效果信息
 

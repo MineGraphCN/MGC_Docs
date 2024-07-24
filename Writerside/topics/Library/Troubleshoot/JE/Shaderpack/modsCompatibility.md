@@ -1,6 +1,12 @@
 # 光影和模组兼容性
 
-<include from="contentsLibrary.md" element-id="h_note_corrected"></include>
+<primary-label ref="manual"/>
+
+<secondary-label ref="corrected"/>
+
+<secondary-label ref="jedoc"/>
+<secondary-label ref="ofdoc"/>
+<secondary-label ref="shaderdoc"/>
 
 这篇文档列出了我们所知的模组和光影间兼容性冲突的解决办法。
 

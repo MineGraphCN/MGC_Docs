@@ -1,10 +1,13 @@
 # 2022年夏季赛
 
-<show-structure depth="0"/>
+<primary-label ref="22su"/>
 
-> 此画廊留档有问题，有缺图情况。
->
-{title="缺图" style="warning"}
+<secondary-label ref="lack"/>
+
+<secondary-label ref="jegallery"/>
+<secondary-label ref="begallery"/>
+
+<show-structure depth="0"/>
 
 ## 前三名
 

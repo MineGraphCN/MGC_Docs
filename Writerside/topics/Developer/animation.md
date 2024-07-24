@@ -1,5 +1,7 @@
 # 建模和动画相关软件整理
 
+<primary-label ref="manual"/>
+
 > 目前国内常用的 Minecraft 相关软件／模组使用卡片进行介绍。
 > 
 {style="note"}

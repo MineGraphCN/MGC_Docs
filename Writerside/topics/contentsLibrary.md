@@ -1,4 +1,7 @@
 # 复用元素库
+{is-library="true"}
+
+<primary-label ref="warehouse"/>
 
 <show-structure depth="0"/>
 
@@ -154,7 +157,7 @@ _截止 2024 年 6 月 30 日，数据来源于 [Minecraft Wiki](https://zh.mine
 {
     "pack": {
         "pack_format": 34,
-        "description": "<Your description>",
+        "description": "<你的包描述>",
         "supported_formats": {  // 可选字段，需要 23w31a+
             "min_inclusive": 17,
             "max_inclusive": 34
@@ -165,69 +168,6 @@ _截止 2024 年 6 月 30 日，数据来源于 [Minecraft Wiki](https://zh.mine
 
 </snippet>
 
-
-
-<snippet id="h_note_corrected">
-
-> 这篇文档在最近进行过订正，可以放心阅读。
->
-{style="note" title="已订正"}
-
-</snippet>
-
-
-<snippet id="h_note_rewrote">
-
-> 这篇文档在最近进行过重写。
->
-{style="note" title="已重写"}
-
-</snippet>
-
-
-<snippet id="h_note_new">
-
-> 这篇文档在最近新增过内容。
->
-{style="note" title="新内容"}
-
-</snippet>
-
-
-<snippet id="h_note_newT">
-
-> 这是最近添加的新文档。
->
-{style="note" title="新文档"}
-
-</snippet>
-
-
-<snippet id="h_warning_uncorrected">
-
-> 这篇文档迁移后未进行过订正。
->
-{style="warning" title="未订正"}
-
-</snippet>
-
-
-<snippet id="h_warning_writing">
-
-> 这篇文档正在编写队列中，可能无法流畅地阅读。
->
-{style="warning" title="施工中"}
-
-</snippet>
-
-
-<snippet id="h_warning_zero">
-
-> _常回家看看~_
->
-{style="warning" title="施工中"}
-
-</snippet>
 
 
 <snippet id="h_note_translated">
