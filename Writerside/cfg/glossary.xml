@@ -60,4 +60,5 @@
     <term name="TCore">Tensor Core</term>
     <term name="OF">OptiFine</term>
     <term name="CTM">Connected Textures (Mapping)</term>
+    <term name="BRDF">Bidirectional Reflectance Distribution Function</term>
 </terms>
