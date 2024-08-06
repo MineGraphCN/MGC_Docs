@@ -2,6 +2,8 @@
 
 <primary-label ref="manual"/>
 
+<secondary-label ref="port"/>
+
 <secondary-label ref="jedoc"/>
 <secondary-label ref="irisdoc"/>
 

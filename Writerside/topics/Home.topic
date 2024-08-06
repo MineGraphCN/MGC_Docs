@@ -47,14 +47,13 @@
                 <group>
                     <title>探索知识库</title>
                     <a href="terms.md"/>
-                    <a href="irisAsOf.md" summary="在 Iris 下还原 OptiFine / MCPatcher 特性所必要的模组"/>
-                    <a href="raytracingCorrection.md" summary="这篇文档主要针对光线追踪的误区和伪光追相关的概念进行纠正。">误区纠正 - 光线追踪</a>
+                    <a href="irisAsOf.md" summary=""/>
+                    <a href="raytracingCorrection.md" summary="">误区纠正 - 光线追踪</a>
                 </group>
                 <group>
                     <title>最近更新</title>
-                    <a href="shaderBasic.md" anchor="jeShaderEvo" summary="Java 版光影的发展简史"/>
-                    <a href="rayTracing.md" summary="什么是光线追踪？"/>
-                    <a href
+                    <a href="shaderBasic.md" anchor="jeShaderEvo" summary=""/>
+                    <a href="rayTracing.md" summary=""/>
                 </group>
             </links>
         </misc>

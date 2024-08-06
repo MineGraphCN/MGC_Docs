@@ -4,7 +4,14 @@
 
 Minecraft Graphics Community，或称 MineGraph。是一个 **Minecraft 图形学交流社区**，由国内工作室 **_HyperCol_** 发起建设。爱好用 Minecraft 实践稀奇古怪的图形学理论，以**创建一个开发者与玩家之间的友好交流环境**为目标。
 
+## 加入创作
+
+1. Fork 本仓库并克隆至本地；
+2. 使用 [Writerside IDE](https://www.jetbrains.com/zh-cn/writerside/download/) 打开；
+3. 参考 `/Writerside/wsFormat.md` 进行内容创作；
+4. 提交 Pull Request。
+
 ## 联系我们
 
-- QQ 频道：[Minecraft 图形学社区](https://pd.qq.com/s/lem9db) （频道号：MineGraph101）
-- Bilibili：[HyperCol](https://space.bilibili.com/480528388) | [Minecraft图形学社区](https://space.bilibili.com/1499821905)
+- QQ 频道 [Minecraft 图形学社区](https://pd.qq.com/s/lem9db) （频道号：MineGraph101）
+- Bilibili [HyperCol](https://space.bilibili.com/480528388) | [Minecraft图形学社区](https://space.bilibili.com/1499821905)
