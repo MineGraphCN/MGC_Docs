@@ -15,7 +15,7 @@
 <var name="target_description" value=""/>
 <include from="contentsLibrary.md" element-id="h_note_readingTips"/>
 
-这篇文档主要针对光线追踪的误区和伪光追相关的概念进行纠正。
+<tldr>这篇文档主要针对光线追踪的误区和伪光追相关的概念进行纠正。</tldr>
 
 ## 光线追踪与着色器
 

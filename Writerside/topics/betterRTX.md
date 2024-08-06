@@ -35,7 +35,7 @@
 
 要安装 BetterRTX，需要注意以下几点。
 
-- 自动安装脚本链接：[BetterRTX_Installer_MGCEdit.ps1](https://bbrtx.minegraph.cn/BetterRTX_Installer_MGCEdit.ps1)
+- 自动安装脚本：[BetterRTX_Installer_MGCEdit.ps1](https://bbrtx.minegraph.cn/BetterRTX_Installer_MGCEdit.ps1)
 
 - 以 **管理员身份** 运行脚本；
 
@@ -49,7 +49,7 @@ Set-ExecutionPolicy -Scope CurrentUser Bypass
 
 - BetterRTX 有多种配置可供选择，可查看手动安装环节了解更多详情。
 
-- 相关视频教程：<https://www.bilibili.com/video/BV19z4y1878N>
+- 相关视频教程：<https://b23.tv/BV19z4y1878N>
 
 ## 半自动安装
 
@@ -89,7 +89,7 @@ Set-ExecutionPolicy -Scope CurrentUser Bypass
 
 国外（需自备代理）：
 -  DefinedPBR：BetterRTX作者开发，除PBR反射外，有实体发光（需搭配实验版 Better RTX）。
-   - 资源包链接：<https://www.patreon.com/MADLAD3718>
+  - 资源包链接：<https://www.patreon.com/MADLAD3718>
 
 - Kelly's RTX：知名资源包，可搭配 Kelly 版 BetterRTX 使用。
   - 资源包链接：<https://discord.gg/stw2JGjbWm>

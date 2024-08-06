@@ -20,7 +20,7 @@
         ├─ world1
         │   └─ <末地着色器程序>
         ├─ world<ID>
-        │   └─ <其他模组世界着色器程序>
+        │   └─ <其他世界着色器程序>
         ├─ <通用着色器程序>
         ├─ block.properties
         ├─ entities.properties
@@ -157,7 +157,7 @@ _截止 2024 年 6 月 30 日，数据来源于 [Minecraft Wiki](https://zh.mine
 {
     "pack": {
         "pack_format": 34,
-        "description": "<你的包描述>",
+        "description": "包的描述",
         "supported_formats": {  // 可选字段，需要 23w31a+
             "min_inclusive": 17,
             "max_inclusive": 34
@@ -174,7 +174,7 @@ _截止 2024 年 6 月 30 日，数据来源于 [Minecraft Wiki](https://zh.mine
 
 > 这篇文档翻译自 [%src_name%](%src_link%) ，请以原文为准！
 >
-{style="note" title="译文"}
+{style="note"}
 
 </snippet>
 

@@ -8,7 +8,7 @@
 
 ## 3.0.0 已发布
 
-- 目前 iterationT 3.0.0 已正式发布。点击此处前往它的使用手册：[《iterationT 3.0.0 使用手册》](itt3.md)
+- 目前 iterationT 3.0.0 已正式发布。点击此处前往它的使用手册：[《iterationT 3.0.0 使用手册》](itt3.md){summary=""}
 
 - 3.0.0 宣传片：[【MC&光影预告】iterationT 3.0.0 前瞻演示——明与寂](https://www.bilibili.com/video/BV1qW4y1y7VY)
 

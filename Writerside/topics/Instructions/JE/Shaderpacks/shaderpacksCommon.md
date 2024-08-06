@@ -31,7 +31,7 @@
 
 ### 检查驱动程序
 
-参考 [这篇文档](troubleshootCommon.md#查询电脑显卡 "通用问题 - 查询电脑显卡") 检查显卡以及是否安装和正确设置显卡驱动程序。
+参考 [通用问题 - 查询电脑显卡](troubleshootCommon.md#查询电脑显卡){summary=""} 检查显卡以及是否安装和正确设置显卡驱动程序。
 
 ### 安装 Java {id="installJava"}
 
@@ -164,10 +164,16 @@
 
 运行下载好的文件，点击 `...` 将路径定位到 `<你的游戏目录>\.minecraft\` ，然后点击 `Install` 。
 ![OptiFine 安装页面](of_pure_manual_2.png "OptiFine 安装页面")
+
+<snippet id="usejava">
+
 > - 如果你的文件图标不是 Java 或者 JDK，你需要右键选择 `打开方式` 。
 > - 如果你在你的打开方式中找不到 Java 或者 JDK，你需要通过 `选择其他应用` > `在电脑上选择应用` ，并将路径定位到 `<你的 Java 路径>\bin\javaw.exe`。
 > 
 {style="note" title="你需要使用 Java 运行此文件。"}
+
+</snippet>
+
 </step>
                             <step>
 
@@ -305,6 +311,9 @@ OptiFine is successfully extracted.
 
 运行下载好的文件，选择 `Install client` ，然后点击 `...` 将路径定位到 `<你的游戏目录>\.minecraft\` ，然后点击 `确定` 。
 ![安装 Forge](of_forge_manual_1.png "安装 Forge")
+
+<include from="shaderpacksCommon.md" element-id="usejava"/>
+
 </step>
                         <step>
 

@@ -1,4 +1,4 @@
-# Writerside 写作参考
+# Writerside 快速上手
 
 <primary-label ref="dev"/>
 
@@ -12,6 +12,20 @@
 >
 {style="note"}
 
+## 开始创作
+
+> 文件名应当使用**驼峰命名法**。
+>
+{style="note"}
+
+1. 在 `Writerside` 侧栏的正确目录下创建 Topic
+
+   ![create_topic_on_correct_directory](create_topic_on_correct_directory.png)
+
+2. 在 `项目` 侧栏将你的文档文件移入对应的文件夹
+
+   ![move_file_to_correct_folder](move_file_to_correct_folder.png)
+
 ## IDE 快捷键
 
 <p>
@@ -21,7 +35,28 @@
 全局搜索 <shortcut>Shift</shortcut>, <shortcut>Shift</shortcut>
 </p>
 
-## 常用格式速查
+## 编写时的注意事项
+
+- 如果使用了 XML 代码，你需要空一行才能继续 markdown 格式。
+   <procedure>
+   <step>
+   这段话**不能**正常使用 `markdown 格式` 。
+   </step>
+   </procedure>
+
+   <procedure>
+   <step>
+
+  这段话**可以**正常使用 `markdown 格式` 。
+   </step>
+   </procedure>
+- 在西文和中文之间应添加空格。
+- 不要滥用**特***殊*~~字~~`形`。
+- 涉及文件路径的格式应当统一（至少在单个文档内统一）。例如 `F:/Codes/hw.cpp` `C:\Windows\`
+- 涉及点击次序（多级菜单）的，顺序中间使用 `>` 或 `→` ，**不要使用 `->`！** 同时也应当注意同文档内统一。
+- 未经允许不得擅自修改他人文档，我们在合并 Pull Request 时会进行审查。
+
+## 常用格式
 
 ### 标题 {id="title"}
 
@@ -31,14 +66,6 @@
 ...
 ##### 五级标题
 ```
-
-### 索引深度
-
-```xml
-<show-structure depth="正整数"/>
-```
-
-> 这是一条设置符，决定了文档索引（竖屏左侧顶部，横屏右侧）显示的最大标题级别。
 
 ### XML / HTML 代码
 
@@ -566,6 +593,16 @@ $$
 
 或使用代码块环绕，并将语言设置为 `tex` 。
 
+## 索引深度
+
+```xml
+<show-structure depth="<int>"/>
+```
+
+> 这是一条设置符，决定了文档目录（竖屏左侧 _On this page_，横屏右侧）显示的最大标题级别。
+>
+> 默认为 `1` ，设置为 `0` 时禁用目录。
+
 ## 标签
 
 <primary-label ref="sample"/>
@@ -578,40 +615,6 @@ $$
 <secondary-label ref="auto"/>
 
 对应颜色示例见上方，标签存储于 `Writerside/labels.list` 。
-
-## 添加新文件
-
-> 文件名应当使用**驼峰命名法**。
->
-{style="note"}
-
-1. 在 `Writerside` 侧栏的正确目录下创建 Topic
-
-   ![create_topic_on_correct_directory](create_topic_on_correct_directory.png)
-
-2. 在 `项目` 侧栏将你的文档文件移入对应的文件夹
-
-   ![move_file_to_correct_folder](move_file_to_correct_folder.png)
-
-## 编写时的注意事项
-
-- 如果使用了 XML 代码，你需要空一行才能继续 markdown 格式。
-   <procedure>
-   <step>
-   这段话**不能**正常使用 `markdown 格式` 。
-   </step>
-   </procedure>
-   
-   <procedure>
-   <step>
-   
-   这段话**可以**正常使用 `markdown 格式` 。
-   </step>
-   </procedure>
-- 在西文和中文之间应添加空格。
-- 不要滥用**特***殊*~~字~~`形`。
-- 涉及文件路径的格式应当统一（至少在单个文档内统一）。例如 `F:/Codes/hw.cpp` `C:\Windows\`
-- 涉及点击次序（多级菜单）的，顺序中间使用 `>` 或 `→` ，**不要使用 `->`！** 同时也应当注意同文档内统一。
 
 ## 注释和待办事项（TODO）
 
