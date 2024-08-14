@@ -70,6 +70,7 @@
         <toc-element topic="developTips.md"/>
         <toc-element topic="animation.md"/>
         <toc-element topic="labpbrMaterialStandard.md"/>
+        <toc-element topic="ratioNormals.md"/>
         <toc-element topic="shaderTutorial.md">
             <toc-element topic="00-filePipeline.md"/>
             <toc-element topic="01-prepare.md" hidden="true"/>
