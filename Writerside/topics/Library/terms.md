@@ -789,7 +789,7 @@ void main() {
 
 渲染方程用来描述场景中每个点如何物理地与光照交互，是 PBR 的核心算法。
 $$
-L_o(p,\omega_o)=L_e(p,\omega_o) + \int\limits_\Omega f_r(p,\omega_i,\omega_o) L_i(p,\omega_i) n\cdot\omega_i d\omega_i
+L_o(p,\omega_o)=L_e(p,\omega_o) + \int\limits_\Omega f_r(p,\omega_i,\omega_o) L_i(p,\omega_i) n\cdot\omega_i \rm{d} \omega_i
 $$
 其中：  
 $p$ 表示 [着色点](#着色目标){summary=""}；  
@@ -799,7 +799,7 @@ $n$ 表示表面法线；
 $L_e()$ 表示着色点的自发光函数；  
 $f_r()$ 表示 <tooltip term="BRDF">BRDF</tooltip> （双向反射分布函数）；  
 $L_i()$ 表示光源的辐射率函数，主要用于距离衰减；  
-$\int_{\Omega} d\omega_i$ 表示在法半球所有方向上计算结果的积分。
+$\int_{\Omega} \rm{d}\omega_i$ 表示在法半球所有方向上计算结果的积分。
 
 </def>
 </deflist>
