@@ -35,7 +35,7 @@ Misaka'Texture Pack 简称 MTP
 
 4.如果草显示为紫黑相间的方块，说明你的材质版本用错了，请选择正确版本
 
-5.正式版获取地址：<https://afdian.net/@Misaka9217>
+5.正式版获取地址：<https://afdian.com/@Misaka9217>
 
 Ps：
 
