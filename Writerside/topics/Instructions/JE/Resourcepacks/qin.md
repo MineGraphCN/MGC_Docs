@@ -19,7 +19,7 @@ B站ID：金丹哦
 
 **MCBBS发布帖：**[**我的世界中文论坛**](https://www.mcbbs.net/thread-1139771-1-1.html)
 
-**赞助渠道：**[**爱发电**](https://afdian.net/@qintexture?tab=home)
+**赞助渠道：**[**爱发电**](https://afdian.com/@qintexture?tab=home)
 
 频道：[点击加入QQ频道【KABUTO | 纹理社区】](https://pd.qq.com/s/8cglq8gn1)
 

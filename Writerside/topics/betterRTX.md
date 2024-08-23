@@ -85,7 +85,7 @@ Set-ExecutionPolicy -Scope CurrentUser Bypass
 国内：
 - 平方构想V2000：零雾〇五Fogg05 推荐的资源包，在原版风格的基础上增加诸多效果如 PBR 反射（如金属块）、PBR 自发光（如紫水晶）；
 - 立方构想V4000：与平方构想相比，更加个性化、风格化，适合追求新颖的原版风格资源包爱好者。
-  - 资源包链接：<https://afdian.net/a/Fogg05>
+  - 资源包链接：<https://afdian.com/a/Fogg05>
 
 国外（需自备代理）：
 -  DefinedPBR：BetterRTX作者开发，除PBR反射外，有实体发光（需搭配实验版 Better RTX）。

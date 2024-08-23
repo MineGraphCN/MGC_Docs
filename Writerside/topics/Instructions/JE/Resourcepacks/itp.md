@@ -8,7 +8,7 @@
 
 ## 购买
 
-- 前往 [爱发电](https://afdian.net/a/itproject) 赞助，随后在 **爱发电私信** 找到QQ群号，进入QQ群。
+- 前往 [爱发电](https://afdian.com/a/itproject) 赞助，随后在 **爱发电私信** 找到QQ群号，进入QQ群。
 
 ![buy.png](buy.png)
 

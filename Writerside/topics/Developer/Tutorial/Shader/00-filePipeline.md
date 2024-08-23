@@ -84,7 +84,7 @@ OptiFine 使用的是延迟渲染法：
 
 OptiFine 接管了从 GUI 开始直到场景输出的全部管线，下图列出了整个画面输出流程。
 
-![OptiFine 管线](ofpp_simple.png "OptiFine 管线"){thumbnail="true"}
+![OptiFine 管线](ofpp_simple.png "OptiFine 管线")
 
 <i>你可以在 <resource src="./ofpp_simple_bg.png">这里</resource> 查看和保存附带深色背景的原图。</i>
 

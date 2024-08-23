@@ -8,7 +8,7 @@
 
 <tldr>这是一种手绘法线的方法及将其转化为标准法线的算法</tldr>
 
-## 问题
+## 背景
 
 1. 法线贴图通常由软件根据纹理自动生成。然而对于低分辨率纹理，软件生成并不理想，且我们期望能精确地调控；
 2. 我们很难将手绘法线的三分量控制在理想范围内，但在某一分量上增减会导致另一分量变动，不同分量上的倾斜角度也不够直观；
@@ -28,7 +28,7 @@
 
 ## 解决方案
 
-我们拟采用一种新格式，在前期绘制时将 `r` `g` 分量视为在对应的 $x$ 、 $y$ 轴向 $z$ 轴倾斜的**比率**，若法半球在 $[-1, 1]$ 内，则 $x,y = \pm \frac{2}{3}$ 时可以获得完美的 $45\degree$ 斜角。
+我们拟采用一种新格式，在前期绘制时将 `r` `g` 分量视为在对应的 $x$ 、 $y$ 轴向 $z$ 轴倾斜的**比率**，若法半球在 $[-1, 1]$ 内，则 $x,y = \pm 0.5$ 时可以获得完美的 $45\degree$ 斜角。
 
 当绘制完成之后，我们使用算法将其转换为标准法线（Standard Normals，或 Std Normals）。
 
@@ -61,39 +61,25 @@ S_z = \frac{d}{D}
 
 ![图2](ratioNormals_2.png)
 
-可以知道
+由于我们只能自由地控制 $r$ 和 $g$ 的值，于是期望在这个平面上的表达不要过于复杂
+
+> 想象一下如果直接用 $S_z$ 的值来求得 $z$ 值，当我们想要获得完美的 $45\degree$ 角时，我们需要 $S_z = \sqrt{2}$ ，那么就需要 $d=\sqrt{2}D$，再反算到 $r$ 和 $g$ 上，简直头都大了。
+
+于是我们在该平面上使用**反三角函数**来求得其**角度的比率**。
+
 $$ \begin{equation}
-S_z^2 + z^2 = 1
-\end{equation} $$
-求得
-$$ \begin{equation}
-z = \sqrt{1 - S_z^2}
-\end{equation} $$
-由法线模长为 $1$ 可知
-$$ \begin{equation}
-x^2 + y^2 + z^2 = 1
+\frac{S_z}{1} = \cos\theta
 \end{equation} $$
 于是
 $$ \begin{equation}
-S_z = \sqrt{x^2 + y^2}
+\theta = \arccos{S_z}
 \end{equation} $$
-根据相似三角形有
+将其从 $[0, \pi]$ 映射到 $[0, 1]$ 并作为 $x$ $y$ 的放缩参数，记为 $S_{xy}$
 $$ \begin{equation}
-\frac{r}{x} = \frac{g}{y} = \frac{d}{\sqrt{x^2+y^2}} = \frac{d}{S_z} = \frac{d}{\frac{d}{D}} = D
-\end{equation} $$
-$$ \begin{equation}
-x = \frac{r}{D}, y = \frac{g}{D}
+S_{xy} = \frac{\arccos{S_z}}{\pi}
 \end{equation} $$
 
-我们可以将转化公式写为
-$$ \begin{equation}
-RtS(x,y) = S_{xy} \times (x,y)_{RatioNormals} = (x,y)_{StdNormals}
-\end{equation} $$
-$$ \begin{equation}
-S_{xy} = \frac{1}{D}
-\end{equation} $$
-
-## 优化
+## 化简
 
 我们从图 1 不难看出，$R$、$G$ 中必定有一个值或两个值等于 $1$ ，同时也隐含了等于 $1$ 的边 $(R|G)$ 对应的相似边 $(r|g)$ **大于或等于**另一边 $(G|R)$ 的相似边 $(g|r)$，例如当 $R = 1$ 时，$r \geqslant g$。
 
@@ -105,7 +91,7 @@ $$
 D = \sqrt{R^2+G^2} = \sqrt{1+\frac{g^2}{r^2}} = \sqrt{\frac{r^2+g^2}{r^2}}
 $$
 $$
-S_{xy} = \frac{r \geqslant g}{\sqrt{r^2+g^2}}
+S_z = \frac{\sqrt{r^2+g^2}}{\sqrt{\frac{r^2+g^2}{r^2}}} = r \geqslant g
 $$
 
 同理，当 $G = 1$ 时
@@ -116,36 +102,34 @@ $$
 D = \sqrt{R^2+G^2} = \sqrt{1+\frac{r^2}{g^2}} = \sqrt{\frac{r^2+g^2}{g^2}}
 $$
 $$
-S_{xy} = \frac{g \geqslant r}{\sqrt{r^2+g^2}}
+S_z = \frac{\sqrt{r^2+g^2}}{\sqrt{\frac{r^2+g^2}{g^2}}} = g \geqslant r
 $$
 
 于是我们可以将 $S_{xy}$ 化简为
 $$ \begin{equation}
-S_{xy} = \frac{\max(r,g)}{\sqrt{r^2+g^2}}
+S_{xy} = \frac{\arccos{\max(r, g)}}{\pi}
 \end{equation} $$
 
-由于 $S_{xy}$ 的变化不是线性的，同时为了让其适配实际在 $[-1, 1]$ 区间上的法线，我们需要对函数进行处理，于是最终的函数为
+为了让其适配实际在 $[-1, 1]$ 区间上的法线，我们需要对函数进行处理，于是最终的公式就变成了
 $$ \begin{equation}
-RtS(x,y) = \sqrt{\frac{max(|x|, |y|)}{x^2+y^2}} \times (x,y)_{RatioNormals} = (x,y)_{StdNormals}
+RtS(x,y) = \frac{\arccos{\max(|x|, |y|)}}{\pi} \times (x,y) = (x,y)_{StdNormals}
 \end{equation} $$
+这样一个简洁优雅的算法。
 
-> 当心除零错误，记得在 $x^2 + y^2 = 0$ 时进行处理，因为此时分母也为 $0$，最简单的办法就是将 $S_{xy}$ 直接赋值为 $1$。
-> 
-{style="note"}
+> 当然如果想用 $\sin{z}$ 也可以，但是需要 $z = \sqrt{1 - S_z}$ 作为中间变量，徒增麻烦。
 
 ## 算法
 
 ### C++
 
 ```C++
+const float Pi = 3.1415926535897;
 float pow2(float x) { return x * x; }
 
 void ratioNormal(float *img) {
     img[0] = img[0] * 2.0 - 1.0;
     img[1] = img[1] * 2.0 - 1.0;
-    float addpow = pow2(img[0]) + pow2(img[1]);
-    float Sxy = sqrt((max(abs(img[0]), abs(img[1]))) / addpow);
-    if(!addpow) { Sxy = 1.0; }
+    float Sxy = acos((max(abs(img[0]), abs(img[1]))) / Pi);
     img[0] = img[0] * Sxy * 0.5 + 0.5;
     img[1] = img[1] * Sxy * 0.5 + 0.5;
 }
@@ -153,17 +137,16 @@ void ratioNormal(float *img) {
 
 ### GLSL
 
-> 这个解决方案并未被广泛采用过，因此我们不推荐将此算法内置于光影中，而是作为离线转换器，在前期创作时使用。
+> 此处仅作示例。这个解决方案并未被广泛采用过，并且使用了**反三角函数**这种开销极大算法，因此我们不推荐将此算法内置于光影中，而是作为离线转换器，在前期创作时使用。
 >
 {style="warning" title="注意"}
 ```C
+const float Pi = 3.1415926535897;
 float pow2(float x) { return x * x; }
 
 vec2 ratioNormal(vec2 color) {
     color = color * 2.0 - 1.0;
-    float addpow = pow2(color.x) + pow2(color.y);
-    float Sxy = sqrt((max(abs(color.x), abs(color.y))) / addpow);
-    if(!addpow) { Sxy = 1.0; }
+    float Sxy = acos((max(abs(color.x), abs(color.y))) / Pi);
     color = color * Sxy * 0.5 + 0.5;
     return color;
 }

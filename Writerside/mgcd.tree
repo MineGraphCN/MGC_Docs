@@ -67,8 +67,6 @@
         </toc-element>
     </toc-element>
     <toc-element topic="Developer.md">
-        <toc-element topic="developTips.md"/>
-        <toc-element topic="animation.md"/>
         <toc-element topic="labpbrMaterialStandard.md"/>
         <toc-element topic="ratioNormals.md"/>
         <toc-element topic="shaderTutorial.md">
@@ -77,6 +75,10 @@
         </toc-element>
         <toc-element topic="resourceTutorial.md">
             <toc-element topic="00-setup.md"/>
+        </toc-element>
+        <toc-element toc-title="资料整理">
+            <toc-element topic="developTips.md"/>
+            <toc-element topic="animation.md"/>
         </toc-element>
     </toc-element>
     <toc-element topic="Gallery.md">

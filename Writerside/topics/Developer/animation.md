@@ -1,4 +1,4 @@
-# 建模和动画相关软件整理
+# 建模动画相关软件
 
 <primary-label ref="manual"/>
 
