@@ -1,4 +1,4 @@
-# 作品开发相关资料整理
+# 作品开发相关资料
 
 <primary-label ref="manual"/>
 

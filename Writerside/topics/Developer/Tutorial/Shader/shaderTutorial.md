@@ -1,4 +1,4 @@
-# 着色器开发教程
+# 光影开发教程
 
 <primary-label ref="dev"/>
 
