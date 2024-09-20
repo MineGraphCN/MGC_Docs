@@ -91,6 +91,5 @@
         <toc-element topic="2021-autumn.md"/>
     </toc-element>
     <toc-element topic="About.md"/>
-    <toc-element topic="contentsLibrary.md" hidden="true"/>
     <toc-element hidden="true" topic="wsFormat.md"/>
 </instance-profile>

@@ -57,19 +57,16 @@
 [Iris 开发文档 / Iris 特性](https://github.com/IrisShaders/ShaderDoc/blob/master/iris-features.md)
 : Iris 提供的额外功能
 
-[//]: # (- [https://github.com/Shadax-stack/MinecraftShaderProgramming/tree/master]&#40;https://github.com/Shadax-stack/MinecraftShaderProgramming/tree/master&#41;)
+[Minecraft Shader Tutorials](https://saada2006.github.io/minecraft-shader-tutorials/)
+: 介绍 Minecraft 渲染方式、缓冲区和一些示例效果的概述（含代码、图片和解释）。
 
-[//]: # (  - 介绍 Minecraft 渲染方式、缓冲区和一些示例效果的概述（含代码、图片和解释）。)
-
-shaderLABS 提供的相关资料*
+shaderLABS 提供的相关资料
 :
 - [OpenGL 1.2 模板](https://github.com/shaderLABS/Base-120)
 - [OpenGL 1.5 模板](https://github.com/shaderLABS/Base-150)
 - [OpenGL 3.3 模板](https://github.com/shaderLABS/Base-330)
 - [阴影示例](https://github.com/shaderLABS/Shadow-Tutorial)
 - [光影编写技巧](https://wiki.shaderlabs.org/wiki/Shader_tricks)
-
-\* 我们预计未来将文档翻译到本站。
 
 原版着色器相关的信息
 :
@@ -86,7 +83,7 @@ shaderLABS 提供的相关资料*
 : GLSL 的交互式教程，在测试中提升你的着色器编写技能。
 
 [The Book of Shaders](https://thebookofshaders.com/?lan=ch)
-: 着色器的技巧，网站允许在浏览器中编辑示例代码以实时查看其效果。
+: [片段着色器](shaderBasic.md#fs){summary=""} 入门，网站允许在浏览器中编辑示例代码以实时查看其效果。
 
 [Shadertoy](https://www.shadertoy.com/)
 : GLSL 沙盒，包含了很多人的示例代码。
