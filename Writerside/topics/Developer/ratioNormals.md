@@ -26,21 +26,21 @@
   2. 将 `b` `a` 通道独立，然后覆盖绘制图片，最后再将 `b` `a` 通道回覆盖。
 - ~~吸色太烦人了。~~
 
-## 解决方案
+## 解决方案 {id="sln"}
 
-我们拟采用一种新格式，在前期绘制时将 `r` `g` 分量视为在对应的 $x$ 、 $y$ 轴向 $z$ 轴倾斜的**比率**，若法半球在 $[-1, 1]$ 内，则 $x,y = \pm 0.5$ 时可以获得完美的 $45\degree$ 斜角。
+我们拟采用一种新格式，设法在前期绘制时将 `r` `g` 分量较长的分量视为 $x$ 、 $y$ 轴向 $z$ 轴倾斜的**比率**，两个分量的比值作为倾角，由此，若法半球在 $[-1, 1]$ 内，则 $x,y = \pm 0.5$ 时可以获得完美的 $45\degree$ 斜角。
 
-当绘制完成之后，我们使用算法将其转换为标准法线（Standard Normals，或 Std Normals）。
+当绘制完成之后，我们使用算法将其转换为标准法线（Standard Normals，简称 SN，角标使用 $(x, y)_S$ ）。
 
-根据其按比率控制单个分量倾斜角度的特性，我们将其命名为**比率法线**（Ratio Normals）。
+根据其按比率控制倾角的特性，我们将其命名为**比率法线**（Ratio Normals，简称 RN，角标使用 $(x, y)_R$ ）。
 
 ## 推导
 
-我们期望法线都在半径为 $1$ 的法半球上，而比率法线的则在边长为 $2$ 的正方形上，那么就需要将 $(x, y)_{RatioNormals}$ 映射到 $(x, y, z)_{StdNormals}$。
+我们期望法线都在半径为 $1$ 的法半球上，而比率法线的则在边长为 $2$ 的正方形上，那么就需要将 $(x, y)_{R}$ 映射到 $(x, y, z)_{S}$。
 
-虽然将二维映射到三维看起来有点不自量力，不过和 LabPBR 一样，我们使用 $ \sqrt{ 1 - (x^2 + y^2) } $ 重建 $z$ 分量，因此我们主要的任务是将$(x, y)_{RatioNormals}$ 映射到 $(x, y)_{StdNormals}$，看起来就简单多了。
+虽然将二维映射到三维看起来有点不自量力，不过和 LabPBR 一样，我们使用 $ \sqrt{ 1 - (x^2 + y^2) } $ 重建 $z$ 分量，因此我们主要的任务是将$(x, y)_{R}$ 映射到 $(x, y)_{S}$，看起来就简单多了。
 
-我们将 $(x, y)_{RatioNormals}$ 记为 $(r, g)$，并将范围限制在第一象限（使用 $2x - 1$ 即可扩展到四象限），作从原点到 $(r, g)$ 的线段并延长，与矩形边界的交点为 $(R, G)$ 我们就获得了下面这张图：
+我们将 $(x, y)_{R}$ 记为 $(r, g)$，并将范围限制在第一象限（使用 $2x - 1$ 即可扩展到四象限），作从原点到 $(r, g)$ 的线段并延长，与矩形边界的交点为 $(R, G)$ 我们就获得了下面这张图：
 
 ![图1](ratioNormals_1.png)
 
@@ -112,24 +112,31 @@ S_{xy} = \frac{\arccos{\max(r, g)}}{\pi}
 
 为了让其适配实际在 $[-1, 1]$ 区间上的法线，我们需要对函数进行处理，于是最终的公式就变成了
 $$ \begin{equation}
-RtS(x,y) = \frac{\arccos{\max(|x|, |y|)}}{\pi} \times (x,y) = (x,y)_{StdNormals}
+RtS(x,y) = \frac{\arccos{\max(|x|, |y|)}}{\pi} \times (x,y)_{R} = (x,y)_{S}
 \end{equation} $$
 这样一个简洁优雅的算法。
 
-> 当然如果想用 $\sin{z}$ 也可以，但是需要 $z = \sqrt{1 - S_z}$ 作为中间变量，徒增麻烦。
+> 当然如果想用 $\arcsin{z}$ 也可以，但是需要 $z = \sqrt{1 - S_z}$ 作为中间变量，徒增麻烦。
+
+## 绘制比率法线
+
+现在绘制就变得非常简单了，如 [](#sln){summary=""} 所说， `r` `g` 通道较大的一个值现在会作为法线 $z$ 分量与 $xy$ 平面的夹角比率，而 `r` `g` 通道值之间的比值则会作为在 $xy$ 平面上的倾角，由于后期需要重建，与几何表面垂直的比率法线应当是 `r = 0.5, g = 0.5` ，就和普通法线一样。
+
+比如当 `r = 0.25, g = 0.6` 时 $z$ 分量与 $xy$ 平面的夹角就为 $ 90 \degree \times (1 - |2r - 1|) = 45 \degree $，$xy$ 平面上的角度则可以使用基本三角函数直接计算。
+
 
 ## 算法
 
 ### C++
 
 ```C++
-const float Pi = 3.1415926535897;
-float pow2(float x) { return x * x; }
+#include <math.h>
+const float I_Pi = 0.3183098861838; // Pi 的倒数
 
 void ratioNormal(float *img) {
     img[0] = img[0] * 2.0 - 1.0;
     img[1] = img[1] * 2.0 - 1.0;
-    float Sxy = acos((max(abs(img[0]), abs(img[1]))) / Pi);
+    float Sxy = acos((max(abs(img[0]), abs(img[1]))) * I_Pi);
     img[0] = img[0] * Sxy * 0.5 + 0.5;
     img[1] = img[1] * Sxy * 0.5 + 0.5;
 }
@@ -137,16 +144,15 @@ void ratioNormal(float *img) {
 
 ### GLSL
 
-> 此处仅作示例。这个解决方案并未被广泛采用过，并且使用了**反三角函数**这种开销极大算法，因此我们不推荐将此算法内置于光影中，而是作为离线转换器，在前期创作时使用。
+> 这个解决方案并未被广泛采用过，并且使用了**开销极大的反三角函数**，因此我们不推荐将此算法内置于光影中，而是作为离线转换器，在前期创作时使用。
 >
-{style="warning" title="注意"}
+{style="warning" title="仅作示例"}
 ```C
-const float Pi = 3.1415926535897;
-float pow2(float x) { return x * x; }
+const float I_Pi = 0.3183098861838; // Pi 的倒数
 
 vec2 ratioNormal(vec2 color) {
     color = color * 2.0 - 1.0;
-    float Sxy = acos((max(abs(color.x), abs(color.y))) / Pi);
+    float Sxy = acos((max(abs(color.x), abs(color.y))) * I_Pi);
     color = color * Sxy * 0.5 + 0.5;
     return color;
 }

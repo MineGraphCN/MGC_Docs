@@ -140,10 +140,15 @@
 <tr><td>31</td><td>1.20.5 24w13a</td><td>1.20.5-pre3</td></tr>
 <tr><td>32</td><td>1.20.5-pre4</td><td>1.20.6</td></tr>
 <tr><td>33</td><td>1.21 24w18a</td><td>1.21 24w20a</td></tr>
-<tr><td>34</td><td>1.21 24w21a</td><td><emphasis>最新</emphasis></td></tr>
+<tr><td>34</td><td>1.21 24w21a</td><td>1.21.1</td></tr>
+<tr><td>35</td><td colspan="2">1.21.2 24w33a</td></tr>
+<tr><td>36</td><td>1.21.2 24w34a</td><td>1.21.2 24w35a</td></tr>
+<tr><td>35</td><td colspan="2">1.21.2 24w36a</td></tr>
+<tr><td>35</td><td colspan="2">1.21.2 24w37a</td></tr>
+<tr><td>39</td><td>1.21.2 24w38a</td><td><i>最新</i></td></tr>
 </table>
 
-_截止 2024 年 6 月 30 日，数据来源于 [Minecraft Wiki](https://zh.minecraft.wiki/w/%E8%B5%84%E6%BA%90%E5%8C%85#%E8%B5%84%E6%BA%90%E5%8C%85%E6%A0%BC%E5%BC%8F%E7%89%88%E6%9C%AC) 。_
+_截止 2024 年 9 月 20 日，数据来源于 [Minecraft Wiki](https://zh.minecraft.wiki/w/%E8%B5%84%E6%BA%90%E5%8C%85#%E8%B5%84%E6%BA%90%E5%8C%85%E6%A0%BC%E5%BC%8F%E7%89%88%E6%9C%AC) 。_
 
 </procedure>
 

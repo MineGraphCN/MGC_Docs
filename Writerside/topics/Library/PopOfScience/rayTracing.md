@@ -152,26 +152,28 @@ PTGI 的思路也与此类似：使用传统阴影贴图渲染太阳阴影，然
 
 这里列举了一些已知光影的光线追踪效果信息
 
-| 光影名称                                  | 间接光照   | 屏幕空间 | 直接光照      | 反射 | [焦散](terms.md#焦散){summary=""} |
-|---------------------------------------|--------|------|-----------|----|-------------------------------|
-| SEUS PTGI (GFME)                      | ✓      | ✓    | ✕         | ✓  | ✕                             |
-| Sundial                               | ✓      | ✕    | ✓（仅用于接触处） | ✓  | ✓                             |
-| Kappa                                 | ✕      | ✓    | ✕         | ✕  | ✕                             |
-| Kappa PT                              | ✓      | ✓    | ✕         | ✓  | ✓                             |
-| Nostalgia                             | ✕      | ✓    | ✕         | ✕  | ✕                             |
-| Nostalgia VX                          | ✓      | ✓    | ✕         | ✓  | ✓                             |
-| Soft Voxels                           | ✓      | ✓    | ✓         | ✓  | ✓                             |
-| MollyVX                               | ✓      | ✓    | ✓         | ✓  | ✓                             |
-| Continuum RT                          | ✓      | ✕    | ✓         | ✓  | ✓                             |
-| Rethinking Voxels <sup><b>1</b></sup> | ✓（仅辐照） | ✕    | ✓（包含方块光源） | ✓  | ✕                             |
+<table style="both">
+<tr><td>光影名称</td><td colspan="2">间接光照</td><td>直接光照</td><td>反射</td><td><a href="terms.md" anchor="焦散" summary="">焦散</a></td></tr>
+<tr><td>SEUS PTGI (GFME)</td><td colspan="2">✓</td><td>✕</td><td>✓</td><td>✕</td></tr>
+<tr><td>Sundial</td><td>✓</td><td>✕</td><td>✓ <sup><b>1</b></sup></td><td>✓</td><td>✓</td></tr>
+<tr><td>Kappa</td><td>✕</td><td>✓</td><td>✕</td><td>✕</td><td>✕</td></tr>
+<tr><td>Kappa PT</td><td colspan="2">✓</td><td>✕</td><td>✓</td><td>✓</td></tr>
+<tr><td>Nostalgia</td><td>✕</td><td>✓</td><td>✕</td><td>✕</td><td>✕</td></tr>
+<tr><td>Nostalgia VX</td><td colspan="2">✓</td><td>✕</td><td>✓</td><td>✓</td></tr>
+<tr><td>Soft Voxels</td><td colspan="2">✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+<tr><td>MollyVX</td><td colspan="2">✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+<tr><td>Continuum RT</td><td>✓</td><td>✕</td><td>✓</td><td>✓</td><td>✓</td></tr>
+<tr><td>Rethinking Voxels <sup><b>2</b></sup></td><td>✓ <sup><b>3</b></sup></td><td>✕</td><td>✓ <sup><b>4</b></sup></td><td>✓</td><td>✕</td></tr>
+</table>
 
-_屏幕空间_ **特指**屏幕空间间接光照  
-_直接光照_ 仅针对太阳（月亮）光  
+_间接光照_ 第二列表示**屏幕空间**间接光照  
+_直接光照_ 除标注外仅针对太阳（月亮）光  
 _反射_ 仅针对世界空间反射
 
-- **[1]** Rethinking Voxels 自 **r0.1-beta3** 起使用 <tooltip term="SDF">SDF</tooltip> 代替体素化。
-- 
-{type="none"}
+**[1]** 仅用于优化接触处阴影  
+**[2]** Rethinking Voxels 自 **r0.1-beta3** 起使用 <tooltip term="SDF">SDF</tooltip> 代替体素化。  
+**[3]** 仅使用辐照度进行全局光照  
+**[4]** 方块光源按直接光照追踪，太阳（月亮）光使用阴影贴图
 
 <seealso>
   <category ref="advance">
