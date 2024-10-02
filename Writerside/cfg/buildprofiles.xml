@@ -5,7 +5,7 @@
         <color-preset>contrast</color-preset>
         <custom-favicons>page_logo.png</custom-favicons>
         <header-logo>MGC-darklogo.png</header-logo>
-        <download-title>新版MGC图形站</download-title>
+        <download-title>前往图形站</download-title>
         <download-page>https://minegraph.cn/</download-page>
         <showDownloadButton>true</showDownloadButton>
         <product-web-url>https://docs.minegraph.cn/home</product-web-url>
@@ -20,8 +20,8 @@
             <noindex-content>false</noindex-content>
         </variables>
         <footer>
-            <copyright>HyperCol 2023-2024</copyright>
-            <icp>备2023036853号</icp>
+            <copyright>2023-2024 HyperCol</copyright>
+            <icp>2023036853</icp>
 
             <link href="https://pd.qq.com/s/lem9db">QQ 频道</link>
             <link href="https://github.com/MineGraphCN/MGC_Docs">GitHub 项目仓库</link>

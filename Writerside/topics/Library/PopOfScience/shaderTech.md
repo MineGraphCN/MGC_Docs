@@ -81,9 +81,7 @@ RSM 的缺陷也很明显，它不会考虑遮挡，一旦它在阴影纹理上�
 
 自 [iterationT](itt3.md){summary=""} 0.16.1（2.0.0 之后不久的开发版）开始，它的 RSM 算法一直都有问题 <sup><b>1</b></sup> ，直到 iterationT Beta 3.1.07 才修复。
 
-- **[1]** 在错误的 [空间](terms.md#坐标系 "在着色器中基于不同坐标系即称为不同空间，通过矩阵可以在不同坐标系之间转换。") 中计算，而其算法基于 Continuum，这也意味着 Continuum 的 RSM 全局光照在那时也有问题，之后才被修复。
-- 
-{type="none"}
+**[1]** 在错误的 [空间](terms.md#坐标系 "在着色器中基于不同坐标系即称为不同空间，通过矩阵可以在不同坐标系之间转换。") 中计算，而其算法基于 Continuum，这也意味着 Continuum 的 RSM 全局光照在那时也有问题，之后才被修复。
 
 <tabs group="rsmfix">
 <tab title="修复前" group-key="before">
