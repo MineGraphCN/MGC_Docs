@@ -23,11 +23,11 @@
 
     <secondary-label id="jedoc" name="Java 版" color="tangerine">这篇文档的主要内容适用于 Java 版。</secondary-label>
     <secondary-label id="bedoc" name="基岩版" color="tangerine">这篇文档的主要内容适用于基岩版。</secondary-label>
-    <secondary-label id="ofdoc" name="OptiFine" color="purple">这篇文档的内容适用于 OptiFine，或该资源适用于 OptiFine。</secondary-label>
-    <secondary-label id="irisdoc" name="Iris" color="purple">这篇文档的内容适用于 Iris，或该资源适用于 Iris。</secondary-label>
-    <secondary-label id="moddoc" name="模组" color="blue">这篇文档的内容适用于模组，或该资源为模组。</secondary-label>
-    <secondary-label id="shaderdoc" name="光影" color="blue">这篇文档的内容适用于光影，或该资源为光影。</secondary-label>
-    <secondary-label id="resourcedoc" name="资源包" color="blue">这篇文档的内容适用于资源包，或该资源为资源包。</secondary-label>
+    <secondary-label id="ofdoc" name="OptiFine" color="purple">这篇文档的内容适用于 OptiFine，或相关资源适用于 OptiFine。</secondary-label>
+    <secondary-label id="irisdoc" name="Iris" color="purple">这篇文档的内容适用于 Iris，或相关资源适用于 Iris。</secondary-label>
+    <secondary-label id="moddoc" name="模组" color="blue">这篇文档的内容适用于模组，或相关资源为模组。</secondary-label>
+    <secondary-label id="shaderdoc" name="光影" color="blue">这篇文档的内容适用于光影，或相关资源为光影。</secondary-label>
+    <secondary-label id="resourcedoc" name="资源包" color="blue">这篇文档的内容适用于资源包，或相关资源为资源包。</secondary-label>
     <secondary-label id="multiImg" name="多图" color="red">该板块高清图片较多，计费流量用户请谨慎浏览。</secondary-label>
 
     <!--施工状态-->
@@ -47,6 +47,8 @@
     <primary-label id="be" short-name="BE" name="基岩版" color="tangerine">
         这个章节的内容适用于基岩版。
     </primary-label>
+
+    <primary-label id="important" name="重要" short-name="重要" color="red"/>
 
     <secondary-label id="of" name="OptiFine" color="purple">这个章节的内容适用于 OptiFine。</secondary-label>
     <secondary-label id="iris" name="Iris" color="purple">这个章节的内容适用于 Iris。</secondary-label>
@@ -90,7 +92,7 @@
 
 <!--杂项-->
 
-    <secondary-label id="whats_new" name="2024.9.20">夺新↑鲜↓哪。</secondary-label>
+    <secondary-label id="whats_new" name="2024.10.2">夺新↑鲜↓哪。</secondary-label>
 
     <primary-label id="sample" short-name="标签" name="标签示例，默认颜色为主题色">
         标签悬停文本
