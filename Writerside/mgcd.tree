@@ -16,6 +16,7 @@
                 <toc-element topic="shaderpacksCommon.md" toc-title="通用安装教程"/>
                 <toc-element topic="itt2.md"/>
                 <toc-element topic="itt3.md"/>
+                <toc-element topic="itt3-2.md"/>
                 <toc-element topic="gfme.md"/>
             </toc-element>
             <toc-element toc-title="资源包">
