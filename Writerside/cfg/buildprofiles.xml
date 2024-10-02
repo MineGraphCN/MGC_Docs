@@ -5,8 +5,8 @@
         <color-preset>contrast</color-preset>
         <custom-favicons>page_logo.png</custom-favicons>
         <header-logo>MGC-darklogo.png</header-logo>
-        <download-title>旧版 MGCD</download-title>
-        <download-page>https://mgcd.hypercol.com/works/</download-page>
+        <download-title>新版MGC图形站</download-title>
+        <download-page>https://minegraph.cn/</download-page>
         <showDownloadButton>true</showDownloadButton>
         <product-web-url>https://docs.minegraph.cn/home</product-web-url>
         <algolia-id>AMQJCXFVUL</algolia-id>
