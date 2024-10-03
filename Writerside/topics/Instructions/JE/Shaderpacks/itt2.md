@@ -32,48 +32,63 @@
 
 ### 色调调整
 
-- 本次更新，色调全面改为写实风格
+本次更新，色调全面改为写实风格
+
 ![itt2-sunrise.png](itt2-sunrise.png)
-- 日出，万象初开
+日出，万象初开
+
 ![itt2-day.png](itt2-day.png)
 正午，阳光明媚
+
 ![itt2-sunset.png](itt2-sunset.png)
 黄昏，晚霞辉光
+
 ![itt2-night.png](itt2-night.png)
 夜晚，月光皎洁
+
 ![itt2-moon.png](itt2-moon.png)
 极地月夜，极光之舞（这一代默认不开启极光，需要手动打开，会在大气板块讲解）
+
 ![itt2-aurora.png](itt2-aurora.png)
 雨天，弥漫的雾气模糊着远处的景色，光线照亮云层之间的缝隙
+
 **⚙️雨天到晴天的过渡可能时间较长，可以前往：材质 -> 水面与雨雪 进行设置**
 
 ### 光照改进
 
-第二代 iterationT 引入了 RSM（Reflective Shadow Maps） 全局光照
-有关 RSM 的简要技术原理说明，请见：[着色器 技术科普 - RSM](shaderTech.md#rsm)
+第二代 iterationT 引入了 RSM（Reflective Shadow Maps） 全局光照  
+有关 RSM 的简要技术原理说明，请见：[着色器 技术科普 - RSM](shaderTech.md#rsm)  
 在这里放几组图来直观感受一下：
+
 ![itt2-water-rsm-off.png](itt2-water-rsm-off.png)
 水下，RSM关
+
 ![itt2-water-rsm-on.png](itt2-water-rsm-on.png)
 水下，RSM开
+
 ![itt2-cave-rsm-off.png](itt2-cave-rsm-off.png)
 粘土山矿洞，RSM关
+
 ![itt2-cave-rsm-on.png](itt2-cave-rsm-on.png)
 粘土山矿洞，RSM开
+
 ![itt2-jungle-rsm-off.png](itt2-jungle-rsm-off.png)
 丛林，RSM关
+
 ![itt2-jungle-rsm-on.png](itt2-jungle-rsm-on.png)
 丛林，RSM开
 
 ⚙️自定义位置：光照 -> 全局光照设置（关闭可提升一部分性能，但部分场景的感知可能较差）
 
-随后是漏光修复，是本代新引入的
-相信各位在使用不少光影时一定会被地下漏光这个问题所困扰
-尤其是1.18的巨型洞穴系统
-（关闭全局光照可以直接解决，但得不偿失，对吧）
+随后是漏光修复，是本代新引入的  
+相信各位在使用不少光影时一定会被地下漏光这个问题所困扰  
+尤其是1.18的巨型洞穴系统  
+（关闭全局光照可以直接解决，但得不偿失，对吧）  
 所以本次更新引入了漏光修复
+
 ![itt2-lightfix-off.png](itt2-lightfix-off.png)
 漏光修复关
+
 ![itt2-lightfix-on.png](itt2-lightfix-on.png)
 漏光修复开
 
@@ -81,14 +96,16 @@
 
 ### 曝光问题
 
-使用过 Continuum、Kappa 等一系列光影的小伙伴们肯定会被这个问题所困扰
-在亮处周围啥都看不见，在暗处光源瞎眼
-然而曝光调节又晦涩难懂
-所以，此次加入了一些实用的小功能
-主要是亮度权重
+使用过 Continuum、Kappa 等一系列光影的小伙伴们肯定会被这个问题所困扰  
+在亮处周围啥都看不见，在暗处光源瞎眼  
+然而曝光调节又晦涩难懂  
+所以，此次加入了一些实用的小功能  
+主要是亮度权重  
 可以直接改善有光源处的暗处体验
+
 ![itt2-exposure-off.png](itt2-exposure-off.png)
 亮度权重关
+
 ![itt2-exposure-on.png](itt2-exposure-on.png)
 亮度权重开
 
@@ -100,14 +117,15 @@
 
 ### 阴影改动
 
-首先是一个小细节，屏幕空间衔接阴影
-可以解决阴影与方块衔接处接不上的情况
+首先是一个小细节，屏幕空间衔接阴影  
+可以解决阴影与方块衔接处接不上的情况  
 不过也只是个实验性功能，细看的话会发现精度比较低
 
 ⚙️自定义位置：光照 -> 阴影设置 -> 屏幕空间阴影
 
-与此同时，在这一代中，彩色玻璃的染色阴影迎来了重大变动
-一改旧版的简陋方案，将效果提升到了写实的水平
+与此同时，在这一代中，彩色玻璃的染色阴影迎来了重大变动  
+一改旧版的简陋方案，将效果提升到了写实的水平  
+
 ![itt2-shadow.png](itt2-shadow.png)
 
 ---
@@ -116,22 +134,26 @@
 
 ### 水面变化
 
-本次的水波改回了 SEUS Renewed 的形式
-但是增加了更多的细节与调整
+本次的水波改回了 SEUS Renewed 的形式  
+但是增加了更多的细节与调整  
 使得本来就生动写实的 SEUS 原版水波更加讨喜
+
 ![itt2-waves-1.png](itt2-waves-1.png)
+
 ![itt2-waves-2.png](itt2-waves-2.png)
 
-此外，本代中反射还增加了一个大部分光影都没做到但很影响观感的细节
-那就是大气反射
-可以显著的解决日出日落时水面反射的失真问题
-效果如下 ：
-![itt2-atmospheric-reflection-off.png](itt2-atmospheric-reflection-off.png)
+此外，本代中反射还增加了一个大部分光影都没做到但很影响观感的细节  
+那就是大气反射  
+可以显著的解决日出日落时水面反射的失真问题  
+效果如下：
+
+![itt2-atmospheric-reflection-off.png](itt2-atmospheric-reflection-on.png)
 大气反射关
-![itt2-atmospheric-reflection-on.png](itt2-atmospheric-reflection-on.png)
+
+![itt2-atmospheric-reflection-on.png](itt2-atmospheric-reflection-off.png)
 大气反射开
 
-**注意：此效果也会应用在PBR反射中**
+**注意：此效果也会应用在PBR反射中**  
 **较为消耗性能，所以默认关闭**
 
 ⚙️自定义位置：材质 -> PBR反射 -> 渲染大气雾、渲染体积雾（警告：可能会相当影响性能）
@@ -139,11 +161,13 @@
 ### 水下重置
 
 ![itt2-underwater-1.png](itt2-underwater-1.png)
-本次的水下可以说是几乎完全重置
-恰当的水雾模糊，梦幻一般的水下丁达尔，改进的水面全反射，加以RSM全局光照带来的绚丽色彩
-没什么可以详细介绍的
-但确实是本次更新里最美的地方之一
+
+本次的水下可以说是几乎完全重置  
+恰当的水雾模糊，梦幻一般的水下丁达尔，改进的水面全反射，加以RSM全局光照带来的绚丽色彩  
+没什么可以详细介绍的  
+但确实是本次更新里最美的地方之一  
 放几张图供各位欣赏一下
+
 ![itt2-underwater-2.png](itt2-underwater-2.png)
 ![itt2-underwater-3.png](itt2-underwater-3.png)
 ![itt2-underwater-4.png](itt2-underwater-4.png)
@@ -155,19 +179,24 @@
 ### PBR 反射 {id="pbrRef"}
 
 完全重写的PTGI级反射过滤！
+
 ![itt1-pbr-reflection-1.png](itt1-pbr-reflection-1.png)
 itt1
+
 ![itt2-pbr-reflection-1.png](itt2-pbr-reflection-1.png)
 itt2
+
 ![itt1-pbr-reflection-2.png](itt1-pbr-reflection-2.png)
 itt1
+
 ![itt2-pbr-reflection-2.png](itt2-pbr-reflection-2.png)
 itt2
-（材质： Vanilla  Normals Renewed）
+
+（资源包：Vanilla Normals Renewed）
 
 此外，本次还适配了 LabPBR 标准的材质
 
-⚙️你可以前往：材质 去设置材质分辨率；
+⚙️你可以前往：材质去设置材质分辨率；
 
 材质 -> 视差 来设置视差相关选项；
 
@@ -175,8 +204,9 @@ itt2
 
 ### 折射系统
 
-此外，本次还加入了玻璃的折射系统（仅限染色玻璃）
+此外，本次还加入了玻璃的折射系统（仅限染色玻璃）  
 效果如下 ：
+
 ![itt2-refraction.png](itt2-refraction.png)
 
 ---
@@ -185,42 +215,48 @@ itt2
 
 ### 云影添加
 
-体积云是本次开发的重心
-本次塔佬参考了Continuum的体积云，写出了自己的新方案
-一改过去梦幻的体积云风格
-体积云上面的截图中各位都看到过
-所以这里介绍一个新的效果：云影
-这个效果在体积云遮挡阳光时会显现出来
+体积云是本次开发的重心  
+本次塔佬参考了Continuum的体积云，写出了自己的新方案  
+一改过去梦幻的体积云风格  
+体积云上面的截图中各位都看到过  
+所以这里介绍一个新的效果：云影  
+这个效果在体积云遮挡阳光时会显现出来  
 效果参考：
+
 ![itt2-cloudshadow-1.png](itt2-cloudshadow-1.png)
+
 ![itt2-cloudshadow-2.png](itt2-cloudshadow-2.png)
 
 ⚙️自定义位置：快捷选项 -> 云影
 
-除了体积云，还有着一层薄云
-是由 SEUS Renewed 继承来的
+除了体积云，还有着一层薄云  
+是由 SEUS Renewed 继承来的  
 目的是加强层次感
 
 ### 霄渺雾境
 
-本次 iterationT 的雾效果
-可以堪称，前无古人后无来者
-雾效果分为三级
-默认的高度薄雾、团雾、高质量平流雾
+本次 iterationT 的雾效果  
+可以堪称，前无古人后无来者  
+雾效果分为三级  
+默认的高度薄雾、团雾、高质量平流雾  
 详细的效果展览，请看视频：
 
 [请问这里是仙境吗【8KHDR】](https://www.bilibili.com/video/BV1VP4y1E7xE)
 
-请注意，团雾和高质量平流雾非常消耗性能
-且在雾中很阻挡视野
+请注意，团雾和高质量平流雾非常消耗性能  
+且在雾中很阻挡视野  
 不建议在实际生存中使用
 
 ⚙️你可以在：体积渲染 -> 体积雾下面的设置 -> 噪声类型 来设置雾的类型
+
 ⚙️如果你觉得噪点太多，你可以拉高 体积渲染 -> 体积雾下面的设置 -> 采样质量
+
 ⚙️如果你调整雾的高度，可以在 体积渲染 -> 体积雾下面的设置 -> 衰减高度 设置
 
 本次我们还带来了染色玻璃对体积光与体积雾的染色！
+
 ![itt2-stain-1.png](itt2-stain-1.png)
+
 ![itt2-stain-2.png](itt2-stain-2.png)
 
 ⚙️自定义位置：体积渲染 -> 体积雾下面的设置 -> 半透明方块染色*
@@ -228,6 +264,7 @@ itt2
 ### 大气极光
 
 **默认关闭，有需要可以打开**
+
 ⚙️自定义位置：体积渲染 -> 杂项 -> 极光（如果你想让极光照亮世界的话，拉高下面的极光亮度）
 
 ![itt2-aurora-1.png](itt2-aurora-1.png)
@@ -252,13 +289,17 @@ itt2
 ### 末地渲染
 
 本次更新将虚空中的末地改造为了星环中的孤岛
+
 ![itt2-end-1.png](itt2-end-1.png)
 ![itt2-end-2.png](itt2-end-2.png)
+
 你可以借此拍摄科幻场景等
 
-**⚙️请注意！如果你觉得末地环境光过亮，请前往：后处理 -> 曝光 ，开启里面的 亮度权重 ，并将下方的 权重模式 调整为 高光优先
-⚙️开启 亮度权重 而不调整 权重模式 ，会导致场景过亮！
-⚙️或者你也可以前往：快捷选项 ，开启 启用手动曝光 ，然后将下方的 手动曝光EV值 调整为 17EV 左右（这么做可能导致某些该亮的场景不亮）**
+**⚙️请注意！如果你觉得末地环境光过亮，请前往：后处理 -> 曝光 ，开启里面的 亮度权重 ，并将下方的 权重模式 调整为 高光优先**
+
+**⚙️开启 亮度权重 而不调整 权重模式 ，会导致场景过亮！**
+
+**⚙️或者你也可以前往：快捷选项 ，开启 启用手动曝光 ，然后将下方的 手动曝光EV值 调整为 17EV 左右（这么做可能导致某些该亮的场景不亮）**  
 
 ---
 
@@ -268,21 +309,21 @@ itt2
 
 以下是在不修改光影设置下能够正常运行的游戏对应 OptiFine 版本。注意：**不兼容Iris，也不会考虑支持。**
 
-| MC版本 | 要求的最低 OptiFine 版本 |
-| ------ | ------------------------ |
-| 1.8.9  | OptiFine HD U M2*        |
-| 1.9.4  | OptiFine HD U I5*        |
-| 1.10.2 | OptiFine HD U I5*        |
-| 1.11.2 | OptiFine HD U G5*        |
-| 1.12.2 | OptiFine HD U G5*        |
-| 1.13.2 | OptiFine HD U G5*        |
-| 1.14.4 | OptiFine HD U G5*        |
-| 1.15.2 | OptiFine HD U G5*        |
-| 1.16.5 | OptiFine HD U G7         |
-| 1.17.1 | OptiFine HD U G9         |
-| 1.18.1 | OptiFine HD U H4         |
+| MC版本   | 要求的最低 OptiFine 版本 |
+|--------|-------------------|
+| 1.8.9  | OptiFine HD U M2* |
+| 1.9.4  | OptiFine HD U I5* |
+| 1.10.2 | OptiFine HD U I5* |
+| 1.11.2 | OptiFine HD U G5* |
+| 1.12.2 | OptiFine HD U G5* |
+| 1.13.2 | OptiFine HD U G5* |
+| 1.14.4 | OptiFine HD U G5* |
+| 1.15.2 | OptiFine HD U G5* |
+| 1.16.5 | OptiFine HD U G7  |
+| 1.17.1 | OptiFine HD U G9  |
+| 1.18.1 | OptiFine HD U H4  |
 
-***注：G7 前的版本需要在光影设置中开启“G7前兼容性”选项**
+\***注：G7 前的版本需要在光影设置中开启“G7前兼容性”选项**
 
 ### 拍摄提示
 
@@ -301,13 +342,8 @@ itt2
 
 ### 粒子系统
 
-现在完全支持粒子系统
+现在完全支持粒子系统  
 也支持发光粒子了
-
-让我们一起期待Tahnass的下一代光影：
-iterationT RayTracing
-将会有完全自主原创的光追算法和光影架构等
-让我们为国产光影加油，期待国产崛起！
 
 ### 具体改动
 
@@ -430,12 +466,11 @@ iterationT 2.0.0 更新日志 (对比于1.1.0版本）
 7.移除风格预设
 ```
 
-## 相关B站视频
-
-[点击查看【bilibili】](https://player.bilibili.com/player.html?bvid=BV1Wv411A7LB)
-
-[点击查看【bilibili】](https://player.bilibili.com/player.html?bvid=BV1LP4y1b7zx)
-
-[点击查看【bilibili】](https://player.bilibili.com/player.html?bvid=BV1VY411b7cx)
-
-[点击查看【bilibili】](https://player.bilibili.com/player.html?bvid=BV1k34y1171A)
+<seealso>
+  <category ref="videos">
+    <a href="https://b23.tv/BV1Wv411A7LB">Bilibili - 你见过未来吗？次世代光影iterationT 2展示</a>
+    <a href="https://b23.tv/BV1LP4y1b7zx">Bilibili - iterationT 2 未来视觉 云雾更新预告 【Minecraft光影展示】</a>
+    <a href="https://b23.tv/BV1VY411b7cx">Bilibili - 682天!我为这个材质制作了1927张贴图！</a>
+    <a href="https://b23.tv/BV1k34y1171A">Bilibili - 【我的世界】国产材质巨献 一名高中生肝出5.5G大小的高清材质包</a>
+  </category>
+</seealso>
