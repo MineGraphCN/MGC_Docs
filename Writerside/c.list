@@ -4,4 +4,5 @@
 <categories>
     <category id="related" name="相关文档" order="1"/>
     <category id="advance" name="扩展阅读" order="2"/>
+    <category id="videos" name="相关视频" order="3"/>
 </categories>
