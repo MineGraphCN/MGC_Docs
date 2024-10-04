@@ -66,7 +66,7 @@
     {style="none"}
 5. **不能保证模组的兼容性**
 6. 不兼容的设备
-    - 苹果 M 系列芯片和 MacOS
+    - Apple Silicon 和 MacOS
     - GTX 600 或更早的英伟达 GeForce 显卡
     - HD 7000 或更早的 AMD/ATI Radeon 显卡
     - 2012 年以前发布的显卡
