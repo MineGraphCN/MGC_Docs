@@ -40,6 +40,7 @@
             <toc-element topic="resourcepackBasic.md"/>
             <toc-element topic="howTextureWork.md" hidden="true"/>
             <toc-element topic="shaderBasic.md"/>
+            <toc-element topic="shaderBasicBE.md"/>
             <toc-element topic="shaderTech.md"/>
             <toc-element topic="rayTracing.md"/>
         </toc-element>
