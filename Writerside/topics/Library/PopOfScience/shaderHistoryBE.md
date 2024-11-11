@@ -30,9 +30,9 @@
 
 ### 总述
 
-最早的基岩版光影基于 OpenGL ES 的 GLSL <sup>Android / IOS</sup> 或 DirectX 的 HLSL <sup>Windows 10</sup> 。由于接口限制，基岩版光影可以实现的效果非常少（甚至比 **JE 1.16** 之后的原版资源包着色器还少），并且为 向前渲染管线 <sup><b>1</b></sup>，但仍可以通过一系列奇技淫巧实现基于物理的渲染。平和的日子就这样过去，直到 <tooltip term="SDGP">SDGP</tooltip> 宣布胎死腹中，而微软宣布和英伟达为 Minecraft 基岩版带来光线追踪。
+最早的基岩版光影基于 OpenGL ES 的 GLSL <sup>Android / IOS</sup> 或 DirectX 的 HLSL <sup>Windows 10</sup> 。由于接口限制，基岩版光影可以实现的效果非常少（甚至比 **JE 1.16** 之后的原版资源包着色器还少），并且为 [向前渲染管线](shaderBasic.md#向前渲染法) <sup><b>1</b></sup>，但仍可以通过一系列奇技淫巧实现基于物理的渲染。平和的日子就这样过去，直到 <tooltip term="SDGP">SDGP</tooltip> 宣布胎死腹中，而微软宣布和英伟达为 Minecraft 基岩版带来光线追踪。
 
- **[1]** 在每个着色器中，立即在传入的几何体上计算诸如阴影和反射等效果
+**[1]** 在每个着色器中，立即在传入的几何体上计算诸如阴影和反射等效果。
 
 ### 第一阶段：启程
 
