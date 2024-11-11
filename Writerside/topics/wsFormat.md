@@ -223,7 +223,7 @@ __*文字*__
 省流块永远紧跟最近的标题。
 </tldr>
 
-#### 术语
+#### 术语块
 
 标题 1
 : 内容 1
@@ -543,6 +543,11 @@ __*文字*__
 <title>步骤块</title>
 <p>内容</p>
 </procedure>
+
+<deflist collapsible="true" default-state="collapsed">
+<def title="术语块">
+内容</def>
+</deflist>
 
 > `collapsible` 指定是否可折叠
 > 
