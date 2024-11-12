@@ -28,7 +28,7 @@
   可前往 [作品收录（旧版 MGCD）](https://mgcd.hypercol.com/works/) 了解。
 - 社区在哪里？
 
-  MGC 最初建于开黑啦（现名 Kook），于 2021 年 11 月迁移至 QQ 频道。
+  MGC 最初建于开黑啦（现名 Kook），于 2021 年 11 月迁移至腾讯频道。
 - 我可以通过什么方式进入社区？
   - 频道号：MineGraph101
   - 加入链接：<https://pd.qq.com/s/lem9db>

@@ -13,5 +13,5 @@ Minecraft Graphics Community，或称 MineGraph。是一个 **Minecraft 图形�
 
 ## 联系我们
 
-- QQ 频道 [Minecraft 图形学社区](https://pd.qq.com/s/lem9db) （频道号：MineGraph101）
+- 腾讯频道 [Minecraft 图形学社区](https://pd.qq.com/s/lem9db) （频道号：MineGraph101）
 - Bilibili [HyperCol](https://space.bilibili.com/480528388) | [Minecraft图形学社区](https://space.bilibili.com/1499821905)

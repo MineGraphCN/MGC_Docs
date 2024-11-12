@@ -21,7 +21,7 @@ B站ID：金丹哦
 
 **赞助渠道：**[**爱发电**](https://afdian.com/@qintexture?tab=home)
 
-频道：[点击加入QQ频道【KABUTO | 纹理社区】](https://pd.qq.com/s/8cglq8gn1)
+频道：[点击加入腾讯频道【KABUTO | 纹理社区】](https://pd.qq.com/s/8cglq8gn1)
 
 ## 光影及配置推荐
 
