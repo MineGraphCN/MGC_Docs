@@ -2,8 +2,6 @@
 
 <primary-label ref="basic"/>
 
-<secondary-label ref="corrected"/>
-
 <secondary-label ref="shaderdoc"/>
 
 <show-structure depth="2"/>

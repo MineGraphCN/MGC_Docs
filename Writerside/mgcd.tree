@@ -38,10 +38,10 @@
         <toc-element topic="irisAsOf.md"/>
         <toc-element topic="PopOfScience.md">
             <toc-element topic="resourcepackBasic.md"/>
-            <toc-element topic="howTextureWork.md" hidden="true"/>
             <toc-element topic="shaderBasic.md"/>
             <toc-element topic="shaderHistoryBE.md"/>
             <toc-element topic="shaderHistoryJE.md"/>
+            <toc-element hidden="true" topic="howTextureWork.md"/>
             <toc-element topic="shaderTech.md"/>
             <toc-element topic="rayTracing.md"/>
         </toc-element>
