@@ -52,7 +52,7 @@ OptiFine 会遍历 `shaderpacks` 下的文件夹和 `.zip` 压缩包，将所有
 OptiFine 允许我们使用类似 C / C++ 的 `#include` 宏来调用其不会主动读取的文件，路径的根目录为主文件夹（ `shaders` ）：
 
 例如使用
-```C
+```glsl
 #include "/lib/shadow.glsl"
 ```
 来调用位于
@@ -84,9 +84,9 @@ OptiFine 使用的是延迟渲染法：
 
 OptiFine 接管了从 GUI 开始直到场景输出的全部管线，下图列出了整个画面输出流程。
 
-![OptiFine 管线](ofpp_simple.png "OptiFine 管线")
+<resource src="./ofpp_simple_bg.png">![OptiFine 管线](ofpp_simple.png "OptiFine 管线")</resource>
 
-<i>你可以在 <resource src="./ofpp_simple_bg.png">这里</resource> 查看和保存附带深色背景的原图。</i>
+单击图片查看和保存附带深色背景的原图。
 
 下面，我们从整个管线的起端开始，逐步为大家拆解 OptiFine 都在这些环节干了什么。
 

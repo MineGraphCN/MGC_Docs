@@ -118,7 +118,7 @@ LPV 首先将整个场景划分为体素，将整个场景离散开来（对 Min
 
 > _Cody Darr_ 曾经发布过一个 SEUS 的测试版 [SEUS LPVGI](https://www.patreon.com/posts/seus-lpvgi-e1-20122720 "Patreon，可能需要代理") ，但是我们发现如今这个光影已经无法在新驱动上运行；  
 > 在 _GeForceLegend_ 检查代码之后，发现其中使用了很多的 `mod(<type>, int)`
-> ```C
+> ```glsl
 > <type> A;
 > int B;
 > ^^^
@@ -129,7 +129,7 @@ LPV 首先将整个场景划分为体素，将整个场景离散开来（对 Min
 > 这在自帕斯卡架构开始的显卡上会出现异常。
 > 
 > 要想修复这个问题，我们只需要将其第二个参数 `B` 显式转换为 `float` 类型即可：
-> ```C
+> ```glsl
 > <type> A;
 > int B;
 > [...];
