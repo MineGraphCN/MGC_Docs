@@ -252,6 +252,8 @@ __*文字*__
     内容
 ```
 > ` ``` ` 后紧跟编程语言。
+> 
+> [所有支持的语言](https://prismjs.com/#supported-languages)
 
 ##### `<code-block/>` 块
 
@@ -268,11 +270,10 @@ __*文字*__
 > </code-block>
 > ```
 
-> markdown 格式虽然在 IDE 补全范围内，但是编译器却无法识别此语言。
-> ```
-> CDE016: Unknown language is specified for a code block
->   · "markdown": ...
-> ```
+> ~~markdown 格式虽然在 IDE 补全范围内，但是编译器却无法识别此语言。~~
+> 
+> 喜报：在 243.21565 版本，Writerside 正式修复了这个问题。~~拖了一年才修，真牛逼~~
+> 
 > Writerside，很神奇吧。
 
 #### 注释／提示／警告
@@ -310,9 +311,8 @@ __*文字*__
 - 步骤 3
 
 > - 可以使用 `+` `-` `*` 。
-> - 紧跟步骤添加
+> - 在步骤的下一行添加
 >   ```markdown
->   -
 >   {type="none"}
 >   ```
 >   可以隐藏点号。
