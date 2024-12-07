@@ -6,7 +6,7 @@ Minecraft Graphics Community Documents (MGCD)，或称 MineGraph Docs。
 
 ## 获取帮助
 
-在 [GitHub Issues](https://github.com/MineGraphCN/MGC_Docs/issues) 提出问题、意见或建议，加入 QQ 频道 [Minecraft 图形学社区](https://pd.qq.com/s/7lqo0embd) 获得更多帮助。
+在 [GitHub Issues](https://github.com/MineGraphCN/MGC_Docs/issues) 提出问题、意见或建议，加入腾讯频道 [Minecraft 图形学社区](https://pd.qq.com/s/7lqo0embd) 获得更多帮助。
 
 ## 贡献与支持
 

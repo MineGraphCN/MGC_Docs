@@ -147,7 +147,7 @@ void ratioNormal(float *img) {
 > 这个解决方案并未被广泛采用过，并且使用了**开销极大的反三角函数**，因此我们不推荐将此算法内置于光影中，而是作为离线转换器，在前期创作时使用。
 >
 {style="warning" title="仅作示例"}
-```C
+```glsl
 const float I_Pi = 0.3183098861838; // Pi 的倒数
 
 vec2 ratioNormal(vec2 color) {

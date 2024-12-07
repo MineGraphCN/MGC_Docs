@@ -1,19 +1,30 @@
 # 知识库
 
 <tldr>
-<tip>注解，引用和小贴士</tip>
-<note>提示</note>
-<warning>警告</warning>
-<p>在新建标签页打开：<shortcut>鼠标中键</shortcut></p>
-<p>搜索：<shortcut>Ctrl</shortcut><shortcut>K</shortcut></p>
-<p>深色模式：右上角 <img src="https://resources.jetbrains.com/help/img/writerside/systemTheme_dark.svg" alt="切换深色模式按钮"/><i>（需要横屏）</i></p>
-<p>选择文档：左侧栏</p>
+
+> 注解，引用和小贴士
+
+> 提示
+> 
+{style="note"}
+
+> 警告
+>
+{style="warning"}
+
+在新建标签页打开：<shortcut>鼠标中键</shortcut>
+
+搜索：<shortcut>Ctrl</shortcut><shortcut>K</shortcut>
+
+深色模式：右上角 ![切换深色模式按钮](https://resources.jetbrains.com/help/img/writerside/systemTheme_dark.svg){style="inline"} （需要横屏）
+
+选择文档：左侧栏
 </tldr>
 
 这里对社区内常见的图形学知识进行了总结，如果对图形学概念不了解或模糊，欢迎查阅。
 
 善用目录来检索你所想要了解的知识，**知识库仅供科普，不作深度教学**。  
-如需学习可前往我们正在编写的新板块 [着色器开发教程](shaderTutorial.md){summary=""} 和 [资源包开发教程](resourceTutorial.md){summary=""} 。
+如需学习可前往我们正在编写的新板块 [](shaderTutorial.md){summary=""} 和 [](resourceTutorial.md){summary=""} 。
 
 ## 操作
 
@@ -37,8 +48,10 @@
 ## 内容块
 
 <tldr>
-<p><b>省流块</b></p>
-<p>省流块永远在章节顶部。</p>
+
+**省流块**
+
+省流块永远在章节顶部，总结本章节的一些内容。
 </tldr>
 
 你可能会在一些文档开头或中间看见各种颜色的提示块：

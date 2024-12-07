@@ -2,8 +2,6 @@
 
 <primary-label ref="basic"/>
 
-<secondary-label ref="corrected"/>
-
 <secondary-label ref="shaderdoc"/>
 
 <show-structure depth="2"/>
@@ -75,11 +73,11 @@ _伪光追_ 的来源：
 也可以说，**光栅化实现的光照效果在流程上和光线追踪并不沾边**，只是在数学上的**近似**（我希望以后没有贵物会挤出来一个*似光追*）。
 
 然而由于各种光栅化技术对光照的贡献不好界定，比如我们通常将天空颜色乘以一个小值来模拟天空环境光照，并将其乘到场景上：
-```C
+```glsl
 vec3 color = albedo.rgb * skyColor * 0.01;
 ```
 然而它和后处理中提升画面亮度的代码没有本质区别：
-```C
+```glsl
 vec3 finalColor = color * 2.0;
 ```
 它们本质上都是画面颜色乘以一个值，因此将前者称为伪光追是**极其鲁莽的**。

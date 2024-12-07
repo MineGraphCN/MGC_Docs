@@ -6,7 +6,9 @@
                  name="MineGraph Docs"
                  start-page="Home.topic">
     <toc-element topic="Home.topic"/>
-    <toc-element topic="Community.md"/>
+    <toc-element topic="Community.md">
+        <toc-element hidden="true" topic="wsFormat.md"/>
+    </toc-element>
     <toc-element topic="whatsNew.md"/>
     <toc-element href="https://github.com/NakiriRuri/Minecraft-Shaders-zh_CN-Lang-Files" toc-title="光影汉化文件"/>
     <toc-element href="https://mgcd.hypercol.com/works/" toc-title="作品收录（旧版MGCD）"/>
@@ -38,10 +40,10 @@
         <toc-element topic="irisAsOf.md"/>
         <toc-element topic="PopOfScience.md">
             <toc-element topic="resourcepackBasic.md"/>
-            <toc-element topic="howTextureWork.md" hidden="true"/>
             <toc-element topic="shaderBasic.md"/>
             <toc-element topic="shaderHistoryBE.md"/>
             <toc-element topic="shaderHistoryJE.md"/>
+            <toc-element hidden="true" topic="howTextureWork.md"/>
             <toc-element topic="shaderTech.md"/>
             <toc-element topic="rayTracing.md"/>
         </toc-element>
@@ -76,6 +78,7 @@
         <toc-element topic="shaderTutorial.md">
             <toc-element topic="00-filePipeline.md"/>
             <toc-element topic="01-prepare.md" hidden="true"/>
+            <toc-element topic="space_conversion.md"/>
         </toc-element>
         <toc-element topic="resourceTutorial.md">
             <toc-element topic="00-setup.md"/>
@@ -95,5 +98,4 @@
         <toc-element topic="2021-autumn.md"/>
     </toc-element>
     <toc-element topic="About.md"/>
-    <toc-element hidden="true" topic="wsFormat.md"/>
 </instance-profile>
