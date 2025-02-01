@@ -17,11 +17,11 @@
 
 ### 查询电脑 CPU 和内存容量
 
-右击 `此电脑` 或 `计算机` ，点击 `属性` 即可查看 CPU 和内存。
+<shortcut>右键</shortcut> `此电脑` 或 `计算机` ，点击 `属性` 即可查看 CPU 和内存。
 
 ![在计算机属性中查询配置](check_set.png "在计算机属性中查询配置")
 
-> 在 Windows 10 / 11 中，还可以右击任务栏或按 <shortcut>Ctrl</shortcut><shortcut>Shift</shortcut><shortcut>Esc</shortcut> 打开任务管理器，在 `性能` 选项卡中查看 **CPU**、**内存**、**硬盘**、**网络**和**显卡**信息。
+> 在 Windows 10 / 11 中，还可以 <shortcut>右键</shortcut> 任务栏或按 <shortcut>Ctrl</shortcut><shortcut>Shift</shortcut><shortcut>Esc</shortcut> 打开任务管理器，在 `性能` 选项卡中查看 **CPU**、**内存**、**硬盘**、**网络**和**显卡**信息。
 >
 > ![在任务管理器中查询配置](tskmgr_check_set.png "在任务管理器中查询配置")
 > 
@@ -35,12 +35,12 @@
 
 **方法1**
 
-右击 `开始菜单` 或按下 <shortcut>Windows</shortcut><shortcut>X</shortcut> ，选择 `设备管理器` 。
+<shortcut>右键</shortcut> `开始菜单` 或按下 <shortcut>Windows</shortcut><shortcut>X</shortcut> ，选择 `设备管理器` 。
 ![打开设备管理器的方法1](dvc_mgr_1.png "打开设备管理器的方法1")
 
 **方法2**
 
-1. 打开 `开始菜单` ，搜索 `设备管理器` 或 `device manager` 或 `device mgr` 。
+1. 打开 `开始菜单` ，搜索 `设备管理器` 或 `device manager` 或 `devmgmt` 。
 ![打开设备管理器的方法2](dvc_mgr_2.png "打开设备管理器的方法2")
 2. 进入设备管理器，向下找到 `显示适配器` ，展开即为已识别的显卡。
 ![在设备管理器中查看显卡](dvc_mgr_check_gpu.png "在设备管理器中查看显卡")

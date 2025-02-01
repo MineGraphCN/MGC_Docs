@@ -13,8 +13,6 @@
 <var name="target_description" value=""/>
 <include from="contentsLibrary.md" element-id="h_note_readingTips"/>
 
-[//]: # (TODO)
-
 [//]: # (## 纹理映射（贴图）)
 
 [//]: # (### 纹理过滤)
@@ -38,6 +36,8 @@
 [//]: # (## 视差)
 
 [//]: # (## HDR)
+
+[//]: # (TODO)
 
 ## 全局光照 {id="gi"}
 

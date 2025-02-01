@@ -109,8 +109,6 @@ Texture Pack 的**错误译名**。
 
 <include from="contentsLibrary.md" element-id="resourcepack_versions"/>
 
-*什么？你问我 23 去哪了？可能是因为今年是 24 年，Mojang 跳过了吧（笑）。~~怎么 27 也跳了啊（恼）~~*
-
 从 **JE 1.15** 开始，版本之间只要存在资源更新，资源包版本号就会随之更新。
 
 - 例如 **JE 1.15** 与 **JE 1.16** 之间更新了墙类方块的方块状态，即便有些资源包并未涉及此内容，只要 `pack.mcmeta` 内的版本号不同，游戏内依然会显示不兼容。
