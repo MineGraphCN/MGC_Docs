@@ -143,11 +143,23 @@
 <tr><td>34</td><td>1.21 24w21a</td><td>1.21.1</td></tr>
 <tr><td>35</td><td colspan="2">1.21.2 24w33a</td></tr>
 <tr><td>36</td><td>1.21.2 24w34a</td><td>1.21.2 24w35a</td></tr>
-<tr><td>35</td><td colspan="2">1.21.2 24w36a</td></tr>
-<tr><td>35</td><td colspan="2">1.21.2 24w37a</td></tr>
-<tr><td>39</td><td>1.21.2 24w38a</td><td><i>最新</i></td></tr>
+<tr><td>37</td><td colspan="2">1.21.2 24w36a</td></tr>
+<tr><td>38</td><td colspan="2">1.21.2 24w37a</td></tr>
+<tr><td>39</td><td>1.21.2 24w38a</td><td>1.21.2 24w39a</td></tr>
+<tr><td>40</td><td colspan="2">1.21.2 24w40a</td></tr>
+<tr><td>41</td><td>1.21.2-pre1</td><td>1.21.2-pre2</td></tr>
+<tr><td>42</td><td>1.21.2-pre3</td><td>1.21.3</td></tr>
+<tr><td>43</td><td colspan="2">1.21.4 24w44a</td></tr>
+<tr><td>44</td><td colspan="2">1.21.4 24w45a</td></tr>
+<tr><td>45</td><td colspan="2">1.21.4 24w46a</td></tr>
+<tr><td>46</td><td>1.21.4-pre1</td><td>1.21.4</td></tr>
+<tr><td>47</td><td colspan="2">1.21.5 25w02a</td></tr>
+<tr><td>48</td><td colspan="2">1.21.5 25w03a</td></tr>
+<tr><td>49</td><td colspan="2">1.21.5 25w04a</td></tr>
+<tr><td>46</td><td>1.21.5 25w05a</td><td><i>最新</i></td></tr>
 </table>
 
+_23 和 27 不存在。_
 _截止 2024 年 9 月 20 日，数据来源于 [Minecraft Wiki](https://zh.minecraft.wiki/w/%E8%B5%84%E6%BA%90%E5%8C%85#%E8%B5%84%E6%BA%90%E5%8C%85%E6%A0%BC%E5%BC%8F%E7%89%88%E6%9C%AC) 。_
 
 </procedure>
