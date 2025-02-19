@@ -54,7 +54,7 @@
 
 你可以按照这个目录来检查你的光影是否安装正确：
 
-<include from="contentsLibrary.md" element-id="shaderpack_structure_simple"/>
+<include from="uniforms.md" element-id="shaderpack_structure_simple"/>
 
 [//]: # (TODO)
 

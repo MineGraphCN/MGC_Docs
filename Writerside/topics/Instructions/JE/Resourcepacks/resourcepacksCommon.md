@@ -25,13 +25,13 @@
 
 检查你的资源包是否符合下列要求：
 - 打开压缩包或文件夹后应该**至少有名为 `assets` 的文件夹和 `pack.mcmeta` 的文件**，同时大多数资源包还有 `pack.png` 的封面。
-  <include from="contentsLibrary.md" element-id="resourcepack_structure_simple"/>
-  <include from="contentsLibrary.md" element-id="recommend_unzipApp"/>
+  <include from="uniforms.md" element-id="resourcepack_structure_simple"/>
+  <include from="uniforms.md" element-id="recommend_unzipApp"/>
 - 确保不是 Canvas 光影包，否则你应当安装 Canvas。
 
 ## 安装资源包
 
-<include from="contentsLibrary.md" element-id="install_RP"/>
+<include from="uniforms.md" element-id="install_RP"/>
 
 ## 使用时的注意事项
 

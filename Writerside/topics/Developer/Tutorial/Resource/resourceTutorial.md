@@ -12,7 +12,7 @@
 <var name="target_name" value=""/>
 <var name="target_topic" value="resourcepackBasic.md"/>
 <var name="target_description" value=""/>
-<include from="contentsLibrary.md" element-id="h_note_readingTips"/>
+<include from="uniforms.md" element-id="h_note_readingTips"/>
 
 > 本教程由 [FishBai](https://github.com/yubaibaifish) 独立编写，MGC 提供支持。
 >

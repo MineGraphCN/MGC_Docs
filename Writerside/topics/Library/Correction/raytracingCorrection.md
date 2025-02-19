@@ -11,7 +11,7 @@
 <var name="target_name" value="科普文档 - 光线追踪专题"/>
 <var name="target_topic" value="rayTracing.md"/>
 <var name="target_description" value=""/>
-<include from="contentsLibrary.md" element-id="h_note_readingTips"/>
+<include from="uniforms.md" element-id="h_note_readingTips"/>
 
 <tldr>这篇文档主要针对光线追踪的误区和伪光追相关的概念进行纠正。</tldr>
 

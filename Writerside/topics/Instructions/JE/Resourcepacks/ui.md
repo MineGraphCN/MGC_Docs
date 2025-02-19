@@ -2,8 +2,6 @@
 
 <primary-label ref="manual"/>
 
-<secondary-label ref="new"/>
-
 <secondary-label ref="jedoc"/>
 <secondary-label ref="resourcedoc"/>
 <secondary-label ref="moddoc"/>
@@ -42,7 +40,7 @@
 
 ## 安装资源包
 
-<include from="contentsLibrary.md" element-id="install_RP"/>
+<include from="uniforms.md" element-id="install_RP"/>
 
 > 如果仍然显示有紫黑色方块，请使用 <shortcut>F3</shortcut><shortcut>T</shortcut> 重载资源包。
 > 

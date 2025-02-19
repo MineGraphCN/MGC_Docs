@@ -1,10 +1,6 @@
 # 复用元素库
 {is-library="true"}
 
-<primary-label ref="warehouse"/>
-
-<show-structure depth="0"/>
-
 <snippet id="shaderpack_structure_dev">
 
 ```Shell

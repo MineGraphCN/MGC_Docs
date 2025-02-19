@@ -94,7 +94,7 @@
 
     <secondary-label id="whats_new" name="2024.12.7">夺新↑鲜↓哪。</secondary-label>
 
-    <primary-label id="sample" short-name="标签" name="标签示例，默认颜色为主题色">
+    <primary-label id="example" short-name="标签" name="标签示例，默认颜色为主题色">
         标签悬停文本
     </primary-label>
 
@@ -107,6 +107,6 @@
     <secondary-label id="blue" name="蓝色" color="blue"/>
     <secondary-label id="purple" name="紫色" color="purple"/>
     <secondary-label id="strawberry" name="粉色（草莓色）" color="strawberry"/>
-    <secondary-label id="auto" name="自适应颜色（根据深色模式而定）"/>
+    <secondary-label id="auto" name="自适应黑/白">视深色模式而定</secondary-label>
 
 </labels>

@@ -11,7 +11,7 @@
 <var name="target_name" value=""/>
 <var name="target_topic" value="shaderBasic.md"/>
 <var name="target_description" value=""/>
-<include from="contentsLibrary.md" element-id="h_note_readingTips"/>
+<include from="uniforms.md" element-id="h_note_readingTips"/>
 
 [//]: # (## 纹理映射（贴图）)
 
@@ -260,7 +260,7 @@ LPV 首先将整个场景划分为体素，将整个场景离散开来（对 Min
 
 **<tooltip term="SSAO">屏幕空间环境光遮蔽</tooltip>**，是目前业界内应用最广泛的环境光遮蔽技术。SSAO 通过分析场景中各个像素点周围的几何信息来计算该像素点处的遮蔽程度。其计算效率最高，但相对不够精确。
 
-目前常用的除了 SSAO，还有 <tooltip term="HBAO">HBAO（或 HBAO+）</tooltip>（水平基准环境光遮蔽）和 <tooltip term="GTAO">GTAO</tooltip>（基准真相环境光遮蔽）。SSAO、HBAO、GTAO 逐级基于前者改进，能产生更加准确的遮蔽阴影。
+目前常用的除了 SSAO，还有 <tooltip term="HBAO">HBAO（或 HBAO+）</tooltip>（水平基准环境光遮蔽）和 <tooltip term="GTAO">GTAO</tooltip>（基准真值环境光遮蔽）。SSAO、HBAO、GTAO 逐级基于前者改进，能产生更加准确的遮蔽阴影。
 
 图片来自 _Tahnass_ 。
 <tabs>
