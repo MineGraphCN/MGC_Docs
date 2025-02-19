@@ -2,4 +2,5 @@
 <!DOCTYPE vars SYSTEM "https://resources.jetbrains.com/writerside/1.0/vars.dtd">
 <vars>
     <var name="product" value="MGCD"/>
+    <var name="latest_pack_format" value="52"/>
 </vars>

@@ -103,7 +103,7 @@ Texture Pack 的**错误译名**。
 中 `pack_format` 的值定义，`descripton` 则是该资源包的**描述**。  
 此外，自 **JE 1.20.2 23w31a** 开始，其加入了 `supported_formats` 字段，可以指定兼容版本的上下限。
 - `min_inclusive` 指定版本下限，`max_inclusive` 指定版本上限。
-- 也可简写为 `"supported_formats": [17, 34]` 。
+- 也可简写为 `"supported_formats": [17, %latest_pack_format%]` 。
 
 以下是资源包版本号对应游戏版本的表格：
 
