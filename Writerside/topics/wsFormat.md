@@ -12,7 +12,7 @@
 >
 {style="note"}
 
-## 开始创作
+## 开始创作 {id="start"}
 
 > 文件名应当使用**驼峰命名法**。
 >
@@ -62,7 +62,7 @@
 </代码>
 ```
 
-> 如果不包含具体内容，可以使用 `<代码/>` 。
+> 如果不包含具体内容，可以使用 `<代码>` 。
 > 快捷键仅 XML 行有效，无法在 Markdown 行中使用。
 
 ### 字形 {id="format"}
@@ -255,7 +255,7 @@ __*文字*__
 > 
 > [所有支持的语言](https://prismjs.com/#supported-languages)
 
-##### `<code-block/>` 块
+##### `<code-block>` 块
 
 <code-block lang="markdown">
 内容
@@ -292,7 +292,7 @@ __*文字*__
 内容
 </warning>
 
-> - `style` 可用字段：`tip` (默认), `note` , `warning`；当使用 XML 块时，直接使用 `<tip/>` `<note/>` `<warning/>` 。
+> - `style` 可用字段：`tip` (默认), `note` , `warning`；当使用 XML 块时，直接使用 `<tip>` `<note>` `<warning>` 。
 > - 当使用 markdown 格式时，应当多空出一行。
 
 #### 缩写
@@ -317,7 +317,6 @@ __*文字*__
 >   ```
 >   可以隐藏点号。
 > - `type` 可用字段：`bullet` (默认) 点号，`decimal` 同有序步骤，`alpha-lower` 使用小写字母的有序步骤，`none` 没有前缀。
->   - 不推荐使用除 `none` 以外的字段，否则可能导致渲染额外的一个步骤，如果你想要小写字母或者其他变量，请使用 XML 的 `<list/>` 代码。
 > - 使用 <shortcut>Tab</shortcut> 缩进可以将其他内容悬挂到当前步骤下。
 
 ##### 有序步骤
@@ -331,7 +330,7 @@ __*文字*__
 > - `type` 字段同无序步骤。
 > - 当序号混乱时可以在序号上右键 > 显示上下文操作 (<shortcut>Alt</shortcut><shortcut>Enter</shortcut>) > 修复列表项编号
 
-##### `<list/>` 块
+##### `<list>` 块
 
 <list type="alpha-lower">
 <li>
@@ -368,7 +367,7 @@ __*文字*__
 </procedure>
 
 > - `type` 变量的 `steps` 表示有序步骤(默认)，`choices` 表示无序步骤
-> - 当 `title` 作为 `<title/>` 块时可以使用 XML 代码为其添加 [文字格式](#format){summary=""}
+> - 当 `title` 作为 `<title>` 块时可以使用 XML 代码为其添加 [文字格式](#format){summary=""}
 > - 步骤块会作为当前标题的下一级内容
 
 #### 新起段落
@@ -377,7 +376,7 @@ __*文字*__
 
 段落 2
 
-##### `<p/>` 块
+##### `<p>` 块
 
 <p>段落 1</p>
 <p>段落 2</p>
@@ -404,9 +403,9 @@ __*文字*__
 > - 第二行为对齐行／表头分隔行
 >   - `|:-|` 表示左对齐，`|:-:|` 表示居中对齐，`|-:|` 表示右对齐，`|-|` 表示默认对齐，`-` 数量不限。
 >   - Writerside 暂时不支持对齐，你可以使用这些对齐定义作保留。
-> - 如果你想使用单元格合并等复杂功能，请使用 XML 的 `<table/>` 块。
+> - 如果你想使用单元格合并等复杂功能，请使用 XML 的 `<table>` 块。
  
-##### `<table/>` 块
+##### `<table>` 块
 
 <table style="both">
 <tr><td>双表头</td><td width="100">列表头1</td><td>列表头2</td><td>列表头3</td></tr>
@@ -416,9 +415,9 @@ __*文字*__
 <tr><td>行表头4</td></tr>
 </table>
 
-> - `<table/>` 代码变量
+> - `<table>` 代码变量
 >   - `style` ：指定表头样式，`both` 表示既有行表头也有列表头，`header-column` / `header-row` 表示仅列／行表头，`none` 表示没有表头。
-> - `<td/>` 代码变量
+> - `<td>` 代码变量
 >   - `width` 指定列宽度，以当前列第一个定义为准。
 >   - `rowspan` 向下扩展的行数
 >   - `colspan` 向右扩展的行数
@@ -463,7 +462,9 @@ __*文字*__
 <include from="源文件" element-id="复用块ID"/>
 ```
 
-> 目前我们的复用块全部保存于 `topics/contentsLibrary.md` ，如果你需要调用复用块，请访问该文件。
+> 目前我们的复用块全部保存于 `topics/SnippetsLibrary/uniforms.md` ，如果你需要调用复用块，请访问该文件。
+> 
+> 你也可以在侧栏第三项（WriterSide）中展开 `MineGraph Docs` 并切换到 `Snippets` ，然后像 [开始创作](#start){summary=""} 节添加主题那样创建复用库，并将库文件拖入 `topics/SnippetsLibrary/` 。
 
 添加新的复用块
 
@@ -475,9 +476,7 @@ __*文字*__
 </snippet>
 ```
 
-> 如果要在多个文档中使用，请添加到 [](contentsLibrary.md){summary=""} 以便管理。
-
-> 若 `<snippet/>` 的上一行是 markdown 行，则应当多加一行空格，复用块里的内容也应当在开头和末尾加空行！
+> 若 `<snippet>` 的上一行是 markdown 行，则应当多加一行空格，复用块里的内容也应当在开头和末尾加空行！
 > 
 {style="warning"}
 
@@ -492,7 +491,7 @@ __*文字*__
    ，或将全局变量保存至 `v.list`
 2. 在任意位置使用 `%变量名%`
 
-变量名中不可包含任何 markdown 语法或 XML 语法。
+变量值中不可包含任何 markdown 语法或 XML 语法。
 
 <procedure>
 
@@ -514,7 +513,7 @@ __*文字*__
 
 > Markdown 链接要将其拆分为三个变量
 > ```markdown
-> [%文本%](%链接%){summary="%停留时的描述%"}
+> [%文本%](%链接%){summary="%悬停描述%"}
 > ```
 >
 {style="note"}
@@ -535,10 +534,6 @@ __*文字*__
 ```
 {collapsible="true" default-state="collapsed"}
 
-> 可以使用 `collapsed-title` 指定折叠后的标题，或者使用 `collapsed-title-line-number` 指定折叠后作为标题的行数。
-> 
-> `collapsed-title` 优先。
-
 <procedure collapsible="true" default-state="expanded">
 <title>步骤块</title>
 <p>内容</p>
@@ -549,9 +544,13 @@ __*文字*__
 内容</def>
 </deflist>
 
-> `collapsible` 指定是否可折叠
+> `collapsible` 指定是否可折叠。
 > 
 > `default-state` 指定默认状态，`collapsed` (默认) 表示默认折叠，`expanded` 表示默认展开。
+> 
+> 代码块可以使用 `collapsed-title` 指定折叠后的标题，或者使用 `collapsed-title-line-number` 指定折叠后作为标题的行数。
+>
+> `collapsed-title` 优先。
 
 #### 数学公式
 
@@ -559,7 +558,7 @@ __*文字*__
 
 文本，$ y=kx+b $，另外一些文本
 
-或使用 `<math/>` 标签环绕。
+或使用 `<math>` 标签环绕。
 
 ##### 公式块
 
@@ -590,7 +589,7 @@ $$
 
 ## 标签
 
-<primary-label ref="sample"/>
+<primary-label ref="example"/>
 
 <secondary-label ref="red"/>
 <secondary-label ref="blue"/>
