@@ -1,10 +1,6 @@
 # 复用元素库
 {is-library="true"}
 
-<primary-label ref="warehouse"/>
-
-<show-structure depth="0"/>
-
 <snippet id="shaderpack_structure_dev">
 
 ```Shell
@@ -125,7 +121,7 @@
 <tr><td>14</td><td>1.20 23w14a</td><td>1.20 23w16a</td></tr>
 <tr><td>15</td><td>1.20 23w17a</td><td>1.20.1</td></tr>
 <tr><td>16</td><td>1.20.2</td><td>1.20.2 23w31a</td></tr>
-<tr><td>17</td><td>1.20.2 23w31a</td><td>1.20.2-pre1</td></tr>
+<tr><td>17</td><td>1.20.2 23w32a</td><td>1.20.2-pre1</td></tr>
 <tr><td>18</td><td>1.20.2-pre2</td><td>1.20.3 23w41a</td></tr>
 <tr><td>19</td><td colspan="2">1.20.3 23w42a</td></tr>
 <tr><td>20</td><td>1.20.3 23w43a</td><td>1.20.3 23w44a</td></tr>
@@ -156,28 +152,28 @@
 <tr><td>47</td><td colspan="2">1.21.5 25w02a</td></tr>
 <tr><td>48</td><td colspan="2">1.21.5 25w03a</td></tr>
 <tr><td>49</td><td colspan="2">1.21.5 25w04a</td></tr>
-<tr><td>46</td><td>1.21.5 25w05a</td><td><i>最新</i></td></tr>
+<tr><td>50</td><td colspan="2">1.21.5 25w05a</td></tr>
+<tr><td>51</td><td colspan="2">1.21.5 25w06a</td></tr>
+<tr><td>52</td><td>1.21.5 25w07a</td><td><i>最新</i></td></tr>
 </table>
 
-_23 和 27 不存在。_
-_截止 2024 年 9 月 20 日，数据来源于 [Minecraft Wiki](https://zh.minecraft.wiki/w/%E8%B5%84%E6%BA%90%E5%8C%85#%E8%B5%84%E6%BA%90%E5%8C%85%E6%A0%BC%E5%BC%8F%E7%89%88%E6%9C%AC) 。_
+_23 和 27 不存在。_  
+_截止 2025 年 2 月 19 日，数据来源于 [Minecraft Wiki](https://zh.minecraft.wiki/w/%E8%B5%84%E6%BA%90%E5%8C%85#%E8%B5%84%E6%BA%90%E5%8C%85%E6%A0%BC%E5%BC%8F%E7%89%88%E6%9C%AC) 。_
 
 </procedure>
 
 </snippet>
-
-
 
 <snippet id="pack.format">
 
 ```JSON
 {
     "pack": {
-        "pack_format": 34,
+        "pack_format": %latest_pack_format%,
         "description": "包的描述",
-        "supported_formats": {  // 可选字段，需要 23w31a+
+        "supported_formats": {  // 可选字段，需要 23w32a 及以上
             "min_inclusive": 17,
-            "max_inclusive": 34
+            "max_inclusive": %latest_pack_format%
         }
     }
 }

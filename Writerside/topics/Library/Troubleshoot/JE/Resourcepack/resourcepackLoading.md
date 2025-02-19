@@ -1,6 +1,6 @@
 # 资源包加载问题
 
-<include from="contentsLibrary.md" element-id="h_warning_zero"/>
+<include from="uniforms.md" element-id="h_warning_zero"/>
 
 ## 高清资源包读取失败
 

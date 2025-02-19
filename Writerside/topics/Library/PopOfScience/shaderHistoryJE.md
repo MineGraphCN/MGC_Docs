@@ -3,9 +3,7 @@
 <primary-label ref="basic"/>
 
 <secondary-label ref="wip"/>
-
 <secondary-label ref="jedoc"/>
-
 <secondary-label ref="shaderdoc"/>
 
 <show-structure depth="2"/>
@@ -83,9 +81,11 @@ Optimine 发布后不久，它被 _sp614x_ 接手，开始着手添加更多优�
 
 2022 年 7 月，Iris 的 Forge 非官方移植版 Oculus 在 Modrinth 上架，其目的与 Iris 一致，为 Forge 模组提供更好的光影兼容性。
 
-[//]: # (TODO: 国内光影的发展史与 SEUS 的魔改史)
+[//]: # (TODO: Yet_another_chapter01：国内光影的发展史与 SEUS 的魔改史)
 
-[//]: # (TODO: 番外：Continuum 与 NovaRender / Focal 和 Canvas 的故事)
+[//]: # (TODO: Yet_another_chapter02：MC 和 Vulkan 的恩爱情仇 | NovaRender、Focal、Vulkanite、VulkanMod)
+
+[//]: # (TODO: Yet_another_chapter03：Canvas 的故事)
 
 ## 附录：光影加载器圣经
 

@@ -562,8 +562,8 @@ Java 路径
 
 检查你的光影是否符合下列要求：
 - 打开压缩包或文件夹后应**有名为 `shaders` 的文件夹。**
-  <include from="contentsLibrary.md" element-id="shaderpack_structure_simple"/>
-  <include from="contentsLibrary.md" element-id="recommend_unzipApp"/>
+  <include from="uniforms.md" element-id="shaderpack_structure_simple"/>
+  <include from="uniforms.md" element-id="recommend_unzipApp"/>
 - 确保不是原版光影或 Canvas 光影，否则你应当直接像 [安装资源包](resourcepacksCommon.md){summary=""} 那样安装。
 
 检查完成之后，将**含有 `shaders` 的文件夹或压缩包**放入 `shaderpacks` 文件夹并选中即可。

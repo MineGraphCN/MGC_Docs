@@ -84,7 +84,7 @@ Texture Pack 的**错误译名**。
 
 在 **JE 1.13** 时，Mojang 进行了一轮游戏代码重写，这轮重写包含了一次对方块 ID 和命名方法的统一修改，称为**扁平化**，这也导致了自 **JE 1.13** 开始，资源包的兼容性出现了**断层**
 
-<include from="contentsLibrary.md" element-id="resourcepack_versions_simple"/>
+<include from="uniforms.md" element-id="resourcepack_versions_simple"/>
 
 对于**大部分**的资源包，只需要选择在区间内的正确版本，即可正常加载。
 
@@ -98,16 +98,16 @@ Texture Pack 的**错误译名**。
 
 版本区间由资源包内名为 `pack.mcmeta` 的文件
 
-<include from="contentsLibrary.md" element-id="pack.format"/>
+<include from="uniforms.md" element-id="pack.format"/>
 
 中 `pack_format` 的值定义，`descripton` 则是该资源包的**描述**。  
 此外，自 **JE 1.20.2 23w31a** 开始，其加入了 `supported_formats` 字段，可以指定兼容版本的上下限。
 - `min_inclusive` 指定版本下限，`max_inclusive` 指定版本上限。
-- 也可简写为 `"supported_formats": [17, 34]` 。
+- 也可简写为 `"supported_formats": [17, %latest_pack_format%]` 。
 
 以下是资源包版本号对应游戏版本的表格：
 
-<include from="contentsLibrary.md" element-id="resourcepack_versions"/>
+<include from="uniforms.md" element-id="resourcepack_versions"/>
 
 从 **JE 1.15** 开始，版本之间只要存在资源更新，资源包版本号就会随之更新。
 

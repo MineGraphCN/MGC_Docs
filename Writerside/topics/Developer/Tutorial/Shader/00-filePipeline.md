@@ -66,7 +66,7 @@ OptiFine 允许我们使用类似 C / C++ 的 `#include` 宏来调用其不会�
 
 这里总结了 OptiFine 默认读取的光影文件。
 
-<include from="contentsLibrary.md" element-id="shaderpack_structure_dev"/>
+<include from="uniforms.md" element-id="shaderpack_structure_dev"/>
 
 ## 管线
 

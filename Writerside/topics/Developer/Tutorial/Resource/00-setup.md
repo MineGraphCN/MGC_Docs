@@ -39,6 +39,6 @@
 
 你的文件夹内结构，应该是这个样子：
 
-<include from="contentsLibrary.md" element-id="resourcepack_structure_dev"/>
+<include from="uniforms.md" element-id="resourcepack_structure_dev"/>
 
 在下一章中，我们将会形象化你的创作思路，并且使用工具来制作你的第一张纹理贴图。

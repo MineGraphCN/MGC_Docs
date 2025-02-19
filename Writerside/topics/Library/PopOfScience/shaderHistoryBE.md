@@ -3,9 +3,7 @@
 <primary-label ref="basic"/>
 
 <secondary-label ref="wip"/>
-
 <secondary-label ref="bedoc"/>
-
 <secondary-label ref="shaderdoc"/>
 
 <show-structure depth="2"/>

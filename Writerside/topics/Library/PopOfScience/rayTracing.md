@@ -5,7 +5,6 @@
 <primary-label ref="basic"/>
 
 <secondary-label ref="wip"/>
-
 <secondary-label ref="shaderdoc"/>
 
 > 在三维计算机图形学中，光线追踪是一种**对光线传输进行建模**的技术，用于生成数字图像的各种渲染算法。
