@@ -4,8 +4,8 @@
 
 <secondary-label ref="port"/>
 
-<secondary-label ref="jedoc"/>
-<secondary-label ref="irisdoc"/>
+<secondary-label ref="jeDoc"/>
+<secondary-label ref="irisDoc"/>
 
 <show-structure depth="2"/>
 

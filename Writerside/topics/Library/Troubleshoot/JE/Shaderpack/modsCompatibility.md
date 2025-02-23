@@ -2,11 +2,9 @@
 
 <primary-label ref="manual"/>
 
-<secondary-label ref="corrected"/>
-
-<secondary-label ref="jedoc"/>
-<secondary-label ref="ofdoc"/>
-<secondary-label ref="shaderdoc"/>
+<secondary-label ref="jeDoc"/>
+<secondary-label ref="ofDoc"/>
+<secondary-label ref="shaderDoc"/>
 
 这篇文档列出了我们所知的模组和光影间兼容性冲突的解决办法。
 

@@ -2,9 +2,7 @@
 
 <primary-label ref="dev"/>
 
-<secondary-label ref="new"/>
-
-<secondary-label ref="resourcedoc"/>
+<secondary-label ref="resourceDoc"/>
 
 <tldr>这是一种手绘法线的方法及将其转化为标准法线的算法</tldr>
 

@@ -4,10 +4,8 @@
 
 <show-structure depth="3"/>
 
-> 更多语法和功能请查阅 [官方文档](https://www.jetbrains.com/help/writerside/markup-reference.html) 。
-> 
-> 快捷键以 [JetBrains Writerside IDE](https://www.jetbrains.com/zh-cn/writerside/download/#section=windows) 为准。
-> 
+> 更多语法和功能请查阅 [官方文档](https://www.jetbrains.com/help/writerside/markup-reference.html) 。  
+> 快捷键以 [JetBrains Writerside IDE](https://www.jetbrains.com/zh-cn/writerside/download/#section=windows) 为准。  
 > 请在 Writerside IDE 中查看渲染结果。
 >
 {style="note"}

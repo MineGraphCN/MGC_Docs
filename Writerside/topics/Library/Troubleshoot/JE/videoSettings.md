@@ -4,10 +4,10 @@
 
 <secondary-label ref="wip"/>
 
-<secondary-label ref="jedoc"/>
-<secondary-label ref="ofdoc"/>
-<secondary-label ref="shaderdoc"/>
-<secondary-label ref="resourcedoc"/>
+<secondary-label ref="jeDoc"/>
+<secondary-label ref="ofDoc"/>
+<secondary-label ref="shaderDoc"/>
+<secondary-label ref="resourceDoc"/>
 
 <show-structure for="chapter,tab"/>
 

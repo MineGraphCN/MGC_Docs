@@ -4,8 +4,8 @@
 
 <secondary-label ref="wip"/>
 
-<secondary-label ref="jedoc"/>
-<secondary-label ref="resourcedoc"/>
+<secondary-label ref="jeDoc"/>
+<secondary-label ref="resourceDoc"/>
 
 <var name="topic" value="资源包编写的实际教程"/>
 <var name="goal" value="仅想对资源包有大致的了解"/>

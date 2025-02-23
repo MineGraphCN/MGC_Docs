@@ -8,7 +8,7 @@
     <section-starting-page>
         <title>Minecraft 图形学社区文档</title>
         <description>
-            这是隶属于 MineGraph 社区的文档。
+            与所有人分享我们的知识。
         </description>
 
         <spotlight>
@@ -17,20 +17,12 @@
         </spotlight>
 
         <primary>
-            <title>浏览作品</title>
-            <a href="itt3-2.md" summary="久负盛名的 iterationT，现已推出 3.2！">【手册】 iterationT 3.2</a>
-            <a href="gfme.md" summary="由 GeForceLegend 魔改的 SEUS PTGI，拥有更强的可配置性和更好的质量。">【手册】 SEUS PTGI GFME</a>
-            <a href="ui.md" summary="写实风格的现代 PBR 资源包，还有大量自定义模型等你探索。">【指南】 Ultimate Immersion</a>
-            <a href="https://mgcd.hypercol.com/works/" summary="【临时】访问旧版 MGCD 查看作品表格。">获取更多</a>
-        </primary>
-
-        <secondary>
             <title>创作者文档</title>
             <a href="shaderTutorial.md" summary="管线 | 程序 | 功能实现"/>
             <a href="resourceTutorial.md" summary="基本概念 | 纹理绘制 | 特殊纹理制作"/>
             <a href="developTips.md" summary="着色器概念 | 入门 | 开发资料 &amp; 资源包开发资料"/>
             <a href="labpbrMaterialStandard.md" summary="由 shaderLABS 统一的着色器和资源包 PBR 格式。"/>
-        </secondary>
+        </primary>
 
         <misc>
             <cards narrow="false">
@@ -48,12 +40,13 @@
                     <title>探索知识库</title>
                     <a href="terms.md"/>
                     <a href="irisAsOf.md" summary=""/>
-                    <a href="raytracingCorrection.md" summary="">误区纠正 - 光线追踪</a>
+                    <a href="shaderTech.md" summary=""/>
                 </group>
                 <group>
                     <title>最近更新</title>
-                    <a href="shaderBasic.md" anchor="jeShaderEvo" summary=""/>
-                    <a href="rayTracing.md" summary=""/>
+                    <a href="rayTracing.md" summary="">知识库 - 光线追踪专题</a>
+                    <a href="raytracingCorrection.md" summary="">误区纠正 - 光线追踪</a>
+                    <a href="shaderBasic.md" summary=""/>
                 </group>
             </links>
         </misc>

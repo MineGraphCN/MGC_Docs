@@ -4,8 +4,8 @@
 
 <secondary-label ref="old"/>
 
-<secondary-label ref="jedoc"/>
-<secondary-label ref="resourcedoc"/>
+<secondary-label ref="jeDoc"/>
+<secondary-label ref="resourceDoc"/>
 
 ## 资源包 / 纹理包是否有优化空间？
 

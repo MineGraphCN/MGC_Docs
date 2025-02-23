@@ -4,7 +4,7 @@
 
 <secondary-label ref="old"/>
 
-<secondary-label ref="bedoc"/>
+<secondary-label ref="beDoc"/>
 
 ## 延迟渲染光影用了光线追踪技术吗？
 延迟渲染的版本并未引入任何光线追踪技术，两者没有关联性。
