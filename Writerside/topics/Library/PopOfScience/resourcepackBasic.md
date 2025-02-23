@@ -2,11 +2,11 @@
 
 <primary-label ref="basic"/>
 
-<secondary-label ref="resourcedoc"/>
+<secondary-label ref="resourceDoc"/>
 
 <show-structure depth="2"/>
 
-## 称谓
+## 称谓 {id="whyrp"}
 
 <primary-label ref="important"/>
 

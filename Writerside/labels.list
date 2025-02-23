@@ -21,20 +21,20 @@
         这篇文档是特定资源的说明书或以辅助性内容为主。
     </primary-label>
 
-    <secondary-label id="jedoc" name="Java 版" color="tangerine">这篇文档的主要内容适用于 Java 版。</secondary-label>
-    <secondary-label id="bedoc" name="基岩版" color="tangerine">这篇文档的主要内容适用于基岩版。</secondary-label>
-    <secondary-label id="ofdoc" name="OptiFine" color="purple">这篇文档的内容适用于 OptiFine，或相关资源适用于 OptiFine。</secondary-label>
-    <secondary-label id="irisdoc" name="Iris" color="purple">这篇文档的内容适用于 Iris，或相关资源适用于 Iris。</secondary-label>
-    <secondary-label id="moddoc" name="模组" color="blue">这篇文档的内容适用于模组，或相关资源为模组。</secondary-label>
-    <secondary-label id="shaderdoc" name="光影" color="blue">这篇文档的内容适用于光影，或相关资源为光影。</secondary-label>
-    <secondary-label id="resourcedoc" name="资源包" color="blue">这篇文档的内容适用于资源包，或相关资源为资源包。</secondary-label>
+    <secondary-label id="jeDoc" name="Java 版" color="tangerine">这篇文档的主要内容适用于 Java 版。</secondary-label>
+    <secondary-label id="beDoc" name="基岩版" color="tangerine">这篇文档的主要内容适用于基岩版。</secondary-label>
+    <secondary-label id="ofDoc" name="OptiFine" color="purple">这篇文档的内容适用于 OptiFine。</secondary-label>
+    <secondary-label id="irisDoc" name="Iris" color="purple">这篇文档的内容适用于 Iris。</secondary-label>
+    <secondary-label id="modDoc" name="模组" color="blue">这篇文档的内容适用于模组。</secondary-label>
+    <secondary-label id="shaderDoc" name="光影" color="blue">这篇文档的内容适用于光影。</secondary-label>
+    <secondary-label id="resourceDoc" name="资源包" color="blue">这篇文档的内容适用于资源包。</secondary-label>
     <secondary-label id="multiImg" name="多图" color="red">该板块高清图片较多，计费流量用户请谨慎浏览。</secondary-label>
 
     <!--施工状态-->
 
-        <secondary-label id="corrected" name="✔" color="blue">这篇文档在最近进行过订正或重写。</secondary-label>
-        <secondary-label id="old" name="⚠" color="red">这篇文档很长时间没有进行过订正，或内容有过时。</secondary-label>
-        <secondary-label id="new" name="★" color="tangerine">这是最近添加的新文档，或文档中有新内容。</secondary-label>
+        <secondary-label id="old" name="⚠" color="red">这篇文档很长时间没有进行过订正，内容有过时。</secondary-label>
+        <secondary-label id="new" name="★" color="tangerine">这是最近添加的新文档。</secondary-label>
+        <secondary-label id="latest" name="☆" color="tangerine">这篇文档中最近更新过。</secondary-label>
         <secondary-label id="wip" name="🏗" color="red">这篇文档处于施工中。</secondary-label>
         <secondary-label id="port" name="↪" color="purple">这是一篇搬运的文档。</secondary-label>
 
@@ -92,7 +92,7 @@
 
 <!--杂项-->
 
-    <secondary-label id="whats_new" name="2024.12.7">夺新↑鲜↓哪。</secondary-label>
+    <secondary-label id="whats_new" name="2025.2.24">夺新↑鲜↓哪。</secondary-label>
 
     <primary-label id="example" short-name="标签" name="标签示例，默认颜色为主题色">
         标签悬停文本

@@ -6,4 +6,5 @@
                   name="Writerside_libraries" is-library="true" start-page="uniforms.md">
 
     <toc-element topic="uniforms.md"/>
+    <toc-element topic="jeInstallGameContents.md"/>
 </instance-profile>

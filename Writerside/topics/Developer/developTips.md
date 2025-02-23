@@ -2,9 +2,7 @@
 
 <primary-label ref="manual"/>
 
-<secondary-label ref="corrected"/>
-
-<secondary-label ref="jedoc"/>
+<secondary-label ref="jeDoc"/>
 
 <show-structure depth="0"/>
 

@@ -2,10 +2,8 @@
 
 <primary-label ref="basic"/>
 
-<secondary-label ref="corrected"/>
-
-<secondary-label ref="jedoc"/>
-<secondary-label ref="shaderdoc"/>
+<secondary-label ref="jeDoc"/>
+<secondary-label ref="shaderDoc"/>
 
 ## 为什么 Java 版光影优化如此糟糕？ {id="whyJEPerformanceSoTerrible"}
 
@@ -47,7 +45,7 @@
   - **使用了 AMD 系列显卡**。自 2022 年 7 月开始， AMD 大幅重写了显卡驱动，在提升了一定性能的同时，把原本就不佳的兼容性破坏到无以复加。如果想要体验较多的光影，请将显卡驱动回滚至 `22.6.1` 及以前。
   - **使用了 Intel 系列显卡**。Intel 系列显卡对光影的支持一直很糟糕。如果你的电脑还有独立显卡，请尽量调用独显来运行游戏，若有需要可以查阅 [](troubleshootCommon.md){summary=""}。
 - **光影加载器问题**
-  - **使用了 OF 的预览版**，OF 的预览版可能存在未知问题，会导致一系列不兼容现象，有时候还会无法启用光影，若情况如此请更换 OF 版本，如有需要可以查阅 [](shaderpacksCommon.md){summary=""} 。
+  - **使用了 OF 的预览版**，OF 的预览版可能存在未知问题，会导致一系列不兼容现象，有时候还会无法启用光影，若情况如此请更换 OF 版本，如有需要可以查阅 [](jeInstallShaders.md){summary=""} 。
   - **使用了 Iris**，Iris 缺失一些 OF 功能并且存在未知的 BUG，导致各种不兼容情况，若情况如此请更换为 OF。
   - **光影依赖于 Iris**，某些光影的部分功能或整个光影依赖 Iris 的独占特性，若情况如此请更换为 Iris。
   - **光影依赖于 Canvas**，若情况如此请更换为 Canvas，并将光影拖入 `resourcepacks` 。

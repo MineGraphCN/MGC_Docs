@@ -6,14 +6,14 @@
     <term name="API">Application Programming Interface</term>
     <term name="GI">Global Illumination</term>
     <term name="AO">Ambient Occlusion</term>
-    <term name="SSAO">Screen-space Ambient Occlusion</term>
+    <term name="SSAO">Screen-Space Ambient Occlusion</term>
     <term name="HBAO">Horizon-Based Ambient Occlusion</term>
     <term name="GTAO">Ground Truth Ambient Occlusion</term>
     <term name="RTAO">Ray Tracing Ambient Occlusion</term>
-    <term name="SSPT">Screen-space Path Tracing</term>
-    <term name="SSR">Screen-space Reflection</term>
-    <term name="SSS">Sub-surface Scattering</term>
-    <term name="SSSh">Screen-space Shadow</term>
+    <term name="SST">Screen-Space Tracing</term>
+    <term name="SSR">Screen-Space Reflection</term>
+    <term name="SSS">Sub-Surface Scattering</term>
+    <term name="SSSh">Screen-Space Shadow</term>
     <term name="SVGF">Spatiotemporal Variance-Guided Filtering</term>
     <term name="RSM">Reflective Shadow Maps</term>
     <term name="LPV">Light Propagation Volumes</term>
@@ -48,6 +48,7 @@
     <term name="SSAA">Super-Sampling Anti-Aliasing</term>
     <term name="SMAA">Subpixel Morphological Anti-Aliasing</term>
     <term name="MLAA">Morphological Anti-Aliasing</term>
+    <term name="CMAA">Conservative Morphological Anti-Aliasing</term>
     <term name="TAA">Temporal Anti-Aliasing</term>
     <term name="SDF">Signed Distance Field</term>
     <term name="glslShaderCore">GLSL Shader Core</term>

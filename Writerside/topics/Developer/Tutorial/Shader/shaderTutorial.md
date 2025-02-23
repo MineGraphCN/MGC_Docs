@@ -4,9 +4,9 @@
 
 <secondary-label ref="wip"/>
 
-<secondary-label ref="jedoc"/>
-<secondary-label ref="ofdoc"/>
-<secondary-label ref="shaderdoc"/>
+<secondary-label ref="jeDoc"/>
+<secondary-label ref="ofDoc"/>
+<secondary-label ref="shaderDoc"/>
 
 <show-structure depth="0"/>
 

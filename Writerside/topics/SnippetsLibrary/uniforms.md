@@ -1,5 +1,5 @@
 # 复用元素库
-{is-library="true"}
+{is-library=true}
 
 <snippet id="shaderpack_structure_dev">
 
@@ -31,9 +31,9 @@
 
 ```Shell
 └─ shaderpacks
-  └─ <光影名称 | 光影名称.zip> # 仅支持未加密的 .zip 压缩包
-        └─ shaders # 重要！
-          └─ <着色器程序相关文件和文件夹>
+   └─ <光影名称 | 光影名称.zip> # 仅支持未加密的 .zip 压缩包
+      └─ shaders # 重要！
+         └─ <着色器程序相关文件和文件夹>
 ```
 
 </snippet>
@@ -44,7 +44,7 @@
 
 ```Shell
 └─ resourcepacks
-  └─ <资源包名称 | 资源包名称.zip>
+   └─ <资源包名称 | 资源包名称.zip>
       ├─ assets
       │  ├─ minecraft
       │  │  ├─ textures
@@ -69,7 +69,7 @@
 
 ```Shell
 └─ resourcepacks
-  └─ <资源包名称 | 资源包名称.zip> # 仅支持未加密的 .zip 压缩包
+   └─ <资源包名称 | 资源包名称.zip> # 仅支持未加密的 .zip 压缩包
       ├─ assets # 重要！
       │   └─ <资源包相关文件和文件夹>
       ├─ pack.mcmeta # 重要！资源包版本号和描述
@@ -154,11 +154,12 @@
 <tr><td>49</td><td colspan="2">1.21.5 25w04a</td></tr>
 <tr><td>50</td><td colspan="2">1.21.5 25w05a</td></tr>
 <tr><td>51</td><td colspan="2">1.21.5 25w06a</td></tr>
-<tr><td>52</td><td>1.21.5 25w07a</td><td><i>最新</i></td></tr>
+<tr><td>52</td><td colspan="2">1.21.5 25w07a</td></tr>
+<tr><td>%latest_pack_format%</td><td>1.21.5 25w08a</td><td><i>最新</i></td></tr>
 </table>
 
 _23 和 27 不存在。_  
-_截止 2025 年 2 月 19 日，数据来源于 [Minecraft Wiki](https://zh.minecraft.wiki/w/%E8%B5%84%E6%BA%90%E5%8C%85#%E8%B5%84%E6%BA%90%E5%8C%85%E6%A0%BC%E5%BC%8F%E7%89%88%E6%9C%AC) 。_
+_截止 2025 年 2 月 23 日，数据来源于 [Minecraft Wiki](https://zh.minecraft.wiki/w/%E8%B5%84%E6%BA%90%E5%8C%85#%E8%B5%84%E6%BA%90%E5%8C%85%E6%A0%BC%E5%BC%8F%E7%89%88%E6%9C%AC) 。_
 
 </procedure>
 

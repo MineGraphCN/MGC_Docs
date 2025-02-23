@@ -2,12 +2,10 @@
 
 <primary-label ref="manual"/>
 
-<secondary-label ref="corrected"/>
-
-<secondary-label ref="jedoc"/>
-<secondary-label ref="ofdoc"/>
-<secondary-label ref="irisdoc"/>
-<secondary-label ref="shaderdoc"/>
+<secondary-label ref="jeDoc"/>
+<secondary-label ref="ofDoc"/>
+<secondary-label ref="irisDoc"/>
+<secondary-label ref="shaderDoc"/>
 
 ## 加载光影后帧率远低于预期
 
