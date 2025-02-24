@@ -446,25 +446,25 @@ TAA 是一种在向前渲染进行抖动，并在后处理进行平滑的抗锯�
 **Up-sampling**，是一种增加图像分辨率的技术，也分为空间升采样和时域升采样。现代的升采样技术一般用于先降低渲染分辨率，将效果处理完毕后再提升到原始分辨率，来提升性能。
 
 <deflist>
-<def title="DLSS">
+<def title="DLSS" id="dlss">
 
 **<tooltip term="DLSS">深度学习超级采样</tooltip>**，由*英伟达*开发的一种升采样技术。通过降低分辨率并调用显卡 <sup>Nvidia</sup> 的<tooltip term="TCore">**张量核心**</tooltip>来猜测原始分辨率下该处像素的内容。
 - 在 2.0 以前，DLSS 主要是靠已有画面内容来“猜”剩下的场景应该是何样。
 - 自 2.0 开始，DLSS 主要是根据场景运动信息和历史帧来判断剩下的场景是何样，其计算方法从单一的空间域上升到了**时空域**，不再依赖于针对单个游戏的训练，效果也比 1.0 好得多。
 <deflist>
-<def title="DLAA">
+<def title="DLAA" id="dlaa">
 
 **<tooltip term="DLAA">深度学习抗锯齿</tooltip>**，在**原始分辨率**下进行 DLSS 来平滑边缘的抗锯齿方法。
 </def>
 </deflist>
 </def>
 
-<def title="FSR">
+<def title="FSR" id="fsr">
 
 **<tooltip term="FSR">FidelityFX 超级分辨率</tooltip>**，由 *AMD* 开发的一种升采样技术。相比较 DLSS 来说更为常规，但效果要比其他传统升采样方法好。
 </def>
 
-<def title="XeSS">
+<def title="XeSS" id="xess">
 
 **<tooltip term="XeSS">Xe 超级采样</tooltip>**，由*英特尔*开发的一种升采样技术。在其他平台上和其本家含有特定核心的平台上所使用的算法有所区别，因而在其本家平台上能够获得更好的效果。
 </def>

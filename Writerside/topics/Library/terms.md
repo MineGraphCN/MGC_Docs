@@ -193,7 +193,7 @@ Java 版游戏，在本文档中，也可以表示只能在 Java 版渲染模组
                 其唯一真正制作的优化工作是 <code>baked-entity-models</code>（烘焙实体模型），并将其提交给了 Sodium 以供所有人使用。</li>
             </list>
         </li>
-        <li>未来将允许开发者将 <a anchor="dlss" summary=""/> 或 <a anchor="fsr" summary=""/> 乃至<b>硬件加速光线追踪</b>引入到光影开发中，但是目前来说仍旧遥遥无期。</li>
+        <li>未来将允许开发者将 <a href="shaderTech.md" anchor="dlss" summary=""/> 或 <a href="shaderTech.md" anchor="fsr" summary=""/> 乃至<b>硬件加速光线追踪</b>引入到光影开发中，但是目前来说仍旧遥遥无期。</li>
     </list>
     <tip>它的名字来源于目前 Java 版所使用的渲染引擎 <i>Blaze3D</i>。</tip>
 </def>
