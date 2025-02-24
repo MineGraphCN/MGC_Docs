@@ -32,7 +32,7 @@
 
     <!--施工状态-->
 
-        <secondary-label id="old" name="⚠" color="red">这篇文档很长时间没有进行过订正，内容有过时。</secondary-label>
+        <secondary-label id="old" name="⚠" color="red">这篇文档很长时间没有进行过订正，内容可能有过时。</secondary-label>
         <secondary-label id="new" name="★" color="tangerine">这是最近添加的新文档。</secondary-label>
         <secondary-label id="latest" name="☆" color="tangerine">这篇文档中最近更新过。</secondary-label>
         <secondary-label id="wip" name="⛏" color="red">这篇文档处于施工中。</secondary-label>
@@ -98,7 +98,7 @@
         标签悬停文本
     </primary-label>
 
-    <primary-label id="warehouse" short-name="仓库" name="仓库重地，闲人免进" color="red">
+    <primary-label id="hidden" short-name="封闭施工" name="封闭施工，闲人免进" color="red">
         你是怎么访问到这个页面的？
     </primary-label>
 

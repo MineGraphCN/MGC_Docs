@@ -4,6 +4,14 @@
 
 如果无法解决或者有没有收录的问题，请到 [广场 - 🌹求助问答平台](https://pd.qq.com/s/ly2623ty) 寻求帮助。
 
+- [](troubleshootCommon.md){summary=""}
+- [](shaderpackLoading.md){summary=""}
+- [](resourcepackLoading.md){summary=""}
+- [](videoSettings.md){summary=""}
+- [](modsCompatibility.md){summary=""}
+
+{columns=3}
+
 <seealso style="cards">
     <category ref="related">
         <a href="PopOfScience.md" summary="主要的科普板块。"/>

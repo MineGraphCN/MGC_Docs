@@ -1,6 +1,6 @@
 # Writerside 快速上手
 
-<primary-label ref="dev"/>
+<primary-label ref="hidden"/>
 
 <show-structure depth="3"/>
 
