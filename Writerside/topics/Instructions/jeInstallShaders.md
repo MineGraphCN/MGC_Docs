@@ -15,7 +15,11 @@
 
 </tldr>
 
-[//]: # (帮助玩家安装光影，默认已经安装了游戏和加载器)
+## 准备工作
+
+确保你安装了任意光影加载器。
+
+> 如果你不知道如何安装游戏或加载器，请前往 [](jeInstallGame.md){summary=""} 。
 
 ## 检查光影
 
@@ -24,8 +28,6 @@
   <include from="uniforms.md" element-id="shaderpack_structure_simple"/>
   <include from="uniforms.md" element-id="recommend_unzipApp"/>
 - 确保不是原版光影或 Canvas 光影，否则你应当直接像 [安装资源包](jeInstallRP.md){summary=""} 那样安装光影。
-
-> 如果你不知道如何安装游戏和加载器，请前往 [](jeInstallGame.md){summary=""} 。
 
 ## 安装光影
 

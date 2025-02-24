@@ -35,7 +35,7 @@
         <secondary-label id="old" name="⚠" color="red">这篇文档很长时间没有进行过订正，内容有过时。</secondary-label>
         <secondary-label id="new" name="★" color="tangerine">这是最近添加的新文档。</secondary-label>
         <secondary-label id="latest" name="☆" color="tangerine">这篇文档中最近更新过。</secondary-label>
-        <secondary-label id="wip" name="🏗" color="red">这篇文档处于施工中。</secondary-label>
+        <secondary-label id="wip" name="⛏" color="red">这篇文档处于施工中。</secondary-label>
         <secondary-label id="port" name="↪" color="purple">这是一篇搬运的文档。</secondary-label>
 
 <!--章节类型-->

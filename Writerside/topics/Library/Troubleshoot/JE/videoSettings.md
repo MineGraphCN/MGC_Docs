@@ -168,9 +168,9 @@ Mipmap 类型
 
     ![云层被撕裂](cloud.png "云层被撕裂")
     > 同时注意将显卡驱动控制面板的该选项设置为 `应用程序控制的` 。  
-    > ![在 Nvidia 控制面板中切换各向异性过滤设置](nvidia_af_by_programs.png "在 Nvidia 控制面板中切换各向异性过滤设置")  
+    > ![在 NVIDIA 控制面板中切换各向异性过滤设置](nvidia_af_by_programs.png "在 Nvidia 控制面板中切换各向异性过滤设置")  
     > 或者直接将全局设置改为 `由 3D 应用程序决定` 。  
-    > ![在 Nvidia 控制面板中更改图像设置](nvidia_all_by_programs.png "在 Nvidia 控制面板中更改图像设置")
+    > ![在 NVIDIA 控制面板中更改图像设置](nvidia_all_by_programs.png "在 NVIDIA 控制面板中更改图像设置")
     > 
     {style="note"}
 

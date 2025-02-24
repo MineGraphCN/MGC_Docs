@@ -373,7 +373,7 @@ MSAA 是一种 [](shaderBasic.md#向前渲染法){summary=""} 抗锯齿。
 
 SMAA 是一种后处理抗锯齿。
 
-> 类似 MLAA 的算法还有 CMAA（保守形态抗锯齿），在《反恐精英2》中发光发热。
+> 类似 MLAA 的算法还有 <tooltip term="CMAA">CMAA</tooltip>（保守形态抗锯齿），其第二代版本（CMAA2）在《反恐精英2》中发光发热。
 </def>
 </deflist>
 
@@ -448,7 +448,7 @@ TAA 是一种在向前渲染进行抖动，并在后处理进行平滑的抗锯�
 <deflist>
 <def title="DLSS" id="dlss">
 
-**<tooltip term="DLSS">深度学习超级采样</tooltip>**，由*英伟达*开发的一种升采样技术。通过降低分辨率并调用显卡 <sup>Nvidia</sup> 的<tooltip term="TCore">**张量核心**</tooltip>来猜测原始分辨率下该处像素的内容。
+**<tooltip term="DLSS">深度学习超级采样</tooltip>**，由 *英伟达* 开发的一种升采样技术。通过降低分辨率并调用显卡 <sup>NVIDIA</sup> 的<tooltip term="TCore">**张量核心**</tooltip>来猜测原始分辨率下该处像素的内容。
 - 在 2.0 以前，DLSS 主要是靠已有画面内容来“猜”剩下的场景应该是何样。
 - 自 2.0 开始，DLSS 主要是根据场景运动信息和历史帧来判断剩下的场景是何样，其计算方法从单一的空间域上升到了**时空域**，不再依赖于针对单个游戏的训练，效果也比 1.0 好得多。
 <deflist>
@@ -466,7 +466,7 @@ TAA 是一种在向前渲染进行抖动，并在后处理进行平滑的抗锯�
 
 <def title="XeSS" id="xess">
 
-**<tooltip term="XeSS">Xe 超级采样</tooltip>**，由*英特尔*开发的一种升采样技术。在其他平台上和其本家含有特定核心的平台上所使用的算法有所区别，因而在其本家平台上能够获得更好的效果。
+**<tooltip term="XeSS">Xe 超级采样</tooltip>**，由 *英特尔* 开发的一种升采样技术。在其他平台上和其本家含有特定核心的平台上所使用的算法有所区别，因而在其本家平台上能够获得更好的效果。
 </def>
 </deflist>
 
