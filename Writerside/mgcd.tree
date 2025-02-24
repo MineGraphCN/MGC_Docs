@@ -9,8 +9,6 @@
     <toc-element topic="Community.md">
     </toc-element>
     <toc-element topic="whatsNew.md"/>
-    <toc-element href="https://github.com/NakiriRuri/Minecraft-Shaders-zh_CN-Lang-Files" toc-title="光影汉化文件"/>
-    <toc-element href="https://mgcd.hypercol.com/works/" toc-title="作品收录（旧版MGCD）"/>
     <toc-element topic="betterRTX.md"/>
     <toc-element toc-title="安装指南">
         <toc-element topic="jeInstallGame.md"/>
@@ -81,5 +79,6 @@
         <toc-element topic="2021-autumn.md"/>
     </toc-element>
     <toc-element topic="About.md"/>
+    <toc-element href="https://mgcd.hypercol.com/works/" toc-title="作品收录（旧版MGCD）"/>
     <toc-element hidden="true" topic="wsFormat.md"/>
 </instance-profile>
