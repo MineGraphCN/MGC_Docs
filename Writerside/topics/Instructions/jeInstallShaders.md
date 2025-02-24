@@ -1,4 +1,4 @@
-# Java 版光影包
+# Java 版光影安装指南
 
 <primary-label ref="manual"/>
 
@@ -23,9 +23,9 @@
 - 打开压缩包或文件夹后应**有名为 `shaders` 的文件夹。**
   <include from="uniforms.md" element-id="shaderpack_structure_simple"/>
   <include from="uniforms.md" element-id="recommend_unzipApp"/>
-- 确保不是原版光影或 Canvas 光影，否则你应当直接像 [安装资源包](jeInstallRP.md){summary=""} 那样安装。
+- 确保不是原版光影或 Canvas 光影，否则你应当直接像 [安装资源包](jeInstallRP.md){summary=""} 那样安装光影。
 
-> 如果你不知道如何安装游戏和加载器，请前往 [游戏和光影加载器安装教程](jeInstallGame.md){summary=""} 。
+> 如果你不知道如何安装游戏和加载器，请前往 [](jeInstallGame.md){summary=""} 。
 
 ## 安装光影
 

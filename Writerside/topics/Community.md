@@ -25,7 +25,7 @@
   - 可以在申请身份组的同时申请获取作品子频道，用于**推送作品的宣传视频、版本更新消息**以及**接收 BUG 的反馈**。
 - 社区已经入驻了多少作品？
   
-  可前往 [作品收录（旧版 MGCD）](https://mgcd.hypercol.com/works/) 了解。
+  可前往 [作品收录（旧版 MGCD）](https://mgcd.hypercol.com/works/) 和 [图形站](https://minegraph.cn) 了解。
 - 社区在哪里？
 
   MGC 最初建于开黑啦（现名 Kook），于 2021 年 11 月迁移至腾讯频道。

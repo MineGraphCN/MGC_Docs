@@ -5,15 +5,9 @@
 <secondary-label ref="beDoc"/>
 <secondary-label ref="modDoc"/>
 
-[Bilibili - BetterRTX实验分支 | 发光实体效果展示 - Defined PBR v1.2.0正式版](https://b23.tv/BV1Z94y1H74o)
-
-[//]: # (<procedure title="Bilibili 演示视频" collapsible="true">)
-
-[//]: # (<iframe src="//player.bilibili.com/player.html?aid=375588815&bvid=BV1so4y1m7U5&cid=339262048&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"/>)
-
-[//]: # (</procedure>)
-
-<!--如果将来 Writerside 支持了 <iframe/> 再取消上面的注释-->
+<procedure title="点击展开宣传视频（Bilibili）" collapsible="true" default-state="collapsed">
+<inline-frame src="//player.bilibili.com/player.html?bvid=BV1Z94y1H74o&amp;autoplay=0" width="640px" height="360px"/>
+</procedure>
 
 ## 前言
 

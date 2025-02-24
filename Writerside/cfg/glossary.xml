@@ -14,7 +14,7 @@
     <term name="SSR">Screen-Space Reflection</term>
     <term name="SSS">Sub-Surface Scattering</term>
     <term name="SSSh">Screen-Space Shadow</term>
-    <term name="SVGF">Spatiotemporal Variance-Guided Filtering</term>
+    <term name="SVGF">Spatiotemporal Variance-Guided Filter</term>
     <term name="RSM">Reflective Shadow Maps</term>
     <term name="LPV">Light Propagation Volumes</term>
     <term name="PT">Path Tracing</term>
@@ -63,4 +63,5 @@
     <term name="NaN">Not a Number</term>
     <term name="AA">Anti-Aliasing</term>
     <term name="AF">Anisotropic Filtering</term>
+    <term name="SSBO">Shader Storage Buffer Objects</term>
 </terms>

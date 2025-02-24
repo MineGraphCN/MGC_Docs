@@ -2,7 +2,9 @@
 
 <primary-label ref="manual"/>
 
-这篇文档列出了整个图书馆中可能会出现的术语，这些术语或常见或罕见，我们会尽可能多地收录。在遇到不能理解的术语时，可以到此文档中进行查阅。
+这里列出了整个图书馆中可能会出现的术语，这些术语或常见或罕见，我们会尽可能多地收录。在遇到不能理解的术语时，可以到此文档中进行查阅。
+
+一些术语是临时简单存放，若未来为这些术语单开了解释文档，则会从这里移除。
 
 如果你有更多想要提供的术语，或者发现了术语中的疏漏，可以在 [GitHub](https://github.com/MineGraphCN/MGC_Docs/issues) 上为我们提交 Issue 和 Pull Request。
 
@@ -191,7 +193,7 @@ Java 版游戏，在本文档中，也可以表示只能在 Java 版渲染模组
                 其唯一真正制作的优化工作是 <code>baked-entity-models</code>（烘焙实体模型），并将其提交给了 Sodium 以供所有人使用。</li>
             </list>
         </li>
-        <li>未来将允许开发者将 <a anchor="dlss" summary=""/> 或 <a anchor="fsr" summary=""/> 乃至<b>硬件加速光线追踪</b>引入到光影开发中，但是目前来说仍旧遥遥无期。</li>
+        <li>未来将允许开发者将 <a href="shaderTech.md" anchor="dlss" summary=""/> 或 <a href="shaderTech.md" anchor="fsr" summary=""/> 乃至<b>硬件加速光线追踪</b>引入到光影开发中，但是目前来说仍旧遥遥无期。</li>
     </list>
     <tip>它的名字来源于目前 Java 版所使用的渲染引擎 <i>Blaze3D</i>。</tip>
 </def>
@@ -900,42 +902,5 @@ $\int_{\Omega} \rm{d}\omega_i$ 表示在法半球所有方向上计算结果的�
 
 </def>
 </deflist>
-</def>
-</deflist>
-
-#### 抗锯齿／升采样技术相关
-
-参阅 [](shaderTech.md#AA){summary=""}
-
-<deflist>
-<def id="dlss">
-<title><tooltip term="DLSS">DLSS</tooltip></title>
-
-**深度学习超级采样**，由*英伟达*开发的一种升采样技术。通过降低分辨率并调用显卡 <sup>Nvidia</sup> 的<tooltip term="TCore">**张量核心**</tooltip>来猜测原始分辨率下该处像素的内容。
-- 在 2.0 以前，DLSS 主要是靠已有画面内容来“猜”剩下的场景应该是何样。
-- 自 2.0 开始，DLSS 主要是根据场景运动信息和历史帧来判断剩下的场景是何样，其计算方法从单一的空间域上升到了**时空域**，不再依赖于针对单个游戏的训练，效果也比 1.0 好得多。
-
-<deflist>
-<def id="dlaa">
-<title><tooltip term="DLAA">DLAA</tooltip></title>
-
-**深度学习抗锯齿**，在**原始分辨率**下进行 DLSS 来平滑边缘的抗锯齿方法。
-
-</def>
-</deflist>
-</def>
-
-<def id="fsr">
-<title><tooltip term="FSR">FSR</tooltip></title>
-
-**FidelityFX 超级分辨率**，由 *AMD* 开发的一种升采样技术。相比较 DLSS 来说更为常规，但效果要比其他传统升采样方法好。
-
-</def>
-
-<def id="xess">
-<title><tooltip term="XeSS">XeSS</tooltip></title>
-
-**Xe 超级采样**，由*英特尔*开发的一种升采样技术。在其他平台上和其本家含有特定核心的平台上所使用的算法有所区别，因而在其本家平台上能够获得更好的效果。
-
 </def>
 </deflist>

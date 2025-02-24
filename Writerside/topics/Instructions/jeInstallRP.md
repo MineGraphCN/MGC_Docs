@@ -1,4 +1,4 @@
-# Java 版资源包
+# Java 版资源包安装指南
 
 <primary-label ref="manual"/>
 
@@ -20,7 +20,7 @@
 - 如果你所使用的资源包支持 [法线纹理](resourcepackBasic.md#法线纹理){summary=""} 和 [反射纹理](resourcepackBasic.md#反射纹理){summary=""} ，那么你需要使用一个支持法线和 [PBR 着色](terms.md#pbr){summary=""} 的光影。
 - 如果你所使用的资源包有模组扩展，你需要正确安装 Forge 或 Fabric 。
 
-> 如果你不知道如何安装光影，请前往 [光影安装教程](jeInstallShaders.md){summary=""} 。
+> 如果你不知道如何安装光影，请前往 [](jeInstallShaders.md){summary=""} 。
 
 ## 检查资源包 {id="check"}
 

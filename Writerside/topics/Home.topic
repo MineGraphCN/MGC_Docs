@@ -39,14 +39,14 @@
                 <group>
                     <title>探索知识库</title>
                     <a href="terms.md"/>
-                    <a href="irisAsOf.md" summary=""/>
-                    <a href="shaderTech.md" summary=""/>
+                    <a href="irisAsOf.md" summary="在 Iris 环境下还原 OptiFine 功能的模组"/>
+                    <a href="shaderTech.md" summary="罗列了各种光影技术"/>
                 </group>
                 <group>
                     <title>最近更新</title>
-                    <a href="rayTracing.md" summary="">知识库 - 光线追踪专题</a>
-                    <a href="raytracingCorrection.md" summary="">误区纠正 - 光线追踪</a>
-                    <a href="shaderBasic.md" summary=""/>
+                    <a href="rayTracing.md" summary="更新了光线追踪特性表和并添加了一些新内容">知识库 - 光线追踪专题</a>
+                    <a href="raytracingCorrection.md" summary="更新了光栅化与光线追踪的关系以及添加了更多判断光线追踪的方法">误区纠正 - 光线追踪</a>
+                    <a href="shaderHistoryBE.md" summary="优化了行文"/>
                 </group>
             </links>
         </misc>
