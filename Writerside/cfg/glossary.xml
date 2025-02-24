@@ -63,4 +63,5 @@
     <term name="NaN">Not a Number</term>
     <term name="AA">Anti-Aliasing</term>
     <term name="AF">Anisotropic Filtering</term>
+    <term name="SSBO">Shader Storage Buffer Objects</term>
 </terms>

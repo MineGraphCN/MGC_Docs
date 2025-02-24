@@ -1,15 +1,17 @@
-# Java 版游戏和光影加载器
+# Java 版游戏和光影加载器安装指南
 
 <primary-label ref="manual"/>
 
 <secondary-label ref="new"/>
 <secondary-label ref="jeDoc"/>
 
-<tldr>
+<var name="topic">帮助新手从零开始安装 Java、游戏和加载器的文档</var>
+<var name="goal">你在寻找安装光影的教程</var>
+<var name="target_name"/>
+<var name="target_topic">jeInstallShaders.md</var>
+<var name="target_description"/>
 
-帮助新手从零开始安装游戏和加载器
-
-</tldr>
+<include from="uniforms.md" element-id="h_note_readingTips"/>
 
 ## 安装 Java {id="installJava"}
 
@@ -38,33 +40,41 @@ _Java_ 版，顾名思义，要想运行游戏，Java 环境是不可或缺的�
 
 Java 版拥有众多的第三方启动器，一个顺手的启动器可以省下不少功夫。
 
+在此我们推荐几款较为常用的启动器。
+
 </tldr>
 
-推荐的启动器：
-
 官方启动器
-: 
+: [从官网获取](https://www.minecraft.net/zh-hans/download) [从微软商店获取](https://apps.microsoft.com/detail/9PJ8266BHFWN?hl=neutral&gl=HK&ocid=pdpshare)
 - 没有特色就是最大的特色。~~你猜为什么这么多第三方启动器？~~
 - 不支持离线模式，不支持嵌入式安装。
-- [从官网获取](https://www.minecraft.net/zh-hans/download)
-- [从微软商店获取（需要账户已购买游戏）](https://apps.microsoft.com/detail/9PJ8266BHFWN?hl=neutral&gl=HK&ocid=pdpshare)
+- 未购买前只能游玩试玩模式
+- 官方洁癖专用启动器
 
 HMCL 启动器
-:
-- 在启动器内下载 CurseForge 和 Modrinth 上的模组
-- 支持**嵌入式安装**加载器，**且可随意更换**
-- 支持**离线模式**和第三方验证服务器
+: [从官网获取](https://hmcl.huangyuhui.net/download)
+- 支持在启动器内下载 CurseForge 和 Modrinth 上的模组
+- 支持嵌入式安装加载器，且可随意更换
+- 支持离线模式和第三方验证服务器
+- 支持导入整合包
 - 镜像源加速下载
-- [从官网获取](https://hmcl.huangyuhui.net/download)
+- 国产启动器
 
 PCL 2 启动器
-:
+: [从爱发电获取免费版](https://afdian.com/p/0164034c016c11ebafcb52540025c377)
 - 在启动器内下载 CurseForge 和 Modrinth 上的模组
-- 支持**嵌入式安装**加载器（不可更换）
-- 支持**离线模式**和第三方验证服务器
+- 支持嵌入式安装加载器（不可更换）
+- 支持离线模式和第三方验证服务器
+- 支持导入整合包
 - 镜像源加速下载
+- 国产启动器
 - ~~也许无聊的时候可以玩玩启动器？~~
-- [从爱发电获取（免费版）](https://afdian.com/p/0164034c016c11ebafcb52540025c377)
+
+Multi MC 启动器
+: [从官网获取](https://multimc.org/#Download)
+- 支持在启动器内安装加载器
+- 支持导入整合包
+- 便捷的版本管理
 
 ### 什么是离线模式？
 
@@ -76,7 +86,11 @@ PCL 2 启动器
 
 ## 安装游戏
 
+<tldr>
+
 安装教程以 HMCL 的嵌入式安装（最简单）为例。
+
+</tldr>
 
 > 将你的第三方启动器放入一个文件夹，它们支持添加已有路径，今后的游戏都可以从这里管理和运行。
 
@@ -86,6 +100,9 @@ PCL 2 启动器
 <var name="loader">OptiFine</var>
 <var name="site">OptiFine 官网</var>
 <var name="link">https://optifine.net/downloads</var>
+
+如果你是新手，可以先尝试安装最简单的仅安装 OptiFine。
+
 需要安装其他模组吗？
 <tabs group="otherMods">
 <tab title="不需要">
@@ -102,6 +119,9 @@ PCL 2 启动器
 </procedure>
 </tab>
 <tab title="Forge 模组">
+
+部分 Forge 模组可能和 OptiFine 存在未知冲突。  
+如果你的游戏无法启动，请尝试删除其他模组或卸载 Forge。
 <procedure type="steps">
 <var name="img">getOF.png</var>
 <var name="mod">OptiFine</var>
@@ -128,10 +148,15 @@ PCL 2 启动器
 </procedure>
 </tab>
 <tab title="Fabric 模组">
+
+要在 Fabric 上运行 OptiFine 我们需要 OptiFabric 作为桥梁，兼容性较差，与多数模组存在冲突。  
+如果你的游戏无法启动，请尝试删除其他模组或卸载 Fabric。
 <procedure type="steps">
+<var name="site">OptiFabric 的 CurseForge 页面</var>
+<var name="link">https://www.curseforge.com/minecraft/mc-mods/optifabric/files</var>
 <var name="img">getOFa.png</var>
 <var name="mod">OptiFabric</var>
-<var name="attention">其所支持的最新游戏版本</var>
+<var name="attention">其所支持的最新游戏版本（你也可以在启动器中直接下载）</var>
 <include from="jeInstallGameContents.md" element-id="getMod"/>
 <br/>
 
@@ -146,6 +171,7 @@ PCL 2 启动器
 <include from="jeInstallGameContents.md" element-id="tip_of_checkVersion"/>
 <br/>
 <include from="jeInstallGameContents.md" element-id="historyVersion"/>
+<var name="loader">OptiFabric 和 OptiFine</var>
 <include from="jeInstallGameContents.md" element-id="startMod"/>
 <var name="loader">Fabric</var>
 <var name="img">installFabric.png</var>
@@ -162,7 +188,7 @@ PCL 2 启动器
 <include from="jeInstallGameContents.md" element-id="wait"/>
 <var name="img">mainPageFabric.png</var>
 <var name="img2">modPageFabric.png</var>
-<var name="mod">OptiFabric 和 Iris</var>
+<var name="mod">OptiFabric 和 OptiFine</var>
 <include from="jeInstallGameContents.md" element-id="mainPage"/>
 <include from="jeInstallGameContents.md" element-id="finish"/>
 </procedure>
@@ -175,6 +201,9 @@ PCL 2 启动器
 <var name="site">Iris 的 Modrinth 页面</var>
 <var name="link">https://modrinth.com/mod/iris/versions</var>
 
+Iris 能在非 Forge 的加载器环境下运行，且与模组的兼容性较好，这里以 Fabric 作为演示。  
+Iris 对一些光影存在兼容性问题，若你想用的光影没有声明需要 Iris 独占特性，我们建议你安装 OptiFine。  
+若你想要在 Forge 下运行光影且其他模组与 OptiFine 存在冲突，可以尝试 Oculus。
 <procedure type="steps">
 <include from="jeInstallGameContents.md" element-id="startLoader"/>
 <br/>
@@ -227,15 +256,32 @@ PCL 2 启动器
 </tab>
 </tabs>
 
+若你需要手动下载加载器，这里给出了各加载器的官方网站：
+
+- [Forge](https://files.minecraftforge.net/net/minecraftforge/forge/)
+- [Fabric](https://fabricmc.net/)
+- 
+- [NeoForge](https://neoforged.net/)
+- [Quilt](https://quiltmc.org/en/)
+
+{columns=3}
+
 ## 配置游戏
 
-在启动游戏之前，检查你的启动器设置：
+<tldr>
 
+在启动游戏之前，你应该检查你的启动器设置，以确保能流畅地体验游戏。
+
+</tldr>
 <tabs group="launcher">
     <tab title="HMCL" group-key="hmcl">
         <procedure>
+<step>
+
+点击版本进入游戏管理。
 
 ![游戏设置](check_hmcl_1.png "游戏设置")
+</step>
 <step>
 
 - 如果你的游戏目录有其他游戏版本，并且你希望单独对这个版本进行设置，勾选 `启用游戏特定设置` 。
@@ -339,6 +385,6 @@ Java 路径
 </tab>
 </tabs>
 
-启动游戏后，配置视频设置，参阅 [](videoSettings.md){summary=""} 。
+启动游戏后，你可能需要配置视频设置，参阅 [](videoSettings.md){summary=""} 。
 
-视频设置配置完成后，参阅 [光影安装教程](jeInstallShaders.md){summary=""} 和 [资源包安装教程](jeInstallRP.md){summary=""} 。
+参阅 [](jeInstallShaders.md){summary=""} 和 [](jeInstallRP.md){summary=""} 以安装光影和资源包。
