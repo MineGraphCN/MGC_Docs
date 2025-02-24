@@ -60,9 +60,9 @@
 
 根据已知的显卡型号和系统前往官网下载并安装即可，如果不确定，他们也提供了对应的检查工具。
 
-- [Nvidia（包含自动检测工具）](https://www.nvidia.cn/geforce/drivers/)
+- [英伟达（包含自动检测工具）](https://www.nvidia.cn/geforce/drivers/)
 - [AMD（包含自动检测工具）](https://www.amd.com/zh-hans/support)
-- [Intel](https://www.intel.cn/content/www/cn/zh/search.html#sort=relevancy&f:@tabfilter=[Downloads]&f:@stm_10385_zh=[%E6%98%BE%E5%8D%A1])
+- [英特尔](https://www.intel.cn/content/www/cn/zh/search.html#sort=relevancy&f:@tabfilter=[Downloads]&f:@stm_10385_zh=[%E6%98%BE%E5%8D%A1])
   - [自动检测工具](https://www.intel.cn/content/www/cn/zh/support/detect.html)
 
 安装完毕之后，你应在**设备管理器**中看到对应的显卡。
@@ -83,13 +83,13 @@
 
 在 Windows 10 以及更老的版本中，你需要打开 `驱动程序控制面板` ，并寻找类似 `程序设置` 的选项卡。
 
-- Nvidia：
-![在 Nvidia 控制面板中更改 GPU](change_gpu_in_nvidia.png "在 Nvidia 控制面板中更改 GPU")
+- 英伟达：
+![在 NVIDIA 控制面板中更改 GPU](change_gpu_in_nvidia.png "在 NVIDIA 控制面板中更改 GPU")
 - AMD：  
-  > 由于编者中没有对应的 GPU，此条目图片我们暂时无法提供，请根据 Nvidia 控制面板截图所示，在 AMD 控制面板中寻找对应选项。
+  > 由于编者中没有对应的 GPU，此条目图片我们暂时无法提供，请根据 NVIDIA 控制面板截图所示，在 AMD 控制面板中寻找对应选项。
   >
   {style="note"}
-- Intel 独立显卡 Intel Arc 系列极其罕见，大多数时候都是核心显卡，安装驱动之后不需要设置就可以直接使用。
+- 英特尔独立显卡 Arc 系列极其罕见，大多数时候都是核心显卡，安装驱动之后不需要设置就可以直接使用。
 
 [//]: # (TODO)
 

@@ -20,7 +20,7 @@
   : 
   - 删除 `S:skySupportedDimensions <0>` 中的 `0` ；
   - 在 `S:weakSkyRenders` 中添加 `0` 。它们应该看起来像这样：
-  ```yaml
+  ```
   S:skySupportedDimensions <>
   S:weakSkyRenders <0>
   ```

@@ -1,4 +1,4 @@
-# Java 版游戏和光影加载器安装指南
+# Java 版游戏和加载器安装指南
 
 <primary-label ref="manual"/>
 
@@ -78,13 +78,13 @@ Multi MC 启动器
 
 ### 什么是离线模式？
 
-离线模式下无法访问开启了正版验证的服务器，无法接入 Mojang 屏蔽词审查，本质上就是盗版模式。
+离线模式下无法访问开启了正版验证的服务器和领域服，无法接入聊天审查，无法设置自定义皮肤（除非使用第三方验证服务器或更改资源包），本质上就是盗版模式。
 
 ### 什么是嵌入式安装？
 
 嵌入式安装需要启动器支持。可以将安装了加载器的版本和原版合并为同一个版本。
 
-## 安装游戏
+## 安装游戏 {id="installGame"}
 
 <tldr>
 
@@ -105,7 +105,7 @@ Multi MC 启动器
 
 需要安装其他模组吗？
 <tabs group="otherMods">
-<tab title="不需要">
+<tab title="不需要（纯净安装）">
 <procedure type="steps">
 <include from="jeInstallGameContents.md" element-id="startLoader"/>
 <br/>
@@ -115,13 +115,15 @@ Multi MC 启动器
 <var name="img">selectOF.png</var>
 <var name="ver">最新版</var>
 <include from="jeInstallGameContents.md" element-id="selectLoader"/>
+<br/>
+<note>若没有任何版本，请尝试勾选 <code>快照</code> ，若仍然没有，请按照第二步提示操作。</note>
 <include from="jeInstallGameContents.md" element-id="finish"/>
 </procedure>
 </tab>
 <tab title="Forge 模组">
 
 部分 Forge 模组可能和 OptiFine 存在未知冲突。  
-如果你的游戏无法启动，请尝试删除其他模组或卸载 Forge。
+如果你的游戏无法启动，请尝试删除其他模组或卸载 Forge 改用纯净安装。
 <procedure type="steps">
 <var name="img">getOF.png</var>
 <var name="mod">OptiFine</var>
@@ -149,8 +151,8 @@ Multi MC 启动器
 </tab>
 <tab title="Fabric 模组">
 
-要在 Fabric 上运行 OptiFine 我们需要 OptiFabric 作为桥梁，兼容性较差，与多数模组存在冲突。  
-如果你的游戏无法启动，请尝试删除其他模组或卸载 Fabric。
+要想在 Fabric 上运行 OptiFine 需要 OptiFabric 作为桥梁。兼容性较差，与多数模组存在冲突。  
+如果你的游戏无法启动，请尝试删除其他模组或卸载 Fabric 改用纯净安装。
 <procedure type="steps">
 <var name="site">OptiFabric 的 CurseForge 页面</var>
 <var name="link">https://www.curseforge.com/minecraft/mc-mods/optifabric/files</var>
