@@ -1,5 +1,7 @@
 # 资源包 技术科普
 
+<primary-label ref="hidden"/>
+
 <show-structure depth="2"/>
 
 [//]: # (TODO)

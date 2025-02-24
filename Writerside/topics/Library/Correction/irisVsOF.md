@@ -1,5 +1,9 @@
 # Iris vs. OptiFine
 
+<primary-label ref="hidden"/>
+
+[//]: # (TODO)
+
 ## Iris 性能真的比 OF 好吗
 
 ## Iris 和 OptiFine 的兼容策略 {id="irisComp"}

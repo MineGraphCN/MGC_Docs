@@ -2,6 +2,15 @@
 
 这个板块旨在为**大众普及**图形学相关的知识。
 
+- [](shaderBasic.md){summary=""}
+- [](shaderHistoryJE.md){summary=""}
+- [](shaderTech.md){summary=""}
+- [](resourcepackBasic.md){summary=""}
+- [](shaderHistoryBE.md){summary=""}
+- [](rayTracing.md){summary=""}
+
+{columns=3}
+
 <seealso style="cards">
     <category ref="related">
         <a href="Correction.md" summary="总结了一些玩家中有歧义的图形学观点。"/>
