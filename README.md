@@ -8,7 +8,7 @@ Minecraft Graphics Community，或称 MineGraph。是一个 **Minecraft 图形�
 
 1. Fork 本仓库并克隆至本地；
 2. 使用 [Writerside IDE](https://www.jetbrains.com/zh-cn/writerside/download/) 打开；
-3. 参考 `/Writerside/wsFormat.md` 进行内容创作；
+3. 参考 `\Writerside\topics\wsFormat.md` 进行内容创作；
 4. 提交 Pull Request。
 
 ## 联系我们
