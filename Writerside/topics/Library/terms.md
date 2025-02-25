@@ -30,15 +30,15 @@
 `代码`
 : 表示这是程序运行时显示/日志/代码内容，或计算机行为。  
 `代码块内容` 的约定：
-    - `<尖括号>` ：由尖括号括起来的内容表示在这个区域内应该填写的内容。例：`<文件名>.jpg` ，其中 `<文件名>` 部分可以使用任意**符合尖括号内定义**的内容替换，例：`图片1.jpg` 。
-        - 在替换时应当将尖括号**一同替换**。
-    - `[方括号]` ：由方括号括起来的内容是一个可填的数字，例：`vec[N]` 可以替换为 `vec3` 。
-        - 在数组中，方括号不需要被一同替换，此时，例：`float[a][b]` 可以替换为 `float[1][3]` 。
-        - 我们约定**替换**方括号的字母使用**大写**，**不替换**方括号的字母使用**小写**。
-    - `函数()` ：函数分为原型和调用两种情况。
-        - 当函数和参数含有 [变量类型](#变量类型和修饰符){summary=""} 时，表示这是函数的**原型**。例：`float floor(float num)` 。
-        - 当函数内参数不含变量类型且含有 `<尖括号>` 时，表示我们**调用函数**时会在这个函数内填何种参数。例：`max(<numA>, <numB>)` 。
-            - 有些函数有多个可以传入的变量类型，此时会在变量类型处使用 `<尖括号>` ，这种情况下仍然表示为函数的原型。例： `min(<int | float> numA, <int | float> numB)` 。
+- `<尖括号>` ：由尖括号括起来的内容表示在这个区域内应该填写的内容。例：`<文件名>.jpg` ，其中 `<文件名>` 部分可以使用任意**符合尖括号内定义**的内容替换，例：`图片1.jpg` 。
+    - 在替换时应当将尖括号**一同替换**。
+- `[方括号]` ：由方括号括起来的内容是一个可填的数字，例：`vec[N]` 可以替换为 `vec3` 。
+    - 在数组中，方括号不需要被一同替换，此时，例：`float[a][b]` 可以替换为 `float[1][3]` 。
+    - 我们约定**替换**方括号的字母使用**大写**，**不替换**方括号的字母使用**小写**。
+- `函数()` ：函数分为原型和调用两种情况。
+    - 当函数和参数含有 [变量类型](#变量类型和修饰符){summary=""} 时，表示这是函数的**原型**。例：`float floor(float num)` 。
+      - 有些函数有多个可以传入的变量类型，此时会在变量类型处使用 `<尖括号>` 。例如 `min(<int | float> numA, <int | float> numB)` 。
+    - 当函数内参数仅有变量类型时，表示我们**调用函数**时会在这个函数内填何种参数。例：`max(float, float)` 。
 
 <shortcut>按键</shortcut>
 : 表示这是键盘或者鼠标的按键
@@ -154,18 +154,18 @@ Java 版游戏，在本文档中，也可以表示只能在 Java 版渲染模组
 </def>
 
 <def id="sodium">
-    <title>Sodium <sup>Fabric</sup></title>
+    <title>Sodium <sup>Fabric / Quilt / NeoForge</sup></title>
     意为<b>钠</b>，伴随 Fabric 出现的新兴优化模组，旨在优化 <b>JE 1.14</b> 后的游戏性能。
     <tip>伴随钠而出现的许多优化模组开始仿效其使用化学元素来命名，被玩家们称为元素周期表／元素全家桶。</tip>
 </def>
 
 <def id="iris">
-<title>Iris <sup>Fabric</sup></title>
+<title>Iris <sup>Fabric / Quilt / NeoForge</sup></title>
     伴随 Fabric 出现的新兴光影模组。由于 OptiFine 闭源导致<b>很多模组无法兼容</b>，而很多玩家想要在整合包中运行光影，Iris 由此而生。
     <list>
         <li>
             如今 Iris 已经在着手支持独占功能，并且与 Sodium 深度绑定。
-            <tip>然而 Sodium 本身的兼容性并不好，通常需要依靠额外的模组如 <b>Indium</b>（铟）来确保其兼容性。</tip>
+            <tip>然而 Sodium 本身的兼容性并不好，通常需要依靠额外的模组如 <b>Indium</b>（铟）来确保其兼容性，因此 Iris 本身的兼容性现在就不得而知了。</tip>
         </li>
     </list>
 </def>
@@ -173,8 +173,6 @@ Java 版游戏，在本文档中，也可以表示只能在 Java 版渲染模组
 <def id="oculus">
     <title>Oculus <sup>Forge</sup></title>
     Iris 的 Forge 分支，旨在提供与 Iris 一样优秀的模组兼容性。
-
-> 然而事实上…
 </def>
 
 <def id="canvas">
@@ -199,10 +197,10 @@ Java 版游戏，在本文档中，也可以表示只能在 Java 版渲染模组
 </def>
 
 <def id="focal">
-    <title>Focal Engine <sup>Forge / Fabric</sup></title>
+    <title>Focal Engine <sup>所有加载器</sup></title>
     由 <i>Continuum</i> 研发的渲染模组。
     <list>
-        <li>目前是 OptiFine 的增强模组，主要用于他们自己的光影包 <b>Continuum 2.1 | RT</b> 的代码支持、加密和联网验证，同时支持 <b>Stratum</b> 的安装。</li>
+        <li>目前是 OptiFine 的增强模组，主要用于他们自己的光影包 <b>Continuum 2.1 / RT</b> 的代码支持、加密和联网验证，同时支持 <b>Stratum</b> 的安装。</li>
         <li>更长远的目标是独立于 OptiFine 在 Vulkan 上实现光影渲染，给其他作者提供加密和联网验证及其他支持，并引入<b>硬件加速光线追踪</b>。</li>
     </list>
     <tip>它有一个前身名为 <b>Nova Render</b>。由于核心开发人员的离开，这个模组独立了出来，但是很快没了下文。</tip>
@@ -231,8 +229,12 @@ Java 版游戏，在本文档中，也可以表示只能在 Java 版渲染模组
 </def>
 
 <def title="向量" id="向量">
-    也称矢量，多个标量构成的<b>有向</b>的量。
-    <tip>在 <a anchor="glsl" summary="">GLSL</a> 中，我们使用形如 <code>vec3(1.0, 0.2, 3.5)</code> 的方式来表示向量。</tip>
+
+也称矢量，多个标量构成的**有向**的量。
+
+参数量相等的向量称为同维向量。
+
+<tip>在 <a anchor="glsl" summary="">GLSL</a> 中，我们使用形如 <code>vec3(1.0, 0.2, 3.5)</code> 的方式来表示三维向量。</tip>
 </def>
 
 <def title="模长" id="模长">
@@ -255,7 +257,7 @@ Java 版游戏，在本文档中，也可以表示只能在 Java 版渲染模组
 两个向量运算为一个标量，得到的值称为内积。
 $$ \vec{a} \cdot \vec{b} = n $$
 
-> 算法详见 [](#矩阵乘法){summary=""} 。
+> 见 [](#矩阵乘法){summary=""} 。
 </def>
 
 <def title="叉乘" id="叉乘">
@@ -270,8 +272,9 @@ $$
 </def>
 
 <def title="向量的普通四则运算" id="向量的普通四则运算">
-将两个<b>同维</b>向量的对应分量或一个向量的所有分量与一个标量进行四则运算。
-<code-block lang="tex">
+
+将两个**同维**向量的对应分量或一个向量的所有分量与一个标量进行四则运算。
+$$
     (a, b, c)
     \begin{bmatrix}
     + \\
@@ -288,7 +291,22 @@ $$
     (a \times x, b \times y, c \times z) & (a \times p, b \times p, c \times p) \\
     (a \div x, b \div y, c \div z) & (a \div p, b \div p, c \div p)
     \end{array} \right]
-</code-block>
+$$
+</def>
+
+<def title="矩阵" id="矩阵">
+
+形如
+$
+\begin{bmatrix}
+a & b & c \\
+d & e & f
+\end{bmatrix}
+$
+由多个标量按长方排列而成的阵列称为矩阵。
+
+行列相等的矩阵称为方阵，N 维向量的本质是一个 $N$ 行 $1$ 列的矩阵。
+
 </def>
 
 <def title="矩阵乘法" id="矩阵乘法">
@@ -296,8 +314,8 @@ $$
 矩阵乘法是矩阵间的**有序**乘法。
 
 矩阵乘法中**左侧**矩阵的**列**必须等于**右侧**矩阵的**行**，做积所得矩阵为**右侧**矩阵的**列**和**左侧**矩阵的**行**，即：一个 $A$ 行 $C$ 列的矩阵与一个 $C$ 行 $B$ 列矩阵相乘，所得矩阵为 $A$ 行 $B$ 列。  
-当向量与矩阵做积时，应该将向量视作一个 1 列的矩阵：
-<code-block lang="tex">
+当向量与矩阵做积时，应该将向量视作一个 $1$ 列的矩阵：
+$$
 \begin{bmatrix}
 a & b & c \\
 d & e & f
@@ -317,9 +335,9 @@ ax + by + cz = u \\
 dx + ey + fz = v
 \end{pmatrix}
 = (u, v)^T
-</code-block>
+$$
 当向量与向量进行点乘时，实际上就是进行了矩阵乘法：
-<code-block lang="tex">
+$$
 (a, b, c) \cdot (x, y, z)^T =
 \begin{pmatrix}
 a & b & c
@@ -328,8 +346,8 @@ a & b & c
 x \\ y \\ z
 \end{pmatrix}
 = ax+by+cz
-</code-block>
-
+$$
+要进行向量的同维变换，需要将同维方阵置于左侧与其相乘，这种乘法称为**左乘**。左乘本质上是进行了行变换（列数不变），而相应的右乘则是进行了列变换。
 </def>
 </deflist>
 
@@ -777,19 +795,19 @@ void main() {
 
 <deflist>
 <def id="pom">
-<title><tooltip term="POM">POM</tooltip></title>
+<title>视差遮蔽映射</title>
 
-**视差遮蔽映射**，简称**视差**。
+**<tooltip term="POM">POM</tooltip>**，简称**视差**。
 - 和法线相似，视差贴图通过**偏移表面的采样坐标**，让玩家从不同角度感觉到表面上某些纹理被其他纹理遮挡，从而创造凹凸的观感，这也是其名字中**映射**的含义。
 
 </def>
 <def title="PBR" id="pbr">
-<title><tooltip term="PBR">PBR</tooltip></title>
+<title>基于物理的渲染</title>
 
-**基于物理的渲染**。
+**<tooltip term="PBR">PBR</tooltip>**，其核心是渲染方程。
 - 一种着色的方法，更准确地表现光线如何与材料性质相互作用。
 - 它有一些传统着色中没有考虑到的部分，如**能量守恒**、**光电效应**等。
-> 传统着色是物理着色的超级近似。例如理想漫反射分布模型 **Lambert BRDF** 就是对渲染方程在表面理想光滑时的近似。
+> 传统着色是物理着色的极简近似。例如理想漫反射分布模型 **Lambert BRDF** 就是对渲染方程在表面理想光滑时的近似。
 
 <deflist>
 <def title="渲染方程" id="render_equ">
@@ -814,9 +832,9 @@ $\int_{\Omega} \rm{d}\omega_i$ 表示在法半球所有方向上计算结果的�
 
 </def>
 <def id="gi">
-<title><tooltip term="GI">GI</tooltip></title>
+<title>全局光照</title>
 
-**全局光照**。是直接光照和间接光照的集合。
+**<tooltip term="GI">GI</tooltip>**。是直接光照和间接光照的集合。
 
 <deflist>
 <def title="直接光照" id="直接光照">
@@ -872,22 +890,22 @@ $\int_{\Omega} \rm{d}\omega_i$ 表示在法半球所有方向上计算结果的�
 </deflist>
 </def>
 <def id="ssr">
-<title><tooltip term="SSR">SSR</tooltip></title>
+<title>屏幕空间反射</title>
 
-**屏幕空间反射**。采样屏幕上的内容来绘制反射场景，其受限于 [屏幕空间](#屏幕空间){summary=""} 。
+**<tooltip term="SSR">SSR</tooltip>**。采样屏幕上的内容来绘制反射场景，其受限于 [屏幕空间](#屏幕空间){summary=""} 。
 </def>
 <def id="ao">
-<title><tooltip term="AO">AO</tooltip></title>
+<title>环境光遮蔽</title>
 
-**环境光遮蔽**。间接光照在场景间经过各种反射之后逐渐被场景所吸收和遮挡的效果。
+**<tooltip term="AO">AO</tooltip>**。间接光照在场景间经过各种反射之后逐渐被场景所吸收和遮挡的效果。
 
-相关文档：[着色器 技术科普 - 环境光遮蔽](shaderTech.md#AO){summary=""}
 </def>
-<def title="光线追踪" id="光线追踪">
-<title><tooltip term="RT">RT</tooltip></title>
+<def id="rt">
+<title>光线追踪</title>
 
-**光线追踪**，模拟光子从光源到达表面的过程。
+**<tooltip term="RT">RT</tooltip>**，模拟光子从光源到达表面的过程。
 
+参阅：[](rayTracing.md)
 <deflist>
 <def title="逆向光线追踪" id="逆向光线追踪">
 
@@ -896,9 +914,9 @@ $\int_{\Omega} \rm{d}\omega_i$ 表示在法半球所有方向上计算结果的�
 
 </def>
 <def id="路径追踪">
-<title><tooltip term="PT">PT</tooltip></title>
+<title>路径追踪</title>
 
-**路径追踪**，使用蒙特卡洛随机采样并模拟光子多次反弹，经由漫反射、镜面反射、折射等直到达到退出条件所最终产生的光照。
+**<tooltip term="PT">PT</tooltip>**，使用蒙特卡洛随机采样并模拟光子多次反弹，经由漫反射、镜面反射、折射等直到达到退出条件所最终产生的光照。
 
 </def>
 </deflist>

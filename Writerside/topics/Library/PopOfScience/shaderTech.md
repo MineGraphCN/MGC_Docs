@@ -129,18 +129,18 @@ LPV 首先将整个场景划分为体素，将整个场景离散开来（对 Min
 </deflist>
 
 > _Cody Darr_ 曾经发布过一个 SEUS 的测试版 [SEUS LPVGI](https://www.patreon.com/posts/seus-lpvgi-e1-20122720 "Patreon，可能需要代理") ，但是我们发现如今这个光影已经无法在新驱动上运行；  
-> 在 _GeForceLegend_ 检查代码之后，发现其中使用了很多的 `mod(float, int)`
+> 在 _GeForceLegend_ 检查代码之后，发现其中使用了很多的 `mod(float, int)` ，这在自帕斯卡架构开始的显卡上会出现异常。
+> 
+> 要想修复这个问题，我们只需要在传入 `mod()` 时将其第二个参数 `B` 显式转换为 `float` 类型即可：
+> <br/><br/>
+> <compare>
+> 
 > ```glsl
 > float A;
 > int B;
-> ^^^
 > [...];
 > mod(A, B);
->        ^
 > ```
-> 这在自帕斯卡架构开始的显卡上会出现异常。
-> 
-> 要想修复这个问题，我们只需要将其第二个参数 `B` 显式转换为 `float` 类型即可：
 > ```glsl
 > float A;
 > int B;
@@ -148,6 +148,7 @@ LPV 首先将整个场景划分为体素，将整个场景离散开来（对 Min
 > mod(A, float(B));
 >        ^^^^^^ ^
 > ```
+> </compare>
 
 <tabs>
 <tab title="无">

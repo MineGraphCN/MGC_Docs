@@ -21,9 +21,9 @@
 
 - 使用前请安装 [IObit Unlocker](https://www.iobit.com/en/iobit-unlocker.php) 。安装脚本将会自动检测，并为未安装用户提供安装包下载地址；
 
-- 为保证程序正确的运行，建议将其安装到 **默认地址**。
+- 为保证程序正确的运行，建议将其安装到**默认地址**。
 
-- 脚本只用于安装 BetterRTX 着色器，需要 **额外添加 PBR 资源包** 。
+- 脚本只用于安装 BetterRTX 着色器，需要**额外添加 PBR 资源包**。
 
 ## 安装
 
@@ -31,13 +31,14 @@
 
 - 自动安装脚本：[BetterRTX_Installer_MGCEdit.ps1](https://bbrtx.minegraph.cn/BetterRTX_Installer_MGCEdit.ps1)
 
-- 以 **管理员身份** 运行脚本；
+- 以**管理员身份运行**脚本；
 
-- 若遇到脚本秒崩溃，请在 **具有管理员权限** 的 **PowerShell** 中运行此命令：
+- 若遇到脚本秒崩溃，请在**具有管理员权限**的 **Powershell** 中运行此命令：
 
-```Shell
+```powershell
 Set-ExecutionPolicy -Scope CurrentUser Bypass
 ```
+{prompt="PS C:\User\XXX>"}
 
 - 脚本会自动从 MGC 提供的 BetterRTX 国内 API 获取 BetterRTX 的最新版本，及时了解到 BetterRTX 不同配置的更新。
 
