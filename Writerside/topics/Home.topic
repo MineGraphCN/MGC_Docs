@@ -12,8 +12,8 @@
         </description>
 
         <spotlight>
-            <a href="Community.md" type="navigation" summary="快速了解并加入我们的社区">社区入门</a>
-            <a href="Library.md" type="library" summary="这里汇集了由社区成员撰写的各种与 Minecraft 图形相关的知识、问答和解决方案。">知识库</a>
+            <a href="Community.md" type="navigation" summary="快速了解并加入我们的社区"/>
+            <a href="Library.md" type="library" summary="这里汇集了由社区成员撰写的各种与 Minecraft 图形相关的知识、问答和解决方案。"/>
         </spotlight>
 
         <primary>
