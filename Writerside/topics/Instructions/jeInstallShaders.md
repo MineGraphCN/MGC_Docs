@@ -1,4 +1,4 @@
-# Java 版光影安装指南
+# 安装 Java 版光影
 
 <primary-label ref="manual"/>
 
@@ -80,7 +80,7 @@
         <a href="shaderpackLoading.md" summary="这篇文档列出了光影加载后可能出现的问题以及解决办法。">疑难解答 - 光影加载问题</a>
     </category>
     <category ref="advance">
-        <a href="irisAsOf.md">Iris 下等效 OptiFine 功能的模组</a>
+        <a href="irisAsOf.md"/>
         <a href="shaderBasic.md" summary="着色器的基本概念和它们与 Minecraft 的历史">着色器 基本概念和轶事</a>
     </category>
 </seealso>

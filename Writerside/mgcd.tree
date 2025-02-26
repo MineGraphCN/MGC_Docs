@@ -15,13 +15,13 @@
     </toc-element>
     <toc-element toc-title="安装指南">
         <toc-element topic="jeInstallGame.md"/>
+        <toc-element topic="irisAsOf.md"/>
         <toc-element topic="jeInstallShaders.md"/>
         <toc-element topic="jeInstallRP.md"/>
         <toc-element topic="beInstallRP.md"/>
     </toc-element>
     <toc-element topic="Library.md">
         <toc-element topic="terms.md"/>
-        <toc-element topic="irisAsOf.md"/>
         <toc-element topic="PopOfScience.md">
             <toc-element topic="shaderBasic.md"/>
             <toc-element topic="resourcepackBasic.md"/>
