@@ -5,6 +5,12 @@
 <secondary-label ref="beDoc"/>
 <secondary-label ref="modDoc"/>
 
+<tldr>
+
+1. 安装 [IObit Unlocker](https://www.iobit.com/en/iobit-unlocker.php)
+2. 以管理员身份运行 [自动安装脚本](https://bbrtx.minegraph.cn/BetterRTX_Installer_MGCEdit.ps1)
+</tldr>
+
 <procedure title="点击展开宣传视频（Bilibili）" collapsible="true" default-state="collapsed">
 <inline-frame src="//player.bilibili.com/player.html?bvid=BV1Z94y1H74o&amp;autoplay=0" width="640px" height="360px"/>
 </procedure>

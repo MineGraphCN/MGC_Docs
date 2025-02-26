@@ -37,10 +37,10 @@
 
             <links>
                 <group>
-                    <title>探索知识库</title>
+                    <title>探索文档</title>
                     <a href="terms.md"/>
-                    <a href="irisAsOf.md" summary="在 Iris 环境下还原 OptiFine 功能的模组"/>
-                    <a href="shaderTech.md" summary="罗列了各种光影技术"/>
+                    <a href="irisAsOf.md"/>
+                    <a href="shaderTech.md"/>
                 </group>
                 <group>
                     <title>最近更新</title>

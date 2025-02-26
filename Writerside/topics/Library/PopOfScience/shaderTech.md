@@ -7,14 +7,21 @@
 
 <show-structure depth="3" for="chapter,def"/>
 
+<tldr>
+
+这里罗列了在着色器中使用的各种技术的原理。
+
+> 本文不涉及算法层面的解释。
+> 
+{style="note"}
+</tldr>
+
 <var name="topic" value="着色器应用技术的解释"/>
 <var name="goal" value="不了解其基本概念"/>
 <var name="target_name" value=""/>
 <var name="target_topic" value="shaderBasic.md"/>
 <var name="target_description" value=""/>
 <include from="uniforms.md" element-id="h_note_readingTips"/>
-
-<tldr>这篇文档主要针对着色器中使用的各种算法和技术进行科普。</tldr>
 
 [//]: # (TODO)
 

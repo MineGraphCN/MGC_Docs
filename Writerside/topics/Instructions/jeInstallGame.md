@@ -1,4 +1,4 @@
-# Java 版游戏和加载器安装指南
+# 安装 Java 版游戏和加载器
 
 <primary-label ref="manual"/>
 
@@ -205,6 +205,7 @@ Multi MC 启动器
 
 Iris 能在非 Forge 的加载器环境下运行，且与模组的兼容性较好，这里以 Fabric 作为演示。  
 Iris 对一些光影存在兼容性问题，若你想用的光影没有声明需要 Iris 独占特性，我们建议你安装 OptiFine。  
+若你需要 OptiFine 的其他功能，参阅 [](irisAsOf.md) 。  
 若你想要在 Forge 下运行光影且其他模组与 OptiFine 存在冲突，可以尝试 Oculus。
 <procedure type="steps">
 <include from="jeInstallGameContents.md" element-id="startLoader"/>

@@ -1,23 +1,28 @@
-# Iris 等效 OptiFine 功能的模组
+# 拼好 Fine
 
 <primary-label ref="manual"/>
-
-<secondary-label ref="port"/>
 
 <secondary-label ref="jeDoc"/>
 <secondary-label ref="irisDoc"/>
 
 <show-structure depth="2"/>
 
+<tldr>
+
+这些模组可以在 Iris 环境下还原 OptiFine 的部分功能。
+
+这些模组由不同的作者开发，因此更新可能不同步，如果你急需某些功能，请使用 OptiFine。
+</tldr>
+
 > 资料来源：[Fabric Wiki - OptiFine alternatives](https://fabricmc.net/wiki/community:optifine_alternatives#performance)
 
 ## 性能／兼容性
 
 Sodium [(Modrinth)](https://modrinth.com/mod/sodium)
-: Iris 运行的必需品。
+: 优化性能，Iris 运行的必需品。
 
 Indium [(CurseForge)](https://www.curseforge.com/minecraft/mc-mods/indium) [(Modrinth)](https://modrinth.com/mod/indium)
-: 确保 Sodium 和某些模组兼容性的必需品。
+: 确保 Sodium 和多数修改了渲染功能模组兼容性的必需品。
 
 ## 缩放
 
@@ -33,7 +38,7 @@ WI Zoom [(CurseForge)](https://www.curseforge.com/minecraft/mc-mods/wi-zoom)
 Fabricated Zoomer [(CurseForge)](https://www.curseforge.com/minecraft/mc-mods/fabricated-zoomer)
 : OK Zoomer 的 Fabric 移植版。
 
-## 资源包
+## 资源包特性
 
 ### 自定义实体模型（CEM）
 

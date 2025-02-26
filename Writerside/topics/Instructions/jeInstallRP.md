@@ -1,4 +1,4 @@
-# Java 版资源包安装指南
+# 安装 Java 版资源包
 
 <primary-label ref="manual"/>
 
@@ -16,7 +16,7 @@
 使用资源包之前你需要先进行以下准备
 
 - 如果你所使用的资源包支持 OptiFine 特性，那么你需要确保你已经 [正确安装 OptiFine](jeInstallGame.md#installGame){summary=""} 。  
-  - 如果你使用 Iris 进行游玩，你可以查看 [这篇文档](irisAsOf.md "Iris 等效 OptiFine 功能的模组") 来安装支持对应特性的模组。
+  - 如果你使用 Iris 进行游玩，你可以查看 [这篇文档](irisAsOf.md) 来安装支持对应特性的模组。
 - 如果你所使用的资源包支持 [法线纹理](resourcepackBasic.md#法线纹理){summary=""} 和 [反射纹理](resourcepackBasic.md#反射纹理){summary=""} ，那么你需要使用一个支持法线和 [PBR 着色](terms.md#pbr){summary=""} 的光影。
 - 如果你所使用的资源包有模组扩展，你需要 [正确安装模组加载器](jeInstallGame.md#installGame){summary=""} 。
 

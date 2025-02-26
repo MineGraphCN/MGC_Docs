@@ -14,7 +14,7 @@
 
 在新建标签页打开：<shortcut>鼠标中键</shortcut>
 
-~~搜索：<shortcut>Ctrl</shortcut><shortcut>K</shortcut>~~（暂不可用）
+~~高级搜索：<shortcut>Ctrl</shortcut><shortcut>K</shortcut>~~（暂不可用）
 
 深色模式：右上角 ![切换深色模式按钮](https://resources.jetbrains.com/help/img/writerside/systemTheme_dark.svg){style="inline"} （需要横屏）
 
@@ -29,7 +29,7 @@
 ## 操作
 
 - 点击跳转链接时，默认在当前标签页内跳转。使用 <shortcut>鼠标中键</shortcut> 来新建标签页访问。
-- ~~使用 <shortcut>Ctrl</shortcut><shortcut>K</shortcut> 进行搜索。~~ 搜索服务暂不可用
+- ~~使用 <shortcut>Ctrl</shortcut><shortcut>K</shortcut> 进行高级搜索。~~ 搜索服务暂不可用。
 - 点击右上角 <img src="https://resources.jetbrains.com/help/img/writerside/systemTheme_dark.svg" alt="切换深色模式按钮"/> 将文档切换为深色模式获得最佳阅读体验。
     > 在竖屏中可能不显示该按钮。
     >
