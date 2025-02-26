@@ -4,10 +4,10 @@
 
 <secondary-label ref="wip"/>
 
-<secondary-label ref="jeDoc"/>
-<secondary-label ref="ofDoc"/>
-<secondary-label ref="shaderDoc"/>
-<secondary-label ref="resourceDoc"/>
+<secondary-label ref="je"/>
+<secondary-label ref="of"/>
+<secondary-label ref="shader"/>
+<secondary-label ref="resource"/>
 
 <show-structure for="chapter,tab"/>
 
@@ -17,6 +17,7 @@
 
 这篇文档列出了整个视频设置选项卡中容易出现问题的设置以及修改建议。
 
+选项卡结构以 OptiFine 为准。
 </tldr>
 
 图像品质

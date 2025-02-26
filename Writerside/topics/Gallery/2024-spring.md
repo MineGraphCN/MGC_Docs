@@ -2,8 +2,8 @@
 
 <primary-label ref="24sp"/>
 
-<secondary-label ref="jegallery"/>
-<secondary-label ref="begallery"/>
+<secondary-label ref="jeGallery"/>
+<secondary-label ref="beGallery"/>
 
 <show-structure depth="0"/>
 

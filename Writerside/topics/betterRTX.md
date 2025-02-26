@@ -1,9 +1,9 @@
 # BetterRTX
 
-<primary-label ref="manual"/>
-
-<secondary-label ref="beDoc"/>
-<secondary-label ref="modDoc"/>
+<secondary-label ref="be"/>
+<secondary-label ref="mod"/>
+<secondary-label ref="shader"/>
+<secondary-label ref="rt"/>
 
 <tldr>
 

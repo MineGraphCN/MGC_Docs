@@ -4,9 +4,9 @@
 
 <secondary-label ref="port"/>
 
-<secondary-label ref="jeDoc"/>
-<secondary-label ref="shaderDoc"/>
-<secondary-label ref="resourceDoc"/>
+<secondary-label ref="je"/>
+<secondary-label ref="shader"/>
+<secondary-label ref="resource"/>
 
 <show-structure depth="2"/>
 

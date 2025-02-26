@@ -2,7 +2,7 @@
 
 <primary-label ref="22au"/>
 
-<secondary-label ref="jegallery"/>
+<secondary-label ref="jeGallery"/>
 
 <show-structure depth="0"/>
 

@@ -2,8 +2,11 @@
 
 <primary-label ref="manual"/>
 
-<secondary-label ref="jeDoc"/>
-<secondary-label ref="irisDoc"/>
+<secondary-label ref="port"/>
+<secondary-label ref="je"/>
+<secondary-label ref="iris"/>
+<secondary-label ref="mod"/>
+<secondary-label ref="resource"/>
 
 <show-structure depth="2"/>
 
@@ -11,7 +14,9 @@
 
 这些模组可以在 Iris 环境下还原 OptiFine 的部分功能。
 
-这些模组由不同的作者开发，因此更新可能不同步，如果你急需某些功能，请使用 OptiFine。
+> 这些模组由不同的作者开发，因此更新可能不同步，如果你急需某些功能，请使用 OptiFine。
+> 
+{style="note"}
 </tldr>
 
 > 资料来源：[Fabric Wiki - OptiFine alternatives](https://fabricmc.net/wiki/community:optifine_alternatives#performance)

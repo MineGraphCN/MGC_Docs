@@ -4,9 +4,9 @@
 
 <secondary-label ref="wip"/>
 
-<secondary-label ref="beDoc"/>
-<secondary-label ref="shaderDoc"/>
-<secondary-label ref="resourceDoc"/>
+<secondary-label ref="be"/>
+<secondary-label ref="shader"/>
+<secondary-label ref="resource"/>
 
 <tldr>
 

@@ -2,8 +2,8 @@
 
 <primary-label ref="manual"/>
 
-<secondary-label ref="jeDoc"/>
-<secondary-label ref="resourceDoc"/>
+<secondary-label ref="je"/>
+<secondary-label ref="resource"/>
 
 <tldr>
 

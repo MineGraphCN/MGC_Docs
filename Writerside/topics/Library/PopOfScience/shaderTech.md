@@ -3,7 +3,8 @@
 <primary-label ref="adv"/>
 
 <secondary-label ref="latest"/>
-<secondary-label ref="shaderDoc"/>
+<secondary-label ref="shader"/>
+<secondary-label ref="rt"/>
 
 <show-structure depth="3" for="chapter,def"/>
 

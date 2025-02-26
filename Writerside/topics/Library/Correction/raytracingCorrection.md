@@ -3,7 +3,8 @@
 <primary-label ref="basic"/>
 
 <secondary-label ref="latest"/>
-<secondary-label ref="shaderDoc"/>
+<secondary-label ref="shader"/>
+<secondary-label ref="rt"/>
 
 <show-structure depth="2"/>
 
@@ -27,7 +28,7 @@
 
 ## 官方光线追踪秒天秒地？
 
-<primary-label ref="be"/>
+<primary-label ref="beChapter"/>
 
 下称 **BERTX**
 
@@ -42,7 +43,7 @@
 
 ## 延迟渲染是光线追踪？ {id="beDeferred"}
 
-<primary-label ref="be"/>
+<primary-label ref="beChapter"/>
 
 参阅：[](shaderBasic.md#renderingMethod){summary=""}
 

@@ -2,9 +2,11 @@
 
 <primary-label ref="basic"/>
 
-<secondary-label ref="old"/>
+<secondary-label ref="wip"/>
 
-<secondary-label ref="beDoc"/>
+<secondary-label ref="be"/>
+<secondary-label ref="shader"/>
+<secondary-label ref="resource"/>
 
 ## 延迟渲染光影用了光线追踪技术吗？
 

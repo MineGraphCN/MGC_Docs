@@ -4,8 +4,10 @@
 
 <secondary-label ref="latest"/>
 
-<secondary-label ref="jeDoc"/>
-<secondary-label ref="shaderDoc"/>
+<secondary-label ref="je"/>
+<secondary-label ref="of"/>
+<secondary-label ref="iris"/>
+<secondary-label ref="shader"/>
 
 <show-structure depth="2"/>
 

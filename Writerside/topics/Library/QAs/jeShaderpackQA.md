@@ -2,8 +2,9 @@
 
 <primary-label ref="basic"/>
 
-<secondary-label ref="jeDoc"/>
-<secondary-label ref="shaderDoc"/>
+<secondary-label ref="je"/>
+<secondary-label ref="shader"/>
+<secondary-label ref="rt"/>
 
 ## 为什么 Java 版光影优化如此糟糕？ {id="whyJEPerformanceSoTerrible"}
 

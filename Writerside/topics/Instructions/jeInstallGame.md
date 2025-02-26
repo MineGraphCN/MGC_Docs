@@ -3,7 +3,11 @@
 <primary-label ref="manual"/>
 
 <secondary-label ref="new"/>
-<secondary-label ref="jeDoc"/>
+<secondary-label ref="je"/>
+<secondary-label ref="of"/>
+<secondary-label ref="iris"/>
+<secondary-label ref="mod"/>
+<secondary-label ref="shader"/>
 
 <var name="topic">帮助新手从零开始安装 Java、游戏和加载器的文档</var>
 <var name="goal">你在寻找安装光影的教程</var>
@@ -53,7 +57,7 @@ Java 版拥有众多的第三方启动器，一个顺手的启动器可以省下
 
 HMCL 启动器
 : [从官网获取](https://hmcl.huangyuhui.net/download)
-- 支持在启动器内下载 CurseForge 和 Modrinth 上的模组
+- 支持启动器内下载 CurseForge 和 Modrinth 上的模组
 - 支持嵌入式安装加载器，且可随意更换
 - 支持离线模式和第三方验证服务器
 - 支持导入整合包
@@ -62,7 +66,7 @@ HMCL 启动器
 
 PCL 2 启动器
 : [从爱发电获取免费版](https://afdian.com/p/0164034c016c11ebafcb52540025c377)
-- 在启动器内下载 CurseForge 和 Modrinth 上的模组
+- 支持启动器内下载 CurseForge 和 Modrinth 上的模组
 - 支持嵌入式安装加载器（不可更换）
 - 支持离线模式和第三方验证服务器
 - 支持导入整合包
