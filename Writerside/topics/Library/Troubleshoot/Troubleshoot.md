@@ -1,8 +1,13 @@
 # 疑难解答
 
-这个板块旨在帮你快速定位游戏内光影和资源包的问题并协助你**解决问题**。
+<tldr>
 
-如果无法解决或者有没有收录的问题，请到 [广场 - 🌹求助问答平台](https://pd.qq.com/s/ly2623ty) 寻求帮助。
+这个板块旨在帮你快速定位游戏内光影和资源包的问题并协助你**解决问题**。
+</tldr>
+
+> 如果无法解决或者有没有收录的问题，请到 [广场 - 🌹求助问答平台](https://pd.qq.com/s/ly2623ty) 寻求帮助。
+> 
+{style="note"}
 
 - [](troubleshootCommon.md){summary=""}
 - [](shaderpackLoading.md){summary=""}

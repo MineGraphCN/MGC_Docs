@@ -1,11 +1,11 @@
-# Java 版资源包（纹理包）问答
+# Java 版资源包问答
 
 <primary-label ref="basic"/>
 
 <secondary-label ref="old"/>
 
-<secondary-label ref="jeDoc"/>
-<secondary-label ref="resourceDoc"/>
+<secondary-label ref="je"/>
+<secondary-label ref="resource"/>
 
 ## 资源包 / 纹理包是否有优化空间？
 

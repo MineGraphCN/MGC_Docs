@@ -3,14 +3,14 @@
 <primary-label ref="basic"/>
 
 <secondary-label ref="wip"/>
-<secondary-label ref="beDoc"/>
-<secondary-label ref="shaderDoc"/>
+<secondary-label ref="be"/>
+<secondary-label ref="shader"/>
 
 <show-structure depth="2"/>
 
 ## 阅前须知
 
-<primary-label ref="important"/>
+<primary-label ref="importantChapter"/>
 
 相比 Java 版光影的发展路程，基岩版光影可谓是相当有着传奇色彩的，其基本均属于原创光影，并且国内作品在国外也有着一定地位。因此我们将其单独提出了一篇文档来介绍。
 

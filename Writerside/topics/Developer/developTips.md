@@ -2,7 +2,9 @@
 
 <primary-label ref="manual"/>
 
-<secondary-label ref="jeDoc"/>
+<secondary-label ref="je"/>
+<secondary-label ref="shader"/>
+<secondary-label ref="resource"/>
 
 <show-structure depth="0"/>
 

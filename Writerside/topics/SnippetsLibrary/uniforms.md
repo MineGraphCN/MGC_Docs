@@ -159,7 +159,7 @@
 </table>
 
 _23 和 27 不存在。_  
-_截止 2025 年 2 月 23 日，数据来源于 [Minecraft Wiki](https://zh.minecraft.wiki/w/%E8%B5%84%E6%BA%90%E5%8C%85#%E8%B5%84%E6%BA%90%E5%8C%85%E6%A0%BC%E5%BC%8F%E7%89%88%E6%9C%AC) 。_
+_截止 2025 年 2 月 23 日，数据来源于 [Minecraft Wiki](https://zh.minecraft.wiki/w/资源包#资源包格式版本) 。_
 
 </procedure>
 

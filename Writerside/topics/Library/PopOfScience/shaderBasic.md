@@ -3,7 +3,7 @@
 <primary-label ref="basic"/>
 
 <secondary-label ref="latest"/>
-<secondary-label ref="shaderDoc"/>
+<secondary-label ref="shader"/>
 
 <show-structure depth="2"/>
 

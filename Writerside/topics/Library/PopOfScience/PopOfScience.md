@@ -1,6 +1,9 @@
 # 科普文档
 
+<tldr>
+
 这个板块旨在为**大众普及**图形学相关的知识。
+</tldr>
 
 - [](shaderBasic.md){summary=""}
 - [](shaderHistoryJE.md){summary=""}

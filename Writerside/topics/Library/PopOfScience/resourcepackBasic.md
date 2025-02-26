@@ -2,13 +2,13 @@
 
 <primary-label ref="basic"/>
 
-<secondary-label ref="resourceDoc"/>
+<secondary-label ref="resource"/>
 
 <show-structure depth="2"/>
 
 ## 称谓 {id="whyrp"}
 
-<primary-label ref="important"/>
+<primary-label ref="importantChapter"/>
 
 贴图、纹理和材质：
 
@@ -41,7 +41,7 @@ Texture Pack 的**错误译名**。
 
 在英文语境中，**材质**所对应的英文单词为 *Material*。**纹理**所对应的英文单词 *Texture* 才是用于描述物体表面颜色的单词。
 
-截至 **JE 1.6** 纹理包被资源包所替代时，这个译名在游戏内仍旧没有修改，于是此翻译便流传了下来，并**逐渐波及相关领域**，现在 [Minecraft 中文 Wiki](https://zh.minecraft.wiki/w/%E7%BA%B9%E7%90%86%E5%8C%85) 已经将此翻译纠正，希望大家以后尽量**使用正确的译名**。
+截至 **JE 1.6** 纹理包被资源包所替代时，这个译名在游戏内仍旧没有修改，于是此翻译便流传了下来，并**逐渐波及相关领域**，现在 [Minecraft 中文 Wiki](https://zh.minecraft.wiki/w/纹理包) 已经将此翻译纠正，希望大家以后尽量**使用正确的译名**。
 </def>
 <def title="资源包" id="资源包">
 
@@ -78,7 +78,7 @@ Texture Pack 的**错误译名**。
 
 ## 资源包的版本兼容性 {id="versionComp"}
 
-<primary-label ref="je"/>
+<primary-label ref="jeChapter"/>
 
 ### 粗略区间 {id="roughComp"}
 
@@ -136,7 +136,7 @@ Texture Pack 的**错误译名**。
 
 ### 着色纹理 {id="着色纹理"}
 
-<primary-label ref="je"/>
+<primary-label ref="jeChapter"/>
 
 <secondary-label ref="of"/>
 <secondary-label ref="iris"/>
@@ -169,7 +169,7 @@ OptiFine 同时支持一些其它的特殊纹理，如 CTM、CIT、CEM 等，见
 
 ### 特殊纹理／模型 {id="特殊纹理"}
 
-<primary-label ref="je"/>
+<primary-label ref="jeChapter"/>
 
 <secondary-label ref="of"/>
 <secondary-label ref="mod"/>

@@ -5,7 +5,8 @@
 <primary-label ref="basic"/>
 
 <secondary-label ref="latest"/>
-<secondary-label ref="shaderDoc"/>
+<secondary-label ref="shader"/>
+<secondary-label ref="rt"/>
 
 > 在三维计算机图形学中，光线追踪是一种**对光线传输进行建模**的技术，用于生成数字图像的各种渲染算法。
 > 
@@ -176,7 +177,7 @@
 
 ## 附录：光线追踪特性表 {id="JERTFeature"}
 
-<primary-label ref="je"/>
+<primary-label ref="jeChapter"/>
 
 这里列举了一些已知光影的追踪效果信息
 

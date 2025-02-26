@@ -2,9 +2,10 @@
 
 <primary-label ref="manual"/>
 
-<secondary-label ref="jeDoc"/>
-<secondary-label ref="ofDoc"/>
-<secondary-label ref="shaderDoc"/>
+<secondary-label ref="je"/>
+<secondary-label ref="of"/>
+<secondary-label ref="mod"/>
+<secondary-label ref="shader"/>
 
 这篇文档列出了我们所知的模组和光影间兼容性冲突的解决办法。
 

@@ -4,7 +4,7 @@
 
 <secondary-label ref="lack"/>
 
-<secondary-label ref="jegallery"/>
+<secondary-label ref="jeGallery"/>
 <secondary-label ref="render"/>
 
 <show-structure depth="0"/>
