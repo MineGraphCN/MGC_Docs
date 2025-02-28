@@ -1,4 +1,4 @@
-# 安装基岩版资源包
+# 安装资源包
 
 <primary-label ref="manual"/>
 

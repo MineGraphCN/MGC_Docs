@@ -1,4 +1,4 @@
-# 安装 Java 版资源包
+# 安装资源包或 Canvas 光影
 
 <primary-label ref="manual"/>
 
@@ -28,7 +28,7 @@
 - 打开压缩包或文件夹后应该**至少有名为 `assets` 的文件夹和 `pack.mcmeta` 的文件**，同时大多数资源包还有 `pack.png` 的封面。
   <include from="uniforms.md" element-id="resourcepack_structure_simple"/>
   <include from="uniforms.md" element-id="recommend_unzipApp"/>
-- 确保不是 Canvas 光影包，否则你应当安装 Canvas。
+- 若是 Canvas 光影包，你应当在安装加载器之后安装 [Canvas](https://modrinth.com/mod/canvas)。
 
 ## 安装资源包
 

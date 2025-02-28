@@ -1,4 +1,4 @@
-# 安装 Java 版光影
+# 安装光影
 
 <primary-label ref="manual"/>
 
