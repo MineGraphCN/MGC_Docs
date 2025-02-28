@@ -9,9 +9,10 @@
         <download-page>https://minegraph.cn/</download-page>
         <showDownloadButton>true</showDownloadButton>
         <product-web-url>https://docs.minegraph.cn/home</product-web-url>
-        <algolia-id>AMQJCXFVUL</algolia-id>
-        <algolia-api-key>64206f0ec56ab84f94d171e5a39b6815</algolia-api-key>
-        <algolia-index>mgcd-hypercol</algolia-index>
+        <algolia-id>PYZCIVPXES</algolia-id>
+        <algolia-api-key>f98b90f0c1a2e46c57fd1def2f5aa9f9</algolia-api-key>
+        <algolia-index>MGC_Docs</algolia-index>
+        <algolia-show-logo>true</algolia-show-logo>
         <web-root>https://docs.minegraph.cn</web-root>
     </variables>
     <build-profile instance="mgcd">

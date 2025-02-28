@@ -292,6 +292,10 @@ $$
     (a \div x, b \div y, c \div z) & (a \div p, b \div p, c \div p)
     \end{array} \right]
 $$
+
+> 此处的乘号不是叉乘！
+> 
+{style="warning"}
 </def>
 
 <def title="矩阵" id="矩阵">
@@ -307,6 +311,21 @@ $
 
 行列相等的矩阵称为方阵，N 维向量的本质是一个 $N$ 行 $1$ 列的矩阵。
 
+方阵从左上角至右下角的元素集合称为主对角线。
+</def>
+
+<def title="单位矩阵" id="单位矩阵">
+
+主对角线上元素为 $1$，其余元素为 $0$ 的方阵。
+
+$$
+\begin{bmatrix}
+1 & 0 & \cdots & 0 \\
+0 & 1 & \cdots & 0 \\
+\vdots & \vdots & \ddots & 0 \\
+0 & 0 & 0 & 1
+\end{bmatrix}
+$$
 </def>
 
 <def title="矩阵乘法" id="矩阵乘法">
