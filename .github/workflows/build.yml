@@ -10,14 +10,14 @@ permissions:
   pages: write
 
 env:
-  INSTANCE: "Writerside/MGCD"
+  INSTANCE: "Writerside/mgcd"
   ARTIFACT: "webHelpMGCD2-all.zip"
   DOCKER_VERSION: "243.22562"
   ALGOLIA_ARTIFACT: "algolia-indexes-MGCD.zip"
   ALGOLIA_APP_NAME: "PYZCIVPXES"
   ALGOLIA_INDEX_NAME: "MGC_Docs"
   ALGOLIA_KEY: "${{ secrets.ALGOLIA_KEY }}"
-  CONFIG_JSON_PRODUCT: "MGCD"
+  CONFIG_JSON_PRODUCT: "mgcd"
   CONFIG_JSON_VERSION: "2.0"
 
 jobs:
