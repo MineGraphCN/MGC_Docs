@@ -29,4 +29,5 @@
             <social type="bilibili" href="https://space.bilibili.com/480528388/">HyperCol</social>
         </footer>
     </build-profile>
+    <sitemap priority="0.35" change-frequency="monthly"/>
 </buildprofiles>
