@@ -144,7 +144,7 @@
 ## 子选项卡 {id="子选项卡"}
 
 <tabs group="videoSettings">
-<tab title="品质" id="quality">
+<tab title="品质" id="quality" group-key="quality">
 
 Mipmap 级别
 : 决定远处纹理的过滤分级数量，有时会在 **JE 1.19** 以上的 OptiFine 中破坏光影包。
@@ -194,7 +194,7 @@ Mipmap 类型
 {style="note"}
 
 </tab>
-<tab title="细节" id="detail">
+<tab title="细节" id="detail" group-key="detail">
 
 云
 : 原版云总是不能与光影包兼容，特别是在旧版本中。
@@ -240,7 +240,7 @@ Mipmap 类型
     {style="note"}
 
 </tab>
-<tab title="性能" id="performance">
+<tab title="性能" id="performance" group-key="performance">
 
 区域渲染
 : 这个选项长期未维护，可能在长渲染距离下降低性能。
@@ -263,7 +263,7 @@ Mipmap 类型
 {style="note"}
 
 </tab>
-<tab title="光影" id="shader">
+<tab title="光影" id="shader" group-key="shader">
 
 抗锯齿
 : 会在光影渲染结束后额外添加一层抗锯齿效果来平滑画面。
@@ -300,7 +300,15 @@ Mipmap 类型
 >   - 如果此时你需要使用原版光影，可以直接将光影切换至 `关闭` ，并将 `图像品质` 切换为 *`极佳！`* 。
 
 </tab>
-<tab title="Quick Info">
+<tab title="Quick Info" id="quick_info" group-key="quick_info">
 
 </tab>
+</tabs>
+
+<tabs group="videoSettings">
+<tab title="品质" group-key="quality"/>
+<tab title="细节" group-key="detail"/>
+<tab title="性能" group-key="performance"/>
+<tab title="光影" group-key="shader"/>
+<tab title="Quick Info" group-key="quick_info"/>
 </tabs>
