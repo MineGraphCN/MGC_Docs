@@ -230,7 +230,7 @@ N.sss -> vec3(2.5) == vec3(N)
 
 可以使用 `xyzw`、`rgba` 和 `stpq` 中的任意一组进行 Swizzle 操作。它们的语义通常分别表示**空间坐标**、**颜色**和**纹理坐标**，正确地选择后缀组可以降低代码的阅读和维护门槛。
 
-> Swizzle 原意鸡尾酒，在这里指重新排列。
+> Swizzle 原意鸡尾酒~~谁家狂乱鸡尾酒~~，在这里指重新排列。
 
 ### 向量和矩阵乘法
 
@@ -294,14 +294,14 @@ GLSL 支持在编译时计算常量表达式和函数以节省运行时性能。
 <compare first-title="运行时计算" second-title="编译时计算">
 
 ```glsl
-const float f(float a);
+const float f(float x);
 
 float Pi = 3.14159265;
 float HalfPi = Pi * 0.5;
 float t = f(HalfPi);
 ```
 ```glsl
-const float f(float a);
+const float f(float x);
 
 const float Pi = 3.14159265;
 const float HalfPi = Pi * 0.5;
@@ -310,7 +310,38 @@ const float t = f(HalfPi);
 
 </compare>
 
-若向常量函数传入变量时，该函数会自动降级为运行时计算；若函数的参数显式声明了常量，传入变量将会报错。
+若向常量函数传入变量，该函数会自动降级为运行时计算；若函数的参数显式声明了常量，传入变量将会报错。
+
+将下列函数和变量两两组合时：
+```glsl
+const float f(float x);
+float g(const float x);
+const float h(const float x);
+
+const float c;
+float v;
+```
+对应函数调用的返回结果为：
+<compare first-title="调用" second-title="函数返回类型">
+
+```glsl
+f(c)
+f(v)
+g(c)
+g(v)
+h(c)
+h(v)
+```
+```text
+<常量>
+<变量>
+<变量>
+<编译错误>
+<常量>
+<编译错误>
+```
+
+</compare>
 
 ### 内建函数
 
@@ -320,10 +351,10 @@ const float t = f(HalfPi);
 
 ### 类型
 
-GLSL 内置了布尔类型（ `bool` ），同时支持整形向量和布尔向量（ `ivec` `bvec` ）。
+GLSL 内置了布尔类型（ `bool` ），同时支持整型向量和布尔向量（ `ivec` 、`bvec` ）。
 
 GLSL 不支持 `static` 关键字和 `char` 类型。
 
 ---
 
-至此，有关 GLSL 的入门就差不多介绍完毕了。同时这也是本大章节的结束，从下一大章开始，我们将进入工作区并开始我们的光影创作之旅。
+至此，有关 GLSL 的入门就差不多介绍完毕了。同时这也是本篇章的结束，从下一篇章开始，我们将进入工作区并开始我们的光影创作之旅。

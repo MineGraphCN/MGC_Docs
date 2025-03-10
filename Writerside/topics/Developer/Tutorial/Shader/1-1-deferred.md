@@ -35,7 +35,7 @@ void main() {
 
 **[1]** 在几何缓冲章节我们将详细介绍，在这里你只需要知道 OpenGL 期望所有的顶点坐标都落在 $[-1,1]$ 区间内就行了。
 
-现在，我们终于可以在这张空白画布上大展拳脚了。
+现在，我们就可以在这张空白画布上大展拳脚了。
 
 ### 往上面泼一些颜色
 
@@ -62,15 +62,15 @@ void main() {
 
 ### 缓冲区
 
-在 GLSL 中，我们通过采样纹理来获取颜色数据。在延迟处理中，几何缓冲输出的缓冲区就充当了采样用的纹理。因此我们也可以知道，缓冲区充当了几何缓冲向延迟处理传递信息的媒介：
+在 GLSL 中，我们通过采样纹理来获取颜色数据。在延迟处理中，几何缓冲输出的缓冲区就充当了采样用的纹理。因此我们也可以知道，缓冲区是几何缓冲向延迟处理传递信息的媒介：
 
 $$
 几何缓冲 \xrightarrow{原始数据} 缓冲区 \xrightarrow{缓存数据} 延迟处理
 $$
 
-OptiFine 提供了至多 16 个二维缓冲区供我们使用，由于我们没有自己编写几何缓冲，内置管线默认使用向前渲染法将所有场景输出到了 **0 号缓冲区** `colortex0` 。
+OptiFine 提供了至多 16 个（通常我们只用一半）二维缓冲区供我们使用，由于我们没有自己编写几何缓冲，内置管线默认使用向前渲染法将所有场景输出到了 **0 号缓冲区** `colortex0` 。
 
-著名哲学家 *维吉尔* 曾经说过：“_If you wanna it, then you have to take it._”，如果我们需要采样它，那我们就得先声明它。在 GLSL 中，我们使用**采样器**（sampler）类型来声明一个纹理。于是我们的第一行代码就呼之欲出了：
+著名哲学家 *维吉尔* 曾经说过：“_If you wanna it, then you have to take it._”，如果我们需要采样它，那我们就得先声明它。在 GLSL 中，我们使用**采样器**（sampler）类型来声明一个纹理。于是我们的第一行新代码便呼之欲出：
 ```glsl
 uniform sampler2D colortex0;
 ```
@@ -116,9 +116,9 @@ vec2 uv = gl_FragCoord.xy / vec2(viewWidth, viewHeight);
 
 ### 把它们画出来
 
-有了采样器和采样坐标，我们就可以很方便地在 GLSL 中采样纹理了，隆重介绍我们的劳模采样函数：`texture()` 。
+有了采样器和采样坐标，我们就可以很方便地在 GLSL 中采样纹理了，隆重介绍我们的劳模函数：`texture()` 。
 
-`texture()` 接受两个参数：采样器和与采样器同维采样归一化坐标，它会返回纹理对应坐标上的颜色值。
+`texture()` 接受两个参数：采样器和与采样器同维的归一化坐标，它会返回纹理对应坐标上的颜色值。
 
 现在，让我们修改片段着色器，试着向屏幕上输出场景：
 
@@ -147,29 +147,29 @@ What Amazing！我们成功向屏幕输出了 0 号缓冲区的内容！
 
 然而，我们其实不止有一种采样函数。如果你在之前我们用整数坐标求归一化坐标时也想过：有没有更简单的办法，直接用整数坐标进行采样呢？
 
-那么我们这里就将向你介绍另一个采样函数：`texelFetch()` 。
+那么这里就将向你介绍另一个采样函数：`texelFetch()` 。
 
-`texelFetch()` 和 `texture()` 很相似（其实更准确地说是它的兄弟 `textureLod()`），前者接受三个参数：采样器、同维采样**整数坐标**，以及一项额外的 Mipmap 等级。
+`texelFetch()` 和 `texture()` 很相似（更准确地说是和它的兄弟 `textureLod()` 更相似），前者接受三个参数：采样器、同维采样**整数坐标**，以及一项额外的 Mipmap 等级。
 
 第三个参数我们在这里不过多展开，你只需要知道它接受一个 `int` 值用于指定纹理细节等级，从 `0` 开始，每加 `1` 纹理的精度就会减半。
 
-值得注意的是，`texelFetch()` 的第二个参数要求传入**整形向量**类型（ `ivec` ），而 `gl_FragCoord` 实际上是浮点向量类型（ `vec4` ，和它的 `w` 分量有关，具体见 [](a02-coreBuiltinVars.md){summary=""} ），因此在使用时我们需要进行转换：
+值得注意的是，`texelFetch()` 的第二个参数要求传入**整数向量**类型（ `ivec` ），而 `gl_FragCoord` 实际上是**浮点向量**类型（ `vec4` ，和它的 `w` 分量有关，具体见 [](a02-coreBuiltinVars.md){summary=""} ），因此在使用时我们需要进行转换：
 ```glsl
 fragColor = texelFetch(colortex0, ivec2(gl_FragCoord.xy), 0);
 ```
 
-和 `texture()` 不同的是，使用 `texture()` 进行采样时，由于其使用浮点坐标，如果它的采样坐标在纹理的像素之间就会自动进行插值；而 `texelFetch()` 由于使用了整形坐标，它的采样点不会产生偏移，也就不会自动插值了。
+和 `texture()` 不同的是，使用 `texture()` 进行采样时，由于其使用浮点坐标，如果它的采样坐标在纹理的像素之间就会自动进行插值；而 `texelFetch()` 由于使用了整型坐标，它的采样点不会产生偏移，也就不会自动插值了。
 
 你可以将它们的坐标参数同时除以一个数（相当于放大纹理）来验证具体区别：
 
-texture()
+`texture()`
 :
 ```glsl
 fragColor = texture(colortex0, uv / 8.0);
 ```
 ![八倍放大的归一化坐标](deferred_texture8x.png)
 
-texelFetch()
+`texelFetch()`
 :
 ```glsl
 fragColor = texelFetch(colortex0, ivec2(gl_FragCoord.xy) / 8, 0);
@@ -204,7 +204,7 @@ fragColor = texelFetch(colortex0, ivec2(gl_FragCoord.xy) / 8, 0);
 
 缓冲区的默认行为是 `GL_CLAMP_TO_EDGE` 。然而，在 OptiFine 管线中，我们无法控制每个纹理的边缘行为，因此约束坐标就显得很重要了。
 
-我们可以手动实现上述的四种边缘行为，同时附上将画面缩小 4 倍的结果：
+我们可以手动实现上述的四种边缘行为，同时附上将画面缩小到纵横各 1/4 的结果：
 
 `GL_Repeat`
 : 将纹理坐标约束在 $[0,1]$ 即可：
@@ -219,8 +219,8 @@ uv = mod(uv, 1.0);
 ```glsl
 ivec2 times = ivec2(abs(floor(uv))); // 取得对应坐标上的循环次数
 ivec2 isFlip = times % 2; // 当重复次数为奇数 = 1，偶数 = 0
-ivec2 FlipMul = 1 - 2 * isFlip; // 用来避免使用 if 的奇怪乘数，isFlip = 1 时翻转 uv 值
-uv = vec2(isFlip) + mod(uv, 1.0) * vec2(FlipMul);
+ivec2 flipMul = 1 - 2 * isFlip; // 用来避免使用 if 的奇怪乘数，isFlip = 1 时翻转 uv 值
+uv = vec2(isFlip) + mod(uv, 1.0) * vec2(flipMul);
 ```
 `abs()` 函数用于取绝对值，`floor()` 用于取整数部分。
 ![deferred_repeatMirror.png](deferred_repeatMirror.png){style="block"}
@@ -237,7 +237,7 @@ uv = clamp(uv, 0.0, 1.0);
 : 将大于 1 的坐标替换为常量颜色
 ```glsl
 const vec4 bgColor = vec4(0.5, 0.5, 0.8, 1.0);
-float isOutBound = min(abs(floor(max(uv.s, uv.t))), 1.0); // 取坐标中的大值做混合，纹理范围上取整数部分永远是 0，最后约束最大值
+float isOutBound = min(abs(floor(max(uv.s, uv.t))), 1.0); // 取坐标中的大值作为混合比例，在纹理范围内取得的整数部分永远是 0，其他的取到后约束最大值到 1。
 fragColor = texture(colortex0, uv);
 fragColor = mix(fragColor, bgColor, isOutBound);
 ```
@@ -272,14 +272,14 @@ vec2 uv_clampToColor(vec2 uv, out float isOutBound) {
 我们可以利用这个特性来进行多个值的初始化：
 ```glsl
 void MultiInit(out float a, out float b, float c) {
-    a = 1.0; // 正常赋值
+    a = 1.0; // 正常返回
     b = 2.0; // 正常返回
-    c = 3.0; // 不会返回给用作参数的变量
+    c = 3.0; // 不会返回
 }
 
 void main() {
-    float a,b,c;
-    MultiInit(a,b,c);
+    float a, b, c;
+    MultiInit(a, b, c);
 }
 ```
 结果为：
@@ -289,7 +289,7 @@ b = 2.0
 c 未初始化
 ```
 
-同样的，我们还可以使用 `in out` 或者 `inout` 来指定既要带数据来，又会更改值的参数。
+同样的，我们还可以使用 `in out` 或者 `inout` 来指定既要带数据来，又会被更改值的参数。
 
 ## 多次采样
 
@@ -338,13 +338,13 @@ result /= 25.0; // 5*5 次采样
 
 和预期一样，画面被轻微模糊了！
 
-还有一个值得注意的点是，边缘的像素由于超出了屏幕外，我们更期望它直接终止循环而不是继续采样。因此我们可以进行一些优化，当纹理坐标在屏幕外时直接退出：
+还有一个值得注意的点是，边缘的像素偏移采样时由于超出了纹理边界，我们更期望它直接终止循环而不是继续采样。因此我们可以进行一些优化，当纹理坐标在范围外时直接跳过当前循环：
 
 ```glsl
 if(max(uv_displaced.s, uv_displaced.t) > 1.0 || min(uv_displaced.s, uv_displaced.t) < 0.0) { continue; }
 ```
 
-这种边界检测我们经常使用，因此我们也可以将它封装成函数：
+这种边界检测我们会经常使用，因此我们也可以将它封装成函数：
 
 ```glsl
 bool uv_OutBound(vec2 uv) {
@@ -355,9 +355,9 @@ bool uv_OutBound(vec3 uv) {
 }
 ```
 
-你可能注意到我们这里重载了一个同名函数，这是因为 GL 支持三维纹理，由于 OptiFine 不支持一维纹理，我们这里就不额外重载了。
+你可能注意到我们这里重载了一个同名函数，这是因为 GL 支持三维纹理。由于 OptiFine 不支持一维纹理，我们这里就不额外重载了。
 
-由于采样数量不一，我们还需要动态地求平均值，因此我们还需要增加一个用于计数的变量，于是我们的采样循环就变成了：
+由于采样数量不一，我们得动态地求平均值，因此还需要增加一个用于计数的变量，于是采样循环就变成了：
 ```glsl
 vec4 result;
 int count = 0;
@@ -372,15 +372,15 @@ for(int i = -2; i <= 2; ++i) {
 result /= float(count);
 ```
 
-最终效果应该是没什么差异的，但是我们节约了很多无效采样。
+最终效果应该是没什么差异的，但是节约了很多无效采样。
 
-> 我们在这里使用的是矩形采样并平均求值，当半径扩大之后效果会很难看（你会在下一小节看到），更常见的做法是使用一个权重函数在采样时就保证最终的总权重和为 1，例如高斯函数。
+> 我们在这里使用的是矩形采样并平均求值，当半径扩大之后效果会很难看（你会在下一小节看到），更常见的做法是使用一个在采样时就保证最终的总权重和为 1 的权重函数，例如高斯（正态）分布函数。这种情况下由于权重固定，我们就应当将边界视为 `GL_CLAMP_TO_EDGE` 并进行界外采样，不可提前退出。
 
 ## 宏命令
 
 不知道你有没有发现一个很烦人的事。假如由于模糊效果太轻微，我们现在试图扩大采样数，我们需要怎么做？
 
-比如把每边 5 次采样改成 7 次，我们需要把这两行改！四！次！
+比如把每个方向从 5 次采样改成 7 次，我们需要把这两行改！四！次！
 
 <compare first-title="5 次采样" second-title="7 次采样">
 
@@ -435,7 +435,7 @@ for(int j = -BLUR_SAMPLES; j <= BLUR_SAMPLES; ++j) {
 #else
 #endif
 ```
-以及用以装载 GL 扩展的 `extension`。
+以及用以装载 GL 扩展的 `#extension`。
 
 > `#define` 除了可以替换值以外，还可以仅定义宏而不赋值，用作开关。
 

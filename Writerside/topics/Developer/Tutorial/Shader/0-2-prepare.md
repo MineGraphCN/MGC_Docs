@@ -1,5 +1,7 @@
 # 准备工作
 
+<show-structure depth="2"/>
+
 <tldr>
 
 本章节将介绍我们编写光影会使用的编辑器和游戏环境。
@@ -39,7 +41,7 @@ GLSL Syntax for VS Code
 
 或者访问该插件的 [插件商店页面](https://marketplace.visualstudio.com/items?itemName=GeForceLegend.vscode-glsl) 并单击 `Install` 来呼出 VSCode 以安装。
 
-该插件会自动关联 `vsh`、`gsh`、`glsl`、`vertex` 等着色器文件常用后缀。
+该插件会自动关联 `.vsh`、`.gsh`、`.glsl`、`.vertex` 等着色器文件常用后缀。
 
 ### 代码补全和调试
 
@@ -52,6 +54,8 @@ Language Server for Minecraft Shaderpacks
 插件并安装即可。
 
 或者访问该插件的 [插件商店页面](https://marketplace.visualstudio.com/items?itemName=GeForceLegend.vscode-mcshader) 并单击 `Install` 来呼出 VSCode 以安装。
+
+只要工作区正确，该插件就会实时编译光影并提供驱动级查错。
 
 ## 配置游戏环境
 

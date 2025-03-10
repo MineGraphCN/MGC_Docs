@@ -176,14 +176,14 @@ Minecraft 版本
 ```glsl
 #define MC_GL_VERSION <value>
 ```
-整形值，例如：210、320、450
+整型值，例如：210、320、450
 
 最高支持的 GLSL 版本
 :
 ```glsl
 #define MC_GLSL_VERSION <value>
 ```
-整形值，例如：120、150、450
+整型值，例如：120、150、450
 
 操作系统
 :

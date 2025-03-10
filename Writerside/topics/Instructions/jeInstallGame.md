@@ -9,7 +9,11 @@
 <secondary-label ref="mod"/>
 <secondary-label ref="shader"/>
 
-<tldr>这篇文档提供了从头开始安装游戏和加载器的详细教程。</tldr>
+<tldr>
+
+这篇文档提供了从头开始安装游戏和加载器的详细教程。
+
+</tldr>
 
 <var name="topic">帮助新手从零开始安装 Java、游戏和加载器的文档</var>
 <var name="goal">你在寻找安装光影的教程</var>
