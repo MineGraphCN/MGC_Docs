@@ -59,13 +59,7 @@
 - 光影包是名为 `aWOWshaderA` 的文件夹，那么光影配置文件就应该是名为 `aWOWshaderA`、后缀为 `.txt` 的文件；
 - 光影包是名为 `aFancyshaderB` 的压缩包，那么光影配置文件就应该是名为 `aFancyshaderB.zip`、后缀为 `.txt` 的文件：
 
-```Shell
-└─ shaderpacks
-    ├─ aWOWshaderA
-    ├─ aWOWshaderA.txt
-    ├─ aFancyshaderB.zip      # 压缩包文件
-    └─ aFancyshaderB.zip.txt  # 保留 .zip 后缀的 .txt 文本文件
-```
+<include from="uniforms.md" element-id="shaderpack_options"/>
 
 > 你可以在资源管理器中点击 `查看` > `显示` > `文件扩展名` 来检查后缀
 > 
