@@ -29,6 +29,9 @@ Sodium [(Modrinth)](https://modrinth.com/mod/sodium)
 Indium [(CurseForge)](https://www.curseforge.com/minecraft/mc-mods/indium) [(Modrinth)](https://modrinth.com/mod/indium)
 : 确保 Sodium 和多数修改了渲染功能模组兼容性的必需品。
 
+Sodium 汉化资源包 [(Modrinth)](https://modrinth.com/resourcepack/translations-for-sodium)
+: Sodium 的中文汉化资源包。
+
 ## 缩放
 
 Zoomify [(CurseForge)](https://www.curseforge.com/minecraft/mc-mods/zoomify) [(Modrinth)](https://modrinth.com/mod/zoomify)

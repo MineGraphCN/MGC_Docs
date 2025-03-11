@@ -64,4 +64,5 @@
     <term name="AA">Anti-Aliasing</term>
     <term name="AF">Anisotropic Filtering</term>
     <term name="SSBO">Shader Storage Buffer Objects</term>
+    <term name="LSP">Language Server Protocol</term>
 </terms>
