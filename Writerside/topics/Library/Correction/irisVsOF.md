@@ -17,3 +17,8 @@ OptiFine：强制转换为其管线。
 ## Iris 的底层漏洞 {id="irisIssues"}
 
 缓冲区泄露，修不了，根本修不了
+
+
+## Sodium 的底层漏洞 {id="sodiumIssues"}
+
+![843595c23a9043a05b3fb9155e2cd5fe.jpg](sodiumBUG_01.jpg)
