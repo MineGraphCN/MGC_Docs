@@ -9,6 +9,12 @@
 <secondary-label ref="mod"/>
 <secondary-label ref="shader"/>
 
+<tldr>
+
+这篇文档提供了从头开始安装游戏和加载器的详细教程。
+
+</tldr>
+
 <var name="topic">帮助新手从零开始安装 Java、游戏和加载器的文档</var>
 <var name="goal">你在寻找安装光影的教程</var>
 <var name="target_name"/>
@@ -26,7 +32,7 @@ _Java_ 版，顾名思义，要想运行游戏，Java 环境是不可或缺的�
 </tldr>
 
 1. 推荐安装 [GraalVM JDK](https://www.graalvm.org/downloads/#) 。
-   - 在页面上展开第一项 Java 版本，对于 **1.18** 及以前的版本，选择 `Java 21`，否则选择 `Java 23`。
+   - 在页面上展开第一项 Java 版本，对于 **JE 1.18** 及以前的版本，选择 `Java 21`，否则选择 `Java 23`。
    - 展开第二项，根据你的系统选择版本，如果你不确定且不是苹果用户，选择 `Windows x64`，然后点击 `Download`。
 2. 下载之后，解压到任意位置（推荐解压到 `C:\Program Files\Java\` 方便管理），并在开始菜单中搜索 `path` ，打开 `编辑系统环境变量`。
    - 对于其他系统用户，请自行搜索如何修改。

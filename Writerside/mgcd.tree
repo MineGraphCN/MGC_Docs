@@ -38,6 +38,7 @@
         <toc-element topic="Correction.md">
             <toc-element topic="raytracingCorrection.md" toc-title="光线追踪"/>
             <toc-element topic="irisVsOF.md" hidden="true"/>
+            <toc-element topic="physicalWaterCorrection.md" hidden="true"/>
         </toc-element>
         <toc-element topic="QAs.md">
             <toc-element topic="beQA.md"/>
@@ -46,7 +47,7 @@
         </toc-element>
         <toc-element topic="Troubleshoot.md">
             <toc-element topic="troubleshootCommon.md"/>
-            <toc-element topic="artOfAsking.md" hidden="true"/>
+            <toc-element topic="findSolution.md" hidden="true"/>
             <toc-element toc-title="Java 版">
                 <toc-element topic="videoSettings.md"/>
                 <toc-element toc-title="光影">
@@ -60,12 +61,31 @@
         </toc-element>
     </toc-element>
     <toc-element topic="Developer.md">
-        <toc-element topic="labpbrMaterialStandard.md"/>
+        <toc-element topic="labpbrMaterialStandard.md">
+        </toc-element>
         <toc-element topic="ratioNormals.md"/>
         <toc-element topic="shaderTutorial.md">
-            <toc-element topic="00-filePipeline.md"/>
-            <toc-element topic="01-prepare.md" hidden="true"/>
-            <toc-element topic="space_conversion.md"/>
+            <toc-element toc-title="创作之前">
+                <toc-element topic="0-2-prepare.md"/>
+                <toc-element topic="0-1-filePipeline.md"/>
+                <toc-element topic="0-3-helloGlsl.md"/>
+            </toc-element>
+            <toc-element toc-title="你好，光影">
+                <toc-element topic="1-1-deferred.md"/>
+                <toc-element topic="1-2-clearWorkSpace.md"/>
+                <toc-element topic="1-2-GBuffers.md"/>
+                <toc-element topic="1-3-simpleLighting.md"/>
+                <toc-element topic="1-4-castShadow.md"/>
+            </toc-element>
+            <toc-element toc-title="我们需要再深入一些" hidden="true">
+                <toc-element topic="2-1-HDR.md"/>
+            </toc-element>
+            <toc-element toc-title="效果实战" hidden="true"/>
+            <toc-element toc-title="附录">
+                <toc-element topic="a01-uniformsAndAts.md"/>
+                <toc-element topic="a02-coreBuiltinVars.md"/>
+                <toc-element topic="a03-gbufferTargets.md"/>
+            </toc-element>
         </toc-element>
         <toc-element topic="resourceTutorial.md">
             <toc-element topic="00-setup.md"/>

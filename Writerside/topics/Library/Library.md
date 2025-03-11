@@ -14,7 +14,8 @@
 
 在新建标签页打开：<shortcut>鼠标中键</shortcut>
 
-高级搜索：<shortcut>Ctrl</shortcut><shortcut>K</shortcut>
+[//]: # (高级搜索：<shortcut>Ctrl</shortcut><shortcut>K</shortcut>)
+搜索功能暂不可用
 
 深色模式：右上角 ![切换深色模式按钮](https://resources.jetbrains.com/help/img/writerside/systemTheme_dark.svg){style="inline"} （需要横屏）
 
@@ -28,18 +29,21 @@
 
 ## 操作
 
-- 点击跳转链接时，默认在当前标签页内跳转。使用 <shortcut>鼠标中键</shortcut> 来新建标签页访问。
-- 使用 <shortcut>Ctrl</shortcut><shortcut>K</shortcut> 进行高级搜索。
-- 点击右上角 <img src="https://resources.jetbrains.com/help/img/writerside/systemTheme_dark.svg" alt="切换深色模式按钮"/> 将文档切换为深色模式获得最佳阅读体验。
-    > 在竖屏中可能不显示该按钮。
-    >
-    {style="note"}
-- 在**左侧栏**中选择你想阅读的文档。
-- 点击代码块右上角按钮可以拷贝代码
+- 点击跳转链接时，默认在当前标签页内跳转。使用 <shortcut>鼠标中键</shortcut> 来新建标签页访问；
+
+[//]: # (- 使用 <shortcut>Ctrl</shortcut><shortcut>K</shortcut> 进行高级搜索；)
+- 搜索功能的服务配置有些问题，暂不可用；
+- 点击右上角 <img src="https://resources.jetbrains.com/help/img/writerside/systemTheme_dark.svg" alt="切换深色模式按钮"/> 可以将文档切换为深色模式，大多数图片也是以深色模式为主；
+  - 我们对部分文档图片进行了优化，使其可以同时适配深色和浅色模式；
+  > 在竖屏中可能不显示该按钮。
+  >
+  {style="note"}
+- 在**左侧栏**中选择你想阅读的文档；
+- 点击代码块右上角按钮可以拷贝代码。
 
 ## 基本术语
 
-我们将所有的术语按类型划分，整理在 [术语表](terms.md) 中，这些名词和概念贯穿全文，了解它们可以帮助你更流畅地阅读。
+我们将所有的术语按类型划分，整理在 [](terms.md) 中，这些名词和概念贯穿全文，了解它们可以帮助你更流畅地阅读。
 
 我们主要解释术语的含义，不涉及过多的原理和实现。
 

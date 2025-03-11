@@ -5,23 +5,23 @@
 
 ```Shell
 └─ shaderpacks
-  └─ <光影名称 | 光影名称.zip>
-    └─ shaders
-        ├─ lang
-        │   └─ <语言文件>
-        ├─ world-1
-        │   └─ <下界着色器程序>
-        ├─ world0
-        │   └─ <主世界着色器程序>
-        ├─ world1
-        │   └─ <末地着色器程序>
-        ├─ world<ID>
-        │   └─ <其他世界着色器程序>
-        ├─ <通用着色器程序>
-        ├─ block.properties
-        ├─ entities.properties
-        ├─ item.properties
-        └─ shaders.properties
+   └─ <光影名称 | 光影名称.zip>
+      └─ shaders
+         ├─ lang
+         │  └─ <语言文件>
+         ├─ world-1
+         │  └─ <下界着色器程序>
+         ├─ world0
+         │  └─ <主世界着色器程序>
+         ├─ world1
+         │  └─ <末地着色器程序>
+         ├─ world<ID>
+         │  └─ <其他世界着色器程序>
+         ├─ <通用着色器程序>
+         ├─ block.properties
+         ├─ entities.properties
+         ├─ item.properties
+         └─ shaders.properties
 ```
 
 </snippet>
@@ -39,6 +39,18 @@
 </snippet>
 
 
+<snippet id="shaderpack_options">
+
+```Shell
+└─ shaderpacks
+   ├─ aWOWshaderA            # 文件夹光影
+   ├─ aWOWshaderA.txt        # 光影对应的配置文件
+   ├─ aFancyshaderB.zip      # 压缩包光影
+   └─ aFancyshaderB.zip.txt  # 保留 .zip 后缀的 .txt 文本文件
+```
+
+</snippet>
+
 
 <snippet id="resourcepack_structure_dev">
 
@@ -49,13 +61,13 @@
       │  ├─ minecraft
       │  │  ├─ textures
       │  │  │  ├─ block
-      │  │  │  │   └─ <方块纹理文件>
+      │  │  │  │  └─ <方块纹理文件>
       │  │  │  ├─ item
-      │  │  │  │   └─ <物品纹理文件>
+      │  │  │  │  └─ <物品纹理文件>
       │  │  │  ├─ models
-      │  │  │  │   └─ <盔甲纹理文件>
+      │  │  │  │  └─ <盔甲纹理文件>
       │  │  │  └─ ...
-      │  │  │      └─ <其他纹理文件>
+      │  │  │     └─ <其他纹理文件>
       │  │  └─ <其他自定义资源>
       │  └─ <其他模组对应的文件夹>
       ├─ pack.mcmeta
@@ -155,11 +167,12 @@
 <tr><td>50</td><td colspan="2">1.21.5 25w05a</td></tr>
 <tr><td>51</td><td colspan="2">1.21.5 25w06a</td></tr>
 <tr><td>52</td><td colspan="2">1.21.5 25w07a</td></tr>
-<tr><td>%latest_pack_format%</td><td>1.21.5 25w08a</td><td><i>最新</i></td></tr>
+<tr><td>53</td><td>1.21.5 25w08a</td><td>1.21.5 25w09b</td></tr>
+<tr><td>%latest_pack_format%</td><td>1.21.5 25w10a</td><td><i>最新</i></td></tr>
 </table>
 
 _23 和 27 不存在。_  
-_截止 2025 年 2 月 23 日，数据来源于 [Minecraft Wiki](https://zh.minecraft.wiki/w/资源包#资源包格式版本) 。_
+_截止 2025 年 3 月 10 日，数据来源于 [Minecraft Wiki](https://zh.minecraft.wiki/w/资源包#资源包格式版本) 。_
 
 </procedure>
 

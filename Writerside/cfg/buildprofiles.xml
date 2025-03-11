@@ -1,6 +1,7 @@
 <buildprofiles xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/build-profiles.xsd"
                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <variables>
+        <generate-sitemap-url-prefix>https://docs.minegraph.cn/</generate-sitemap-url-prefix>
         <primary-color>#fdb71b</primary-color>
         <color-preset>contrast</color-preset>
         <custom-favicons>page_logo.png</custom-favicons>
