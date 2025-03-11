@@ -52,7 +52,7 @@ void main() {
 ```
 {collapsed-title="final.fsh" collapsible="true" default-state="expanded"}
 
-然后，你就已经可以在游戏窗口中看到光影的效果了：
+并按下 <shortcut>F3</shortcut><shortcut>R</shortcut> 重载光影。然后，你就已经可以在游戏窗口中看到光影的效果了：
 
 ![deferred_drawRed.png](deferred_drawRed.png)
 
@@ -103,7 +103,9 @@ in vec2 uv;
 ```
 这样，我们就获取到了采样纹理所需要的**归一化坐标**。
 
-另一种办法，我们可以直接在片段着色器中完成。首先我们需要 GLSL 的另一个内建变量 `gl_FragCoord` ，它指定了当前像素在窗口内的空间坐标。
+现在来回想一下，在延迟处理中，纹理坐标和屏幕坐标是相等的，因此这也引出了另一种办法，而且可以直接在片段着色器中完成。
+
+首先我们需要 GLSL 的另一个内建变量 `gl_FragCoord` ，它指定了当前像素在窗口内的空间坐标。
 
 由于我们只关注像素在屏幕上的二维位置，因此我们只关心它的 `xy` 分量。`gl_FragCoord.xy` 表示了当前像素在横轴和纵轴上的序号（我们可以将其称之为整数坐标），因此它会随着分辨率的变化而变化。
 
@@ -151,7 +153,7 @@ What Amazing！我们成功向屏幕输出了 0 号缓冲区的内容！
 
 `texelFetch()` 和 `texture()` 很相似（更准确地说是和它的兄弟 `textureLod()` 更相似），前者接受三个参数：采样器、同维采样**整数坐标**，以及一项额外的 Mipmap 等级。
 
-第三个参数我们在这里不过多展开，你只需要知道它接受一个 `int` 值用于指定纹理细节等级，从 `0` 开始，每加 `1` 纹理的精度就会减半。
+第三个参数我们在这里不过多展开，你只需要知道它接受一个 `int` 值用于指定纹理细节等级，从 0 开始，每加 1 纹理的精度就会减半。
 
 值得注意的是，`texelFetch()` 的第二个参数要求传入**整数向量**类型（ `ivec` ），而 `gl_FragCoord` 实际上是**浮点向量**类型（ `vec4` ，和它的 `w` 分量有关，具体见 [](a02-coreBuiltinVars.md){summary=""} ），因此在使用时我们需要进行转换：
 ```glsl
@@ -207,7 +209,7 @@ fragColor = texelFetch(colortex0, ivec2(gl_FragCoord.xy) / 8, 0);
 我们可以手动实现上述的四种边缘行为，同时附上将画面缩小到纵横各 1/4 的结果：
 
 `GL_Repeat`
-: 将纹理坐标约束在 $[0,1]$ 即可：
+: 将纹理坐标约束在 $[0,1]$ 上重复即可：
 ```glsl
 uv = mod(uv, 1.0);
 ```
@@ -267,7 +269,7 @@ vec2 uv_clampToColor(vec2 uv, out float isOutBound) {
 }
 ```
 
-你可能注意到了，在 `uv_clampToColor()` 中我们在声明函数参数时使用了 `out` 关键字，GLSL 允许我们这样做。当 `out` 在函数中声明时，表示函数中更改的值会原路返还给用作这个参数的变量。
+你可能注意到了，在 `uv_clampToColor()` 中我们在声明函数参数时使用了 `out` 关键字，GLSL 允许我们这样做。当函参声明 `out` 时，表示函数中更改的值会原路返还给用作这个参数的变量。
 
 我们可以利用这个特性来进行多个值的初始化：
 ```glsl
@@ -295,7 +297,7 @@ c 未初始化
 
 另一个你可能会思考的问题是，我们能否采样同一个纹理多次，每次偏移一小段距离，从而绘制出更多效果？
 
-如果你这样想了，那么恭喜你，你已经悟出了着色器中非常重要的采样手法，很多现代特效极其依赖多次采样。
+如果你这样想了，那么恭喜你，你已经悟出了着色器中非常重要，也是很多现代特效极其依赖的采样手法：多次采样。
 
 关于多次取样，我们最容易想到的就是**模糊**，因为它的核心思想就是将周围的像素颜色**扩散**过来。
 
@@ -355,7 +357,7 @@ bool uv_OutBound(vec3 uv) {
 }
 ```
 
-你可能注意到我们这里重载了一个同名函数，这是因为 GL 支持三维纹理。由于 OptiFine 不支持一维纹理，我们这里就不额外重载了。
+你可能注意到我们这里重载了一个同名函数，这是因为 GL 支持三维纹理。由于 OptiFine 没有一维纹理，我们这里就不额外重载了。
 
 由于采样数量不一，我们得动态地求平均值，因此还需要增加一个用于计数的变量，于是采样循环就变成了：
 ```glsl
@@ -423,19 +425,21 @@ for(int j = -BLUR_SAMPLES; j <= BLUR_SAMPLES; ++j) {
 
 除了 `#define` 和之前介绍过的 `#version` 外，GLSL 还支持下列 C 中的常见宏
 ```glsl
-#undef <macro>
-#ifdef <macro>
-#ifndef <macro>
-#if <int>
-#if defined <macro>
-#if !defined <macro>
-#elif <int>
+#undef <macro>          // 取消某个宏
+#ifdef <macro>          // 如果定义了某个宏
+#ifndef <macro>         // 如果没有定义某个宏
+#if <int>               // 可以使用整型值（布尔值本质也是整型）进行判定是否包含直到 #else 类或 #endif 的内容
+#if defined <macro>     // 如果定义了某个宏，当整个程序都使用 #if defined 而不使用 #ifdef 时不会写入光影设置
+#if !defined <macro>    // 如果没有定义某个宏
+#elif <int>             // 同条件判定 else if
 #elif defined <macro>
 #elif !defined <macro>
 #else
-#endif
+#endif                  // #if 语句的结尾
 ```
-以及用以装载 GL 扩展的 `#extension`。
+以及用以装载 GL 扩展的 `#extension` 和包含文件的 `#include` 。
+
+宏定义可以进行嵌套，可用在 `#if` 中使用逻辑运算符。
 
 > `#define` 除了可以替换值以外，还可以仅定义宏而不赋值，用作开关。
 

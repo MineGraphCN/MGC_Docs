@@ -73,12 +73,13 @@
             <toc-element toc-title="你好，光影">
                 <toc-element topic="1-1-deferred.md"/>
                 <toc-element topic="1-2-clearWorkSpace.md"/>
-                <toc-element topic="1-2-GBuffers.md"/>
                 <toc-element topic="1-3-simpleLighting.md"/>
                 <toc-element topic="1-4-castShadow.md"/>
             </toc-element>
             <toc-element toc-title="我们需要再深入一些" hidden="true">
                 <toc-element topic="2-1-HDR.md"/>
+                <toc-element topic="2-2-shaderOptions.md"/>
+                <toc-element topic="2-3-multiPass.md"/>
             </toc-element>
             <toc-element toc-title="效果实战" hidden="true"/>
             <toc-element toc-title="附录">

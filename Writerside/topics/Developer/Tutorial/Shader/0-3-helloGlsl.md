@@ -333,11 +333,11 @@ h(c)
 h(v)
 ```
 ```text
-<常量>
-<变量>
-<变量>
+常量
+变量
+变量
 <编译错误>
-<常量>
+常量
 <编译错误>
 ```
 
@@ -348,6 +348,15 @@ h(v)
 除了上述特性，GLSL 还内置了许多方便的函数，你可以在 [这里](https://registry.khronos.org/OpenGL-Refpages/gl4/index.php) 查阅。
 
 其中也包含了大多数在 C 中属于 math 库的函数。
+
+### 函数重载
+
+GLSL 支持函数重载，即定义多个同名但不同参的函数，在调用时将会根据传参类型选择对应函数。
+```glsl
+float f(float x, int y);
+float f(int x, int y);
+float f(int y, float x);
+```
 
 ### 类型
 

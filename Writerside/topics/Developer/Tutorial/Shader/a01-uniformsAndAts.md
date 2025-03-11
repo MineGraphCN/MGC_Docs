@@ -85,7 +85,7 @@ uniform mat4 projectionMatrix;            //投影矩阵
 uniform mat4 projectionMatrixInverse;     //投影矩阵的逆
 uniform mat4 textureMatrix;               //纹理矩阵，默认是单位矩阵
 uniform mat3 normalMatrix;                //法线矩阵
-uniform vec3 chunkOffset;                 //地形区块起始位置，和属性 vaPosition 一起使用
+uniform vec3 chunkOffset;                 //地形（terrain）的区块起始位置，和属性 vaPosition 一起使用
 uniform float alphaTestRef;               //alpha测试参考值, 使用 "if (color.a < alphaTestRef) discard;" 进行检查
 // 1.19+
 uniform float darknessFactor;             //黑暗效果强度 (0.0-1.0)

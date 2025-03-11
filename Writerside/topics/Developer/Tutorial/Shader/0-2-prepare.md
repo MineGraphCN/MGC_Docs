@@ -77,11 +77,17 @@ Language Server for Minecraft Shaderpacks
 
 你可以在编辑过程中随时按下 <shortcut>Ctrl</shortcut><shortcut>Space</shortcut> 呼出代码补全功能。
 
+你可以按下 <shortcut>Ctrl</shortcut><shortcut>K</shortcut>, <shortcut>S</shortcut> 来保存所有文件。
+
 当你保持工作区打开并关闭 VS Code 窗口时，它会缓存工作区布局和未保存的文件，当你下次运行 VS Code 时会默认继承进度。
+
+如果你安装了前文的 LSP 插件，当你修改文件名称时，所有的包含宏都会自动修改。
 
 ## 查看日志
 
-OptiFine 会将光影报错内容输出到游戏的日志中，你可以在 `\logs\latest.log` 查看，在启动器中勾选 `查看日志` 或者将这个文件拖入 VS Code，它默认关联了 `.log` 格式。 
+OptiFine 会将光影报错内容输出到游戏的日志中，你可以在 `\logs\latest.log` 查看，在启动器中勾选 `查看日志` 或者将这个文件拖入 VS Code，它默认关联了 `.log` 格式。
+
+此外，你还应该在右下角选择 `GB 2313` 编码，这样才能正确显示日志中的中文。
 
 ---
 
