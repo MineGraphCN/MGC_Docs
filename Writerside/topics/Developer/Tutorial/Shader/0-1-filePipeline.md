@@ -64,7 +64,7 @@ OptiFine 允许我们使用类似 C / C++ 的 `#include` 宏来调用其不会�
 
 <include from="uniforms.md" element-id="shaderpack_structure_dev"/>
 
-## 管线
+## 管线 {id="pipeline"}
 
 现代常用的渲染方法包括 [向前渲染法](shaderBasic.md#向前渲染法){summary=""} 和 [延迟渲染法](shaderBasic.md#延迟渲染法){summary=""} 。
 

@@ -739,7 +739,7 @@ void main() {
 <def id="opengl">
 <title><tooltip term="OpenGL">OpenGL</tooltip></title>
 
-**开源图形库**，Java 版所使用的图形函数库。
+**开源图形库**，简称 GL。Java 版所使用的图形库。
 
 </def>
 <def title="GLSL" id="glsl">
@@ -758,7 +758,7 @@ void main() {
     - `ivec[N]` 为整数向量，`bvec[N]` 为布尔值向量。
     - 例：`vec3` `ivec4`。
     - 在 OpenGL 和 GLSL 中，一个 `vec4` 类型可以被看做一个 `float[4]` 类型，但是需要注意：我们声明 `float[]` 类型的变量时，本质上是声明了一个指针，所以我们不能像 `vec[N]` 一样直接进行 [向量四则运算](#向量的普通四则运算){summary=""} 。
-    - 我们可以使用 `xyzw` / `rgba` / `stpq` 来访问向量中特定的分量。
+    - 我们可以使用 `.xyzw` / `.rgba` / `.stpq` 来访问向量中特定的分量。
 - `mat[N]` `mat[N]x[M]` ：浮点矩阵，$N$ 、$M$ 可以为 $[2, 4]$ 的整数，表示该矩阵的大小。
     - `mat[N]` 表示 $N \times N$ 大小的矩阵，`mat[N]x[M]` 表示 $N \times M$ 大小的矩阵。
     - 例：`mat3` ，`mat2x4` 。
