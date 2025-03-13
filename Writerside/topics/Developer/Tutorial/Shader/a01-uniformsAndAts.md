@@ -161,7 +161,7 @@ in vec3 at_midBlock;      //像方块中心偏移1/64m           仅方块
 
 ## 标准宏
 
-标准宏会在每个着色器文件的 `#version` 行后自动包含
+标准宏会在每个着色器文件的 `#version` 行后自动定义，可以在着色器程序中随时使用。
 
 Minecraft 版本
 :
@@ -176,14 +176,14 @@ Minecraft 版本
 ```glsl
 #define MC_GL_VERSION <value>
 ```
-整型值，例如：210、320、450
+整型值，例如：`210`、`320`、`450`
 
 最高支持的 GLSL 版本
 :
 ```glsl
 #define MC_GLSL_VERSION <value>
 ```
-整型值，例如：120、150、450
+整型值，例如：`120`、`150`、`450`
 
 操作系统
 :
@@ -222,9 +222,9 @@ GPU
 ```
 
 OpenGL 扩展
-: 受支持的 OpenGL 扩展与前缀为 `MC_` 的宏同名。
-例如，当支持扩展 `GL_ARB_shader_texture_lod` 时，会定义宏 `MC_GL_ARB_shader_text_lod` 。
-只有引用了且支持的宏才会被添加到着色器中。
+: 与受支持的 GL 扩展同名的前缀为 `MC_` 的宏。
+- 例如，当支持扩展 `GL_ARB_shader_texture_lod` 时，会定义宏 `MC_GL_ARB_shader_text_lod` 。
+- 只有支持且引用了的扩展才会被添加到着色器中。
 
 设置
 :
@@ -246,10 +246,10 @@ OpenGL 扩展
  #define MC_TEXTURE_FORMAT_LAB_PBR       // LabPBR 纹理格式 ([[[Wiki|https://wiki.shaderlabs.org/wiki/LabPBR_Material_Standard]]])
  #define MC_TEXTURE_FORMAT_LAB_PBR_1_3   // 版本 1.3
 ```
-你也可以在站内找到 [LabPBR 格式的翻译版本](labpbrMaterialStandard.md){summary=""}
+你也可以在站内找到 [LabPBR 格式的翻译版本](labpbrMaterialStandard.md){summary=""} 。
 
 渲染阶段
-: `const` 用于统一变量 `renderStage` ，按照执行顺序给出
+: `<const>` 用于统一变量 `renderStage` ，其值按执行顺序给出。
 ```glsl
 #define MC_RENDER_STAGE_NONE <const>                    // 未定义
 #define MC_RENDER_STAGE_SKY <const>                     // 天空

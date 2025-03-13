@@ -61,13 +61,10 @@
         </toc-element>
     </toc-element>
     <toc-element topic="Developer.md">
-        <toc-element topic="labpbrMaterialStandard.md">
-        </toc-element>
-        <toc-element topic="ratioNormals.md"/>
         <toc-element topic="shaderTutorial.md">
             <toc-element toc-title="创作之前">
-                <toc-element topic="0-2-prepare.md"/>
-                <toc-element topic="0-1-filePipeline.md"/>
+                <toc-element topic="0-1-prepare.md"/>
+                <toc-element topic="0-2-filePipeline.md"/>
                 <toc-element topic="0-3-helloGlsl.md"/>
             </toc-element>
             <toc-element toc-title="你好，光影">
@@ -86,16 +83,15 @@
             <toc-element toc-title="附录">
                 <toc-element topic="a01-uniformsAndAts.md"/>
                 <toc-element topic="a02-coreBuiltinVars.md"/>
-                <toc-element topic="a03-gbufferTargets.md"/>
             </toc-element>
         </toc-element>
         <toc-element topic="resourceTutorial.md">
             <toc-element topic="00-setup.md"/>
         </toc-element>
-        <toc-element toc-title="资料整理">
-            <toc-element topic="developTips.md"/>
-            <toc-element topic="animation.md"/>
-        </toc-element>
+        <toc-element topic="labpbrMaterialStandard.md"/>
+        <toc-element topic="developTips.md"/>
+        <toc-element topic="animation.md"/>
+        <toc-element topic="ratioNormals.md"/>
     </toc-element>
     <toc-element topic="Gallery.md">
         <toc-element topic="2024-spring.md"/>

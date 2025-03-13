@@ -80,7 +80,7 @@ OptiFine 使用的是延迟渲染法：
 >
 {style="note"}
 
-OptiFine 接管了从 GUI 开始直到场景输出的全部管线，下图列出了整个画面输出流程。
+OptiFine 接管了从 GUI 开始直到场景输出的全部管线，下图列出了整个画面输出流程：
 
 <resource src="./ofpp_simple_bg.png">
 
@@ -88,9 +88,7 @@ OptiFine 接管了从 GUI 开始直到场景输出的全部管线，下图列出
 
 </resource>
 
-单击图片查看和保存附带深色背景的原图。
-
-有关每个程序的处理对象，见 [](a03-gbufferTargets.md) 。
+你可以单击图片查看和保存附带深色背景的大图。我们将在下一篇了解每个程序的处理对象。
 
 ---
 

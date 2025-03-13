@@ -1,3 +1,3 @@
 # 半透明几何
 
-Start typing here...
+## 色彩混合
