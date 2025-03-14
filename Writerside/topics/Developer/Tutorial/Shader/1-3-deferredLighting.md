@@ -1,12 +1,10 @@
 # 延迟处理光照
 
-<secondary-label ref="wip"/>
-
 <show-structure depth="2"/>
 
 <tldr>
 
-在本篇的第一章中，我们初步体验了延迟渲染，并且留下了很多疑问：神秘的非线性深度图、`gl_FragCoord`、以及空间变换。
+在本篇的第一章中，我们初步体验了延迟渲染，并且留下了很多疑问：奇怪非线性深度图、`gl_FragCoord` 的来由等等，它们都和空间变换直接挂钩。
 
 从这一章开始，我们就将正式进入几何缓冲程序，随着对几何缓冲的深入，上面的问题都将得到解答。
 
@@ -14,7 +12,7 @@
 
 ## 空间坐标
 
-在几何缓冲中，我们会将传入几何的顶点按照一定的方法进行坐标变换，这也是顶点着色器的核心部分。
+在几何缓冲中，我们会将传入几何的顶点按照一定的方法进行坐标变换，这也是顶点着色器的核心部分。本节的内容较为复杂，但是要想编写好的着色器程序，理解空间变换的几何意义至关重要，因此请认真阅读。
 
 [//]: # (TODO: 添加图片)
 
@@ -56,7 +54,12 @@ GL 传入的顶点总是从局部坐标（Local Coordinate）开始。它代表�
 
 事实上，透视除法还有另一个作用。还记得 GL 对标准坐标的执念吗？它希望场景中的所有的坐标最后都落在 $[-1,1]$ 的区间上，这个坐标被称为**标准化设备坐标**（Normalized Device Coordinate, NDC），$w$ 分量在透视除法时也充当了这一角色。
 
-当转换到标准化设备坐标之后，GL 会执行**栅格化**，丢弃一切在边界之外的东西，然后将输出的 $xy$ 分量设置为屏幕的像素位置，$z$ 分量设置为映射到 $[0,1]$ 上（为了方便归一化）的几何的 $z$ 值，最后将 $w$ 分量设置为裁切空间的 $w$ 分量（它没有在透视除法中与自身相除）的倒数（为了进行顶点间属性的非线性插值，也可用于在对应片段着色器中逆转透视除法）并写入 `gl_FragCoord` 中。
+当转换到标准化设备坐标之后，GL 会执行**栅格化**，丢弃一切边界之外不可见的内容，然后将 `gl_FragCoord` 进行如下设置：
+- $xy$ 分量设置为以窗口左下角为原点的像素位置；
+- $z$ 分量设置为线性映射 <sup>**1**</sup> 到 $[0,1]$ 上（为了方便使用）的几何 $z_{\text{NDC}}$ 值；
+- $w$ 分量设置为裁切空间的 $w$ 分量（它没有在透视除法中与自身相除）的倒数（$w = \frac{1}{w_{\text{Clip}}}$，由 GL 进行顶点间属性的非线性插值或在片段着色器中逆执行透视除法）。
+
+**[1]** 使用 $z = \frac{z_{\text{NDC}}+1}{2}$ 进行映射，实际的深度仍然由于透视除法而呈非线性变化。
 
 ### 空间变换
 
@@ -91,13 +94,19 @@ uniform mat4 gbufferProjectionInverse;    //gbufferProjection 的逆
 uniform mat4 gbufferPreviousProjection;   //上一帧的 gbufferProjection
 ```
 
-除了这些固定阶段使用矩阵外，**JE 1.17+** 的核心配置中，OptiFine 还为我们提供了像内建矩阵那样根据每个程序动态生成的矩阵：
+除了这些固定阶段使用矩阵外，**JE 1.17+** 的核心配置中，OptiFine 还为我们提供了像内建矩阵那样根据每个程序动态设置的矩阵：
 ```glsl
 uniform mat4 modelViewMatrix;             //模型视口矩阵，替换 gl_ModelViewMatrix，下同
 uniform mat4 modelViewMatrixInverse;      //模型视口矩阵的逆
 uniform mat4 projectionMatrix;            //投影矩阵
 uniform mat4 projectionMatrixInverse;     //投影矩阵的逆
 ```
+
+> 我们将会使用下标前缀来表示特定阶段所使用到的矩阵，$_G$ 表示几何缓冲矩阵，例如 $M_{G\text{ModelView}}$ 表示 `gbufferModelView` ；而当前着色器自动设置的着色器则没有前缀，例如 $M_{\text{ModelView}}$ 表示 `modelViewMatrix` ，就像统一变量的格式那样。
+> 
+> 上一帧的矩阵会以 $_P$ 前缀表示，例如 $M_{GP\text{ModelView}}$ 表示 `gbufferPreviousModelView` ；而逆矩阵则以 $^{-1}$ 上标表示，例如 $M^{-1}_{G\text{ModelView}}$ 表示 `gbufferModelViewInverse` 。
+> 
+> 之后我们还会使用到的阴影矩阵，会以下标前缀 $_S$ 表示，例如用 $M_{S\text{ModelView}}$ 表示 `shadowModelView` 。
 
 这张图整理出了各种空间之间的相互变换方法：
 
@@ -610,7 +619,7 @@ vec3 lightDir1 = normalize(vec3(gbufferModelView * vec4(Light1_Direction, 0.0)))
 ```
 你会注意到我们将光照向量的第四分量设置为了 `0.0` 而不是 `1.0` ，这是因为 `gbufferModelView` 中包含了视角摇晃的位移数据
 $$
-M_{\text{GModelView}} =
+M_{G\text{ModelView}} =
 \begin{bmatrix}
 \begin{bmatrix}
 \cdots&\cdots&\cdots \\
@@ -636,7 +645,7 @@ $$
 
 当我们将向量乘入矩阵时，如果 $w$ 分量为 $1$，则最终场景将会应用位移数据
 $$
-\vec{P}_{\text{Point}} = M_{\text{GModelView}} \cdot \vec{P} =
+\vec{P}_{\text{Point}} = M_{G\text{ModelView}} \cdot \vec{P} =
 \begin{bmatrix}
 M_R \cdot \begin{bmatrix}x \\ y \\ z\end{bmatrix} + M_T \\
 1
@@ -644,7 +653,7 @@ M_R \cdot \begin{bmatrix}x \\ y \\ z\end{bmatrix} + M_T \\
 $$
 而如果 $w$ 分量为 $0$，则场景最终不会应用位移数据
 $$
-\vec{P}_{\text{Direction}} = M_{\text{GModelView}} \cdot \vec{P} =
+\vec{P}_{\text{Direction}} = M_{G\text{ModelView}} \cdot \vec{P} =
 \begin{bmatrix}
 M_R \cdot \begin{bmatrix}x \\ y \\ z\end{bmatrix} \\
 0
@@ -652,7 +661,7 @@ M_R \cdot \begin{bmatrix}x \\ y \\ z\end{bmatrix} \\
 $$
 有关矩阵乘法的细节这里不再过多展开，同时也感谢 _Tahnass_ 对矩阵的解释！
 
-> $M_{\text{GModelView}}$ 的 _Model_ 部分实际上只包含了视角摇晃的位移数据，而不像 $M_{\text{ModelView}}$ 那样还涵盖世界坐标的位移数据。
+> $M_{G\text{ModelView}}$ 的 _Model_ 部分实际上只包含了视角摇晃的位移数据，而不像 $M_{\text{ModelView}}$ 那样还涵盖世界坐标的位移数据。
 
 然后将它们传入之前的函数中，就能看到，场景光照回来了！
 ```glsl

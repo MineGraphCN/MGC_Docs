@@ -2,8 +2,6 @@
 
 <primary-label ref="dev"/>
 
-<secondary-label ref="wip"/>
-
 <secondary-label ref="je"/>
 <secondary-label ref="of"/>
 <secondary-label ref="shader"/>
