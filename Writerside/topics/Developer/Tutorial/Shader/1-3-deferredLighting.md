@@ -355,7 +355,7 @@ fragColor.a = vColor.a;
 
 要想还原经典光照，我们首先需要知道原版的光照方向和处理方法。
 
-### 原版实现 {collapsible="true"}
+### 原版实现 {collapsible="true" default-state="collapsed"}
 
 <tldr>
 
@@ -364,14 +364,12 @@ fragColor.a = vColor.a;
 uniform.vec3.Light0_Direction = vec3(0.0, sin(torad(45)), -sin(torad(45)))
 uniform.vec3.Light1_Direction = vec3(0.0, sin(torad(45)),  sin(torad(45)))
 ```
-{collapsible="true" collapsed-title="Uniforms.glsl" default-state="expanded"}
 
 同时光照强度相关的宏为：
 ```glsl
 #define LIGHT_POWER   0.6
 #define AMBIENT_LIGHT 0.4
 ```
-{collapsible="true" collapsed-title="Settings.glsl" default-state="expanded"}
 
 其使用的函数是：
 ```glsl
@@ -382,7 +380,6 @@ vec4 vanillaMixLight(vec3 lightDir0, vec3 lightDir1, vec3 normal, vec4 color) {
     return vec4(color.rgb * lightAccum, color.a);
 }
 ```
-{collapsible="true" collapsed-title="Utilities.glsl" default-state="expanded"}
 
 如果你对我们的惊世智慧感兴趣，可以点击小节标题展开阅读。
 
@@ -390,7 +387,7 @@ vec4 vanillaMixLight(vec3 lightDir0, vec3 lightDir1, vec3 normal, vec4 color) {
 
 由于原版地形直接将固定管线的光照烘焙进了顶点颜色（间接导致 OptiFine 的经典光效），而且无法直接找到光照方向的有关数据，要想完美实现原版光照，我们需要动用一些 _俺寻思之力_ 。
 
-> 其实你也可以使用一些调试工具比如 _Nsight_ 或者 _RenderDoc_ 直接抓到值，不过对于我们这个场景来说有点大动干戈了。~~主要是还得写 Nsight 和 RenderDoc 的教程，我自己都不怎么会用（~~
+> 其实你也可以使用一些调试工具比如 Nsight 或者 RenderDoc 直接抓帧找到值，不过对于我们这个级别的需求来说有点大动干戈了。~~主要是还得写 Nsight 和 RenderDoc 的教程，我自己都不怎么会用（~~
 
 访问我们的 `versions` 文件夹，将游戏的 `.jar` 本体使用压缩软件打开
 
@@ -408,14 +405,14 @@ vec4 vanillaMixLight(vec3 lightDir0, vec3 lightDir1, vec3 normal, vec4 color) {
 {
     "pack": {
         "pack_format": %latest_pack_format%,
-        "description": "",
+        "description": "A common shader testing pack",
         "supported_formats": [17, %latest_pack_format%]
     }
 }
 ```
 然后在资源包中将其装载。
 
-接着，我们使用 VS Code 将这个文件夹作为工作区打开，你可以在 `\include\light.glsl` 中找到 Mojang 用来编写光照的函数：
+接着，我们使用 VS Code 将这个文件夹作为工作区打开，你可以在 `\include\light.glsl` 中找到 Mojang 用来处理光照的函数：
 ```glsl
 #define MINECRAFT_LIGHT_POWER   (0.6)
 #define MINECRAFT_AMBIENT_LIGHT (0.4)
@@ -435,11 +432,11 @@ vec4 minecraft_mix_light(vec3 lightDir0, vec3 lightDir1, vec3 normal, vec4 color
 {
   "uniforms": [
     { "name": "Light0_Direction", "type": "float", "count": 3, "values": [0.0, 0.0, 0.0] },
-    { "name": "Light1_Direction", "type": "float", "count": 3, "values": [0.0, 0.0, 0.0] },
+    { "name": "Light1_Direction", "type": "float", "count": 3, "values": [0.0, 0.0, 0.0] }
   ]
 }
 ```
-即三个标量浮点，也就是 `vec3(0.0)` ，但是光照方向应该是模长为 1 的向量。这是它们实际上并没有被设置值，只是进行了默认初始化，在着色器使用它们之前会由游戏程序为其赋值。
+即三个标量浮点组合，也就是 `vec3(0.0)` ，但是光照方向应该是模长为 1 的向量。这是因为它们实际上并没有被设置值，只是进行了默认初始化，在着色器使用它们之前会由游戏程序为其赋值。
 
 > 我必须得吐槽一下 Mojang 居然还在用顶点光照……不过对于四四方方的 Minecraft 原版来说似乎也确实足够了
 
@@ -506,7 +503,7 @@ vec4 vanillaMixLight(vec3 lightDir0, vec3 lightDir1, vec3 normal, vec4 color) {
 
 ### 多缓冲区输出
 
-如果你阅读了上一小节就会知道，要想在场景中实现光照，我们还需要**几何体表面的朝向**，即**法向量**或**法线**。它是垂直于几何表面指向外测的 [](terms.md#单位向量){summary=""} 。OptiFine 当然为我们提供了它，我们直接声明对应的顶点属性即可，然后传入片段着色器即可：
+如果你阅读了上一小节就会知道，要想在场景中实现光照，我们还需要**几何体表面的朝向**，即**法向量**或**法线**。它是垂直于几何表面指向外侧的 [](terms.md#单位向量){summary=""} 。OptiFine 当然为我们提供了它，我们直接声明对应的顶点属性即可，然后传入片段着色器即可：
 ```glsl
 in vec3 vaNormal;
 ```
@@ -515,7 +512,7 @@ in vec3 vaNormal;
 ```glsl
 uniform mat3 normalMatrix;
 ```
-然后在 `gbuffers_terrain.vsh` 中变换即可
+然后在 `gbuffers_terrain.vsh` 中输出变换后的值即可
 ```glsl
 [...]
 out vec3 vNormal;
@@ -567,13 +564,13 @@ layout(location = 1) out vec3 normals;
 layout(location = 0) out vec4 fragColor;
 layout(location = 1) out vec3 normals;
 ```
-> 这两个指令依赖 OptiFine 上下文读取字符，因此要保证格式完全正确！
+> 这两个指令依赖于 OptiFine 读取字符，因此要保证格式完全正确！
 > - `/* DRAWBUFFERS:0123 */` 注释符号前后必须要有一个空格，冒号之后不能有空格，数字之间不能有空格。
 > - `/* RENDERTARGETS:0,1,2,3 */` 注释符号前后也必须要有一个空格，冒号和数字、逗号和数字之间不能有空格。
 > 
 {style="warning" title="注意"}
 
-最后，我们在 `gbuffers_terrain.fsh` 中将它们输出到各自的缓冲区，需要注意的是，法线的分量范围是 $[-1,1]$ ，缓冲区的默认格式是归一化的无符号值，在我们接触缓冲区格式之前，可以先将其转换到 $[0,1]$ 上进行存储。
+最后，我们在 `gbuffers_terrain.fsh` 中将它们输出到各自的缓冲区。需要注意的是，法线的分量范围是 $[-1,1]$ ，而缓冲区的默认格式是归一化的无符号值，在我们接触缓冲区格式之前，可以先将其转换到 $[0,1]$ 上进行存储。
 ```glsl
 [...]
 in vec3 vNormal;
@@ -598,7 +595,7 @@ fragColor = texture(colortex1, uv);
 
 并且法线的颜色会随着视角的转动而变化。
 
-> 由于 `colortex1` 在最早的 GLSL 光影核心模组中被期望用于输出自己缓存的深度（它以前的名字叫 `gdepth` ），所以整个缓冲区默认会清楚为白色（最远）。
+> 由于 `colortex1` 在最早的 GLSL 光影核心模组中被期望用于输出自己缓存的深度（它以前的名字叫 `gdepth` ），所以整个缓冲区默认会清除为白色（意为最远）。
 
 现在，我们已经在延迟渲染中拿到了所需要的全部数据，接下来就可以在延迟渲染中处理场景光照了。
 
@@ -651,14 +648,14 @@ M_R \cdot \begin{bmatrix}x \\ y \\ z\end{bmatrix} \\
 0
 \end{bmatrix}
 $$
-有关矩阵乘法的细节这里不再过多展开，同时感谢 _Tahnass_ 对矩阵的解释！
+有关矩阵乘法的细节这里不再过多展开，同时也感谢 _Tahnass_ 对矩阵的解释！
 
-> $M_{\text{GModelView}}$ 的 _Model_ 部分实际上只包含了视角摇晃的位移数据，而不像 $M_{\text{ModelView}}$ 那样还涵盖世界坐标位移数据。
+> $M_{\text{GModelView}}$ 的 _Model_ 部分实际上只包含了视角摇晃的位移数据，而不像 $M_{\text{ModelView}}$ 那样还涵盖世界坐标的位移数据。
 
 然后将它们传入之前的函数中，就能看到，场景光照回来了！
 ```glsl
 vec4 albedo = texture(colortex0, uv);
-vec3 normal = texture(colortex1, uv).rgb * 2.0 - 1.0; // 记得把它转换回 [-1, 1] 上！
+vec3 normal = texture(colortex1, uv).rgb * 2.0 - 1.0; // 记得把法线转换回 [-1,1] 上！
 fragColor = vanillaMixLight(lightDir0, lightDir1, normal, albedo);
 ```
 
@@ -673,7 +670,7 @@ fragColor *= albedo.a;
 
 ![gbuffers_final.png](gbuffers_final.png)
 
-如果你抬头看天，会发现天空莫名变黑了，这是因为天空并没有法线数据。因此我们还要再次使用之前的 `depthtex0` 进行判定，当判定到天空（即深度最大为 1.0）时使用原始颜色：
+如果你抬头看天，会发现天空莫名变黑了，这是因为天空并没有写入法线数据，默认清除的白色与光照点乘出现了问题。因此我们还要再次使用之前的 `depthtex0` 进行判定，当判定到天空（即深度最大为 1.0）时使用原始颜色：
 ```glsl
 float depth = texture(depthtex0, uv).r;
 [...]
