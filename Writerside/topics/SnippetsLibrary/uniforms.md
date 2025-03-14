@@ -185,10 +185,7 @@ _截止 2025 年 3 月 10 日，数据来源于 [Minecraft Wiki](https://zh.mine
     "pack": {
         "pack_format": %latest_pack_format%,
         "description": "包的描述",
-        "supported_formats": {  // 可选字段，需要 23w32a 及以上
-            "min_inclusive": 17,
-            "max_inclusive": %latest_pack_format%
-        }
+        "supported_formats": [17, %latest_pack_format%] // 可选字段，需要 23w32a+
     }
 }
 ```

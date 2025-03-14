@@ -48,7 +48,7 @@ uniform vec3 shadowLightPosition;         //视口空间的投影光源 (日或�
 uniform vec3 upPosition;                  //天顶方向
 uniform vec3 cameraPosition;              //世界空间的摄像机位置
 uniform vec3 previousCameraPosition;      //上一帧的摄像机位置
-uniform mat4 gbufferModelView;            //设置了摄像机变换的模型视口矩阵
+uniform mat4 gbufferModelView;            //设置了摄像机变换（包括视角摇晃）的模型视口矩阵
 uniform mat4 gbufferModelViewInverse;     //gbufferModelView 的逆
 uniform mat4 gbufferPreviousModelView;    //上一帧的 gbufferModelView
 uniform mat4 gbufferProjection;           //生成几何缓冲时的投影矩阵

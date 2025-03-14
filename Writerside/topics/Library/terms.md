@@ -321,9 +321,9 @@ $
 $$
 \begin{bmatrix}
 1 & 0 & \cdots & 0 \\
-0 & 1 & \cdots & 0 \\
+0 & 1 & \cdots & \vdots \\
 \vdots & \vdots & \ddots & 0 \\
-0 & 0 & 0 & 1
+0 & \cdots & 0 & 1
 \end{bmatrix}
 $$
 </def>

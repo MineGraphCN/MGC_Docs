@@ -204,6 +204,19 @@ mat3(1.2, 0.0, 0.0,
 
 </compare>
 
+以及将高维向量的额外维度丢弃并转化为低维向量。
+
+<compare first-title="构造向量" second-title="等效向量">
+
+```glsl
+vec2(vec3(1.0, 2.0, 3.0));
+```
+```glsl
+vec2(1.0, 2.0);
+```
+
+</compare>
+
 ### 操作分量
 
 GLSL 允许 Swizzle 式和数组式提取分量。

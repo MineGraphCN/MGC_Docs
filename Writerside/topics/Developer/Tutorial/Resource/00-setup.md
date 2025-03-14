@@ -6,7 +6,7 @@
 
 `pack.png`
 : 这一张图片是你的资源包显示的“名片”。
-![图片](1-1.jpg)
+![图片](1-1.jpg){style="block"}
 *由本文作者创作的 VOXT PBR 纹理包*<br/>
 显示在最左边的就是 `pack.png` 图片，这一张图片通常为 64x，128x，256x 等。
 
@@ -15,12 +15,12 @@
 
     他的内容一般是：
     
-    <include from="contentsLibrary.md" element-id="pack.format"/>
+    <include from="uniforms.md" element-id="pack.format"/>
     <br/>
 
     其中 `pack_format` 所对应的是所支持的版本。
     
-    <include from="contentsLibrary.md" element-id="resourcepack_versions"/>
+    <include from="uniforms.md" element-id="resourcepack_versions"/>
     <br/>
 
     我们一般使用的是 15，该数据并不会影响资源包的加载。

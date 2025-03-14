@@ -83,6 +83,8 @@ Language Server for Minecraft Shaderpacks
 
 如果你安装了前文的 LSP 插件，当你修改文件名称时，所有的包含宏都会自动修改。
 
+将窗口标签或文件拽入已经打开的其他文件编辑界面的某一侧，可以拆分工作区。
+
 ## 查看日志
 
 OptiFine 会将光影报错内容输出到游戏的日志中，你可以在 `\logs\latest.log` 查看，在启动器中勾选 `查看日志` 或者将这个文件拖入 VS Code，它默认关联了 `.log` 格式。
