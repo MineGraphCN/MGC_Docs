@@ -74,9 +74,9 @@
                 <toc-element topic="1-4-realtimeLighting.md"/>
             </toc-element>
             <toc-element toc-title="我们需要再深入一些" hidden="true">
-                <toc-element topic="2-1-translucentGeometries.md"/>
-                <toc-element topic="2-2-advancedLighting.md"/>
-                <toc-element topic="2-3-multiPass.md"/>
+                <toc-element topic="2-1-advancedLighting.md"/>
+                <toc-element topic="2-2-multiPasses.md"/>
+                <toc-element topic="2-3-translucentGeometries.md"/>
                 <toc-element topic="2-4-rebuildData.md"/>
                 <toc-element topic="2-5-shaderOptions.md"/>
             </toc-element>

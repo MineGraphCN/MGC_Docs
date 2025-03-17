@@ -46,6 +46,9 @@
 - <shortcut>A</shortcut>, <shortcut>B</shortcut> 表示按下 A 并松开后再按下 B
 - <shortcut>^A</shortcut> 表示按住 A
 
+公式
+: 形如 $y = ax^2 + bx + c$ 的非衬线西文内容。
+
 ## 游戏相关 {id="游戏相关"}
 
 <deflist>
@@ -416,7 +419,7 @@ $$
         <list>
             <li>
                 你可以使用这个公式来计算<b>横向分辨率</b>：
-                <code-block lang="tex"> 纵向分辨率 \times 画面比例 = 横向分辨率 </code-block>
+                <code-block lang="tex"> 横向分辨率 = 纵向分辨率 \times 画面比例 </code-block>
             </li>
         </list>
     </li>
@@ -428,11 +431,11 @@ $$
                 <code-block lang="tex"> 1\text{k} = 1024</code-block>
             </li>
             <li>
-                标准的 4k 分辨率为 <math>4096 \times 2160</math> ，在 16:9 下为 <math>3840 \times 2160</math> ，由此我们可以知道 <math>N\text{k} = \frac{横向分辨率\text{(16:9)}}{960} = \frac{纵向分辨率}{540}</math>
+                标准的 4k 分辨率为 <math>4096 \times 2160</math> ，在 16:9 下为 <math>3840 \times 2160</math> ，由此可以推论 <math>N\text{k} = \frac{横向分辨率\text{(16:9)}}{960} = \frac{纵向分辨率\text{(16:9)}}{540}</math>
             </li>
             <li>
-                从这个公式还可以知道，所谓 <i>2k</i> 指的实际上是 <math>2048 \times 1080</math>，而 <math>2560 \times 1440</math> 是 <b>2.67k</b> 。
-                <note>这在大多数时候是适用的，然而对于超宽屏和方形屏，我们通常直接将其横向分辨率视为 <i>Nk</i>。</note>
+                从这个公式还可以知道，所谓 <i>2k</i> 指的实际上是 <math>2048 \times 1080</math>，而 <math>2560 \times 1440</math> 是 <b>2.67k</b> ，更准确的叫法是 <b>1440P</b> 。
+                <note>这在大多数时候是适用的，然而对于超宽屏和方形屏，我们通常直接将其横向分辨率视为 <i>Nk</i> 。</note>
             </li>
         </list>
     </li>
