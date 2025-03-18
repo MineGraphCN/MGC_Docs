@@ -233,7 +233,7 @@ shadow.culling = false
 ```
 强制禁用阴影视角的视锥体裁切。
 
-### 延迟渲染坐标变换
+### 绘制阴影
 
 现在我们有场景和光源之间的位置关系了，继续思考，深度图实际上是表示了当前位置上距离观察点最近的深度，现在我们相当于有了两个视角的深度信息……因此我们只需要设法将阴影深度**映射**到场景中，作为场景对应位置与光源连线上距离光源最近的深度 `closestDepth`，然后将视口深度也转化到阴影空间作为对应位置在阴影空间下的实际深度 `currentDepth` ，最后将这两个深度做比较，就能知道是否可以投影了！
 
@@ -293,6 +293,9 @@ float currentDepth = shadowScreenPos.z;
 ```glsl
 float closestDepth = texture(shadowtex0, uv_shadowMap).r;
 ```
+
+#### 绘制与优化
+
 最后，我们将 `closestDepth` 和 `currentDepth` 做比较，如果后者大于前者（即当前深度不是在光源连线上的最近深度），则处于阴影中。
 ```glsl
 float shadowMultiplier = 1.0;
