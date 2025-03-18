@@ -44,7 +44,7 @@ uniform float near;                       //近平面距离
 uniform float far;                        //远平面距离
 uniform vec3 sunPosition;                 //视口空间的太阳位置
 uniform vec3 moonPosition;                //视口空间的月亮位置
-uniform vec3 shadowLightPosition;         //视口空间的投影光源 (日或月) 位置
+uniform vec3 shadowLightPosition;         //视口空间的投影光源 (日或月) 位置，需要启用阴影，否则固定为太阳
 uniform vec3 upPosition;                  //天顶方向
 uniform vec3 cameraPosition;              //世界空间的摄像机位置
 uniform vec3 previousCameraPosition;      //上一帧的摄像机位置
@@ -156,7 +156,7 @@ in vec3 mc_Entity;        //xy = 方块ID, 渲染器类型       方块 ID 只�
 in vec2 mc_midTexCoord;   //st = midTexU, midTexV       精灵图的纹理中央UV
 in vec4 at_tangent;       //xyz = 切向量, w = 手系
 in vec3 at_velocity;      //上一帧的顶点偏移量             视口坐标，仅实体和方块实体
-in vec3 at_midBlock;      //像方块中心偏移1/64m           仅方块
+in vec3 at_midBlock;      //向方块中心偏移1/64m           仅方块
 ```
 
 ## 标准宏

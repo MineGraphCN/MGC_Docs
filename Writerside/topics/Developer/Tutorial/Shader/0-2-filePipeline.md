@@ -13,7 +13,7 @@ OptiFine 会遍历 `shaderpacks` 下的文件夹和 `.zip` 压缩包，将所有
 <include from="uniforms.md" element-id="shaderpack_options"/>
 
 - 需要注意的是，OptiFine 会先寻找外壳文件夹，然后在外壳内寻找 `shaders` 文件夹，因此，如果将一个包含着色器文件的 `shaders` 文件夹直接放在 `shaderpacks` 下，或者外壳内还嵌套了一个文件夹（常见于压缩包，一些压缩软件会在打包时自动新建一层文件夹），则在新版本的 OptiFine 下不会读取。
-    ```Shell
+    ```shell
     └─ shaderpacks
        ├─ shaderNameA
        │  └─ shaders # 正常读取

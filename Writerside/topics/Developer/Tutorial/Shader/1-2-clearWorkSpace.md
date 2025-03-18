@@ -39,18 +39,26 @@
 
 在上一节，我们使用了几个统一变量。如果你去看过附录一就会知道，我们的统一变量和顶点属性之后肯定也会占个满屏。于是我们的第二个文件也准备好了：`Uniforms.glsl` ，它专门用来存统一变量。
 
-有些统一变量（主要是纹理）并不是所有程序中都可用的，比如我们已经用过的 `colortex0` 就是一个仅延迟渲染可用的采样器。对于这类变量，我们可用主动在包含每个库之前进行声明来判断当前所处的着色器程序：
+有些统一变量（主要是纹理）并不是所有程序中都可用的，比如我们已经用过的 `colortex0` 就是一个仅延迟渲染可用的采样器。对于这类变量，我们可用主动在包含每个库之前进行声明来判断当前所处的着色器程序和阶段：
 ```glsl
 #define FINAL_SHADER
+#define FRAGMENT_STAGE
 ```
 
 然后在库文件中添加：
 ```glsl
-#ifdef FINAL_SHADER || COMPOSITE_SHADER || DEFERRED_SHADER
+#if defined FINAL_SHADER || defined COMPOSITE_SHADER || defined DEFERRED_SHADER
 uniform sampler2D colortex0;
 #endif
 ```
 如果你仔细阅读了 [第一章第二节](0-2-filePipeline.md#pipeline){summary=""} 就会知道 `composite` 和 `deferred` 是什么。
+
+然后预留好几何缓冲专用的缓冲区判定宏：
+```glsl
+#if defined GBUFFER_SHADER || defined SHADOW_SHADER
+
+#endif
+```
 
 > 其实 `colortex0` 对应的缓冲区也可以在几何缓冲中访问，但是不能通过采样器访问，我们将在以后的章节提及。
 
