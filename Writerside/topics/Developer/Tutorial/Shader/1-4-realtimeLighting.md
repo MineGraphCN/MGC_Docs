@@ -338,7 +338,7 @@ float shadowMultiplier = step(currentDepth - bias, closestDepth);
 
 可以思考一下，当场景表面的法线与光源越垂直，一个阴影像素覆盖的区域的深度差就会越大，因此偏移量就要越大！
 
-[//]: # (TODO: 示意图)
+![shadows_selfShadow.png](shadows_selfShadow.png)
 
 因此，我们还是请出之前已经点乘好的值 `lit` ，当光照与法线方向夹角越小，我们的偏移量应该越小，因此要将其取反。我们不关心背光面，它们本来就全是阴影。同时我们应该保证一个最小的偏移量来确保某些极端角度不会产生自阴影：
 ```glsl
