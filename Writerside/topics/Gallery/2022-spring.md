@@ -30,7 +30,7 @@ _山，松，雾。_
 光影包：iterationT 2  
 是否有对截图进行后处理：否  
 
-![图片](2022-spring_1.jpg){thumbnail="true"}
+![图片](2022-spring_1.webp){thumbnail="true"}
 
 #### 作品#2
 
@@ -41,7 +41,7 @@ _江山如画_
 是否有对截图进行后处理：是  
 游戏版本：Java 1.18.1
 
-![图片](2022-spring_2.jpg){thumbnail="true"}
+![图片](2022-spring_2.webp){thumbnail="true"}
 
 #### 作品#3
 
@@ -50,7 +50,7 @@ _晨_
 渲染软件：Terragen  
 是否有对截图进行后处理：否  
 
-![图片](2022-spring_3.jpg){thumbnail="true"}
+![图片](2022-spring_3.webp){thumbnail="true"}
 
 #### 作品#4
 
@@ -59,7 +59,7 @@ _山花烂漫时_
 光影包：iterationT Next 1.1.0  
 是否后处理：否  
 
-![图片](2022-spring_4.jpg){thumbnail="true"}
+![图片](2022-spring_4.webp){thumbnail="true"}
 
 #### 作品#5
 
@@ -68,7 +68,7 @@ _Foggy Sunrise_
 渲染软件：Octane(C4D)  
 是否有对截图进行后处理：是  
 
-![图片](2022-spring_5.jpg){thumbnail="true"}
+![图片](2022-spring_5.webp){thumbnail="true"}
 
 #### 作品#6
 
@@ -79,7 +79,7 @@ _日上山融雪涨江。_
 是否有对截图进行后处理：是  
 游戏版本：Java 1.18.1
 
-![图片](2022-spring_6.jpg){thumbnail="true"}
+![图片](2022-spring_6.webp){thumbnail="true"}
 
 #### 作品#7
 
@@ -89,7 +89,7 @@ _天光_
 是否后处理：否  
 游戏版本：JAVA 1.18.1
 
-![图片](2022-spring_7.jpg){thumbnail="true"}
+![图片](2022-spring_7.webp){thumbnail="true"}
 
 #### 作品#8
 
@@ -100,4 +100,4 @@ _梦之林_
 是否对截图进行后处理：是  
 游戏版本：1.16.4
 
-![图片](2022-spring_8.jpg){thumbnail="true"}
+![图片](2022-spring_8.webp){thumbnail="true"}

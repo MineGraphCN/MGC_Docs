@@ -73,7 +73,7 @@
 
 作者：JustinBibab
 
-![图片](2021-autumn_je_1.jpg){thumbnail="true"}
+![图片](2021-autumn_je_1.webp){thumbnail="true"}
 
 #### 作品#2
 
@@ -83,7 +83,7 @@
 光影：ptgi e10 (modified by tahnass)  
 场景：墨尔本山崖别墅 by villa-qi #GN work住宅服
 
-![图片](2021-autumn_je_2.png){thumbnail="true"}
+![图片](2021-autumn_je_2.webp){thumbnail="true"}
 
 #### 作品#3
 
@@ -91,14 +91,14 @@
 光影：BSL 8.1p1  
 场地：@TeaCon展馆服
 
-![图片](2021-autumn_je_3.png){thumbnail="true"}
+![图片](2021-autumn_je_3.webp){thumbnail="true"}
 
 #### 作品#4
 
 作者：™227  
 光影：BSL_Edit_Pasquale
 
-![图片](2021-autumn_je_4.png){thumbnail="true"}
+![图片](2021-autumn_je_4.webp){thumbnail="true"}
 
 #### 作品#5
 
@@ -108,7 +108,7 @@ _烟花三月下扬州_
 纹理：无  
 场地：TeaCon 2021 服务器
 
-![图片](2021-autumn_je_5.png){thumbnail="true"}
+![图片](2021-autumn_je_5.webp){thumbnail="true"}
 
 #### 作品#6
 
@@ -117,7 +117,7 @@ _烟花三月下扬州_
 纹理：ion仿生自然  
 场地：斯卡纳托斯
 
-![图片](2021-autumn_je_6.jpg){thumbnail="true"}
+![图片](2021-autumn_je_6.webp){thumbnail="true"}
 
 #### 作品#7
 
@@ -129,7 +129,7 @@ _好莱坞山极简主义之家，既造型独特又不失美感的豪华山区�
 场地：Ultimate Immersion by Hunger_Legend  
 截图分辨率：4096*2160
 
-![图片](2021-autumn_je_7.png){thumbnail="true"}
+![图片](2021-autumn_je_7.webp){thumbnail="true"}
 
 #### 作品#8
 
@@ -137,7 +137,7 @@ _某未公开申必项目流出图像_
 作者：GeForceLegend  
 纹理：Vanilla Normal Renewed
 
-![图片](2021-autumn_je_8.png){thumbnail="true"}
+![图片](2021-autumn_je_8.webp){thumbnail="true"}
 
 #### 作品#9
 
@@ -145,7 +145,7 @@ _冬_
 作者：亚克  
 光影：Nostalgia
 
-![图片](2021-autumn_je_9.png){thumbnail="true"}
+![图片](2021-autumn_je_9.webp){thumbnail="true"}
 
 #### 作品#10
 
@@ -153,7 +153,7 @@ _冬_
 光影：SEUS-v10.0  
 场地：云梦阁
 
-![图片](2021-autumn_je_10.png){thumbnail="true"}
+![图片](2021-autumn_je_10.webp){thumbnail="true"}
 
 #### 作品#11
 
@@ -163,7 +163,7 @@ _暗夜星辰 峡湾天际_
 光影：<tooltip term="sic">忘了</tooltip>  
 场地：<tooltip term="sic">随便开的图</tooltip>
 
-![图片](2021-autumn_je_11.png){thumbnail="true"}
+![图片](2021-autumn_je_11.webp){thumbnail="true"}
 
 #### 作品#12
 
@@ -173,7 +173,7 @@ _夕阳空中楼阁_
 光影：Lrbs SEUS MABS V3.2  
 地图：狞幕by冷冰
 
-![图片](2021-autumn_je_12.jpeg){thumbnail="true"}
+![图片](2021-autumn_je_12.webp){thumbnail="true"}
 
 #### 作品#13
 
@@ -182,7 +182,7 @@ _教堂_
 光影：iterationT  
 地图：柏林大教堂
 
-![图片](2021-autumn_je_13.jpeg){thumbnail="true"}
+![图片](2021-autumn_je_13.webp){thumbnail="true"}
 
 #### 作品#14
 
@@ -191,7 +191,7 @@ _花田_
 光影：Chocapic v8  
 地图：卡露蒂亚by 珀尔
 
-![图片](2021-autumn_je_14.png){thumbnail="true"}
+![图片](2021-autumn_je_14.webp){thumbnail="true"}
 
 #### 作品#15
 
@@ -201,7 +201,7 @@ _花田_
 地图：多人模式  
 地形使用TerraForge生成
 
-![图片](2021-autumn_je_15.png){thumbnail="true"}
+![图片](2021-autumn_je_15.webp){thumbnail="true"}
 
 #### 作品#16
 
@@ -210,7 +210,7 @@ _花田_
 纹理：YuushyaMod配套纹理包  
 使用1.18ES6随机地图生成
 
-![图片](2021-autumn_je_16.png){thumbnail="true"}
+![图片](2021-autumn_je_16.webp){thumbnail="true"}
 
 #### 作品#17
 
@@ -220,7 +220,7 @@ _花田_
 作者：BojackWAF  
 摸鱼的中式
 
-![图片](2021-autumn_je_17.png){thumbnail="true"}
+![图片](2021-autumn_je_17.webp){thumbnail="true"}
 
 #### 作品#18
 
@@ -230,7 +230,7 @@ _花田_
 光影：ptgi e8  
 场景：Sanatus未完成的别墅
 
-![图片](2021-autumn_je_18.jpeg){thumbnail="true"}
+![图片](2021-autumn_je_18.webp){thumbnail="true"}
 
 #### 作品#19
 
@@ -240,7 +240,7 @@ _花田_
 光影：ptgi e12  
 场景：<tooltip term="sic">暂未命名</tooltip>
 
-![图片](2021-autumn_je_19.jpeg){thumbnail="true"}
+![图片](2021-autumn_je_19.webp){thumbnail="true"}
 
 #### 作品#20
 
@@ -250,7 +250,7 @@ _花田_
 模组：Cocricot  
 场地：湖边木屋
 
-![图片](2021-autumn_je_20.png){thumbnail="true"}
+![图片](2021-autumn_je_20.webp){thumbnail="true"}
 
 #### 作品#21
 
@@ -261,7 +261,7 @@ _花田_
 场地：个人建筑<br/>
 </p>
 
-![图片](2021-autumn_je_21.png){thumbnail="true"}
+![图片](2021-autumn_je_21.webp){thumbnail="true"}
 
 #### 作品#22
 
@@ -270,7 +270,7 @@ _花田_
 纹理：Nebby&#039;s Better PBR Release 1.0  
 场地：基姆城服务器ETC
 
-![图片](2021-autumn_je_22.png){thumbnail="true"}
+![图片](2021-autumn_je_22.webp){thumbnail="true"}
 
 #### 作品#23
 
@@ -278,7 +278,7 @@ _花田_
 光影：seus dazzling 1.9  
 地图：卡露蒂亚
 
-![图片](2021-autumn_je_23.jpeg){thumbnail="true"}
+![图片](2021-autumn_je_23.webp){thumbnail="true"}
 
 #### 作品#24
 
@@ -287,7 +287,7 @@ _花田_
 地图：早期测试开发地图  
 模组：团队自研模组HE ENGINE
 
-![图片](2021-autumn_je_24.jpeg){thumbnail="true"}
+![图片](2021-autumn_je_24.webp){thumbnail="true"}
 
 #### 作品#25
 
@@ -296,7 +296,7 @@ _走进梦中的仙境_
 光影：SEUS DAZZING 1.9.9.1（frix）  
 地图：卡露蒂亚（珀尔）
 
-![图片](2021-autumn_je_25.png){thumbnail="true"}
+![图片](2021-autumn_je_25.webp){thumbnail="true"}
 
 #### 作品#26
 
@@ -305,7 +305,7 @@ _图书馆_
 光影：ptgi E12  
 建筑：阿南
 
-![图片](2021-autumn_je_26.png){thumbnail="true"}
+![图片](2021-autumn_je_26.webp){thumbnail="true"}
 
 #### 作品#27
 
@@ -314,7 +314,7 @@ _图书馆_
 纹理：realistico-full  
 场景自制
 
-![图片](2021-autumn_je_27.png){thumbnail="true"}
+![图片](2021-autumn_je_27.webp){thumbnail="true"}
 
 ### 基岩版赛道
 
@@ -324,14 +324,14 @@ _图书馆_
 光影：dspe10 冷色超配  
 地图：Stonehill Castle
 
-![图片](2021-autumn_be_1.jpeg){thumbnail="true"}
+![图片](2021-autumn_be_1.webp){thumbnail="true"}
 
 #### 作品#2 {id=be_2}
 
 作者：zhoujiaxin66  
 光影：HSPEv9.4 地图自创
 
-![图片](2021-autumn_be_2.jpeg){thumbnail="true"}
+![图片](2021-autumn_be_2.webp){thumbnail="true"}
 
 #### 作品#3 {id=be_3}
 
@@ -341,7 +341,7 @@ _图书馆_
 地图：重生RSG服务器  
 建筑：自建服务器大厅
 
-![图片](2021-autumn_be_3.jpeg){thumbnail="true"}
+![图片](2021-autumn_be_3.webp){thumbnail="true"}
 
 #### 作品#4 {id=be_4}
 
@@ -350,7 +350,7 @@ _图书馆_
 纹理：乘方像素  
 下界门遗迹
 
-![图片](2021-autumn_be_4.jpg){thumbnail="true"}
+![图片](2021-autumn_be_4.webp){thumbnail="true"}
 
 #### 作品#5 {id=be_5}
 
@@ -359,14 +359,14 @@ _图书馆_
 纹理：IT-project  
 地图：自创
 
-![图片](2021-autumn_be_5.jpeg){thumbnail="true"}
+![图片](2021-autumn_be_5.webp){thumbnail="true"}
 
 #### 作品#6 {id=be_6}
 
 作者：身旁  
 图片中纹理贴图及模型均来自IT-project
 
-![图片](2021-autumn_be_6.jpeg){thumbnail="true"}
+![图片](2021-autumn_be_6.webp){thumbnail="true"}
 
 #### 作品#7 {id=be_7}
 
@@ -375,7 +375,7 @@ _图书馆_
 地图：原创  
 纹理：自己改了一改冰块纹理
 
-![图片](2021-autumn_be_7.jpeg){thumbnail="true"}
+![图片](2021-autumn_be_7.webp){thumbnail="true"}
 
 #### 作品#8 {id=be_8}
 
@@ -383,7 +383,7 @@ _图书馆_
 光影：无  
 纹理贴图及模型：IT-project
 
-![图片](2021-autumn_be_8.jpeg){thumbnail="true"}
+![图片](2021-autumn_be_8.webp){thumbnail="true"}
 
 #### 作品#9 {id=be_9}
 
@@ -391,7 +391,7 @@ _图书馆_
 光影：rtx  
 地图：原创，福州延安中学还原
 
-![图片](2021-autumn_be_9.jpeg){thumbnail="true"}
+![图片](2021-autumn_be_9.webp){thumbnail="true"}
 
 #### 作品#10 {id=be_10}
 
@@ -401,4 +401,4 @@ _图书馆_
 地图：贫民窟<br/>
 </p>
 
-![图片](2021-autumn_be_10.png){thumbnail="true"}
+![图片](2021-autumn_be_10.webp){thumbnail="true"}

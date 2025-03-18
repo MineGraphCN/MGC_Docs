@@ -5,3 +5,4 @@ docs/.vuepress/dist/
 node_modules/
 *.code-workspace
 /.idea/
+dist/
