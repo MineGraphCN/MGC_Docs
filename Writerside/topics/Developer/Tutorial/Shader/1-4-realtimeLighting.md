@@ -144,13 +144,13 @@ fragColor = albedo * (lit * lightmap + 0.3 * albedo.a);
 > 
 {title="小知识"}
 
-## 结构体输出
+## 块输出
 
 随着顶点着色器的输出变量变多，我们的声明区域不堪重负，变量也变得越来越多，因此我们将进行第二次瘦身。不过不用担心，这一次的瘦身还没达到单开一节的程度。
 
-GLSL 支持结构体传入和传出，我们将几何缓冲的顶点着色器中所有需要传出的变量打包：
+GLSL 支持块传入和传出（注意不是结构体），我们将几何缓冲的顶点着色器中所有需要传出的变量打包：
 ```glsl
-out struct VS_OUT {
+out VS_OUT {
     vec4 color;
     vec2 uv;
     vec3 normal;
@@ -159,19 +159,22 @@ out struct VS_OUT {
 ```
 然后在片段着色器中传入：
 ```glsl
-in struct VS_OUT {
+in VS_OUT {
     vec4 color;
     vec2 uv;
     vec3 normal;
     vec2 vanillaLightStrength;
-} vs_out;
+} fs_in;
 ```
 然后就可以像 C 那样调用结构体变量了：
 ```glsl
-fragColor = texture(gtexture, vs_out.uv) * vs_out.color;
+fragColor = texture(gtexture, fs_in.uv) * fs_in.color;
 ```
+和结构体不同，块输出和输入允许我们使用任意变量名，只要对应即可。比如在顶点着色器使用 `vs_out` 然后在片段着色器使用 `fs_in` ，这样也可以避免误导。
 
-定义了 `layout` 的片段着色器输出不能使用结构体，因此我们还是保持原样。
+由于不能在输出块中定义 `layout`，因此输出变量我们还是保持原样。
+
+> 其实单个
 
 ## 实时阴影
 
