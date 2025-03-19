@@ -374,6 +374,15 @@ float maxComponent(vec2 v) {
 if(minComponent(uv_shadowMap) < 0.0 || maxComponent(uv_shadowMap) > 1.0) { shadowMultiplier = 1.0; }
 ```
 
+而如果你飞向高空，你会发现大块的阴影又回来了（真难杀啊），这是因为在阴影几何缓冲中场景超出了裁切远平面，最近的阴影空间深度始终被视为了 `1.0` ，而场景的实际阴影空间深度已经超过了 `1.0` 因此我们还需要裁切掉大于 `1.0` 深度的坐标：
+```glsl
+if(minComponent(uv_shadowMap) < 0.0 ||
+   maxComponent(uv_shadowMap) > 1.0 ||
+   currentDepth >= 1.0) { shadowMultiplier = 1.0; }
+```
+
+![shadows_wrong.webp](shadows_wrong.webp)
+
 
 > 事实上我们编写的阴影几何缓冲基本上就是 OptiFine 的内置实现，如果你不编写阴影几何缓冲而直接调用 `shadowtex` ，也是可以绘制阴影的。
 > 
