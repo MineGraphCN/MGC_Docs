@@ -374,24 +374,25 @@ float maxComponent(vec2 v) {
 if(minComponent(uv_shadowMap) < 0.0 || maxComponent(uv_shadowMap) > 1.0) { shadowMultiplier = 1.0; }
 ```
 当然，我们可以用之前封装的函数 `uv_OutBound()` 来替换它们，如果你还记得的话：
+
+<compare>
+
+```glsl
+bool uv_OutBound(vec2 uv) {
+    return (max(v.x, v.y) > 1.0 || min(v.x, v.y) < 0.0);
+}
+```
 ```glsl
 bool uv_OutBound(vec2 uv) {
     return (maxComponent(uv) > 1.0 || minComponent(uv) < 0.0);
 }
-[... main ...]
+```
+
+</compare>
+
+```glsl
 if(uv_OutBound(uv_shadowMap)) shadowMultiplier = 1.0;
 ```
-如果按照这种方法来写，你会发现我们之前重载的三维 UV 边界判定函数也可以写成：
-```glsl
-bool uv_OutBound(vec3 uv) {
-    return (maxComponent(uv) > 1.0 || minComponent(uv) < 0.0);
-}
-```
-那么我们何不将它们用 `#define` 定义呢：
-```glsl
-#define uv_OutBound(uv) (maxComponent(uv) > 1.0 || minComponent(uv) < 0.0)
-```
-这样变量 `uv` 的类型就被 `maxComponent()` 和 `minComponent()` 限定，而 `uv_OutBound()` 不必重载了。
 
 而如果你飞向高空，你会发现大块的阴影又回来了（真难杀啊），这是因为在阴影几何缓冲中场景超出了裁切远平面，最近的阴影空间深度始终被视为了 `1.0` ，而场景的实际阴影空间深度已经超过了 `1.0` 。因此我们还需要裁切掉大于 `1.0` 深度的坐标：
 ```glsl
@@ -416,6 +417,18 @@ if(uv_OutBound(uv_shadowMap) || currentDepth >= 1.0) { shadowMultiplier = 1.0; }
 
 1. 整理你的 `final.fsh` ，将重建阴影坐标系的那一大坨内容封装成函数并进行内容复习。
 2. 重载 `minComponent()` 和 `maxComponent()` 函数，让它们可以返回 `vec3` 和 `vec4` 类型的最大分量。
+
+   重载完成后，你会发现我们之前重载的三维 UV 边界判定函数也可以写成：
+   ```glsl
+   bool uv_OutBound(vec3 uv) {
+       return (maxComponent(uv) > 1.0 || minComponent(uv) < 0.0);
+   }
+   ```
+   于是我们可以直接用 `#define` 定义：
+   ```glsl
+   #define uv_OutBound(uv) (maxComponent(uv) > 1.0 || minComponent(uv) < 0.0)
+   ```
+   这样变量 `uv` 的类型就被 `maxComponent()` 和 `minComponent()` 限定，而 `uv_OutBound()` 则不必重载了。
 3. 将 `vaUV2` 处理之后传入像素着色器，将光照强度独立拆分到两个通道中输出，不要使用 `lightmap` ，然后在 `final.fsh` 中仅将天空光照强度乘以环境光强度，并在最终光照强度上独立叠加方块光照强度。注意：
    - OptiFine 要求整型类变量必须以 `flat` 形式传出，不能进行插值，因此你可能需要将其转化到 `vec2` 以确保进行了正确插值。
    - 你需要根据光照贴图的尺寸将整型坐标转化到归一化坐标来确保不会过曝，你可以使用 `textureSize(sampler, lod)` 来获取纹理尺寸，第一个变量传入要查询尺寸的采样器，第二个变量 `lod` 则是 MipMap 等级，在这里只需要设置为 `0` 。它会返回每一个维度上的纹理尺寸，因此你将它与整型坐标相除就可以获取归一化坐标。
