@@ -50,7 +50,7 @@
 更好的末地 Better End
 : 如果它导致你使用的光影包出现问题，请在 `config/betterend/client.json` 中把 `customSky [default:true]`设置为 `false` 。
 
-更好的树叶 Better Foliage <sup>1.12</sup>
+更好的树叶 Better Foliage ^1.12^
 : 不一定会崩溃，但在某些光影包中会导致树叶断裂。
 要解决这个问题，你需要去确定主界面的 `Mods` > `Better Foliage` > `Shader Configuration` 是否与你的光影包的 `block.properties` 文件中的指定值相匹配。
 > `block.properties` 可以包含多个游戏版本的 ID 映射，所以一定要确定你使用了正确版本的 ID。如果你不确定要使用什么 ID，请询问光影作者。
@@ -66,7 +66,7 @@
 植物魔法 Botania
 : 将 `fancySkybox.enable` 和 `shaders.enabled` 设置为 `false` 。
 
-COFH Core <sup>1.15+</sup>
+COFH Core ^1.15+^
 : 将 `Render Area Effect Block Breaking` 设置为 `false`。
 
 电脑 Computer Craft Tweaked

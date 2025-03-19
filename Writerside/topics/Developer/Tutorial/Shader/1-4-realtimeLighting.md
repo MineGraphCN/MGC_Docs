@@ -194,8 +194,11 @@ OptiFine 为我们提供了额外的阴影几何缓冲程序用于处理阴影�
 #include "/libs/Uniforms.glsl"
 #include "/libs/Attributes.glsl"
 
+out vec2 uv;
+
 void main() {
     gl_Position = projectionMatrix * modelViewMatrix * vec4(vaPosition + chunkOffset, 1.0);
+    uv = vaUV0;
 }
 ```
 {collapsible="true" collapsed-title="shadow.vsh" default-state="expanded"}
@@ -232,15 +235,13 @@ void main() {
 ```properties
 shadow.culling = false
 ```
-强制禁用阴影视角的视锥体裁切。
+强制禁用阴影空间的摄像机视锥体裁切。
 
-> 一旦你启用了阴影，`shadowLightPosition` 就会同步当前的投影源，因此在夜晚也可以产生正确的方向光照。
+> 一旦你启用了阴影，`shadowLightPosition` 就会同步到当前的投影源而不是使用太阳位置，因此在夜晚也可以产生正确的方向光照。
 
 ### 绘制阴影
 
 现在我们有场景和光源之间的位置关系了，继续思考，深度图实际上是表示了当前位置上距离观察点最近的深度，现在我们相当于有了两个视角的深度信息……因此我们只需要设法将阴影深度**映射**到场景中，作为场景对应位置与光源连线上距离光源最近的深度 `closestDepth`，然后将视口深度也转化到阴影空间作为对应位置在阴影空间下的实际深度 `currentDepth` ，最后将这两个深度做比较，就能知道是否可以投影了！
-
-[//]: # (延迟渲染变换的不是顶点的实际位置，而是像素的位置信息)
 
 #### 重建坐标系
 
@@ -248,11 +249,16 @@ shadow.culling = false
 $$
 P_\text{World} \leftarrow M_{G\text{ModelView}}^{-1} \cdot P_\text{View} \xleftarrow{透视除法} P_\text{Clip} \leftarrow M_{G\text{Projection}}^{-1} \cdot P_\text{NDC} \leftarrow P_\text{Screen} \times 2 - 1
 $$
+
+> 和顶点着色器不同，这里我们只是将像素的坐标**信息**进行了变换，而顶点着色器则是将顶点的**实际位置**进行了变换。
+>
+{style="note"}
+
 其中 NDC 变换到裁切空间之后才进行透视除法，与正变换略有差别。变换完成之后，OptiFine 还为我们提供了阴影空间的相关矩阵，于是我们就可以直接进行阴影变换：
 $$
 P_{S\text{Screen}} \leftarrow \frac{P_{S\text{Clip}} + 1}{2} \xleftarrow{透视除法} P_{S\text{Clip}} \leftarrow M_{S\text{Projection}} \cdot P_{S\text{View}} \leftarrow M_{S\text{ModelView}} \cdot P_\text{World}
 $$
-虽然阴影空间是等轴的，但是我们还是需要进行除法来归一化。
+虽然阴影空间是等轴的，但是我们还是需要进行“透视”除法来归一化。
 
 > 你可能会思考为什么最后变换到的是世界空间而不是局部空间，因为局部空间的信息实际上没有包含在 $M_{G\text{ModelView}}^{-1}$ 中，它只包含视角晃动的位移信息。
 
@@ -408,6 +414,11 @@ if(uv_OutBound(uv_shadowMap) || currentDepth >= 1.0) { shadowMultiplier = 1.0; }
 > 
 {style="note"}
 
+> 阴影缓冲在固体几何缓冲之前独立运行，因此场景中其他几何也会被写入其中。你会发现一些坑洞全被阴影包围，这是因为它们被水体表面遮挡，如果你不想要半透明几何影响投影，可以使用 `shadowtex1` 。
+>
+{style="note"}
+
+
 > 事实上我们编写的阴影几何缓冲基本上就是 OptiFine 的内置实现，如果你不编写阴影几何缓冲而直接调用 `shadowtex` ，也是可以绘制阴影的。
 > 
 > 不过有一点不同的是，内置实现向 `shadowcolor0` 写入了场景，将它像阴影深度那样映射到场景中看起来就像这样：
@@ -418,7 +429,7 @@ if(uv_OutBound(uv_shadowMap) || currentDepth >= 1.0) { shadowMultiplier = 1.0; }
 
 ## 习题
 
-1. 整理你的 `final.fsh` ，将重建阴影坐标系的那一大坨内容封装成函数并进行内容复习。
+1. 整理你的 `final.fsh` ，将重建阴影坐标系的一大坨内容封装成函数，剔除不必要的变量。
 2. 重载 `minComponent()` 和 `maxComponent()` 函数，让它们可以返回 `vec3` 和 `vec4` 类型的最大分量。
 
    重载完成后，你会发现我们之前重载的三维 UV 边界判定函数也可以写成：
@@ -435,6 +446,7 @@ if(uv_OutBound(uv_shadowMap) || currentDepth >= 1.0) { shadowMultiplier = 1.0; }
 3. 将 `vaUV2` 处理之后传入像素着色器，将光照强度独立拆分到两个通道中输出，不要使用 `lightmap` ，然后在 `final.fsh` 中仅将天空光照强度乘以环境光强度，并在最终光照强度上独立叠加方块光照强度。注意：
    - OptiFine 要求整型类变量必须以 `flat` 形式传出，不能进行插值，因此你可能需要将其转化到 `vec2` 以确保进行了正确插值。
    - 你需要根据光照贴图的尺寸将整型坐标转化到归一化坐标来确保不会过曝，你可以使用 `textureSize(sampler, lod)` 来获取纹理尺寸，第一个变量传入要查询尺寸的采样器，第二个变量 `lod` 则是 MipMap 等级，在这里只需要设置为 `0` 。它会返回每一个维度上的纹理尺寸，因此你将它与整型坐标相除就可以获取归一化坐标。
+4. 复习第二章的内容。
 
 ---
 

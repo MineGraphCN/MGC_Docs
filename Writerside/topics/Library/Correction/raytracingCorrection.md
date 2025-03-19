@@ -131,7 +131,7 @@ vec3 finalColor = color * 2.0;
 
 ### 认为构建 Minecraft 所用的语言无法实现光线追踪
 
-MC 使用的图形渲染库为 OpenGL <sup>JE</sup>、OpenGL ES <sup>BE(安卓/iOS)</sup>、DirectX <sup>BE(Windows/XBox)</sup>，与构建游戏本体时使用的编程语言无关。
+MC 使用的图形渲染库为 OpenGL ^JE^、OpenGL ES ^BE(安卓/iOS)^、DirectX ^BE(Windows/XBox)^，与构建游戏本体时使用的编程语言无关。
 > - 有人 [在 Windows 控制台构建了基于 C++ 并利用 ASCII 码绘制的光线追踪渲染器](https://b23.tv/BV1ev411p7MD) ；
 > - 还有人 [使用过 Excel 构建](https://b23.tv/BV1p4411R7Jn) ；
 > - 甚至有人 [使用红石构建](https://b23.tv/BV1mW4y1D7m8) 。
