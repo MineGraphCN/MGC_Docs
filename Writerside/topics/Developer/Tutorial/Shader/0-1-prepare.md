@@ -43,11 +43,11 @@ GLSL Syntax for VS Code
 
 或者访问该插件的 [插件商店页面](https://marketplace.visualstudio.com/items?itemName=GeForceLegend.vscode-glsl) 并单击 `Install` 来呼出 VSCode 以安装。
 
-该插件会自动关联 `.vsh`、`.gsh`、`.glsl`、`.vertex` 等着色器文件常用后缀。
+该插件会自动关联 `.vsh`、`.glsl`、`.geom`、`.frag` 等着色器文件常用后缀。
 
 ### 代码补全和调试
 
-GLSL Syntax for VS Code 仅支持 GLSL 代码高亮，要想在工作区应用针对 OptiFine 光影的代码补全和查错等高级功能，我们还需要另一个 <tooltip term="LSP">LSP</tooltip> 插件。
+GLSL Syntax for VS Code 仅支持 GLSL 语法高亮，要想在工作区应用针对 OptiFine 光影的代码补全和查错等高级语法功能，我们还需要另一个 <tooltip term="LSP">LSP</tooltip> 插件。
 
 在插件商店中搜索
 ```text
@@ -61,7 +61,7 @@ Language Server for Minecraft Shaderpacks
 
 ## 配置游戏环境
 
-我们将使用截止教程时的最新版本（**JE %latest_je_with_of%**, OptiFine %latest_of%）作为测试环境。
+我们将使用截止教程编写时的最新正式版本（**JE %latest_je_with_of%**, OptiFine %latest_of%）作为测试环境。
 
 如果你还不会安装游戏，参阅 [](jeInstallGame.md) 。
 
