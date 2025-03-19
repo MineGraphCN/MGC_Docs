@@ -252,7 +252,7 @@ void main() {
 ```glsl
 [...]
 uniform vec3 chunkOffset;
-[...]
+[... main ...]
 gl_Position = projectionMatrix * modelViewMatrix * vec4(vaPosition + chunkOffset, 1.0);
 ```
 现在再次重载，你应该已经能从一团黑中看出一些轮廓了：
@@ -268,7 +268,7 @@ gl_Position = projectionMatrix * modelViewMatrix * vec4(vaPosition + chunkOffset
 [...]
 in vec4 vaColor;
 out vec4 vColor;
-[...]
+[... main ...]
 vColor = vaColor;
 ```
 然后在片段着色器传入并输出
@@ -293,7 +293,7 @@ void main() {
 uniform mat4 textureMatrix;
 in vec2 vaUV0;
 out vec2 uv;
-[...]
+[... main ...]
 uv = vec2(textureMatrix * vec4(vaUV0, vec2(1.0)));
 ```
 > 虽然纹理坐标的后两个分量没有用处，但是需要设置为 `1.0` 来保证矩阵乘法正确，乘法完成之后可以安全地丢弃 $zw$ 分量。
@@ -305,7 +305,7 @@ uv = vec2(textureMatrix * vec4(vaUV0, vec2(1.0)));
 [...]
 uniform sampler2D gtexture;
 in vec2 uv;
-[...]
+[... main ...]
 fragColor = texture(gtexture, uv);
 ```
 然后你就会得到这样一个有些奇怪的场景，并且你会发现树叶的颜色不见了：
@@ -334,7 +334,7 @@ if(fragColor.a == 0.0) discard;
 > ```glsl
 > [...]
 > uniform float alphaTestRef;
-> [...]
+> [... main ...]
 > if(fragColor.a <= alphaTestRef) discard;
 > ```
 > 事实上原版着色器就将值设置为了 `0.1` ，因此当你试图在固体几何上绘制半透明纹理时，几何体也只会按完全透明与否显示。
@@ -559,7 +559,7 @@ uniform mat3 normalMatrix;
 ```glsl
 [...]
 out vec3 vNormal;
-[...]
+[... main ...]
 vNormal = normalMatrix * vaNormal;
 ```
 有些未闭合的单面片（比如鲑鱼的尾巴）可能会出现顶点法线方向反转的问题，因此我们需要将它们翻转回来。仔细思考一下：场景中的法线应该都是朝向视点所在的半球内的，另一半球朝向的几何都会被它的其他面遮挡。
@@ -634,7 +634,7 @@ in vec3 vNormal;
 /* DRAWBUFFERS:01 */
 layout(location = 0) out vec4 fragColor;
 layout(location = 1) out vec3 normals;
-[...]
+[... main ...]
 fragColor = texture(gtexture, uv) * vColor;
 normals = vNormal * 0.5 + 0.5;
 ```
@@ -643,7 +643,7 @@ normals = vNormal * 0.5 + 0.5;
 ```glsl
 [...]
 uniform sampler2D colortex1;
-[...]
+[... main ...]
 fragColor = texture(colortex1, uv);
 ```
 

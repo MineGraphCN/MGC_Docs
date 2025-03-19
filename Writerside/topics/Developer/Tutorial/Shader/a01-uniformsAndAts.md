@@ -17,78 +17,78 @@
 ## 统一变量 {id="uniforms"}
 
 ```glsl
-uniform int heldItemId;                   //手持物品ID (主手)，只用于在 item.properties 中有定义的方块
-uniform int heldBlockLightValue;          //手持物品光照值 (主手)
-uniform int heldItemId2;                  //手持物品ID (副手)，只用于在 item.properties 中有定义的方块
-uniform int heldBlockLightValue2;         //手持物品光照值 (副手)
-uniform int fogMode;                      //GL_LINEAR，GL_EXP 或 GL_EXP2
-uniform float fogStart;                   //雾气渐入开始距离 (米)
-uniform float fogEnd;                     //雾气渐入结束距离 (米)
-uniform int fogShape;                     //0 = 球体, 1 = 圆柱体
-uniform float fogDensity;                 //0.0-1.0
-uniform vec3 fogColor;                    //r, g, b
-uniform vec3 skyColor;                    //r, g, b
-uniform int worldTime;                    //<ticks> = worldTicks % 24000
-uniform int worldDay;                     //<days> = worldTicks / 24000
-uniform int moonPhase;                    //0-7
-uniform int frameCounter;                 //帧索引 (0 到 720719, 然后重置为 0)
-uniform float frameTime;                  //上一帧用时，秒
-uniform float frameTimeCounter;           //运行时间，秒 (3600 秒后重置为 0)
-uniform float sunAngle;                   //0.0-1.0 ~ 0-23214 12785日-12786月 = .5
-uniform float shadowAngle;                //0.0-1.0 ~ 同步 sunAngle 的前半周期
-uniform float rainStrength;               //0.0-1.0
-uniform float aspectRatio;                //viewWidth / viewHeight
-uniform float viewWidth;                  //窗口宽
-uniform float viewHeight;                 //窗口高
-uniform float near;                       //近平面距离
-uniform float far;                        //远平面距离
-uniform vec3 sunPosition;                 //视口空间的太阳位置
-uniform vec3 moonPosition;                //视口空间的月亮位置
-uniform vec3 shadowLightPosition;         //视口空间的投影光源 (日或月) 位置，需要启用阴影，否则固定为太阳
-uniform vec3 upPosition;                  //天顶方向
-uniform vec3 cameraPosition;              //世界空间的摄像机位置
-uniform vec3 previousCameraPosition;      //上一帧的摄像机位置
-uniform mat4 gbufferModelView;            //设置了摄像机变换（包括视角摇晃）的模型视口矩阵
-uniform mat4 gbufferModelViewInverse;     //gbufferModelView 的逆
-uniform mat4 gbufferPreviousModelView;    //上一帧的 gbufferModelView
-uniform mat4 gbufferProjection;           //生成几何缓冲时的投影矩阵
-uniform mat4 gbufferProjectionInverse;    //gbufferProjection 的逆
-uniform mat4 gbufferPreviousProjection;   //上一帧的 gbufferProjection
-uniform mat4 shadowProjection;            //生成阴影贴图时的投影矩阵
-uniform mat4 shadowProjectionInverse;     //shadowProjection 的逆
-uniform mat4 shadowModelView;             //生成阴影贴图时的模型视口矩阵
-uniform mat4 shadowModelViewInverse;      //shadowModelView 的逆
-uniform float wetness;                    //由 wetnessHalfLife 或 drynessHalfLife 平滑的 rainStrength
-uniform float eyeAltitude;                //观察实体的 Y 坐标
-uniform ivec2 eyeBrightness;              //x = 方块亮度，y = 天空亮度，强度 0-15 = 亮度 0-240
-uniform ivec2 eyeBrightnessSmooth;        //由 eyeBrightnessHalflife 平滑的 eyeBrightness
-uniform int isEyeInWater;                 //1 = 摄像机在水中, 2 = 摄像机在熔岩中, 3 = 摄像机在细雪中
-uniform float nightVision;                //夜视 (0.0-1.0)
-uniform float blindness;                  //失明 (0.0-1.0)
-uniform float screenBrightness;           //原版亮度 (0.0-1.0)
-uniform int hideGUI;                      //已隐藏GUI
-uniform float centerDepthSmooth;          //由 centerDepthSmoothHalflife 平滑的 centerDepth
-uniform ivec2 atlasSize;                  //纹理拼贴尺寸 (只在拼贴纹理装在时设置)
-uniform vec4 spriteBounds;                //纹理拼贴上的精灵图边界 (u0, v0, u1, v1)，当 MC_ANISOTROPIC_FILTERING 启用时设置
-uniform vec4 entityColor;                 //实体颜色乘数 (实体受击、苦力怕爆炸时的闪烁)
-uniform int entityId;                     //实体 ID
-uniform int blockEntityId;                //方块实体 ID (用于瓦片实体的方块 ID，只用于在 block.properties 中有定义的方块)
-uniform ivec4 blendFunc;                  //混合函数 (源RGB, 目标RGB, 源Alpha, 目标Alpha)
-uniform int instanceId;                   //启用实例渲染时的实例 ID (countInstances > 1), 0 = 源，1-N = 拷贝
-uniform float playerMood;                 //玩家氛围 (0.0-1.0)，当玩家长时间处于地下时增长
-uniform int renderStage;                  //渲染阶段, 见标准宏和渲染阶段
-uniform int bossBattle;                   //1 = 自定义, 2 = 末影龙, 3 = 凋灵, 4 = 劫掠
+uniform int heldItemId;                   // 手持物品ID (主手)，只用于在 item.properties 中有定义的方块
+uniform int heldBlockLightValue;          // 手持物品光照值 (主手)
+uniform int heldItemId2;                  // 手持物品ID (副手)，只用于在 item.properties 中有定义的方块
+uniform int heldBlockLightValue2;         // 手持物品光照值 (副手)
+uniform int fogMode;                      // GL_LINEAR，GL_EXP 或 GL_EXP2
+uniform float fogStart;                   // 雾气渐入开始距离 (米)
+uniform float fogEnd;                     // 雾气渐入结束距离 (米)
+uniform int fogShape;                     // 0 = 球体, 1 = 圆柱体
+uniform float fogDensity;                 // 0.0-1.0
+uniform vec3 fogColor;                    // r, g, b
+uniform vec3 skyColor;                    // r, g, b
+uniform int worldTime;                    // <ticks> = worldTicks % 24000
+uniform int worldDay;                     // <days> = worldTicks / 24000
+uniform int moonPhase;                    // 0-7
+uniform int frameCounter;                 // 帧索引 (0 到 720719, 然后重置为 0)
+uniform float frameTime;                  // 上一帧用时，秒
+uniform float frameTimeCounter;           // 运行时间，秒 (3600 秒后重置为 0)
+uniform float sunAngle;                   // 0.0-1.0 ~ 0-23214 12785日-12786月 = .5
+uniform float shadowAngle;                // 0.0-1.0 ~ 同步 sunAngle 的前半周期
+uniform float rainStrength;               // 0.0-1.0
+uniform float aspectRatio;                // viewWidth / viewHeight
+uniform float viewWidth;                  // 窗口宽
+uniform float viewHeight;                 // 窗口高
+uniform float near;                       // 近平面距离
+uniform float far;                        // 远平面距离
+uniform vec3 sunPosition;                 // 视口空间的太阳位置
+uniform vec3 moonPosition;                // 视口空间的月亮位置
+uniform vec3 shadowLightPosition;         // 视口空间的投影光源 (日或月) 位置，需要启用阴影，否则固定为太阳
+uniform vec3 upPosition;                  // 天顶方向
+uniform vec3 cameraPosition;              // 世界空间的摄像机位置
+uniform vec3 previousCameraPosition;      // 上一帧的摄像机位置
+uniform mat4 gbufferModelView;            // 设置了摄像机变换（包括视角摇晃）的模型视口矩阵
+uniform mat4 gbufferModelViewInverse;     // gbufferModelView 的逆
+uniform mat4 gbufferPreviousModelView;    // 上一帧的 gbufferModelView
+uniform mat4 gbufferProjection;           // 生成几何缓冲时的投影矩阵
+uniform mat4 gbufferProjectionInverse;    // gbufferProjection 的逆
+uniform mat4 gbufferPreviousProjection;   // 上一帧的 gbufferProjection
+uniform mat4 shadowProjection;            // 生成阴影贴图时的投影矩阵
+uniform mat4 shadowProjectionInverse;     // shadowProjection 的逆
+uniform mat4 shadowModelView;             // 生成阴影贴图时的模型视口矩阵
+uniform mat4 shadowModelViewInverse;      // shadowModelView 的逆
+uniform float wetness;                    // 由 wetnessHalfLife 或 drynessHalfLife 平滑的 rainStrength
+uniform float eyeAltitude;                // 观察实体的 Y 坐标
+uniform ivec2 eyeBrightness;              // x = 方块亮度，y = 天空亮度，强度 0-15 = 亮度 0-240
+uniform ivec2 eyeBrightnessSmooth;        // 由 eyeBrightnessHalflife 平滑的 eyeBrightness
+uniform int isEyeInWater;                 // 1 = 摄像机在水中, 2 = 摄像机在熔岩中, 3 = 摄像机在细雪中
+uniform float nightVision;                // 夜视 (0.0-1.0)
+uniform float blindness;                  // 失明 (0.0-1.0)
+uniform float screenBrightness;           // 原版亮度 (0.0-1.0)
+uniform int hideGUI;                      // 已隐藏GUI
+uniform float centerDepthSmooth;          // 由 centerDepthSmoothHalflife 平滑的 centerDepth
+uniform ivec2 atlasSize;                  // 纹理拼贴尺寸 (只在拼贴纹理装在时设置)
+uniform vec4 spriteBounds;                // 纹理拼贴上的精灵图边界 (u0, v0, u1, v1)，当 MC_ANISOTROPIC_FILTERING 启用时设置
+uniform vec4 entityColor;                 // 实体颜色乘数 (实体受击、苦力怕爆炸时的闪烁)
+uniform int entityId;                     // 实体 ID
+uniform int blockEntityId;                // 方块实体 ID (用于瓦片实体的方块 ID，只用于在 block.properties 中有定义的方块)
+uniform ivec4 blendFunc;                  // 混合函数 (源RGB, 目标RGB, 源Alpha, 目标Alpha)
+uniform int instanceId;                   // 启用实例渲染时的实例 ID (countInstances > 1), 0 = 源，1-N = 拷贝
+uniform float playerMood;                 // 玩家氛围 (0.0-1.0)，当玩家长时间处于地下时增长
+uniform int renderStage;                  // 渲染阶段, 见标准宏和渲染阶段
+uniform int bossBattle;                   // 1 = 自定义, 2 = 末影龙, 3 = 凋灵, 4 = 劫掠
 // 1.17+
-uniform mat4 modelViewMatrix;             //模型视口矩阵，替换 gl_ModelViewMatrix，下同
-uniform mat4 modelViewMatrixInverse;      //模型视口矩阵的逆
-uniform mat4 projectionMatrix;            //投影矩阵
-uniform mat4 projectionMatrixInverse;     //投影矩阵的逆
-uniform mat4 textureMatrix;               //纹理矩阵，默认是单位矩阵
-uniform mat3 normalMatrix;                //法线矩阵
-uniform vec3 chunkOffset;                 //地形（terrain）的区块起始位置，和属性 vaPosition 一起使用
-uniform float alphaTestRef;               //alpha测试参考值, 使用 "if (color.a < alphaTestRef) discard;" 进行检查
+uniform mat4 modelViewMatrix;             // 模型视口矩阵，替换 gl_ModelViewMatrix，下同
+uniform mat4 modelViewMatrixInverse;      // 模型视口矩阵的逆
+uniform mat4 projectionMatrix;            // 投影矩阵
+uniform mat4 projectionMatrixInverse;     // 投影矩阵的逆
+uniform mat4 textureMatrix;               // 纹理矩阵，默认是单位矩阵
+uniform mat3 normalMatrix;                // 法线矩阵
+uniform vec3 chunkOffset;                 // 地形（terrain）的区块起始位置，和属性 vaPosition 一起使用
+uniform float alphaTestRef;               // alpha测试参考值, 使用 "if (color.a < alphaTestRef) discard;" 进行检查
 // 1.19+
-uniform float darknessFactor;             //黑暗效果强度 (0.0-1.0)
+uniform float darknessFactor;             // 黑暗效果强度 (0.0-1.0)
 uniform float darknessLightFactor;
 ```
 
@@ -146,17 +146,17 @@ uniform sampler2D colortex3;
 ## 顶点属性 {id="attributes"}
 
 ```glsl
-in vec3 vaPosition;       //position (x, y, z)          1.17+，对于地形（terrain）来说是区块起始位置，需要配合 chunkOffset 使用
-in vec4 vaColor;          //color (r, g, b, a)          1.17+
-in vec2 vaUV0;            //texture (u, v)              1.17+
-// in ivec2 vaUV1;        //overlay (u, v)              1.17+，在原版中的作用被 entityColor 替代，若在 Iris 中声明此属性可能导致报错
-in ivec2 vaUV2;           //lightmap (u, v)             1.17+
-in vec3 vaNormal;         //normal (x, y, z)            1.17+
-in vec3 mc_Entity;        //xy = 方块ID, 渲染器类型       方块 ID 只用于在 block.properties 中有定义的方块
-in vec2 mc_midTexCoord;   //st = midTexU, midTexV       精灵图的纹理中央UV
-in vec4 at_tangent;       //xyz = 切向量, w = 手系
-in vec3 at_velocity;      //上一帧的顶点偏移量             视口坐标，仅实体和方块实体
-in vec3 at_midBlock;      //向方块中心偏移1/64m           仅方块
+in vec3 vaPosition;       // position (x, y, z)          1.17+，对于地形（terrain）来说是区块起始位置，需要配合 chunkOffset 使用
+in vec4 vaColor;          // color (r, g, b, a)          1.17+
+in vec2 vaUV0;            // texture (u, v)              1.17+
+// in ivec2 vaUV1;        // overlay (u, v)              1.17+，在原版中的作用被 entityColor 替代，若在 Iris 中声明此属性可能导致报错
+in ivec2 vaUV2;           // lightmap (u, v)             1.17+
+in vec3 vaNormal;         // normal (x, y, z)            1.17+
+in vec3 mc_Entity;        // xy = 方块ID, 渲染器类型       方块 ID 只用于在 block.properties 中有定义的方块
+in vec2 mc_midTexCoord;   // st = midTexU, midTexV       精灵图的纹理中央UV
+in vec4 at_tangent;       // xyz = 切向量, w = 手系
+in vec3 at_velocity;      // 上一帧的顶点偏移量             视口坐标，仅实体和方块实体
+in vec3 at_midBlock;      // 向方块中心偏移1/64m           仅方块
 ```
 
 ## 标准宏
@@ -249,7 +249,7 @@ OpenGL 扩展
 你也可以在站内找到 [LabPBR 格式的翻译版本](labpbrMaterialStandard.md){summary=""} 。
 
 渲染阶段
-: `<const>` 用于统一变量 `renderStage` ，其值按执行顺序给出。
+: `<const>` 用于统一变量 `renderStage` ，其值按执行顺序给出。由于部分几何共用一个程序，因此可以使用形如 `if(renderStage == MC_RENDER_STAGE_XXX)` 进行当前渲染几何类型判断。
 ```glsl
 #define MC_RENDER_STAGE_NONE <const>                    // 未定义
 #define MC_RENDER_STAGE_SKY <const>                     // 天空
