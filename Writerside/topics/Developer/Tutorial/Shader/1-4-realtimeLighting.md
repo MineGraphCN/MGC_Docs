@@ -363,7 +363,12 @@ const float sunPathRotation = -20.0;
 
 > 事实上我们编写的阴影几何缓冲基本上就是 OptiFine 的内置实现，如果你不编写阴影几何缓冲而直接调用 `shadowtex` ，也是可以绘制阴影的。
 > 
-> 不过有一点不同的是，内置实现向 `shadowcolor0` 写入了场景。
+> 不过有一点不同的是，内置实现向 `shadowcolor0` 写入了场景，将它像阴影深度那样映射到场景中看起来就像这样：
+> ```glsl
+> fragColor = texture(shadowcolor0, uv_shadowMap);
+> ```
+> ![shadows_shadowcolor0.webp](shadows_shadowcolor0.webp)
+
 
 ## 习题
 
