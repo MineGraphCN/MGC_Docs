@@ -298,7 +298,7 @@ float closestDepth = texture(shadowtex0, uv_shadowMap).r;
 
 最后，我们将 `closestDepth` 和 `currentDepth` 做比较，如果后者大于前者（即当前深度不是在光源连线上的最近深度），则处于阴影中。
 ```glsl
-float shadowMultiplier = 1.0;
+float shadowMultiplier = 1.0; // 阴影乘数，0.0 表示在阴影中。
 if(currentDepth > closestDepth) shadowMultiplier = 0.0;
 ```
 > 如果你图省事，也可以使用 `step(x, a)` 函数，它接受两个参数，当前者小于后者时返回 `0.0` ，否则返回 `1.0`，即：
@@ -329,7 +329,7 @@ const float shadowDistance = 32;
 
 看起来要好些了，但是如果凑近观察会发现有很多莫名的锯齿阴影。这是因为阴影贴图的分辨率是有限的，每个阴影贴图覆盖的像素对应的其实是屏幕上的一小块区域，而不是精确的一个点，因此当覆盖区域中央的最近深度小于了四周的实际深度时就会产生**自阴影**。
 
-要想解决这个问题，最简单的方法就是手动将场景的实际坐标向光源方向“推”一个小值：
+要想解决这个问题，最简单的方法就是手动将场景的实际坐标向光源方向“推”一个小值（也可以将最近深度往远处推一个小值）：
 ```glsl
 const float bias = 0.0001;
 float shadowMultiplier = step(currentDepth - bias, closestDepth);
@@ -361,6 +361,20 @@ const float sunPathRotation = -20.0;
 
 其中负值代表太阳向南偏移，正值代表向北偏移。
 
+如果你望向远处，可能会发现场景被错误遮蔽了，这是因为阴影采样坐标超出了场景坐标。还记得缓冲区的边缘行为吗？它会一直拿边缘的深度和场景实际深度做对比，因此就出错了，要想解决这个问题很简单，我们只要不比较阴影纹理坐标不属于 $[0,1]$ 区域的场景就行了：
+```glsl
+[...]
+float minComponent(vec2 v) {
+    return min(v.x, v.y);
+}
+float maxComponent(vec2 v) {
+    return max(v.x, v.y);
+}
+[... main ...]
+if(minComponent(uv_shadowMap) < 0.0 || maxComponent(uv_shadowMap) > 1.0) { shadowMultiplier = 1.0; }
+```
+
+
 > 事实上我们编写的阴影几何缓冲基本上就是 OptiFine 的内置实现，如果你不编写阴影几何缓冲而直接调用 `shadowtex` ，也是可以绘制阴影的。
 > 
 > 不过有一点不同的是，内置实现向 `shadowcolor0` 写入了场景，将它像阴影深度那样映射到场景中看起来就像这样：
@@ -369,11 +383,11 @@ const float sunPathRotation = -20.0;
 > ```
 > ![shadows_shadowcolor0.webp](shadows_shadowcolor0.webp)
 
-
 ## 习题
 
 1. 整理你的 `final.fsh` ，将重建阴影坐标系的那一大坨内容封装成函数并进行内容复习。
-2. 将 `vaUV2` 处理之后传入像素着色器，将光照强度独立拆分到两个通道中输出，不要使用 `lightmap` ，然后在 `final.fsh` 中仅将天空光照强度乘以环境光强度，并在最终光照强度上独立叠加方块光照强度。注意：
+2. 重载 `minComponent()` 和 `maxComponent()` 函数，让它们可以返回 `vec3` 和 `vec4` 类型的最大分量。
+3. 将 `vaUV2` 处理之后传入像素着色器，将光照强度独立拆分到两个通道中输出，不要使用 `lightmap` ，然后在 `final.fsh` 中仅将天空光照强度乘以环境光强度，并在最终光照强度上独立叠加方块光照强度。注意：
    - OptiFine 要求整型类变量必须以 `flat` 形式传出，不能进行插值，因此你可能需要将其转化到 `vec2` 以确保进行了正确插值。
    - 你需要根据光照贴图的尺寸将整型坐标转化到归一化坐标来确保不会过曝，你可以使用 `textureSize(sampler, lod)` 来获取纹理尺寸，第一个变量传入要查询尺寸的采样器，第二个变量 `lod` 则是 MipMap 等级，在这里只需要设置为 `0` 。它会返回每一个维度上的纹理尺寸，因此你将它与整型坐标相除就可以获取归一化坐标。
 
