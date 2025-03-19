@@ -310,7 +310,7 @@ float closestDepth = texture(shadowtex0, uv_shadowMap).r;
 float shadowMultiplier = 1.0; // 阴影乘数，0.0 表示在阴影中。
 if(currentDepth > closestDepth) shadowMultiplier = 0.0;
 ```
-> 如果你图省事，也可以使用 `step(x, a)` 函数，它接受两个参数，当前者小于后者时返回 `0.0` ，否则返回 `1.0`，即：
+> 如果你图省事，也可以使用 `step(e, x)` 函数，它接受两个参数，当 `x` 小于 `e` 时返回 `0.0` ，否则返回 `1.0`，即：
 > ```glsl
 > float shadowMultiplier = step(currentDepth, closestDepth);
 > ```
