@@ -44,7 +44,7 @@ GL 传入的顶点总是从局部坐标（Local Coordinate）开始。它代表�
 
 回想一下现实生活中，透过一个固定的画框（就像窗口或者门之类的）向外看，你会发现什么？画框里侧越远（越深），能看到的景物也就越多，也即近大远小。这是因为我们是从一个点（眼睛）观察场景，同样大小的物体所占的角度会随着远离观察点而减小。
 
-![gbuffers_viewpoint.png](gbuffers_viewpoint.png)
+![gbuffers_viewpoint.png](gbuffers_viewpoint.png){width="700"}
 
 这种现象被称为**场景透视**，以这种方式进行的投影被称为**透视投影**，形成的像被称为**透视视图**。与之相对的，严格按照坐标测绘，不产生近大远小的投影方式被称为**正射投影**，形成的像被称为**等轴视图**。
 
@@ -146,7 +146,7 @@ uniform mat4 projectionMatrixInverse;     //投影矩阵的逆
 
 <resource src="./space_conversion_bg.png">
 
-![space_conversion.png](space_conversion.png)
+![space_conversion.png](space_conversion.png){width="700"}
 
 </resource>
 
@@ -246,7 +246,7 @@ void main() {
 ```
 如果你跟着这样做了并且重载了一番光影，你大概会得到这样一坨随着视角变化不断闪烁的东西：
 
-![gbuffers_whatAMess.png](gbuffers_whatAMess.png)
+![gbuffers_whatAMess.png](gbuffers_whatAMess.png){width="700"}
 
 怎么回事呢？这是因为地形是逐区块绘制的，因此我们还需要知道区块相对位置，同样的，OptiFine 也为我们提供了，我们只需要进行些许修改即可：
 ```glsl
@@ -257,7 +257,7 @@ gl_Position = projectionMatrix * modelViewMatrix * vec4(vaPosition + chunkOffset
 ```
 现在再次重载，你应该已经能从一团黑中看出一些轮廓了：
 
-![gbuffers_silhouetteOfTerrain.png](gbuffers_silhouetteOfTerrain.png)
+![gbuffers_silhouetteOfTerrain.png](gbuffers_silhouetteOfTerrain.png){width="700"}
 
 > 在 `compatibility` 配置下，区块的偏移和 $w$ 分量已经被设置好了，因此你只需要使用 `gl_Vertex` 乘以对应 uniform 矩阵的内建矩阵就好。
 
@@ -283,7 +283,7 @@ void main() {
 ```
 我们就能看见初具雏形的场景了：
 
-![gbuffers_vaColor.png](gbuffers_vaColor.png)
+![gbuffers_vaColor.png](gbuffers_vaColor.png){width="700"}
 
 接下来，让我们为场景添加纹理。希望你还记得，首先我们需要在顶点着色器中获取顶点的纹理坐标。和延迟处理不同，几何缓冲的顶点纹理并不和屏幕坐标完全对齐，因此我们不能使用屏幕坐标来进行采样，只能使用 OptiFine 提供的 `vaUV0` 。
 
@@ -310,21 +310,21 @@ fragColor = texture(gtexture, uv);
 ```
 然后你就会得到这样一个有些奇怪的场景，并且你会发现树叶的颜色不见了：
 
-![gbuffers_texture.png](gbuffers_texture.png)
+![gbuffers_texture.png](gbuffers_texture.png){width="700"}
 
 但是不要着急，还记得我们刚才传过来的 `vColor` 吗？它实际上是一个**颜色乘数**，我们只需要将它与纹理颜色相乘，魔法便出现了：
 ```glsl
 fragColor = texture(gtexture, uv) * vColor;
 ```
 
-![gbuffers_coloredTexture.png](gbuffers_coloredTexture.png)
+![gbuffers_coloredTexture.png](gbuffers_coloredTexture.png){width="700"}
 
 看起来有点内味了！除了一点……我们的藤蔓怎么是不透明的呢？！这是因为固体地形默认不会进行色彩混合（我们将在之后认识它），也不会根据不透明度进行处理。还记得 [](0-2-filePipeline.md) （没错，又是这一节，基础很重要！）的约定吗？我们所在的 `terrain` 传入的均为**固体几何**，没有渲染半透明的必要。再结合之前我们提到的可以用 `discard` 丢弃片段，你应该已经有思路了：
 ```glsl
 if(fragColor.a == 0.0) discard;
 ```
 
-![gbuffers_alphatest.png](gbuffers_alphatest.png)
+![gbuffers_alphatest.png](gbuffers_alphatest.png){width="700"}
 
 完美！上面这种通过不透明度丢弃片段的操作也就是所谓的 **Alpha 测试**（Alpha Test，你可能偶尔会在各种地方看到这个名词）。你会注意到水体完全透明了，这就是将其他几何完全丢弃的效果。
 
@@ -361,7 +361,7 @@ oldLighting = false
 ```
 即可。回到游戏重载光影，你就可以发现方块侧面的明暗变化已经消失了。
 
-![gbuffers_oldLighting.png](gbuffers_oldLighting.png)
+![gbuffers_oldLighting.png](gbuffers_oldLighting.png){width="700"}
 
 > 你可能会发现重载光影时弹出了资源包的读盘覆盖，这是因为切换经典光效需要从资源包更改顶点颜色行为。
 > 
@@ -379,7 +379,7 @@ separateAo = true
 
 现在，我们就获得了场景的反照率了：
 
-![gbuffers_albedo.png](gbuffers_albedo.png)
+![gbuffers_albedo.png](gbuffers_albedo.png){width="700"}
 
 如果你好奇 AO 还能不能被正常渲染，可以在之前的 `final.fsh` 中尝试
 ```glsl
@@ -388,7 +388,7 @@ fragColor.rgb *= fragColor.a;
 ```
 然后你就会发现，AO 回来了，它们被妥善保存在 Alpha 通道中。但是如果你望向远处，会发现场景莫名变暗了：
 
-![gbuffers_wrongAO.png](gbuffers_wrongAO.png)
+![gbuffers_wrongAO.png](gbuffers_wrongAO.png){width="700"}
 
 这是因为 OptiFine 默认开启了多级渐近纹理（MipMap），远处纹理的 Alpha 通道由于降采样将不透明和完全透明的像素混合成了半透明像素。
 
@@ -400,7 +400,7 @@ fragColor.rgb *= vColor.rgb;
 fragColor.a = vColor.a;
 ```
 
-![deferred_rightAO.png](deferred_rightAO.png)
+![deferred_rightAO.png](deferred_rightAO.png){width="700"}
 
 这样就正确了。
 
@@ -444,15 +444,15 @@ vec4 vanillaMixLight(vec3 lightDir0, vec3 lightDir1, vec3 normal, vec4 color) {
 
 访问我们的 `versions` 文件夹，将游戏的 `.jar` 本体使用压缩软件打开
 
-![gbuffers_openJar.png](gbuffers_openJar.png)
+![gbuffers_openJar.png](gbuffers_openJar.png){width="700"}
 
 然后找到压缩包内的 `\assets\minecraft\shaders\` 文件夹
 
-![gbuffers_shaderFolder.png](gbuffers_shaderFolder.png)
+![gbuffers_shaderFolder.png](gbuffers_shaderFolder.png){width="700"}
 
 将它们提取到 `\resourcepacks\<测试包名称>\assets\minecraft\` 。记得在 `\resourcepacks\<你的包名称>\` 下新建一个 `pack.mcmeta` 文件，然后在里面写上包数据以便游戏读取
 
-![gbuffers_packmcmeta.png](gbuffers_packmcmeta.png)
+![gbuffers_packmcmeta.png](gbuffers_packmcmeta.png){width="700"}
 
 ```json
 {
@@ -513,7 +513,7 @@ fragColor = vertexColor;
 ```
 最后回到游戏，按下 <shortcut>F3</shortcut><shortcut>T</shortcut> **重载资源包**
 
-![gbuffers_vanillaLightDir.png](gbuffers_vanillaLightDir.png)
+![gbuffers_vanillaLightDir.png](gbuffers_vanillaLightDir.png){width="700"}
 
 你就已经可以用自己的后脑勺（或者用第三人称正面模式，这样你就可以直接知道朝向）来找最亮的方向了。同理，`Light1_Direction` 也能这样找到。
 
@@ -572,7 +572,7 @@ vNormal = normalMatrix * vaNormal;
 ```
 有些未闭合的单面片（比如鲑鱼的尾巴）可能会出现顶点法线方向反转的问题，因此我们需要将它们翻转回来。仔细思考一下：场景中的法线应该都是朝向视点所在的半球内的，另一半球朝向的几何都会被它的其他面遮挡。
 
-![](gbuffers_normalFlip.png)
+![](gbuffers_normalFlip.png){width="700"}
 
 因此我们只需要将它们和视点到片段的连线做点乘，如果你没看过上一节的话，它还可以返回两个向量的模长与夹角余弦值的积 $|\vec{A}| |\vec{B}| \cos{\theta}$ 。因此当两个向量方向越接近，它们夹角就越小，$\cos{\theta}$ 越接近 $1$ ，点积结果就越大。我们期望向量和观察方向始终不在同一半球内，因此如果我们发现了任何点积大于 $0$ 的结果，则说明它的法线方向反了。
 
@@ -655,7 +655,7 @@ uniform sampler2D colortex1;
 fragColor = texture(colortex1, uv);
 ```
 
-![gbuffers_normals.png](gbuffers_normals.png)
+![gbuffers_normals.png](gbuffers_normals.png){width="700"}
 
 并且法线的颜色会随着视角的转动而变化。
 
@@ -691,10 +691,11 @@ M_T \\
 $$
 其中 $M_R$ 子矩阵表示旋转数据，$M_T$ 子矩阵表示位移数据。想象一下，当一个世界空间的点转换到到视口空间，我们应该同时应用摄像机的位移，让点的位置随着摄像机的移动而变化；而当一个世界空间的固定方向变换到视口空间时，由于它只是一个固有的相对方向信息，就算我们的摄像机移动，它的朝向也不会因此改变。
 
-| 数据类型  | $w$ 分量 | 变换目的                    |
-|-------|--------|-------------------------|
-| 位置（点） | 1.0    | 需要随相机位移和旋转才能获得正确的相对位置   |
-| 方向    | 0.0    | 只需要将其随摄像机旋转，其本身就代表了相对方向 |
+<table width="700">
+<tr><td>数据类型</td><td><math>w</math> 分量</td><td>变换目的</td></tr>
+<tr><td>位置（点）</td><td>1.0</td><td>需要随相机位移和旋转才能获得正确的相对位置</td></tr>
+<tr><td>方向</td><td>0.0</td><td>只需要将其随摄像机旋转，其本身就代表了相对方向</td></tr>
+</table>
 
 当我们将向量乘入矩阵时，如果 $w$ 分量为 $1$，则最终场景将会应用位移数据
 $$
@@ -723,7 +724,7 @@ vec3 normal = texture(colortex1, uv).rgb * 2.0 - 1.0; // 记得把法线转换�
 fragColor = vanillaMixLight(lightDir0, lightDir1, normal, albedo);
 ```
 
-![gbuffers_deferredLighting.png](gbuffers_deferredLighting.png)
+![gbuffers_deferredLighting.png](gbuffers_deferredLighting.png){width="700"}
 
 如果你还没忘记之前我们拆分进 Alpha 通道的 AO，记得把它也乘回来：
 ```glsl
@@ -732,7 +733,7 @@ fragColor *= albedo.a;
 
 至此，我们在延迟渲染中还原的原版光照就完成了！
 
-![gbuffers_final.png](gbuffers_final.png)
+![gbuffers_final.png](gbuffers_final.png){width="700"}
 
 如果你抬头看天，会发现天空莫名变黑了，这是因为天空并没有写入法线数据，默认清除的白色与光照点乘出现了问题。因此我们还要再次使用之前的 `depthtex0` 进行判定，当判定到天空（即深度最大为 1.0）时使用原始颜色：
 ```glsl

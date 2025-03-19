@@ -119,20 +119,21 @@ void main() {
 
 GLSL 版本与 OpenGL 密切相关，如果平台支持的 OpenGL 版本过低，则无法使用高版本的 GLSL 和它们的新特性。
 
-| GLSL 版本 | OpenGL 版本 | 变动                                               |
-|---------|-----------|--------------------------------------------------|
-| 110     | 2.0       | 基本功能，支持顶点和片段着色器。                                 |
-| 120     | 2.1       | 引入 `gl_FragColor` 和 `gl_FragData[]` 。            |
-| 130     | 3.0       | 移除 `attribute` 和 `varying`，引入 `in` 和 `out` 。     |
-| 140     | 3.1       | 支持整数和位运算。                                        |
-| 150     | 3.2       | 引入几何着色器（Geometry Shader）。                        |
-| 330     | 3.3       | 引入核心模式，移除固定功能管线。                                 |
-| 400     | 4.0       | 引入细分着色器（Tessellation Shader）。                    |
-| 410     | 4.1       | 支持显式顶点属性位置（`layout(location = ...)`）。            |
-| 420     | 4.2       | 支持图像加载/存储（Image Load/Store），可以对非向量进行 Swizzle 操作。 |
-| 430     | 4.3       | 引入计算着色器（Compute Shader）。                         |
-| 440     | 4.4       | 支持显式绑定点（Explicit Binding Points）。                |
-| 450     | 4.5       | 支持直接状态访问（Direct State Access）。                   |
+<table width="800">
+<tr><td>GLSL</td><td>GL</td><td>变动</td></tr>
+<tr><td>110</td><td>2.0</td><td>基本功能，支持顶点和片段着色器。</td></tr>
+<tr><td>120</td><td>2.1</td><td>引入 <code>gl_FragColor</code> 和 <code>gl_FragData[]</code> 。</td></tr>
+<tr><td>130</td><td>3.0</td><td>移除 <code>attribute</code> 和 <code>varying</code>，引入 <code>in</code> 和 <code>out</code> 。</td></tr>
+<tr><td>140</td><td>3.1</td><td>支持整数和位运算。</td></tr>
+<tr><td>150</td><td>3.2</td><td>引入几何着色器（Geometry Shader）。</td></tr>
+<tr><td>330</td><td>3.3</td><td>引入核心模式，移除固定功能管线。</td></tr>
+<tr><td>400</td><td>4.0</td><td>引入细分着色器（Tessellation Shader）。</td></tr>
+<tr><td>410</td><td>4.1</td><td>支持显式顶点属性位置（<code>layout(location = ...)</code>）。</td></tr>
+<tr><td>420</td><td>4.2</td><td>支持图像加载/存储（Image Load/Store），可以对非向量进行 Swizzle 操作。</td></tr>
+<tr><td>430</td><td>4.3</td><td>引入计算着色器（Compute Shader）。</td></tr>
+<tr><td>440</td><td>4.4</td><td>支持显式绑定点（Explicit Binding Points）。</td></tr>
+<tr><td>450</td><td>4.5</td><td>支持直接状态访问（Direct State Access）。</td></tr>
+</table>
 
 ## `core` 还是 `compatibility` ？
 

@@ -52,7 +52,7 @@ void main() {
 
 并按下 <shortcut>F3</shortcut><shortcut>R</shortcut> 重载光影。然后，你就已经可以在游戏窗口中看到光影的效果了：
 
-![deferred_drawRed.png](deferred_drawRed.png)
+![deferred_drawRed.png](deferred_drawRed.png){width="700"}
 
 哇哦！真的是好……呃，红啊！只靠着固定的纯色是没法画出场景的，我们需要更多数据。
 
@@ -129,7 +129,7 @@ void main() {
 ```
 {collapsible="true" collapsed-title="final.fsh" default-state="expanded"}
 
-![deferred_firstSampling.png](deferred_firstSampling.png)
+![deferred_firstSampling.png](deferred_firstSampling.png){width="700"}
 
 What Amazing！我们成功向屏幕输出了 0 号缓冲区的内容！
 
@@ -153,14 +153,14 @@ fragColor = texelFetch(colortex0, ivec2(gl_FragCoord.xy), 0);
 ```glsl
 fragColor = texture(colortex0, uv / 8.0);
 ```
-![八倍放大的归一化坐标](deferred_texture8x.png)
+![八倍放大的归一化坐标](deferred_texture8x.png){width="700"}
 
 `texelFetch()`
 :
 ```glsl
 fragColor = texelFetch(colortex0, ivec2(gl_FragCoord.xy) / 8, 0);
 ```
-![八倍放大的整数坐标](deferred_texelFetch8x.png)
+![八倍放大的整数坐标](deferred_texelFetch8x.png){width="700"}
 
 可以很明显地看到，`texture()` 采样出来的画面比较模糊，而 `texelFetch()` 则棱角分明 ~~，像素颗颗饱满~~ 。大多数时候，我们还是期望采样纹理时进行自动插值的，因此在本教程中，如无必要，我们都将使用 `texture()` 。
 
@@ -187,7 +187,7 @@ fragColor = vec4(vec3(brightness), color.a);
 ```
 然后回到我们的游戏重载一次：
 
-![deferred_gray.png](deferred_gray.png)
+![deferred_gray.png](deferred_gray.png){width="700"}
 
 画面就已经成功变成灰色了！
 
@@ -212,7 +212,7 @@ float depth = texture(depthtex0, uv).r;
 fragColor = vec4(depth);
 ```
 
-![deferred_depthtex.png](deferred_depthtex.png)
+![deferred_depthtex.png](deferred_depthtex.png){width="700"}
 
 看起来白茫茫的一片，五米之外人畜不分对吧？这是因为由于进行了**透视除法**的场景深度是**非线性**的，我们会在几何缓冲章节详细介绍。现在让我们使用一个 _神奇_ 的函数，先把场景转换到**线性深度**：
 
@@ -239,7 +239,7 @@ depth /= far - near;
 
 这样，我们就获得了场景的归一化线性深度了：
 
-![deferred_linearDepth.png](deferred_linearDepth.png)
+![deferred_linearDepth.png](deferred_linearDepth.png){width="700"}
 
 在这里，我们需要用到另一个 GLSL 内建函数：`mix()` 。它用法为 `mix(值1, 值2, 混合比例)` 。其内部实现为 $\text{Mix}(a,b,x)=a\times(1-x)+b\times x$ ，因此混合比例需要约束在 $[0,1]$ 之间。
 
@@ -251,7 +251,7 @@ fragColor = vec4(mixedColor, color.a);
 
 回到游戏看看效果
 
-![deferred_mixGray.png](deferred_mixGray.png)
+![deferred_mixGray.png](deferred_mixGray.png){width="700"}
 
 看起来就像世界中的色彩随着距离增加而逐渐出现了一样！
 
@@ -385,11 +385,12 @@ b = a + 1.0 = 2.0
 c 未初始化
 ```
 
-| 修饰符     | 读取传参的数据（可读） | 将数据写入传参（可写） |
-|---------|-------------|-------------|
-| `in`    | ✓           | ✕           |
-| `out`   | ✕           | ✓           |
-| `inout` | ✓           | ✓           |
+<table width="700">
+<tr><td>修饰符</td><td>读写性</td></tr>
+<tr><td><code>in</code></td><td>只读，即使函数内为其赋值也不会传出（默认行为）</td></tr>
+<tr><td><code>out</code></td><td>只写，即使传参带有值也不可读，除非在函数中为其赋值</td></tr>
+<tr><td><code>inout</code> 或 <code>in out</code></td><td>既可以读取传参值，也可以向传参赋值</td></tr>
+</table>
 
 ## 多次采样
 
@@ -436,7 +437,7 @@ result /= 25.0; // 5*5 次采样
 
 现在让把这个值赋给我们的颜色试试：
 
-![deferred_blur.png](deferred_blur.png)
+![deferred_blur.png](deferred_blur.png){width="700"}
 
 和预期一样，画面被轻微模糊了！
 
@@ -523,7 +524,7 @@ for(int j = -BLUR_SAMPLES; j <= BLUR_SAMPLES; ++j) {
 #define BLUR_SAMPLES 5
 ```
 
-![deferred_blur_large.png](deferred_blur_large.png)
+![deferred_blur_large.png](deferred_blur_large.png){width="700"}
 
 和预期一样，模糊的半径更大了！
 

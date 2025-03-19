@@ -39,7 +39,7 @@ float lit = max(dot(lightDir, normal), 0.0);
 fragColor = albedo * lit;
 ```
 
-![](shadows_realtimeLighting.webp)
+![](shadows_realtimeLighting.webp){width="700"}
 
 不过你会看到，场景没有被光照射到的区域一片纯黑，这可不是我们所希望的。为此，我们可以添加一个**环境光**亮度，基本上就是手动给计算好的光照加一个小值：
 ```glsl
@@ -48,7 +48,7 @@ fragColor = albedo * (lit + 0.3);
 
 然后，你就能看到随着光源角度变化的场景光照了：
 
-![](shadows_differentTime.webp)
+![](shadows_differentTime.webp){width="700"}
 
 如果你还没忘记怪可怜的原版 AO，可以将它乘入环境光照明，让它发挥本来的作用：模拟环境光的遮挡。
 
@@ -122,7 +122,7 @@ fragColor = albedo * (lit * lightmap + 0.3 * albedo.a);
 
 然后你就能在矿洞中看出场景变化了：
 
-![shadows_lm.webp](shadows_lm.webp)
+![shadows_lm.webp](shadows_lm.webp){width="700"}
 
 如果将我们之前的 `lightDir` 赋值内容替换为 `normalize(moonPosition)` 然后把时间切换到晚上，你就会发现场景正确地变暗了。
 
@@ -229,7 +229,7 @@ void main() {
 
 如果你在 `final.fsh` 中直接声明 `shadowtex0` 然后输出它，看起来会像是这样：
 
-![shadows_shadowmap.webp](shadows_shadowmap.webp)
+![shadows_shadowmap.webp](shadows_shadowmap.webp){width="700"}
 
 如果你遇到大面积没有场景信息的情况，可以尝试打开 F3 调试界面看着屏幕中间的参考坐标系来回转头加载场景，在某些版本的 OptiFine 上你可能会遇到深度数据随着转头被裁切的情况，可以在配置文件（`shaders.properties`，希望你还记得）中添加
 ```properties
@@ -320,7 +320,7 @@ if(currentDepth > closestDepth) shadowMultiplier = 0.0;
 fragColor = albedo * (lit * shadowMultiplier + 0.3 * albedo.a);
 ```
 
-![shadows_dirtyShadow.webp](shadows_dirtyShadow.webp)
+![shadows_dirtyShadow.webp](shadows_dirtyShadow.webp){width="700"}
 
 虽然看起来确实不怎么美观……这是因为默认的阴影贴图覆盖范围高达 $20 \times 20$ 个区块，而贴图分辨率只有可怜的 $1024 \times 1024$，你基本上可以理解为，每个方块在阴影贴图上只有 3 个像素的信息。
 
@@ -332,9 +332,16 @@ const int shadowMapResolution = 2048;
 ```glsl
 const float shadowDistance = 32;
 ```
+
+> 你也可以像宏那样在定义后加注释来添加可以在光影设置中调整的值
+> ```glsl
+> const int shadowMapResolution = 2048; // [1024 2048 3072 4096]
+> const float shadowDistance = 32; // [32 48 64 80 96 112 128]
+> ```
+
 回到游戏重载一下光影试试：
 
-![shadows_dirtyShadowHR.webp](shadows_dirtyShadowHR.webp)
+![shadows_dirtyShadowHR.webp](shadows_dirtyShadowHR.webp){width="700"}
 
 看起来要好些了，但是如果凑近观察会发现有很多莫名的锯齿阴影。这是因为阴影贴图的分辨率是有限的，每个阴影贴图覆盖的像素对应的其实是屏幕上的一小块区域，而不是精确的一个点，因此当覆盖区域中央的最近深度小于了四周的实际深度时就会产生**自阴影**。
 
@@ -344,20 +351,24 @@ const float bias = 0.0001;
 float shadowMultiplier = step(currentDepth - bias, closestDepth);
 ```
 
-![shadows_optimizedShadow1.webp](shadows_optimizedShadow1.webp)
+![shadows_optimizedShadow1.webp](shadows_optimizedShadow1.webp){width="700"}
 
-现在好多了，但是你会发现几何接缝出现了一些悬空，这是不可避免的。在极端情况下这个偏移值可能过小，你当然可以直接调大它，但是一个更明智的方法是根据表面的法线动态地调整偏移量。
+现在好多了，但是你会发现几何接缝出现了一些漏光导致视觉悬空，这是不可避免的。在极端情况下这个偏移值可能过小，你当然可以直接调大它，但是一个更明智的方法是根据表面的法线动态地调整偏移量。
 
 可以思考一下，当场景表面的法线与光源越垂直，一个阴影像素覆盖的区域的深度差就会越大，因此偏移量就要越大！
 
-![shadows_selfShadow.png](shadows_selfShadow.png)
+![shadows_selfShadow.png](shadows_selfShadow.png){width="700"}
+
+> 我们所说的“偏移”都是在光照方向上进行，相比让小物体无法投影而看起来轻微悬空，我们更不能接受一个平面全都是阴影。
+> 
+{style="note"}
 
 因此，我们还是请出之前已经点乘好的值 `lit` ，当光照与法线方向夹角越小，我们的偏移量应该越小，因此要将其取反。我们不关心背光面，它们本来就全是阴影。同时我们应该保证一个最小的偏移量来确保某些极端角度不会产生自阴影：
 ```glsl
 float shadowMultiplier = step(currentDepth - max(bias * (1.0-lit), bias * 0.1), closestDepth);
 ```
 
-![shadows_optimizedShadow2.webp](shadows_optimizedShadow2.webp)
+![shadows_optimizedShadow2.webp](shadows_optimizedShadow2.webp){width="700"}
 
 这是在 1024x 阴影分辨率下渲染半径 16 区块接近正午的阴影效果，可以看到自阴影的现象几乎看不见了。
 
@@ -365,16 +376,22 @@ float shadowMultiplier = step(currentDepth - max(bias * (1.0-lit), bias * 0.1), 
 > 
 > 如果使用 `texelFetch()` 或者场景坐标较远（非线性的深度图决定了转换后远处的线性深度精度会更差）可能会产生更多自阴影。
 
-此外，我们还可以控制阴影在南北方向上的倾斜，让阴影不再一直和南北的表面对齐，从而让光照更有层次：
+此外，我们还可以控制阴影在南北方向上的倾斜，让阴影边缘不再一直和南北的表面对齐，从而让光照更有层次：
 ```glsl
 const float sunPathRotation = -20.0;
 ```
 
-![shadows_sunRotate.webp](shadows_sunRotate.webp)
+![shadows_sunRotate.webp](shadows_sunRotate.webp){width="700"}
 
 其中负值代表太阳向南偏移，正值代表向北偏移。
 
-如果你望向远处，可能会发现场景被错误遮蔽了，这是因为阴影采样坐标超出了场景坐标。还记得缓冲区的边缘行为吗？它会一直拿边缘的深度和场景实际深度做对比，因此就出错了，要想解决这个问题很简单，我们只要不比较阴影纹理坐标不属于 $[0,1]$ 区域的场景就行了：
+如果你望向远处，可能会发现场景被错误遮蔽了，这是因为阴影采样坐标超出了场景坐标。还记得缓冲区的边缘行为吗？超出缓冲区范围的场景相当于一直拿缓冲区边缘的深度信息和实际深度做对比，因此始终被判断为阴影。
+
+![shadows_wrongArea.webp](shadows_wrongArea.webp){width="700"}
+
+图中泛红的区域即阴影空间坐标不属于 $[0,1]$ 的区域，在这些地方采样的阴影深度信息没有任何意义
+
+要想解决这个问题很简单，我们只要不比较阴影纹理坐标不属于 $[0,1]$ 区域的场景就行了：
 ```glsl
 [...]
 float minComponent(vec2 v) {
@@ -412,9 +429,9 @@ if(uv_OutBound(uv_shadowMap)) shadowMultiplier = 1.0;
 if(uv_OutBound(uv_shadowMap) || currentDepth >= 1.0) { shadowMultiplier = 1.0; }
 ```
 
-![shadows_wrong.webp](shadows_wrong.webp)
+![shadows_wrong.webp](shadows_wrong.webp){width="700"}
 
-> 我们判定的核心思想就是剔除掉阴影深度图中无效的部分，因此你也可以判定 `closestDepth == 1.0` ，这样一些浮空物体投在实际深度超出 `1.0` 远景中的阴影也能正确渲染。
+> 我们判定的核心思想就是剔除掉阴影深度图中无效的部分，因此你也可以判定 `closestDepth == 1.0` ，这样物体就可以在实际深度超出 `1.0` 的远景中投影了，这在光源角度较大的日落和日出时非常有用。
 > 
 {style="note"}
 

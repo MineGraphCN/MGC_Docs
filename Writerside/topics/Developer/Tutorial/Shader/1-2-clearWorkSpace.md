@@ -159,7 +159,7 @@ screen = BLUR_SAMPLES
 
 最后保存并回到游戏重载光影，按下 <shortcut>F3</shortcut><shortcut>O</shortcut> 打开光影设置页面，如果不出意外，你应该已经可以看到它了：
 
-![clearWorkSpace_options.png](clearWorkSpace_options.png)
+![clearWorkSpace_options.png](clearWorkSpace_options.png){width="700"}
 
 试着点几下这个选项，你会发现它在我们之前设定的几个值中来回循环，这就是我们的**光影选项**了。假如你再在配置文件中添加一行
 ```properties
@@ -167,7 +167,7 @@ sliders = BLUR_SAMPLES
 ```
 然后保存并重载，你会发现选项变成了**滑块**：
 
-![clearWorkSpace_sliders.png](clearWorkSpace_sliders.png)
+![clearWorkSpace_sliders.png](clearWorkSpace_sliders.png){width="700"}
 
 这对目前的我们来说已经够用了。在之后的章节中，我们将更具体地讲解光影选项。
 
