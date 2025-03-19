@@ -319,6 +319,8 @@ fragColor = texture(gtexture, uv) * vColor;
 
 ![gbuffers_coloredTexture.png](gbuffers_coloredTexture.png){width="700"}
 
+> 你可能会注意到丛林树叶的纹理上除了灰度还有些橙色的果子一样的带颜色的纹理。Mojang 显然忘记了把顶点颜色给乘进去会让果子也被意外染色，导致几乎无法在通常游戏中发现这个细节……而且你丛林树叶不本来就不会掉果子吗？堪称迷惑行为……
+
 看起来有点内味了！除了一点……我们的藤蔓怎么是不透明的呢？！这是因为固体地形默认不会进行色彩混合（我们将在之后认识它），也不会根据不透明度进行处理。还记得 [](0-2-filePipeline.md) （没错，又是这一节，基础很重要！）的约定吗？我们所在的 `terrain` 传入的均为**固体几何**，没有渲染半透明的必要。再结合之前我们提到的可以用 `discard` 丢弃片段，你应该已经有思路了：
 ```glsl
 if(fragColor.a == 0.0) discard;
