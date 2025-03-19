@@ -42,7 +42,7 @@ _龙行龘龘，前程朤朤_
 光影：iterationT 2.0.1  
 地图：Norakias和中国龙
 
-![图片](2024-spring_1.jpg){thumbnail="true"}
+![图片](2024-spring_1.webp){thumbnail="true"}
 
 #### 作品#2
 
@@ -50,7 +50,7 @@ _龙行龘龘，前程朤朤_
 光影：iterationT 2.0.0  
 地图：诺尔阿喀斯和龙  
 
-![图片](2024-spring_2.jpg){thumbnail="true"}
+![图片](2024-spring_2.webp){thumbnail="true"}
 
 #### 作品#3
 
@@ -59,7 +59,7 @@ _心之所向，亦与龙行_
 光影：Derivative Rise SSPT Test 3  
 地图：龙
 
-![图片](2024-spring_3.jpg){thumbnail="true"}
+![图片](2024-spring_3.webp){thumbnail="true"}
 
 #### 作品#4
 
@@ -70,7 +70,7 @@ _龙腾四海_
 地图: 自建的  
 未使用任何后期处理。  
 
-![图片](2024-spring_4.jpg){thumbnail="true"}
+![图片](2024-spring_4.webp){thumbnail="true"}
 
 #### 作品#5
 
@@ -79,7 +79,7 @@ _龙腾四海_
 纹理：SPBR 13-13  
 光影参数小调，画面无任何内容修改  
 
-![图片](2024-spring_5.png){thumbnail="true"}
+![图片](2024-spring_5.webp){thumbnail="true"}
 
 #### 作品#6
 
@@ -88,7 +88,7 @@ _龙抬头_
 光影：kappa5.2  
 地图：龙  
 
-![图片](2024-spring_6.jpg){thumbnail="true"}
+![图片](2024-spring_6.webp){thumbnail="true"}
 
 #### 作品#7
 
@@ -98,7 +98,7 @@ _龙抬头_
 地图作者：N1kuu  
 自制地图    
 
-![图片](2024-spring_7.png){thumbnail="true"}
+![图片](2024-spring_7.webp){thumbnail="true"}
 
 #### 作品#8
 
@@ -106,7 +106,7 @@ _龙抬头_
 光影: Chocapic13 v9.1 PBR test  
 地图：龍   
 
-![图片](2024-spring_8.png){thumbnail="true"}
+![图片](2024-spring_8.webp){thumbnail="true"}
 
 #### 作品#9
 
@@ -115,7 +115,7 @@ _飞龙在天_
 光影：Kappa5.2  
 地图：Xin Tiantang, an oriental utopia  
 
-![图片](2024-spring_9.png){thumbnail="true"}
+![图片](2024-spring_9.webp){thumbnail="true"}
 
 #### 作品#10
 
@@ -126,7 +126,7 @@ _飞龙在天_
 地图：中国龙  
 地图作者：Vision  
 
-![图片](2024-spring_10.png){thumbnail="true"}
+![图片](2024-spring_10.webp){thumbnail="true"}
 
 #### 作品#11
 
@@ -134,7 +134,7 @@ _飞龙在天_
 光影：Solas V2.0 BETA V0.6b  
 地图：龙    
 
-![图片](2024-spring_11.jpg){thumbnail="true"}
+![图片](2024-spring_11.webp){thumbnail="true"}
 
 #### 作品#12
 
@@ -143,7 +143,7 @@ _飞龙在天_
 纹理包：SPBR  
 地图：龙  
 
-![图片](2024-spring_12.png){thumbnail="true"}
+![图片](2024-spring_12.webp){thumbnail="true"}
 
 #### 作品#13
 
@@ -152,4 +152,4 @@ _天龙之岛_
 光影：Bliss  
 模组：Distant Horizons    
 
-![图片](2024-spring_13.png){thumbnail="true"}
+![图片](2024-spring_13.webp){thumbnail="true"}

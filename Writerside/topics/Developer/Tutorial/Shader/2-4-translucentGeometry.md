@@ -1,3 +1,0 @@
-# 半透明几何
-
-Start typing here...

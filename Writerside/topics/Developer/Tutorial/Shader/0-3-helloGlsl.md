@@ -4,7 +4,7 @@
 
 <tldr>
 
-本章节介绍 GLSL 的基础语法和版本配置。
+本节介绍 GLSL 的基础语法和版本配置。
 
 </tldr>
 
@@ -48,7 +48,7 @@ void main() {
 uniform mat4 modelViewMatrix;
 uniform mat4 projectionMatrix;
 ```
-声明了从 OpenGL 上下文传入 GLSL 着色器的统一变量，**不可以在着色器内被修改**。在这里，它们传入的变量类型是 `mat4` ，表示这是一个 $4\times4$ 的矩阵 <sup>**1**</sup> 。
+声明了从 OpenGL 上下文传入 GLSL 着色器的统一变量，**不可以在着色器内被修改**。在这里，它们传入的变量类型是 `mat4` ，表示这是一个 $4\times4$ 的矩阵 ^**[1](#note1-1 "有关这些矩阵和坐标的相关内容，我们将在几何缓冲章节详细介绍。")**^ 。
 
 > OpenGL 上下文（Context）即 OpenGL 程序，我们编写的“着色器”是其运行时所调用的用以指导绘制场景的程序，在 OptiFine 管线中我们无法访问。
 
@@ -65,10 +65,11 @@ in vec3 vaColor;
 
 out vec3 vColor;
 ```
-定义了传入变量和传出变量。对于顶点着色器来说，`in` 类型的变量是**顶点属性**，`out` 的变量可以被几何着色器或片段着色器接受。`in` 的变量不可更改，在传出时对应的变量会在每个顶点之间进行**插值**使其平滑过渡。  
-其中，`vaPosition` 是顶点的**局部坐标** <sup>**1**</sup> ，`vaColor` 是顶点的**颜色**。
+定义了传入变量和传出变量。对于顶点着色器来说，`in` 类型的变量是**顶点属性**，`out` 的变量可以被几何着色器或片段着色器接受。`in` 的变量不可更改，在传出时对应的变量会在每个顶点之间进行**插值**使其平滑过渡。其中，`vaPosition` 是顶点的**局部坐标** ^**[1](#note1-1 "有关这些矩阵和坐标的相关内容，我们将在几何缓冲章节详细介绍。")**^ ，`vaColor` 是顶点的**颜色**。
 
 > 若想禁用插值，我们只需要在 `in` 和 `out` 前加上 `flat` 。
+
+> 有关统一变量和顶点属性的区别：统一变量在当前着色器中不会随着顶点和像素的位置不同而变化，而顶点属性则是每个顶点特有的信息。
 
 和 C 一样，GLSL 执行时从 `main` 函数开始，但是它必须是 `void` 类型，也不接受任何输入。
 
@@ -76,13 +77,17 @@ out vec3 vColor;
 ```glsl
 gl_Position = projectionMatrix * modelViewMatrix * vec4(vaPosition, 1.0);
 ```
-将传入的 `vaPosition` 转换为四维向量，并将多出来的第四分量赋上 `1.0` ，然后和传入的两个矩阵相乘，并赋值给了 `gl_Position` ，OpenGL 期望这个值落在坐标区间为 $[-1,1]$ 的投影空间 <sup>**1**</sup> 里，以便进行裁切。
+将传入的 `vaPosition` 转换为四维向量，并将多出来的第四分量赋上 `1.0` ，然后和传入的两个矩阵相乘，并赋值给了 `gl_Position` ，OpenGL 期望这个值落在坐标区间为 $[-1,1]$ 的投影空间 ^**[1](#note1-1 "有关这些矩阵和坐标的相关内容，我们将在几何缓冲章节详细介绍。")**^ 里，以便进行裁切。
 
 GLSL 要求在顶点着色器中必须对 `gl_Position` 进行操作。
 
 最后，我们将顶点的颜色属性 `vaColor` 赋值给传出变量 `vColor` ，这样做的原因是 `in` 的变量无法直接 `out` 。
 
+<p id="note1-1"/>
+
 **[1]** 有关这些矩阵和坐标的相关内容，我们将在几何缓冲章节详细介绍。
+
+顶点着色器程序会在每个顶点上都运行一次。
 
 接着是片段着色器：
 
@@ -106,26 +111,29 @@ void main() {
 
 最后，在主函数中，我们给输出变量赋上了顶点颜色。GL 默认会期望我们输出的颜色值在 $[0,1]$ 上（不考虑 HDR）并约束最大值，最后在输出到屏幕上时自动将其转换为 8 位的像素颜色（$[0,255]$）
 
+片段着色器会在每个图元覆盖的每个像素上都执行一次。
+
 这样，整个着色器流程就大致结束了。
 
 ## GLSL 和 OpenGL 的版本对应关系
 
 GLSL 版本与 OpenGL 密切相关，如果平台支持的 OpenGL 版本过低，则无法使用高版本的 GLSL 和它们的新特性。
 
-| GLSL 版本 | OpenGL 版本 | 变动                                           |
-|---------|-----------|----------------------------------------------|
-| 110     | 2.0       | 基本功能，支持顶点和片段着色器。                             |
-| 120     | 2.1       | 引入 `gl_FragColor` 和 `gl_FragData[]` 。        |
-| 130     | 3.0       | 移除 `attribute` 和 `varying`，引入 `in` 和 `out` 。 |
-| 140     | 3.1       | 支持整数和位运算。                                    |
-| 150     | 3.2       | 引入几何着色器（Geometry Shader）。                    |
-| 330     | 3.3       | 引入核心模式，移除固定功能管线。                             |
-| 400     | 4.0       | 引入细分着色器（Tessellation Shader）。                |
-| 410     | 4.1       | 支持显式顶点属性位置（`layout(location = ...)`）。        |
-| 420     | 4.2       | 支持图像加载/存储（Image Load/Store）。                 |
-| 430     | 4.3       | 引入计算着色器（Compute Shader）。                     |
-| 440     | 4.4       | 支持显式绑定点（Explicit Binding Points）。            |
-| 450     | 4.5       | 支持直接状态访问（Direct State Access）。               |
+<table width="800">
+<tr><td>GLSL</td><td>GL</td><td>变动</td></tr>
+<tr><td>110</td><td>2.0</td><td>基本功能，支持顶点和片段着色器。</td></tr>
+<tr><td>120</td><td>2.1</td><td>引入 <code>gl_FragColor</code> 和 <code>gl_FragData[]</code> 。</td></tr>
+<tr><td>130</td><td>3.0</td><td>移除 <code>attribute</code> 和 <code>varying</code>，引入 <code>in</code> 和 <code>out</code> 。</td></tr>
+<tr><td>140</td><td>3.1</td><td>支持整数和位运算。</td></tr>
+<tr><td>150</td><td>3.2</td><td>引入几何着色器（Geometry Shader）。</td></tr>
+<tr><td>330</td><td>3.3</td><td>引入核心模式，移除固定功能管线。</td></tr>
+<tr><td>400</td><td>4.0</td><td>引入细分着色器（Tessellation Shader）。</td></tr>
+<tr><td>410</td><td>4.1</td><td>支持显式顶点属性位置（<code>layout(location = ...)</code>）。</td></tr>
+<tr><td>420</td><td>4.2</td><td>支持图像加载/存储（Image Load/Store），可以对非向量进行 Swizzle 操作。</td></tr>
+<tr><td>430</td><td>4.3</td><td>引入计算着色器（Compute Shader）。</td></tr>
+<tr><td>440</td><td>4.4</td><td>支持显式绑定点（Explicit Binding Points）。</td></tr>
+<tr><td>450</td><td>4.5</td><td>支持直接状态访问（Direct State Access）。</td></tr>
+</table>
 
 ## `core` 还是 `compatibility` ？
 
@@ -203,6 +211,19 @@ mat3(1.2, 0.0, 0.0,
 
 </compare>
 
+以及将高维向量的额外维度丢弃并转化为低维向量。
+
+<compare first-title="构造向量" second-title="等效向量">
+
+```glsl
+vec2(vec3(1.0, 2.0, 3.0));
+```
+```glsl
+vec2(1.0, 2.0);
+```
+
+</compare>
+
 ### 操作分量
 
 GLSL 允许 Swizzle 式和数组式提取分量。
@@ -223,7 +244,7 @@ V.bgb -> vec3(3.0, 2.0, 3.0)
 M[0] -> vec3(1.0, 0.0, 0.0)
 M[1].y -> 2.0
 M[2][2] -> 3.0
-N.sss -> vec3(2.5) == vec3(N)
+N.sss -> vec3(2.5) == vec3(N) // 需要 #version 420 及以上
 ```
 
 </compare>
@@ -374,4 +395,4 @@ GLSL 不支持 `static` 关键字和 `char` 类型。
 
 ---
 
-至此，有关 GLSL 的入门就差不多介绍完毕了。同时这也是本篇章的结束，从下一篇章开始，我们将进入工作区并开始我们的光影创作之旅。
+至此，有关 GLSL 的入门就差不多介绍完毕了，同时这也是本章的末尾。至此，你应该已经对 OptiFine 和 GLSL 有一个大致的了解了。从下一章开始，我们将进入工作区并开始我们的光影创作之旅。

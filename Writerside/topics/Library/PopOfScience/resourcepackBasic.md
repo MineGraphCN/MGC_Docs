@@ -102,8 +102,7 @@ Texture Pack 的**错误译名**。
 
 中 `pack_format` 的值定义，`descripton` 则是该资源包的**描述**。  
 此外，自 **JE 1.20.2 23w31a** 开始，其加入了 `supported_formats` 字段，可以指定兼容版本的上下限。
-- `min_inclusive` 指定版本下限，`max_inclusive` 指定版本上限。
-- 也可简写为 `"supported_formats": [17, %latest_pack_format%]` 。
+- 也可使用 `min_inclusive` 指定版本下限，`max_inclusive` 指定版本上限。
 
 以下是资源包版本号对应游戏版本的表格：
 
@@ -196,7 +195,7 @@ OptiFine 同时支持一些其它的特殊纹理，如 CTM、CIT、CEM 等，见
 参阅：[术语表 - PBR](terms.md#pbr "一种着色和渲染的方法，更准确地表现光线如何与材料性质相互作用。")
 
 PBR 有两种工作流，一种是**金属／粗糙度**，另一种是**镜面反射／光泽度**。  
-对于 PBR 纹理上的通道的定义，在 MC 中有着不同的标准，例如 **OldPBR** <sup>JE</sup> 、**LabPBR** <sup>JE</sup> 、**四合一PBR** <sup>BE</sup>等。
+对于 PBR 纹理上的通道的定义，在 MC 中有着不同的标准，例如 **OldPBR** ^JE^ 、**LabPBR** ^JE^ 、**四合一PBR** ^BE^等。
 
 - **OldPBR** 是过时的 PBR 标准，在此不做讨论。
 - [LabPBR 1.3](labpbrMaterialStandard.md "LabPBR 材质标准（译）") 是 Java 版的约定现行标准，工作流为**金属／粗糙度**。其 *材质属性* 由 `_n` 和 `_s` 纹理**共同定义**。

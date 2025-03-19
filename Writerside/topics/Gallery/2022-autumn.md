@@ -26,7 +26,7 @@ _世界之巅-繁星之梦_
 纹理：Synesthesia Pixel T3  
 地图：喜马拉雅 1.18
 
-![图片](2022-autumn_1.png){thumbnail="true"}
+![图片](2022-autumn_1.webp){thumbnail="true"}
 
 #### 作品#2
 
@@ -36,7 +36,7 @@ _锦绣山河_
 纹理：Misaka's Texture  
 地图：七彩丹霞
 
-![图片](2022-autumn_2.jpg){thumbnail="true"}
+![图片](2022-autumn_2.webp){thumbnail="true"}
 
 #### 作品#3
 
@@ -45,7 +45,7 @@ _黄土高原_
 光影：iterationT  
 地图：黄土高原
 
-![图片](2022-autumn_3.png){thumbnail="true"}
+![图片](2022-autumn_3.webp){thumbnail="true"}
 
 #### 作品#4
 
@@ -55,7 +55,7 @@ _山眠_
 纹理：Misaka's Texture  
 地图：张家界
 
-![图片](2022-autumn_4.png){thumbnail="true"}
+![图片](2022-autumn_4.webp){thumbnail="true"}
 
 #### 作品#5
 
@@ -65,7 +65,7 @@ _争高直指，负势竞上_
 纹理：SynesthesiaPixel T4  
 地图：张家界
 
-![图片](2022-autumn_5.png){thumbnail="true"}
+![图片](2022-autumn_5.webp){thumbnail="true"}
 
 #### 作品#6
 
@@ -74,7 +74,7 @@ _东方红，太阳升_
 光影：iterationT  
 地图：张家界
 
-![图片](2022-autumn_6.png){thumbnail="true"}
+![图片](2022-autumn_6.webp){thumbnail="true"}
 
 #### 作品#7
 
@@ -83,7 +83,7 @@ _落霞_
 光影：ComplementaryShaders_v4.2.1  
 地图：喜马拉雅 1.18
 
-![图片](2022-autumn_7.jpg){thumbnail="true"}
+![图片](2022-autumn_7.webp){thumbnail="true"}
 
 #### 作品#8
 
@@ -92,7 +92,7 @@ _群峦_
 光影：SEUS DAZZLING  
 地图：张家界
 
-![图片](2022-autumn_8.png){thumbnail="true"}
+![图片](2022-autumn_8.webp){thumbnail="true"}
 
 #### 作品#9
 
@@ -101,4 +101,4 @@ _晨曦_
 光影：iterationT 3.0.0  
 地图：自制
 
-![图片](2022-autumn_9.jpg){thumbnail="true"}
+![图片](2022-autumn_9.webp){thumbnail="true"}

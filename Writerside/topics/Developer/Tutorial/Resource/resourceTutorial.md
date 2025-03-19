@@ -14,9 +14,10 @@
 <var name="target_description" value=""/>
 <include from="uniforms.md" element-id="h_note_readingTips"/>
 
-> 本教程由 [FishBai](https://github.com/yubaibaifish) 独立编写，MGC 提供支持。
->
-{style="note"}
+<tldr>
+
+本教程由 [FishBai](https://github.com/yubaibaifish) 独立编写，MGC 提供支持。
+</tldr>
 
 资源包，也就是玩家口中的材质包。不过为什么正确的名称叫做资源包呢？
 
