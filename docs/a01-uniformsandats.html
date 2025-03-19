@@ -1,5 +1,5 @@
 <!DOCTYPE html SYSTEM "about:legacy-compat">
-<html lang="en-US" data-preset="contrast" data-primary-color="#FDB71B"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="built-on" content="2025-03-18T15:26:37.965862321"><title>OptiFine 提供的数据 | MineGraph Docs</title><script type="application/json" id="virtual-toc-data">[{"id":"uniforms","level":0,"title":"统一变量","anchor":"#uniforms"},{"id":"z7txy2j_16","level":1,"title":"纹理","anchor":"#z7txy2j_16"},{"id":"z7txy2j_17","level":2,"title":"通用","anchor":"#z7txy2j_17"},{"id":"z7txy2j_18","level":2,"title":"几何缓冲专用","anchor":"#z7txy2j_18"},{"id":"z7txy2j_19","level":2,"title":"延迟处理专用","anchor":"#z7txy2j_19"},{"id":"attributes","level":0,"title":"顶点属性","anchor":"#attributes"},{"id":"z7txy2j_9","level":0,"title":"标准宏","anchor":"#z7txy2j_9"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="frontend/app.css" rel="stylesheet"><link rel="icon" type="image/png" sizes="16x16" href="MGC_Docs/page_logo.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="OptiFine 提供的数据 | MineGraph Docs"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="MineGraph Docs Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="https://docs.minegraph.cn/md/a01-uniformsandats.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="OptiFine 提供的数据 | MineGraph Docs"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+<html lang="en-US" data-preset="contrast" data-primary-color="#FDB71B"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="built-on" content="2025-03-19T03:48:33.204575192"><title>OptiFine 提供的数据 | MineGraph Docs</title><script type="application/json" id="virtual-toc-data">[{"id":"uniforms","level":0,"title":"统一变量","anchor":"#uniforms"},{"id":"-5ikbau_16","level":1,"title":"纹理","anchor":"#-5ikbau_16"},{"id":"-5ikbau_17","level":2,"title":"通用","anchor":"#-5ikbau_17"},{"id":"-5ikbau_18","level":2,"title":"几何缓冲专用","anchor":"#-5ikbau_18"},{"id":"-5ikbau_19","level":2,"title":"延迟处理专用","anchor":"#-5ikbau_19"},{"id":"attributes","level":0,"title":"顶点属性","anchor":"#attributes"},{"id":"-5ikbau_9","level":0,"title":"标准宏","anchor":"#-5ikbau_9"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="frontend/app.css" rel="stylesheet"><link rel="icon" type="image/png" sizes="16x16" href="MGC_Docs/page_logo.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="OptiFine 提供的数据 | MineGraph Docs"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="MineGraph Docs Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="https://docs.minegraph.cn/md/a01-uniformsandats.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="OptiFine 提供的数据 | MineGraph Docs"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
     "@context": "http://schema.org",
     "@type": "WebPage",
     "@id": "https://docs.minegraph.cn/md/a01-uniformsandats.html#webpage",
@@ -13,7 +13,7 @@
     "@id": "https://docs.minegraph.cn/md/#website",
     "url": "https://docs.minegraph.cn/md/",
     "name": "MineGraph Docs Help"
-}</script><!-- End Schema.org --></head><body data-id="a01-uniformsAndAts" data-main-title="OptiFine 提供的数据" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="Developer.md|创作者文档///shaderTutorial.md|光影开发教程///附录"><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>MineGraph Docs  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="a01-uniformsAndAts" data-annotation-ids="port" id="a01-uniformsAndAts.md">OptiFine 提供的数据</h1><div class="micro-format" data-content="{&quot;microFormat&quot;:[&quot;\u003cp id\u003d\&quot;z7txy2j_10\&quot;\u003e本附录列出了所有 OptiFine 提供的统一变量和顶点属性，你可以直接复制并保存至一个文件以便今后直接 \u003ccode class\u003d\&quot;code\&quot; id\u003d\&quot;z7txy2j_12\&quot;\u003e#include\u003c/code\u003e。\u003c/p\u003e&quot;,&quot;\u003cp id\u003d\&quot;z7txy2j_11\&quot;\u003e此外，我们还列出了所有标准宏，它们在链接文件时自动包含在程序中，你可以直接在着色器中随意取用这些宏。\u003c/p\u003e&quot;]}"></div><aside class="prompt" data-type="tip" data-title="" id="z7txy2j_6"><p id="z7txy2j_13">资料来源 <a href="https://github.com/sp614x/optifine/blob/master/OptiFineDoc/doc/shaders.txt" id="z7txy2j_14" data-external="true" rel="noopener noreferrer">GitHub - OptiFineDoc &quot;shaders.txt&quot;</a></p></aside><section class="chapter"><h2 id="uniforms" data-toc="uniforms">统一变量</h2><div class="code-block" data-lang="glsl">
+}</script><!-- End Schema.org --></head><body data-id="a01-uniformsAndAts" data-main-title="OptiFine 提供的数据" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="Developer.md|创作者文档///shaderTutorial.md|光影开发教程///附录"><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>MineGraph Docs  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="a01-uniformsAndAts" data-annotation-ids="port" id="a01-uniformsAndAts.md">OptiFine 提供的数据</h1><div class="micro-format" data-content="{&quot;microFormat&quot;:[&quot;\u003cp id\u003d\&quot;-5ikbau_10\&quot;\u003e本附录列出了所有 OptiFine 提供的统一变量和顶点属性，你可以直接复制并保存至一个文件以便今后直接 \u003ccode class\u003d\&quot;code\&quot; id\u003d\&quot;-5ikbau_12\&quot;\u003e#include\u003c/code\u003e。\u003c/p\u003e&quot;,&quot;\u003cp id\u003d\&quot;-5ikbau_11\&quot;\u003e此外，我们还列出了所有标准宏，它们在链接文件时自动包含在程序中，你可以直接在着色器中随意取用这些宏。\u003c/p\u003e&quot;]}"></div><aside class="prompt" data-type="tip" data-title="" id="-5ikbau_6"><p id="-5ikbau_13">资料来源 <a href="https://github.com/sp614x/optifine/blob/master/OptiFineDoc/doc/shaders.txt" id="-5ikbau_14" data-external="true" rel="noopener noreferrer">GitHub - OptiFineDoc &quot;shaders.txt&quot;</a></p></aside><section class="chapter"><h2 id="uniforms" data-toc="uniforms">统一变量</h2><div class="code-block" data-lang="glsl">
 uniform int heldItemId;                   //手持物品ID (主手)，只用于在 item.properties 中有定义的方块
 uniform int heldBlockLightValue;          //手持物品光照值 (主手)
 uniform int heldItemId2;                  //手持物品ID (副手)，只用于在 item.properties 中有定义的方块
@@ -87,7 +87,7 @@ uniform float alphaTestRef;               //alpha测试参考值, 使用 &quot;i
 // 1.19+
 uniform float darknessFactor;             //黑暗效果强度 (0.0-1.0)
 uniform float darknessLightFactor;
-</div><section class="chapter"><h3 id="z7txy2j_16" data-toc="z7txy2j_16">纹理</h3><section class="chapter"><h4 id="z7txy2j_17" data-toc="z7txy2j_17">通用</h4><div class="code-block" data-lang="glsl">
+</div><section class="chapter"><h3 id="-5ikbau_16" data-toc="-5ikbau_16">纹理</h3><section class="chapter"><h4 id="-5ikbau_17" data-toc="-5ikbau_17">通用</h4><div class="code-block" data-lang="glsl">
 uniform sampler2D shadowtex0;
 uniform sampler2D shadowtex1;
 
@@ -112,17 +112,17 @@ uniform sampler2D shadowcolor0;
 uniform sampler2D shadowcolor1;
 
 uniform sampler2D noisetex;
-</div></section><section class="chapter"><h4 id="z7txy2j_18" data-toc="z7txy2j_18">几何缓冲专用</h4><div class="code-block" data-lang="glsl">
+</div></section><section class="chapter"><h4 id="-5ikbau_18" data-toc="-5ikbau_18">几何缓冲专用</h4><div class="code-block" data-lang="glsl">
 uniform sampler2D gtexture;
 uniform sampler2D lightmap;
 uniform sampler2D normals;
 uniform sampler2D specular;
-</div></section><section class="chapter"><h4 id="z7txy2j_19" data-toc="z7txy2j_19">延迟处理专用</h4><div class="code-block" data-lang="glsl">
+</div></section><section class="chapter"><h4 id="-5ikbau_19" data-toc="-5ikbau_19">延迟处理专用</h4><div class="code-block" data-lang="glsl">
 uniform sampler2D colortex0;
 uniform sampler2D colortex1;
 uniform sampler2D colortex2;
 uniform sampler2D colortex3;
-</div><aside class="prompt" data-type="tip" data-title="" id="z7txy2j_23"><p id="z7txy2j_24">你可以利用 <code class="code" id="z7txy2j_25">#define</code> 来判断当前着色器程序，然后根据程序声明专用纹理。</p></aside></section></section></section><section class="chapter"><h2 id="attributes" data-toc="attributes">顶点属性</h2><div class="code-block" data-lang="glsl">
+</div><aside class="prompt" data-type="tip" data-title="" id="-5ikbau_23"><p id="-5ikbau_24">你可以利用 <code class="code" id="-5ikbau_25">#define</code> 来判断当前着色器程序，然后根据程序声明专用纹理。</p></aside></section></section></section><section class="chapter"><h2 id="attributes" data-toc="attributes">顶点属性</h2><div class="code-block" data-lang="glsl">
 in vec3 vaPosition;       //position (x, y, z)          1.17+，对于地形（terrain）来说是区块起始位置，需要配合 chunkOffset 使用
 in vec4 vaColor;          //color (r, g, b, a)          1.17+
 in vec2 vaUV0;            //texture (u, v)              1.17+
@@ -134,18 +134,18 @@ in vec2 mc_midTexCoord;   //st = midTexU, midTexV       精灵图的纹理中央
 in vec4 at_tangent;       //xyz = 切向量, w = 手系
 in vec3 at_velocity;      //上一帧的顶点偏移量             视口坐标，仅实体和方块实体
 in vec3 at_midBlock;      //向方块中心偏移1/64m           仅方块
-</div></section><section class="chapter"><h2 id="z7txy2j_9" data-toc="z7txy2j_9">标准宏</h2><p id="z7txy2j_27">标准宏会在每个着色器文件的 <code class="code" id="z7txy2j_29">#version</code> 行后自动定义，可以在着色器程序中随时使用。</p><dl id="z7txy2j_28" data-style="title-top"><dt id="z7txy2j_30" data-expandable="false">Minecraft 版本</dt><dd><div class="code-block" data-lang="glsl">
+</div></section><section class="chapter"><h2 id="-5ikbau_9" data-toc="-5ikbau_9">标准宏</h2><p id="-5ikbau_27">标准宏会在每个着色器文件的 <code class="code" id="-5ikbau_29">#version</code> 行后自动定义，可以在着色器程序中随时使用。</p><dl id="-5ikbau_28" data-style="title-top"><dt id="-5ikbau_30" data-expandable="false">Minecraft 版本</dt><dd><div class="code-block" data-lang="glsl">
 #define MC_VERSION &lt;value&gt;
-</div><p id="z7txy2j_42">值为 122 格式（主 1, 次 2, 发布 2） 例如： <span class="control" id="z7txy2j_43">JE 1.9.4</span>-&gt; <code class="code" id="z7txy2j_44">10904</code>、 <span class="control" id="z7txy2j_45">JE 1.11.2</span>-&gt; <code class="code" id="z7txy2j_46">11102</code> 等。</p></dd><dt id="z7txy2j_31" data-expandable="false">最高支持的 GL 版本</dt><dd><div class="code-block" data-lang="glsl">
+</div><p id="-5ikbau_42">值为 122 格式（主 1, 次 2, 发布 2） 例如： <span class="control" id="-5ikbau_43">JE 1.9.4</span>-&gt; <code class="code" id="-5ikbau_44">10904</code>、 <span class="control" id="-5ikbau_45">JE 1.11.2</span>-&gt; <code class="code" id="-5ikbau_46">11102</code> 等。</p></dd><dt id="-5ikbau_31" data-expandable="false">最高支持的 GL 版本</dt><dd><div class="code-block" data-lang="glsl">
 #define MC_GL_VERSION &lt;value&gt;
-</div><p id="z7txy2j_49">整型值，例如： <code class="code" id="z7txy2j_50">210</code>、 <code class="code" id="z7txy2j_51">320</code>、 <code class="code" id="z7txy2j_52">450</code></p></dd><dt id="z7txy2j_32" data-expandable="false">最高支持的 GLSL 版本</dt><dd><div class="code-block" data-lang="glsl">
+</div><p id="-5ikbau_49">整型值，例如： <code class="code" id="-5ikbau_50">210</code>、 <code class="code" id="-5ikbau_51">320</code>、 <code class="code" id="-5ikbau_52">450</code></p></dd><dt id="-5ikbau_32" data-expandable="false">最高支持的 GLSL 版本</dt><dd><div class="code-block" data-lang="glsl">
 #define MC_GLSL_VERSION &lt;value&gt;
-</div><p id="z7txy2j_55">整型值，例如： <code class="code" id="z7txy2j_56">120</code>、 <code class="code" id="z7txy2j_57">150</code>、 <code class="code" id="z7txy2j_58">450</code></p></dd><dt id="z7txy2j_33" data-expandable="false">操作系统</dt><dd><p id="z7txy2j_60">下列之一：</p><div class="code-block" data-lang="glsl">
+</div><p id="-5ikbau_55">整型值，例如： <code class="code" id="-5ikbau_56">120</code>、 <code class="code" id="-5ikbau_57">150</code>、 <code class="code" id="-5ikbau_58">450</code></p></dd><dt id="-5ikbau_33" data-expandable="false">操作系统</dt><dd><p id="-5ikbau_60">下列之一：</p><div class="code-block" data-lang="glsl">
 #define MC_OS_WINDOWS
 #define MC_OS_MAC
 #define MC_OS_LINUX
 #define MC_OS_OTHER
-</div></dd><dt id="z7txy2j_34" data-expandable="false">驱动程序</dt><dd><p id="z7txy2j_63">下列之一：</p><div class="code-block" data-lang="glsl">
+</div></dd><dt id="-5ikbau_34" data-expandable="false">驱动程序</dt><dd><p id="-5ikbau_63">下列之一：</p><div class="code-block" data-lang="glsl">
 #define MC_GL_VENDOR_AMD
 #define MC_GL_VENDOR_ATI
 #define MC_GL_VENDOR_INTEL
@@ -153,7 +153,7 @@ in vec3 at_midBlock;      //向方块中心偏移1/64m           仅方块
 #define MC_GL_VENDOR_NVIDIA
 #define MC_GL_VENDOR_XORG
 #define MC_GL_VENDOR_OTHER
-</div></dd><dt id="z7txy2j_35" data-expandable="false">GPU</dt><dd><p id="z7txy2j_66">下列之一：</p><div class="code-block" data-lang="glsl">
+</div></dd><dt id="-5ikbau_35" data-expandable="false">GPU</dt><dd><p id="-5ikbau_66">下列之一：</p><div class="code-block" data-lang="glsl">
 #define MC_GL_RENDERER_RADEON 
 #define MC_GL_RENDERER_GEFORCE
 #define MC_GL_RENDERER_QUADRO
@@ -161,7 +161,7 @@ in vec3 at_midBlock;      //向方块中心偏移1/64m           仅方块
 #define MC_GL_RENDERER_GALLIUM
 #define MC_GL_RENDERER_MESA
 #define MC_GL_RENDERER_OTHER
-</div></dd><dt id="z7txy2j_36" data-expandable="false">OpenGL 扩展</dt><dd><p id="z7txy2j_69">与受支持的 GL 扩展同名的前缀为 <code class="code" id="z7txy2j_71">MC_</code> 的宏。</p><ul class="list _bullet" id="z7txy2j_70"><li class="list__item" id="z7txy2j_72"><p>例如，当支持扩展 <code class="code" id="z7txy2j_74">GL_ARB_shader_texture_lod</code> 时，会定义宏 <code class="code" id="z7txy2j_75">MC_GL_ARB_shader_text_lod</code>。</p></li><li class="list__item" id="z7txy2j_73"><p>只有支持且引用了的扩展才会被添加到着色器中。</p></li></ul></dd><dt id="z7txy2j_37" data-expandable="false">设置</dt><dd><div class="code-block" data-lang="glsl">
+</div></dd><dt id="-5ikbau_36" data-expandable="false">OpenGL 扩展</dt><dd><p id="-5ikbau_69">与受支持的 GL 扩展同名的前缀为 <code class="code" id="-5ikbau_71">MC_</code> 的宏。</p><ul class="list _bullet" id="-5ikbau_70"><li class="list__item" id="-5ikbau_72"><p>例如，当支持扩展 <code class="code" id="-5ikbau_74">GL_ARB_shader_texture_lod</code> 时，会定义宏 <code class="code" id="-5ikbau_75">MC_GL_ARB_shader_text_lod</code>。</p></li><li class="list__item" id="-5ikbau_73"><p>只有支持且引用了的扩展才会被添加到着色器中。</p></li></ul></dd><dt id="-5ikbau_37" data-expandable="false">设置</dt><dd><div class="code-block" data-lang="glsl">
 #define MC_FXAA_LEVEL &lt;value&gt;             // 当 FXAA 启用时，值：2、4
 #define MC_NORMAL_MAP                     // 当法线贴图启用时
 #define MC_SPECULAR_MAP                   // 当高光贴图启用时
@@ -171,10 +171,10 @@ in vec3 at_midBlock;      //向方块中心偏移1/64m           仅方块
 #define MC_OLD_HAND_LIGHT                 // 当经典手持光源启用时
 #define MC_OLD_LIGHTING                   // 当经典光照启用时
 #define MC_ANISOTROPIC_FILTERING &lt;value&gt;  // 当各向异性过滤启用时
-</div></dd><dt id="z7txy2j_38" data-expandable="false">纹理</dt><dd><p id="z7txy2j_79">见 <a href="https://github.com/sp614x/optifine/blob/master/OptiFineDoc/doc/texture.properties" id="z7txy2j_82" data-external="true" rel="noopener noreferrer">OptiFineDoc &quot;texture.properties&quot;</a></p><div class="code-block" data-lang="glsl">
+</div></dd><dt id="-5ikbau_38" data-expandable="false">纹理</dt><dd><p id="-5ikbau_79">见 <a href="https://github.com/sp614x/optifine/blob/master/OptiFineDoc/doc/texture.properties" id="-5ikbau_82" data-external="true" rel="noopener noreferrer">OptiFineDoc &quot;texture.properties&quot;</a></p><div class="code-block" data-lang="glsl">
 #define MC_TEXTURE_FORMAT_LAB_PBR       // LabPBR 纹理格式 ([[[Wiki|https://wiki.shaderlabs.org/wiki/LabPBR_Material_Standard]]])
 #define MC_TEXTURE_FORMAT_LAB_PBR_1_3   // 版本 1.3
-</div><p id="z7txy2j_81">你也可以在站内找到 <a href="labpbrmaterialstandard.html" id="z7txy2j_83" data-tooltip="">LabPBR 格式的翻译版本</a>。</p></dd><dt id="z7txy2j_39" data-expandable="false">渲染阶段</dt><dd><p id="z7txy2j_85"><code class="code" id="z7txy2j_87">&lt;const&gt;</code> 用于统一变量 <code class="code" id="z7txy2j_88">renderStage</code> ，其值按执行顺序给出。</p><div class="code-block" data-lang="glsl">
+</div><p id="-5ikbau_81">你也可以在站内找到 <a href="labpbrmaterialstandard.html" id="-5ikbau_83" data-tooltip="">LabPBR 格式的翻译版本</a>。</p></dd><dt id="-5ikbau_39" data-expandable="false">渲染阶段</dt><dd><p id="-5ikbau_85"><code class="code" id="-5ikbau_87">&lt;const&gt;</code> 用于统一变量 <code class="code" id="-5ikbau_88">renderStage</code> ，其值按执行顺序给出。</p><div class="code-block" data-lang="glsl">
 #define MC_RENDER_STAGE_NONE &lt;const&gt;                    // 未定义
 #define MC_RENDER_STAGE_SKY &lt;const&gt;                     // 天空
 #define MC_RENDER_STAGE_SUNSET &lt;const&gt;                  // 日出和日落的天空覆盖
@@ -199,4 +199,4 @@ in vec3 at_midBlock;      //向方块中心偏移1/64m           仅方块
 #define MC_RENDER_STAGE_RAIN_SNOW &lt;const&gt;               // 雨雪
 #define MC_RENDER_STAGE_WORLD_BORDER &lt;const&gt;            // 世界边界
 #define MC_RENDER_STAGE_HAND_TRANSLUCENT &lt;const&gt;        // 半透明手持物品
-</div></dd></dl></section><div class="last-modified">Last modified: 18 March 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="1-4-realtimelighting.html" class="navigation-links__prev">动态光照与阴影</a><a href="a02-corebuiltinvars.html" class="navigation-links__next">核心配置中可用的内建变量</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="frontend/app.js"></script></body></html>
+</div></dd></dl></section><div class="last-modified">Last modified: 19 March 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="1-4-realtimelighting.html" class="navigation-links__prev">动态光照与阴影</a><a href="a02-corebuiltinvars.html" class="navigation-links__next">核心配置中可用的内建变量</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="frontend/app.js"></script></body></html>
