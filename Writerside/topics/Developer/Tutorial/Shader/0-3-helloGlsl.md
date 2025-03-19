@@ -119,20 +119,20 @@ void main() {
 
 GLSL 版本与 OpenGL 密切相关，如果平台支持的 OpenGL 版本过低，则无法使用高版本的 GLSL 和它们的新特性。
 
-| GLSL 版本 | OpenGL 版本 | 变动                                           |
-|---------|-----------|----------------------------------------------|
-| 110     | 2.0       | 基本功能，支持顶点和片段着色器。                             |
-| 120     | 2.1       | 引入 `gl_FragColor` 和 `gl_FragData[]` 。        |
-| 130     | 3.0       | 移除 `attribute` 和 `varying`，引入 `in` 和 `out` 。 |
-| 140     | 3.1       | 支持整数和位运算。                                    |
-| 150     | 3.2       | 引入几何着色器（Geometry Shader）。                    |
-| 330     | 3.3       | 引入核心模式，移除固定功能管线。                             |
-| 400     | 4.0       | 引入细分着色器（Tessellation Shader）。                |
-| 410     | 4.1       | 支持显式顶点属性位置（`layout(location = ...)`）。        |
-| 420     | 4.2       | 支持图像加载/存储（Image Load/Store）。                 |
-| 430     | 4.3       | 引入计算着色器（Compute Shader）。                     |
-| 440     | 4.4       | 支持显式绑定点（Explicit Binding Points）。            |
-| 450     | 4.5       | 支持直接状态访问（Direct State Access）。               |
+| GLSL 版本 | OpenGL 版本 | 变动                                               |
+|---------|-----------|--------------------------------------------------|
+| 110     | 2.0       | 基本功能，支持顶点和片段着色器。                                 |
+| 120     | 2.1       | 引入 `gl_FragColor` 和 `gl_FragData[]` 。            |
+| 130     | 3.0       | 移除 `attribute` 和 `varying`，引入 `in` 和 `out` 。     |
+| 140     | 3.1       | 支持整数和位运算。                                        |
+| 150     | 3.2       | 引入几何着色器（Geometry Shader）。                        |
+| 330     | 3.3       | 引入核心模式，移除固定功能管线。                                 |
+| 400     | 4.0       | 引入细分着色器（Tessellation Shader）。                    |
+| 410     | 4.1       | 支持显式顶点属性位置（`layout(location = ...)`）。            |
+| 420     | 4.2       | 支持图像加载/存储（Image Load/Store），可以对非向量进行 Swizzle 操作。 |
+| 430     | 4.3       | 引入计算着色器（Compute Shader）。                         |
+| 440     | 4.4       | 支持显式绑定点（Explicit Binding Points）。                |
+| 450     | 4.5       | 支持直接状态访问（Direct State Access）。                   |
 
 ## `core` 还是 `compatibility` ？
 
@@ -243,7 +243,7 @@ V.bgb -> vec3(3.0, 2.0, 3.0)
 M[0] -> vec3(1.0, 0.0, 0.0)
 M[1].y -> 2.0
 M[2][2] -> 3.0
-N.sss -> vec3(2.5) == vec3(N)
+N.sss -> vec3(2.5) == vec3(N) // 需要 #version 420 及以上
 ```
 
 </compare>

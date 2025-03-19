@@ -341,29 +341,55 @@ vec2 uv_clampToColor(vec2 uv, out float isOutBound) {
 }
 ```
 
-你可能注意到了，在 `uv_clampToColor()` 中我们在声明函数参数时使用了 `out` 关键字，GLSL 允许我们这样做。当函参声明 `out` 时，表示函数中更改的值会原路返还给用作这个参数的变量。我们可以利用这个特性来进行多个值的初始化：
+你可能注意到了，在 `uv_clampToColor()` 中我们在声明函数参数时使用了 `out` 关键字，GLSL 允许我们这样做。当函参声明 `out` 时，表示函数中更改的值会原路返还给用作这个参数的变量，并且这个参数在函数内赋值前无法参与计算，即**只写参数**。我们可以利用这个特性来进行多个值的初始化：
 ```glsl
-void MultiInit(out float a, out float b, float c) {
-    a = 1.0; // 正常返回
-    b = 2.0; // 正常返回
-    c = 3.0; // 不会返回
+void MultiInit(out float a, out float b, float c, out float x) {
+    x = a;        // 不会返回，a 未在函数中被赋值
+    a = 1.0;      // 正常返回
+    b = a + 1.0;  // 正常返回，a 已经被赋值
+    c = 3.0;      // 不会返回
 }
-
 void main() {
-    float a, b, c;
-    MultiInit(a, b, c);
+    float a = 0.5;
+    float b, c, x;
+    MultiInit(a, b, c, x);
 }
 ```
 结果为：
 ```text
+x 未初始化
 a = 1.0
-b = 2.0
+b = a + 1.0 = 2.0
 c 未初始化
 ```
 
-同样的，我们还可以使用 `in out` 或者 `inout` 来指定既要带数据来，又会被更改值的参数。
+同样的，我们还可以使用 `in out` 或者 `inout` 来指定**可读可写**的参数，而单独的 `in` 就和默认行为一样，可以在函数内被更改，但不会写入传参，即**只读参数**。
+```glsl
+void MultiInit(inout float a, out float b, in float c, out float x) {
+    x = a;        // 正常返回，a 可读可写
+    a = 1.0;      // 正常返回
+    b = a + 1.0;  // 正常返回
+    c = 3.0;      // 不会返回，"in float c" = "float c"
+}
+void main() {
+    float a = 0.5;
+    float b, c, x;
+    MultiInit(a, b, c, x);
+}
+```
+结果为：
+```text
+x = a = 0.5
+a = 1.0
+b = a + 1.0 = 2.0
+c 未初始化
+```
 
-> 在函数中声明 `in` 实际上没有任何效果，但是 GL 允许你添加这样一个类似提醒自己调用的时候会用到它的值的标记。~~让我们说：谢谢 GL。~~
+| 修饰符     | 读取传参的数据（可读） | 将数据写入传参（可写） |
+|---------|-------------|-------------|
+| `in`    | ✓           | ✕           |
+| `out`   | ✕           | ✓           |
+| `inout` | ✓           | ✓           |
 
 ## 多次采样
 
@@ -492,7 +518,7 @@ for(int j = -BLUR_SAMPLES; j <= BLUR_SAMPLES; ++j) {
 ```
 就可以轻松更改采样数了。
 
-现在让我们取每个方向 5 次模糊的较极端的值试试：
+现在让我们取每个方向 11 次模糊的较极端的值试试：
 ```glsl
 #define BLUR_SAMPLES 5
 ```
