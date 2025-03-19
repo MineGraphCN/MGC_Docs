@@ -373,16 +373,36 @@ float maxComponent(vec2 v) {
 [... main ...]
 if(minComponent(uv_shadowMap) < 0.0 || maxComponent(uv_shadowMap) > 1.0) { shadowMultiplier = 1.0; }
 ```
-
-而如果你飞向高空，你会发现大块的阴影又回来了（真难杀啊），这是因为在阴影几何缓冲中场景超出了裁切远平面，最近的阴影空间深度始终被视为了 `1.0` ，而场景的实际阴影空间深度已经超过了 `1.0` 因此我们还需要裁切掉大于 `1.0` 深度的坐标：
+当然，我们可以用之前封装的函数 `uv_OutBound()` 来替换它们，如果你还记得的话：
 ```glsl
-if(minComponent(uv_shadowMap) < 0.0 ||
-   maxComponent(uv_shadowMap) > 1.0 ||
-   currentDepth >= 1.0) { shadowMultiplier = 1.0; }
+bool uv_OutBound(vec2 uv) {
+    return (maxComponent(uv) > 1.0 || minComponent(uv) < 0.0);
+}
+[... main ...]
+if(uv_OutBound(uv_shadowMap)) shadowMultiplier = 1.0;
+```
+如果按照这种方法来写，你会发现我们之前重载的三维 UV 边界判定函数也可以写成：
+```glsl
+bool uv_OutBound(vec3 uv) {
+    return (maxComponent(uv) > 1.0 || minComponent(uv) < 0.0);
+}
+```
+那么我们何不将它们用 `#define` 定义呢：
+```glsl
+#define uv_OutBound(uv) (maxComponent(uv) > 1.0 || minComponent(uv) < 0.0)
+```
+这样变量 `uv` 的类型就被 `maxComponent()` 和 `minComponent()` 限定，而 `uv_OutBound()` 不必重载了。
+
+而如果你飞向高空，你会发现大块的阴影又回来了（真难杀啊），这是因为在阴影几何缓冲中场景超出了裁切远平面，最近的阴影空间深度始终被视为了 `1.0` ，而场景的实际阴影空间深度已经超过了 `1.0` 。因此我们还需要裁切掉大于 `1.0` 深度的坐标：
+```glsl
+if(uv_OutBound(uv_shadowMap) || currentDepth >= 1.0) { shadowMultiplier = 1.0; }
 ```
 
 ![shadows_wrong.webp](shadows_wrong.webp)
 
+> 我们判定的核心思想就是剔除掉阴影深度图中无效的部分，因此你也可以判定 `closestDepth == 1.0` ，这样一些浮空物体投在实际深度超出 `1.0` 远景中的阴影也能正确渲染。
+> 
+{style="note"}
 
 > 事实上我们编写的阴影几何缓冲基本上就是 OptiFine 的内置实现，如果你不编写阴影几何缓冲而直接调用 `shadowtex` ，也是可以绘制阴影的。
 > 
