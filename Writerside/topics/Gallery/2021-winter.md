@@ -2,8 +2,6 @@
 
 <primary-label ref="unlimited"/>
 
-<secondary-label ref="lack"/>
-
 <secondary-label ref="jeGallery"/>
 <secondary-label ref="beGallery"/>
 

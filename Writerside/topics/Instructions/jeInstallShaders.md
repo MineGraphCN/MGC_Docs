@@ -67,7 +67,7 @@
 
 > 在 Iris 中，你可以直接在 `光影包设置` 页面的右上角点击 `从文件导入设置` ，无需自己重命名。
 > 
-> ![irisImport.png](irisImport.png)
+> ![irisImport.webp](irisImport.webp)
 
 <seealso>
     <category ref="related">

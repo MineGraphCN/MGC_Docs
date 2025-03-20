@@ -121,9 +121,9 @@ Multi MC 启动器
 <include from="jeInstallGameContents.md" element-id="startLoader"/>
 <br/>
 <include from="jeInstallGameContents.md" element-id="tip_of_checkVersion"/>
-<var name="img">installOF.png</var>
+<var name="img">installOF.webp</var>
 <include from="jeInstallGameContents.md" element-id="installLoader"/>
-<var name="img">selectOF.png</var>
+<var name="img">selectOF.webp</var>
 <var name="ver">最新版</var>
 <include from="jeInstallGameContents.md" element-id="selectLoader"/>
 <br/>
@@ -136,7 +136,7 @@ Multi MC 启动器
 部分 Forge 模组可能和 OptiFine 存在未知冲突。  
 如果你的游戏无法启动，请尝试删除其他模组或卸载 Forge 改用纯净安装。
 <procedure type="steps">
-<var name="img">getOF.png</var>
+<var name="img">getOF.webp</var>
 <var name="mod">OptiFine</var>
 <var name="attention">其所支持的最新游戏版本</var>
 <include from="jeInstallGameContents.md" element-id="getMod"/>
@@ -148,14 +148,14 @@ Multi MC 启动器
 <include from="jeInstallGameContents.md" element-id="historyVersion"/>
 <include from="jeInstallGameContents.md" element-id="startMod"/>
 <var name="loader">Forge</var>
-<var name="img">installForge.png</var>
+<var name="img">installForge.webp</var>
 <include from="jeInstallGameContents.md" element-id="installLoader"/>
-<var name="img">selectForge.png</var>
+<var name="img">selectForge.webp</var>
 <var name="ver" value=" OptiFine 对应版本"/>
 <include from="jeInstallGameContents.md" element-id="selectLoader"/>
 <include from="jeInstallGameContents.md" element-id="wait"/>
-<var name="img">mainPageForge.png</var>
-<var name="img2">modPageForge.png</var>
+<var name="img">mainPageForge.webp</var>
+<var name="img2">modPageForge.webp</var>
 <include from="jeInstallGameContents.md" element-id="mainPage"/>
 <include from="jeInstallGameContents.md" element-id="finish"/>
 </procedure>
@@ -167,14 +167,14 @@ Multi MC 启动器
 <procedure type="steps">
 <var name="site">OptiFabric 的 CurseForge 页面</var>
 <var name="link">https://www.curseforge.com/minecraft/mc-mods/optifabric/files</var>
-<var name="img">getOFa.png</var>
+<var name="img">getOFa.webp</var>
 <var name="mod">OptiFabric</var>
 <var name="attention">其所支持的最新游戏版本（你也可以在启动器中直接下载）</var>
 <include from="jeInstallGameContents.md" element-id="getMod"/>
 <br/>
 
 > 这里我们假设对应游戏版本是 **JE 1.21.4**
-<var name="img">getOF.png</var>
+<var name="img">getOF.webp</var>
 <var name="mod">OptiFine</var>
 <var name="attention">下载对应 OptiFabirc 所支持的最新游戏版本</var>
 <include from="jeInstallGameContents.md" element-id="getMod"/>
@@ -187,20 +187,20 @@ Multi MC 启动器
 <var name="loader">OptiFabric 和 OptiFine</var>
 <include from="jeInstallGameContents.md" element-id="startMod"/>
 <var name="loader">Fabric</var>
-<var name="img">installFabric.png</var>
+<var name="img">installFabric.webp</var>
 <include from="jeInstallGameContents.md" element-id="installLoader"/>
-<var name="img">selectFabric.png</var>
+<var name="img">selectFabric.webp</var>
 <var name="ver">最新版</var>
 <include from="jeInstallGameContents.md" element-id="selectLoader"/>
 <var name="loader">Fabric API</var>
-<var name="img">installFabricAPI.png</var>
+<var name="img">installFabricAPI.webp</var>
 <include from="jeInstallGameContents.md" element-id="installLoader"/>
-<var name="img">selectFabricAPI.png</var>
+<var name="img">selectFabricAPI.webp</var>
 <var name="ver">最新版</var>
 <include from="jeInstallGameContents.md" element-id="selectLoader"/>
 <include from="jeInstallGameContents.md" element-id="wait"/>
-<var name="img">mainPageFabric.png</var>
-<var name="img2">modPageFabric.png</var>
+<var name="img">mainPageFabric.webp</var>
+<var name="img2">modPageFabric.webp</var>
 <var name="mod">OptiFabric 和 OptiFine</var>
 <include from="jeInstallGameContents.md" element-id="mainPage"/>
 <include from="jeInstallGameContents.md" element-id="finish"/>
@@ -223,15 +223,15 @@ Iris 对一些光影存在兼容性问题，若你想用的光影没有声明需
 <br/>
 <include from="jeInstallGameContents.md" element-id="tip_iris_checkVersion"/>
 <var name="loader">Fabric</var>
-<var name="img">installFabric.png</var>
+<var name="img">installFabric.webp</var>
 <include from="jeInstallGameContents.md" element-id="installLoader"/>
-<var name="img">selectFabric.png</var>
+<var name="img">selectFabric.webp</var>
 <var name="ver">最新版</var>
 <include from="jeInstallGameContents.md" element-id="selectLoader"/>
 <var name="loader">Fabric API</var>
-<var name="img">installFabricAPI.png</var>
+<var name="img">installFabricAPI.webp</var>
 <include from="jeInstallGameContents.md" element-id="installLoader"/>
-<var name="img">selectFabricAPI.png</var>
+<var name="img">selectFabricAPI.webp</var>
 <var name="ver">最新版</var>
 <include from="jeInstallGameContents.md" element-id="selectLoader"/>
 <include from="jeInstallGameContents.md" element-id="wait"/>
@@ -243,14 +243,14 @@ Iris 对一些光影存在兼容性问题，若你想用的光影没有声明需
 
 选择 `模组` ，确保 `游戏` 是刚才下载的版本，将 `下载源` 切换到 `Modrinth` ，在 `名称` 处键入 `Iris` 进行搜索，然后选择搜索结果的 `Iris Shaders` 。
 
-![installIris.png](installIris.png)
+![installIris.webp](installIris.webp)
 </step>
 
 <step>
 
 点击 `推荐版本` ，然后安装必须的前置模组，最后点击 `安装到当前版本` 。
 
-![installSodium.png](installSodium.png)
+![installSodium.webp](installSodium.webp)
 </step>
 <include from="jeInstallGameContents.md" element-id="finish"/>
 </procedure>
@@ -299,14 +299,14 @@ Iris 对一些光影存在兼容性问题，若你想用的光影没有声明需
 
 点击版本进入游戏管理。
 
-![游戏设置](check_hmcl_1.png "游戏设置")
+![游戏设置](check_hmcl_1.webp "游戏设置")
 </step>
 <step>
 
 - 如果你的游戏目录有其他游戏版本，并且你希望单独对这个版本进行设置，勾选 `启用游戏特定设置` 。
 - 否则，点击 `编辑全局版本设置` 。
 
-![选择设置方式](check_hmcl_2.png "选择设置方式")
+![选择设置方式](check_hmcl_2.webp "选择设置方式")
 </step>
             <step>
 
@@ -345,7 +345,7 @@ Java 路径
 高级设置
 : <format color="Red" style="bold">不要动这里的选项。</format>
 
-![设置界面](check_hmcl_3.png "设置界面")
+![设置界面](check_hmcl_3.webp "设置界面")
 </step>
         </procedure>
     </tab>
@@ -356,7 +356,7 @@ Java 路径
 - 如果你的游戏目录有其他游戏版本，并且你希望单独对这个版本进行设置，点击 `版本设置` 。
 - 否则，点击顶栏的 `设置` 。
 
-![选择设置方式](check_pcl2_1.png "选择设置方式")
+![选择设置方式](check_pcl2_1.webp "选择设置方式")
 </step>
             <step>
 
@@ -398,7 +398,7 @@ Java 路径
 高级启动选项
 : <format color="Red" style="bold">不要动这里的选项。</format>
 
-![设置界面](check_pcl2_2.png "设置界面")
+![设置界面](check_pcl2_2.webp "设置界面")
 </step>
         </procedure>
 </tab>

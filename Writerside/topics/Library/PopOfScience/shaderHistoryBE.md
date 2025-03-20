@@ -54,11 +54,11 @@
 
 **[1]** 即 JavaScript ，能修改游戏的脚本插件，类似于模组但功能较少。
 
-![Shader1-1.jpg](Shader1-1.jpg "Star's Shader Mod")
+![Shader1-1.webp](Shader1-1.webp "Star's Shader Mod")
 
 Star's Shader Mod
 
-![Shader1-2.jpg](Shader1-2.jpg "Ryfol's amazing OpenGL ES 3.0 Shader")
+![Shader1-2.webp](Shader1-2.webp "Ryfol's amazing OpenGL ES 3.0 Shader")
 
 Ryfol's amazing OpenGL ES 3.0 Shader
 
@@ -70,7 +70,7 @@ Ryfol's amazing OpenGL ES 3.0 Shader
 
 **[1]** 指 RAS。SSM 基于 OpenGL ES 2.0。
 
-![CSPE0.14.jpg](CSPE0.14.jpg)
+![CSPE0.14.webp](CSPE0.14.webp)
 
 早期苦力怕光影
 
@@ -92,11 +92,11 @@ Ryfol's amazing OpenGL ES 3.0 Shader
 
 **[1]** 也就是 GLSL PE 光影。由 _~~巴西裸男~~ Gabriel Paixão_ 创作，其与 Java 版的 SEUS 光影并无关系，后来在 Java 版光影作者们的讨伐下将名称改回 GLSL PE。
 
-![KMPE.jpg](KMPE.jpg)
+![KMPE.webp](KMPE.webp)
 
 KMPE 光影，基岩版首创天空层噪声云、水反云
 
-![SEUS.jpg](SEUS.jpg)
+![SEUS.webp](SEUS.webp)
 
 SEUS PE 光影，凭借着特制的水反云，在当时被誉为 ~~伪水反、真 SEUS~~
 
@@ -106,7 +106,7 @@ SEUS PE 光影，凭借着特制的水反云，在当时被誉为 ~~伪水反、
 
 伴随着国内外光影圈在这几个版本的发展，于 1.2 版本，光影效果已基本成型，大家都开始应用了天空层噪声云和水波。在物理渲染引入之前那漫长的时代里，基本也只是对云和水以及其他一些细节上再进行效果增强了。
 
-![CSPE1.2.jpg](CSPE1.2.jpg)
+![CSPE1.2.webp](CSPE1.2.webp)
 
 **BE 1.2** 时期的苦力怕光影
 
@@ -137,11 +137,11 @@ SEUS PE 光影，凭借着特制的水反云，在当时被誉为 ~~伪水反、
 >
 > 本文主笔、MGC 管理组成员 _Σοβιετική Ένωση_ 也在此时期加入。
 
-![ABC.jpg](ABC.jpg)
+![ABC.webp](ABC.webp)
 
 ABC 光影
 
-![DSPE.jpg](DSPE.jpg)
+![DSPE.webp](DSPE.webp)
 
 DSPE 光影
 
@@ -159,7 +159,7 @@ DSPE 光影
 
 **[1]** 由于性能不足，与现在的 3D 噪声体积云相比，这时的体积云是 2D 云一层一层叠起来的，所以会出现边缘切片和形状怪异的问题。
 
-![Tint](Tint.jpg)
+![Tint](Tint.webp)
 
 Tint Shader，由青木源制作。不过也仅仅是 PC 的性能让云水内卷再上了一个台阶而已。看似华丽的效果，向地面或远处水面看去还是 BE 光影的底子（但这个是 3D 体积云）。
 
@@ -175,7 +175,7 @@ Tint Shader，由青木源制作。不过也仅仅是 PC 的性能让云水内�
 
 [SDPG 宣传片国内搬运](https://www.bilibili.com/video/BV15x411378i/)
 
-![SuperDuper.jpg](SuperDuper.jpg)
+![SuperDuper.webp](SuperDuper.webp)
 
 SDGP 官方演示图，可见明显的体积光方向错误
 
@@ -219,7 +219,7 @@ _理想情况下_，带有渲染龙的 Windows 10 基岩版能够通过其调用
 
 引入物理渲染带来了诸多好处，这是基岩版光影第一次得以还原现实的色彩，并且协调了各个特效之间的变化，例如整个天空可以完全正确的反射了，阳光的朝向也不再是错误的。由于天空几乎完全由着色器生成，在整个光影中是被限制最少的，所以后期甚至还做到了 Java 版同款的星球大气的渲染（当玩家飞得足够高时可以飞出大气）。
 
-![Origin.jpg](Origin.jpg)
+![Origin.webp](Origin.webp)
 
 Origin 光影
 
@@ -325,7 +325,7 @@ four_in_one.pbr是YSS用于存储四合一纹理读取标准的配置文件,你�
 
   国内由 ABC 光影率先实现，做到了直接加载法线和高光纹理，由光影自动拼合。也成功让资源包内的贴图可以像 Java 版一样分散开来，不用进行人工合并。这种方式存在着非常多的问题和限制，最后也没有出现在任何公开发布的光影中（用于 PBR）。
 
-![PBR.jpg](PBR.jpg)
+![PBR.webp](PBR.webp)
 
 第一个国内公开发布的四合一材质——秦，由 _金丹哦_ 制作原 Java 版，_Σοβιετική Ένωση_ 协助移植基岩版
 
@@ -343,7 +343,7 @@ four_in_one.pbr是YSS用于存储四合一纹理读取标准的配置文件,你�
 
 在渲染龙正式实装之前，经历了一段“反复横跳”的时间，期间 Mojang 不断在测试版上引入和移除渲染龙。直至 **BE 1.16.200.51**，Mojang 率先在 Win10 版本上正式启用了渲染龙，宣告了全体 Win10 光影的覆灭，给社区造成了极大的恐慌。
 
-![FanFuHengTiao.jpg](FanFuHengTiao.png)
+![FanFuHengTiao.webp](FanFuHengTiao.webp)
 
 “反复横跳”
 
@@ -352,7 +352,7 @@ four_in_one.pbr是YSS用于存储四合一纹理读取标准的配置文件,你�
 随着渲染龙的迫近，国内社区也开始逐渐忧虑起来，认为这个投票或许是拯救社区的唯一方式，于是社区委托了一位交好的另一个圈子的人士，在 MCBBS 购买了一个顶部 Banner 宣传位来发布帖子，以呼吁人们参与投票。虽然 MCBBS 已经倒闭，但我们仍然留下了帖子的大部分内容，尽管并不完整。
 
 <procedure title="社区在 MCBBS 的公投宣传（超长图片，点击展开）" collapsible="true" default-state="collapsed">
-    <img src="GongTou.jpg" alt=""/>
+    <img src="GongTou.webp" alt=""/>
 </procedure>
 
 在经历了渲染龙多次反复横跳的实装，以及社区公投并未获得任何回应后，渲染龙最终于 **BE 1.18.30.20** 正式版在全平台实装，旧时代光影体系至此正式覆灭。
@@ -365,11 +365,11 @@ four_in_one.pbr是YSS用于存储四合一纹理读取标准的配置文件,你�
 
 2021 年底，开发者 _红石公司_ 在模组资源区上架了第一个使用后处理特性的视觉效果增强模组，支持景深等从前被认为不可能实现的特性。VSPE 光影作者 _Vortex_ 注意到了之后，便开始了光影后处理的尝试，成功实现了反射场景，轰动了整个光影圈，基岩版光影就此开辟了新纪元，也代表着国际版光影与网易版光影的正式分离。
 
-![HouChuLi.jpg](HouChuLi.jpg)
+![HouChuLi.webp](HouChuLi.webp)
 
 第一个后处理组件 by _红石公司_
 
-![VSPE.jpg](VSPE.jpg)
+![VSPE.webp](VSPE.webp)
 
 VSPE 3 水反
 
@@ -421,7 +421,7 @@ VSPE 3 水反
 
 2024 年 12 月，**BE 1.21.51.01** 版本发布，但此版本是被错误地释出，在 Arm 64 位平台（即安卓平台）上没有实装渲染龙。随后该版本被撤下，并发布了热修补版本 **BE 1.21.51.02**。值得一提的是，尽管该版本得以运行传统 HAL 光影，但由于游戏内部更新与传统 HAL 光影无人维护，会导致许多光影效果出错。并且该版本的游戏本体也存在着诸多性能问题。
 
-![YanChiXuanRan.jpg](YanChiXuanRan.jpg)
+![YanChiXuanRan.webp](YanChiXuanRan.webp)
 
 目前的延迟渲染
 
@@ -435,7 +435,7 @@ VSPE 3 水反
 
 目前，官方再也没有对 RTX 进行任何更新，且 Better RTX 的更新也逐渐放缓，RTX 的未来将何去何从，没有人知道。
 
-![RTX.jpg](RTX.jpg)
+![RTX.webp](RTX.webp)
 
 目前的 Better RTX
 
@@ -449,11 +449,11 @@ VSPE 3 水反
 
 2024 年 11 月，网易调整了资源收费政策，差点导致了光影前置也需要收费的可笑现象。但是此举仍然影响到了不少光影开发者，让他们为了光影不收费或维持原定价，而压缩代码或暂缓更新。同时由于网易的潜力又被挖掘的差不多了，且网易可能很久之后才会更新相关内容，所以网易版的形势也不是那么好，但相比国际版，仍然没得选。
 
-![Yasuo.jpg](YaSuo.jpg)
+![Yasuo.webp](YaSuo.webp)
 
 为了防止收费，而疯狂压缩代码量的某光影
 
-![Netease.jpg](Netease.jpg)
+![Netease.webp](Netease.webp)
 
 目前的网易后处理
 
@@ -483,7 +483,7 @@ ART 光影是早期国内光影的巅峰之作，但可惜其在 **PE 0.12** 即
 
 在那个特效匮乏的年代，ART 光影创造了很多个第一。其可能是国内第一个拥有 3D 水波（上下晃动的原版水）的光影；白天黑夜水波双色；开关精美图像可改变光影特效；创始级无限层软阴影过渡，效果甚至强于部分 **BE 1.4** 之前的光影；在当时独特的方块高光。
 
-![](ART.jpg)
+![](ART.webp)
 
 </def>
 <def default-state="collapsed">
@@ -493,7 +493,7 @@ ART 光影是早期国内光影的巅峰之作，但可惜其在 **PE 0.12** 即
 作者：万唯创力工作室  
 所处时期：**PE 0.8** ~ **0.14**
 </tip>
-    <img src="WanWei.jpg" alt=""/>
+    <img src="WanWei.webp" alt=""/>
 </def>
 <def title="MAX 光影" default-state="collapsed">
 <tip>
@@ -508,7 +508,7 @@ MAX 光影为 _万唯创力工作室_ 室长 _ws_ 所做，起源于 **PE 0.16**
 
 为了能让大家满意，_ws_ 只能涉足他未知的一个领域，同时向蓝威光影进行求援，创造出了属于自己的光影。
 
-<img src="MAX.jpg" alt=""/>
+<img src="MAX.webp" alt=""/>
 </def>
 <def title="蓝威光影" default-state="collapsed">
 
@@ -522,7 +522,7 @@ MAX 光影为 _万唯创力工作室_ 室长 _ws_ 所做，起源于 **PE 0.16**
 
 蓝威也是国内早期少数能够跟上国外水反云特效的光影之一，在当时有着很高的人气。  
 
-<img src="LanWei.jpg" alt=""/>
+<img src="LanWei.webp" alt=""/>
 </def>
 <def title="高乐高光影（Colacape）" default-state="collapsed">
 <tip>
@@ -533,11 +533,11 @@ MAX 光影为 _万唯创力工作室_ 室长 _ws_ 所做，起源于 **PE 0.16**
 
 高乐高光影是与苦力怕光影基本同时期开始的另一位元老光影，其在早期实力强悍，但到后期逐渐地跟不上时代步伐，以至于到后期许多部分都是借自 DSPE 光影进行修改。  
 
-<img src="Colacape-1.jpg" alt=""/>
+<img src="Colacape-1.webp" alt=""/>
 
-<img src="Colacape-2.jpg" alt=""/>
+<img src="Colacape-2.webp" alt=""/>
 
-<img src="Colacape-3.jpg" alt=""/>
+<img src="Colacape-3.webp" alt=""/>
 </def>
 <def title="苦力怕光影（CSPE / Creeper Shader PE）" default-state="collapsed">
 <tip>
@@ -560,17 +560,17 @@ MAX 光影为 _万唯创力工作室_ 室长 _ws_ 所做，起源于 **PE 0.16**
 
 到最后，苦力怕光影逐渐掉出技术的第一梯队，随着渲染龙的迫近和他本人的学业压力，带着“最快发布的错误 PBR 效果”在圈子完全步入物理渲染的前夕宣布停止更新。
 
-<img src="CSPE-1.jpg" alt=""/>
+<img src="CSPE-1.webp" alt=""/>
 
-<img src="CSPE-2.jpg" alt=""/>
+<img src="CSPE-2.webp" alt=""/>
 
-<img src="CSPE-3.jpg" alt=""/>
+<img src="CSPE-3.webp" alt=""/>
 
-<img src="CSPE-4.jpg" alt=""/>
+<img src="CSPE-4.webp" alt=""/>
 
-<img src="CSPE-5.jpg" alt=""/>
+<img src="CSPE-5.webp" alt=""/>
 
-<img src="CSPE-6.jpg" alt=""/>
+<img src="CSPE-6.webp" alt=""/>
 </def>
 <def title="ABC 光影" default-state="collapsed">
 <tip>
@@ -587,17 +587,17 @@ ABC 光影还尝试了很多先于时代的技术创新，但大多都只在最�
 
 最后 _闲事杂谈_ 因渲染龙和自身学业问题，在 _苦力怕_ 稍前宣布停止更新。  
 
-<img src="ABC-1.jpg" alt=""/>
+<img src="ABC-1.webp" alt=""/>
 
-<img src="ABC-2.jpg" alt=""/>
+<img src="ABC-2.webp" alt=""/>
 
-<img src="ABC-3.jpg" alt=""/>
+<img src="ABC-3.webp" alt=""/>
 
-<img src="ABC-4.jpg" alt=""/>
+<img src="ABC-4.webp" alt=""/>
 
-<img src="ABC-5.jpg" alt=""/>
+<img src="ABC-5.webp" alt=""/>
 
-<img src="ABC-6.jpg" alt=""/>
+<img src="ABC-6.webp" alt=""/>
 </def>
 <def title="Tint 光影" default-state="collapsed">
 <tip>
@@ -612,9 +612,9 @@ ABC 光影还尝试了很多先于时代的技术创新，但大多都只在最�
 
 _青木源_ 与 _苦力怕_ 比较交好，但也比较固执，直到最后因渲染龙而停更，也还是放不下对 ABC 光影及相关下游光影的偏见。
 
-<img src="Tint.jpg" alt=""/>
+<img src="Tint.webp" alt=""/>
 
-<img src="Tint-1.jpg" alt=""/>
+<img src="Tint-1.webp" alt=""/>
 </def>
 </deflist>
 
@@ -883,7 +883,7 @@ GSPE 的故事可谓历经波折坎坷，一直与 DSPE 强相关。最初 _NTE�
 
 后来，GSPE 作者的一系列行为令 _关于本人_ 的精神几近崩溃，在此期间 _关于本人_ 甚至采取极端做法以求保全二人关系，然而这些努力都宣告失败，最终忍无可忍，在 GSPE 群中爆出一切前因后果，导致 GSPE 光影彻底停更，两人关系也因此决裂。  
 
-<img src="GSPE-1.jpg" alt=""/>  
+<img src="GSPE-1.webp" alt=""/>  
 
 有趣的是，DSPE 的前序光影 NSPE 因缝合而在 多玩我的世界盒子 被下架，是当时作为大众审核员的 _NTE然后呢_ 所操作，之后 GSPE 又是 _关于本人_ 因为差不多的理由闹掰了 <del>，历史的轮回</del> 。但这是 _关于本人_ 后来才知道的，两人相识过程仍比这荒诞潦草得多 <sup><b>1</b></sup> 。
 
@@ -905,11 +905,11 @@ FSPE 是一款冷色调轻量级光影。FSPE (Fixed Star PE) 立项之初找到
 
 然而 FSPE 第一任作者选择将光影转让之时行事仓促，未能谨慎考虑人选，导致其第二任作者的 FSPE (Flops Shader PE) 情况更为恶劣，继续抄袭的同时还公开叫嚣光影圈，并在各大光影群内安插间谍。此事引起了当时几乎整个光影圈的联合公告和追捕封杀 <sup><b>2</b></sup> ，最终 FSPE 在 2021 上半年彻底停更。
 
-<img src="FSPE-FengSha.jpg" alt=""/>
+<img src="FSPE-FengSha.webp" alt=""/>
 
 后续，DSPE 作者由于现实与心理问题，亦长时间淡出光影圈。而 FSPE <b>第一任作者</b> 在脱离圈子之后，依靠自身能力谱写出属于自己的另一段故事，并在 2024 年重新找到 DSPE 作者，目前二人已冰释前嫌，和好如初。
 
-<img src="FSPE-1.jpg" alt=""/>
+<img src="FSPE-1.webp" alt=""/>
 
 <b>[1]</b> 当时第一任 FSPE 作者称其与 DSPE 作者住处很近  
 <b>[2]</b> 近乎整个光影圈都参与了进来，发表联合公告和行动，甚至包括 CSPE 等非 ABC-DSPE 系的光影（但仅限于发布公告）。在当时一些相关群聊的入群方式就是教育并认识 FSPE 光影的低劣行径。
@@ -932,11 +932,11 @@ TSPE 在未得到原作者许可的情况下抄袭了包括 CSPE、Zaifa、EVO S
 
 也许是考虑到抄袭行为所带来的恶劣后果或是其他原因，TSPE 在其小有名气后仅经历三次版本更新便匆匆退出历史舞台。
 
-<img src="TSPE-1.jpg" alt=""/>
+<img src="TSPE-1.webp" alt=""/>
 
 有趣的是，TSPE 的宣传图都是抄袭 CSPE 的，并且 TSPE 这个光影没有全称 <sup><b>1</b></sup> ，就叫 TSPE Shader，很难不怀疑作者就是随便跟风起的名。
 
-<img src="TSPE.jpg" alt=""/>
+<img src="TSPE.webp" alt=""/>
 
 <b>[1]</b> 以 “xSPE” 进行命名的方式是基岩版光影圈的一个传统，很多作者都会如此命名。全称为 “xx Shader PE”，即 “xx 光影携带版”。而使用 “xSPE Shader” 作为全称则代表使用者完全不知道其中 “SPE” 的含义 <sup><b>2</b></sup> ，只是“跟风”起的名（连跟风都不知道跟的是啥）。  
 <b>[2]</b> 有的作者也会在不需要太注重的地方使用 “xSPE Shader”，但他们的 Shader 前部分具有实际全称，也是没问题的，而不像 TSPE Shader 中的 TSPE 没有任何意义。
@@ -955,29 +955,29 @@ _Gabriel Paixão_ 是一位巴西光影作者，由于其头像风格独特 ~~�
 
 这个光影最初的名称是 GLSL <sup><b>1</b></sup> PE，并在 **BE 0.14** 时期改名为 SEUS <sup><b>2</b></sup> PE。国产光影在 **BE 0.15** 的第一次光影危机后进入黑暗时代也与它脱不了关系。“血洗光影界”，这是对它在当时的最好诠释。SEUS PE 经过刻意设计的水面和云反射，使得其像是反射了景物一样，被赋予各类名号：水反光影、超真实光影、仿 PC 光影。
 
-<img src="SEUS.jpg" alt=""/>
+<img src="SEUS.webp" alt=""/>
 
 但这也是它少数几次的精彩亮相。为什么画饼王要把光影命名为 SEUS PE 呢，因为画饼王的首要动力可谓就是还原 SEUS 光影了。画饼王因为盗用 SEUS 的名称而被 JE 光影作者们施压而改回 GLSL PE。但之后他依旧尿性不改，仍然坚持着尝试还原 SEUS 光影的效果。
 
-<img src="GLSLPE-1.jpg" alt=""/>
+<img src="GLSLPE-1.webp" alt=""/>
 
-<img src="GLSLPE-2.jpg" alt=""/>
+<img src="GLSLPE-2.webp" alt=""/>
 
 在 **BE 1.4** 到渲染龙之前，画饼王不断地放出了各种超越时代的效果，包括各种神似 SEUS 光影的效果，让其他作者们很是疑惑。但他一直不发布，因为他每次要发布的时候，会进行加密，然后在加密过程中就一定会发生代码偷窃事件，宣布要注销账号，这也是“画饼王”称呼的由来。
 
 实际上，他所宣布的代码偷窃事件极大概率是虚假的，因为他从未发布过代码，一些不相关的著名光影作者都被其诬陷为偷窃者。后来他自己被实锤，其神秘特效实际都是从 SEUS 光影硬扣下来的，并无法用于实际游戏，只能说改了名称，但是本性不改。
 
-<img src="GLSLPE.jpg" alt=""/>
+<img src="GLSLPE.webp" alt=""/>
 
 “贼喊捉贼”、“荣誉认证”
 
 这个过程一直重复了数次，其光影才最终发布，分为光追版本和普通版本。在光追版本中，画饼王硬编码 <sup><b>3</b></sup> 了一个提前渲染好的光追效果放到了光影里，形式非常滑稽。因为这个效果是固定的，只要人物移动，这个特效就会跟着人物一起移动。
 
-<img src="GLSLPE-3.jpg" alt=""/>
+<img src="GLSLPE-3.webp" alt=""/>
 
 至于普通版本，也是强塞了各种硬编码的效果，水面景物反射不考虑场景，固定反射内容且跟着玩家一起动。其天空渲染甚至演都不演，完全不考虑游戏内时间，是自己的虚假时间系统。
 
-<img src="GLSLPE-4.jpg" alt=""/>
+<img src="GLSLPE-4.webp" alt=""/>
 
 目前画饼王仍活跃在推特（X）上，但已经很少再更新光影相关内容，且他的昵称从来没有固定过，因此除非一开始就关注了他或相关光影作者，否则很难直接找到他的账号。
 

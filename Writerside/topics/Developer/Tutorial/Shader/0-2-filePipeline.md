@@ -84,7 +84,7 @@ OptiFine 接管了从 GUI 开始直到场景输出的全部管线，下图列出
 
 <resource src="./ofpp_simple_bg.png">
 
-![OptiFine 管线](ofpp_simple.png "OptiFine 管线")
+![OptiFine 管线](ofpp_simple.webp "OptiFine 管线")
 
 </resource>
 

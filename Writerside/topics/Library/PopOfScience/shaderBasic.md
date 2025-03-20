@@ -90,7 +90,7 @@
 
 > 如果你曾经玩过 Famicom（红白机）等卡带游戏机，并且尝试过在游戏途中热拔出卡带，那么你一定见过这种场景：
 > 
-> ![热插拔游戏卡带](famicom_glitch.png "热插拔游戏卡带"){border-effect="rounded" width="300"}
+> ![热插拔游戏卡带](famicom_glitch.webp "热插拔游戏卡带"){border-effect="rounded" width="300"}
 > 
 > 这种情况就是字符数据出错导致的图块映射错误。
 

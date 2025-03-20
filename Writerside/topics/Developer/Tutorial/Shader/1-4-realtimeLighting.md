@@ -357,7 +357,7 @@ float shadowMultiplier = step(currentDepth - bias, closestDepth);
 
 可以思考一下，当场景表面的法线与光源越垂直，一个阴影像素覆盖的区域的深度差就会越大，因此偏移量就要越大！
 
-![shadows_selfShadow.png](shadows_selfShadow.png){width="700"}
+![shadows_selfShadow.webp](shadows_selfShadow.webp){width="700"}
 
 > 我们所说的“偏移”都是在光照方向上进行，相比让小物体无法投影而看起来轻微悬空，我们更不能接受一个平面全都是阴影。
 > 
