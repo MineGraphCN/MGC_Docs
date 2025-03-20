@@ -12,27 +12,27 @@
         </description>
 
         <spotlight>
-            <a href="Community.md" type="navigation" summary="快速了解并加入我们的社区"/>
-            <a href="Library.md" type="library" summary="这里汇集了由社区成员撰写的各种与 Minecraft 图形相关的知识、问答和解决方案。"/>
+            <card icon="icon_compass.png" href="Community.md" summary="快速了解并加入我们的社区"/>
+            <card icon="icon_lib.png" href="Library.md" summary="这里汇集了由社区成员撰写的各种与 Minecraft 图形相关的知识、问答和解决方案。"/>
         </spotlight>
 
         <primary>
             <title>创作者文档</title>
-            <a href="shaderTutorial.md" summary="管线 | 程序 | 功能实现"/>
-            <a href="resourceTutorial.md" summary="基本概念 | 纹理绘制 | 特殊纹理制作"/>
-            <a href="developTips.md" summary="着色器概念 | 入门 | 开发资料 &amp; 资源包开发资料"/>
-            <a href="labpbrMaterialStandard.md" summary="由 shaderLABS 统一的着色器和资源包 PBR 格式。"/>
+            <card image="cover_shaderTutorial.webp" href="shaderTutorial.md" summary="管线 | 程序 | 功能实现"/>
+            <card image="cover_resourceTutorial.webp" href="resourceTutorial.md" summary="基本概念 | 纹理绘制 | 特殊纹理制作"/>
+            <card icon="icon_knowledge_book.png" href="developTips.md" summary="概念 | 入门 | 开发资料"/>
+            <card icon="icon_enchanted_book.png" href="labpbrMaterialStandard.md" summary="shaderLABS 统一的光影和资源包 PBR 格式"/>
         </primary>
 
         <misc>
             <cards narrow="false">
                 <title>画廊</title>
-                <a href="2024-spring.md" summary="龙年生肖主题赛"/>
-                <a href="2023-spring.md" summary="主题赛：光线追踪"/>
-                <a href="2022-autumn.md" summary="仅 Java 版 | 主题赛：山"/>
-                <a href="2022-summer.md" summary="主题赛：大型建筑群"/>
-                <a href="2022-spring.md" summary="仅 Java 版 | 限定地图赛 | 允许渲染器"/>
-                <a href="2021-winter.md" summary="自由赛"/>
+                <card image="2024-spring_12.webp" href="2024-spring.md" summary="龙年生肖主题赛"/>
+                <card image="2023-spring_1.webp" href="2023-spring.md" summary="主题赛：光线追踪"/>
+                <card image="2022-autumn_2.webp" href="2022-autumn.md" summary="仅 Java 版 | 主题赛：山"/>
+                <card image="2022-summer_je_4.webp" href="2022-summer.md" summary="主题赛：大型建筑群"/>
+                <card image="2022-spring_1.webp" href="2022-spring.md" summary="仅 Java 版 | 限定地图赛 | 允许渲染器"/>
+                <card image="2021-autumn_je_2.webp" href="2021-winter.md" summary="自由赛"/>
             </cards>
 
             <links>
@@ -40,13 +40,13 @@
                     <title>探索文档</title>
                     <a href="terms.md"/>
                     <a href="irisAsOf.md"/>
-                    <a href="shaderTech.md"/>
+                    <a href="shaderHistoryBE.md"/>
                 </group>
                 <group>
                     <title>最近更新</title>
                     <a href="rayTracing.md" summary="更新了光线追踪特性表和并添加了一些新内容">知识库 - 光线追踪专题</a>
                     <a href="raytracingCorrection.md" summary="更新了光栅化与光线追踪的关系以及添加了更多判断光线追踪的方法">误区纠正 - 光线追踪</a>
-                    <a href="shaderHistoryBE.md" summary="优化了行文"/>
+                    <a href="shaderTutorial.md" summary="更新了入门章节的教程"/>
                 </group>
             </links>
         </misc>
