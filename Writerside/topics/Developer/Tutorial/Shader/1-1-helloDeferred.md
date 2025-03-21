@@ -72,7 +72,7 @@ $$
 
 OptiFine 提供了至多 16 个（通常我们只用一半）二维缓冲区供我们使用，由于我们没有自己编写几何缓冲，内置管线默认使用向前渲染法将所有场景输出到了 **0 号缓冲区** `colortex0` 。
 
-著名哲学家 *维吉尔* 曾经说过：“_If you wanna it, then you have to take it._”，如果我们需要采样它，那我们就得先声明它。在 GLSL 中，我们使用**采样器**（sampler）类型来声明缓冲区：
+著名哲学家 *维吉尔* 曾经说过：“_If you want it, then you'll have to take it._”，如果我们需要采样它，那我们就得先声明它。在 GLSL 中，我们使用**采样器**（sampler）类型来声明缓冲区：
 ```glsl
 uniform sampler2D colortex0;
 ```
