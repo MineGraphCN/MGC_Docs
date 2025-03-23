@@ -8,7 +8,6 @@
     <toc-element topic="Home.topic"/>
     <toc-element topic="Community.md"/>
     <toc-element topic="whatsNew.md"/>
-    <toc-element topic="betterRTX.md"/>
     <toc-element topic="BESheets.md">
         <toc-element topic="beShaders.md"/>
         <toc-element topic="beRPs.md"/>
