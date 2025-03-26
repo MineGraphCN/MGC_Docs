@@ -2,8 +2,6 @@
 
 <primary-label ref="unlimited"/>
 
-<secondary-label ref="lack"/>
-
 <secondary-label ref="jeGallery"/>
 <secondary-label ref="beGallery"/>
 
@@ -23,7 +21,7 @@
 
 第一名：[作品#3](#be_3){summary=""}
 
-第二名：作品#17
+第二名：[作品#16](#be_16){summary=""}
 
 第三名：[作品#7](#be_7){summary=""}
 

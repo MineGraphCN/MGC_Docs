@@ -6,7 +6,7 @@
 
 `pack.png`
 : 这一张图片是你的资源包显示的“名片”。
-![图片](1-1.jpg){style="block"}
+![图片](1-1.webp){style="block"}
 *由本文作者创作的 VOXT PBR 纹理包*<br/>
 显示在最左边的就是 `pack.png` 图片，这一张图片通常为 64x，128x，256x 等。
 

@@ -22,13 +22,14 @@
             <noindex-content>false</noindex-content>
         </variables>
         <footer>
-            <copyright>2023-2024 HyperCol</copyright>
-            <icp>2023036853</icp>
-
-            <link href="https://pd.qq.com/g/MineGraph101">腾讯频道</link>
-            <link href="https://github.com/MineGraphCN/MGC_Docs">GitHub 项目仓库</link>
+            <copyright>2023-2025 HyperCol</copyright>
+            <icp>沪ICP备2023036853号-1</icp>
+            <notice href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=61019002002803">陕公网安备61019002002803号</notice>
 
             <social type="bilibili" href="https://space.bilibili.com/480528388/">HyperCol</social>
+            <social type="github" href="https://github.com/MineGraphCN/MGC_Docs">项目仓库</social>
+
+            <link href="https://pd.qq.com/g/MineGraph101">加入社区频道</link>
         </footer>
     </build-profile>
     <sitemap priority="0.35" change-frequency="monthly"/>

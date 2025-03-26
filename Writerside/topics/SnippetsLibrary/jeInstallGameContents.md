@@ -7,13 +7,13 @@
 
 打开启动器，点击 `下载` 。
 
-![](mainPage.png)
+![](mainPage.webp)
 </step>
 <step>
 
 选择游戏版本，通常选择最新正式版即可。
 
-![](selectVersion.png)
+![](selectVersion.webp)
 </step>
 
 </snippet>
@@ -26,13 +26,13 @@
 
 打开启动器，点击 `下载` 。
 
-![](mainPage.png)
+![](mainPage.webp)
 </step>
 <step>
 
 选择游戏版本，需要与 %loader% 所支持的版本一致。
 
-![](selectVersion.png)
+![](selectVersion.webp)
 
 </step>
 
@@ -46,13 +46,13 @@
 
 打开启动器，点击 `下载` 。
 
-![](mainPage.png)
+![](mainPage.webp)
 </step>
 <step>
 
 选择游戏版本，需要与 %loader% 所支持的版本一致。
 
-![](selectVersion.png)
+![](selectVersion.webp)
 
 有时候 %loader% 可能没有及时更新，你可以前往 [%site%](%link%) 确认。
 

@@ -52,7 +52,7 @@ void main() {
 
 并按下 <shortcut>F3</shortcut><shortcut>R</shortcut> 重载光影。然后，你就已经可以在游戏窗口中看到光影的效果了：
 
-![deferred_drawRed.png](deferred_drawRed.png){width="700"}
+![画一些红色](deferred_drawRed.webp){width="700"}
 
 哇哦！真的是好……呃，纯正的红啊！当然，只靠这种固定纯色是没法画出场景的，我们需要更多数据。具体点说，会基于像素坐标变化的数据……比如，图像。
 
@@ -72,7 +72,7 @@ $$
 
 OptiFine 提供了至多 16 个（通常我们只用一半）二维缓冲区供我们使用，由于我们没有自己编写几何缓冲，内置管线默认使用向前渲染法将所有场景输出到了 **0 号缓冲区** `colortex0` 。
 
-著名哲学家 *维吉尔* 曾经说过：“_If you wanna it, then you have to take it._”，如果我们需要采样它，那我们就得先声明它。在 GLSL 中，我们使用**采样器**（sampler）类型来声明缓冲区：
+著名哲学家 *维吉尔* 曾经说过：“_If you want it, then you'll have to take it._”，如果我们需要采样它，那我们就得先声明它。在 GLSL 中，我们使用**采样器**（sampler）类型来声明缓冲区：
 ```glsl
 uniform sampler2D colortex0;
 ```
@@ -142,7 +142,7 @@ void main() {
 ```
 {collapsible="true" collapsed-title="final.fsh" default-state="expanded"}
 
-![deferred_firstSampling.png](deferred_firstSampling.png){width="700"}
+![第一次采样纹理](deferred_firstSampling.webp){width="700"}
 
 What Amazing！我们成功向屏幕输出了 0 号缓冲区的内容！
 
@@ -166,14 +166,14 @@ fragColor = texelFetch(colortex0, ivec2(gl_FragCoord.xy), 0);
 ```glsl
 fragColor = texture(colortex0, uv / 8.0);
 ```
-![八倍放大的归一化坐标](deferred_texture8x.png){width="700"}
+![插值采样](deferred_texture8x.webp){width="700"}
 
 `texelFetch()`
 :
 ```glsl
 fragColor = texelFetch(colortex0, ivec2(gl_FragCoord.xy) / 8, 0);
 ```
-![八倍放大的整数坐标](deferred_texelFetch8x.png){width="700"}
+![临近采样](deferred_texelFetch8x.webp){width="700"}
 
 可以很明显地看到，`texture()` 采样出来的画面比较模糊，而 `texelFetch()` 则棱角分明 ~~，像素颗颗饱满~~ 。大多数时候，我们还是期望采样纹理时进行自动插值的，因此在本教程中，如无必要，我们都将使用 `texture()` 。
 
@@ -200,7 +200,7 @@ fragColor = vec4(vec3(brightness), color.a);
 ```
 然后回到我们的游戏重载一次：
 
-![deferred_gray.png](deferred_gray.png){width="700"}
+![灰度画面](deferred_gray.webp){width="700"}
 
 画面就已经成功变成灰色了！
 
@@ -225,7 +225,7 @@ float depth = texture(depthtex0, uv).r;
 fragColor = vec4(depth);
 ```
 
-![deferred_depthtex.png](deferred_depthtex.png){width="700"}
+![深度图](deferred_depthtex.webp){width="700"}
 
 看起来白茫茫的一片，五米之外人畜不分对吧？这是因为由于进行了**透视除法**的场景深度是**非线性**的，我们会在几何缓冲章节详细介绍。现在让我们使用一个 _神奇_ 的函数，先把场景转换到**线性深度**：
 
@@ -252,7 +252,7 @@ depth /= far - near;
 
 这样，我们就获得了场景的归一化线性深度了：
 
-![deferred_linearDepth.png](deferred_linearDepth.png){width="700"}
+![线性深度图](deferred_linearDepth.webp){width="700"}
 
 在这里，我们需要用到另一个 GLSL 内建函数：`mix()` 。它用法为 `mix(值1, 值2, 混合比例)` 。其内部实现为 $\text{Mix}(a,b,x)=a\times(1-x)+b\times x$ ，因此混合比例需要约束在 $[0,1]$ 之间。
 
@@ -264,7 +264,7 @@ fragColor = vec4(mixedColor, color.a);
 
 回到游戏看看效果
 
-![deferred_mixGray.png](deferred_mixGray.png){width="700"}
+![深度混合颜色](deferred_mixGray.webp){width="700"}
 
 看起来就像世界中的色彩随着距离增加而逐渐出现了一样！
 
@@ -300,7 +300,7 @@ fragColor = vec4(mixedColor, color.a);
 uv = mod(uv, 1.0);
 ```
 `mod()` 函数用于取第一个参数除以第二个参数的余数，相比 `%` ，它支持取浮点余数。
-![deferred_repeat.png](deferred_repeat.png){style="block"}
+![重复](deferred_repeat.webp){style="block"}
 
 `GL_MIRRORED_REPEAT`
 : 根据重复次数翻转坐标：
@@ -311,7 +311,7 @@ ivec2 flipMul = 1 - 2 * isFlip; // 用来避免使用 if 的奇怪乘数，isFli
 uv = vec2(isFlip) + mod(uv, 1.0) * vec2(flipMul);
 ```
 `abs()` 函数用于取绝对值，`floor()` 用于取整数部分。
-![deferred_repeatMirror.png](deferred_repeatMirror.png){style="block"}
+![镜像重复](deferred_repeatMirror.webp){style="block"}
 
 `GL_CLAMP_TO_EDGE`（OptiFine 缓冲区默认行为）
 : 将坐标直接约束在 $[0,1]$ ：
@@ -319,7 +319,7 @@ uv = vec2(isFlip) + mod(uv, 1.0) * vec2(flipMul);
 uv = clamp(uv, 0.0, 1.0);
 ```
 `clamp()` 的用法为 `clamp(变量, 下限, 上限)` 。
-![deferred_clampToEdge.png](deferred_clampToEdge.png){style="block"}
+![裁切到边缘](deferred_clampToEdge.webp){style="block"}
 
 `GL_CLAMP_TO_BORDER`
 : 将大于 1 的坐标替换为常量颜色
@@ -329,7 +329,7 @@ float isOutBound = min(abs(floor(max(uv.s, uv.t))), 1.0); // 取坐标中的大�
 fragColor = texture(colortex0, uv);
 fragColor = mix(fragColor, bgColor, isOutBound);
 ```
-![deferred_clampToColor.png](deferred_clampToColor.png){style="block"}
+![裁切到颜色](deferred_clampToColor.webp){style="block"}
 
 最后，我们可以将它们封装成函数，以供我们随时调用。
 
@@ -450,7 +450,7 @@ result /= 25.0; // 5*5 次采样
 
 现在让把这个值赋给我们的颜色试试：
 
-![deferred_blur.png](deferred_blur.png){width="700"}
+![模糊处理](deferred_blur.webp){width="700"}
 
 和预期一样，画面被轻微模糊了！
 
@@ -531,7 +531,7 @@ for(int j = -BLUR_SAMPLES; j <= BLUR_SAMPLES; ++j) {
 #define BLUR_SAMPLES 5
 ```
 
-![deferred_blur_large.png](deferred_blur_large.png){width="700"}
+![大半径模糊处理](deferred_blur_large.webp){width="700"}
 
 和预期一样，模糊的半径更大了！
 

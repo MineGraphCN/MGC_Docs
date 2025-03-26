@@ -16,6 +16,7 @@
     ```
     %localappdata%\Packages\Microsoft.MinecraftUWP_8wekyb3d8bbwe\LocalState\games\com.mojang\resource_packs
     ```
+    {ignore-vars="true"}
 - 安卓
     ```
     storage/emulated/0/Android/data/com.mojang.minecraftpe/files/games/com.mojang/resource_packs

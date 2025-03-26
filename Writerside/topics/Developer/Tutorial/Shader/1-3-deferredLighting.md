@@ -44,7 +44,7 @@ GL 传入的顶点总是从局部坐标（Local Coordinate）开始。它代表�
 
 回想一下现实生活中，透过一个固定的画框（就像窗口或者门之类的）向外看，你会发现什么？画框里侧越远（越深），能看到的景物也就越多，也即近大远小。这是因为我们是从一个点（眼睛）观察场景，同样大小的物体所占的角度会随着远离观察点而减小。
 
-![gbuffers_viewpoint.png](gbuffers_viewpoint.png){width="700"}
+![视点透视](gbuffers_viewpoint.webp){width="700"}
 
 这种现象被称为**场景透视**，以这种方式进行的投影被称为**透视投影**，形成的像被称为**透视视图**。与之相对的，严格按照坐标测绘，不产生近大远小的投影方式被称为**正射投影**，形成的像被称为**等轴视图**。
 
@@ -146,7 +146,7 @@ uniform mat4 projectionMatrixInverse;     //投影矩阵的逆
 
 <resource src="./space_conversion_bg.png">
 
-![space_conversion.png](space_conversion.png){width="700"}
+![空间变换图](space_conversion.webp){width="700"}
 
 </resource>
 
@@ -154,7 +154,7 @@ uniform mat4 projectionMatrixInverse;     //投影矩阵的逆
 
 ## 几何缓冲
 
-### 程序处理对象
+### 程序处理对象 {id="bufferTargets"}
 
 还记得 [](0-2-filePipeline.md) 中的几何缓冲管线吗？它们各自掌管着一方水土，同时还要照顾自己那些经常摸鱼的下属管辖的几何。
 
@@ -246,7 +246,7 @@ void main() {
 ```
 如果你跟着这样做了并且重载了一番光影，你大概会得到这样一坨随着视角变化不断闪烁的东西：
 
-![gbuffers_whatAMess.png](gbuffers_whatAMess.png){width="700"}
+![乱七八糟的一坨黑](gbuffers_whatAMess.webp){width="700"}
 
 怎么回事呢？这是因为地形是逐区块绘制的，因此我们还需要知道区块相对位置，同样的，OptiFine 也为我们提供了，我们只需要进行些许修改即可：
 ```glsl
@@ -257,7 +257,7 @@ gl_Position = projectionMatrix * modelViewMatrix * vec4(vaPosition + chunkOffset
 ```
 现在再次重载，你应该已经能从一团黑中看出一些轮廓了：
 
-![gbuffers_silhouetteOfTerrain.png](gbuffers_silhouetteOfTerrain.png){width="700"}
+![场景剪影](gbuffers_silhouetteOfTerrain.webp){width="700"}
 
 > 在 `compatibility` 配置下，区块的偏移和 $w$ 分量已经被设置好了，因此你只需要使用 `gl_Vertex` 乘以对应 uniform 矩阵的内建矩阵就好。
 
@@ -283,7 +283,7 @@ void main() {
 ```
 场景就初具雏形了：
 
-![gbuffers_vaColor.png](gbuffers_vaColor.png){width="700"}
+![顶点颜色](gbuffers_vaColor.webp){width="700"}
 
 接下来，让我们为场景添加纹理。希望你还记得，首先我们需要在顶点着色器中获取顶点的纹理坐标。和延迟处理不同，几何缓冲的顶点纹理并不和屏幕坐标完全对齐，因此我们不能使用屏幕坐标来进行采样，只能使用 OptiFine 提供的 `vaUV0` 。
 
@@ -310,14 +310,14 @@ fragColor = texture(gtexture, uv);
 ```
 然后你就会得到这样一个有些奇怪的场景，并且你会发现树叶的颜色不见了：
 
-![gbuffers_texture.png](gbuffers_texture.png){width="700"}
+![纹理颜色](gbuffers_texture.webp){width="700"}
 
 但是不要着急，还记得我们刚才传过来的 `vColor` 吗？它实际上是一个**颜色乘数**，我们只需要将它与纹理颜色相乘，魔法便出现了：
 ```glsl
 fragColor = texture(gtexture, uv) * vColor;
 ```
 
-![gbuffers_coloredTexture.png](gbuffers_coloredTexture.png){width="700"}
+![染色纹理](gbuffers_coloredTexture.webp){width="700"}
 
 > 你可能会注意到丛林树叶的纹理上除了灰度还有些橙色的果子一样的带颜色的纹理。Mojang 显然忘记了把顶点颜色给乘进去会让果子也被意外染色，导致几乎无法在通常游戏中发现这个细节……而且你丛林树叶不本来就不会掉果子吗？堪称迷惑行为……
 
@@ -326,7 +326,7 @@ fragColor = texture(gtexture, uv) * vColor;
 if(fragColor.a == 0.0) discard;
 ```
 
-![gbuffers_alphatest.png](gbuffers_alphatest.png){width="700"}
+![Alpha测试](gbuffers_alphatest.webp){width="700"}
 
 完美！上面这种通过不透明度丢弃片段的操作也就是所谓的 **Alpha 测试**（Alpha Test，你可能偶尔会在各种地方看到这个名词）。你会注意到水体完全透明了，这就是将其他几何完全丢弃的效果。
 
@@ -355,7 +355,7 @@ if(fragColor.a == 0.0) discard;
 
 如果你仔细看过画面的输出效果，可能会疑惑：看起来场景中已经有光照层次了啊？
 
-这是因为 OptiFine 默认会将原版光照（仅根据表面朝向变化的光照，不包括光照贴图）烘焙到顶点颜色上（你可以在上一节仅输出顶点颜色的场景中看出来），在其设置中被称为 `经典光效` 。虽然我们可以直接在光影界面将经典光效改为 `关` ，但是我们不能保证其他人也会知道需要这样做。要想强制使用不含光照的顶点色彩，仅输出场景颜色，也就是所谓的**反照率**（Albedo），我们需要回到 `shaders.properties` 再进行一些调整。
+这是因为原版默认会将固定管线光照（仅根据表面朝向变化的光照，不包括光照贴图）烘焙到顶点颜色上（你可以在上一节仅输出顶点颜色的场景中看出来），OptiFine 为我们提供了关闭选项，在其设置中被称为 `经典光效` 。虽然我们可以直接在光影界面将经典光效改为 `关` ，但是我们不能保证其他人也会知道需要这样做。要想强制使用不含光照的顶点色彩，仅输出场景颜色，也就是所谓的**反照率**（Albedo），我们需要回到 `shaders.properties` 再进行一些调整。
 
 在光影配置中，我们除了可以像上一节那样自定义统一变量、调整设置屏幕外，还可以进行很多设置。要想禁用经典光效，我们只需要添加：
 ```properties
@@ -363,7 +363,7 @@ oldLighting = false
 ```
 回到游戏重载光影，你就可以发现方块侧面的明暗变化已经消失了。
 
-![gbuffers_oldLighting.png](gbuffers_oldLighting.png){width="700"}
+![关闭经典光照](gbuffers_oldLighting.webp){width="700"}
 
 > 你可能会发现重载光影时弹出了资源包的读盘覆盖，这是因为切换经典光效需要从资源包更改顶点颜色行为。
 > 
@@ -381,7 +381,7 @@ separateAo = true
 
 现在，我们就获得了场景的反照率了：
 
-![gbuffers_albedo.png](gbuffers_albedo.png){width="700"}
+![反照率场景](gbuffers_albedo.webp){width="700"}
 
 如果你好奇 AO 还能不能被正常渲染，可以在之前的 `final.fsh` 中尝试
 ```glsl
@@ -390,7 +390,7 @@ fragColor.rgb *= fragColor.a;
 ```
 然后你就会发现，AO 回来了，它们被妥善保存在 Alpha 通道中。但是如果你望向远处，会发现场景莫名变暗了：
 
-![gbuffers_wrongAO.png](gbuffers_wrongAO.png){width="700"}
+![错误的AO](gbuffers_wrongAO.webp){width="700"}
 
 这是因为 OptiFine 默认开启了多级渐近纹理（MipMap），远处纹理的颜色，包括 Alpha 通道都由于降采样而将不透明（Alpha = 255）和完全透明（Alpha = 0）的像素混合成了半透明像素。
 
@@ -402,7 +402,7 @@ fragColor.rgb *= vColor.rgb;
 fragColor.a = vColor.a;
 ```
 
-![deferred_rightAO.png](deferred_rightAO.png){width="700"}
+![正确的AO](deferred_rightAO.webp){width="700"}
 
 这样就正确了。
 
@@ -446,15 +446,15 @@ vec4 vanillaMixLight(vec3 lightDir0, vec3 lightDir1, vec3 normal, vec4 color) {
 
 访问我们的 `versions` 文件夹，将游戏的 `.jar` 本体使用压缩软件打开
 
-![gbuffers_openJar.png](gbuffers_openJar.png){width="700"}
+![打开Jar文件](gbuffers_openJar.webp){width="700"}
 
 然后找到压缩包内的 `\assets\minecraft\shaders\` 文件夹
 
-![gbuffers_shaderFolder.png](gbuffers_shaderFolder.png){width="700"}
+![资源包着色器文件夹](gbuffers_shaderFolder.webp){width="700"}
 
 将它们提取到 `\resourcepacks\<测试包名称>\assets\minecraft\` 。记得在 `\resourcepacks\<你的包名称>\` 下新建一个 `pack.mcmeta` 文件，然后在里面写上包数据以便游戏读取
 
-![gbuffers_packmcmeta.png](gbuffers_packmcmeta.png){width="700"}
+![建立pack.mcmeta](gbuffers_packmcmeta.webp){width="700"}
 
 ```json
 {
@@ -499,7 +499,7 @@ vec4 minecraft_mix_light(vec3 lightDir0, vec3 lightDir1, vec3 normal, vec4 color
 
 回到我们的 `entity.vsh` ，思考一下，我们只需要找到它们的朝向就好，于是就又轮到我们的**点乘**函数 `dot()` 出场了。你可能还记得，它接受两个同维向量，并输出这两个向量的点乘值，但其实它还可以改写成 $\vec{A} \cdot \vec{B} = |\vec{A}| |\vec{B}| \cos{\theta}$ 。
 
-这里的 $\cos{\theta}$ 是向量 $\vec{A}$ 和 $\vec{B}$ 的夹角，它们的夹角越小，$\cos{\theta}$ 的值也就越接近于 $1$ 。自然而然地我们就能想到：只要能通过平面朝向和光照方向进行点乘，然后找到值为 $1$ 的方向就好！看看 Mojang 传入的顶点数据，我们一眼就能相中 `Normal` ，它是几何的法向量，也称法线，即与几何表面垂直向外的单位向量（如果你真的不知道法向量是什么的话……）。这正是我们所需要的！
+这里的 $\theta$ 是向量 $\vec{A}$ 和 $\vec{B}$ 的夹角，它们的夹角越小，$\cos{\theta}$ 的值也就越接近于 $1$ 。自然而然地我们就能想到：只要能通过平面朝向和光照方向进行点乘，然后找到值为 $1$ 的方向就好！看看 Mojang 传入的顶点数据，我们一眼就能相中 `Normal` ，它是几何的法向量，也称法线，即与几何表面垂直向外的单位向量（如果你真的不知道法向量是什么的话……）。这正是我们所需要的！
 
 现在我们就需要委屈一下我们的顶点颜色了，在程序的末端我们将其覆写为点乘数据：
 ```glsl
@@ -513,9 +513,9 @@ out vec4 fragColor;
 ```glsl
 fragColor = vertexColor;
 ```
-最后回到游戏，按下 <shortcut>F3</shortcut><shortcut>T</shortcut> **重载资源包**
+最后回到游戏，关闭 OptiFine 光影，按下 <shortcut>F3</shortcut><shortcut>T</shortcut> **重载资源包**
 
-![gbuffers_vanillaLightDir.png](gbuffers_vanillaLightDir.png){width="700"}
+![固定管线光照方向](gbuffers_vanillaLightDir.webp){width="700"}
 
 你就已经可以用自己的后脑勺（或者用第三人称正面模式，这样你就可以直接知道朝向）来找最亮的方向了。同理，`Light1_Direction` 也能这样找到。
 
@@ -556,44 +556,47 @@ vec4 vanillaMixLight(vec3 lightDir0, vec3 lightDir1, vec3 normal, vec4 color) {
 
 ### 多缓冲区输出
 
-如果你阅读了上一小节就会知道，要想在场景中实现光照，我们还需要**几何体表面的朝向**，即**法向量**或**法线**。它是垂直于几何表面指向外侧的 [](terms.md#单位向量){summary=""} 。OptiFine 当然为我们提供了它，我们直接声明对应的顶点属性即可，然后传入片段着色器即可：
+如果你阅读了上一小节就会知道，要想在场景中实现光照，我们还需要**几何体表面的朝向**，即**法向量**或**法线**。它是垂直于几何表面指向外侧的 [](terms.md#单位向量){summary=""} 。OptiFine 当然为我们提供了它，我们直接声明对应的顶点属性即可：
 ```glsl
 in vec3 vaNormal;
 ```
 
-和坐标一样，法线数据也需要经过空间变换。不同的是，变换法线数据时只需要改变它们的朝向（顶点的位置已经变换完毕了），而且它们不应该受到透视投影的影响（还记得吗，透视投影在数学上是通过扭曲顶点位置实现的，因此也同时扭曲了表面朝向）。因此我们需要用到法线变换专用的**法线矩阵**（Normal Matrix）。在 OptiFine 中只需要声明：
+和坐标一样，法线数据也需要经过空间变换。不同的是，变换法线数据时只需要改变它们的朝向，而且它们不应该受到透视投影的影响（还记得吗，透视投影在数学上是通过扭曲顶点位置实现的，因此也同时扭曲了表面朝向）。因此我们需要用到法线变换专用的**法线矩阵**（Normal Matrix）。在 OptiFine 中只需要声明：
 ```glsl
 uniform mat3 normalMatrix;
 ```
-然后在 `gbuffers_terrain.vsh` 中输出变换后的值即可
+最后在 `gbuffers_terrain.vsh` 中输出变换后的值：
 ```glsl
 [...]
 out vec3 vNormal;
 [... main ...]
 vNormal = normalMatrix * vaNormal;
 ```
-有些未闭合的单面片（比如鲑鱼的尾巴）可能会出现顶点法线方向反转的问题，因此我们需要将它们翻转回来。仔细思考一下：场景中的法线应该都是朝向视点所在的半球内的，另一半球朝向的几何都会被它的其他面遮挡。
+有些未闭合的单面片（比如鲑鱼的尾巴）可能会出现顶点法线方向反向的问题 ^**1**^ ，因此我们需要将它们翻转回来。场景中的法线应该都是朝向视点所在的半球内的，另一半球朝向的几何都会被它的其他面遮挡，即法线与观察方向的夹角不会小于 $90\degree$ 。
 
-![](gbuffers_normalFlip.png){width="700"}
+因此我们只需要将它们和视点到片段的连线做点乘，如果你没看过上一节的话，它的几何意义是两个向量的模长与夹角余弦值的积 $|\vec{A}| |\vec{B}| \cos{\theta}$ 。因此当两个向量方向越接近，它们夹角就越小 ^**2**^，$\cos{\theta}$ 越接近 $1$ ，点积结果就越大。我们期望法向量始终在指向视点的半球内，因此如果我们发现了任何点积大于 $0$ 的结果，则说明它的法线方向反了。
 
-因此我们只需要将它们和视点到片段的连线做点乘，如果你没看过上一节的话，它还可以返回两个向量的模长与夹角余弦值的积 $|\vec{A}| |\vec{B}| \cos{\theta}$ 。因此当两个向量方向越接近，它们夹角就越小，$\cos{\theta}$ 越接近 $1$ ，点积结果就越大。我们期望向量和观察方向始终不在同一半球内，因此如果我们发现了任何点积大于 $0$ 的结果，则说明它的法线方向反了。
+**[1]** 因为只有一层顶点，法线数据只能有一个朝向，大多数面片模型比如矮草丛之类的模型 Mojang 还是考虑到了的。  
+**[2]** 计算向量的夹角的时候应该将向量尾尾相连。
+
+![翻转法线](gbuffers_normalFlip.webp){width="700"}
 
 我们可以将视口坐标独立出来用于检查，然后再进行投影变换：
 ```glsl
 vec4 viewPos = modelViewMatrix * vec4(vaPosition + chunkOffset, 1.0);
 vNormal = normalMatrix * vaNormal;
-if(dot(vNormal, viewPos.xyz) > 0.) { vNormal = -vNormal; }
+if(dot(vNormal, viewPos.xyz) > 0.0) { vNormal = -vNormal; }
 gl_Position = projectionMatrix * viewPos;
 ```
 
-现在你可能会陷入一些疑问：就算我们把它传入了片段着色器，我们的 `out` 也只有 `fragColor` 啊？我们应该怎么把它传出去呢？
+现在你可能会陷入一些疑惑：就算我们把它传入了片段着色器，我们能传出的也只有 `fragColor` 啊？法线数据怎么办呢？
 
 这里就需要我们进行**多缓冲区输出**了。要想进行多缓冲区输出，最直接的办法是定义多个 `out` 值：
 ```glsl
 out vec4 fragColor;
 out vec3 normals;
 ```
-默认情况下 OptiFine 会根据声明顺序将它们按照缓冲区顺序放入，但是**不推荐这样做**，因为当输出缓冲区变多之后如果意外更改了声明顺序，会导致很多不必要的麻烦。
+默认情况下 OptiFine 会根据声明顺序将它们放入对应缓冲区，但是**不推荐这样做**，因为当输出缓冲区变多之后如果意外更改了声明顺序，或者想跳过缓冲区输出（比如只输出到 1 号和 3 号缓冲区），会导致很多不必要的麻烦。
 
 一个更好的办法是使用 `layout` 关键字自己指定要输出的缓冲区。我们可以使用 `layout(location = X)` 来指定输出目标：
 ```glsl
@@ -657,7 +660,7 @@ uniform sampler2D colortex1;
 fragColor = texture(colortex1, uv);
 ```
 
-![gbuffers_normals.png](gbuffers_normals.png){width="700"}
+![法线场景](gbuffers_normals.webp){width="700"}
 
 并且法线的颜色会随着视角的转动而变化。
 
@@ -726,7 +729,7 @@ vec3 normal = texture(colortex1, uv).rgb * 2.0 - 1.0; // 记得把法线转换�
 fragColor = vanillaMixLight(lightDir0, lightDir1, normal, albedo);
 ```
 
-![gbuffers_deferredLighting.png](gbuffers_deferredLighting.png){width="700"}
+![方向光照场景](gbuffers_deferredLighting.webp){width="700"}
 
 如果你还没忘记之前我们拆分进 Alpha 通道的 AO，记得把它也乘回来：
 ```glsl
@@ -735,7 +738,7 @@ fragColor *= albedo.a;
 
 至此，我们在延迟渲染中还原的原版光照就完成了！
 
-![gbuffers_final.png](gbuffers_final.png){width="700"}
+![最终光照场景](gbuffers_final.webp){width="700"}
 
 如果你抬头看天，会发现天空莫名变黑了，这是因为天空并没有写入法线数据，默认清除的白色与光照方向的点乘出现了问题。因此我们还要再次使用之前的 `depthtex0` 进行判定，当判定到天空（即深度为最大值的 1.0）时使用原始颜色：
 ```glsl

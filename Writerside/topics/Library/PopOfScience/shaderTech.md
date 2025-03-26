@@ -76,21 +76,21 @@ RSM 的缺陷也很明显，它不会考虑遮挡，一旦它在阴影纹理上�
 <tabs>
 <tab title="无">
 
-![无 GI](GI_NONE.png "无GI")
+![无 GI](GI_NONE.webp "无GI")
 </tab>
 <tab title="RSM">
 
-![RSM](GI_RSM.png "RSM")
+![RSM](GI_RSM.webp "RSM")
 </tab>
 <tab title="条文对比">
 
 - 无全局光照，没有被阳光照射的地方漆黑一片。
 
-  ![无 GI](GI_NONE.png "无GI"){thumbnail="true"}
+  ![无 GI](GI_NONE.webp "无GI"){thumbnail="true"}
 
 - RSM 全局光照，矿洞被打在墙壁上的光线照亮了。
 
-  ![RSM](GI_RSM.png "RSM"){thumbnail="true"}
+  ![RSM](GI_RSM.webp "RSM"){thumbnail="true"}
 
 </tab>
 </tabs>
@@ -104,16 +104,16 @@ RSM 的缺陷也很明显，它不会考虑遮挡，一旦它在阴影纹理上�
 <tabs group="rsmfix">
 <tab title="修复前" group-key="before">
 
-![修复前的 RSM 在仅 GI 光照下的样子](itt_RSM_before.png "修复前的RSM在仅GI光照下的样子"){thumbnail="true"}
+![修复前的 RSM 在仅 GI 光照下的样子](itt_RSM_before.webp "修复前的RSM在仅GI光照下的样子"){thumbnail="true"}
 
-![修复前的 RSM 在实际游戏中的样子](itt_RSM_before_2.png "修复前的RSM在实际游戏中的样子"){thumbnail="true"}
+![修复前的 RSM 在实际游戏中的样子](itt_RSM_before_2.webp "修复前的RSM在实际游戏中的样子"){thumbnail="true"}
 
 </tab>
 <tab title="修复后" group-key="after">
 
-![修复后的 RSM 在仅 GI 光照下的样子](itt_RSM_after.png "修复后的RSM在仅GI光照下的样子"){thumbnail="true"}
+![修复后的 RSM 在仅 GI 光照下的样子](itt_RSM_after.webp "修复后的RSM在仅GI光照下的样子"){thumbnail="true"}
 
-![修复后的 RSM 在实际游戏中的样子](itt_RSM_after_2.png "修复后的RSM在实际游戏中的样子"){thumbnail="true"}
+![修复后的 RSM 在实际游戏中的样子](itt_RSM_after_2.webp "修复后的RSM在实际游戏中的样子"){thumbnail="true"}
 
 </tab>
 </tabs>
@@ -165,29 +165,29 @@ LPV 首先将整个场景划分为体素，将整个场景离散开来（对 Min
 <tabs>
 <tab title="无">
 
-![无 GI](GI_NONE_2.png "无GI")
+![无 GI](GI_NONE_2.webp "无GI")
 </tab>
 <tab title="RSM + SSAO">
 
-![RSM](GI_RSM_2.png "RSM")
+![RSM](GI_RSM_2.webp "RSM")
 </tab>
 <tab title="LPV">
 
-![LPV](GI_LPV.png "LPV")
+![LPV](GI_LPV.webp "LPV")
 </tab>
 <tab title="条文对比">
 
 - 无全局光照，周围的环境只有天空颜色。
 
-  ![无 GI](GI_NONE_2.png "无GI"){thumbnail="true"}
+  ![无 GI](GI_NONE_2.webp "无GI"){thumbnail="true"}
 
 - RSM 全局光照 + SSAO，环境染上了品红色混凝土的颜色，但右侧近处的石头上有明显的伪影，左侧靠得更近的石头颜色反而不明显。
 
-  ![RSM](GI_RSM_2.png "RSM"){thumbnail="true"}
+  ![RSM](GI_RSM_2.webp "RSM"){thumbnail="true"}
 
 - LPV 全局光照，环境更加准确地染上了颜色。
 
-  ![LPV](GI_LPV.png "LPV"){thumbnail="true"}
+  ![LPV](GI_LPV.webp "LPV"){thumbnail="true"}
 
 </tab>
 </tabs>
@@ -209,14 +209,14 @@ LPV 首先将整个场景划分为体素，将整个场景离散开来（对 Min
 <tabs group="VX">
 <tab title="RSM + SSAO" group-key="RSM">
 
-![RSM](GI_RSM_4.png "RSM")
+![RSM](GI_RSM_4.webp "RSM")
 
-![RSM](GI_RSM_3.png "RSM")
+![RSM](GI_RSM_3.webp "RSM")
 
 </tab>
 <tab title="LPV" group-key="LPV">
 
-![LPV](GI_LPV_2.png "LPV")
+![LPV](GI_LPV_2.webp "LPV")
 
 > 由于 LPVGI 在高版本无法正常运行，这里只列出一张图片。
 >
@@ -225,9 +225,9 @@ LPV 首先将整个场景划分为体素，将整个场景离散开来（对 Min
 </tab>
 <tab title="体素光追" group-key="VX">
 
-![体素光追](GI_VXGI_2.png "体素光追")
+![体素光追](GI_VXGI_2.webp "体素光追")
 
-![体素光追](GI_VXGI.png "体素光追")
+![体素光追](GI_VXGI.webp "体素光追")
 
 </tab>
 <tab title="条文对比" group-key="Compare">
@@ -235,15 +235,15 @@ LPV 首先将整个场景划分为体素，将整个场景离散开来（对 Min
 - RSM 全局光照 + <tooltip term="SSAO">SSAO</tooltip>：
   - 受原版光照和伪影影响，这个场景显得非常脏。
   
-    ![RSM](GI_RSM_4.png "RSM"){thumbnail="true"}
+    ![RSM](GI_RSM_4.webp "RSM"){thumbnail="true"}
 
   - 被遮挡的场景也一股脑全亮了。
 
-    ![RSM 全局光照](GI_RSM_3.png "RSM全局光照"){thumbnail="true"}
+    ![RSM 全局光照](GI_RSM_3.webp "RSM全局光照"){thumbnail="true"}
 
 - LPV 全局光照，受辐照体积限制，顶部露天区域的两侧看起来像是漏光了。
 
-  ![LPV](GI_LPV_2.png "LPV"){thumbnail="true"}
+  ![LPV](GI_LPV_2.webp "LPV"){thumbnail="true"}
   > 这张图片中没有使用任何 <tooltip term="AO">AO</tooltip>，墙角产生的阴影全都来源于 LPV 的特性。
   > 
   {style="note"} 
@@ -251,11 +251,11 @@ LPV 首先将整个场景划分为体素，将整个场景离散开来（对 Min
 - 基于体素的光线追踪全局光照：
   - 产生了更加干净准确的照明。
 
-    ![体素光追](GI_VXGI_2.png "体素光追"){thumbnail="true"}
+    ![体素光追](GI_VXGI_2.webp "体素光追"){thumbnail="true"}
 
   - 可以注意到地毯和楼梯在床上投下了相对窗户这个间接光源位置的准确阴影。
 
-    ![体素光追全局光照](GI_VXGI.png "体素光追全局光照"){thumbnail="true"}
+    ![体素光追全局光照](GI_VXGI.webp "体素光追全局光照"){thumbnail="true"}
 
 </tab>
 </tabs>
@@ -302,17 +302,17 @@ LPV 首先将整个场景划分为体素，将整个场景离散开来（对 Min
 <tabs>
 <tab title="无">
 
-![无 AO](AO_NONE.png "无AO")
+![无 AO](AO_NONE.webp "无AO")
 
 </tab>
 <tab title="SSAO">
 
-![SSAO](AO_SSAO.png "SSAO")
+![SSAO](AO_SSAO.webp "SSAO")
 
 </tab>
 <tab title="GTAO">
 
-![GTAO](AO_GTAO.png "GTAO")
+![GTAO](AO_GTAO.webp "GTAO")
 
 </tab>
 <tab title="条文对比">
@@ -320,15 +320,15 @@ LPV 首先将整个场景划分为体素，将整个场景离散开来（对 Min
 
 - **没有 AO**，场景的纵深感弱，近处栅栏看起来像悬空的。图中的明暗关系由原版天空光照和全局光照共同产生。
 
-  ![无 AO](AO_NONE.png "无AO"){thumbnail="true"}
+  ![无 AO](AO_NONE.webp "无AO"){thumbnail="true"}
 
 - **SSAO**，注意房屋窗户的栅栏和村民周围，室内的光线更加昏暗，近处的栅栏也产生了阴影，产生了纵深感。
 
-  ![SSAO](AO_SSAO.png "SSAO"){thumbnail="true"}
+  ![SSAO](AO_SSAO.webp "SSAO"){thumbnail="true"}
 
 - **GTAO**，注意村民周围阴影与 SSAO 的区别，暗角的过渡更加均匀，近处的栅栏产生的阴影不再紧贴着横杆，其他狭缝中的阴影也更加浓厚。
 
-  ![GTAO](AO_GTAO.png "GTAO"){thumbnail="true"}
+  ![GTAO](AO_GTAO.webp "GTAO"){thumbnail="true"}
 
 </tab>
 </tabs>
@@ -411,50 +411,50 @@ TAA 是一种在向前渲染进行抖动，并在后处理进行平滑的抗锯�
 <tabs>
 <tab title="无">
 
-![无抗锯齿](AA_NONE.png "无抗锯齿")
+![无抗锯齿](AA_NONE.webp "无抗锯齿")
 
 </tab>
 <tab title="FXAA">
 
-![FXAA](AA_FXAA.png "FXAA")
+![FXAA](AA_FXAA.webp "FXAA")
 
 </tab>
 <tab title="SSAA">
 
-![SSAA](AA_SSAA.png "SSAA")
+![SSAA](AA_SSAA.webp "SSAA")
 
 </tab>
 <tab title="TAA">
 
-![TAA](AA_TAA.png "TAA")
+![TAA](AA_TAA.webp "TAA")
 
 </tab>
 <tab title="TAA + FXAA">
 
-![TAA + FXAA](AA_TAA_FXAA.png "TAA+FXAA")
+![TAA + FXAA](AA_TAA_FXAA.webp "TAA+FXAA")
 
 </tab>
 <tab title="条文对比">
 
 - 无抗锯齿，几何走样和着色走样都很明显。
 
-  ![无抗锯齿](AA_NONE.png "无抗锯齿"){thumbnail="true"}
+  ![无抗锯齿](AA_NONE.webp "无抗锯齿"){thumbnail="true"}
 
 - 光影内置的 FXAA，解决了部分几何走样的锯齿，几乎不损耗性能。
 
-  ![FXAA](AA_FXAA.png "FXAA"){thumbnail="true"}
+  ![FXAA](AA_FXAA.webp "FXAA"){thumbnail="true"}
 
 - 利用 OptiFine 提供的渲染精细度实现的 SSAA 2X，效果极佳，但是性能损耗极大。
 
-  ![SSAA](AA_SSAA.png "SSAA"){thumbnail="true"}
+  ![SSAA](AA_SSAA.webp "SSAA"){thumbnail="true"}
 
 - 光影内置的 TAA，效果和 SSAA 相当，但是几乎不损耗性能，且消除了着色走样。注意：它没有对实体进行抗锯齿（此光影防止拖影刻意为之，其他光影不一定）。
 
-  ![TAA](AA_TAA.png "TAA"){thumbnail="true"}
+  ![TAA](AA_TAA.webp "TAA"){thumbnail="true"}
 
 - 将光影的 TAA 和 FXAA 全部启用，实体的几何走样和着色走样都消除了，且性能几乎不损耗。
 
-  ![TAA + FXAA](AA_TAA_FXAA.png "TAA+FXAA"){thumbnail="true"}
+  ![TAA + FXAA](AA_TAA_FXAA.webp "TAA+FXAA"){thumbnail="true"}
 
 </tab>
 </tabs>
@@ -498,39 +498,39 @@ TAA 是一种在向前渲染进行抖动，并在后处理进行平滑的抗锯�
 <tabs>
 <tab title="原生分辨率">
 
-![原生画面](TAAU_OFF_100P.png "原生画面")
+![原生画面](TAAU_OFF_100P.webp "原生画面")
 
 </tab>
 <tab title="50% 渲染分辨率">
 
-![50% 分辨率画面](TAAU_OFF_50P.png "50%分辨率画面")
+![50% 分辨率画面](TAAU_OFF_50P.webp "50%分辨率画面")
 
 </tab>
 <tab title="50% TAAU">
 
-![50% 分辨率 + TAAU](TAAU_ON_50P.png "50%分辨率+TAAU")
+![50% 分辨率 + TAAU](TAAU_ON_50P.webp "50%分辨率+TAAU")
 
 </tab>
 <tab title="条文对比">
 
 - 原生分辨率图像，画面清晰，但性能较差。
 
-  ![原生画面](TAAU_OFF_100P.png "原生画面"){thumbnail="true"}
+  ![原生画面](TAAU_OFF_100P.webp "原生画面"){thumbnail="true"}
 
 - 50% 渲染分辨率，禁用 TAAU，性能最好，但画面模糊。
 
-  ![50% 分辨率画面](TAAU_OFF_50P.png "50%分辨率画面"){thumbnail="true"}
+  ![50% 分辨率画面](TAAU_OFF_50P.webp "50%分辨率画面"){thumbnail="true"}
 
 - 50% 渲染分辨率，使用 TAAU 重建到原生分辨率，性能和画质平衡。
 
-  ![50% 分辨率 + TAAU](TAAU_ON_50P.png "50%分辨率+TAAU"){thumbnail="true"}
+  ![50% 分辨率 + TAAU](TAAU_ON_50P.webp "50%分辨率+TAAU"){thumbnail="true"}
 
 </tab>
 </tabs>
 
 这是 SEUS PTGI HRR 2.1 GFME 降噪和升采样（TAAU + FXAA）前后的差异，由于其是点对点地降采样，因此 TAAU 处理效果更为明显：
 
-![升采样差异](AA_differ.png "升采样前后差异"){thumbnail="true"}
+![升采样差异](AA_differ.webp "升采样前后差异"){thumbnail="true"}
 
 [//]: # (## 体素化和距离场)
 
@@ -571,12 +571,12 @@ SEUS 光影作者 _Cody Darr_ 在 2018 年 2 月发布了最早的 Java 版体�
   <tabs group="ss_rt">
   <tab title="屏幕空间反射" group-key="ss">
   
-  ![屏幕空间反射](Ref_SS.png "屏幕空间反射")
+  ![屏幕空间反射](Ref_SS.webp "屏幕空间反射")
   
   </tab>
   <tab title="光线追踪反射" group-key="rt">
   
-  ![光线追踪反射](Ref_PT.png "光线追踪反射")
+  ![光线追踪反射](Ref_PT.webp "光线追踪反射")
   > 在这张图中，你可以发现铁块近处的地面比旁边更亮，这就是由于铁块表面光滑，反射太阳光形成了 [焦散](terms.md#焦散){summary=""} 。
 
   </tab>
@@ -586,12 +586,12 @@ SEUS 光影作者 _Cody Darr_ 在 2018 年 2 月发布了最早的 Java 版体�
   <tabs group="ss_rt">
   <tab title="原版方块光源" group-key="ss">
   
-  ![原版光源特性](BL_Vanilla.png "原版光源")
+  ![原版光源特性](BL_Vanilla.webp "原版光源")
   
   </tab>
   <tab title="光线追踪方块光源" group-key="rt">
     
-  ![光线追踪光源特性](BL_PT.png "光线追踪光源")
+  ![光线追踪光源特性](BL_PT.webp "光线追踪光源")
     
   </tab>
   </tabs>
