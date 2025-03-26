@@ -154,7 +154,7 @@ uniform mat4 projectionMatrixInverse;     //投影矩阵的逆
 
 ## 几何缓冲
 
-### 程序处理对象
+### 程序处理对象 {id="bufferTargets"}
 
 还记得 [](0-2-filePipeline.md) 中的几何缓冲管线吗？它们各自掌管着一方水土，同时还要照顾自己那些经常摸鱼的下属管辖的几何。
 
