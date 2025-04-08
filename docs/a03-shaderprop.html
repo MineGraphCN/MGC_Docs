@@ -1,0 +1,99 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#FDB71B"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="built-on" content="2025-04-08T14:40:46.990398335"><title>光影配置文件 | MineGraph Docs</title><script type="application/json" id="virtual-toc-data">[{"id":"-4zydyu_8","level":0,"title":"环境设置","anchor":"#-4zydyu_8"},{"id":"customTex","level":0,"title":"自定义纹理","anchor":"#customTex"},{"id":"-4zydyu_10","level":0,"title":"光影设置","anchor":"#-4zydyu_10"},{"id":"-4zydyu_11","level":0,"title":"自定义统一变量","anchor":"#-4zydyu_11"},{"id":"alpha","level":0,"title":"Alpha 测试","anchor":"#alpha"},{"id":"blend","level":0,"title":"混合","anchor":"#blend"},{"id":"-4zydyu_14","level":0,"title":"延迟处理渲染缩放","anchor":"#-4zydyu_14"},{"id":"-4zydyu_15","level":0,"title":"翻转缓冲区","anchor":"#-4zydyu_15"},{"id":"-4zydyu_16","level":0,"title":"缓冲区尺寸","anchor":"#-4zydyu_16"},{"id":"-4zydyu_17","level":0,"title":"开关特定的程序","anchor":"#-4zydyu_17"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="frontend/app.css" rel="stylesheet"><link rel="icon" type="image/png" sizes="16x16" href="MGC_Docs/page_logo.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="光影配置文件 | MineGraph Docs"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="MineGraph Docs Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="https://docs.minegraph.cn/md/a03-shaderprop.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="光影配置文件 | MineGraph Docs"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "https://docs.minegraph.cn/md/a03-shaderprop.html#webpage",
+    "url": "https://docs.minegraph.cn/md/a03-shaderprop.html",
+    "name": "光影配置文件 | MineGraph Docs",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "https://docs.minegraph.cn/md/#website",
+    "url": "https://docs.minegraph.cn/md/",
+    "name": "MineGraph Docs Help"
+}</script><!-- End Schema.org --></head><body data-id="a03-shaderProp" data-main-title="光影配置文件" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="创作者文档///shaderTutorial.md|光影开发教程///附录"><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>MineGraph Docs  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="a03-shaderProp" data-annotation-ids="wip" id="a03-shaderProp.md">光影配置文件</h1><div class="micro-format" data-content="{&quot;microFormat&quot;:[&quot;\u003cp id\u003d\&quot;-4zydyu_20\&quot;\u003e本文列举了 \u003ccode class\u003d\&quot;code\&quot; id\u003d\&quot;-4zydyu_22\&quot;\u003eshaders.properties\u003c/code\u003e 中的所有可配置内容。\u003c/p\u003e&quot;,&quot;\u003cp id\u003d\&quot;-4zydyu_21\&quot;\u003e对应的视频设置选项具有更高优先级，除非是 \u003ccode class\u003d\&quot;code\&quot; id\u003d\&quot;-4zydyu_23\&quot;\u003e默认\u003c/code\u003e。\u003c/p\u003e&quot;]}"></div><aside class="prompt" data-type="note" data-title="" id="-4zydyu_19"><p id="-4zydyu_24">这篇文档翻译自 <a href="https://github.com/sp614x/optifine/blob/master/OptiFineDoc/doc/shaders.properties" id="-4zydyu_25" data-external="true" rel="noopener noreferrer" target="_blank">GitHub OptiFineDoc/shaders.properties</a> ，请以原文为准！</p></aside><section class="chapter"><h2 id="-4zydyu_8" data-toc="-4zydyu_8">环境设置</h2><div class="code-block" data-lang="properties">
+clouds=fast|fancy|off
+</div><p id="-4zydyu_27">流畅、高品质或禁用原版云。 <code class="code" id="-4zydyu_59">细节</code> &gt; <code class="code" id="-4zydyu_60">云</code> 具有更高的优先级。</p><div class="code-block" data-lang="properties">
+oldHandLight=true|false
+</div><p id="-4zydyu_29">启用或禁用经典手持光源，可以让只辨别主手光源的光影在副手持光源时也能正常工作。默认为 <code class="code" id="-4zydyu_61">true</code>， <code class="code" id="-4zydyu_62">光影</code> &gt; <code class="code" id="-4zydyu_63">经典手持光源</code> 具有更高的优先级。</p><div class="code-block" data-lang="properties">
+dynamicHandLight=true|false
+</div><p id="-4zydyu_31">启用或禁用动态光源。默认为 <code class="code" id="-4zydyu_64">true</code>， <code class="code" id="-4zydyu_65">动态光源</code> 具有更高的优先级。</p><div class="code-block" data-lang="properties">
+oldLighting=true|false
+</div><p id="-4zydyu_33">启用或禁用经典光效。默认为 <code class="code" id="-4zydyu_66">true</code>， <code class="code" id="-4zydyu_67">光影</code> &gt; <code class="code" id="-4zydyu_68">经典光效</code> 具有更高的优先级。变更该设置会导致资源包重载。</p><div class="code-block" data-lang="properties">
+shadowTerrain=true|false
+shadowTranslucent=true|false
+shadowEntities=true|false
+shadowBlockEntities=true|false
+</div><p id="-4zydyu_35">启用或禁用阴影几何缓冲中的地形、半透明、实体、方块实体渲染。默认为 <code class="code" id="-4zydyu_69">true</code>。</p><div class="code-block" data-lang="properties">
+underwaterOverlay=true|false
+</div><p id="-4zydyu_37">启用或禁用处于水下时屏幕上的水纹理覆层。默认为 <code class="code" id="-4zydyu_70">true</code>。</p><div class="code-block" data-lang="properties">
+sun=true|false
+moon=true|false
+</div><p id="-4zydyu_39">启用或禁用太阳、月亮。 <code class="code" id="-4zydyu_71">细节</code> &gt; <code class="code" id="-4zydyu_72">日月</code> 具有更高的优先级。</p><div class="code-block" data-lang="properties">
+vignette=true|false
+</div><p id="-4zydyu_41">启用或禁用屏幕边缘暗角。 <code class="code" id="-4zydyu_73">细节</code> &gt; <code class="code" id="-4zydyu_74">晕影</code> 具有更高的优先级。</p><div class="code-block" data-lang="properties">
+backFace.solid=true|false
+backFace.cutout=true|false
+backFace.cutoutMipped=true|false
+backFace.translucent=true|false
+</div><p id="-4zydyu_43">启用或禁用固体、裁切、带 MipMap 的裁切、半透明几何的背面渲染，启用后朝向背离屏幕的表面也会被渲染。默认为 <code class="code" id="-4zydyu_75">false</code>。</p><div class="code-block" data-lang="properties">
+rain.depth=true|false
+</div><p id="-4zydyu_45">启用或禁用雨雪粒子写入深度。默认为 <code class="code" id="-4zydyu_76">true</code>。</p><div class="code-block" data-lang="properties">
+beacon.beam.depth=true|false
+</div><p id="-4zydyu_47">启用或禁用信标光柱写入深度。默认为 <code class="code" id="-4zydyu_77">true</code>。</p><div class="code-block" data-lang="properties">
+separateAo=true|false
+</div><p id="-4zydyu_49">启用或禁用分离原版环境光遮蔽，启用后将顶点环境光遮蔽写入顶点颜色的 Alpha 通道，只对固体地形生效。默认为 <code class="code" id="-4zydyu_78">false</code>。</p><div class="code-block" data-lang="properties">
+frustum.culling=true|false
+</div><p id="-4zydyu_51">启用或禁用视锥裁切，启用后不可见的几何体将被丢弃，用以提高性能。默认为 <code class="code" id="-4zydyu_79">true</code>。</p><div class="code-block" data-lang="properties">
+shadow.culling=true|false
+</div><p id="-4zydyu_53">启用或禁用阴影视锥裁切，启用后部分 OptiFine 版本裁切由玩家视锥体控制，会导致问题。默认为 <code class="code" id="-4zydyu_80">true</code>。</p><div class="code-block" data-lang="properties">
+particles.before.deferred=true|false
+</div><p id="-4zydyu_55">启用或禁用粒子提前渲染，启用后粒子将会在 deferred 程序之前（第一轮几何缓冲）处理。默认为 <code class="code" id="-4zydyu_81">false</code>。</p><div class="code-block" data-lang="properties">
+version.&lt;mc_ver&gt;=&lt;of_edition&gt;
+</div><p id="-4zydyu_57">光影最低要求的 OptiFine 版本。例如：</p><div class="code-block" data-lang="properties">
+version.1.12.2=D1
+version.1.10.2=F1
+version.1.8=J1
+</div></section><section class="chapter"><h2 id="customTex" data-toc="customTex">自定义纹理</h2><div class="code-block" data-lang="properties">
+texture.&lt;stage&gt;.&lt;name&gt;=&lt;path&gt;
+</div><p id="-4zydyu_83">将自定义纹理绑定到可用着色器的对应纹理单元。</p><ul class="list _bullet" id="-4zydyu_84"><li class="list__item" id="-4zydyu_89"><p id="-4zydyu_91"><code class="code" id="-4zydyu_93">stage</code>：</p><ul class="list _bullet" id="-4zydyu_92"><li class="list__item" id="-4zydyu_94"><p id="-4zydyu_97"><code class="code" id="-4zydyu_98">gbuffers</code> ：几何缓冲和阴影几何缓冲程序</p></li><li class="list__item" id="-4zydyu_95"><p id="-4zydyu_99"><code class="code" id="-4zydyu_100">deferred</code> ：第一轮几何缓冲后的延迟处理（Deferred）</p></li><li class="list__item" id="-4zydyu_96"><p id="-4zydyu_101"><code class="code" id="-4zydyu_102">composite</code> ：第二轮几何缓冲后的延迟处理程序（Composite 和 Final）</p></li></ul></li><li class="list__item" id="-4zydyu_90"><p id="-4zydyu_103"><code class="code" id="-4zydyu_104">Name</code> ：纹理单元名称，可用名称请参考 <a href="https://optifine.readthedocs.io/shaders_dev/textures.html#gbuffers-textures" id="-4zydyu_105" data-external="true" rel="noopener noreferrer" target="_blank">Textures - OptiDocs</a> <a href="#foot_1" id="foot_1a" data-tooltip="不久之后我们会将这些内容搬运到本站上。"><span id="-4zydyu_107"><sup class="superscript"><span class="control" id="-4zydyu_108">1</span></sup></span></a></p></li></ul><section class="chapter"><h3 id="-4zydyu_85" data-toc="-4zydyu_85">纹理来源</h3><dl id="-4zydyu_109" data-style="title-top"><dt id="-4zydyu_110" data-expandable="false">光影</dt><dd><p id="-4zydyu_114">相对 <code class="code" id="-4zydyu_116">shaders</code> 内的路径，例如：</p><div class="code-block" data-lang="properties">
+texture.composite.colortex1=textures/noise.png
+</div></dd><dt id="-4zydyu_111" data-expandable="false">资源包</dt><dd><p id="-4zydyu_118">以 <code class="code" id="-4zydyu_120">minecraft:</code> 开头的路径，例如：</p><div class="code-block" data-lang="properties">
+texture.composite.colortex2=minecraft:textures/font/ascii.png
+</div></dd><dt id="-4zydyu_112" data-expandable="false">变化纹理（光照贴图和纹理集）</dt><dd><div class="code-block" data-lang="properties">
+texture.composite.colortex3=minecraft:dynamic/lightmap_1
+texture.composite.colortex4=minecraft:textures/atlas/blocks.png
+</div></dd></dl></section><section class="chapter"><h3 id="-4zydyu_86" data-toc="-4zydyu_86">特殊后缀</h3><p id="-4zydyu_123">使用 <code class="code" id="-4zydyu_124">_n</code> 和 <code class="code" id="-4zydyu_125">_s</code> 后缀可以加载法线/高光纹理： <code class="code" id="-4zydyu_126">minecraft:textures/atlas/blocks_n.png</code></p></section><section class="chapter"><h3 id="-4zydyu_87" data-toc="-4zydyu_87">原始纹理（二进制数据转储）</h3><div class="code-block" data-lang="properties">
+texture.&lt;stage&gt;.&lt;name&gt;=&lt;path&gt; &lt;type&gt; &lt;internalFormat&gt; &lt;dimensions&gt; &lt;pixelFormat&gt; &lt;pixelType&gt;
+</div><ul class="list _bullet" id="-4zydyu_128"><li class="list__item" id="-4zydyu_132"><p id="-4zydyu_137"><code class="code" id="-4zydyu_140">&lt;type&gt;</code> ：纹理类型，下列之一：</p><ul class="list _horizontal" id="-4zydyu_138" data-columns="3"><li class="list__item" id="-4zydyu_141"><p id="-4zydyu_147"><code class="code" id="-4zydyu_148">TEXTURE_1D</code></p></li><li class="list__item" id="-4zydyu_142"><p id="-4zydyu_149"><code class="code" id="-4zydyu_150">TEXTURE_3D</code></p></li><li class="list__item" id="-4zydyu_143"></li><li class="list__item" id="-4zydyu_144"><p id="-4zydyu_151"><code class="code" id="-4zydyu_152">TEXTURE_2D</code></p></li><li class="list__item" id="-4zydyu_145"><p id="-4zydyu_153"><code class="code" id="-4zydyu_154">TEXTURE_RECTANGLE</code></p></li><li class="list__item" id="-4zydyu_146"></li></ul><p id="-4zydyu_139"></p></li><li class="list__item" id="-4zydyu_133"><p id="-4zydyu_155"><code class="code" id="-4zydyu_156">&lt;internalFormat&gt;</code> ：纹理格式，参考 <a href="a04-formats.html#texFormat" id="-4zydyu_157" data-tooltip="">纹理格式</a></p></li><li class="list__item" id="-4zydyu_134"><p id="-4zydyu_158"><code class="code" id="-4zydyu_159">&lt;dimensions&gt;</code> ：每个维度的尺寸，设置数量取决于纹理类型</p></li><li class="list__item" id="-4zydyu_135"><p id="-4zydyu_160"><code class="code" id="-4zydyu_161">&lt;pixelFormat&gt;</code> ：像素格式，参考 <a href="a04-formats.html#pxFormat" id="-4zydyu_162" data-tooltip="">像素格式</a></p></li><li class="list__item" id="-4zydyu_136"><p id="-4zydyu_163"><code class="code" id="-4zydyu_164">&lt;pixelType&gt;</code> ：像素类型，参考 <a href="a04-formats.html#pxType" id="-4zydyu_165" data-tooltip="">像素类型</a></p></li></ul><div class="code-block" data-lang="properties">
+texture.composite.gaux1=textures/lut_1d.dat TEXTURE_1D RGBA32F 256 RGBA FLOAT
+texture.composite.gaux1.2=textures/lut_3d.dat TEXTURE_3D RGBA32F 64 64 64 RGBA FLOAT
+</div><ul class="list _bullet" id="-4zydyu_130"><li class="list__item" id="-4zydyu_166"><p id="-4zydyu_168">可以将多个纹理绑定到同一个纹理单元，然后在着色器中使用 <code class="code" id="-4zydyu_169">sampler1d</code>、 <code class="code" id="-4zydyu_170">sampler2d</code>、 <code class="code" id="-4zydyu_171">sampler3d</code> 等不同的采样器格式进行区分。每个程序只能使用每个纹理单元的其中一种采样器类型。</p></li><li class="list__item" id="-4zydyu_167"><p id="-4zydyu_172">可以在 <code class="code" id="-4zydyu_173">&lt;name&gt;</code> 后添加后缀 <code class="code" id="-4zydyu_174">.0</code>~<code class="code" id="-4zydyu_175">.9</code> 来避免重复定义的属性键。</p></li></ul><p id="-4zydyu_131">可以通过同名的 <code class="code" id="-4zydyu_176">.mcmeta</code> 文件设置边缘环绕行为和过滤方式。</p></section><section class="chapter"><h3 id="-4zydyu_88" data-toc="-4zydyu_88">噪声纹理</h3><div class="code-block" data-lang="properties">
+texture.noise=&lt;path&gt;
+</div><p id="-4zydyu_178">专用于保存噪声的纹理单元（当然你硬要用其他的纹理也没法拦着你）。</p></section></section><section class="chapter"><h2 id="-4zydyu_10" data-toc="-4zydyu_10">光影设置</h2><p id="-4zydyu_179">见 <a href="https://optifine.readthedocs.io/shaders_dev/options.html?h=shader+option#options-screen" id="-4zydyu_181" data-external="true" rel="noopener noreferrer" target="_blank">Options screen - OptiDocs</a> <a href="#foot_1" id="foot_1b" data-tooltip="不久之后我们会将这些内容搬运到本站上。"><span id="-4zydyu_183"><sup class="superscript"><span class="control" id="-4zydyu_184">1</span></sup></span></a>。</p><div class="code-block" data-lang="properties">
+sliders=&lt;list of options&gt;
+profile.NAME=&lt;list of options&gt;
+screen.columns=2
+screen.NAME.columns=2
+</div></section><section class="chapter"><h2 id="-4zydyu_11" data-toc="-4zydyu_11">自定义统一变量</h2></section><section class="chapter"><h2 id="alpha" data-toc="alpha">Alpha 测试</h2><div class="code-block" data-lang="properties">
+alphaTest.&lt;program&gt;=&lt;off|func ref&gt;
+</div><aside class="prompt" data-type="tip" data-title="" id="-4zydyu_186"><p id="-4zydyu_187">虽然文档中写明可以指定每个程序的 Alpha 测试函数和参考值，但是实际上这行配置并没有作用。</p></aside></section><section class="chapter"><h2 id="blend" data-toc="blend">混合</h2><p id="-4zydyu_188">见 <a href="2-1-solidgeometries.html#blend" id="-4zydyu_190" data-tooltip="OptiFine 中的一些几何缓冲默认启用了混合（Blending），它可以让一些内容在输出时与缓冲区上已有内容进行色彩混合。为了保证">混合方程</a>。</p><div class="code-block" data-lang="properties">
+blend.&lt;program&gt;=&lt;off|src dst srcA dstA&gt;
+blend.&lt;program&gt;.&lt;buffer&gt;=&lt;off|src dst srcA dstA&gt;
+</div></section><section class="chapter"><h2 id="-4zydyu_14" data-toc="-4zydyu_14">延迟处理渲染缩放</h2><div class="code-block" data-lang="properties">
+scale.&lt;program&gt;=&lt;scale|scale offsetX offsetY&gt;
+</div><p id="-4zydyu_192">自定义延迟处理程序中铺屏四边形的视口尺寸。要求所有值都在 <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="4.526ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 2000.7 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><path data-c="5B" d="M118 -250V750H255V710H158V-210H255V-250H118Z"></path></g><g data-mml-node="mn" transform="translate(278,0)"><path data-c="30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path></g><g data-mml-node="mo" transform="translate(778,0)"><path data-c="2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path></g><g data-mml-node="mn" transform="translate(1222.7,0)"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></g><g data-mml-node="mo" transform="translate(1722.7,0)"><path data-c="5D" d="M22 710V750H159V-250H22V-210H119V710H22Z"></path></g></g></g></svg></mjx-container> 区间内。</p></section><section class="chapter"><h2 id="-4zydyu_15" data-toc="-4zydyu_15">翻转缓冲区</h2><div class="code-block" data-lang="properties">
+flip.&lt;program&gt;.&lt;buffer&gt;=&lt;true|false&gt;
+</div><p id="-4zydyu_195">启用或禁用指定延迟处理程序的指定颜色附件的缓冲区翻转功能，即&ldquo;乒乓缓冲区&rdquo;（Ping-pong buffer）。禁用翻转后，下一个延迟处理程序将会共享输入和输出。最后一个完成写入的程序应当启用缓冲区翻转，以便之后的程序正确读取写入后的内容。</p><p id="-4zydyu_196">这个功能可以用于多个程序读取和写入同一个缓冲区不同区域的内容。强制翻转缓冲区可以用于读取一个颜色附件的两个缓冲区上的不同内容（即使在程序中没有向缓冲区写入内容也强制翻转，以便在下一个程序中读取颜色附件上另一个缓冲区的内容）。</p><p id="-4zydyu_197">当程序向缓冲区写入内容后，默认会翻转缓冲区，如果没有写入内容，则不会翻转缓冲区。</p></section><section class="chapter"><h2 id="-4zydyu_16" data-toc="-4zydyu_16">缓冲区尺寸</h2><div class="code-block" data-lang="properties">
+size.buffer.&lt;buffer&gt;=width height
+</div><p id="-4zydyu_199">指定固定尺寸的缓冲区。只有 <code class="code" id="-4zydyu_204">prepare</code>、 <code class="code" id="-4zydyu_205">deferred</code> 和 <code class="code" id="-4zydyu_206">composite</code> 程序可以向固定尺寸缓冲区写入。</p><p id="-4zydyu_200">不可以同时向多个不同尺寸的缓冲区中写入，即一个程序中只能向同尺寸的多个缓冲区输出。</p><p id="-4zydyu_201">当高宽尺寸为浮点值时，会作为相对窗口渲染的尺寸。如</p><div class="code-block" data-lang="properties">
+size.buffer.colortex2=0.5 0.5
+</div><p id="-4zydyu_203">会创建一个高宽均为渲染分辨率一半的缓冲区。渲染分辨率由 <code class="code" id="-4zydyu_207">光影</code> &gt; <code class="code" id="-4zydyu_208">渲染精细度</code> 和游戏窗口分辨率共同控制。</p></section><section class="chapter"><h2 id="-4zydyu_17" data-toc="-4zydyu_17">开关特定的程序</h2><div class="code-block" data-lang="properties">
+program.&lt;program&gt;.enabled=&lt;expression&gt;
+</div><p id="-4zydyu_210">和光影设置联动，用以当关闭一些效果时禁用处理它们的程序或启用相关后备程序。程序名称可以包含维度，如：</p><div class="code-block" data-lang="properties">
+program.world-1/composite2.enabled=BLOOM
+</div><p id="-4zydyu_212">表达式可以是多个定义组成的布尔运算，如：</p><div class="code-block" data-lang="properties">
+program.composite.enabled=(BLOOM || SSAO) &amp;&amp; !GODRAYS
+</div><p id="foot_1"><p id="-4zydyu_216"><span class="control" id="-4zydyu_217">[1]</span> <a href="#foot_1a" id="-4zydyu_218" data-tooltip="自定义纹理">&uarr;</a> <a href="#foot_1b" id="-4zydyu_219" data-tooltip="光影设置">&uarr;</a> 不久之后我们会将这些内容搬运到本站上。</p></p></section><div class="last-modified">08 April 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="a02-corebuiltinvars.html" class="navigation-links__prev">核心配置中可用的内建变量</a><a href="a04-formats.html" class="navigation-links__next">纹理和像素格式</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="frontend/app.js"></script></body></html>
