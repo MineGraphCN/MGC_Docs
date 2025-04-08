@@ -2,8 +2,6 @@
 
 <primary-label ref="manual"/>
 
-<secondary-label ref="latest"/>
-
 <secondary-label ref="je"/>
 <secondary-label ref="of"/>
 <secondary-label ref="iris"/>
@@ -69,7 +67,7 @@
 > 
 > ![irisImport.webp](irisImport.webp)
 
-<seealso>
+<seealso title="更多内容">
     <category ref="related">
         <a href="troubleshootCommon.md" summary="这篇文档记录了一些与游戏相关或会产生影响的常见问题。">疑难解答 - 通用问题</a>
         <a href="videoSettings.md" summary="这篇文档列出了整个视频设置选项卡中容易出现问题的设置以及修改建议。">疑难解答 - 视频设置和相关显示问题</a>

@@ -248,7 +248,7 @@ OpenGL 扩展
 ```
 你也可以在站内找到 [LabPBR 格式的翻译版本](labpbrMaterialStandard.md){summary=""} 。
 
-渲染阶段
+渲染阶段 {id="renderStage"}
 : `<const>` 用于统一变量 `renderStage` ，其值按执行顺序给出。由于部分几何共用一个程序，因此可以使用形如 `if(renderStage == MC_RENDER_STAGE_XXX)` 进行当前渲染几何类型判断。
 ```glsl
 #define MC_RENDER_STAGE_NONE <const>                    // 未定义

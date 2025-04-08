@@ -4,7 +4,6 @@
 
 <primary-label ref="basic"/>
 
-<secondary-label ref="latest"/>
 <secondary-label ref="shader"/>
 <secondary-label ref="rt"/>
 
@@ -214,7 +213,7 @@
 **[4]** Rethinking Voxels 自 **r0.1-beta3** 起使用符号距离场 (<tooltip term="SDF">SDF</tooltip>) 代替体素化，可以无差别保存实体和方块数据。  
 **[5]** 原版没有提供 <tooltip term="SSBO">SSBO</tooltip> 或阴影贴图，只能将体素信息保存在屏幕缓冲中。
 
-<seealso>
+<seealso title="更多内容">
   <category ref="related">
     <a href="raytracingCorrection.md" summary="大众对于光线追踪的各种误区">误区纠正 - 光线追踪</a>
   </category>

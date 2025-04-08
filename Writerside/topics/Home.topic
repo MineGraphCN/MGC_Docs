@@ -4,10 +4,9 @@
 <topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
        title="主页" id="Home" help-id="Section-Starting-Page">
-
     <section-starting-page>
         <title>Minecraft 图形学社区文档</title>
-        <description>
+        <description id="intro">
             与所有人分享我们的知识。
         </description>
 

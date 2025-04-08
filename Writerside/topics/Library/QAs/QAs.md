@@ -12,7 +12,7 @@
 
 {columns=3}
 
-<seealso style="cards">
+<seealso title="更多内容" style="cards">
     <category ref="related">
         <a href="PopOfScience.md" summary="主要的科普板块。"/>
         <a href="Correction.md" summary="总结了一些玩家中有歧义的图形学观点。"/>

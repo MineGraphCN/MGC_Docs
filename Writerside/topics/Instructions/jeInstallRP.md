@@ -41,7 +41,7 @@
   ![资源包排序](pack_order.webp "资源包排序"){width="500"}
 - 一些资源包可能不支持从压缩包状态加载，你需要解压缩它们，同时也要注意 [先前提到的问题](#check "检查资源包") 。
 
-<seealso>
+<seealso title="更多内容">
     <category ref="related">
         <a href="jeInstallShaders.md" summary="光影包安装教程，其中包含了 OptiFine、Iris、Forge 和 Fabric 的安装教程。"/>
     </category>

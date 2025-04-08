@@ -18,6 +18,7 @@
     </variables>
     <build-profile instance="mgcd">
         <variables>
+            <code-soft-wrap>true</code-soft-wrap>
             <offline-docs>true</offline-docs>
             <noindex-content>false</noindex-content>
         </variables>

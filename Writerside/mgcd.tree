@@ -59,7 +59,7 @@
             </toc-element>
         </toc-element>
     </toc-element>
-    <toc-element topic="Developer.md">
+    <toc-element toc-title="创作者文档">
         <toc-element topic="shaderTutorial.md">
             <toc-element toc-title="创作之前">
                 <toc-element topic="0-1-prepare.md"/>
@@ -73,7 +73,8 @@
                 <toc-element topic="1-4-realtimeLighting.md"/>
             </toc-element>
             <toc-element toc-title="我们需要再深入一些">
-<!--                <toc-element topic="2-1-solidGeometries.md"/>-->
+                <toc-element topic="2-1-solidGeometries.md"/>
+<!--                <toc-element topic="2-1-1-imageLoadStore.md"/>-->
 <!--                <toc-element topic="2-2-advancedLighting.md"/>-->
 <!--                <toc-element topic="2-3-multiPasses.md"/>-->
 <!--                <toc-element topic="2-4-translucentGeometries.md"/>-->
@@ -83,6 +84,8 @@
             <toc-element toc-title="附录">
                 <toc-element topic="a01-uniformsAndAts.md"/>
                 <toc-element topic="a02-coreBuiltinVars.md"/>
+                <toc-element topic="a03-shaderProp.md"/>
+                <toc-element topic="a04-formats.md"/>
             </toc-element>
         </toc-element>
         <toc-element topic="resourceTutorial.md">

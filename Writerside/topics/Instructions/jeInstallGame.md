@@ -2,7 +2,6 @@
 
 <primary-label ref="manual"/>
 
-<secondary-label ref="new"/>
 <secondary-label ref="je"/>
 <secondary-label ref="of"/>
 <secondary-label ref="iris"/>

@@ -2,7 +2,6 @@
 
 <primary-label ref="basic"/>
 
-<secondary-label ref="latest"/>
 <secondary-label ref="shader"/>
 
 <show-structure depth="2"/>
@@ -130,7 +129,7 @@
 > 
 > 现代游戏通常会根据实际需求选择渲染方法，像是同属任天堂旗下的 IP，《斯普拉遁》就使用了向前渲染管线（场景较小，还有很多很鱿型的材质），而《塞尔达传说：旷野之息》则是延迟渲染管线（复杂的开放世界，并且对材质和半透明不敏感）。
 
-<seealso>
+<seealso title="更多内容">
   <category ref="related">
     <a href="terms.md#渲染模组和引擎" summary="总结了大多常用的渲染模组和引擎">术语表 - 渲染模组和引擎</a>
     <a href="shaderHistoryBE.md" summary=""/>
