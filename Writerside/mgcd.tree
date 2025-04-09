@@ -85,7 +85,7 @@
                 <toc-element topic="a01-uniformsAndAts.md"/>
                 <toc-element topic="a02-coreBuiltinVars.md"/>
                 <toc-element topic="a03-shaderProp.md"/>
-                <toc-element topic="a04-formats.md"/>
+                <toc-element topic="a04-textureAndPx.md"/>
             </toc-element>
         </toc-element>
         <toc-element topic="resourceTutorial.md">

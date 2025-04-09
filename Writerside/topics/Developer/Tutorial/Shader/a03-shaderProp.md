@@ -1,5 +1,7 @@
 # 光影配置文件
 
+<show-structure depth="3"/>
+
 <secondary-label ref="wip"/>
 
 <tldr>
@@ -114,13 +116,13 @@ version.1.8=J1
 texture.<stage>.<name>=<path>
 ```
 
-将自定义纹理绑定到可用着色器的对应纹理单元。
+将自定义纹理绑定到对应着色器可用的纹理单元。
 
 - `stage`：
   - `gbuffers`：几何缓冲和阴影几何缓冲程序
   - `deferred`：第一轮几何缓冲后的延迟处理（Deferred）
   - `composite`：第二轮几何缓冲后的延迟处理程序（Composite 和 Final）
-- `Name`：纹理单元名称，可用名称请参考 [Textures - OptiDocs](https://optifine.readthedocs.io/shaders_dev/textures.html#gbuffers-textures) [^**1**^](#foot_1){id="foot_1a" summary="不久之后我们会将这些内容搬运到本站上。"}
+- `Name`：纹理单元名称，可用名称请参考 [](a04-textureAndPx.md#texID){summary=""} 。
 
 ### 纹理来源
 
@@ -164,10 +166,10 @@ texture.<stage>.<name>=<path> <type> <internalFormat> <dimensions> <pixelFormat>
   - 
 
   {columns="3"}
-- `<internalFormat>`：纹理格式，参考 [](a04-formats.md#texFormat){summary=""}
+- `<internalFormat>`：纹理格式，参考 [](a04-textureAndPx.md#texFormat){summary=""}
 - `<dimensions>`：每个维度的尺寸，设置数量取决于纹理类型
-- `<pixelFormat>`：像素格式，参考 [](a04-formats.md#pxFormat){summary=""}
-- `<pixelType>`：像素类型，参考 [](a04-formats.md#pxType){summary=""}
+- `<pixelFormat>`：像素格式，参考 [](a04-textureAndPx.md#pxFormat){summary=""}
+- `<pixelType>`：像素类型，参考 [](a04-textureAndPx.md#pxType){summary=""}
 
 ```properties
 texture.composite.gaux1=textures/lut_1d.dat TEXTURE_1D RGBA32F 256 RGBA FLOAT
@@ -176,8 +178,7 @@ texture.composite.gaux1.2=textures/lut_3d.dat TEXTURE_3D RGBA32F 64 64 64 RGBA F
 
 - 可以将多个纹理绑定到同一个纹理单元，然后在着色器中使用 `sampler1d`、`sampler2d`、`sampler3d` 等不同的采样器格式进行区分。每个程序只能使用每个纹理单元的其中一种采样器类型。
 - 可以在 `<name>` 后添加后缀 `.0`~`.9` 来避免重复定义的属性键。
-
-可以通过同名的 `.mcmeta` 文件设置边缘环绕行为和过滤方式。
+- 可以通过同名的 `.mcmeta` 文件设置边缘环绕行为和过滤方式。
 
 ### 噪声纹理
 
@@ -185,22 +186,202 @@ texture.composite.gaux1.2=textures/lut_3d.dat TEXTURE_3D RGBA32F 64 64 64 RGBA F
 texture.noise=<path>
 ```
 
-专用于保存噪声的纹理单元（当然你硬要用其他的纹理也没法拦着你）。
+专用于保存噪声的纹理单元（当然你硬要写入其他的纹理也没法拦着你）。
 
 ## 光影设置
 
-见 [Options screen - OptiDocs](https://optifine.readthedocs.io/shaders_dev/options.html?h=shader+option#options-screen) [^**1**^](#foot_1){id="foot_1b" summary="不久之后我们会将这些内容搬运到本站上。"} 。
+见 [Options screen - OptiDocs](https://optifine.readthedocs.io/shaders_dev/options.html?h=shader+option#options-screen) ，不久之后我们会编写相关内容。
 
 ```properties
-sliders=<list of options>
-profile.NAME=<list of options>
+sliders=<设置列表>
+profile.NAME=<设置列表>
 screen.columns=2
 screen.NAME.columns=2
 ```
 
 ## 自定义统一变量
 
-[//]: # (TODO)
+```properties
+uniform.<float|int|bool|vec2|vec3|vec4>.<name>=<表达式>
+variable.<float|int|bool|vec2|vec3|vec4>.<name>=<表达式>
+```
+
+利用常量、变量、运算符和函数来自定义传入着色器的变量和用于配置文件中计算的变量，自定义统一变量会随着程序变化而更新。
+
+### 常量
+
+- `pi`
+  - 3.1415926
+- `true`
+- `false`
+
+{columns=4}
+
+### 参数
+
+一些固定标量的统一变量（即不会随着程序变更而变更的标量）也可用于参数，例如 `heldItemId`、`worldTime`、`moonPhase` 等。
+
+- 向量对象可以使用 `.x` `.y` `.z` 和 `.w` 来提取分量，例如 `sunPosition.y`；
+- 颜色对象可以使用 `.r` `.g` `.b` 和 `.a` 来提取分量，例如 `skyColor.r`；
+  - 这两种分量提取操作和 GLSL 一样不做强制要求。
+- 矩阵可以使用两个连续的行列索引来提取参数，例如 `gbufferModelView.0.1` 。
+
+> 自定义统一变量在组合向量时要求使用严格的标量，例如：
+> ```properties
+> uniform.vec2.pixelSize = vec2(1.0 / viewWidth, 1.0 / viewHeight)
+> ```
+> 而不可以使用标量和向量组合运算或使用向量和向量组合运算。
+>
+{style="note"}
+
+#### 浮点值
+
+- `biome`                - 生物群系 ID
+- `biome_category`       - 群系类型，0 ~ 16（从左至右，从上至下）
+  - `CAT_NONE`
+  - `CAT_TAIGA`
+  - `CAT_EXTREME_HILLS`
+  - `CAT_JUNGLE`
+  - `CAT_MESA`
+  - `CAT_PLAINS`
+  - `CAT_SAVANNA`
+  - `CAT_ICY`
+  - `CAT_THE_END`
+  - `CAT_BEACH`
+  - `CAT_FOREST`
+  - `CAT_OCEAN`
+  - `CAT_DESERT`
+  - `CAT_RIVER`
+  - `CAT_SWAMP`
+  - `CAT_MUSHROOM`
+  - `CAT_NETHER`
+
+  {columns="3"}
+- `biome_precipitation`  - 降水类型，0 ~ 2（从左至右）
+  - `PPT_NONE`
+  - `PPT_RAIN`
+  - `PPT_SNOW`
+
+  {columns="3"}
+- `temperature`          - 温度，0.0 ~ 1.0
+- `rainfall`             - 湿度，0.0 ~ 1.0
+
+雨雪渲染判定依赖于 `biome_precipitation != PPT_NONE`，如果 `temperature >= 0.15` 则渲染雨，否则渲染雪。
+
+#### 布尔值
+
+摄像机所在实体的状态，例如玩家本身或旁观模式附身的实体。
+
+- `is_alive`
+- `is_burning`
+- `is_child`
+- `is_glowing`
+- `is_hurt`
+- `is_in_lava`
+- `is_in_water`
+- `is_invisible`
+- `is_on_ground`
+- `is_ridden`
+- `is_riding`
+- `is_sneaking`
+- `is_sprinting`
+- `is_wet`
+
+{columns=3}
+
+### 运算符
+
+- `+`
+- `-`
+- `*`
+- `/`
+- `%`
+- `!`
+- `&&`
+- `||`
+- `>`
+- `>=`
+- `<`
+- `<=`
+- `==`
+- `!=`
+
+{columns=5}
+
+### 函数
+
+- `sin(x)`
+- `cos(x)`
+- `asin(x)`
+- `acos(x)`
+- `tan(x)`
+- `atan(x)`
+- `atan2(y, x)`
+- `torad(deg)`
+- `todeg(rad)`
+- `min(x, y ,...)`
+- `max(x, y, ...)`
+- `abs(x)`
+- `floor(x)`
+- `ceil(x)`
+- `exp(x)`
+- `frac(x)`
+- `log(x)`
+- `pow(x, y)`
+- `random()`
+- `round(x)`
+- `signum(x)`
+- `sqrt(x)`
+- `clamp(x, min, max)`
+
+{columns=3}
+
+- `fmod(x, y)`
+  - 类似 `Math.floorMod()`
+- `if(cond, val, [cond2, val2, ...], val_else)`
+  - 根据一个或多个条件取值
+- `lerp(k, x, y)`
+  - 在 `x` 和 `y` 之间线性插值
+- `ifb(cond, val, [cond2, val2, ...], val_else)`
+  - 根据一个或多个条件取布尔值
+- `smooth([id], val, [fadeInTime, [fadeOutTime]])`
+  - 根据自定义缓入缓出时间平滑一个变量在帧间值的变动。
+  - `id` 必须是唯一的，如果不定义将会自动生成。
+  - 默认过渡时间为 1 秒。
+- `print(id, n, x)`
+  - 每第 `n` 帧在日志中输出 `x` 的值。
+
+{columns=2}
+
+#### 布尔函数
+
+- `between(x, min, max)`
+  - 检查值是否在最大值和最小值之间
+- `equals(x, y, epsilon)`
+  - 在误差范围内比较两个浮点值
+- `in(x, val1, val2, ...)`
+  - 检查值是否在取值列表中
+
+{columns=3}
+
+#### 组合向量函数
+
+- `vec2(x, y)`
+- `vec3(x, y, z)`
+- `vec4(x, y, z, w)`
+
+{columns=3}
+
+### 示例
+
+```properties
+variable.bool.isBiomeDark=in(biome, BIOME_RIVER, BIOME_FOREST)
+variable.float.valBiomeDark=smooth(1, if(isBiomeDark, 1, 0), 5)
+variable.float.valHurtDark=smooth(2, if(is_hurt, 1.3, 0), 0, 10)
+variable.float.valSwordDark=smooth(3, if(heldItemId == 276, 1, 0), 0.5, 0.5)
+uniform.float.screenDark=max(valBiomeDark, valHurtDark, valSwordDark)
+uniform.vec3.screenDark3=vec3(screenDark, heldItemId, biome)
+```
 
 ## Alpha 测试
 
@@ -258,7 +439,7 @@ size.buffer.colortex2=0.5 0.5
 ## 开关特定的程序
 
 ```properties
-program.<program>.enabled=<expression>
+program.<program>.enabled=<表达式>
 ```
 
 和光影设置联动，用以当关闭一些效果时禁用处理它们的程序或启用相关后备程序。程序名称可以包含维度，如：
@@ -270,10 +451,3 @@ program.world-1/composite2.enabled=BLOOM
 ```properties
 program.composite.enabled=(BLOOM || SSAO) && !GODRAYS
 ```
-
----
-
-<p id="foot_1">
-
-**[1]** [↑](#foot_1a){summary="自定义纹理"} [↑](#foot_1b){summary="光影设置"} 不久之后我们会将这些内容搬运到本站上。
-</p>

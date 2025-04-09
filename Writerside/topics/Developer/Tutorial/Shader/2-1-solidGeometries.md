@@ -10,7 +10,7 @@
 
 </tldr>
 
-> 本节内容是为了附录 3 的 [](a03-shaderProp.md#blend) 小节而临时开放，因此内容没有完全编写完毕。
+> 本节内容是为了附录 3 的 [](a03-shaderProp.md#blend){summary=""} 小节而临时开放，因此内容没有完全编写完毕。
 >
 {style="warning"}
 
@@ -101,11 +101,9 @@ void main() {
 
 ## 纹理格式
 
-## 混合方程 {id="blend"}
+## 混合 {id="blend"}
 
-OptiFine 中的一些几何缓冲默认启用了**混合**（Blending），它可以让一些内容在输出时与缓冲区上已有内容进行色彩混合。为了保证
-
-混合方程（Blend Equation）可以让 GL 根据输出的内容和缓冲区本来的内容进行混合处理。
+由于几何缓冲程序向缓冲区输出内容之后不会翻转缓冲区，OptiFine 中的一些几何缓冲默认启用了**混合**（Blending）。GL 可以通过**混合方程**（Blend Equation）让一些内容在输出时与缓冲区上已有内容进行色彩混合。
 $$
 C_{\text{结果}} = C_{\text{源}} \times F_{\text{源}} + C_{\text{目标}} \times F_{\text{目标}}
 $$
