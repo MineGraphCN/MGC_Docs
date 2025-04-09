@@ -61,7 +61,7 @@ Language Server for Minecraft Shaderpacks
 
 ## 配置游戏环境
 
-我们将使用截止教程编写时的最新正式版本（**JE %latest_je_with_of%**, OptiFine %latest_of%）作为测试环境。
+我们将使用截止教程编写时的最新正式版本（**JE 1.21.4**, OptiFine J3）作为测试环境。
 
 如果你还不会安装游戏，参阅 [](jeInstallGame.md) 。
 
@@ -69,7 +69,7 @@ Language Server for Minecraft Shaderpacks
 
 右键 `shaders` ，然后点击 `通过 Code 打开`（在 Windows 11 中你需要点击 `显示更多选项` 才能找到），这就是我们的工作区了，你可以在左侧栏的 `资源管理器` 页查看工作区内的文件和文件夹，如果你找不到这个选项卡，可以按 <shortcut>Ctrl</shortcut><shortcut>Shift</shortcut><shortcut>E</shortcut> 呼出。
 
-在游戏中，为了防止原版的干扰，你可以把 `视频设置` > `细节` > `晕影` 设置为 `流畅` 。
+在游戏中，为了防止原版暗角干扰最终效果，你可以把 `视频设置` > `细节` > `晕影` 设置为 `流畅` 。
 
 ## 了解你的编辑器
 

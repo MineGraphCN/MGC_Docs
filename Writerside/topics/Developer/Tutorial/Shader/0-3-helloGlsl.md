@@ -129,7 +129,7 @@ GLSL 版本与 OpenGL 密切相关，如果平台支持的 OpenGL 版本过低�
 <tr><td>330</td><td>3.3</td><td>引入核心模式，移除固定功能管线。</td></tr>
 <tr><td>400</td><td>4.0</td><td>引入细分着色器（Tessellation Shader）。</td></tr>
 <tr><td>410</td><td>4.1</td><td>支持显式顶点属性位置（<code>layout(location = ...)</code>）。</td></tr>
-<tr><td>420</td><td>4.2</td><td>支持图像加载/存储（Image Load/Store），可以对非向量进行 Swizzle 操作。</td></tr>
+<tr><td>420</td><td>4.2</td><td>支持图像加载/存储（Image Load/Store），可以对标量进行 Swizzle 操作。</td></tr>
 <tr><td>430</td><td>4.3</td><td>引入计算着色器（Compute Shader）。</td></tr>
 <tr><td>440</td><td>4.4</td><td>支持显式绑定点（Explicit Binding Points）。</td></tr>
 <tr><td>450</td><td>4.5</td><td>支持直接状态访问（Direct State Access）。</td></tr>
@@ -153,7 +153,7 @@ gl_Position = gl_ProjectionMartix * gl_ModelViewMatrix * gl_Vertex;
 
 你甚至直接使用 `ftransform()` 函数直接替换这一串乘法。
 
-但是由于这些内容都在固定管线中进行，我们对其的掌控能力较弱，而且会造成一些不必要的开销。OptiFine 给我们提供了完整的信息，所以我们最好是使用 `core` 配置，不过这需要 **JE 1.17** 及之后的 OptiFine 版本。
+但是由于这些内容都在固定管线中进行，我们对其的掌控能力较弱，而且启用固定管线也会造成一些不必要的开销。OptiFine 给我们提供了完整的数据内容，所以我们尽量使用 `core` 配置，不过部分对应变量需要 **JE 1.17** 及之后的 OptiFine 版本才能提供。
 
 除了上述两个配置以外，我们还可以选择 `es` ，这是嵌入式和移动平台的 OpenGL ES 兼容配置，它精简了大量特性以换取高能效，但是对桌面平台用处不大，在此我们不做讨论。
 
@@ -251,13 +251,11 @@ N.sss -> vec3(2.5) == vec3(N) // 需要 #version 420 及以上
 
 可以使用 `xyzw`、`rgba` 和 `stpq` 中的任意一组进行 Swizzle 操作，但是不能在同一个操作中混用。它们的语义通常分别表示**空间坐标**、**颜色**和**纹理坐标**，正确地选择后缀组可以降低代码的阅读和维护门槛。
 
-> GL 不允许在构造函数时混用 Swizzle 和其他方法
-> ```glsl
-> float a = 1.0;
-> vec4 b = vec4(a.xxx, 0.0); // 不可以这样做
-> ```
-> 
-{style="warning"}
+此外，GL 允许在构造向量时混用 Swizzle 和其他方法
+```glsl
+vec2 a = vec2(1.0, 2.0);
+vec4 b = vec4(a.y, vec2(0.0), a.x);
+```
 
 > Swizzle 原意鸡尾酒~~谁家狂乱鸡尾酒~~，在这里意为重新排列（就像调酒那样），因此 _Swizzle 操作_ 也可称为 _重排操作_ 。
 

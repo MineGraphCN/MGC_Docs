@@ -169,11 +169,12 @@
 <tr><td>52</td><td colspan="2">1.21.5 25w07a</td></tr>
 <tr><td>53</td><td>1.21.5 25w08a</td><td>1.21.5 25w09b</td></tr>
 <tr><td>54</td><td colspan="2">1.21.5 25w10a</td></tr>
-<tr><td>%latest_pack_format%</td><td>1.21.5-pre1</td><td><i>最新</i></td></tr>
+<tr><td>55</td><td>1.21.5-pre1</td><td>1.21.5</td></tr>
+<tr><td>%latest_pack_format%</td><td>25w15a</td><td><i>最新</i></td></tr>
 </table>
 
 _23 和 27 不存在。_  
-_截止 2025 年 3 月 19 日，数据来源于 [Minecraft Wiki](https://zh.minecraft.wiki/w/资源包#资源包格式版本) 。_
+_截止 2025 年 4 月 9 日，数据来源于 [Minecraft Wiki](https://zh.minecraft.wiki/w/资源包#资源包格式版本) 。_
 
 </procedure>
 

@@ -74,7 +74,7 @@ Texture Pack 的**错误译名**。
 - *32x*、*64x*、*128x*... *Nx*：表示该资源包的基本纹理尺寸均为 $ N \times N $；
     - 在动态纹理中，纵向分辨率还需要乘以动态纹理的帧数 $F$ ，于是最终我们的纹理分辨率为 $N \times N \times F$。
 - *1k*、*2k*、*4k*... *Nk*：表示所有纹理均为 $ N\text{k} \times N\text{k} $ 像素的尺寸，其中 $1\text{k} = 1024$ ；
-- 在 Java 版中， $ N = 2^x $，其中$x$为自然数。
+- 在 Java 版中， $ N = 2^x $，其中$x \in \mathbb{N} $（自然数）。
 
 ## 资源包的版本兼容性 {id="versionComp"}
 

@@ -113,6 +113,8 @@ Multi MC 启动器
 
 如果你是新手，可以先尝试安装最简单的仅安装 OptiFine。
 
+目前有最新 OptiFine 的游戏版本是 **JE %latest_je_with_of%**，最新的 OptiFine 版本是 %latest_of% 。
+
 需要安装其他模组吗？
 <tabs group="otherMods">
 <tab title="不需要（纯净安装）">
