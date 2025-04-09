@@ -1,5 +1,7 @@
 # 纹理和像素
 
+<show-structure depth="2"/>
+
 <tldr>
 
 纹理单元 ID 和纹理格式主要在 [](a03-shaderProp.md#customTex){summary=""} 中使用，也可用于设置缓冲区格式。
@@ -97,8 +99,6 @@
 | `23` | colortex15   |                           |
 
 {width="700"}
-
-## 纹理和像素格式
 
 ## 纹理格式 {id="texFormat"}
 
