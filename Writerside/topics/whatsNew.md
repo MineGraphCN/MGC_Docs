@@ -18,7 +18,7 @@
     - 你可以随时在代码块右上角禁用。
     - 目前有会把 `Soft-wrap` 本身也复制下来的问题，等 Writerside 修复吧。
   - 移除了某些画的饼。
-  - 光影教程添加两节附录。
+  - 光影教程添加两节附录，并开启了新的章节。
 - BetterRTX 已迁至 [图形站](https://minegraph.cn/be/shaderpacks/65) 。
 
 ## 图形站

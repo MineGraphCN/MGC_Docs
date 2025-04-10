@@ -207,7 +207,7 @@ blend.<程序>=<off|src dst srcA dstA>
 
 {width=700}
 
-也可以逐个缓冲区设置混合模式，如：
+也可以逐个缓冲区设置混合模式：
 ```properties
 blend.<程序>.<纹理ID>=<off|src dst srcA dstA>
 ```
@@ -215,13 +215,15 @@ blend.<程序>.<纹理ID>=<off|src dst srcA dstA>
 > `off` 的效果与 `ONE ZERO ONE ZERO` 相同，它们都是将源数据完全覆盖目标数据。
 
 - 实体（`entities`）、发光实体（`entities_glowing`）、第一人称手部（`hand`）和有厚度线框（`gbuffers_line`）默认启用了前文中“与 `mix()` 相似”的混合方法（`SRC_ALPHA ONE_MINUS_SRC_ALPHA SRC_ALPHA ONE_MINUS_SRC_ALPHA`）；
-- 挖掘裂纹（`damagedblock`）而使用了相互相乘再相加的混合方法，并保留了挖掘裂纹 Alpha 值（`DST_COLOR SRC_COLOR ONE ZERO`）；
+- 挖掘裂纹（`damagedblock`）而使用了相互相乘再相加的混合方法，并保留了挖掘裂纹 Alpha 值（`DST_COLOR SRC_COLOR ONE ZERO` ^**1**^ ）；
 - 第一轮的其他几何缓冲默认禁用混合；
 - 你可以在 [](a04-textureAndPx.md#texID){summary=""} 查询纹理 ID。
 
+**[1]** 即 $C_{\text{结果}} = C_{\text{源}} C_{\text{目标}} + C_{\text{目标}} C_{\text{源}} = 2 \times C_{\text{源}} C_{\text{目标}}$，最终表现为当裂纹纹理颜色值小于 0.5 时变暗，大于 0.5 时变亮。
+
 ## 渲染阶段
 
-渲染阶段（Render Stage）是 OptiFine 提供的众多标准宏之一。由于部分几何缓冲中包含了不止一种几何 ^**1**^，OptiFine 允许我们使用这种宏和提供的统一变量 `renderStage` 进行阶段判定，比如只保留天空中的星星：
+渲染阶段（Render Stage）是 OptiFine 提供的众多标准宏之一。由于部分几何缓冲中包含了不止一种几何 ^**1**^，OptiFine 允许我们使用这种宏和提供的统一变量 `renderStage` 进行阶段判定，比如在 `skybasic` 中只保留天空中的星星：
 ```glsl
 [...]
 uniform int renderStage;
@@ -230,7 +232,7 @@ if(renderStage != MC_RENDER_STAGE_STARS) discard;
 ```
 其中，`MC_RENDER_STAGE_STARS` 由 OptiFine 在编译时自动在程序顶部定义，我们无需手动声明。
 
-**[1]** 比如 `skybasic` 中不仅负责渲染天空，还负责渲染星星。
+**[1]** 比如 `skybasic` 中不仅负责渲染天空，还负责渲染星星；`basic` 中不仅有调试线框，还有拴绳。
 
 你可以在 [附录 1](a01-uniformsAndAts.md#renderStage){summary=""} 查询所有可用的渲染阶段宏。
 
@@ -427,7 +429,7 @@ fragColor = fs_in.color;
 
 ### 自发光类
 
-自发光类直接将它们的内容根据不透明度与背景本身相加即可，不必写入几何 ID 和其他信息。
+自发光类直接将它们的内容根据不透明度与背景本身相加即可（我们之前不归一化的 0 号缓冲区已经起了一些作用了），不必写入几何 ID 和其他信息。
 
 自发光类包括 `spidereyes` 和 `armor_glint`，我们可以共用天空所使用的 `color_only` 程序，但是记得添加宏定义和更改混合方式：
 ```glsl
@@ -441,7 +443,7 @@ blend.gbuffers_armor_glint=SRC_ALPHA ONE ZERO ONE
 
 `damagedblock` 实际上是覆盖在正在挖掘的表面上稍大的一个几何体，我们通常只对其进行颜色混合，并忽略其他内容。
 
-挖掘裂纹的默认混合模式比较特殊，是将裂痕的颜色与之前的几何缓冲颜色相混合，然后相加（`DST_COLOR SRC_COLOR`），只不过裂纹区域的默认混合方式是仅保留裂纹的 Alpha 值（`ONE ZERO`）。
+挖掘裂纹的默认混合模式比较特殊，是将裂痕的颜色与之前的几何缓冲颜色相乘再相加（`DST_COLOR SRC_COLOR`），只不过裂纹区域的默认混合方式是仅保留裂纹的 Alpha 值（`ONE ZERO`）。
 
 我们不需要裂纹的 Alpha，也不需要它覆写几何 ID，更不需要覆写法线等信息，它们通常很贴合方块表面，因此可以让它照常写入深度。因此它的片段着色器极其简单：
 ```glsl
@@ -526,10 +528,10 @@ gl_Position = vec4((ndc1 + vec3(lineOffset, 0.0)) * linePosStart.w, linePosStart
 
 **[1]** 顶点着色器无法访问其他顶点，因此线框的法线方向指向它边框的朝向，以便获取朝向。  
 **[2]** 如果不取反其中一个轴，最终的朝向与我们的视野无法对齐，会导致奇怪的观感：
-![soildGbuffer_negativeOffset.webp](soildGbuffer_negativeOffset.webp){style="block" width="700"}
+![翻转偏移坐标](soildGbuffer_negativeOffset.webp){style="block" width="700"}
 
 **[3]** 可以这样做的理由是，线框的第二个顶点与第一个顶点在同一个位置，每个线框上有两个朝向相反的三角形，因此每边都有两个顶点。三角形 ID 为偶数的顶点反向偏移，最终就能拼凑出一个平面。此外，共边的顶点 ID 的奇偶性始终一致 ^**5**^ ，因此只需要一个法线朝向（而不是两个三角形需要两个相反的法线顶点）。在下面这张图里，我们将顶点颜色按其在三角形上的排列顺序设置为了 RGB，可以很明显看出第二个顶点都处在对应三角形的反方向，而整个平面由两个三角面组成：
-![soildGbuffer_triangleForming.webp](soildGbuffer_triangleForming.webp){style="block" width="700"}
+![三角形内部顶点序号](soildGbuffer_triangleForming.webp){style="block" width="700"}
 
 **[4]** 顶点着色器结束之后会自动进行透视除法，因此一定要记得逆转手动进行的透视除法！  
 **[5]** 实际上条带只有 4 个顶点，但是每相邻产生的三个顶点都会自动拼合一个三角形，这里使用了几何着色器来给每个拼合出来的三角形的顶点染色。你可以自行尝试将线框宽度拉大，然后观察将顶点颜色更改为 `vec3(gl_VertexID % 4)` 和 `vec3(gl_VertexID % 2)` 时变为黑色的顶点。
@@ -556,5 +558,5 @@ gl_FragDepth = max(depth, gl_FragCoord.z);
 
 希望你还没有被这么多几何缓冲搞晕。至此，我们第一轮的几何缓冲程序就全部编写完毕了。在下一节中，我们将会认识直接写入缓冲区的图像类型和多延迟处理程序绘制。
 
-![soildGbuffer_finish.webp](soildGbuffer_finish.webp){width="700" style="block"}
+![欢迎回来，固体几何！](soildGbuffer_finish.webp){width="700" style="block"}
 别忘记欣赏欣赏我们处理完毕的场景！

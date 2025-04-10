@@ -126,7 +126,7 @@ layout(rgba8) uniform image2D colorimg0;
 
 \* 原文如此，实际测试后应该以 `UI` 结尾。
 
-> 8 位通道不支持有符号整数和非归一化浮点类型。
+> 8 位通道不支持非归一化浮点类型。
 
 ### 16 位
 
@@ -150,7 +150,7 @@ layout(rgba8) uniform image2D colorimg0;
 
 {width="700"}
 
-> 32 位通道不支持归一化类型。
+> 32 位通道不支持归一化浮点类型。
 
 ### 混合
 
