@@ -3,7 +3,7 @@
 
 <snippet id="shaderpack_structure_dev">
 
-```Shell
+```text
 └─ shaderpacks
    └─ <光影名称 | 光影名称.zip>
       └─ shaders
@@ -29,7 +29,7 @@
 
 <snippet id="shaderpack_structure_simple">
 
-```Shell
+```text
 └─ shaderpacks
    └─ <光影名称 | 光影名称.zip> # 仅支持未加密的 .zip 压缩包
       └─ shaders # 重要！
@@ -41,7 +41,7 @@
 
 <snippet id="shaderpack_options">
 
-```Shell
+```text
 └─ shaderpacks
    ├─ aWOWshaderA            # 文件夹光影
    ├─ aWOWshaderA.txt        # 光影对应的配置文件
@@ -54,7 +54,7 @@
 
 <snippet id="resourcepack_structure_dev">
 
-```Shell
+```text
 └─ resourcepacks
    └─ <资源包名称 | 资源包名称.zip>
       ├─ assets
@@ -79,7 +79,7 @@
 
 <snippet id="resourcepack_structure_simple">
 
-```Shell
+```text
 └─ resourcepacks
    └─ <资源包名称 | 资源包名称.zip> # 仅支持未加密的 .zip 压缩包
       ├─ assets # 重要！
