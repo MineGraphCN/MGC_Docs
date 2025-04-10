@@ -4,7 +4,7 @@
 
 <tldr>
 
-纹理单元 ID 和纹理格式主要在 [](a03-shaderProp.md#customTex){summary=""} 中使用，也可用于设置缓冲区格式。
+纹理单元 ID 和纹理格式主要在 [](a03-shaderProp.md#customTex){summary=""} 中使用，也可用于设置缓冲区格式和混合方式。
 
 像素类型和格式用于组织二进制转储文件中的数据格式和类型，以便正确解析数据并转换到对应纹理格式中。
 </tldr>
@@ -100,18 +100,33 @@
 
 {width="700"}
 
+### 映像读写
+
+所有程序都可以用 `colorimg<0-5>` 和 `shadowcolorimg<0-1>` 来访问 `colortex<0-5>` 和 `shadowcolor<0-1>`。
+
+比如：
+```glsl
+layout(rgba8) uniform image2D colorimg0;
+```
+
+读写 `image` 格式需要 `ARB_shader_image_load_store` 扩展或 GLSL 4.20 以上。
+
 ## 纹理格式 {id="texFormat"}
 
 ### 8 位
 
-| 归一化   | 带符号的归一化     | 整数     | 无符号整数  |
-|-------|-------------|--------|--------|
-| R8    | R8_SNORM    | R8I    | R8I    |
-| RG8   | RG8_SNORM   | RG8I   | RG8I   |
-| RGB8  | RGB8_SNORM  | RGB8I  | RGB8I  |
-| RGBA8 | RGBA8_SNORM | RGBA8I | RGBA8I |
+| 归一化   | 带符号的归一化     | 整数     | 无符号整数 * |
+|-------|-------------|--------|---------|
+| R8    | R8_SNORM    | R8I    | R8I     |
+| RG8   | RG8_SNORM   | RG8I   | RG8I    |
+| RGB8  | RGB8_SNORM  | RGB8I  | RGB8I   |
+| RGBA8 | RGBA8_SNORM | RGBA8I | RGBA8I  |
 
 {width="700"}
+
+\* 原文如此，实际测试后应该以 `UI` 结尾。
+
+> 8 位通道不支持有符号整数和非归一化浮点类型。
 
 ### 16 位
 
@@ -134,6 +149,8 @@
 | RGBA32F | RGBA32I | RGBA32UI |
 
 {width="700"}
+
+> 32 位通道不支持归一化类型。
 
 ### 混合
 

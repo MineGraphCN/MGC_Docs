@@ -74,9 +74,8 @@
             </toc-element>
             <toc-element toc-title="我们需要再深入一些">
                 <toc-element topic="2-1-solidGeometries.md"/>
-<!--                <toc-element topic="2-1-1-imageLoadStore.md"/>-->
-<!--                <toc-element topic="2-2-advancedLighting.md"/>-->
-<!--                <toc-element topic="2-3-multiPasses.md"/>-->
+<!--                <toc-element topic="2-2-entities.md"/>-->
+<!--                <toc-element topic="2-3-advancedLighting.md"/>-->
 <!--                <toc-element topic="2-4-translucentGeometries.md"/>-->
 <!--                <toc-element topic="2-5-shaderOptions.md"/>-->
             </toc-element>

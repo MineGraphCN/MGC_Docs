@@ -249,7 +249,7 @@ OpenGL 扩展
 你也可以在站内找到 [LabPBR 格式的翻译版本](labpbrMaterialStandard.md){summary=""} 。
 
 渲染阶段 {id="renderStage"}
-: `<const>` 用于统一变量 `renderStage` ，其值按执行顺序给出。由于部分几何共用一个程序，因此可以使用形如 `if(renderStage == MC_RENDER_STAGE_XXX)` 进行当前渲染几何类型判断。
+: `<const>` 其值按执行顺序给出，用于统一变量 `renderStage`。由于部分几何共用一个几何缓冲程序，因此可以使用形如 `if(renderStage == MC_RENDER_STAGE_XXX)` 进行当前渲染几何类型判断。
 ```glsl
 #define MC_RENDER_STAGE_NONE <const>                    // 未定义
 #define MC_RENDER_STAGE_SKY <const>                     // 天空
@@ -260,11 +260,11 @@ OpenGL 扩展
 #define MC_RENDER_STAGE_STARS <const>                   // 星星
 #define MC_RENDER_STAGE_VOID <const>                    // 虚空
 #define MC_RENDER_STAGE_TERRAIN_SOLID <const>           // 固体地形
-#define MC_RENDER_STAGE_TERRAIN_CUTOUT_MIPPED <const>   // 多级渐进纹理裁切固体地形
-#define MC_RENDER_STAGE_TERRAIN_CUTOUT <const>          // 裁切固体地形
+#define MC_RENDER_STAGE_TERRAIN_CUTOUT_MIPPED <const>   // 带有 MipMap 的裁切地形
+#define MC_RENDER_STAGE_TERRAIN_CUTOUT <const>          // 裁切地形
 #define MC_RENDER_STAGE_ENTITIES <const>                // 实体
 #define MC_RENDER_STAGE_BLOCK_ENTITIES <const>          // 方块实体
-#define MC_RENDER_STAGE_DESTROY <const>                 // 挖掘覆盖
+#define MC_RENDER_STAGE_DESTROY <const>                 // 挖掘裂纹覆盖
 #define MC_RENDER_STAGE_OUTLINE <const>                 // 方块选择框
 #define MC_RENDER_STAGE_DEBUG <const>                   // 调试渲染
 #define MC_RENDER_STAGE_HAND_SOLID <const>              // 固体手持物品

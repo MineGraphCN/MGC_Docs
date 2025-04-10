@@ -382,7 +382,7 @@ GLSL 支持函数重载，即定义多个同名但不同参的函数，在调用
 ```glsl
 float f(float x, int y);
 float f(int x, int y);
-float f(int y, float x);
+float f(int x, float y);
 ```
 
 ### 类型
