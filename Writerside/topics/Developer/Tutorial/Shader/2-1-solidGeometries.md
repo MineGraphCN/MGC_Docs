@@ -388,7 +388,11 @@ geometryID = 4;
 
 信标光柱的专用着色器我们保存在 `gbuffers_beaconbeam.glsl` 中。
 
-## 天空
+## 仅颜色类
+
+所谓的仅颜色类就是只输出到颜色缓冲区，不需要写入其他信息的类。
+
+### 天空
 
 天空包括 `skybasic` 和 `skytextured` ，唯一的区别是前者没有纹理，因此我们可以将它们整合进同一个程序中，然后通过宏来判断需不需要纹理：
 ```glsl
@@ -423,7 +427,7 @@ fragColor = fs_in.color;
 #define TEXTURED_SHADER
 ```
 
-天空专用的几何缓冲程序我们保存在 `gbuffers_color_only.glsl` 中（自发光类也会用到它）。
+天空所用的几何缓冲程序我们保存在 `gbuffers_color_only.glsl` 中。
 
 ### 自发光类
 
