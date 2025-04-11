@@ -100,7 +100,7 @@ void main() {
 
 ## 纹理格式
 
-回顾一下之前的教程，当我们向缓冲区写入内容之后，无论这个值多大，最终都会归一化到 $[0,1]$，因此我们甚至在保存法线时都将它们重新映射到了 $[0,1]$ 。这是因为用于输出的缓冲区默认格式是 `RGBA8`，即每个像素四个通道，每个通道 8 位浮点。
+回顾一下之前的教程，当我们向缓冲区写入内容之后，无论这个值多大，最终都会归一化到 $[0,1]$，因此我们甚至在保存法线时都将它们重新映射到了 $[0,1]$ 。这是因为用于输出的缓冲区默认格式是 `RGBA8`，即每个像素四个通道，每个通道存储 8 位的归一化浮点。
 
 在本教程中，我们会使用一个专门的缓冲区来输出每类几何独有的整型 ID，因此我们不希望缓冲区进行归一化，也不需要浮点类型。
 
@@ -123,6 +123,8 @@ const int colortex3Format = R8UI;         // 几何类型 ID，仅红色通道�
 
 我们还将之后会用来存储几何 ID 的 3 号缓冲区设置为了几乎最小的单通道八位无符号整型，可以为我们提供 $2^8=256$ 个 ID。
 
+> 深度缓冲区的格式强制为 `R32F` ，以保证存储的深度数据为最大精度。
+
 除此之外，如果我们要传入自定义纹理，也可以在光影配置文件中进行格式设置，不过那些都是后话了。
 
 > 你可以在 [附录 4](a04-textureAndPx.md#texFormat "纹理格式") 查阅 OptiFine 支持的纹理格式。
@@ -131,7 +133,7 @@ const int colortex3Format = R8UI;         // 几何类型 ID，仅红色通道�
 >
 {style="note"}
 
-当我们将一个纹理设置为整型数据时，可以在声明对应纹理时使用 `isampler2D` 来让 `texture()` 函数返回整型值：
+当我们将纹理单元设置为整型数据保存时，可以在声明对应纹理时使用 `isampler2D` 来让 `texture()` 函数返回整型值：
 ```glsl
 uniform isampler2D colortex3;
 [... main ...]
@@ -140,7 +142,9 @@ int geoID = texture(colortex3, uv).r;
 
 > 除了 <code><i>i</i>sampler</code>，GLSL 还支持用 <code><i>u</i>sampler</code> 声明无符号整数纹理采样器。在 GL 文档中，这种可选前缀的纹理类型被统一冠以 _`g`_ 前缀。
 
-我们可以在任意一个着色器中设置纹理格式，但是最好还是保存在一个统一的地方，比如 `Settings.glsl` 的末尾，此外，我们也要在每个程序中对 `colortex3` 输出几何 ID，于是我们就要更改作为蓝本的 `terrain.glsl` 了：
+我们可以在任意一个着色器中设置纹理格式，但是最好还是保存在一个统一的地方，比如 `Settings.glsl` 的末尾。
+
+我们要在每个程序中对 `colortex3` 输出几何 ID，并且不必再压缩法线数据，于是我们就要更改作为蓝本的 `terrain.glsl` 了：
 
 ```glsl
 [...]
@@ -150,12 +154,13 @@ layout(location = 1) out vec3 normals;
 layout(location = 2) out vec2 light;
 layout(location = 3) out int geometryID;
 [... main ...]
+normals = fs_in.normal;
 geometryID = 1;
 [...]
 normals = fs_in.normal; // 可以正确保存 [-1,1] 区间上的内容，不再需要手动处理了
 ```
 
-除了前三个缓冲区，其他缓冲区默认的清空均为 `vec4(0.0)` ，由于天空是一个半圆形穹顶，而且覆盖范围大、靠近背景（“天空”和“背景”是两个概念！每一帧清空为了特定颜色之后的区域即为“背景”。），因此我们可以将除了天空之外的区域都设置为大于 0 的值，之后每次修改蓝本我们都应该更改对应的 `geometryID`。
+除了前三个缓冲区，其他缓冲区默认的清空均为 `vec4(0.0)` ，由于天空是一个半圆形穹顶，而且覆盖范围大、靠近背景（“天空”和“背景”是两个概念！每一帧清空为了特定颜色之后的区域即为“背景”。），它最好不要写入 ID 以免不必要的麻烦。因此我们可以将除了天空之外的区域都设置为大于 0 的值，之后每次修改蓝本我们都应该更改对应的 `geometryID`。
 
 ## 混合 {id="blend"}
 
@@ -299,8 +304,7 @@ blend.gbuffers_entities.colortex0=SRC_ALPHA ONE_MINUS_SRC_ALPHA ONE ZERO
 [... main ...]
 fragColor = texture(gtexture, fs_in.uv) * fs_in.color;
 if(fragColor.a <= alphaTestRef) discard;
-normals = fs_in.normal;
-light = fs_in.vanillaLightStrength;
+[...]
 if(fs_in.color.a < 0.9) {
     geometryID = 2;
 } else {
@@ -543,7 +547,22 @@ gl_FragDepth = max(depth, gl_FragCoord.z);
 1. 将法线通道和光照强度存入同一个缓冲区，法线的第三分量可以使用 `sqrt(1.0 - dot(normal.xy, normal.xy))` 进行重建，设置纹理格式时应该以值域范围大的内容为准。
 2. 消化消化线框几何的相关内容，你也可以尝试自己修改 `VIEW_SHRINK` 和 `LineWidth` 值，以及尝试更改线框颜色。
 3. 如果你仔细的话，可能会发现第二轮几何缓冲的雨雪和破坏粒子以及手持的半透明方块以一种非常鬼畜的形态回来了，一下雨就伸手不见五指。这是因为第二轮几何缓冲的大多数程序都会回退到 `textured` 上，而它本身又会回退到 `basic`，因此记得像我们之前那样新建一个 `gbuffers_textured.fsh` 然后丢弃所有片段！
-  - 此外，`water` 会回退到 `terrain` 上，但是我们之前已经丢弃过了，而 `hand_water` 则会回退到 `hand` 上，因此也需要额外丢弃。
+   - 此外，`water` 会回退到 `terrain` 上，但是我们之前已经丢弃过了，而 `hand_water` 则会回退到 `hand` 上，因此也需要额外丢弃。
+4. 尝试将每个 ID 所代表的内容设置为一个常量，保存在 `Settings.glsl` 中，也相当于做一个助记，比如：
+    ```glsl
+    [... Settings.glsl ...]
+    const struct GID {
+        int background;
+        int commons;
+        int invisible_entities;
+        int glowing_entities;
+        int noLighting;
+    } geoID_enum = GID(0,1,2,3,4); // GLSL 的快速初始化
+    [... gbuffers_aoLess.glsl ...]
+    geometryID = geoID_enum.commons;
+    [... gbuffers_line.glsl ...]
+    geometryID = geoID_enum.noLighting;
+    ```
 
 ---
 
