@@ -427,13 +427,11 @@ fragColor = fs_in.color;
 #define TEXTURED_SHADER
 ```
 
-天空所用的几何缓冲程序我们保存在 `gbuffers_color_only.glsl` 中。
-
 ### 自发光类
 
 自发光类直接将它们的内容根据不透明度与背景本身相加即可（我们之前不归一化的 0 号缓冲区已经起了一些作用了），不必写入几何 ID 和其他信息。
 
-自发光类包括 `spidereyes` 和 `armor_glint`，我们可以共用天空所使用的 `color_only` 程序，但是记得添加宏定义和更改混合方式：
+自发光类包括 `spidereyes` 和 `armor_glint`，我们可以共用天空所使用的程序，但是记得添加宏定义和更改混合方式：
 ```glsl
 #define TEXTURED_SHADER
 ```
@@ -447,10 +445,12 @@ blend.gbuffers_armor_glint=SRC_ALPHA ONE ZERO ONE
 
 挖掘裂纹的默认混合模式比较特殊，是将裂痕的颜色与之前的几何缓冲颜色相乘再相加（`DST_COLOR SRC_COLOR`），只不过裂纹区域的默认混合方式是仅保留裂纹的 Alpha 值（`ONE ZERO`）。
 
-我们不需要裂纹的 Alpha，也不需要它覆写几何 ID，更不需要覆写法线等信息，它们通常很贴合方块表面，因此可以让它照常写入深度。因此我们也可以像自发光类那样定义 `TEXTURED` 并调用 `color_only` 程序，只是要记得把混合模式改为
+我们不需要裂纹的 Alpha，也不需要它覆写几何 ID，更不需要覆写法线等信息，它们通常很贴合方块表面，因此可以让它照常写入深度。因此我们也可以像自发光类那样定义 `TEXTURED` 并调用同样的程序，只是要记得把混合模式改为
 ```properties
 blend.gbuffers_damagedblock=DST_COLOR SRC_COLOR ZERO ONE
 ```
+
+仅颜色类专用的几何缓冲程序我们保存在 `gbuffers_color_only.glsl` 中。
 
 ## 线框
 
