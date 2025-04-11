@@ -1,4 +1,4 @@
-# 术语表
+# 术语库
 
 <primary-label ref="manual"/>
 
@@ -8,65 +8,26 @@
 
 如果你有更多想要提供的术语，或者发现了术语中的疏漏，可以在 [GitHub](https://github.com/MineGraphCN/MGC_Docs/issues) 上为我们提交 Issue 和 Pull Request。
 
-<show-structure depth="3"/>
-
-## 约定 {id="约定"}
-
-**粗体**
-: 表示**强调**或**关键词**。
-
-*斜体*
-: 表示 *引用* 或 *人／团队名* 或 **_加粗时二次强调_**。
-
-[跳转](#约定){summary="跳转链接描述"}
-: 跳转到站内其他位置，或当链接后跟有 ↗ 时，表示跳转站外链接。将鼠标悬停在其上有时会有和缩写一样的提示。
-
-^角标^
-: 表示这只在对应环境中有效。
-
-<tooltip term="缩写">缩写</tooltip>
-: 鼠标悬停或点击 <sup>触屏设备</sup> 可以查看缩写全称。
-
-`代码`
-: 表示这是程序运行时显示/日志/代码内容，或计算机行为。  
-`代码块内容` 的约定：
-- `<尖括号>` ：由尖括号括起来的内容表示在这个区域内应该填写的内容。例：`<文件名>.jpg` ，其中 `<文件名>` 部分可以使用任意**符合尖括号内定义**的内容替换，例：`图片1.jpg` 。
-    - 在替换时应当将尖括号**一同替换**。
-- `[方括号]` ：分为参数和数组两种情况。
-    - 表示函数中内容可选填入，例：`smooth([id], val, [fadeInTime, [fadeOutTime]])`。
-    - 在数组中，方括号不需要被一同替换，此时，例：`float[a][b]` 可以替换为 `float[1][3]` 。
-- `函数()` ：函数分为原型和调用两种情况。
-    - 当函数和参数含有 [变量类型](#变量类型和修饰符){summary=""} 时，表示这是函数的**原型**。例：`float floor(float num)` 。
-      - 有些函数有多个可以传入的变量类型，此时会在变量类型处使用 `<尖括号>` 。例如 `min(<int|float> numA, <int|float> numB)` 。
-    - 当函数内参数仅有变量类型时，表示我们**调用函数**时会在这个函数内填何种参数。例：`max(float, float)` 。
-
-<shortcut>按键</shortcut>
-: 表示这是键盘或者鼠标的按键
-- <shortcut>A</shortcut><shortcut>B</shortcut> 表示同时按下 A 和 B
-- <shortcut>A</shortcut>, <shortcut>B</shortcut> 表示按下 A 并松开后再按下 B
-- <shortcut>^A</shortcut> 表示按住 A
-
-公式
-: 形如 $y = ax^2 + bx + c$ 的非衬线西文内容。
+<show-structure depth="2" for="chapter"/>
 
 ## 游戏相关 {id="游戏相关"}
 
 <deflist>
 <def id="je">
-<title><tooltip term="JE">JE</tooltip></title>
-Java 版游戏，在本文档中，也可以表示只能在 Java 版渲染模组下有效。
+<title>JE</title>
+<tooltip term="JE">Java 版</tooltip>游戏，在本文档中，也可以表示只能在 Java 版渲染模组下有效。
 <tip><b>原主机版</b>使用 C++ 编写，但特性却基于 JE，也称之为 <b><tooltip term="CE">CE</tooltip></b>。</tip>
 </def>
 
 <def id="be">
-<title><tooltip term="BE">BE</tooltip></title>
-基岩版游戏，这其中也包含了<b>原 <tooltip term="PE">PE</tooltip></b>。
+<title>BE</title>
+<tooltip term="BE">基岩版</tooltip>游戏，这其中也包含了<b>原 <tooltip term="PE">PE</tooltip></b>。
 <tip>现在的主机版也属于 BE。</tip>
 </def>
 
 <def id="ne">
-<title><tooltip term="NE">NE</tooltip></title>
-由<b>网易代理</b>的中国版游戏，也称<b>网易版</b>，表示为网易版独占，例：防沉迷 <sup>NE</sup>，延迟渲染 API <sup>BE(NE)</sup>。
+<title>NE</title>
+由<b>网易代理</b>的中国版游戏，也称<b><tooltip term="NE">网易版</tooltip></b>，表示为网易版独占，例：防沉迷 <sup>NE</sup> ，延迟渲染 API <sup>BE(NE)</sup> 。
 </def>
 </deflist>
 
@@ -135,8 +96,8 @@ Java 版游戏，在本文档中，也可以表示只能在 Java 版渲染模组
 </def>
 
 <def id="glslShaderCore">
-<title><tooltip term="GLSL">GLSL</tooltip> Shader Core</title>
-    <b>光影核心</b>模组，<b>最早</b>的 Java 版光影模组。
+<title>GLSL Shader Core</title>
+    <b><a anchor="glsl" summary="">GLSL</a> 光影核心</b>模组，<b>最早</b>的 Java 版光影模组。
     <list>
     <li>
         在 OptiFine 集成后其更新频率明显下降，不再提供新功能支持。
@@ -215,8 +176,7 @@ Java 版游戏，在本文档中，也可以表示只能在 Java 版渲染模组
 </def>
 </deflist>
 
-## 计算机相关 {id="计算机相关"}
-### 数学基础 {id="数学基础"}
+## 数学基础 {id="数学基础"}
 
 <deflist>
 <def title="标量" id="标量">
@@ -374,7 +334,7 @@ $$
 </def>
 </deflist>
 
-### 计算机基础 {id="计算机基础"}
+## 计算机基础 {id="计算机基础"}
 
 <deflist>
 
@@ -455,14 +415,14 @@ $$
 </def>
 
 <def id="应用程序接口">
-<title><tooltip term="API">API</tooltip></title>
+<title>API</title>
 
-**应用程序接口**，其提供特定的方法，让第三方代码通过它们修改程序。
+**<tooltip term="API">应用程序接口</tooltip>**，其提供特定的方法，让第三方代码通过它们修改程序。
 <tip>具象化来说，这就好比给手机（游戏本体）扩展存储（想要达到的光影效果），需要 SD 卡（第三方代码），并且手机需要有 SD 卡槽（接口）才能插入。</tip>
 </def>
 </deflist>
 
-#### 编程类 {id="编程类"}
+## 编程基础 {id="编程基础"}
 
 <deflist>
 
@@ -583,8 +543,7 @@ void main() {
 
 </procedure>
 
-### 图形学（3D） {id="图形学"}
-#### 图形基础 {id="图形基础"}
+## 图形学基础 {id="图形基础"}
 
 参阅：[着色器 基本概念和轶事](shaderBasic.md){summary=""}
 
@@ -734,19 +693,19 @@ void main() {
 </def>
 </deflist>
 
-#### OpenGL 相关 {id="opengl-相关"}
+## OpenGL 相关 {id="opengl-相关"}
 
 <deflist>
 <def id="opengl">
-<title><tooltip term="OpenGL">OpenGL</tooltip></title>
+<title>OpenGL</title>
 
-**开源图形库**，简称 GL。Java 版所使用的图形库。
+**<tooltip term="OpenGL">开源图形库</tooltip>**，简称 GL。Java 版所使用的图形库。
 
 </def>
 <def title="GLSL" id="glsl">
-<title><tooltip term="GLSL">GLSL</tooltip></title>
+<title>GLSL</title>
 
-**(Open)GL 着色语言**，顾名思义，它是 OpenGL 的着色器所使用的语言，语法类似 C。
+**<tooltip term="GLSL">(Open)GL 着色语言</tooltip>**，顾名思义，它是 OpenGL 的着色器所使用的语言，语法类似 C。
 - 其它的图形库还有如 Vulkan，它的着色器语言也是 GLSL；DirectX，它的着色器语言是 **<tooltip term="HLSL">HLSL</term>**（高级着色语言）。
 
 <deflist>
@@ -788,7 +747,7 @@ void main() {
 </def>
 </deflist>
 
-#### 纹理／贴图相关
+## 纹理／贴图相关
 
 <deflist>
 
@@ -816,7 +775,7 @@ void main() {
 </def>
 </deflist>
 
-#### 渲染技术相关 {id="渲染技术相关"}
+## 渲染技术相关 {id="渲染技术相关"}
 
 参阅 [](shaderTech.md){summary=""}
 
@@ -861,7 +820,7 @@ $\int_{\Omega} \rm{d}\omega_i$ 表示在法半球所有方向上计算结果的�
 <def id="gi">
 <title>全局光照</title>
 
-**<tooltip term="GI">GI</tooltip>**。是直接光照和间接光照的集合。
+**<tooltip term="GI">GI</tooltip>**，是直接光照和间接光照的集合。
 
 <deflist>
 <def title="直接光照" id="直接光照">
@@ -898,33 +857,27 @@ $\int_{\Omega} \rm{d}\omega_i$ 表示在法半球所有方向上计算结果的�
 </def>
 </deflist>
 </def>
-<def title="SSS" id="sss">
-
-此简写包含以下两种概念
-<deflist>
 <def id="次表面散射">
-<title><tooltip term="SSS">次表面散射</tooltip></title>
+<title>次表面散射</title>
 
-模拟光线进入物体后在其内部经过多次散射后射出**照亮物体内部**的效果，允许某些材质（如纸、树叶、皮肤）的物体透过光线，从而产生更加通透真实的质感。
+**<tooltip term="SSS">SSS</tooltip>**，模拟光线进入物体后在其内部经过多次散射后射出**照亮物体内部**的效果，允许某些材质（如纸、树叶、皮肤）的物体透过光线，从而产生更加通透真实的质感。
 
 </def>
 <def title="屏幕空间阴影" id="屏幕空间阴影">
-<title><tooltip term="SSSh">屏幕空间阴影</tooltip></title>
+<title>屏幕空间阴影</title>
 
-由于阴影贴图的精度不足，容易在物体与表面接触的边缘产生锯齿和偏移。屏幕空间阴影就是用于这些地方来补足阴影的效果，因此也称为**接触阴影**（Contact Shadow）。
+同样简称 **<tooltip term="SSSh">SSS</tooltip>**（用得比较少），由于阴影贴图的精度不足，容易在物体与表面接触的边缘产生锯齿和偏移。屏幕空间阴影就是用于这些地方来补足阴影的效果，因此也称为**接触阴影**（Contact Shadow）。
 
-</def>
-</deflist>
 </def>
 <def id="ssr">
 <title>屏幕空间反射</title>
 
-**<tooltip term="SSR">SSR</tooltip>**。采样屏幕上的内容来绘制反射场景，其受限于 [屏幕空间](#屏幕空间){summary=""} 。
+**<tooltip term="SSR">SSR</tooltip>**，采样屏幕上的内容来绘制反射场景，其受限于 [屏幕空间](#屏幕空间){summary=""} 。
 </def>
 <def id="ao">
 <title>环境光遮蔽</title>
 
-**<tooltip term="AO">AO</tooltip>**。间接光照在场景间经过各种反射之后逐渐被场景所吸收和遮挡的效果。
+**<tooltip term="AO">AO</tooltip>**，间接光照在场景间经过各种反射之后逐渐被场景所吸收和遮挡的效果。
 
 </def>
 <def id="rt">

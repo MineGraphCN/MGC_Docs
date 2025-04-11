@@ -615,6 +615,6 @@ SEUS 光影作者 _Cody Darr_ 在 2018 年 2 月发布了最早的 Java 版体�
 <seealso title="更多内容">
   <category ref="related">
     <a href="shaderBasic.md" summary="着色器的基本概念和它们与 Minecraft 的历史">着色器 基本概念和轶事</a>
-    <a href="terms.md" anchor="渲染技术相关" summary="总结了一些常用渲染技术大方向的术语">术语表 - 渲染技术相关</a>
+    <a href="terms.md" anchor="渲染技术相关" summary="总结了一些常用渲染技术大方向的术语">术语库 - 渲染技术相关</a>
   </category>
 </seealso>

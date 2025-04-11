@@ -133,7 +133,7 @@
 
 <seealso title="更多内容">
   <category ref="related">
-    <a href="terms.md#渲染模组和引擎" summary="总结了大多常用的渲染模组和引擎">术语表 - 渲染模组和引擎</a>
+    <a href="terms.md#渲染模组和引擎" summary="总结了大多常用的渲染模组和引擎">术语库 - 渲染模组和引擎</a>
     <a href="shaderHistoryBE.md" summary=""/>
     <a href="shaderHistoryJE.md" summary=""/>
   </category>
