@@ -445,7 +445,7 @@ blend.gbuffers_armor_glint=SRC_ALPHA ONE ZERO ONE
 
 挖掘裂纹的默认混合模式比较特殊，是将裂痕的颜色与之前的几何缓冲颜色相乘再相加（`DST_COLOR SRC_COLOR`），只不过裂纹区域的默认混合方式是仅保留裂纹的 Alpha 值（`ONE ZERO`）。
 
-我们不需要裂纹的 Alpha，也不需要它覆写几何 ID，更不需要覆写法线等信息，它们通常很贴合方块表面，因此可以让它照常写入深度。因此我们也可以像自发光类那样定义 `TEXTURED` 并调用同样的程序，只是要记得把混合模式改为
+我们不需要裂纹的 Alpha，也不需要它覆写几何 ID，更不需要覆写法线等信息，它们通常很贴合方块表面，因此可以让它照常写入深度。因此我们也可以像自发光类那样定义 `TEXTURED_SHADER` 并调用同样的程序，只是要记得把混合模式改为
 ```properties
 blend.gbuffers_damagedblock=DST_COLOR SRC_COLOR ZERO ONE
 ```
