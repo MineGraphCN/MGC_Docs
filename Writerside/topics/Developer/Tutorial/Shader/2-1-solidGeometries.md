@@ -108,22 +108,27 @@ OptiFine 允许我们使用常量表达式设置每个缓冲区的格式：
 ```glsl
 const int colortex0Format = RGBA16F;
 ```
+`RGBA` 指定了缓冲区的通道数量，`16` 指定了每个通道的位数，`F` 则代表每个通道按不进行归一化的浮点数进行存储。
+
 由于赋值的内容没有实际意义，OptiFine 也接受注释之后的内容，因此我们可以这样设置纹理缓冲区：
 ```glsl
 /*
 const int colortex0Format = RGBA16F;      // 不进行归一化，对我们之后要进行的 HDR 渲染很重要，当然你也可以使用 32 位浮点。
 const int colortex1Format = RGB16_SNORM;  // 带符号的归一化，用于保存法线，并且不需要 Alpha 通道。
 const int colortex2Format = RG16;         // 归一化的 16 位浮点值，用于原版光照强度。
-const int colortex3Format = R8I;          // 几何类型 ID，仅红色通道的 8 位整型。
+const int colortex3Format = R8UI;         // 几何类型 ID，仅红色通道的 8 位整型。
 */
 ```
+我们将之前的法线缓冲区设置为了 `RGB16_SNORM` ，表示其保存的内容会保留符号进行归一化，因此在几何缓冲中我们不必将法线映射到 $[0,1]$ 然后在延迟处理时将其又映射回 $[-1,1]$ 了，并且我们使用了 16 位的数据存储，因此还能提高不少数据精度。
+
+我们还将之后会用来存储几何 ID 的 3 号缓冲区设置为了几乎最小的单通道八位无符号整型，可以为我们提供 $2^8=256$ 个 ID。
 
 除此之外，如果我们要传入自定义纹理，也可以在光影配置文件中进行格式设置，不过那些都是后话了。
 
-> 在我们的教程中不会刻意节省缓冲区通道，但是你可以通过习题 1 初步尝试。
-
 > 你可以在 [附录 4](a04-textureAndPx.md#texFormat "纹理格式") 查阅 OptiFine 支持的纹理格式。
-> 
+>
+> 在我们的教程中不会刻意节省缓冲区通道，但是你可以通过习题 1 初步尝试将法线数据和光照数据保存在一起。
+>
 {style="note"}
 
 当我们将一个纹理设置为整型数据时，可以在声明对应纹理时使用 `isampler2D` 来让 `texture()` 函数返回整型值：
@@ -133,7 +138,7 @@ uniform isampler2D colortex3;
 int geoID = texture(colortex3, uv).r;
 ```
 
-> 除了 <code><i>i</i>sampler</code>，GLSL 还支持用 <code><i>u</i>sampler</code> 声明无符号纹理采样器。在 GL 文档中，这种可选前缀的纹理类型被统一冠以 _`g`_ 前缀。
+> 除了 <code><i>i</i>sampler</code>，GLSL 还支持用 <code><i>u</i>sampler</code> 声明无符号整数纹理采样器。在 GL 文档中，这种可选前缀的纹理类型被统一冠以 _`g`_ 前缀。
 
 我们可以在任意一个着色器中设置纹理格式，但是最好还是保存在一个统一的地方，比如 `Settings.glsl` 的末尾，此外，我们也要在每个程序中对 `colortex3` 输出几何 ID，于是我们就要更改作为蓝本的 `terrain.glsl` 了：
 
