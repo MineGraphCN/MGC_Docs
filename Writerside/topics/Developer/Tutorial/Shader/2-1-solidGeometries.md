@@ -514,9 +514,9 @@ vec2 lineOffset = vec2(-lineScreenDirection.y, lineScreenDirection.x) * LineWidt
 > ```
 > 但是其没有使用背面剔除，所以不需要这个判定。
 
-最后，判定顶点的 ID，如果是偶数则取反偏移量以便朝另一边扩展 ^**3**^。具体操作为对顶点 ID 取 2 的模，如果是偶数则值为 0，即需要反转偏移方向，否则为 1。则我们可以将其减 0.5 再乘 2，就获得了乘数 -1 或 1。最后将偏移量加到顶点 NDC 坐标上，再逆转透视除法 ^**4**^，就得到了最终的线框。
+最后，判定顶点的 ID，如果是偶数则取反偏移量以便朝另一边扩展 ^**3**^。具体操作为对顶点 ID 取 2 的模，如果是偶数则值为 0，即需要反转偏移方向，否则为 1。则我们可以将其减 0.5 然后使用 `sign()` 函数取其正负号，就获得了乘数 -1 或 1。最后将偏移量加到顶点 NDC 坐标上，再逆转透视除法 ^**4**^，就得到了最终的线框。
 ```glsl
-lineOffset *= ((gl_VertexID % 2) - 0.5) * 2.0;
+lineOffset *= sign(float(gl_VertexID % 2) - 0.5);
 gl_Position = vec4((ndc1 + vec3(lineOffset, 0.0)) * linePosStart.w, linePosStart.w);
 ```
 

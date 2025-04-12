@@ -79,8 +79,8 @@
 - <shortcut>A</shortcut>, <shortcut>B</shortcut> 表示按下 A 并松开后再按下 B
 - <shortcut>^A</shortcut> 表示按住 A
 
-公式
-: 形如 $y = ax^2 + bx + c$ 的非衬线西文内容。
+$\text{LaTeX}$ 公式
+: 形如 $y = ax^2 + bx + c$ 的衬线内容。
 
 ### 内容块
 
