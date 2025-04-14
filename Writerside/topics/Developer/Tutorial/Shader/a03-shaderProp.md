@@ -400,6 +400,22 @@ blend.<program>=<off|src dst srcA dstA>
 blend.<program>.<buffer>=<off|src dst srcA dstA>
 ```
 
+`src`、`dst`、`srcA`、`dstA` 可以为下列之一：
+
+| 参数                    | 值                                       | 备注       |
+|-----------------------|-----------------------------------------|----------|
+| `ZERO`                | $0$                                     |          |
+| `ONE`                 | $1$                                     |          |
+| `SRC_COLOR`           | $C_{\text{源}}$                          | 各通道独立相乘  |
+| `ONE_MINUS_SRC_COLOR` | $1 - C_{\text{源}}$                      | 各通道独立相乘  |
+| `DST_COLOR`           | $C_{\text{目标}}$                         | 各通道独立相乘  |
+| `ONE_MINUS_DST_COLOR` | $1 - C_{\text{目标}}$                     | 各通道独立相乘  |
+| `SRC_ALPHA`           | $A_{\text{源}}$                          |          |
+| `ONE_MINUS_SRC_ALPHA` | $1 - A_{\text{源}}$                      |          |
+| `DST_ALPHA`           | $A_{\text{目标}}$                         |          |
+| `ONE_MINUS_DST_ALPHA` | $1 - A_{\text{目标}}$                     |          |
+| `SRC_ALPHA_SATURATE`  | $\min(A_{\text{源}}, 1 - A_{\text{目标}})$ |          |
+
 ## 延迟处理渲染缩放
 
 ```properties

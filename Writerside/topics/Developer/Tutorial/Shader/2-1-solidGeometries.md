@@ -110,16 +110,16 @@ const int colortex0Format = RGBA16F;
 ```
 `RGBA` 指定了缓冲区的通道数量，`16` 指定了每个通道的位数，`F` 则代表每个通道按不进行归一化的浮点数进行存储。
 
-由于赋值的内容没有实际意义，OptiFine 也接受注释之后的内容，因此我们可以这样设置纹理缓冲区：
+这是类似于 `DRAWBUFFERS` 的交由 OptiFine 进行处理的 GL 上下文设置，在 GLSL 中没有实际意义，并且 `RGBA16F` 之类用于赋值的“变量”也未定义，因此 OptiFine 也接受注释之后的内容。我们可以这样设置纹理缓冲区：
 ```glsl
 /*
-const int colortex0Format = RGBA16F;      // 不进行归一化，对我们之后要进行的 HDR 渲染很重要，当然你也可以使用 32 位浮点。
-const int colortex1Format = RGB16_SNORM;  // 带符号的归一化，用于保存法线，并且不需要 Alpha 通道。
-const int colortex2Format = RG16;         // 归一化的 16 位浮点值，用于原版光照强度。
-const int colortex3Format = R8UI;         // 几何类型 ID，仅红色通道的 8 位整型。
+const int colortex0Format = RGBA16F;      // 不进行归一化的 16 位四通道浮点数，对我们之后要进行的 HDR 渲染很重要。
+const int colortex1Format = RGB16_SNORM;  // 带符号归一化的 16 位三通道浮点数，用于保存法线。
+const int colortex2Format = RG16;         // 归一化的 16 位浮点数，用于原版光照强度。
+const int colortex3Format = R8UI;         // 8 位无符号整数，用于存储几何类型 ID，仅红色通道。
 */
 ```
-我们将之前的法线缓冲区设置为了 `RGB16_SNORM` ，表示其保存的内容会保留符号进行归一化，因此在几何缓冲中我们不必将法线映射到 $[0,1]$ 然后在延迟处理时将其又映射回 $[-1,1]$ 了，并且我们使用了 16 位的数据存储，因此还能提高不少数据精度。
+我们将之前的法线缓冲区设置为了 `RGB16_SNORM` ，`_SNORM` 后缀表示保存的内容会保留符号进行归一化，因此在几何缓冲中我们不必将法线映射到 $[0,1]$ 然后在延迟处理时将其又映射回 $[-1,1]$ 了，并且我们使用了 16 位的数据存储，因此还能提高不少数据精度。
 
 我们还将之后会用来存储几何 ID 的 3 号缓冲区设置为了几乎最小的单通道八位无符号整型，可以为我们提供 $2^8=256$ 个 ID。
 
@@ -196,11 +196,10 @@ $$
 ```properties
 blend.<程序>=<off|src dst srcA dstA>
 ```
-每个因子可以使用下列参数：
+可以设置为 `off` 禁用混合，或者为每个因子设置下列参数：
 
 | 参数                    | 值                                       | 备注       |
 |-----------------------|-----------------------------------------|----------|
-| `off`                 | 禁用混合                                    | 只需设置一个因子 |
 | `ZERO`                | $0$                                     |          |
 | `ONE`                 | $1$                                     |          |
 | `SRC_COLOR`           | $C_{\text{源}}$                          | 各通道独立相乘  |
@@ -242,7 +241,9 @@ if(renderStage != MC_RENDER_STAGE_STARS) discard;
 
 **[1]** 比如 `skybasic` 中不仅负责渲染天空，还负责渲染星星；`basic` 中不仅有调试线框，还有拴绳。
 
-你可以在 [附录 1](a01-uniformsAndAts.md#renderStage "OptiFine 提供的数据 - 标准宏 - 渲染阶段") 查询所有可用的渲染阶段宏。
+> 你可以在 [附录 1](a01-uniformsAndAts.md#renderStage "OptiFine 提供的数据 - 标准宏 - 渲染阶段") 查询所有可用的渲染阶段宏。
+> 
+{style="note"}
 
 ## 无遮蔽类
 
@@ -548,7 +549,7 @@ gl_FragDepth = max(depth, gl_FragCoord.z);
 2. 消化消化线框几何的相关内容，你也可以尝试自己修改 `VIEW_SHRINK` 和 `LineWidth` 值，以及尝试更改线框颜色。
 3. 如果你仔细的话，可能会发现第二轮几何缓冲的雨雪和破坏粒子以及手持的半透明方块以一种非常鬼畜的形态回来了，一下雨就伸手不见五指。这是因为第二轮几何缓冲的大多数程序都会回退到 `textured` 上，而它本身又会回退到 `basic`，因此记得像我们之前那样新建一个 `gbuffers_textured.fsh` 然后丢弃所有片段！
    - 此外，`water` 会回退到 `terrain` 上，但是我们之前已经丢弃过了，而 `hand_water` 则会回退到 `hand` 上，因此也需要额外丢弃。
-4. 尝试将每个 ID 所代表的内容设置为一个常量，保存在 `Settings.glsl` 中，也相当于做一个助记，比如：
+4. 将每个 ID 所代表的内容设置为一个常量，保存在 `Settings.glsl` 中，也相当于一个助记，比如：
     ```glsl
     [... Settings.glsl ...]
     const struct GID {
