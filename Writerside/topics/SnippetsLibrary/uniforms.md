@@ -170,11 +170,18 @@
 <tr><td>53</td><td>1.21.5 25w08a</td><td>1.21.5 25w09b</td></tr>
 <tr><td>54</td><td colspan="2">1.21.5 25w10a</td></tr>
 <tr><td>55</td><td>1.21.5-pre1</td><td>1.21.5</td></tr>
-<tr><td>%latest_pack_format%</td><td>25w15a</td><td><i>最新</i></td></tr>
+<tr><td>56</td><td colspan="2">1.21.6 25w15a</td></tr>
+<tr><td>57</td><td colspan="2">1.21.6 25w16a</td></tr>
+<tr><td>58</td><td colspan="2">1.21.6 25w17a</td></tr>
+<tr><td>59</td><td colspan="2">1.21.6 25w18a</td></tr>
+<tr><td>60</td><td colspan="2">1.21.6 25w19a</td></tr>
+<tr><td>61</td><td colspan="2">1.21.6 25w20a</td></tr>
+<tr><td>62</td><td colspan="2">1.21.6 25w21a</td></tr>
+<tr><td>%latest_pack_format%</td><td>%latest_je_snapshot%</td><td><i>最新</i></td></tr>
 </table>
 
 _23 和 27 不存在。_  
-_截止 2025 年 4 月 9 日，数据来源于 [Minecraft Wiki](https://zh.minecraft.wiki/w/资源包#资源包格式版本) 。_
+_截止 2025 年 6 月 12 日，数据来源于 [Minecraft Wiki](https://zh.minecraft.wiki/w/资源包#资源包格式版本) 。_
 
 </procedure>
 
