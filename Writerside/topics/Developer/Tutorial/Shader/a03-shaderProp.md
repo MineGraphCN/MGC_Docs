@@ -166,10 +166,10 @@ texture.<stage>.<name>=<path> <type> <internalFormat> <dimensions> <pixelFormat>
   - 
 
   {columns="3"}
-- `<internalFormat>`：纹理格式，参考 [](a04-textureAndPx.md#texFormat){summary=""}
-- `<dimensions>`：每个维度的尺寸，设置数量取决于纹理类型
-- `<pixelFormat>`：像素格式，参考 [](a04-textureAndPx.md#pxFormat){summary=""}
-- `<pixelType>`：像素类型，参考 [](a04-textureAndPx.md#pxType){summary=""}
+- `<internalFormat>`：[](a04-textureAndPx.md#texFormat){summary=""}
+- `<dimensions>`：纹理在每个方向上的尺寸，设置数量取决于纹理类型
+- `<pixelFormat>`：[](a04-textureAndPx.md#pxFormat){summary=""}
+- `<pixelType>`：[](a04-textureAndPx.md#pxType){summary=""}
 
 ```properties
 texture.composite.gaux1=textures/lut_1d.dat TEXTURE_1D RGBA32F 256 RGBA FLOAT
@@ -190,11 +190,13 @@ texture.noise=<path>
 
 ## 光影设置
 
-见 [Options screen - OptiDocs](https://optifine.readthedocs.io/shaders_dev/options.html?h=shader+option#options-screen) ，不久之后我们会编写相关内容。
+见 [Options screen - OptiDocs](https://optifine.readthedocs.io/shaders_dev/options.html) ，不久之后我们会编写相关内容。
 
 ```properties
 sliders=<设置列表>
 profile.NAME=<设置列表>
+screen=<设置列表>
+screen.Name=<设置列表>
 screen.columns=2
 screen.NAME.columns=2
 ```
@@ -210,8 +212,7 @@ variable.<float|int|bool|vec2|vec3|vec4>.<name>=<表达式>
 
 ### 常量
 
-- `pi`
-  - 3.1415926
+- `pi` = 3.1415926
 - `true`
 - `false`
 

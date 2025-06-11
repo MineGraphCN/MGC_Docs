@@ -127,6 +127,8 @@ layout(rgba8) uniform image2D colorimg0;
 \* 原文如此，实际测试后应该以 `UI` 结尾，向这种类型写入负值时会溢出到最大值。
 
 > 8 位通道不支持非归一化浮点类型。
+> 
+{style="note"}
 
 ### 16 位
 
