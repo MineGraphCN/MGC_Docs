@@ -486,7 +486,7 @@ if(uv_OutBound(uv_shadowMap) || currentDepth >= 1.0) { shadowMultiplier = 1.0; }
    #define uv_OutBound(uv) (maxComponent(uv) > 1.0 || minComponent(uv) < 0.0)
    ```
    这样变量 `uv` 的类型就被 `maxComponent()` 和 `minComponent()` 限定，而 `uv_OutBound()` 则不必重载了。
-3. 将 `vaUV2` 处理之后传入像素着色器，将光照强度独立拆分到两个通道中输出，不要使用 `lightmap` ，然后在 `final.fsh` 中仅将天空光照强度乘以环境光强度，并在最终光照强度上独立叠加方块光照强度。注意：
+3. 将 `vaUV2` 处理之后传入片段着色器，将光照强度独立拆分到两个通道中输出，不要使用 `lightmap` ，然后在 `final.fsh` 中仅将天空光照强度乘以环境光强度，并在最终光照强度上独立叠加方块光照强度。注意：
    - OptiFine 要求整型类变量必须以 `flat` 形式传出，不能进行插值，因此你可能需要将其转化到 `vec2` 以确保进行了正确插值。
    - 你需要根据光照贴图的尺寸将整型坐标转化到归一化坐标来确保不会过曝，你可以使用 `textureSize(tex, lod)` 来获取纹理尺寸，第一个参数传入要查询尺寸的采样器，第二个参数 `lod` 则是 MipMap 等级，在这里只需要设置为 `0` 。它会返回每一个维度上的纹理尺寸，因此你将它与整型坐标相除就可以获取归一化坐标。
 4. 复习第二章的内容。
