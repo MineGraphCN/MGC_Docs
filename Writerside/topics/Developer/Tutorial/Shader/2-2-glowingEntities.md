@@ -129,6 +129,10 @@ imageStore(colorimg4, ivec2(gl_FragCoord.xy), uvec4(1));
 [...]
 ```
 
+如果直接读取发光实体缓冲，看起来就像这样：
+
+![发光实体缓冲区](glowingEntities_glowingBuffer.webp)
+
 > 除此之外，图像类型还可以进行原子操作，即当不同着色器程序向同一张图像的同一个位置写入相同数据时，会严格按照程序的执行顺序进行处理，不会出现次序问题。
 >
 > 可以用于原子操作的图像格式有严格的限制，只可以是 `R32I/r32i` 或 `R32UI/r32ui` ，但是通过格式转换是可以在其他格式上使用的，例如将一个 `RGBA8I`（4x8=32位）声明为 `R32I`（1x32=32位），不过这就需要手动进行移位来处理具体内容了。
@@ -154,7 +158,42 @@ imageStore(colorimg4, ivec2(gl_FragCoord.xy), uvec4(1));
 > 
 > 资料来源：[Image Load Store - OpenGL Wiki](https://www.khronos.org/opengl/wiki/Image_Load_Store)，此处仅作扩展阅读，留有读者自行研究。
 
+## 描边与原版实现
+
+现在我们已经获得了发光实体的遮罩数据，如果单纯地想给覆盖区域外围加上一圈描边，我们只需要在延迟处理中简单地检查当前像素是否为非发光区域，然后搜索邻近的四个（或加上对角线共八个）像素即可。当搜索到任何一个邻近像素是发光区域时，就给当前像素上色，类似这样：
+
+```glsl
+[... Uniforms.glsl ...]
+uniform isampler2D colortex4;
+[... final - main ...]
+bool isGlowing = bool(texture(colortex4, uv).r);
+bool isGlowingEdge = false;
+if(!isGlowing) {
+    for(int i = -1; i < 2; i+=2) {
+        ivec2 sCoord = ivec2(gl_FragCoord.xy) + ivec2(i,0);
+        isGlowingEdge = bool(texelFetch(colortex4, sCoord, 0).r);
+        if(isGlowingEdge) break;
+    }
+    for(int i = -1; i < 2 && !isGlowingEdge; i+=2) {
+        ivec2 sCoord = ivec2(gl_FragCoord.xy) + ivec2(0,i);
+        isGlowingEdge = bool(texelFetch(colortex4, sCoord, 0).r);
+        if(isGlowingEdge) break;
+    }
+}
+if(isGlowingEdge) fragColor = vec4(1.0);
+```
+
+至此，我们就已经初步成功给发光实体描上边了，值得注意的是，上一章中，我们将发光实体暂时设定为了无光照类：
+
+![发光实体描边](glowingEntities_glowingEdge.webp)
+
+当然，这个发光描边效果仍然很粗糙，只有 1 像素，分辨率高一些观感就会变得很差，所以让我们继续拆解原版的发光描边着色器。
+
+原版的描边使用了两个后处理 Pass 进行处理，第一个 Pass `entity_outline_box_blur` 使用方框模糊处理了发光区域的数据并让 Alpha 值在模糊断层，从而形成区域过渡。第二个 Pass `entity_outline` 则用于再次混合周围的颜色并比较周围 Alpha 的总差异来确认颜色和混合比例。
+
 ## 多程序处理
+
+之前的编程中，我们的延迟处理程序都集中在管线的最末端，即 `final` 中。
 
 ## 习题
 
