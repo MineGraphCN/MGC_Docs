@@ -189,7 +189,61 @@ if(isGlowingEdge) fragColor = vec4(1.0);
 
 当然，这个发光描边效果仍然很粗糙，只有 1 像素，分辨率高一些观感就会变得很差，所以让我们继续拆解原版的发光描边着色器。
 
-原版的描边使用了两个后处理 Pass 进行处理，第一个 Pass `entity_outline_box_blur` 使用方框模糊处理了发光区域的数据并让 Alpha 值在模糊断层，从而形成区域过渡。第二个 Pass `entity_outline` 则用于再次混合周围的颜色并比较周围 Alpha 的总差异来确认颜色和混合比例。
+原版的描边使用了两个后处理 Pass 进行处理，第一个 Pass `entity_outline_box_blur` 使用方框模糊处理了发光区域的数据并让 Alpha 值在模糊边缘断层，从而形成区域过渡：
+
+```glsl
+#version 150
+
+uniform sampler2D InSampler;
+
+in vec2 texCoord;
+in vec2 sampleStep;
+
+out vec4 fragColor;
+
+void main() {
+    vec4 blurred = vec4(0.0);
+    float radius = 2.0;
+    for (float a = -radius + 0.5; a <= radius; a += 2.0) {
+        blurred += texture(InSampler, texCoord + sampleStep * a);
+    }
+    blurred += texture(InSampler, texCoord + sampleStep * radius) / 2.0;
+    fragColor = vec4((blurred / (radius + 0.5)).rgb, blurred.a);
+}
+```
+{collapsible="true" collapsed-title="entity_outline_box_blur.fsh" default-state="collapsed"}
+
+第二个 Pass `entity_outline` ^**1**^ 则用于再次混合周围的颜色并比较周围 Alpha 的总差异来确认颜色和混合比例：
+
+```glsl
+#version 150
+
+uniform sampler2D InSampler;
+
+in vec2 texCoord;
+in vec2 oneTexel;
+
+out vec4 fragColor;
+
+void main(){
+    vec4 center = texture(InSampler, texCoord);
+    vec4 left = texture(InSampler, texCoord - vec2(oneTexel.x, 0.0));
+    vec4 right = texture(InSampler, texCoord + vec2(oneTexel.x, 0.0));
+    vec4 up = texture(InSampler, texCoord - vec2(0.0, oneTexel.y));
+    vec4 down = texture(InSampler, texCoord + vec2(0.0, oneTexel.y));
+    float leftDiff  = abs(center.a - left.a);
+    float rightDiff = abs(center.a - right.a);
+    float upDiff    = abs(center.a - up.a);
+    float downDiff  = abs(center.a - down.a);
+    float total = clamp(leftDiff + rightDiff + upDiff + downDiff, 0.0, 1.0);
+    vec3 outColor = center.rgb * center.a + left.rgb * left.a + right.rgb * right.a + up.rgb * up.a + down.rgb * down.a;
+    fragColor = vec4(outColor * 0.2, total);
+    fragColor = center;
+}
+```
+{collapsible="true" collapsed-title="entity_sobel.fsh" default-state="collapsed"}
+
+**[1]** 原版允许使用 JSON 文件自定义使用的顶点着色器和片段着色器，因此会出现 Pass 名称和着色器名称对不上的情况。
 
 ## 多程序处理
 
