@@ -48,15 +48,15 @@
 
 上一节，我们将几何 ID 保存在了单通道8位无符号整数的 3 号缓冲区中，并且已经为发光实体保存了独特的 ID，但是这个 ID 实际只能用于为显露的发光实体处理额外特效。由于发光实体的描边特效仅描边外轮廓，而几何 ID 则覆盖了几何的内部，当发光实体被其他几何遮挡而强行写入时，延迟处理中的几何 ID 就会产生误判。
 
-因此，我们将会启用 4 号缓冲区，用以保存发光实体需要绘制的轮廓依据。在原版中虽然在写入原始数据时只有 `1`（发光区域） 和 `0`（非发光区域），但是后续进行模糊扩散处理要求插值过渡和独立处理描边的不透明度。为此，我们将 4 号缓冲区设置为双通道 16 位浮点来避免过渡断层，并依照上文的方法调用：
+因此，我们将会启用 4 号缓冲区，用以保存发光实体需要绘制的轮廓依据。在原版中虽然在写入原始数据时只有 `1`（发光区域） 和 `0`（非发光区域），但是后续进行模糊扩散处理要求插值过渡和独立处理描边的不透明度，不过实际上也只需要一个数据，之后你就会知道。为此，我们将 4 号缓冲区设置为单通道 16 位浮点来避免过渡断层，并依照上文的方法调用：
 
 ```glsl
 [... Settings ...]
 /*
-const int colortex4Format = RG16F;
+const int colortex4Format = R16F;
 */
 [... gbuffers_entities_glowing ...]
-layout(rg16f) uniform image2D colorimg4;
+layout(r16f) uniform image2D colorimg4;
 ```
 
 当然，你也可以将 3 号缓冲区的格式改为三通道，并将发光数据存入其中，但同时也需要处理先前的整型几何 ID，将它们转换为浮点值（习题 1）。
@@ -67,7 +67,7 @@ layout(rg16f) uniform image2D colorimg4;
 
 我们可以使用函数 `imageLoad(gimage image, ivec coord)` 来读取图像区域内任意坐标的内容，和 `texelFetch()` 类似，它使用整数坐标，唯一的区别是图像不可以指定细节等级，此外，也可以使用 `imageSize()` 函数来取到图像的尺寸，它直接返回整型值。
 
-同样的，使用 `imageStore(gimage image, ivec coord, gvec4 data)` 来写入任意位置。无论几通道，第三项 `data` 均为四维向量，由 GLSL 自动裁切。
+同样的，使用 `imageStore(gimage image, ivec coord, gvec4 data)` 来写入任意位置。无论几通道，第三项 `data` 均为四元数，由 GLSL 自动裁切。
 
 在实际写入之前，还需要注意的是，它不会进行任何深度测试和 Alpha 测试（或者说自动深度测试已经是程序结束之后了），所以如果你想要描边完美贴合实体，应当在 Alpha 测试的 `discard` 之后才调用写入函数。
 
@@ -121,7 +121,7 @@ imageStore(colorimg0, ivec2(gl_FragCoord.xy), color); // if()为假，写入；i
 [... 片段着色器部分 ...]
 #extension GL_ARB_shader_image_load_store : enable
 [...]
-layout(rg16f) uniform image2D colorimg4;
+layout(r16f) uniform image2D colorimg4;
 [... main ...]
 [...]
 if(fragColor.a <= alphaTestRef) discard; // 先进行 Alpha 测试！
@@ -213,11 +213,9 @@ void main() {
 ```
 {collapsible="true" collapsed-title="entity_outline_box_blur.fsh" default-state="collapsed"}
 
-这个着色器利用 `texture()` 的插值性在纹理的四个像素交界处进行两次采样，然后再单独在采样方向上的最外侧进行一次采样，从而快速获得半径内的平均色，最后再除以采样半径 ^**1**^ 。
+这个着色器利用 `texture()` 的插值性在纹理的四个像素交界处进行两次采样，然后再单独在采样方向上的最外侧进行一次采样，从而快速获得半径内的平均色，最后再除以采样半径 ^**1**^ 。由于原版的发光效果是纯白色，RGB 通道和 A 通道的数据事实上只有是否除以半径的区别，为了确保精度和原版一致性，我们将在描边着色器中统一进行除法。
 
-**[1]** 因为之前的采样都是两两像素的平均色，最后一次采样又手动减半，因此采样出来的颜色总和实际上只有一半，所以最后除数就不必为像素数量总和了。
-
-第二个 Pass `entity_outline` ^**1**^ 则用于再次混合周围的颜色并比较周围 Alpha 的总差异来确认颜色和混合比例：
+第二个 Pass `entity_outline` ^**2**^ 则用于再次混合周围的颜色并比较周围 Alpha 的总差异来确认颜色和混合比例：
 
 ```glsl
 #version 150
@@ -246,9 +244,10 @@ void main(){
 ```
 {collapsible="true" collapsed-title="entity_sobel.fsh" default-state="collapsed"}
 
-**[1]** 原版允许使用 JSON 文件自定义使用的顶点着色器和片段着色器，因此会出现 Pass 名称和着色器名称对不上的情况。
-
 虽然原版中使用了整个全通道的缓冲区用来处理输出，但如果我们只使用纯色，则只需要单个通道（习题 2）。我们用来处理发光轮廓的代码也将以它们为蓝本。
+
+**[1]** 因为之前的采样都是两两像素的平均色，最后一次采样又手动减半，因此采样出来的颜色总和实际上只有一半，所以最后除数就不必为像素数量总和了。  
+**[2]** 原版允许使用 JSON 文件自定义使用的顶点着色器和片段着色器，因此会出现 Pass 名称和着色器名称对不上的情况。
 
 ## 多程序处理
 
@@ -256,7 +255,7 @@ void main(){
 
 OptiFine 为我们提供了高度可自定义的延迟处理程序数量。回顾一下，我们可以用的延迟处理主要集中在两个阶段：固体几何缓冲之后的 Deferred 和余下几何缓冲之后的 Composite 。像发光描边这种类似 HUD 的特效，我们肯定是不希望被第二轮几何缓冲中的几何体给覆盖的，因此我们能选择的就只有 Composite 阶段了。
 
-原版的模糊着色器很奇怪，它只在某个方向（`sampleStep`）上处理了模糊（或许也运行了两次？）。为了更好的品质，我们会将模糊本身也分为两个 Pass，先将其进行水平模糊，再进行垂直模糊，这样处理的结果会更加柔和。因此我们的模糊就在 `composite` 和 `composite1` 中进行，而描边则接在 `final` 中场景绘制完毕之后。
+原版的模糊着色器很奇怪，它只在某个方向（`sampleStep`）上处理了模糊（或许运行了 [三次](#threeTimes?){summary=""} ？）。为了更好的品质，我们会将模糊本身也分为两个 Pass，先将其进行水平模糊，再进行垂直模糊，这样处理的结果会更加柔和。因此我们的模糊就在 `composite` 和 `composite1` 中进行，而描边则接在 `final` 中场景绘制完毕之后。
 
 没有特别的要求的话，所有延迟处理的顶点着色器都一样，因此你可以直接复制 `final.vsh` 并更名。
 
@@ -266,52 +265,60 @@ OptiFine 为我们提供了高度可自定义的延迟处理程序数量。回�
 
 ```glsl
 /* DRAWBUFFERS:4 */
-layout(location = 0) out vec2 glowingBuffer;
+layout(location = 0) out float blurredGlowingBuffer;
 ```
 
 `main` 函数的内容和原版着色器很相似，只不过我们可以把模糊半径塞入 `Settings.glsl` 中，以便间接控制发光描边宽度。水平模糊的着色器看起来就像这样：
 
 ```glsl
-vec2 blurred = vec2(0.0);
+blurredGlowingBuffer = 0.0;
+vec2 sampleDir = vec2(pixelSize.x, 0.0);
 for(float i = -GLOWING_BLUR_RADIUS + .5; i <= GLOWING_BLUR_RADIUS; i += 2.0) {
-    blurred += texture(colortex4, uv + vec2(pixelSize.x, 0.0) * i).rg;
+    blurredGlowingBuffer += texture(colortex4, uv + sampleDir * i).r;
 }
-blurred += texture(colortex4, uv + vec2(pixelSize.x, 0.0) * GLOWING_BLUR_RADIUS).r / 2.0;
-glowingBuffer = vec2(blurred.x / (GLOWING_BLUR_RADIUS + .5), blurred.y);
+blurredGlowingBuffer += texture(colortex4, uv + sampleDir * GLOWING_BLUR_RADIUS).r * .5;
 ```
 
-而垂直模糊只需要将 `vec2(pixelSize.x, 0.0)` 对调为 `vec2(0.0, pixelSize.y)` 即可。
+而垂直模糊只需要将 `sampleDir` 的 `vec2(pixelSize.x, 0.0)` 替换为 `vec2(0.0, pixelSize.y)` 即可。
 
 最后，我们回到 Final 中，将原版的方法封装成函数原样搬入，只需要注意将 `.rgb` 分量更改为 `.r` ，`.a` 分量更改为 `.g` ，然后将其他统一变量对齐即可：
 ```glsl
 vec2 getGlowingEdge() {
-    vec2 center = texture(colortex4, uv).rg;
-    vec2 left = texture(colortex4, uv - vec2(pixelSize.x, 0.0)).rg;
-    vec2 right = texture(colortex4, uv + vec2(pixelSize.x, 0.0)).rg;
-    vec2 up = texture(colortex4, uv - vec2(0.0, pixelSize.y)).rg;
-    vec2 down = texture(colortex4, uv + vec2(0.0, pixelSize.y)).rg;
-    float leftDiff  = abs(center.g - left.g);
-    float rightDiff = abs(center.g - right.g);
-    float upDiff    = abs(center.g - up.g);
-    float downDiff  = abs(center.g - down.g);
-    float total = clamp(leftDiff + rightDiff + upDiff + downDiff, 0.0, 1.0);
-    float outColor = center.r * center.g + left.r * left.g + right.r * right.g + up.r * up.g + down.r * down.g;
-    return vec2(outColor / (GLOWING_BLUR_RADIUS * 2. + 1.), total);
+    float center = texture(colortex4, uv).r;
+    float left = texture(colortex4, uv - vec2(pixelSize.x, 0.0)).r;
+    float right = texture(colortex4, uv + vec2(pixelSize.x, 0.0)).r;
+    float up = texture(colortex4, uv - vec2(0.0, pixelSize.y)).r;
+    float down = texture(colortex4, uv + vec2(0.0, pixelSize.y)).r;
+    float leftDiff  = abs(center - left);
+    float rightDiff = abs(center - right);
+    float upDiff    = abs(center - up);
+    float downDiff  = abs(center - down);
+    float total = clamp((leftDiff + rightDiff + upDiff + downDiff), 0.0, 1.0);
+    float outColor = center * center + left * left + right * right + up * up + down * down;
+    float div = GLOWING_BLUR_RADIUS + .5;
+    div *= div;
+    div *= div;
+    return vec2(outColor * .2 / div, total);
 }
 ```
 
-这里为了更好地适应大半径下描边颜色的过渡，我们将返回值中 `outColor` 的除数改写为了半径自适应。最后，将 Final 中之前的颜色与之相混合，就可以绘制出发光描边了：
+<p id="threeTimes?"/>
+
+虽然看起来会很奇怪，这里统一进行除法时除以了四次方，而只执行了两次模糊（$\text{div}^2$），但是这样才能和原版着色器的颜色相匹配，这也是上文猜测原版模糊处理执行了三次的原因（$(\text{div}^2)^2$）。最后，将 Final 中之前的颜色与之相混合，就可以绘制出发光描边了：
 
 ```glsl
 vec2 glowingEdge = getGlowingEdge();
-fragColor.rgb = mix(fragColor.rgb, glowingEdge.rrr, glowingEdge.g);
+fragColor.rgb = mix(fragColor.rgb, glowingEdge.xxx, glowingEdge.y);
 ```
 
-当然，你也可以自定义发光描边的颜色。最后让我们欣赏欣赏将模糊半径改写为 10，并将混合颜色使用三角函数和 `frameTimeCounter` 处理以呈现的动态彩虹发光描边！
+当然，你也可以自定义发光描边的颜色。最后让我们欣赏欣赏将模糊半径改写为 10，并将混合颜色使用三角函数和 [`frameTimeCounter`](a01-uniformsAndAts.md#uniforms){summary=""} 处理以呈现的动态彩虹发光描边！
 
 ![彩虹描边](glowingEntities_RAINBOW.gif){width="700"}
 
 ## 习题
 
-1. （与习题 2 二选一）将 4 号缓冲区的内容合并入 3 号缓冲区中。之后，你可以先使用 `imageLoad(colorimg3, COORD).r` 取出已经写入的几何 ID，然后手动进行深度测试来决定保留几何 ID 的源内容还是覆写新内容（当前片段深度小于深度图上已有的深度时，说明发光实体本身也在前景，因此要覆写几何 ID），最后使用 `imageStore(colorimg3, COORD, vec4(float(geometryID), vec2(1.0), 0.0))` 覆写图像内容并确保 G、B 通道为 1.0 即可。
+1. （与习题 2 二选一）将 4 号缓冲区的内容合并入 3 号缓冲区中。之后，你可以先使用 `imageLoad(colorimg3, COORD).r` 取出已经写入的几何 ID，然后手动进行深度测试来决定保留几何 ID 的源内容还是覆写新内容（当前片段深度小于深度图上已有的深度时，说明发光实体本身也在前景，因此要覆写几何 ID），最后使用 `imageStore(colorimg3, COORD, vec4(float(geometryID), 1.0, vec2(0.0)))` 覆写图像内容并确保 G 通道为 1.0 即可。随后的模糊 Pass 只需要将 R 通道中的内容原样输出。
 2. （与习题 1 二选一）将 4 号缓冲区改为四通道，并在几何缓冲存入数据时写入纹理颜色，这样在后处理中就会产生根据实体本身的区别产生不同的描边光效。
+3. 尝试编写一个本节末尾处的彩虹描边效果。
+   - 如果你没有完成习题 2，可以直接定义一个三维向量，每个通道都利用三角函数将 `glowingEdge.x` 加上 `frameTimeCounter` 作为参数来周期性地改变颜色；然后配置文件中按统一变量的方法定义常量 $\pi$，将其添加入 `Uniforms.glsl` ，加入三角函数中用以给每个颜色分量不同的相位偏移（$\frac{\pi}{3}$、$\frac{2\pi}{3}$）。为了防止颜色溢出到负值，你可以将结果进行平方；如果你想要更加平缓的边缘，可以给颜色额外乘上 `glowingEdge.x` 或将其乘入混合参考。  
+   - 如果你完成了习题 2，可以直接使用 `glowingEdge.w` 除以四次方的 `GLOWING_BLUR_RADIUS + .5` 来当作三角函数的参数，然后按上述方法来绘制彩虹。
