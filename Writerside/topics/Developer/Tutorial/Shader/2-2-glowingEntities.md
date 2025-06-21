@@ -131,7 +131,7 @@ imageStore(colorimg4, ivec2(gl_FragCoord.xy), vec4(1.0));
 
 如果直接读取发光实体缓冲，看起来就像这样：
 
-![发光实体缓冲区](glowingEntities_glowingBuffer.webp)
+![发光实体缓冲区](glowingEntities_glowingBuffer.webp){width="700"}
 
 > 除此之外，图像类型还可以进行原子操作，即当不同着色器程序向同一张图像的同一个位置写入相同数据时，会严格按照程序的执行顺序进行处理，不会出现次序问题。
 >
@@ -185,7 +185,7 @@ if(isGlowingEdge) fragColor = vec4(1.0);
 
 至此，我们就已经初步成功给发光实体描上边了，值得注意的是，上一章中，我们将发光实体暂时设定为了无光照类：
 
-![发光实体描边](glowingEntities_glowingEdge.webp)
+![发光实体描边](glowingEntities_glowingEdge.webp){width="700"}
 
 当然，这个发光描边效果仍然很粗糙，只有 1 像素，分辨率高一些观感就会变得很差，所以让我们继续拆解原版的发光描边着色器。
 
@@ -309,7 +309,7 @@ fragColor.rgb = mix(fragColor.rgb, glowingEdge.rrr, glowingEdge.g);
 
 当然，你也可以自定义发光描边的颜色。最后让我们欣赏欣赏将模糊半径改写为 10，并将混合颜色使用三角函数和 `frameTimeCounter` 处理以呈现的动态彩虹发光描边！
 
-![彩虹描边](glowingEntities_RAINBOW.gif)
+![彩虹描边](glowingEntities_RAINBOW.gif){width="700"}
 
 ## 习题
 
