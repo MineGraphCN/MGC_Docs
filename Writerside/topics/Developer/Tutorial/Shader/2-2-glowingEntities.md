@@ -48,18 +48,18 @@
 
 上一节，我们将几何 ID 保存在了单通道8位无符号整数的 3 号缓冲区中，并且已经为发光实体保存了独特的 ID，但是这个 ID 实际只能用于为显露的发光实体处理额外特效。由于发光实体的描边特效仅描边外轮廓，而几何 ID 则覆盖了几何的内部，当发光实体被其他几何遮挡而强行写入时，延迟处理中的几何 ID 就会产生误判。
 
-因此，我们将会启用 4 号缓冲区，用以保存发光实体需要绘制的轮廓依据，这种依据在原版中只有 `1`（发光区域） 和 `0`（非发光区域），因此我们依然将它设置为最小的单通道 8 位无符号整数，并依照上文的方法调用：
+因此，我们将会启用 4 号缓冲区，用以保存发光实体需要绘制的轮廓依据。在原版中虽然在写入原始数据时只有 `1`（发光区域） 和 `0`（非发光区域），但是后续进行模糊扩散处理要求插值过渡和独立处理描边的不透明度。为此，我们将 4 号缓冲区设置为双通道 16 位浮点来避免过渡断层，并依照上文的方法调用：
 
 ```glsl
 [... Settings ...]
 /*
-const int colortex4Format = R8UI;
+const int colortex4Format = RG16F;
 */
 [... gbuffers_entities_glowing ...]
-layout(r8ui) uniform uimage2D colorimg4;
+layout(rg16f) uniform image2D colorimg4;
 ```
 
-当然，你也可以将 3 号缓冲区的格式改为双通道，并将发光数据存入其中（习题 1）。
+当然，你也可以将 3 号缓冲区的格式改为三通道，并将发光数据存入其中，但同时也需要处理先前的整型几何 ID，将它们转换为浮点值（习题 1）。
 
 > 由于只能将 0 ~ 5 号缓冲区以图像格式读取，而几何缓冲又无法按常规方法读取 0 ~ 3 号缓冲区，可以在任何阶段以任何方式读写的颜色缓冲区实际上只有 4 号和 5 号，计算着色器还会更加放大这个问题。
 > 
@@ -69,11 +69,11 @@ layout(r8ui) uniform uimage2D colorimg4;
 
 同样的，使用 `imageStore(gimage image, ivec coord, gvec4 data)` 来写入任意位置。无论几通道，第三项 `data` 均为四维向量，由 GLSL 自动裁切。
 
-在实际写入之前，还需要注意的是，它不会进行任何深度测试和 Alpha 测试，所以如果你想要描边完美贴合实体，应当在 Alpha 测试的 `discard` 之后才调用写入函数。
+在实际写入之前，还需要注意的是，它不会进行任何深度测试和 Alpha 测试（或者说自动深度测试已经是程序结束之后了），所以如果你想要描边完美贴合实体，应当在 Alpha 测试的 `discard` 之后才调用写入函数。
 
 `discard` 指令在图像写入与片段着色器的普通输出之间有些许差别。如果触发了 `discard` 指令，像素着色器的普通输出会停止并丢弃当前像素的任何东西；而图像写入则只会在当前位置停下，而不影响先前写入的内容。
 
-<compare first-title="图像写入" second-title="普通输出">
+<compare first-title="向图像写入" second-title="像素着色器输出">
 
 ```glsl
 vec4 color = vec4(1.0);
@@ -106,7 +106,7 @@ if(!cond) {
 }
 ```
 
-要想用图像写入达到普通输出功能，可以延后图像写入（虽然在我们这个例子中看起来有点神经……）：
+要想用图像写入达到普通输出功能，可以延后图像写入到条件判定之后（虽然在我们这个例子中看起来有点神经……）：
 
 ```glsl
 if(cond) discard;
@@ -121,11 +121,11 @@ imageStore(colorimg0, ivec2(gl_FragCoord.xy), color); // if()为假，写入；i
 [... 片段着色器部分 ...]
 #extension GL_ARB_shader_image_load_store : enable
 [...]
-layout(r8ui) uniform uimage2D colorimg4;
+layout(rg16f) uniform image2D colorimg4;
 [... main ...]
 [...]
 if(fragColor.a <= alphaTestRef) discard; // 先进行 Alpha 测试！
-imageStore(colorimg4, ivec2(gl_FragCoord.xy), uvec4(1));
+imageStore(colorimg4, ivec2(gl_FragCoord.xy), vec4(1.0));
 [...]
 ```
 
@@ -150,13 +150,13 @@ imageStore(colorimg4, ivec2(gl_FragCoord.xy), uvec4(1));
 > `gint imageAtomicAnd(gimage image, IMAGE_COORDS, gint data)`  
 > `gint imageAtomicOr(gimage image, IMAGE_COORDS, gint data)`  
 > `gint imageAtomicXor(gimage image, IMAGE_COORDS, gint data)`
-> - 原子大小值，可以取最大值和最小值：
-> `gint imageAtomicMin(gimage image, IMAGE_COORDS, gint data)`
+> - 原子大小值，可以取最大值和最小值：  
+> `gint imageAtomicMin(gimage image, IMAGE_COORDS, gint data)`  
 > `gint imageAtomicMax(gimage image, IMAGE_COORDS, gint data)`
 >
 > 你也可以使用 `memoryBarrier()` 来手动设置内存屏障。
 > 
-> 资料来源：[Image Load Store - OpenGL Wiki](https://www.khronos.org/opengl/wiki/Image_Load_Store)，此处仅作扩展阅读，留有读者自行研究。
+> 资料来源：[Image Load Store - OpenGL Wiki](https://www.khronos.org/opengl/wiki/Image_Load_Store)，此处仅作扩展阅读，留由读者自行研究。
 
 ## 描边与原版实现
 
@@ -189,7 +189,7 @@ if(isGlowingEdge) fragColor = vec4(1.0);
 
 当然，这个发光描边效果仍然很粗糙，只有 1 像素，分辨率高一些观感就会变得很差，所以让我们继续拆解原版的发光描边着色器。
 
-原版的描边使用了两个后处理 Pass 进行处理，第一个 Pass `entity_outline_box_blur` 使用方框模糊处理了发光区域的数据并让 Alpha 值在模糊边缘断层，从而形成区域过渡：
+原版的描边使用了两个后处理 Pass 进行处理，第一个 Pass `entity_outline_box_blur` 使用方框模糊处理了发光区域的数据并让 Alpha 值在模糊边缘断层，从而形成颜色过渡：
 
 ```glsl
 #version 150
@@ -212,6 +212,10 @@ void main() {
 }
 ```
 {collapsible="true" collapsed-title="entity_outline_box_blur.fsh" default-state="collapsed"}
+
+这个着色器利用 `texture()` 的插值性在纹理的四个像素交界处进行两次采样，然后再单独在采样方向上的最外侧进行一次采样，从而快速获得半径内的平均色，最后再除以采样半径 ^**1**^ 。
+
+**[1]** 因为之前的采样都是两两像素的平均色，最后一次采样又手动减半，因此采样出来的颜色总和实际上只有一半，所以最后除数就不必为像素数量总和了。
 
 第二个 Pass `entity_outline` ^**1**^ 则用于再次混合周围的颜色并比较周围 Alpha 的总差异来确认颜色和混合比例：
 
@@ -238,17 +242,76 @@ void main(){
     float total = clamp(leftDiff + rightDiff + upDiff + downDiff, 0.0, 1.0);
     vec3 outColor = center.rgb * center.a + left.rgb * left.a + right.rgb * right.a + up.rgb * up.a + down.rgb * down.a;
     fragColor = vec4(outColor * 0.2, total);
-    fragColor = center;
 }
 ```
 {collapsible="true" collapsed-title="entity_sobel.fsh" default-state="collapsed"}
 
 **[1]** 原版允许使用 JSON 文件自定义使用的顶点着色器和片段着色器，因此会出现 Pass 名称和着色器名称对不上的情况。
 
+虽然原版中使用了整个全通道的缓冲区用来处理输出，但如果我们只使用纯色，则只需要单个通道（习题 2）。我们用来处理发光轮廓的代码也将以它们为蓝本。
+
 ## 多程序处理
 
-之前的编程中，我们的延迟处理程序都集中在管线的最末端，即 `final` 中。
+之前的编程中，我们的延迟处理程序都集中在管线的最末端，即 `final` 中。而描边着色器要求将场景完全模糊之后再来检查，也就是说，如果我们想在同一个着色器中完成这些事情，需要将四周邻近的像素都进行模糊处理然后再来比较。然而普通的片段着色器中，这些数据是无法共享的，也就是说周围的像素在它们各自的片段着色器中也会这样干，最终就会造成四倍的模糊开销，这是极其不划算的。自然而然的，我们就会做出像原版那样的事情：先在一个 Pass 中进行图像模糊，再在下一个 Pass 中处理描边。
+
+OptiFine 为我们提供了高度可自定义的延迟处理程序数量。回顾一下，我们可以用的延迟处理主要集中在两个阶段：固体几何缓冲之后的 Deferred 和余下几何缓冲之后的 Composite 。像发光描边这种类似 HUD 的特效，我们肯定是不希望被第二轮几何缓冲中的几何体给覆盖的，因此我们能选择的就只有 Composite 阶段了。
+
+原版的模糊着色器很奇怪，它只在某个方向（`sampleStep`）上处理了模糊（或许也运行了两次？）。为了更好的品质，我们会将模糊本身也分为两个 Pass，先将其进行水平模糊，再进行垂直模糊，这样处理的结果会更加柔和。因此我们的模糊就在 `composite` 和 `composite1` 中进行，而描边则接在 `final` 中场景绘制完毕之后。
+
+没有特别的要求的话，所有延迟处理的顶点着色器都一样，因此你可以直接复制 `final.vsh` 并更名。
+
+参考原版着色器，它使用了方框模糊（Box Blur）将周围的数据进行平均，我们也将仿照它的方法和技巧，进行 5x5 的模糊处理，并将半径设计为可调整。
+
+其他的常规声明与 Final 一样，在这个着色器中，我们只需要向发光数据中写入内容，因此渲染目标只有 4 号缓冲区：
+
+```glsl
+/* DRAWBUFFERS:4 */
+layout(location = 0) out vec2 glowingBuffer;
+```
+
+`main` 函数的内容和原版着色器很相似，只不过我们可以把模糊半径塞入 `Settings.glsl` 中，以便间接控制发光描边宽度。水平模糊的着色器看起来就像这样：
+
+```glsl
+vec2 blurred = vec2(0.0);
+for(float i = -GLOWING_BLUR_RADIUS + .5; i <= GLOWING_BLUR_RADIUS; i += 2.0) {
+    blurred += texture(colortex4, uv + vec2(pixelSize.x, 0.0) * i).rg;
+}
+blurred += texture(colortex4, uv + vec2(pixelSize.x, 0.0) * GLOWING_BLUR_RADIUS).r / 2.0;
+glowingBuffer = vec2(blurred.x / (GLOWING_BLUR_RADIUS + .5), blurred.y);
+```
+
+而垂直模糊只需要将 `vec2(pixelSize.x, 0.0)` 对调为 `vec2(0.0, pixelSize.y)` 即可。
+
+最后，我们回到 Final 中，将原版的方法封装成函数原样搬入，只需要注意将 `.rgb` 分量更改为 `.r` ，`.a` 分量更改为 `.g` ，然后将其他统一变量对齐即可：
+```glsl
+vec2 getGlowingEdge() {
+    vec2 center = texture(colortex4, uv).rg;
+    vec2 left = texture(colortex4, uv - vec2(pixelSize.x, 0.0)).rg;
+    vec2 right = texture(colortex4, uv + vec2(pixelSize.x, 0.0)).rg;
+    vec2 up = texture(colortex4, uv - vec2(0.0, pixelSize.y)).rg;
+    vec2 down = texture(colortex4, uv + vec2(0.0, pixelSize.y)).rg;
+    float leftDiff  = abs(center.g - left.g);
+    float rightDiff = abs(center.g - right.g);
+    float upDiff    = abs(center.g - up.g);
+    float downDiff  = abs(center.g - down.g);
+    float total = clamp(leftDiff + rightDiff + upDiff + downDiff, 0.0, 1.0);
+    float outColor = center.r * center.g + left.r * left.g + right.r * right.g + up.r * up.g + down.r * down.g;
+    return vec2(outColor / (GLOWING_BLUR_RADIUS * 2. + 1.), total);
+}
+```
+
+这里为了更好地适应大半径下描边颜色的过渡，我们将返回值中 `outColor` 的除数改写为了半径自适应。最后，将 Final 中之前的颜色与之相混合，就可以绘制出发光描边了：
+
+```glsl
+vec2 glowingEdge = getGlowingEdge();
+fragColor.rgb = mix(fragColor.rgb, glowingEdge.rrr, glowingEdge.g);
+```
+
+当然，你也可以自定义发光描边的颜色。最后让我们欣赏欣赏将模糊半径改写为 10，并将混合颜色使用三角函数和 `frameTimeCounter` 处理以呈现的动态彩虹发光描边！
+
+![彩虹描边](glowingEntities_RAINBOW.gif)
 
 ## 习题
 
-1. 将 4 号缓冲区的内容合并入 3 号缓冲区中。之后，你可以先使用 `imageLoad(colorimg3, COORD).r` 取出已经写入的几何 ID，然后手动进行深度测试来决定保留几何 ID 的源内容还是覆写新内容（当前片段深度小于深度图上已有的深度时，说明发光实体本身也在前景，因此要覆写几何 ID），最后使用 `imageStore(colorimg3, COORD, uvec4(geometryID, 1, uvec2(0)))` 覆写图像内容并确保 G 通道为 1 即可。
+1. （与习题 2 二选一）将 4 号缓冲区的内容合并入 3 号缓冲区中。之后，你可以先使用 `imageLoad(colorimg3, COORD).r` 取出已经写入的几何 ID，然后手动进行深度测试来决定保留几何 ID 的源内容还是覆写新内容（当前片段深度小于深度图上已有的深度时，说明发光实体本身也在前景，因此要覆写几何 ID），最后使用 `imageStore(colorimg3, COORD, vec4(float(geometryID), vec2(1.0), 0.0))` 覆写图像内容并确保 G、B 通道为 1.0 即可。
+2. （与习题 1 二选一）将 4 号缓冲区改为四通道，并在几何缓冲存入数据时写入纹理颜色，这样在后处理中就会产生根据实体本身的区别产生不同的描边光效。
