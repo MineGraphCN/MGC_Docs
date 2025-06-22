@@ -35,12 +35,13 @@
 
 指定了宏之后，我们还需要指定扩展的行为，在扩展名称后接 `:` 即可进行定义。扩展的行为可以为 `require`、`enable`、`warn` 和 `disable`，它们的具体行为由下表决定：
 
-| 行为        | 直接使用该扩展时 | 被其他扩展调用时 | 硬件不支持时 |
-|-----------|----------|----------|--------|
-| `require` | 可行       | 可行       | 报错并中止  |
-| `enable`  | 可行       | 可行       | 警告并继续  |
-| `warn`    | 警告并继续    | 可行       | 警告并继续  |
-| `disable` | 报错并中止    | 报错并中止    | -      |
+<table width="800">
+<tr><td>行为</td><td>直接使用该扩展时</td><td>被其他扩展调用时</td><td>硬件不支持时</td></tr>
+<tr><td><code>require</code></td><td>可行</td><td>可行</td><td>报错并中止</td></tr>
+<tr><td><code>enable</code></td><td>可行</td><td>可行</td><td>警告并继续</td></tr>
+<tr><td><code>warn</code></td><td>警告并继续</td><td>可行</td><td>警告并继续</td></tr>
+<tr><td><code>disable</code></td><td colspan="3">强制禁用</td></tr>
+</table>
 
 ### 使用图像类型
 

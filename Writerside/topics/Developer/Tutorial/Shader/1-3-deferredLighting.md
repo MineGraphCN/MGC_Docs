@@ -717,7 +717,7 @@ $$
 
 ![偏移坐标系之后的点与方向](gbuffers_coord_shift.webp){width="700"}
 
-<table width="700">
+<table width="800">
 <tr><td>数据类型</td><td><math>w</math> 分量</td><td>变换目的</td></tr>
 <tr><td>点（位置）</td><td>1.0</td><td>需要随相机位移和旋转才能获得正确的相对位置</td></tr>
 <tr><td>相对距离（方向）</td><td>0.0</td><td>只需要将其随摄像机旋转，其本身就代表了相对方向</td></tr>

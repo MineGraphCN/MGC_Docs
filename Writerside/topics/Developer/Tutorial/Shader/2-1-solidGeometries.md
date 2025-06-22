@@ -202,19 +202,20 @@ blend.<程序>=<off|src dst srcA dstA>
 ```
 可以设置为 `off` 禁用混合，或者为每个因子设置下列参数：
 
-| 参数                    | 值                                       | 备注       |
-|-----------------------|-----------------------------------------|----------|
-| `ZERO`                | $0$                                     |          |
-| `ONE`                 | $1$                                     |          |
-| `SRC_COLOR`           | $C_{\text{源}}$                          | 各通道独立相乘  |
-| `ONE_MINUS_SRC_COLOR` | $1 - C_{\text{源}}$                      | 各通道独立相乘  |
-| `DST_COLOR`           | $C_{\text{目标}}$                         | 各通道独立相乘  |
-| `ONE_MINUS_DST_COLOR` | $1 - C_{\text{目标}}$                     | 各通道独立相乘  |
-| `SRC_ALPHA`           | $A_{\text{源}}$                          |          |
-| `ONE_MINUS_SRC_ALPHA` | $1 - A_{\text{源}}$                      |          |
-| `DST_ALPHA`           | $A_{\text{目标}}$                         |          |
-| `ONE_MINUS_DST_ALPHA` | $1 - A_{\text{目标}}$                     |          |
-| `SRC_ALPHA_SATURATE`  | $\min(A_{\text{源}}, 1 - A_{\text{目标}})$ |          |
+<table width="800">
+<tr><td>参数</td><td>值</td><td>备注</td></tr>
+<tr><td><code>ZERO</code></td><td><math>0</math></td><td> </td></tr>
+<tr><td><code>ONE</code></td><td><math>1</math></td><td> </td></tr>
+<tr><td><code>SRC_COLOR</code></td><td><math>C_{\text{源}}</math></td><td>各通道独立相乘</td></tr>
+<tr><td><code>ONE_MINUS_SRC_COLOR</code></td><td><math>1 - C_{\text{源}}</math></td><td>各通道独立相乘</td></tr>
+<tr><td><code>DST_COLOR</code></td><td><math>C_{\text{目标}}</math></td><td>各通道独立相乘</td></tr>
+<tr><td><code>ONE_MINUS_DST_COLOR</code></td><td><math>1 - C_{\text{目标}}</math></td><td>各通道独立相乘</td></tr>
+<tr><td><code>SRC_ALPHA</code></td><td><math>A_{\text{源}}</math></td><td> </td></tr>
+<tr><td><code>ONE_MINUS_SRC_ALPHA</code></td><td><math>1 - A_{\text{源}}</math></td><td> </td></tr>
+<tr><td><code>DST_ALPHA</code></td><td><math>A_{\text{目标}}</math></td><td> </td></tr>
+<tr><td><code>ONE_MINUS_DST_ALPHA</code></td><td><math>1 - A_{\text{目标}}</math></td><td> </td></tr>
+<tr><td><code>SRC_ALPHA_SATURATE</code></td><td><math>\min(A_{\text{源}}, 1 - A_{\text{目标}})</math></td><td> </td></tr>
+</table>
 
 {width=700}
 
