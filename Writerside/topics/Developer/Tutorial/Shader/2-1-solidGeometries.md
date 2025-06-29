@@ -137,14 +137,12 @@ const int colortex3Format = R8UI;         // 8 位无符号整数，用于存储
 >
 {style="note"}
 
-当我们将纹理单元设置为整型数据保存时，可以使用 <code><i>i</i>sampler2D</code> 采样器来让 `texture()` 函数直接返回整型值：
+当我们将纹理单元设置为整型数据保存时，可以使用 `isampler2D` 采样器来让 `texture()` 函数直接返回整型值：
 ```glsl
 uniform isampler2D colortex3;
 [... main ...]
 int geoID = texture(colortex3, uv).r;
 ```
-
-> 除了 <code><i>i</i>sampler</code>，GLSL 还支持用 <code><i>u</i>sampler</code> 声明无符号整数纹理采样器。在 GL 文档中，这种可选前缀的纹理类型被统一冠以 _`g`_ 前缀。
 
 我们可以在任意一个着色器中设置纹理格式，但是最好还是保存在一个统一的地方，比如 `Settings.glsl` 的末尾。
 
@@ -267,7 +265,7 @@ fragColor.a = 1.0;
 
 无遮蔽类的专用几何缓冲程序我们保存在 `gbuffers_aoLess.glsl` 中。
 
-### 实体
+## 实体
 
 虽然 `entities` 本来也应该算在其中，但是当我们进入旁观模式之后，我们旁观者本身和隐身的玩家会变为**半透明渲染**。这也是实体默认启用混合的原因之一。
 
@@ -300,15 +298,15 @@ if(fs_in.color.a < 0.9) {
 > 
 {style="note"}
 
-另一种是不处理半透明实体的光照，在光影配置中仅开启颜色缓冲区的混合，然后完全保留实体的不透明度：
+另一种是忽略半透明实体的光照，在光影配置中仅开启颜色缓冲区的混合，然后完全保留实体的不透明度：
 ```properties
 blend.gbuffers_entities=off
 blend.gbuffers_entities.colortex0=SRC_ALPHA ONE_MINUS_SRC_ALPHA ONE ZERO
 ```
-然后在片段着色器中**不要将 `fragColor.a` 覆写为 `fs_in.color.a`**：
+然后在片段着色器中先处理纹理 Alpha 值，再乘上顶点 Alpha 值用以判定是否是半透明实体：
 ```glsl
 [... main ...]
-fragColor = texture(gtexture, fs_in.uv) * fs_in.color;
+fragColor = texture(gtexture, fs_in.uv);
 if(fragColor.a <= alphaTestRef) discard;
 [...]
 if(fs_in.color.a < 0.9) {
@@ -317,20 +315,28 @@ if(fs_in.color.a < 0.9) {
     geometryID = 1;
 }
 ```
-最后，在延迟处理中处理光照时，检查几何 ID，如果是半透明实体则按比例处理光照但不处理 AO，将我们之前所写的延迟渲染改写为：
+最后，在延迟处理中处理光照时，检查几何 ID，如果是半透明实体则直接忽略光照，将我们之前所写的延迟渲染改写为：
 ```glsl
 int geoID = texture(colortex3, uv).r;
 [...]
 if(geoID == 2) {
-    lit = mix(lit * shadowMultiplier * 0.6 + 0.4, 1.0, albedo.a);
+  fragColor = albedo;
 }
-else {
-    lit = lit * shadowMultiplier * 0.6 + 0.4 * albedo.a;
-}
-fragColor = albedo * lit;
 ```
 
-当然，这两种方法都有着一定程度上的妥协，你也可以自行思考其他解决方案，比如将不透明度数据单独存入一个缓冲区。
+当然，这两种方法都有着一定程度上的妥协，我们也没考虑几何数据的写入情况。你也可以自行思考其他解决方案，比如将不透明度数据单独存入一个缓冲区，或者直接将场景数据写入新的缓冲区。
+
+在结束之前，还有一个小细节需要我们处理——实体的受击效果和爆炸闪烁，这两个效果是不包含在顶点色彩中的。在原版里，我们需要一个额外的纹理坐标来采样一张上红下白的两像素纹理以确定实体的颜色，但是 OptiFine 为我们简化了这个操作。我们只需要在 `Uniforms.glsl` 中声明 `uniform vec4 entityColor;`，然后在之前的颜色输出处理结束后手动进行混合：
+```glsl
+fragColor.rgb = mix(fragColor.rgb, entityColor.rgb, entityColor.a);
+```
+`entityColor.a` 本质上是叠加颜色的比例，因此你也可以尝试其他混合方式，比如相加或相乘（注意不要乘成 0 了）：
+```glsl
+fragColor.rgb += entityColor.rgb * entityColor.a; // 相加
+fragColor.rgb *= 1.0 + entityColor.rgb * entityColor.a; // 相乘
+```
+
+> 如果你想在某些分支中写入数据，而在另一些中不写入，除了采样已经写入的数据外（不稳定），还可以使用下一节中我们将会使用的图像读写功能来仅在某些分支中进行写入。
 
 实体的专用几何缓冲程序我们保存在 `gbuffers_entities.glsl` 中。
 
@@ -341,18 +347,16 @@ fragColor = albedo * lit;
 gl_FragDepth = 0.0;
 geometryID = 3;
 ```
-这样就一定在最靠近屏幕的地方渲染，但是三角形的排序不同。当然，你也可以不将它们的深度提到最前，只更改几何 ID，但是这样就无法透过墙壁看到实体。
+这样就一定在最靠近屏幕的地方渲染，但是会有三角形的排序问题。当然，你也可以不将它们的深度提到最前，只更改几何 ID，但是这样就无法透过墙壁看到实体。
 
-我们这里会仅将几何 ID 设置为 4，在之后的程序中它会表示不处理光照的类型。
-
-当然，发光实体同时也可以是隐身实体，如果你想的话，也可以像发光实体那样为它做特殊处理，但是我们这里就将其视为完全不透明实体了：
+摄像机在常规游戏模式下发光隐身实体始终会以完全不透明渲染，而观察者模式则会以半透明渲染，我们无法知道一个实体是否处于隐身状态，因此这里就统一视为固体几何了：
 ```properties
 blend.gbuffers_entities_glowing=off
 ```
 
 如果想实现类似原版那种描边效果，我们同样需要等到下一节才能处理 ^**1**^。在这里，我们临时将几何 ID 设置为一个不同于实体的值备用。
 
-**[1]** 原版使用了专用的轮廓帧缓冲进行处理，并在渲染线程设置了不进行常规的自动深度测试，但是我们没有办法这样做，此外，其还使用了两个 Pass ^**2**^ 进行延迟处理。在下一节中，我们将会认识可以自由写入的 `shader_image_load_store` 扩展和多程序延迟处理。  
+**[1]** 原版使用了专用的轮廓帧缓冲进行处理，并在渲染线程上下文设置了不进行常规的自动深度测试，但是我们没有办法这样做，不仅如此，它们还使用了多个 Pass ^**2**^ 来进行延迟处理。在下一节中，我们将会认识可以自由写入的 `shader_image_load_store` 扩展和多程序延迟处理。  
 **[2]** 每个 Pass 就是一个着色器程序，_将几何体“过”一下着色器_。
 
 发光实体的专用几何缓冲程序我们保存在 `gbuffers_entities_glowing.glsl` 中。
@@ -392,7 +396,7 @@ else geometryID = 4;
 
 信标光柱不需要处理光照，因此只需要将光柱简单地写入颜色缓冲，然后将几何 ID 设置为和 `basic` 中一样不需要处理光照的 `4`，如果你之后还想处理其他效果，也可以将其设置为一个唯一值。
 
-值得注意的是，信标光柱外围有一圈半透明的**负几何**，类似新版红石火把的外围方块，它们只渲染背面。你可以像实体那样直接忽略透明度或设置为不处理 AO，在这里我们也暂时按照前者处理。
+值得注意的是，信标光柱外围有一圈半透明的**负几何**，类似新版红石火把的外围方块，它们只渲染背面。你可以像实体那样直接忽略透明度或设置为不处理光照，在这里我们也暂时按照后者处理。
 ```glsl
 [... 片段着色器 ...]
 /* DRAWBUFFERS:03 */
@@ -415,55 +419,61 @@ geometryID = 4;
 [... 顶点着色器 ...]
 out VS_OUT {
     vec4 color;
-    #ifdef TEXTURED_SHADER
+    #ifndef TEXLESS
     vec2 uv;
     #endif
 } vs_out;
 [... main ...]
-#ifdef TEXTURED_SHADER
+#ifndef TEXLESS
 vs_out.uv = vaUV0;
 #endif
 [... 片段着色器 ...]
 in VS_OUT {
     vec4 color;
-    #ifdef TEXTURED_SHADER
+    #ifndef TEXLESS
     vec2 uv;
     #endif
 } fs_in;
 [... main ...]
-#ifdef TEXTURED_SHADER
+#ifndef TEXLESS
 fragColor = texture(gtexture, fs_in.uv) * fs_in.color;
 #else
 fragColor = fs_in.color;
 #endif
 ```
 
-最后在 `skytextured` 中包含文件之前声明 `TEXTURED_SHADER` 即可：
+最后在 `skybasic` 中包含文件之前声明 `TEXLESS` 即可：
 ```glsl
-#define TEXTURED_SHADER
+#define TEXLESS
 ```
 
 ### 自发光类
 
-自发光类直接将它们的内容根据不透明度与背景本身相加即可（我们之前不归一化的 0 号缓冲区已经起了一些作用了），不必写入几何 ID 和其他信息。
+原版自发光纹理基本只叠加在本来就有其他纹理的几何上，因此直接将它们的内容根据不透明度与背景本身相加即可（我们之前不归一化的 0 号缓冲区已经起了一些作用了）。
 
-自发光类包括 `spidereyes` 和 `armor_glint`，我们可以共用天空所使用的程序，但是记得添加宏定义和更改混合方式：
-```glsl
-#define TEXTURED_SHADER
-```
+自发光类包括 `spidereyes` 和 `armor_glint`，我们可以共用天空所使用的程序，但是记得更改混合方式：
 ```properties
-blend.gbuffers_spidereyes=SRC_ALPHA ONE ZERO ONE
-blend.gbuffers_armor_glint=SRC_ALPHA ONE ZERO ONE
+blend.gbuffers_spidereyes.colortex0=SRC_ALPHA ONE ZERO ONE
+blend.gbuffers_armor_glint.colortex0=SRC_ALPHA ONE ZERO ONE
 ```
+
+> 直接叠加的发光层在之后可能会受到场景照明的影响，因此你也可以将发光层颜色连同 Alpha 值单独写入新的缓冲区，然后在光照处理结束之后直接按 Alpha 值叠加到画面上（`fragColor.rgb += emissive.rgb * emissive.a`）。
+> 
+> 记得更改缓冲区的混合方式为 `ONE ZERO ONE ZERO`。
+> 
+> 如果你这样干了，记住自己的缓冲区在每个程序中代表什么，不要被弄混淆了。
+> 
+{style="note"}
+
 ### 挖掘裂纹
 
 `damagedblock` 实际上是覆盖在正在挖掘的表面上稍大的一个几何体，我们通常只对其进行颜色混合，并忽略其他内容。
 
 挖掘裂纹的默认混合模式比较特殊，是将裂痕的颜色与之前的几何缓冲颜色相乘再相加（`DST_COLOR SRC_COLOR`），只不过裂纹区域的默认混合方式是仅保留裂纹的 Alpha 值（`ONE ZERO`）。
 
-我们不需要裂纹的 Alpha，也不需要它覆写几何 ID，更不需要覆写法线等信息，它们通常很贴合方块表面，因此可以让它照常写入深度。因此我们也可以像自发光类那样定义 `TEXTURED_SHADER` 并调用同样的程序，只是要记得把混合模式改为
+我们不需要裂纹的 Alpha，也不需要它覆写几何 ID，更不需要覆写法线等信息，它们通常很贴合方块表面，因此可以让它照常写入深度。因此我们也可以像自发光类那样调用同样的程序，只是要记得把混合模式改为
 ```properties
-blend.gbuffers_damagedblock=DST_COLOR SRC_COLOR ZERO ONE
+blend.gbuffers_damagedblock.colortex0=DST_COLOR SRC_COLOR ZERO ONE
 ```
 
 仅颜色类专用的几何缓冲程序我们保存在 `gbuffers_color_only.glsl` 中。

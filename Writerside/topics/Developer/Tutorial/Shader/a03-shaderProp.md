@@ -124,7 +124,7 @@ texture.<stage>.<name>=<path>
   - `composite`：第二轮几何缓冲后的延迟处理程序（Composite 和 Final）
 - `Name`：纹理单元名称，可用名称请参考 [](a04-textureAndPx.md#texID){summary=""} 。
 
-### 纹理来源
+### 纹理来源 {id="texSource"}
 
 光影
 :
@@ -140,7 +140,7 @@ texture.composite.colortex1=textures/noise.png
 texture.composite.colortex2=minecraft:textures/font/ascii.png
 ```
 
-变化纹理（光照贴图和纹理集）
+动态生成纹理（光照贴图和纹理集）
 :
 ```properties
 texture.composite.colortex3=minecraft:dynamic/lightmap_1
@@ -210,14 +210,6 @@ variable.<float|int|bool|vec2|vec3|vec4>.<name>=<表达式>
 
 利用常量、变量、运算符和函数来自定义传入着色器的变量和用于配置文件中计算的变量，自定义统一变量会随着程序变化而更新。
 
-### 常量
-
-- `pi` = 3.1415926
-- `true`
-- `false`
-
-{columns=4}
-
 ### 参数
 
 一些固定标量的统一变量（即不会随着程序变更而变更的标量）也可用于参数，例如 `heldItemId`、`worldTime`、`moonPhase` 等。
@@ -231,11 +223,19 @@ variable.<float|int|bool|vec2|vec3|vec4>.<name>=<表达式>
 > ```properties
 > uniform.vec2.pixelSize = vec2(1.0 / viewWidth, 1.0 / viewHeight)
 > ```
-> 而不可以使用标量和向量组合运算或使用向量和向量组合运算。
+> 不可以使用标量和向量组合运算或使用向量和向量组合运算。
 >
 {style="note"}
 
-#### 浮点值
+#### 常量
+
+- `pi` = 3.1415926
+- `true`
+- `false`
+
+{columns=4}
+
+#### 浮点变量
 
 - `biome`                - 生物群系 ID
 - `biome_category`       - 群系类型，0 ~ 16（从左至右，从上至下）
@@ -269,7 +269,7 @@ variable.<float|int|bool|vec2|vec3|vec4>.<name>=<表达式>
 
 雨雪渲染判定依赖于 `biome_precipitation != PPT_NONE`，如果 `temperature >= 0.15` 则渲染雨，否则渲染雪。
 
-#### 布尔值
+#### 布尔变量
 
 摄像机所在实体的状态，例如玩家本身或旁观模式附身的实体。
 
@@ -384,13 +384,15 @@ uniform.float.screenDark=max(valBiomeDark, valHurtDark, valSwordDark)
 uniform.vec3.screenDark3=vec3(screenDark, heldItemId, biome)
 ```
 
-## Alpha 测试
+## ~~Alpha 测试~~
 
 ```properties
 alphaTest.<program>=<off|func ref>
 ```
 
-> 虽然文档中写明可以指定每个程序的 Alpha 测试函数和参考值，但是实际上这行配置并没有作用。
+> 虽然文档中写明这行配置可以指定每个程序的 Alpha 测试函数和参考值，但实际测试中并无用处。
+> 
+{title="无用配置" style="note"}
 
 ## 混合 {id="blend"}
 
@@ -431,11 +433,11 @@ scale.<program>=<scale|scale offsetX offsetY>
 flip.<program>.<buffer>=<true|false>
 ```
 
-启用或禁用指定延迟处理程序的指定颜色附件的缓冲区翻转功能，即“乒乓缓冲区”（Ping-pong buffer）。禁用翻转后，下一个延迟处理程序将会使用相同的输入和输出目标，即缓冲区的 `main` 和 `alt` 标签不互换。最后一个完成写入的程序应当启用缓冲区翻转，以便之后的程序正确读取处理后的内容。
+启用或禁用指定延迟处理程序的指定颜色附件的缓冲区翻转功能，即“乒乓缓冲区”（Ping-pong buffer）。禁用翻转后，下一个延迟处理程序将会使用和上一个程序相同的输入和输出目标，而不是将上一个程序的输出作为输入，即缓冲区的 `main` 和 `alt` 标签不互换。最后一个完成写入的程序应当启用缓冲区翻转，以便之后的程序正确读取处理后的内容。
 
-这个功能可以用于多个程序读取和写入同一个缓冲区不同区域的内容。强制翻转缓冲区可以用于读取一个颜色附件的两个缓冲区上的不同内容（即使在程序中没有向缓冲区写入内容也强制翻转，以便在下一个程序中读取颜色附件上另一个缓冲区的内容）。
+这个功能常用于多个程序读取和写入同一个缓冲区不同区域的内容（以顶点覆盖区域计）。强制翻转缓冲区可以用于读取一个颜色附件的两个缓冲区上的不同内容（即使在程序中没有向缓冲区写入内容也强制翻转，以便在下一个程序中读取颜色附件上另一个缓冲区的内容）。
 
-当程序向缓冲区写入内容后，默认会翻转缓冲区，如果没有写入内容，则不会翻转缓冲区。
+默认行为：当程序向缓冲区写入内容后，会翻转缓冲区；如果没有写入内容，则不会翻转缓冲区。几何缓冲强制禁用翻转，向 `alt` 写入的内容会在着色器结束时同步至 `main`。
 
 ## 缓冲区尺寸
 

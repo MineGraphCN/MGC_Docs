@@ -24,11 +24,11 @@ uniform vec3 shadowLightPosition; // 视口空间的投影光源 (日或月) 位
 ```
 由于下一小节我们将会绘制阴影，因此我们直接使用 `shadowLightPosition` 了，在没有实现阴影之前，夜晚的场景可能会显得有些奇怪，看起来像光源来自地底。
 
-上一节我们使用了原版的光照函数，它接受两个光照方向、法线和反照率，并返回运算之后的场景颜色。现在忘了它吧，我们将自己手动一步步实现光照函数，并进行手动混合。
+上一节我们使用了原版的光照函数，它接受两个光照方向、法线和反照率，并返回运算之后的场景颜色。现在让我们将它丢到一边，自己手动一步步实现光照处理，并进行手动混合。
 
 光照的核心是**点乘**，它们可以描述两个向量的同向程度，希望你还记得，我们只要将向量转化到单位向量，就能将其结果限制在 $[-1,1]$ 。
 
-于是只需要将表面法线与光照方向做点乘，就能求到光照强度了。但是当法线与光照的夹角大于 $90\degree$ 时，就会产生负值，而背光面本身就不会被照亮，因此我们还需要钳制一下最小值：
+由于我们的太阳和月亮光是平行光，也就是说它们相对每个片段的光照方向都处处相等，于是光照方向 `lightDir` 就是简单地将光源位置进行标准化。接着只需要将表面法线与光照方向做点乘，就能求到光照强度了。但是当法线与光照的夹角大于 $90\degree$ 时，就会产生负值，而背光面本身就不会被照亮，因此我们还需要钳制一下最小值：
 ```glsl
 vec3 lightDir = normalize(shadowLightPosition);
 float lit = max(dot(lightDir, normal), 0.0);
@@ -136,7 +136,7 @@ fragColor = albedo * (lit * lightmap + 0.3 * albedo.a);
 
 现在还剩下一个 _小_ 问题：我们采样的光照颜色是天空和方块光照的叠加，而我们之前写的光照强度会根据太阳的方向变化：我们没有理由让方块光照强度也随着光照角度的变化而变化！
 
-其中一个解决办法是在几何缓冲中处理一次表面光照，然后根据光照的方向动态地变化我们在光照贴图上的采样纵坐标。这种方法限制较多，没有多少光影使用，我们通常只保存纹理坐标作为光照强度，然后自行处理光照色彩。
+其中一个解决办法是在几何缓冲中处理一次表面光照，然后根据光照的方向动态地变化我们在光照贴图上的采样纵坐标；也可以存下光照贴图纹理坐标，消耗一个缓冲区导入原版光照贴图的数据（见 [附录 3 - 自定义纹理 - 纹理来源](a03-shaderProp.md#texSource){summary=""}），这样就可以在延迟处理中间接访问 `lightmap` 了。这种方法限制较多，没有多少光影使用，我们通常只保存纹理坐标作为光照强度，然后自行处理光照色彩。
 
 虽然在下一小节中绘制实时阴影之后，我们不必再依赖光照贴图遮挡阳光或月光，但是天空光照强度数据仍可用于环境光或另作他用。我们会将输出光照强度留作习题。
 
@@ -261,7 +261,7 @@ shadow.culling = false
 > 
 {title="小知识"}
 
-#### 重建坐标系
+#### 重建坐标系 {id="rebuildCoord"}
 
 回到 `final` ，现在我们拥有的屏幕归一化坐标 `uv` 和场景的非线性深度 `depth` ，实际上都是 NDC 坐标简单地线性归一化得到的，称为**屏幕空间**（Screen Space），在上一节中我们又知道了局部空间变换到 NDC 的方法，于是我们就可以利用 OptiFine 提供的逆矩阵（上一节有提到）进行**逆变换**：
 $$
@@ -305,20 +305,20 @@ vec4 WorldPos = gbufferModelViewInverse * ViewPos;
 uniform mat4 shadowModelView;
 uniform mat4 shadowProjection;
 [... main ...]
-vec4 shadowClipPos = shadowProjection * shadowModelView * WorldPos;
+vec4 ShadowClipPos = shadowProjection * shadowModelView * WorldPos;
 ```
 别忘记进行透视除法：
 ```glsl
-shadowClipPos /= shadowClipPos.w;
+ShadowClipPos /= ShadowClipPos.w;
 ```
 最后将它转换到阴影屏幕空间坐标，这样我们就在屏幕空间中和阴影屏幕空间的坐标对齐了：
 ```glsl
-vec3 shadowScreenPos = shadowClipPos.xyz * 0.5 + 0.5;
+vec3 ShadowScreenPos = ShadowClipPos.xyz * 0.5 + 0.5;
 ```
 这就我们所需要的对应屏幕空间位置的阴影贴图纹理坐标了，而它的第三分量则是屏幕空间中的像素在阴影空间下的深度，即
 ```glsl
-vec2 uv_shadowMap = shadowScreenPos.xy;
-float currentDepth = shadowScreenPos.z;
+vec2 uv_shadowMap = ShadowScreenPos.xy;
+float currentDepth = ShadowScreenPos.z;
 ```
 我们之前需要的 `closestDepth` 就可以通过 `uv_shadowMap` 采样 `shadowtex0` 得到：
 ```glsl
