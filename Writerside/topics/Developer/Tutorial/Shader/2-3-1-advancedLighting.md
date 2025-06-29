@@ -304,8 +304,8 @@ float shadowMultiplier = step(currentDepth - max(bias * (1.0-lit), bias * .1), c
 if(uv_OutBound(uv_shadowMap) || currentDepth >= 1.0) shadowMultiplier = 1.0;
 lit *= shadowMultiplier;
 
-vec3 litScene = (1.0 - f_Schlick) * albedo.rgb
-              + f_Schlick * pow(max(dot(normal, halfwayVec), 0.0),
+vec3 litScene = (1.0 - f_schlick) * albedo.rgb
+              + f_schlick * pow(max(dot(normal, halfwayVec), 0.0),
                                 8192 * min(material.r + .001, 1.0))
               * 4 * pow(min(material.r + 0.001, 1.0), 2.0);
 litScene *= lit;
@@ -314,7 +314,7 @@ litScene *= lit;
 
 如果你想加上环境光照，可以通过传统的办法 `+ 0.4 * albedo.rgb`，也可以像这样尝试让环境光再走一遍上述流程，只不过由于环境光没有方向，镜面反射项就只与菲涅尔强度相关了：
 ```glsl
-vec3 litSceneAmbient = (1.0 - f_Schlick) * albedo.rgb + f_Schlick;
+vec3 litSceneAmbient = (1.0 - f_schlick) * albedo.rgb + f_schlick;
 fragColor.rgb = litScene * .6 + litSceneAmbient * .4 * albedo.a;
 ```
 如果你这样做了，会发觉画面看起来像下面这样：
@@ -327,7 +327,7 @@ F = F_0 + (\max(1 - R, F_0) - F_0) (1 - \cos\theta_i)^5
 $$
 当粗糙度增大时，后面一项会随之减小，直到光滑度（1-粗糙度）小于 $F_0$ 时被截断。将它翻译成 GLSL 函数就是：
 ```glsl
-vec3 f_schilck(vec3 f0, float cosTheta, float roughness) {
+vec3 f_schlick(vec3 f0, float cosTheta, float roughness) {
     return f0 + (max(vec3(1.0 - roughness), f0) - f0) * pow(1.0 - cosTheta, 5.0);
 }
 ```
