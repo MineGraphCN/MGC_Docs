@@ -130,7 +130,7 @@ void main() {
 
 GLSL 版本与 OpenGL 密切相关，如果平台支持的 OpenGL 版本过低，则无法使用高版本的 GLSL 和它们的新特性。
 
-<table width="800">
+<table width="700">
 <tr><td>GLSL</td><td>GL</td><td>变动</td></tr>
 <tr><td>110</td><td>2.0</td><td>基本功能，支持顶点和片段着色器。</td></tr>
 <tr><td>120</td><td>2.1</td><td>引入 <code>gl_FragColor</code> 和 <code>gl_FragData[]</code> 。</td></tr>

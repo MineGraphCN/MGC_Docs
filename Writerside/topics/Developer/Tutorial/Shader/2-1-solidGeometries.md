@@ -200,7 +200,7 @@ blend.<程序>=<off|src dst srcA dstA>
 ```
 可以设置为 `off` 禁用混合，或者为每个因子设置下列参数：
 
-<table width="800">
+<table width="700">
 <tr><td>参数</td><td>值</td><td>备注</td></tr>
 <tr><td><code>ZERO</code></td><td><math>0</math></td><td> </td></tr>
 <tr><td><code>ONE</code></td><td><math>1</math></td><td> </td></tr>

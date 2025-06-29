@@ -38,7 +38,7 @@
 
 声明了扩展之后，我们还需要指定扩展的行为，在扩展名称后接 `:` 即可进行定义。扩展的行为可以为 `require`、`enable`、`warn` 和 `disable`，它们的具体行为由下表决定：
 
-<table width="800">
+<table width="700">
 <tr><td>行为</td><td>声明扩展</td><td>硬件不支持且使用扩展语法时</td></tr>
 <tr><td><code>require</code></td><td colspan="2">强制启用，不支持即报错</td></tr>
 <tr><td><code>enable</code></td><td>通过编译</td><td>报错并中止（失败）</td></tr>

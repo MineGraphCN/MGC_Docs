@@ -406,7 +406,7 @@ b = a + 1.0 = 2.0
 c 未初始化
 ```
 
-<table width="800">
+<table width="700">
 <tr><td>修饰符</td><td>读写性</td></tr>
 <tr><td><code>in</code></td><td>只读，即使函数内为其赋值也不会传出（默认行为）</td></tr>
 <tr><td><code>out</code></td><td>只写，即使传参带有值也不可读，除非在函数中为其赋值</td></tr>
