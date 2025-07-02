@@ -384,15 +384,15 @@ uniform.float.screenDark=max(valBiomeDark, valHurtDark, valSwordDark)
 uniform.vec3.screenDark3=vec3(screenDark, heldItemId, biome)
 ```
 
-## ~~Alpha 测试~~
+## Alpha 测试
 
 ```properties
 alphaTest.<program>=<off|func ref>
 ```
 
-> 虽然文档中写明这行配置可以指定每个程序的 Alpha 测试函数和参考值，但实际测试中并无用处。
+> 仅能用于 `Compatibility` 配置。
 > 
-{title="无用配置" style="note"}
+{style="note"}
 
 ## 混合 {id="blend"}
 
