@@ -177,7 +177,8 @@
 <tr><td>60</td><td colspan="2">1.21.6 25w19a</td></tr>
 <tr><td>61</td><td colspan="2">1.21.6 25w20a</td></tr>
 <tr><td>62</td><td colspan="2">1.21.6 25w21a</td></tr>
-<tr><td>%latest_pack_format%</td><td>%latest_je_snapshot%</td><td><i>最新</i></td></tr>
+<tr><td>63</td><td>1.21.6-pre1</td><td>1.21.7-rc1</td></tr>
+<tr><td>%latest_pack_format%</td><td>%latest_pack_format_ver_low%</td><td><i>最新</i></td></tr>
 </table>
 
 _23 和 27 不存在。_  
