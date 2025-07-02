@@ -67,11 +67,13 @@ const int colortex4Format = R16F;
 layout(r16f) uniform image2D colorimg4;
 ```
 
-当然，你也可以将 3 号缓冲区的格式改为三通道，并将发光数据存入其中，但同时也需要处理先前的整型几何 ID，将它们转换为浮点值（习题 1）。
+当然，你也可以将 3 号缓冲区的格式改为双通道，并将发光数据存入其中，但同时也需要处理先前的整型几何 ID，将它们转换为浮点值（习题 1）。
 
 > 由于只能将 0 ~ 5 号缓冲区以图像格式读取，而几何缓冲又无法按常规方法读取 0 ~ 3 号缓冲区，可以在任何阶段以任何方式读写的颜色缓冲区实际上只有 4 号和 5 号，计算着色器还会更加放大这个问题。
 > 
 > 因此在几何缓冲阶段，如果只是要使用之前的屏幕缓冲区数据，则推荐把这些数据存入 5 号之后的缓冲区；而延迟处理阶段中，也最好将 4、5 号缓冲区特意留出。
+> 
+> 而在 Iris 中，我们可以自定义至多 16 个额外的图像，不仅可以自定义其尺寸，还能在任何程序中访问。
 
 我们可以使用函数 `imageLoad(gimage image, ivec coord)` 来读取图像区域内任意坐标的内容，和 `texelFetch()` 类似，它使用索引坐标，唯一的区别是图像不可以指定细节等级，此外，也可以使用 `imageSize()` 函数来取到图像的尺寸，它直接返回整型值。
 
@@ -90,16 +92,16 @@ bool cond = doSth();
 imageStore(colorimg0, ivec2(gl_FragCoord.xy), color); // 正常写入
 if(cond) discard;
 color = vec4(0.0);
-imageStore(colorimg0, ivec2(gl_FragCoord.xy), color); // if()为假，写入；if()为真，无效
+imageStore(colorimg1, ivec2(gl_FragCoord.xy), color); // if()为假，写入；if()为真，无效
 ```
 ```glsl
 vec4 color = vec4(1.0);
 bool cond = doSth();
 
-fragColor = color; // if()为假，写入；if()为真，无效
+fragColor0 = color; // if()为假，写入；if()为真，无效
 if(cond) discard;
 color = vec4(0.0);
-fragColor = color; // if()为假，写入；if()为真，无效
+fragColor1 = color; // if()为假，写入；if()为真，无效
 ```
 
 </compare>
@@ -107,20 +109,20 @@ fragColor = color; // if()为假，写入；if()为真，无效
 要想用普通输出达到图像写入的功能，可以使用反转条件：
 
 ```glsl
-fragColor = color; // 正常写入
+fragColor0 = color; // 正常写入
 if(!cond) {
     color = vec4(0.0);
-    fragColor = color; // if()为真，写入；if()为假，无效
+    fragColor1 = color; // if()为真，写入；if()为假，无效
 }
 ```
 
-要想用图像写入达到普通输出功能，可以延后图像写入到条件判定之后（虽然在我们这个例子中看起来有点神经……）：
+要想用图像写入达到普通输出功能，可以延后图像写入到条件判定之后：
 
 ```glsl
 if(cond) discard;
 imageStore(colorimg0, ivec2(gl_FragCoord.xy), color); // if()为假，写入；if()为真，无效
 color = vec4(0.0);
-imageStore(colorimg0, ivec2(gl_FragCoord.xy), color); // if()为假，写入；if()为真，无效
+imageStore(colorimg1, ivec2(gl_FragCoord.xy), color); // if()为假，写入；if()为真，无效
 ```
 
 最后，我们的 `gbuffers_entities_glowing.glsl` 就长这样了：
@@ -263,9 +265,9 @@ void main(){
 
 之前的编程中，我们的延迟处理程序都集中在管线的最末端，即 `final` 中。而描边着色器要求将场景完全模糊之后再来检查，也就是说，如果我们想在同一个着色器中完成这些事情，需要将四周邻近的像素都进行模糊处理然后再来比较。然而普通的片段着色器中，这些数据是无法共享的，也就是说周围的像素在它们各自的片段着色器中也会这样干，最终就会造成四倍的模糊开销，这是极其不划算的。自然而然的，我们就会做出像原版那样的事情：先在一个 Pass 中进行图像模糊，再在下一个 Pass 中处理描边。
 
-OptiFine 为我们提供了高度可自定义的延迟处理程序数量。回顾一下，我们可以用的延迟处理主要集中在两个阶段：固体几何缓冲之后的 Deferred 和余下几何缓冲之后的 Composite 。像发光描边这种类似 HUD 的特效，我们肯定是不希望被第二轮几何缓冲中的几何体给覆盖的，因此我们能选择的就只有 Composite 阶段了。
+OptiFine 为我们提供了高度可自定义的延迟处理程序数量。回顾一下，我们可以用的延迟处理主要集中在两个阶段：固体几何缓冲之后的 Deferred 和余下几何缓冲之后的 Composite 。由于模糊着色器只处理发光遮罩缓冲区，因此程序的选择没什么所谓，这里我们就选择更靠近 Final 的 Composite 了。
 
-原版的模糊着色器很奇怪，它只在某个方向（`sampleStep`）上处理了模糊（或许运行了两次？）。为了平衡性能和质量，我们会将模糊本身也分为两个 Pass，先将其进行水平模糊，再进行垂直模糊，这样处理的结果会更加柔和。因此我们的模糊就在 `composite` 和 `composite1` 中进行，而描边则接在 `final` 中场景绘制完毕之后。
+原版的模糊着色器很奇怪，它只在某个方向（`sampleStep`）上处理了模糊（或许运行了两次？）。为了平衡性能和质量，我们会将模糊本身也分为两个 Pass，先将其进行水平模糊，再进行垂直模糊。最终，我们的模糊就在 `composite` 和 `composite1` 中进行，而描边则接在 `final` 中场景绘制完毕之后。
 
 没有特别的要求的话，所有延迟处理的顶点着色器都一样，因此你可以直接复制 `final.vsh` 并更名。
 
@@ -318,7 +320,7 @@ vec2 getGlowingEdge() {
 
 这里有个很奇怪事情，我们只执行了两次模糊，统一进行除法时却需要除以四次方才能和原版着色器的描边过渡相似 ^**1**^。最后，将 Final 中之前的颜色与之相混合，就可以绘制出发光描边了：
 
-**[1]** 事实上就算在模糊着色器中进行除法，也需要给每个程序除以 $\text{div}^2$ 才能接近原版着色器，不过我们这里就从简了。
+**[1]** 事实上就算在模糊着色器中进行除法，也需要给每个程序除以 $\text{div}^2$ 才能接近原版着色器。
 
 ```glsl
 vec2 glowingEdge = getGlowingEdge();
@@ -331,7 +333,7 @@ fragColor.rgb = mix(fragColor.rgb, glowingEdge.xxx, glowingEdge.y);
 
 ## 习题
 
-1. （与习题 2 二选一）将 4 号缓冲区的内容合并入 3 号缓冲区中。之后，你可以先使用 `imageLoad(colorimg3, COORD).r` 取出已经写入的几何 ID，然后手动进行深度测试来决定保留几何 ID 的源内容还是覆写新内容（当前片段深度小于深度图上已有的深度时，说明发光实体本身也在前景，因此要覆写几何 ID），最后使用 `imageStore(colorimg3, COORD, vec4(float(geometryID), 1.0, vec2(0.0)))` 覆写图像内容并确保 G 通道为 1.0 即可。随后的模糊 Pass 只需要将 R 通道中的内容原样输出。
+1. （与习题 2 二选一）将 4 号缓冲区的内容合并入 3 号缓冲区中。之后，你可以先使用 `imageLoad(colorimg3, COORD).r` 取出已经写入的几何 ID，然后手动进行深度测试来决定保留几何 ID 的源内容还是覆写新内容（当前片段深度小于深度图上已有的深度时，说明发光实体本身也在前景，因此要覆写几何 ID），最后使用 `imageStore(colorimg3, COORD, vec4(geometryID, 1.0, vec2(0.0)))` 覆写图像内容并确保 G 通道为 1.0 即可。随后的模糊 Pass 只需要将 R 通道中的内容原样输出。
 2. （与习题 1 二选一）将 4 号缓冲区改为四通道，并在几何缓冲存入数据时写入纹理颜色，这样在后处理中就会产生根据实体本身的区别产生不同的描边光效。
 3. 尝试编写一个本节末尾处的彩虹描边效果。
    - 如果你没有完成习题 2，可以直接定义一个三维向量，每个通道都利用三角函数将 `glowingEdge.x` 加上 `frameTimeCounter` 作为参数来周期性地改变颜色；然后配置文件中按统一变量的方法定义常量 $\pi$，将其添加入 `Uniforms.glsl` ，加入三角函数中用以给每个颜色分量不同的相位偏移（$\frac{\pi}{3}$、$\frac{2\pi}{3}$）。为了防止颜色溢出到负值，你可以将结果进行平方；如果你想要更加平缓的边缘，可以给颜色额外乘上 `glowingEdge.x` 或将其乘入混合参考。  
