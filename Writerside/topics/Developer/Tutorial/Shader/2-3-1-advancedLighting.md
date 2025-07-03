@@ -20,16 +20,16 @@
 
 ### 高光
 
-目前我们的几何表面都只有简单的纹理颜色和受光强度，也就是所谓 ![](advancedLighting_ico_sphere_diff.webp){style="inline" width="24"} **漫反射**（Diffuse）。在现实生活中，如果一个表面足够光滑，我们可以通过这些表面观察到清晰的景物倒影，也就是**反射**（Reflection）。而那些明亮光源在表面上反射带来的亮斑，则就被称为 ![](advancedLighting_ico_sphere_specular.webp){style="inline" width="24"} **高光**（Specular）。
+目前我们的几何表面都只有简单的纹理颜色和受光强度，也就是所谓 ![](advancedLighting_ico_sphere_diff.webp){style="inline" width="24"} **漫反射**（Diffuse）。在现实生活中，如果一个表面足够光滑，我们可以通过这些表面观察到清晰的景物倒影，也就是**反射**（Reflection）。而那些明亮光源在表面上反射带来的亮斑，就被称为 ![](advancedLighting_ico_sphere_specular.webp){style="inline" width="24"} **高光**（Specular）。
 
 在着色器中实现完整的镜面反射比较麻烦，对于我们来说还为时尚早，但是高光则非常简单，我们只需要知道高光产生的位置即可。我们已经拿到了光源的位置和几何表面的法线信息，回忆一下我们小学二年级就学过的反射虚像的位置，很显然它就在以几何表面为对称轴的镜像光源位置。
 
-GLSL 为我们提供了一个用来反射向量的函数 `reflect(vec3 I, vec3 N)` ，其中 `I` 表示被反射向量，`N` 表示反射表面的法线角度，被反射向量即光源相对片段的方向。和之前一样，对于平行光来说，光源的方向就是光源相对片段的方向。这样，我们就直接求到了高光反射的角度：
+GLSL 为我们提供了一个用来反射向量的函数 `reflect(vec3 I, vec3 N)` ，其中 `I` 表示被反射向量，`N` 表示反射表面的法线，被反射向量即光源相对片段的方向。和之前一样，对于平行光来说，光源的方向就是光源相对片段的方向。这样，我们就直接求到了高光反射的方向：
 ```glsl
 vec3 reflectDir = reflect(lightDir, normal);
 ```
 
-因为表面通常不会绝对光滑，因此轻微的偏移只是会造成片段产生的高光减弱，不会导致只有一个点能接受到高光，换句话说，高光的强度取决于我们的视线 ^**1**^ 靠近反射中的光源方向的程度，说到两个向量的靠近程度，自然而然的，我们就能知道需要将高光方向与视线方向进行点乘。每个片段与我们摄像机的差值就是当前片段的视线方向，因此我们只需要求得当前片段相对摄像机的方向与反射目标方向的同向程度，就可以算出高光的强度了。为此，我们还需要知道当前片段的方向。
+因为表面通常不会绝对光滑，因此轻微的偏移只是会造成片段产生的高光减弱，不会导致只有一个点能接受到高光，换句话说，高光的强度取决于我们的视线 ^**1**^ 靠近反射中的光源方向的程度。说到两个向量的靠近程度，自然而然的，我们就能知道需要将高光方向与视线方向进行点乘。每个片段与我们摄像机的差值就是当前片段的视线方向，因此我们只需要求得当前片段相对摄像机的方向与反射目标方向的同向程度，就可以算出高光的强度了。为此，我们还需要知道当前片段的方向。
 
 **[1]** 这里的视线不只是我们摄像机和眼睛聚焦的中央区域，而是我们整个可视范围内所有与观察点的连线，因此会有朝向一个方向时一些视线靠近反射高光方向，另一些视线背离反射高光方向的情况。
 
@@ -37,7 +37,7 @@ vec3 reflectDir = reflect(lightDir, normal);
 
 片段的视口坐标在之前处理阴影空间时短暂出现过，希望你还记得：
 $$
-P_\text{View} \xleftarrow{透视除法} {P_\text{Clip}}^* \leftarrow M_{G\text{Projection}}^{-1} \cdot P_\text{NDC} \leftarrow P_\text{Screen} \times 2 - 1
+P_\text{View} \xleftarrow{透视除法} {P_\text{Clip}} \leftarrow M_{G\text{Projection}}^{-1} \cdot P_\text{NDC} \leftarrow P_\text{Screen} \times 2 - 1
 $$
 在 [那一节](1-4-realtimeLighting.md#rebuildCoord){summary=""} 中，我们也将 `ViewPos` 进行了保留，如果你没有保留，可以回去翻找或者按上式自行计算。
 
@@ -159,26 +159,39 @@ pow(max(dot(...)...)...) * material.r * 2.;
 > 
 {title="小知识"}
 
-考虑一下，我们先前绘制高光的方法是点乘反射光和视线，而反射光则来自光照方向和法线，罪魁祸首可以说就是反射向量。那假如我们不使用反射向量，只在平面上考虑呢？当我们在平面上正正好好看到反射中光源的像时，我们会发现从片段与视口的连线和片段与光源连线两个方向的平均方向是和法线**同向**的，当我们稍微偏离时，这个方向也会稍微偏离，这就是所谓的**半程向量**（Halfway Vector）。
+来做这样一个思想试验，现在有一个平面，平面上空的左侧有一个光源，而我们的视口位于右侧。让我们在光源、视口和平面上一条法线的二维平面上来研究一下。
+
+假如初始时平面完全光滑，我们能从平面内看到的光源就只有一个点（假设就是视口上的一个像素），这时，光源虚像与视口连线和平面交点上的法线就正好平分了光源与视口的夹角。
+
+![光滑表面的反射](advancedLighting_bling_mindroute_1.webp){width="700"}
+
+现在，平面的粗糙度逐渐增加，每个纹素上的众多微平面就会开始和原本的表面法线产生微微的偏离。由于**我们的视口不止一个像素**，视线的方向也就不止一个（广度和密度与我们的 FOV 和屏幕分辨率有关），现在，“能看到反射虚像的那个像素”附近的那些像素，也会因为某些微平面朝向正好微微偏移到视口和光源的半程上而“看见”光源的虚像。
+
+![微平面的法线偏移](advancedLighting_bling_mindroute_2.webp){width="700"}
+
+如果粗糙度继续增大呢？当然，就会有越来越多的视口像素有概率（我们暂时不关心整体概率，只要有概率就行）看到这个光源的虚像。
+
+从这里你也可以知道了，每一个能在像素中映出光源虚像的微平面，它们的朝向都有一个共同点：在视线和光源方向夹角的**一半方向**上。这就是所谓的**半程向量**（Halfway Vector）。
 
 ![半程向量](advancedLighting_halfwayDir.webp){width="700"}
 
-我们将半程向量与法线做点乘，无论光源和视口怎么变化，只要两者都在反射面的同一侧，半程向量与法线的夹角就始终不会大于 90°！这就是大名鼎鼎的**布林-冯氏光照**（Blinn-Phong Lighting）。
+随着半程向量与表面本来的法线相背离，由于粗糙度不够高，微平面偏移到半程向量方向的概率会逐渐减小，能映出光源虚像的概率就会降低。无论光源和视口怎么变化，只要两者都在反射面的同一侧，半程向量与法线的夹角就始终不会大于 90°！因此，我们可以将半程向量与法线做点乘，这就是大名鼎鼎的**布林-冯氏光照**（Blinn-Phong Lighting）。
 
-要想求得半程向量非常简单，只需要将片段指向光源的方向与片段指向视口的方向进行平均即可，再加上我们使用单位向量进行求一个单位向量，因此也不需要除以平均值，只需要简单的归一化。光源方向我们已经有了，片段指向视口的向量即片段的视口坐标取反：
+要想求得半程向量非常简单，只需要将片段指向光源的方向与片段指向视口的方向进行平均即可，再加上我们使用两个单位向量求一个单位向量，因此也不需要除以平均值，只需要简单的归一化。光源方向我们已经有了，片段指向视口的向量即片段的视口坐标取反：
 ```glsl
 vec3 viewportDir = normalize(-ViewPos.xyz);
 vec3 halfwayVec = normalize(lightDir + viewportDir);
 ```
 
-此外，求半程向量时我们一定要记得归一化，否则半程向量的方向就会朝两者更长的方向偏移。最后，我们将半程向量与法线做点乘，新的高光效果就出来了：
+此外，求半程向量时我们一定要记得归一化，否则半程向量的方向就会朝两者更长的方向偏移。最后，我们将半程向量与法线做点乘，并像冯氏光照那样为高光强度添加一个经验系数，新的高光效果就出来了：
 ```glsl
-fragColor = vec4(max(dot(normal, halfwayVec), 0.0));
+float blinn = max(dot(normal, halfwayVec), 0.0)
+blinn *= 2.0 * pow(material.r, 2.0));
 ```
 
 ![布林-冯氏光照](advancedLighting_pureBlinn.webp){width="700"}
 
-布林-冯氏光照相比较于单纯的冯氏光照会更加明亮和平滑，因为半程向量与法线的夹角相对变化更慢，在球上的高光扭曲程度也会因此减弱，可以使用 4 倍的指数来对齐冯氏光照的观感。
+布林-冯氏光照相比较于单纯的冯氏光照会更加明亮和平滑，因为半程向量与法线的夹角相对变化更慢，在球上的高光扭曲程度也会因此减弱，可以使用 4 倍的指数来勉强对齐冯氏光照的观感。
 
 ![advancedLighting_sphere_compare.webp](advancedLighting_sphere_compare.webp){width="512"}
 
@@ -192,7 +205,7 @@ fragColor = vec4(max(dot(normal, halfwayVec), 0.0));
 
 解决这个问题也很简单，只需要判断表面是否和光源同侧即可：
 ```glsl
-fragColor = dot(lightDir, normal) > 0.0 ? vec4(max(dot(normal, halfwayVec), 0.0)) : vec4(0.0);
+blinn = dot(lightDir, normal) > 0.0 ? blinn : 0.0;
 ```
 当然，这样会在光照方向接近掠角时导致光照突变，我们一会儿再处理它。你也可以直接用先前计算的漫反射强度值直接进行判定，它们的公式是一致的。
 
@@ -314,7 +327,7 @@ vec3 f_Schlick = mix(pow(1.0 - clamp(dot(normal, viewportDir), 0.0, 1.0), 5.0), 
 最后，我们按其的比例混合漫反射（其实就是表面颜色了）和镜面反射的强度，再在末尾乘上光照与表面法线的夹角余弦和阴影强度的积，就可以得到更加准确的 ![advancedLighting_ico_sphere_mixed.webp](advancedLighting_ico_sphere_mixed.webp){style="inline" width="24"} 菲涅尔光照了：
 ```glsl
 float lit = max(dot(lightDir, normal), 0.0);
-[... 计算阴影 ...]
+float shadowMultiplier = [... 计算阴影 ...];
 [...]
 lit *= shadowMultiplier;
 
@@ -336,7 +349,7 @@ fragColor.rgb = litScene * .6 + litSceneAmbient * .4 * albedo.a;
 
 ![奇怪的菲涅尔环境光](advancedLighting_fresnelAmbient.webp){width="700"}
 
-大多数地方看起来都很正常，除了那些与视线几乎相切的表面。这是因为环境光来自法半球内的所有方向，因此没有一个确定半程向量来计算菲涅尔效应。再者，我们目前也没有考虑任何粗糙度，因此掠角的反射率总是较高。为此，我们可以使用 [Sébastien Lagarde](https://seblagarde.wordpress.com/2011/08/17/hello-world/) 提出的在 Schlick 近似方程中引入粗糙度的方案来缓解这个问题：
+大多数地方都很正常，除了那些与视线几乎相切的表面。这是因为环境光来自法半球内的所有方向，因此没有一个确定半程向量来计算菲涅尔效应。再者，我们目前也没有考虑任何粗糙度，因此掠角的反射率总是较高。为此，我们可以使用 [Sébastien Lagarde](https://seblagarde.wordpress.com/2011/08/17/hello-world/) 提出的在 Schlick 近似方程中引入粗糙度的方案来缓解这个问题：
 $$
 F = F_0 + (\max(1 - R, F_0) - F_0) (1 - \cos\theta_i)^5
 $$
@@ -357,12 +370,12 @@ float roughness = pow(1.0 - material.r, 2.0);
 
 最后，我们可以将环境光额外乘上天空的颜色，然后将阳光亮度和场景亮度解耦，并为场景添加一个无光环境的基本亮度以不至于死黑，同时也不要忘了我们原版的光照贴图：
 ```glsl
-[... Settings.glsl ...]
+[... Settings ...]
 #define SUN_BRIGHTNESS 1.0
 #define AMBIENT_BRIGHTNESS 0.8
 #define BASE_BRIGHTNSS 0.1
 #define BLOCK_BRIGHTNESS 0.5
-[... Uniforms.glsl ...]
+[... Uniforms ...]
 uniform vec3 skyColor;
 [... final.fsh ...]
 [...]
@@ -401,9 +414,9 @@ fragColor.rgb += albedo.rgb * (material.a == 1.0 ? 0.0 : material.a);
 如果你不放心数据存储精度也可以仿效我们之前处理金属性的方法：
 
 ```glsl
-[... Settings.glsl ...]
+[... Settings ...]
 #define EMISSIVE_BRIGHTNESS 1.0
-[... Utilities.glsl ...]
+[... Utilities ...]
 #define intfloor8bit(x) int(floor(x * 255. + .5))
 [...]
 int emissive = intfloor8bit(material.a);
@@ -437,7 +450,7 @@ fragColor.rgb += litSceneEmissive;
 
 ## 习题
 
-1. 整理光照模型小节中使用的函数，将菲涅尔反射之类的公式封装到 `Lighting.glsl` 中，包括
+1. 整理光照模型小节中使用的函数，将菲涅尔反射之类的公式封装到 `/libs/Lighting.glsl` 中，包括
    - 菲涅尔函数 `f_schilck(vec3 f0, float cosTheta)` 和带粗糙度的重载 `f_schilck(vec3 f0, float cosTheta, float roughness)`；
    - 计算 $F_0$ 的 `labpbr_f0(vec3 albedo, float metallic)`；
    - 计算镜面反射的 `getSpecular(vec3 normal, vec3 halfwayVec, float smoothness)`；
