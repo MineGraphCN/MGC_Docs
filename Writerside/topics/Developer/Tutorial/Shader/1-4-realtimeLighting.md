@@ -60,7 +60,7 @@ fragColor = albedo * (lit + 0.3 * albedo.a);
 > 
 > 如果你觉得背光面太暗，或者想要随时调节环境光照，也可以将环境光强写入设置：
 > ```glsl
-> [... Settings.glsl ...]
+> [... Settings ...]
 > #define AMBIENT_BRIGHTNESS 0.4 // [0.3 0.4 0.5]
 > [... main ...]
 > fragColor = albedo * mix(lit, albedo.a, AMBIENT_BRIGHTNESS);

@@ -567,7 +567,7 @@ gl_FragDepth = max(depth, gl_FragCoord.z);
    - 此外，`water` 会回退到 `terrain` 上，但是我们之前已经丢弃过了，而 `hand_water` 则会回退到 `hand` 上，因此也需要额外丢弃。
 4. 将每个 ID 所代表的内容设置为一个常量，保存在 `Settings.glsl` 中，也相当于一个助记，比如：
     ```glsl
-    [... Settings.glsl ...]
+    [... Settings ...]
     const struct GID {
         int background;
         int commons;
@@ -575,9 +575,9 @@ gl_FragDepth = max(depth, gl_FragCoord.z);
         int glowing_entities;
         int noLighting;
     } geoID_enum = GID(0,1,2,3,4); // GLSL 的快速初始化
-    [... gbuffers_aoLess.glsl ...]
+    [... gbuffers_aoLess ...]
     geometryID = geoID_enum.commons;
-    [... gbuffers_line.glsl ...]
+    [... gbuffers_line ...]
     geometryID = geoID_enum.noLighting;
     ```
 
