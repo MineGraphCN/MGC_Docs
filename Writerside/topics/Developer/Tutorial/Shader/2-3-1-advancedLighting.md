@@ -20,7 +20,7 @@
 
 ### 高光
 
-目前我们的几何表面都只有简单的纹理颜色和受光强度，也就是所谓 ![](advancedLighting_ico_sphere_diff.webp){style="inline" width="24"} **漫反射**（Diffuse）。在现实生活中，如果一个表面足够光滑，我们可以通过这些表面观察到清晰的景物倒影，也就是**反射**（Reflection）。而那些明亮光源在表面上反射带来的亮斑，就被称为 ![](advancedLighting_ico_sphere_specular.webp){style="inline" width="24"} **高光**（Specular）。
+目前我们的几何表面都只有简单的纹理颜色和受光强度，也就是所谓 ![](advancedLighting_ico_sphere_diff.webp){style="inline" width="24"} **漫反射**（Diffuse）。在现实生活中，如果一个表面足够光滑，我们可以通过这些表面观察到清晰的景物倒影，也就是**反射**（Reflection）。而那些明亮光源在光滑表面上反射带来的亮斑，就被称为 ![](advancedLighting_ico_sphere_specular.webp){style="inline" width="24"} **镜面高光**（Specular highlight）。
 
 在着色器中实现完整的镜面反射比较麻烦，对于我们来说还为时尚早，但是高光则非常简单，我们只需要知道高光产生的位置即可。我们已经拿到了光源的位置和几何表面的法线信息，回忆一下我们小学二年级就学过的反射虚像的位置，很显然它就在以几何表面为对称轴的镜像光源位置。
 
@@ -31,7 +31,7 @@ vec3 reflectDir = reflect(lightDir, normal);
 
 因为表面通常不会绝对光滑，因此轻微的偏移只是会造成片段产生的高光减弱，不会导致只有一个点能接受到高光，换句话说，高光的强度取决于我们的视线 ^**1**^ 靠近反射中的光源方向的程度。说到两个向量的靠近程度，自然而然的，我们就能知道需要将高光方向与视线方向进行点乘。每个片段与我们摄像机的差值就是当前片段的视线方向，因此我们只需要求得当前片段相对摄像机的方向与反射目标方向的同向程度，就可以算出高光的强度了。为此，我们还需要知道当前片段的方向。
 
-**[1]** 这里的视线不只是我们摄像机和眼睛聚焦的中央区域，而是我们整个可视范围内所有与观察点的连线，因此会有朝向一个方向时一些视线靠近反射高光方向，另一些视线背离反射高光方向的情况。
+**[1]** 这里的视线不单纯是我们摄像机和眼睛聚焦的中央区域或者说“朝向”，而是我们整个可视范围内所有与观察点的连线，因此会有朝向一个方向时一些视线靠近反射高光方向，另一些视线背离反射高光方向的情况。大部分的空间效果都是视线敏感的，只有小部分屏幕整体特效是朝向敏感。
 
 我们的光源坐标都在视口空间中，因此我们同样只需要求得视口空间的片段方向即可。在视口空间中，摄像机的坐标始终是 $(0,0,0)$，因此片段的方向就是简单的片段坐标归一化。
 
@@ -70,7 +70,7 @@ lit += pow(max(dot(viewDir, reflectDir), 0.0), 256);
 
 每种物体的表面都有不同的质地，它们有些是金属的，有些很光滑，这就是它们的**材质**（Material）。光线在不同的材质上会呈现不同的行为，最终反射出来的像也会有所区别。回看我们刚才写好的高光反射，在草方块上这样突兀的一团反射让它看起来非常滑溜，而且还有点金属的味道。我们更希望针对不同的纹理定制不同的材质，从而产生不同的反射观感。
 
-除了普通的颜色纹理，OptiFine 还会额外读取两种特殊后缀的贴图，即资源包中每张普通贴图同位置下与之同名且附带后缀 `_s` 或 `_n` 的贴图。其中，`_s` 就被 OptiFine 定义为了**高光纹理**，它定义了几何表面的材质。在几何缓冲中，我们使用
+除了普通的颜色纹理，OptiFine 还会额外读取两种特殊后缀的贴图，即资源包中每张普通贴图同位置下与之同名且附带后缀 `_s` 或 `_n` 的贴图。其中，`_s` 就被 OptiFine 定义为了**高光纹理**（**S**pecular texture），它定义了几何表面的材质。在几何缓冲中，我们使用
 ```glsl
 uniform sampler2D specular;
 ```
@@ -121,12 +121,13 @@ blend.<program>.colortex5 = off
 ```glsl
 vec4 material = texture(colortex5, uv);
 [...]
-lit += pow(max(dot(viewDir, reflectDir), 0.0), 1024 * material.r);
+lit += pow(max(dot(viewDir, reflectDir), 0.0), 1024. * material.r);
 ```
 
-需要注意的一个问题是：如果光滑度趋于 0，就会出现 $\lim_{x \to 0}{a^x}$ 的情况，这样计算出来的结果就会始终接近 1，导致高光过度叠加。我们除了可以将光滑度转化到整型来作为指数外，还可以将光滑度额外乘到光照的末尾，因为越光滑的平面反射的光越集中，应当会产生更为明亮的光斑，当然，这只是一种经验处理。
+需要注意的一个问题是：如果光滑度和点乘同时趋于 0，就会出现 $0^0$ 的情况，这在 GLSL 中是未定义的，而就算点乘大于 0，也会出现 $x^0 = 1$，导致高光过度叠加。我们可以钳制光滑度的最小值来避免 $0^0$，同时将光滑度额外乘到末尾来避免出现 $x^0=1$ 的情况。
 ```glsl
-pow(max(dot(...)...)...) * material.r * 2.;
+float smoothness = 1024. * material.r;
+pow(max(dot(...)), smoothness) * pow(smoothness, 2) * 2.0;
 ```
 
 **[1]** $ \mathrm{粗糙度} = (1 - \mathrm{感知平滑度})^2 $
@@ -185,7 +186,9 @@ vec3 halfwayVec = normalize(lightDir + viewportDir);
 
 此外，求半程向量时我们一定要记得归一化，否则半程向量的方向就会朝两者更长的方向偏移。最后，我们将半程向量与法线做点乘，并像冯氏光照那样为高光强度添加一个经验系数，新的高光效果就出来了：
 ```glsl
-float blinn = max(dot(normal, halfwayVec), 0.0)
+float smoothness = max(material.r, 0.001);
+float blinn = dot(normal, halfwayVec);
+blinn = pow(max(blinn, 0.0), 1024. * smoothness);
 blinn *= 2.0 * pow(material.r, 2.0));
 ```
 
@@ -227,7 +230,7 @@ blinn = dot(lightDir, normal) > 0.0 ? blinn : 0.0;
 
 在之前的光照处理中，我们总是将高光反射与漫反射一视同仁，一同全量叠加在表面上。然而在现实中，当你从掠角（与表面几乎平行，与表面法线几乎垂直）观察几何表面时，你会发现非金属材质的反射要比视线与表面垂直时强得多，这被称为 ![](advancedLighting_ico_fresnel.webp){style="inline" width="24"} **菲涅尔现象**（Fresnel Effect）。
 
-菲涅尔强度表征的是折射和反射的比例，而散射则是在非均质材质中的折射，因此菲涅尔方程可以用来计算漫射和折射的比例。完整的菲涅尔相当复杂，我们就不列出了，幸好 Schlick 提出了一种近似方法，将其简化为了：
+菲涅尔强度表征的是折射和反射的比例，而散射则是在非均质材质中的折射，而漫反射又来源于散射，因此菲涅尔方程可以用来计算漫反射和反射的比例。完整的菲涅尔相当复杂，我们就不列出了，幸好 Schlick 提出了一种近似方法，将其简化为了：
 
 $$
 F = F_0 + (1-F_0)(1-\cos\theta_i)^5
@@ -249,7 +252,7 @@ $$
 
 #### 表面的金属性和 $F_0$
 
-回看我们之前取到的表面材质信息，它的 G 通道就表示了材质的所谓**金属性**（Metallic）。尽管现实生活中不存在“半金属”，但是我们可以利用这个值来控制 $F_0$，并且一个纹素无法表达多种材质，因此它也可以用来表示一些复合材质，比如嵌在沙堆里的金属碎屑。
+回看我们之前取到的表面材质信息，它的 G 通道就表示了材质的所谓**金属性**（Metallic）。尽管现实生活中不存在“半金属”，但是我们可以利用这个值来控制 $F_0$，并且一个纹素无法表达多种材质，因此半金属也可以用来表示一些复合材质，比如嵌在沙堆里的金属碎屑。
 
 在我们目前所使用的 LabPBR 格式中，还预留了 230 ~ 254 的区间用于定义金属材质，只不过目前只用到了 237。同时，LabPBR 还提供了每种硬编码材质的**复折射率**（Complex refractive index，$n+\mathrm{i}k$）查找表，实部表示折射率（Refractive index），虚部表示消光系数（Extinction coefficient），它也可以用来计算 $F_0$：
 
@@ -303,7 +306,6 @@ int metallicIndex = int(floor(material.g * 255.0 + 0.5));
 ```
 这里进行 `floor(x + 0.5)` 是为了确保不会由于缓冲区精度丢失而导致索引错误的位置。然后，根据索引值返回对应的 $F_0$ 即可：
 ```glsl
-vec3 f0 = mix(vec3(0.04), albedo.rgb, material.g);
 if(metallicIndex > 229) {
     if     (metallicIndex == 230) f0 = vec3(0.56, 0.57, 0.58);
     else if(metallicIndex == 231) f0 = vec3(1.00, 0.71, 0.29);
@@ -320,7 +322,8 @@ LabPBR 要求我们在硬编码之后未使用的区域全部按照完全金属�
 
 处理完 $F_0$ 之后，我们只需要将它代入 Schlick 的拟合函数中就可以算出菲涅尔反射的强度了：
 ```glsl
-vec3 f_Schlick = mix(pow(1.0 - clamp(dot(normal, viewportDir), 0.0, 1.0), 5.0), vec3(1.0), f0);
+float cosTheta = clamp(dot(normal, viewportDir), 0.0, 1.0);
+vec3 f_Schlick = mix(pow(1.0 - cosTheta, 5.0), vec3(1.0), f0);
 ```
 这里我们进行了一次 `clamp()` 是为了避免法线与视线完全同向时可能产生的黑点。
 
@@ -356,7 +359,8 @@ $$
 当粗糙度 $R$ 增大时，后面一项会随之减小，直到 $1-R$ 小于 $F_0$ 时被截断。将它翻译成 GLSL 函数就是：
 ```glsl
 vec3 f_schlick(vec3 f0, float cosTheta, float roughness) {
-    return f0 + (max(vec3(1.0 - roughness), f0) - f0) * pow(1.0 - cosTheta, 5.0);
+    vec3 minuend = max(vec3(1.0 - roughness), f0);
+    return f0 + (minuend - f0) * pow(1.0 - cosTheta, 5.0);
 }
 ```
 LabPBR 使用感知平滑度，因此我们还需要将其转换到正确的粗糙度：
@@ -379,11 +383,19 @@ float roughness = pow(1.0 - material.r, 2.0);
 uniform vec3 skyColor;
 [... final.fsh ...]
 [...]
+float litScene = calcLighting();
 litScene *= SUN_BRIGHTNESS;
-litSceneAmbient *= AMBIENT_BRIGHTNESS * lightmap.t * skyColor * albedo.a;
-vec3 litSceneBlock = BLOCK_BRIGHTNESS * lightmap.s * albedo.rgb * albedo.a; // 方块光照受不受 AO 影响取决于你的喜好
+
+float litScene = calcAmbientLighting();
+litSceneAmbient *= AMBIENT_BRIGHTNESS * lightmap.t; // 设置环境光照强度
+litSceneAmbient *= skyColor * albedo.a; // 上色和 AO
+
+vec3 litSceneBlock = BLOCK_BRIGHTNESS * lightmap.s; // 设置方块光照强度
+litSceneBlock *=  * albedo.rgb * albedo.a; // 应用 AO 与否取决于你的喜好
+
 vec3 litSceneBase = BASE_BRIGHTNESS * albedo.rgb * albedo.a;
-fragColor.rgb = litScene + litSceneAmbient + litSceneBlock + litSceneBase;
+
+fragColor.rgb = litScene+litSceneAmbient+litSceneBlock+litSceneBase;
 ```
 为了让大家理解我们正在干的事情，我们将每种光照产生的最终颜色都进行了拆分，因此会多出来几次可以合并的乘法，优化不是我们的首要目标。
 
@@ -436,17 +448,49 @@ fragColor.rgb += litSceneEmissive;
 
 ## 表面法线
 
-[//]: # (表面法线映射之后可能背离场景。)
+如果你在场景中放一些纹理 _表面看起来很不平整_ 的方块，比如圆石和石砖之类的，由于整个方块的一个表面只有顶点的法线信息，因此无论光照怎么变化，它们始终不会有太多区别。自然而然地，我们会希望根据纹素来改变法线的朝向，而不只是单纯顶点，这就需要引入**法线映射**（Normal Mapping）了。
+
+和从颜色纹理上获取额外的纹素颜色、从高光纹理上获取额外的材质属性类似，法线映射从法线纹理上取到纹素的新朝向来修改片段在空间中的朝向。
+
+上一节提到过，OptiFine 会读取两种特殊后缀的纹理，也介绍了其中一种 `_s` 后缀的高光贴图。而这一小节的主角就是另一种特殊纹理，以 `_n` 为后缀的**法线纹理**（**N**ormal texture），我们在几何缓冲程序中声明 `uniform sampler2D normal;` 就可以访问它了。
+
+法线贴图保存了当我们从正面直视几何表面时的法线朝向，由于通道的紧缺，在 LabPBR 中，法线信息仅占用 RG 两个通道，而 B 通道则用于**环境光遮蔽**（Ambient Occlusion）来形成纹理遮蔽，A 通道则用于**视差**（Parallax）。本小节聚焦于前三个通道。
+
+### 重建法线
+
+我们的第一步是从 RG 两分量重建出完整的法线向量。由于法线本身只需要两个向量就可以重建（考虑到看不见背离场景的法线，我们只需要默认 $z$ 分量为正就好，就像顶点法线里我们干的那样），而通道紧缺也让以前的许多材质格式节省 B 通道，因此 OptiFine 在很早以前提供的默认纹理颜色值就是 $(127,127,255,255)$，所以这不是什么大问题。
+
+重建法线分量的算法很简单，和本章第一节的习题 1 一样，只需要 $\sqrt{1-(x^2+y^2)}$ 即可：
+
+```glsl
+[... Uniforms ...]
+uniform sampler2D normal;
+[... Gbuffers ...]
+vec4 normalMap = texture(normals, uv);
+float normalZ = sqrt(1.0 - dot(normalMap.rg, normalMap.rg));
+vec3 surfaceNormal = vec3(normalMap.rg, normalZ);
+```
+
+由于法线的绘制方法众多，有可能会出现 $xy$ 两分量的平方和大于 1 的情况，我们可以对其做一个钳制：
+```glsl
+vec4 normalMap = [...];
+if(length(normalMap.rg) > 1.0) {
+    normalZ = 0.0;
+    normalMap.rg = normalize(normalMap.rg);
+}
+float normalZ = [...];
+vec3 surfaceNormal = [...];
+```
+
+现在我们已经处理完法线映射要用数据了，接下来的问题是，我们的法线纹理总是以正对 $z-$ 方向（面朝镜头）进行绘制，因为我们不可能提前知道场景的顶点法线方向。我们需要将表面法线的中央朝向“转”到与顶点法线对齐，这样它们的偏移就是在顶点法线的基础上进行的了。
+
+### 切线空间
+
+[//]: # (表面法线映射之后可能背离视线，需要处理以将其过渡到表面法线朝向。)
 
 ## 阴影优化
 
-## 高动态范围
-
-### 伽马校正
-
-#### 色彩空间
-
-### 色彩映射
+## 色彩空间
 
 ## 习题
 
