@@ -617,16 +617,16 @@ gl_Position = projectionMatrix * viewPos;
 这里就需要我们进行**多缓冲区输出**了。要想进行多缓冲区输出，最直接的办法是定义多个 `out` 值：
 ```glsl
 out vec4 fragColor;
-out vec3 normals;
+out vec3 normal;
 ```
 默认情况下 OptiFine 会根据声明顺序将它们放入对应索引的缓冲区，但是**不要这样做**，因为当输出缓冲区变多之后如果意外更改了声明顺序，或者想跳过缓冲区输出（比如只输出到 1 号和 3 号缓冲区），会导致很多不必要的麻烦。
 
 使用 `layout` 关键字自己指定要输出的缓冲区。我们可以使用 `layout(location = X)` 来指定输出目标：
 ```glsl
 layout(location = 0) out vec4 fragColor;
-layout(location = 1) out vec3 normals;
+layout(location = 1) out vec3 normal;
 ```
-这样我们就指定了 `fragColor` 输出到 0 号缓冲区，而 `normals` 会输出到 1 号缓冲区，但是仍然不够。
+这样我们就指定了 `fragColor` 输出到 0 号缓冲区，而 `normal` 会输出到 1 号缓冲区，但是仍然不够。
 
 **最标准的做法**是使用 `/* DRAWBUFFERS:ABC */` 和 `/* RENDERTARGETS: A,B,C */` 来**显式声明**缓冲区的索引顺序：
 ```glsl
@@ -648,13 +648,13 @@ layout(location = 3) out vec4 output3; // 输出到 7 号缓冲区
 ```glsl
 /* DRAWBUFFERS:01 */
 layout(location = 0) out vec4 fragColor;
-layout(location = 1) out vec3 normals;
+layout(location = 1) out vec3 normal;
 ```
 或
 ```glsl
 /* RENDERTARGETS: 0,1 */
 layout(location = 0) out vec4 fragColor;
-layout(location = 1) out vec3 normals;
+layout(location = 1) out vec3 normal;
 ```
 > 这两个指令依赖于 OptiFine 读取字符，因此要保证格式完全正确！
 > - `/* DRAWBUFFERS:0123 */` 注释符号前后必须要有一个空格，冒号之后不能有空格，数字之间不能有空格。
@@ -671,10 +671,10 @@ in vec3 vNormal;
 [...]
 /* DRAWBUFFERS:01 */
 layout(location = 0) out vec4 fragColor;
-layout(location = 1) out vec3 normals;
+layout(location = 1) out vec3 normal;
 [... main ...]
 fragColor = texture(gtexture, uv) * vColor;
-normals = vNormal * 0.5 + 0.5;
+normal = vNormal * 0.5 + 0.5;
 ```
 
 回到 `final.fsh` ，如果你的操作正确，那么采样 `colortex1` 并直接输出的场景应该是这样：

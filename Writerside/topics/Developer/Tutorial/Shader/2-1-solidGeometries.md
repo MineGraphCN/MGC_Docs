@@ -83,7 +83,7 @@ in VS_OUT {
 
 /* DRAWBUFFERS:012 */
 layout(location = 0) out vec4 fragColor;
-layout(location = 1) out vec3 normals;
+layout(location = 1) out vec3 normal;
 layout(location = 2) out vec2 light;
 
 void main() {
@@ -91,7 +91,7 @@ void main() {
     if(fragColor.a <= alphaTestRef) discard;
     fragColor.rgb *= fs_in.color.rgb;
     fragColor.a = fs_in.color.a;
-    normals = fs_in.normal *.5+.5;
+    normal = fs_in.normal *.5+.5;
     light = fs_in.vanillaLightStrength;
 }
 #endif
@@ -152,14 +152,14 @@ int geoID = texture(colortex3, uv).r;
 [...]
 /* DRAWBUFFERS:0123 */
 layout(location = 0) out vec4 fragColor;
-layout(location = 1) out vec3 normals;
+layout(location = 1) out vec3 normal;
 layout(location = 2) out vec2 light;
 layout(location = 3) out int geometryID;
 [... main ...]
-normals = fs_in.normal;
+normal = fs_in.normal;
 geometryID = 1;
 [...]
-normals = fs_in.normal; // 可以正确保存 [-1,1] 区间上的内容，不再需要手动处理了
+normal = fs_in.normal; // 可以正确保存 [-1,1] 区间上的内容，不再需要手动处理了
 ```
 
 除了前两个缓冲区（0 号“`gcolor`”雾色、1 号“`gdepth`”白色），其他缓冲区默认的清空均为 `vec4(0.0)` ，由于天空是一个半圆形穹顶，而且覆盖范围大、靠近背景（“天空”和“背景”是两个概念！每一帧清空为了特定颜色之后的区域即为“背景”。），它最好不要写入 ID 以免不必要的麻烦。因此我们可以将除了天空之外的区域都设置为大于 0 的值，之后每次修改蓝本我们都应该更改对应的 `geometryID`。
@@ -561,7 +561,7 @@ gl_FragDepth = max(depth, gl_FragCoord.z);
 
 ## 习题
 
-1. 将法线通道和光照强度存入同一个缓冲区，法线的第三分量可以使用 `sqrt(1.0 - dot(normal.xy, normal.xy))` 进行重建，设置纹理格式时应该以值域范围大的内容为准。
+1. 将法线通道和光照强度存入同一个缓冲区，法线的第三分量可以使用 $z = \sqrt{1-(x^2+y^2)} = \sqrt{1-\vec{a} \cdot \vec{a}}$ 进行重建，其中 $\vec{a}{(x,y)}$ 表示仅有两朝向的法线向量。设置纹理格式时应该以组合存储数据中值域范围大的内容为准。
 2. 消化消化线框几何的相关内容，你也可以尝试自己修改 `VIEW_SHRINK` 和 `LineWidth` 值，以及尝试更改线框颜色。
 3. 如果你仔细的话，可能会发现第二轮几何缓冲的雨雪和破坏粒子以及手持的半透明方块以一种非常鬼畜的形态回来了，一下雨就伸手不见五指。这是因为第二轮几何缓冲的大多数程序都会回退到 `textured` 上，而它本身又会回退到 `basic`，因此记得像我们之前那样新建一个 `gbuffers_textured.fsh` 然后丢弃所有片段！
    - 此外，`water` 会回退到 `terrain` 上，但是我们之前已经丢弃过了，而 `hand_water` 则会回退到 `hand` 上，因此也需要额外丢弃。
