@@ -324,7 +324,9 @@ fragColor.rgb = mix(fragColor.rgb, vec3(glowingColor), glowingEdge);
 
 当然，你也可以自定义发光描边的颜色。最后来看看大模糊半径下，将混合颜色使用三角函数和 [`frameTimeCounter`](a01-uniformsAndAts.md#uniforms){summary=""} 处理以呈现的动态彩虹发光描边！
 
-> 可以在混合比例中乘入 `float(geoID != geoID_enum.glowing_entities)` 来避免发光实体本身被描边遮挡。
+> 在混合比例中乘入 `float(geoID != geoID_enum.glowing_entities)` 可以避免发光实体本身被描边遮挡，将其设置为宏开关是个不错的选择。
+> 
+{style="note"}
 
 ![彩虹描边](glowingEntities_RAINBOW.gif){width="700"}
 
