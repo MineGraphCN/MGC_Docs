@@ -64,7 +64,7 @@ lit += pow(max(dot(viewDir, reflectDir), 0.0), 256);
 
 可以看到，地面上已经产生了很明显的光斑了，与我们之前完成的漫反射和环境光照结合起来，就是所谓**冯氏光照**（Phong Lighting）。
 
-> 如果你尝试在顶点着色器中处理这些光照特效，由于只能在顶点位置上计算高光强度，附近区域则依赖于插值，最终的效果会大打折扣，这种高光被称为**高洛德光照**（Gouraud Lighting）。
+> 如果你尝试在几何缓冲的顶点着色器中处理这些光照特效，由于只能在顶点位置上计算高光强度，附近区域则依赖于插值，最终的效果会大打折扣，这种高光被称为**高洛德光照**（Gouraud Lighting）。
 
 ### 材质
 
@@ -74,14 +74,14 @@ lit += pow(max(dot(viewDir, reflectDir), 0.0), 256);
 ```glsl
 uniform sampler2D specular;
 ```
-就可以访问它。和 `gtexture` 类似，它们也会在相同的位置进行拼贴，因此可以使用相同的纹理坐标进行采样。我们已经使用了 0 ~ 4 号缓冲区（有些人可能在之前还为自发光单开了一个缓冲区），因此材质数据我们就顺理成章地保存在 5 号缓冲区中了。
+就可以访问它。和 `gtexture` 类似，它们也会在相同的位置进行拼贴，因此可以使用相同的 UV 进行采样。我们已经使用了 0 ~ 4 号缓冲区（有些人可能在之前还为自发光单开了一个缓冲区），因此材质数据我们就顺理成章地保存在 5 号缓冲区中了。
 
 我们只需要为每种几何缓冲程序添加一个输出目标，然后接在之前纹理写入的末尾即可。
 ```glsl
 [... 片段着色器部分 ...]
 /* DRAWBUFFERS:...5 */
 [...]
-layout(location = [DRAWBUFFERS:5的索引]) out vec4 spec;
+layout(location = [DB:5的索引]) out vec4 spec;
 [... main ...]
 spec = texture(specular, fs_in.uv);
 ```
@@ -290,6 +290,8 @@ $$
 | 银  | 0.95, 0.93, 0.88 |
 {width="400"}
 
+你会发现金属的 $F_0$ 都很高，也就是说它们有更强的反射，金属光泽就来源于此。
+
 对于普通的非金属而言，我们可以设置一个较小的值。在很多教程，包括 LearnOpenGL 中，都将其设置为了 0.04，这以你自己的喜好为准。
 
 希望你还没有被上面这一大串理论搞晕，接下来才是重头戏，我们将逐步把它们翻译为 GLSL。
@@ -458,7 +460,9 @@ fragColor.rgb += litSceneEmissive;
 
 ### 重建法线
 
-我们的第一步是从 RG 两分量重建出完整的法线向量。由于法线本身只需要两个向量就可以重建（考虑到看不见背离场景的法线，我们只需要默认 $z$ 分量为正就好，就像顶点法线里我们干的那样），而通道紧缺也让以前的许多材质格式节省 B 通道，因此 OptiFine 在很早以前提供的默认纹理颜色值就是 $(127,127,255,255)$，所以这不是什么大问题。
+我们的第一步是从 RG 两通道数据重建出完整的法线向量。由于法线本身只需要两个向量就可以重建（考虑到看不见背离场景的法线，我们只需要默认 $z$ 分量为正就好，就像顶点法线里我们干的那样），而通道紧缺也让以前的许多材质格式节省 B 通道，因此 OptiFine 在很早以前提供的默认纹理颜色值就是 $(127,127,255,255)$，所以这不是什么大问题。
+
+和第一章中我们保存顶点法线的情况一样，由于法线贴图也使用普通的位图保存，不存在负值，因此法线信息也从 $[-1,1]$ 线性映射到了 $[0,1]$ 上，需要特别注意。
 
 重建法线分量的算法很简单，和本章第一节的习题 1 一样，只需要 $\sqrt{1-(x^2+y^2)}$ 即可：
 
@@ -467,16 +471,17 @@ fragColor.rgb += litSceneEmissive;
 uniform sampler2D normal;
 [... Gbuffers ...]
 vec4 normalMap = texture(normals, uv);
-float normalZ = sqrt(1.0 - dot(normalMap.rg, normalMap.rg));
-vec3 surfaceNormal = vec3(normalMap.rg, normalZ);
+normalMap.xy = normalMap.xy * 2.0 - 1.0;
+float normalZ = sqrt(1.0 - dot(normalMap.xy, normalMap.xy));
+vec3 surfaceNormal = vec3(normalMap.xy, normalZ);
 ```
 
 由于法线的绘制方法众多，有可能会出现 $xy$ 两分量的平方和大于 1 的情况，我们可以对其做一个钳制：
 ```glsl
 vec4 normalMap = [...];
-if(length(normalMap.rg) > 1.0) {
+if(length(normalMap.xy) > 1.0) {
     normalZ = 0.0;
-    normalMap.rg = normalize(normalMap.rg);
+    normalMap.xy = normalize(normalMap.xy);
 }
 float normalZ = [...];
 vec3 surfaceNormal = [...];
@@ -486,7 +491,148 @@ vec3 surfaceNormal = [...];
 
 ### 切线空间
 
-[//]: # (表面法线映射之后可能背离视线，需要处理以将其过渡到表面法线朝向。)
+在之前的几何缓冲处理中，我们使用了矩阵来将顶点从局部坐标转换到裁切坐标，然后又使用法线矩阵来将法线从局部朝向转换到视口坐标。
+
+表面法线也很类似，由于朝向应当基于顶点法线，因此就需要一个以顶点法线为参照的坐标系。然而顶点法线只有一条，仅靠它是不够的。其实我们的其他两个方向很容易敲定，那就是以表面 UV 朝向为基准的两个方向：它们不仅相互垂直，也与法线垂直，这样三个相互垂直的向量直接就构成了一个正交坐标系了。
+
+这两个以 UV 为基准的向量称为**切线**（Tangent）和**副切线**（Bitangent）^**1**^，而它们和法线构成的参考系所在的空间就被称为**切线空间**（Tangent Space）。更准确地来说，法线贴图就是在切线空间中绘制的。要想手工计算切线是很麻烦的，幸好 OptiFine 也为我们提供了每个顶点的切线，并将它作为顶点属性进行传入：
+```glsl
+in vec4 at_tangent;
+```
+**[1]** 也有些教程称之为副法线（Binormal），它们指的都是同一个向量。
+
+它的前三个分量是切线的朝向，第四分量表示法线和切线的**手性**（Handedness） ^**2**^。有了其中两个分量，我们只需要**叉乘**（Cross）它们，就能求得与两向量构成的平面垂直的第三向量了：
+```glsl
+vec3 normal = normalMatrix * vaNormal;
+vec3 tangent = normalMatrix * at_tangent.xyz;
+float handedness = at_tangent.w;
+vec3 bitangent = cross(tangent, normal) * handedness;
+```
+需要注意，叉乘是有序的，因此不可以调换两向量的顺序！
+
+**[2]** 由于游戏中存在一些纹理会镜像的方块（比如命令方块），如果不随着旋转变换手性，UV 的翻转就会导致叉积翻转，从而导致副切线计算出错。当 UV 被镜像时，手性会设置为 -1。
+
+这里我们求出来的向量本身是在视口空间的（因为我们乘了 `normalMatrix`），因此就可以将它们构造为一个矩阵，以便将在切线空间中绘制的法线数据旋转到它们本该在的朝向上。由于这个矩阵按照切线、副切线、法线的顺序构造（就像在视口空间的 X 朝向、Y 朝向、Z 朝向那样），这个矩阵也被称之为 **TBN 矩阵**（**T**angent **B**itangent **N**ormal Matrix）。
+```glsl
+[... 顶点着色器 ...]
+out VS_OUT {
+    [...]
+    mat3 tbn;
+} vs_out;
+[... main ...]
+vs_out.tbn = mat3(tangent, bitangent, normal);
+
+[... 片段着色器 ...]
+in VS_OUT {
+    [...]
+    mat3 tbn;
+} fs_in;
+[... main ...]
+surfaceNormal = tbn * surfaceNormal;
+```
+
+GLSL 在传递矩阵时不会进行插值，TBN 实际上是逐顶点固定的，因此在使用模组中的自定义高模时，可能会出现很难看的照明突变。
+
+[//]: # (一张照明突变截图)
+
+如果想获得更好的质量，我们应当在片段着色器中使用插值之后的法线和切线来计算 TBN 矩阵，但在插值之后法线和切线可能会不再垂直，我们可以使用一个名为**格拉姆-施密特过程**（Gram-Schmidt process）的数学技巧将它们重正交化：
+```glsl
+[... 顶点着色器 ...]
+out VS_OUT {
+    [...]
+    vec3 normal;
+    vec3 tangent;
+    flat float handedness; // 手性只能为1或-1，因此需要flat限定声明不插值！
+} vs_out;
+[... main ...]
+vs_out.normal = normalMatrix * vaNormal;
+vs_out.tangent = normalMatrix * at_tangent.xyz;
+vs_out.handedness = at_tangent.w;
+
+[... 片段着色器 ...]
+in VS_OUT {
+    [...]
+    vec3 normal;
+    vec3 tangent;
+    flat float handedness; // 记得同步限定符！
+} fs_in;
+[... main ...]
+float cosTheta = dot(fs_in.tangent, fs_in.normal);
+vec3 tangent = normalize(fs_in.tangent - cosTheta * fs_in.normal);
+vec3 bitangent = cross(tangent, fs_in.normal) * fs_in.handedness;
+mat3 tbn = mat3(tangent, bitangent, fs_in.normal);
+[...]
+```
+
+表面法线变换到 TBN 空间之后可能背离视线（与视线夹角大于 90°），可以进行简单的处理让它平缓回退到顶点法线上：
+
+```glsl
+[... 顶点着色器 ...]
+out VS_OUT {
+    [...]
+    vec3 viewDir;
+} vs_out;
+[... main ...]
+gl_Position = modelViewMatrix * vec4(vaPosition + chunkOffset, 1.0);
+vs_out.viewDir = normalize(gl_Position.xyz);
+gl_Position = projectionMatrix * gl_Position;
+
+[... 片段着色器 ...]
+in VS_OUT {
+    [...]
+    vec3 viewDir;
+} fs_in;
+[... main ...]
+float normalFade = dot(fs_in.viewDir, surfaceNormal);
+normalFade = smoothstep(0.1, 0.0, normalFade);
+surfaceNormal = mix(surfaceNormal, fs_in.normal, normalFade);
+```
+
+这里使用了一个新的 GLSL 内建函数 `smoothstep(gtype a, gtype b, gtype x)` ，它将返回值 `y` 根据 `x` 的值和区间上下限 `a`、`b` 将映射后的值平滑处理到 $[0,1]$ 上。其内部实现为 $3t^2-2t^3,\ t=\mathrm{Clamp}{(\frac{x-a}{b-a}, 0, 1)}$，其中 $\frac{x-a}{b-a}$ 是很经典的线性映射，将 $(x,y)$ 的关系映射到以 $(a,0)$ 到 $(b,1)$ 的连线上，然后再使用多项式进行平滑。
+
+我们同样在 GeoGebra 中创建了一个 [演示](https://www.geogebra.org/calculator/mcnbeevs)，供你研究当使用不同 `a` 和 `b` 时映射的曲线会如何变化。
+
+这样，我们就可以将法线在 $\cos\theta < 0.1$ 时将表面法线的比重缓慢降低，并在 $\cos\theta \leqslant 0$ 时彻底使用顶点法线了。
+
+在输出之前，我们还有最后一个问题：我们需要将法线数据保存在两个向量中，因为另外两个通道还需另作他用。虽然我们可以直接丢弃 $z$ 分量然后进行重建，但是 `sqrt()` 的开销还是不可忽视的，并且万一有没考虑到的边缘情况，或者你不想让法线平滑回退到顶点，这种假定式的丢弃就不可取了。
+
+这里我们推荐一种市面上流行的法线压缩算法：**八面体映射**（Octahedral Mapping）。它可以将向量通过神奇的数学手法投影到一个八面体的表面二维坐标上，在需要取用再将其回映射到空间中。
+
+![八面体映射](advancedLighting_octahedralMapping.webp){width="700"}
+
+能这样做的一个原因是向量的长度是确定为 1 的，因此一个指向在八面体表面上的坐标也是固定的。
+```glsl
+vec2 OctWrap(vec2 v) {
+    return (1.0 - abs(v.yx)) * sign(v.xy);
+}
+
+vec2 EncodeNormal(vec3 n){
+    n.xy /= (abs(n.x) + abs(n.y) + abs(n.z));
+    n.xy = n.z >= 0.0 ? n.xy : OctWrap(n.xy);
+
+    return n.xy * 0.5 + 0.5;
+}
+
+vec3 DecodeNormal(vec2 en){
+    vec2 n = en * 2.0 - 1.0;
+
+    float nz = 1.0 - abs(n.x) - abs(n.y);
+    return normalize(vec3(nz >= 0 ? n : OctWrap(n), nz));
+}
+```
+
+这是 [iterationRP](https://www.minegraph.cn/shaderpacks/54) 中所使用的八面体映射算法，很常见，因此我们就直接搬过来用了（谢谢你，Tahnass），具体的处理方法我们就不再过多展开（其实是看了半天没看懂= =||），留由大家自行查找。
+
+最后，我们将 `normalMap` 作为输出变量，将其写入 6 号（或者 7 号）缓冲区中。
+```glsl
+/* DRAWBUFFERS:...6 */
+layout(location = [DB:6的索引]) out vec4 normalMap;
+[... main ...]
+normalMap.xy = EncodeNormal(surfaceNormal);
+```
+在之后任何需要使用法线的场景中，我们就可以直接使用 `DecodeNormal(encodedNormal)` 来取得它。每一个写入了顶点法线的几何缓冲都应该再次执行上述过程，没有纹理的几何缓冲也应该将顶点法线覆写进 $xy$ 通道以便同步。
+
+你也许会好奇我们为什么要保留顶点法线，这是因为顶点是位于空间中的，像我们之前给阴影采样做偏移那样的情况，使用顶点法线才能更加精确。因此当缓冲区充足（像我们目前这种水平）时，最好将顶点法线一并保留。当然，现在已经有了一个很完善的法线编解码函数，因此你完全可以把顶点法线压缩到两个通道然后将它和光照贴图放在一起，比本章第一节习题 1 的方法更加优雅。
 
 ## 阴影优化
 
@@ -499,3 +645,4 @@ vec3 surfaceNormal = [...];
    - 计算 $F_0$ 的 `labpbr_f0(vec3 albedo, float metallic)`；
    - 计算镜面反射的 `getSpecular(vec3 normal, vec3 halfwayVec, float smoothness)`；
    - 计算总光照的 `calcLighting(vec3 fresnel, vec3 albedo, float specular)`。
+2. 将顶点法线进行编码，与光照贴图存放在同一个缓冲区中，因为编码后的法线数据进行了归一化处理，因此你可以放心继续使用归一化类型的缓冲区。
