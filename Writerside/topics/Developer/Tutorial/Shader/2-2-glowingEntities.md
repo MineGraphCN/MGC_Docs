@@ -324,10 +324,6 @@ fragColor.rgb = mix(fragColor.rgb, vec3(glowingColor), glowingEdge);
 
 当然，你也可以自定义发光描边的颜色。最后来看看大模糊半径下，将混合颜色使用三角函数和 [`frameTimeCounter`](a01-uniformsAndAts.md#uniforms){summary=""} 处理以呈现的动态彩虹发光描边！
 
-> 在混合比例中乘入 `float(geoID != geoID_enum.glowing_entities)` 可以避免发光实体本身被描边遮挡，将其设置为宏开关是个不错的选择。
-> 
-{style="note"}
-
 ![彩虹描边](glowingEntities_RAINBOW.gif){width="700"}
 
 ## 习题
@@ -336,3 +332,5 @@ fragColor.rgb = mix(fragColor.rgb, vec3(glowingColor), glowingEdge);
 2. （与习题 1 二选一）将 4 号缓冲区改为四通道，并在几何缓冲存入数据时写入纹理颜色，这在一定程度上可以根据实体的纹理颜色产生描边颜色。虽然会因为写入竞争而产生块状闪烁，但是描边区域是基本上稳定的。你可以将写入的 Alpha 值固定为 1 来消除内部的闪烁。
 3. 尝试编写一个本节末尾处的彩虹描边效果。可以直接定义一个三维向量，每个通道都利用三角函数将 `glowingColor` 加上 `frameTimeCounter` 作为参数来周期性地改变颜色；然后配置文件中按统一变量的方法定义常量 $\pi$，将其添加入 `Uniforms.glsl` ，加入三角函数中用以给每个颜色分量不同的相位偏移（$\frac{\pi}{3}$、$\frac{2\pi}{3}$）。为了防止颜色溢出到负值，你可以将结果进行平方；如果你想要更加平缓的边缘，可以给颜色额外乘上 `glowingColor` 或将其乘入混合参考。  
 4. 如果你同时完成了习题 2 和 3，可以把宏开关合并成 `#define GLOWING_EFFECT 0 // [0 1 2]`，每个数字代表一个描边上色模式。
+5. 在混合比例中乘入 `float(geoID != geoID_enum.glowing_entities)` 可以避免发光实体本身被描边遮挡，将其设置为宏开关是个不错的选择。
+   - 如果你觉得描边变得太淡，那是因为模糊总是从边框开始双向延伸，因此最终向外蔓延的值总是小于 0.5，因此你可以将描边颜色乘 2。
