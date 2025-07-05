@@ -92,7 +92,3 @@ Language Server for Minecraft Shaderpacks
 OptiFine 会将光影报错内容输出到游戏的日志，你可以在 `\logs\latest.log` 中找到它，在启动器中勾选 `查看日志` 或者将这个文件拖入 VS Code 就可以查看。
 
 VS Code 默认支持 Log 格式的日志，但是你还应该在右下角选择 `GB 2313` 编码，这样才能正确显示日志中的中文。
-
----
-
-现在，我们的工作环境已经配置完毕了。在下一节中，我们将了解 OptiFine 的光影加载逻辑和着色器的管线。

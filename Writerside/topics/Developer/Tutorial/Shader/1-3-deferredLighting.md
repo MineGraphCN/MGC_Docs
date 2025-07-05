@@ -84,7 +84,7 @@ x_{\text{Boundary}} \propto |z_{\text{View}}| , y_{\text{Boundary}} \propto |z_{
 $$
 进行投影变换和透视除法之后，它们最终会回到 $[-1,1]$ 上，因此分量的坐标值也会在转换到 NDC 上时随着 $w_{\text{Clip}}$ 的增大而压缩。
 
-> 你可以在 [这个演示](https://www.geogebra.org/calculator/pa7jejre) 中尝试拖动 $n$ 和 $f$ 的值来观察函数 ${z_{\text{NDC}}}(x)$ 在 $n \leq x \leq f$ 上的变化。其中 $X$ 轴表示 $w_{\text{Clip}}$ ，$Y$ 轴表示映射后的 $z_{\text{NDC}}$ 。
+> 你可以在 [这个 GeoGebra 演示](https://www.geogebra.org/calculator/pa7jejre) 中尝试拖动 $n$ 和 $f$ 的值来观察函数 ${z_{\text{NDC}}}(x)$ 在 $n \leqslant x \leq f$ 上的变化。其中 $X$ 轴表示 $w_{\text{Clip}}$ ，$Y$ 轴表示映射后的 $z_{\text{NDC}}$ 。
 
 当转换到标准化设备坐标之后，GL 会执行**栅格化**，丢弃一切边界之外不可见的内容，然后将 `gl_FragCoord` 进行如下设置：
 - $xy$ 分量设置为以窗口左下角为原点的坐标，也就是像素的索引（整数）坐标加上0.5；
@@ -298,7 +298,7 @@ void main() {
 
 ![顶点颜色](gbuffers_vaColor.webp){width="700"}
 
-接下来，让我们为场景添加纹理。希望你还记得，首先我们需要在顶点着色器中获取顶点的纹理坐标。和延迟处理不同，几何缓冲的顶点纹理并不和屏幕坐标完全对齐，因此我们不能使用屏幕坐标来进行采样，只能使用 OptiFine 提供的 `vaUV0` 。
+接下来，让我们为场景添加纹理。希望你还记得，首先我们需要在顶点着色器中获取顶点的 UV 。和延迟处理不同，几何缓冲的顶点纹理并不和屏幕坐标完全对齐，因此我们不能使用屏幕坐标来进行采样，只能使用 OptiFine 提供的 `vaUV0` 。
 
 此外，我们还需要一个纹理矩阵用于映射运动纹理（注意不是“动画”纹理，类似附魔光效这种平滑移动的就是运动纹理），尽管它在大部分着色器中都是一个单位矩阵，但是养成良好的初始化习惯极为重要。OptiFine 为我们提供的矩阵名为 `textureMatrix` ：
 ```glsl
@@ -307,9 +307,9 @@ uniform mat4 textureMatrix;
 in vec2 vaUV0;
 out vec2 uv;
 [... main ...]
-uv = vec2(textureMatrix * vec4(vaUV0, vec2(1.0)));
+uv = vec2(textureMatrix * vec4(vaUV0, 0.0, 1.0));
 ```
-> 虽然纹理坐标的后两个分量没有用处，但是需要设置为 `1.0` 来保证矩阵乘法正确，乘法完成之后可以安全地丢弃 $zw$ 分量。
+> 虽然 UV 的后两个分量没有用处，但是需要将 $w$ 分量设置为 `1.0` 来保证矩阵乘法正确应用位移，乘法完成之后可以安全地丢弃 $zw$ 分量。
 > 
 {style="note"}
 
@@ -584,11 +584,11 @@ vec4 vanillaMixLight(vec3 lightDir0, vec3 lightDir1, vec3 normal, vec4 color) {
 in vec3 vaNormal;
 ```
 
-和坐标一样，法线数据也需要经过空间变换。不同的是，变换法线数据时只需要改变它们的朝向，而且它们不应该受到透视投影的影响（还记得吗，透视投影在数学上是通过扭曲顶点位置实现的，因此也同时扭曲了表面朝向）。因此我们需要用到法线变换专用的**法线矩阵**（Normal Matrix）。在 OptiFine 中只需要声明：
+和坐标一样，法线数据也需要经过空间变换。不同的是，变换法线数据时只需要改变它们的朝向，而且它们不应该受到透视投影的影响（还记得吗，透视投影在数学上是通过扭曲顶点位置实现的，因此也同时扭曲了表面朝向）。因此我们需要用到法线变换专用的**法线矩阵**（Normal Matrix），在 OptiFine 中只需要声明：
 ```glsl
 uniform mat3 normalMatrix;
 ```
-最后在 `gbuffers_terrain.vsh` 中输出变换后的值：
+就可以使用，它会将法线从局部空间变换到视口空间。最后在 `gbuffers_terrain.vsh` 中输出变换后的值就取到顶点法线了：
 ```glsl
 [...]
 out vec3 vNormal;
@@ -612,7 +612,7 @@ if(dot(vNormal, viewPos.xyz) > 0.0) { vNormal = -vNormal; }
 gl_Position = projectionMatrix * viewPos;
 ```
 
-现在你可能会陷入一些疑惑：就算我们把它传入了片段着色器，我们能传出的也只有 `fragColor` 啊？法线数据怎么办呢？
+现在你可能会陷入一些疑惑：就算我们把它传入了片段着色器，我们能传出的也只有 `fragColor` ，那法线数据怎么办？
 
 这里就需要我们进行**多缓冲区输出**了。要想进行多缓冲区输出，最直接的办法是定义多个 `out` 值：
 ```glsl
@@ -796,7 +796,3 @@ sliders = LIGHT_POWER AMBIENT_LIGHT
 
 1. 尝试将法线信息转换到世界空间，记住我们在存储它们时的映射方式，以及区分法线到底是点还是方向。
 2. 尝试调整光照的分量从而改变方向，如果你不确定是否为单位向量，可以使用 `normalize()` 函数归一化，但是要注意不要使用四维向量或者保持第四分量为 `0.0` 。
-
----
-
-现在你已经初步掌握了如何编写几何缓冲程序，同时也了解了多缓冲区处理的方法，同时利用这些知识处理了场景的基本光照。在下一节中，我们将会利用 OptiFine 为我们提供的更多数据，着手编写实时动态光照和阴影。
