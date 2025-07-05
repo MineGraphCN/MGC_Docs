@@ -29,8 +29,8 @@ $$
 $$
 \begin{cases}
 \begin{aligned}
-&D(x,y) &&,\ \mathrm{if} \lim\limits_{\Delta y \to 0} \\
-&\bigg|\frac{\dfrac{d}{f{e}^{f y_2}} - \dfrac{d}{f{e}^{fy_1}}}{\Delta y}\bigg| &&,\ \text{else}
+&D(x,y) &&,\ \mathrm{if} \ \lim\limits_{\Delta y \to 0} \\
+&\bigg|\frac{\dfrac{d}{f{e}^{f y_2}} - \dfrac{d}{f{e}^{fy_1}}}{\Delta y}\bigg| &&,\ \mathrm{else}
 \end{aligned}
 \end{cases}
 $$
