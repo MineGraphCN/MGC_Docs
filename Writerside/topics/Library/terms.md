@@ -187,9 +187,9 @@
 <def title="区间" id="区间">
 
 即取值范围
-- $x \in [a, b]$ 表示 $ a \leq x \leq b $；
+- $x \in [a, b]$ 表示 $ a \leqslant x \leqslant b $；
 - $x \in (a, b)$ 表示 $ a < x < b $；
-- $x \in [a, b)$ 表示 $ a \leq x < b $。
+- $x \in [a, b)$ 表示 $ a \leqslant x < b $。
 </def>
 
 <def title="向量" id="向量">
@@ -696,7 +696,7 @@ void main() {
 </def>
 </deflist>
 </def>
-<def title="精灵图" id="精灵图">
+<def title="精灵（图）" id="精灵图">
 
 **Sprite**，屏幕上的每个组成元素都是一个精灵。
 
