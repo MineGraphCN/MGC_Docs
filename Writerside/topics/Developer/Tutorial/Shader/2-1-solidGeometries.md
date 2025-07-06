@@ -66,11 +66,14 @@ out VS_OUT {
 } vs_out;
 
 void main() {
-    gl_Position = projectionMatrix * modelViewMatrix * vec4(vaPosition + chunkOffset, 1.0);
+    gl_Position = projectionMatrix *
+                  modelViewMatrix *
+                  vec4(vaPosition + chunkOffset, 1.0);
     vs_out.color = vaColor;
     vs_out.normal = normalMatrix * vaNormal;
     vs_out.uv = vec2(textureMatrix * vec4(vaUV0, vec2(1.0)));
-    vs_out.vanillaLightStrength = vec2(vaUV2 / 16) / textureSize(lightmap, 0);
+    vs_out.vanillaLightStrength = vec2(vaUV2 / 16) /
+                                  textureSize(lightmap, 0);
 }
 #endif
 
@@ -99,6 +102,8 @@ void main() {
 #endif
 ```
 {collapsible="true" default-state="collapsed" collapsed-title="gbuffers_terrain.glsl"}
+
+虽然其中一些程序没有 `chunkOffset`，但是 OptiFine 会根据程序的不同动态设置它的值，因此不必纠结。
 
 ## 纹理格式
 
@@ -519,11 +524,16 @@ vec3 ndc2 = linePosEnd.xyz / linePosEnd.w;
 ```glsl
 vec2 lineScreenDirection = normalize(ndc2.xy - ndc1.xy);
 ```
+**[1]** 顶点着色器无法访问其他顶点，因此线框的法线方向指向它边框的朝向，以便获取朝向。**因此我们也无法将它们的法线信息用于处理光照**！
+
 最后翻转顶点坐标就能求得其在二维平面上的垂直方向，即在屏幕上间接“加粗”线框需要偏移的方向：
 ```glsl
 vec2 lineOffset = vec2(-lineScreenDirection.y, lineScreenDirection.x) * LineWidth / screenSize;
 ```
 这里我们对其中一个坐标取反，以便得到三维空间中正确的偏移方向 ^**2**^，然后乘以相对屏幕尺寸的线条宽度，即获得了顶点需要横向偏移的距离。
+
+**[2]** 如果不取反其中一个轴，最终的朝向与我们的视野无法对齐，会导致奇怪的观感：
+![翻转偏移坐标](soildGbuffer_negativeOffset.webp){style="block" width="700"}
 
 > 在原版中，处理好了偏移量之后还设置了一个取反轴如果小于 0 则取反偏移量的操作：
 > ```glsl
@@ -538,10 +548,6 @@ vec2 lineOffset = vec2(-lineScreenDirection.y, lineScreenDirection.x) * LineWidt
 lineOffset *= sign(float(gl_VertexID % 2) - 0.5);
 gl_Position = vec4((ndc1 + vec3(lineOffset, 0.0)) * linePosStart.w, linePosStart.w);
 ```
-
-**[1]** 顶点着色器无法访问其他顶点，因此线框的法线方向指向它边框的朝向，以便获取朝向。**因此我们也无法将它们的法线信息用于处理光照**！  
-**[2]** 如果不取反其中一个轴，最终的朝向与我们的视野无法对齐，会导致奇怪的观感：
-![翻转偏移坐标](soildGbuffer_negativeOffset.webp){style="block" width="700"}
 
 **[3]** 可以这样做的理由是，线框的每组偶数顶点与奇数顶点都在同一个位置，始末两端都有两个顶点，因此每个线框上有两个朝向相反的三角形 ^**5**^ 。ID 为偶数的顶点反向偏移，这样横向偏移方向相同的顶点奇偶性也相同，最终就能拼凑出一个平面。也因此只需要一个法线朝向（而不是两个三角形因为 ID 奇偶性不同而需要两个相反的法线数据）即可正确偏移。在下面这张图里，我们将顶点颜色按其在内部三角形上的排列顺序设置为了 RGB，可以很明显看出第二个顶点都处在对应三角形的反方向，而整个平面由两个三角面组成：
 ![三角形内部顶点序号](soildGbuffer_triangleForming.webp){style="block" width="700"}
