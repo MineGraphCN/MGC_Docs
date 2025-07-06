@@ -515,11 +515,11 @@ in vec4 at_tangent;
 它的前三个分量是切线的朝向，第四分量表示法线和切线的**手性**（Handedness） ^**2**^。有了其中两个分量，我们只需要**叉乘**（Cross）它们，就能求得与两向量构成的平面垂直的第三向量了：
 ```glsl
 vec3 normal = normalMatrix * vaNormal;
-vec3 tangent = normalMatrix * at_tangent.xyz;
+vec3 tangent = normalize(normalMatrix * at_tangent.xyz);
 float handedness = at_tangent.w;
 vec3 bitangent = normalize(cross(tangent, normal) * handedness);
 ```
-需要注意，叉乘是有序的，因此不可以调换两向量的顺序，否则计算出的向量会反向。**叉乘之后的向量也一定要记得归一化**！
+需要注意，叉乘是有序的，因此不可以调换两向量的顺序，否则计算出的向量会反向，游戏提供的切线（包括手性）也不一定是归一化的。因此**切线一定要手动归一化，叉乘（带手性）之后的向量也一定要记得归一化**！
 
 **[2]** 由于游戏中存在一些纹理会镜像的方块（比如命令方块），如果不随着旋转变换手性，UV 的翻转就会导致叉积翻转，从而导致副切线计算出错。当 UV 被镜像时，手性会设置为 -1。
 
@@ -557,7 +557,7 @@ out VS_OUT {
 } vs_out;
 [... main ...]
 vs_out.normal = normalMatrix * vaNormal;
-vs_out.tangent = normalMatrix * at_tangent.xyz;
+vs_out.tangent = normalize(normalMatrix * at_tangent.xyz);
 vs_out.handedness = at_tangent.w;
 
 [... 片段着色器 ...]
@@ -570,7 +570,7 @@ in VS_OUT {
 [... main ...]
 float cosTheta = dot(fs_in.tangent, fs_in.normal);
 vec3 tangent = normalize(fs_in.tangent - cosTheta * fs_in.normal);
-vec3 bitangent = cross(tangent, fs_in.normal) * fs_in.handedness;
+vec3 bitangent = normalize(cross(tangent, fs_in.normal) * fs_in.handedness);
 mat3 tbn = mat3(tangent, bitangent, fs_in.normal);
 [...]
 ```
@@ -606,7 +606,9 @@ surfaceNormal = mix(surfaceNormal, fs_in.normal, normalFade);
 
 我们同样 [在 GeoGebra 中创建了一个演示](https://www.geogebra.org/calculator/mcnbeevs)，供你研究当使用不同 `a` 和 `b` 时映射的曲线会如何变化。
 
-这样，我们就可以将法线在 $\cos\theta < 0.5$ 即 $\theta \geqslant 60\degree$ 时将表面法线的比重缓慢降低，并在 $\cos\theta \leqslant -0.5$ 即 $\theta \geqslant 120\degree$ 时彻底使用顶点法线了。
+需要记住，视线是指向场景内的，而法线我们是期望指向视口方向（即视线的反方向）所在的半球内，因此**点乘值应该在为负的时候才使表面法线的占比更大**！
+
+这样，我们就可以将法线在 $\cos\theta \geqslant -0.5$ 即 $\theta \leqslant 120\degree$ 时将表面法线的比重缓慢降低，并在 $\cos\theta \leqslant 0.5$ 即 $\theta \geqslant 60\degree$ 时彻底使用顶点法线了。
 
 我们选择了在片段着色器中再处理视线方向，这是因为顶点着色器会进行透视矫正插值，会导致方向有些微偏差。
 
@@ -736,6 +738,8 @@ sliders = TXAO_STRENGTH
 ![顶点法线光照 VS 表面法线光照](advancedLighting_snvsvn_lighting.webp){width="700"}
 
 ## 阴影优化
+
+[//]: # (矩形穹顶阴影和PCF)
 
 ## 色彩空间
 
