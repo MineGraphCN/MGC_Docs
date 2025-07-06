@@ -269,7 +269,7 @@ variable.<float|int|bool|vec2|vec3|vec4>.<name>=<表达式>
 
 雨雪渲染判定依赖于 `biome_precipitation != PPT_NONE`，如果 `temperature >= 0.15` 则渲染雨，否则渲染雪。
 
-#### 布尔变量
+#### 布尔变量 {id="cam_bool"}
 
 摄像机所在实体的状态，例如玩家本身或旁观模式附身的实体。
 

@@ -334,3 +334,8 @@ fragColor.rgb = mix(fragColor.rgb, vec3(glowingColor), glowingEdge);
 4. 如果你同时完成了习题 2 和 3，可以把宏开关合并成 `#define GLOWING_EFFECT 0 // [0 1 2]`，每个数字代表一个描边上色模式。
 5. 在混合比例中乘入 `float(geoID != geoID_enum.glowing_entities)` 可以避免发光实体本身被描边遮挡，将其设置为宏开关是个不错的选择。
    - 如果你觉得描边变得太淡，那是因为模糊总是从边框开始双向延伸，因此最终向外蔓延的值总是小于 0.5，因此你可以将描边颜色乘 2。
+6. 利用自定义统一变量，将 [摄像机参数](a03-shaderProp.md#cam_bool) `is_glowing` 传入
+   ```properties
+   uniform.bool.cam_isGlowing = is_glowing
+   ```
+   然后在 `gbuffers_hand.glsl` 中使用 `if(cam_isGlowing)` 来向发光缓冲区进行图像写入，这样就可以在玩家发光时让手部和持有物也发光了。
