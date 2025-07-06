@@ -606,6 +606,8 @@ surfaceNormal = mix(surfaceNormal, fs_in.normal, normalFade);
 
 我们同样 [在 GeoGebra 中创建了一个演示](https://www.geogebra.org/calculator/mcnbeevs)，供你研究当使用不同 `a` 和 `b` 时映射的曲线会如何变化。
 
+> 实际上 `clamp(x, 0.0, 1.0)` 在其他游戏引擎里也有个专门的函数叫 `saturate(x)`，和 `remap(a,b,x)` 组合起来就叫 `remapSaturate(a,b,x)` 。
+
 需要记住，视线是指向场景内的，而法线我们是期望指向视口方向（即视线的反方向）所在的半球内，因此**点乘值应该在为负的时候才使表面法线的占比更大**！
 
 这样，我们就可以将法线在 $\cos\theta \geqslant -0.5$ 即 $\theta \leqslant 120\degree$ 时将表面法线的比重缓慢降低，并在 $\cos\theta \leqslant 0.5$ 即 $\theta \geqslant 60\degree$ 时彻底使用顶点法线了。
@@ -753,4 +755,4 @@ sliders = TXAO_STRENGTH
 2. 将顶点法线进行编码，与光照贴图存放在同一个缓冲区中，因为编码后的法线数据进行了归一化处理，因此你可以放心继续使用归一化类型的缓冲区。
    - 为了和表面法线做区分，今后取出来并解码之后的数据可以单独存放为 `vec3 vertexNormal` 中。
    - 合并完成之后， 2 号缓冲区会空出来（原本用来保存原版光照强度），你可以放心将它留在原处，只更改 `DRAWBUFFERS` 序列和 `location` 索引，而不需要像强迫症那样 *空的缓冲区一定要在后面*\o/\o/\o/。
-3. GLSL 中没有内建的 `remap()` 函数，因此你可以将它添加到你的 Utilities 里。
+3. GLSL 中没有内建的 `remap(a,b,x)`、`saturate(x)` 和 `remapSaturate(a,b,x)` 函数，因此你可以将它添加到你的 Utilities 里。
