@@ -93,9 +93,19 @@ in ivec2 vaUV2; // 顶点属性，光照纹理坐标
 
 这个坐标实际上由原版提供，但是它的处理方式却有些奇怪。如果你在本章第一节跟着我们查看了原版着色器就会发现，原版着色器处理光照贴图的方法是直接在顶点着色器中使用 `texelFetch(Sampler2, UV2 / 16, 0)` 采样光照贴图，原版中的 `Sampler2` 即 OptiFine 的 `lightmap` ，而 `UV2` 则对应 `vaUV2` 。
 
-> 如果你看过 `light.glsl` ，可能会发现一个 `minecraft_sample_lightmap()` 函数，这个函数只在 `terrain.vsh` 中使用，实际效果和上面的 `texelFetch()` 相同。
+> 如果你看过 `light.glsl` ，可能会发现一个 `minecraft_sample_lightmap()` 函数，这个函数只在 `terrain.vsh` 中使用，实际效果和上面的 `texelFetch()` 功能相同。
 
-将 `UV2` 除以 16 再进行采样我们勉强可以用光照强度等级在游戏中有 $[0,15]$ 共 16 个等级这个理由解释，虽然我们不知道 Mojang 为什么不传入一个直接可用的坐标。还有一个问题是：在顶点着色器中采样纹理会发生什么？
+`UV2` 的值分布在 $[0,240]$ 上（$240 \div 16 = 15$），将 `UV2` 除以 16 再进行采样我们勉强可以用光照强度等级在游戏中有 $[0,15]$ 共 16 个等级这个理由解释，虽然我们不知道 Mojang 为什么不传入一个直接可用的坐标。这个坐标在 Iris 文档中推荐的用法是：
+```glsl
+const mat4 lm_MATRIX = mat4(vec4(0.00390625, 0.0, 0.0, 0.0),
+                            vec4(0.0, 0.00390625, 0.0, 0.0),
+                            vec4(0.0, 0.0, 0.00390625, 0.0),
+                            vec4(0.03125, 0.03125, 0.03125, 1.0));
+vec2 lm_coord = (lm_MATRIX * vec4(vaUV2, 0.0, 1.0)).xy;
+```
+即缩小 $16 \times 16 = 256$ 倍再位移半个纹素（$0.03125 \times 16 = 0.5$）以居中，和我们直接除以 16 再用 `texelFetch()` 的方法是类似的。只不过我们的方法不会进行纹素插值，但是我们会在顶点着色器中采样，每个顶点本来也就一个颜色值，因此就无所谓了。但是这也引出了下一个问题：在顶点着色器中采样纹理之后会发生什么？
+
+> 如果你仔细阅读了这一段，就不会傻乎乎地跟着习题 3 的第二个提示去做，而是直接除以 240。
 
 信息传入到片段着色器时会进行**插值**，除非你在传出着色器（顶点着色器或者几何着色器，取决于你有没有使用几何着色器）和片段着色器声明了这个变量以 `flat` 形式传递。而在顶点着色器上进行纹理采样，基本上就只是利用顶点的原始 UV（通常是当前 [精灵](terms.md#精灵图){summary=""} 的纹理角落）进行了采样，因为这时候还没开始数据插值。
 
@@ -288,39 +298,39 @@ $$
 
 那么，就让我们从屏幕空间开始吧，就像前文所述，重建 NDC 坐标非常简单：
 ```glsl
-vec4 NdcPos = vec4(uv * 2.0 - 1.0, depth * 2.0 - 1.0, 1.0);
+vec4 ndcPos = vec4(uv * 2.0 - 1.0, depth * 2.0 - 1.0, 1.0);
 ```
 我们这里将 $w$ 分量设置为了 `1.0` ，与第三节有些微差别，它用于交给逆投影矩阵设置为透视除法的除数，也只能为 1。接着将它转化到裁切空间：
 ```glsl
-vec4 ClipPos = gbufferProjectionInverse * NdcPos;
+vec4 clipPos = gbufferProjectionInverse * ndcPos;
 ```
 这一步使用逆矩阵与坐标相乘，同时也更改了 $w$ 分量。然后进行透视除法转换到视口空间：
 ```glsl
-vec4 ViewPos = ClipPos / ClipPos.w;
+vec4 viewPos = clipPos / clipPos.w;
 ```
 在这一步我们直接将它的 $w$ 分量也除以了自身，以还原到点默认的 `1.0`（你也可以手动设置）。最后再转化到世界空间，我们的逆变换就结束了：
 ```glsl
-vec4 WorldPos = gbufferModelViewInverse * ViewPos;
+vec4 worldPos = gbufferModelViewInverse * viewPos;
 ```
 然后，我们利用阴影空间的相关矩阵，将世界坐标变换到阴影空间坐标：
 ```glsl
 uniform mat4 shadowModelView;
 uniform mat4 shadowProjection;
 [... main ...]
-vec4 ShadowClipPos = shadowProjection * shadowModelView * WorldPos;
+vec4 shadowClipPos = shadowProjection * shadowModelView * worldPos;
 ```
 别忘记进行透视除法：
 ```glsl
-ShadowClipPos /= ShadowClipPos.w;
+shadowClipPos /= shadowClipPos.w;
 ```
 最后将它转换到阴影屏幕空间坐标，这样我们就在屏幕空间中和阴影屏幕空间的坐标对齐了：
 ```glsl
-vec3 ShadowScreenPos = ShadowClipPos.xyz * 0.5 + 0.5;
+vec3 shadowScreenPos = shadowClipPos.xyz * 0.5 + 0.5;
 ```
 这就我们所需要的对应屏幕空间位置的阴影贴图 UV 了，而它的第三分量则是屏幕空间中的像素在阴影空间下的深度，即
 ```glsl
-vec2 uv_shadowMap = ShadowScreenPos.xy;
-float currentDepth = ShadowScreenPos.z;
+vec2 uv_shadowMap = shadowScreenPos.xy;
+float currentDepth = shadowScreenPos.z;
 ```
 我们之前需要的 `closestDepth` 就可以通过 `uv_shadowMap` 采样 `shadowtex0` 得到：
 ```glsl
@@ -387,7 +397,7 @@ float shadowMultiplier = step(currentDepth - bias, closestDepth);
 > 
 {style="note"}
 
-因此，我们还是请出之前已经点乘好的值 `lit` ，当光照与法线方向夹角越小，我们的偏移量应该越小，因此要将其取反。我们不关心背光面，它们本来就全是阴影。同时我们应该保证一个最小的偏移量来确保某些极端角度不会产生自阴影：
+因此，我们还是请出之前已经点乘好的值 `lit` ，当光照与法线方向夹角越小，我们的偏移量应该越小，因此要取其与 1 的差。我们不关心背光面，它们本来就全是阴影。同时我们应该保证一个最小的偏移量来确保某些极端角度不会产生自阴影：
 ```glsl
 float shadowMultiplier = step(currentDepth - max(bias * (1.0-lit), bias * 0.1), closestDepth);
 ```
@@ -490,5 +500,5 @@ if(uv_OutBound(uv_shadowMap) || currentDepth >= 1.0) { shadowMultiplier = 1.0; }
    这样变量 `uv` 的类型就被 `maxComponent()` 和 `minComponent()` 限定，而 `uv_OutBound()` 则不必重载了。
 3. 将 `vaUV2` 处理之后传入片段着色器，将光照强度独立拆分到两个通道中输出，不要使用 `lightmap` ，然后在 `final.fsh` 中仅将天空光照强度乘以环境光强度，并在最终光照强度上独立叠加方块光照强度。注意：
    - OptiFine 要求整型类变量必须以 `flat` 形式传出，不能进行插值，因此你可能需要将其转化到 `vec2` 以确保进行了正确插值。
-   - 你需要根据光照贴图的尺寸将整型坐标转化到归一化坐标来确保不会过曝，你可以使用 `textureSize(tex, lod)` 来获取纹理尺寸，第一个参数传入要查询尺寸的采样器，第二个参数 `lod` 则是 MipMap 等级，在这里只需要设置为 `0` 。它会返回每一个维度上的纹理尺寸，因此你将它与整型坐标相除就可以获取归一化坐标。
+   - 你需要根据光照贴图的尺寸将整型坐标转化到归一化坐标来确保不会过曝，你可以使用 `textureSize(tex, lod)` 来获取纹理尺寸，第一个参数传入要查询尺寸的采样器，第二个参数 `lod` 则是 MipMap 等级，在这里只需要设置为 `0` 。它会返回每一个维度上的纹理尺寸，因此你将它与整型坐标相除就可以获取归一化坐标。最后，再根据光照等级再次除以 15，就可以得到归一化的光照强度。
 4. 复习第二章的内容。
