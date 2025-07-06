@@ -31,17 +31,17 @@ vec3 reflectDir = reflect(lightDir, normal);
 
 **[1]** 这里的视线不单纯是我们摄像机和眼睛聚焦的中央区域或者说“朝向”，而是我们整个可视范围内所有与观察点的连线，因此会有朝向一个方向时一些视线靠近反射高光方向，另一些视线背离反射高光方向的情况。大部分的空间效果都是视线敏感的，只有小部分屏幕整体特效是朝向敏感。
 
-我们的光源坐标都在视口空间中，因此我们同样只需要求得视口空间的片段方向即可。在视口空间中，摄像机的坐标始终是 $(0,0,0)$，因此片段的方向就是简单的片段坐标归一化。
+光源坐标都在视口空间中，因此我们同样只需要求得视口空间的片段方向即可。在视口空间中，摄像机的坐标始终是 $(0,0,0)$，因此片段的方向就是简单的片段坐标归一化。
 
 片段的视口坐标在之前处理阴影空间时短暂出现过，希望你还记得：
 $$
 P_\text{View} \xleftarrow{透视除法} {P_\text{Clip}} \leftarrow M_{G\text{Projection}}^{-1} \cdot P_\text{NDC} \leftarrow P_\text{Screen} \times 2 - 1
 $$
-在 [那一节](1-4-realtimeLighting.md#rebuildCoord){summary=""} 中，我们也将 `ViewPos` 进行了保留，如果你没有保留，可以回去翻找或者按上式自行计算。
+在 [那一节](1-4-realtimeLighting.md#rebuildCoord){summary=""} 中，我们也将 `viewPos` 进行了保留，如果你没有保留，可以回去翻找或者按上式自行计算。
 
 最后，我们将视口方向与反射方向进行点乘，就可以在场景中产生高光了：
 ```glsl
-vec3 viewDir = normalize(ViewPos.xyz);
+vec3 viewDir = normalize(viewPos.xyz);
 lit += max(dot(viewDir, reflectDir), 0.0);
 ```
 
@@ -114,7 +114,7 @@ blend.<program>.colortex5 = off
 
 我们的教程将会使用 [LabPBR 格式](labpbrMaterialStandard.md)，这是目前社区中 Java 版光影和资源包常用的格式，它定义了每个通道的数据用于处理何种效果，我们先前下载的 SPBR 也是这个格式（你不会下了其他的吧……）。
 
-现在让我们先着眼于表面的平滑度，表面越光滑，我们之前的指数也就越大。LabPBR 不使用粗糙度，而是使用**感知平滑度** ^**1**^。其保存在了红色通道中，因此我们只需要在后处理中先读取材质信息，再将对应分量信息添加进光照函数中。
+现在让我们先着眼于表面的平滑度，表面越光滑，我们之前的指数也就越大。LabPBR 不使用粗糙度，而是使用**感知平滑度** ^**2**^。其保存在了红色通道中，因此我们只需要在后处理中先读取材质信息，再将对应分量信息添加进光照函数中。
 
 ```glsl
 vec4 material = texture(colortex5, uv);
@@ -122,13 +122,13 @@ vec4 material = texture(colortex5, uv);
 lit += pow(max(dot(viewDir, reflectDir), 0.0), 1024. * material.r);
 ```
 
+**[2]** $ \mathrm{粗糙度} = (1 - \mathrm{感知平滑度})^2 $
+
 需要注意的一个问题是：如果光滑度和点乘同时趋于 0，就会出现 $0^0$ 的情况，这在 GLSL 中是未定义的，而就算点乘大于 0，也会出现 $x^0 = 1$，导致高光过度叠加。我们可以钳制光滑度的最小值来避免 $0^0$，同时将光滑度额外乘到末尾来避免出现 $x^0=1$ 的情况。
 ```glsl
 float smoothness = 1024. * material.r;
 pow(max(dot(...)), smoothness) * 2.0 * pow(smoothness, 2);
 ```
-
-**[1]** $ \mathrm{粗糙度} = (1 - \mathrm{感知平滑度})^2 $
 
 这里我们再次提高了固定倍数的值，因为现在我们的高光强度是可变的了，高平滑度的表面可以放心地产生更锐利的高光：
 
@@ -164,7 +164,7 @@ pow(max(dot(...)), smoothness) * 2.0 * pow(smoothness, 2);
 
 ![光滑表面的反射](advancedLighting_bling_mindroute_1.webp){width="700"}
 
-现在，平面的粗糙度逐渐增加，每个纹素上的众多微平面就会开始和原本的表面法线产生微微的偏离。由于**我们的视口不止一个像素**，视线的方向也就不止一个（广度和密度与我们的 FOV 和屏幕分辨率有关），现在，“能看到反射虚像的那个像素”附近的那些像素，也会因为某些微平面朝向正好微微偏移到视口和光源的半程上而“看见”光源的虚像。
+现在，平面的粗糙度逐渐增加，每个纹素上的众多微平面就会开始和原本的表面法线产生微微的偏离。由于**我们的视口不止一个像素**，视线的方向也就不止一个（广度和密度与 FOV 和屏幕分辨率有关），现在，“能看到反射虚像的那个像素”附近的那些像素，也会因为某些微平面朝向正好微微偏移到视口和光源的半程上而“看见”光源的虚像。
 
 ![微平面的法线偏移](advancedLighting_bling_mindroute_2.webp){width="700"}
 
@@ -178,7 +178,7 @@ pow(max(dot(...)), smoothness) * 2.0 * pow(smoothness, 2);
 
 要想求得半程向量非常简单，只需要将片段指向光源的方向与片段指向视口的方向进行平均即可，再加上我们使用两个单位向量求一个单位向量，因此也不需要除以平均值，只需要简单的归一化。光源方向我们已经有了，片段指向视口的向量即片段的视口坐标取反：
 ```glsl
-vec3 viewportDir = normalize(-ViewPos.xyz);
+vec3 viewportDir = normalize(-viewPos.xyz);
 vec3 halfwayVec = normalize(lightDir + viewportDir);
 ```
 
@@ -214,13 +214,14 @@ blinn = dot(lightDir, normal) > 0.0 ? blinn : 0.0;
 
 回看我们写出来的高光效果，我们还没能解决所有表面看起来都像金属的问题。这是因为我们单纯地将镜面反射叠加到了本来的光照强度上，这些高光在非金属材质上不应该总是如此明显，反射出来的光线也不应该受表面颜色本身影响 ^**1**^。
 
+**[1]** 非金属的反射光与表面碰撞之后就逸出了，它们几乎不与材质产生交互。再者固有色或者说反照率在物理上是不包含反射部分的，我们通常看到的颜色都由漫反射提供，而反射则专注于产生与光源色彩几乎相同的明亮高光（和反射场景），这在上一节的小知识中已经讨论过了。
+
 如果你仔细阅读了上一节中的小知识，或许会开始思考这个问题：既然几何表面接受到光照之后会产生漫反射和镜面反射，那在入射光强度一定时，漫反射和镜面反射的强度应该是此消彼长的，再考虑到材料内部散射被吸收的部分，总的出射光应该比入射光强度更弱。换句话说，漫反射和镜面反射的能量总和不应该大于入射光的能量，这就是**能量守恒**。
 
 虽然这已经涉及到 PBR 了，但是我们暂时不做深入，也暂时不会将那个让人头大的 [渲染方程](terms.md#render_equ){summary=""} 搬过来解释半天。我们会沿用布林-冯氏光照的基本算法，并将其改造为简单的能量守恒光照，而不会使用完整意义上的 <tooltip term="BRDF">BRDF</tooltip>。
 
 根据我们之前所说的，漫反射在各个方向上是均匀的 ^**2**^ ，而光照与表面法线的夹角应该同时影响镜面反射，我们会将它乘在整个光照函数的末尾，因此漫反射就只和材料的表面颜色（或者说固有色） ^**3**^ 有关了。
 
-**[1]** 非金属的反射光与表面碰撞之后就逸出了，它们几乎不与材质产生交互。再者固有色或者说反照率在物理上是不包含反射部分的，我们通常看到的颜色都由漫反射提供，而反射则专注于产生与光源色彩几乎相同的明亮高光（和反射场景），这在上一节的小知识中已经讨论过了。  
 **[2]** 至少在朝向的法半球内是均匀的，我们不关心另一侧的光照，因为背光面的 $n \cdot l$ （法线与光照方向点积）项始终为 0。  
 **[3]** 表面颜色与反照率的微妙关系导致了其在任何物理渲染中无法做到一视同仁，在非金属材质中，表面颜色通常就用于反照率，而在金属材质中，由于金属会吸收所有几乎散射光而只剩下镜面反射，因此表面颜色也会作为镜面反射的颜色。
 
@@ -391,7 +392,7 @@ litSceneAmbient *= AMBIENT_BRIGHTNESS * lightmap.t; // 设置环境光照强度
 litSceneAmbient *= skyColor * albedo.a; // 上色和 AO
 
 vec3 litSceneBlock = BLOCK_BRIGHTNESS * lightmap.s; // 设置方块光照强度
-litSceneBlock *=  * albedo.rgb * albedo.a; // 应用 AO 与否取决于你的喜好
+litSceneBlock *=  * albedo.rgb; // 方块光照应用 AO 与否取决于你的喜好
 
 vec3 litSceneBase = BASE_BRIGHTNESS * albedo.rgb * albedo.a;
 
@@ -439,12 +440,18 @@ fragColor.rgb += albedo.rgb * (emissive == 255 ? 0.0 : material.a) * EMISSIVE_BR
 
 ![纹理自发光](advancedLighting_emissive.webp){width="700"}
 
-如果你之前更改了 `spidereyes` 的输出方式，则也可以加到自发光之后让它们共同受 `EMISSIVE_BRIGHTNESS` 的影响：
+如果你之前将 `spidereyes` 输出到了单独的缓冲区，则也可以加到自发光之后让它们共同受 `EMISSIVE_BRIGHTNESS` 的影响：
 ```glsl
 vec3 litSceneEmissive = (albedo.rgb * (emissive == 255 ? 0.0 : material.a)
                          + spidereye.rgb * spidereye.a) * EMISSIVE_BRIGHTNESS;
 fragColor.rgb += litSceneEmissive;
 ```
+
+你可能会发现矿洞中的方块边缘会漏光，这是因为在矿洞中游戏会自动剔除地上的区块，方块的背面就暴露在了阴影深度纹理上，由于偏移，边缘就会产生一些漏光。我们可以假定天空光照强度为 0 的区域也不存在阳光：
+```glsl
+if(lightmap.t == 0.0) lit = 0.0;
+```
+当然这也只是权宜之策，由于原版天空光照的蔓延固定在竖直方向，因此斜向洞窟的天空光照也会随着深度增加很快掉到 0，如果阳光正好穿过倾斜的洞窟直射地底，就会产生很明显的视觉瑕疵。
 
 ## 表面法线
 
@@ -477,11 +484,13 @@ vec3 surfaceNormal = vec3(normalMap.xy, normalZ);
 由于法线的绘制方法众多，有可能会出现 $xy$ 两分量的平方和大于 1 的情况，我们可以对其做一个钳制：
 ```glsl
 vec4 normalMap = [...];
+float normalZ;
 if(length(normalMap.xy) > 1.0) {
     normalZ = 0.0;
     normalMap.xy = normalize(normalMap.xy);
+} else { 
+    normalZ = sqrt(1.0 - dot(normalMap.xy, normalMap.xy));
 }
-float normalZ = [...];
 vec3 surfaceNormal = [...];
 ```
 
@@ -491,26 +500,30 @@ vec3 surfaceNormal = [...];
 
 在之前的几何缓冲处理中，我们使用了矩阵来将顶点从局部坐标转换到裁切坐标，然后又使用法线矩阵来将法线从局部朝向转换到视口坐标。
 
-表面法线也很类似，由于朝向应当基于顶点法线，因此就需要一个以顶点法线为参照的坐标系。然而顶点法线只有一条，仅靠它是不够的。其实我们的其他两个方向很容易敲定，那就是以表面 UV 朝向为基准的两个方向：它们不仅相互垂直，也与法线垂直，这样三个相互垂直的向量直接就构成了一个正交坐标系了。
+表面法线也很类似，由于朝向应当基于顶点法线，因此要将它们转换到和顶点法线一样的空间，就需要一个以顶点法线为准的坐标系作为中间人。然而顶点法线只有一条，仅靠它是不够的。其实我们的其他两个方向很容易敲定，那就是以表面 UV 朝向为基准的两个方向：它们不仅相互垂直，也与法线垂直，这样三个相互垂直的向量直接就构成了一个正交坐标系了。
 
-这两个以 UV 为基准的向量称为**切线**（Tangent）和**副切线**（Bitangent）^**1**^，而它们和法线构成的参考系所在的空间就被称为**切线空间**（Tangent Space）。更准确地来说，法线贴图就是在切线空间中绘制的。要想手工计算切线是很麻烦的，幸好 OptiFine 也为我们提供了每个顶点的切线，并将它作为顶点属性进行传入：
+这两个以 UV 方向为基准的向量称为**切线**（Tangent）和**副切线**（Bitangent）^**1**^，而它们和法线构成的参考系所在的空间就被称为**切线空间**（Tangent Space）。要想手工计算切线是很麻烦的，幸好 OptiFine 也为我们提供了每个顶点的切线，并将它作为顶点属性进行传入：
 ```glsl
 in vec4 at_tangent;
 ```
 **[1]** 也有些教程称之为副法线（Binormal），它们指的都是同一个向量。
+
+> 确切的说，法线贴图就是在切线空间中绘制的（只不过进行了值域变换），因此我们设法寻找的这个“中间人”即是可以将法线贴图的数据从切线空间映射到法线（以及切线和副切线）所在空间（在这里是视口空间）中的矩阵。
+> 
+> $\vec{n}_\text{View} \leftarrow M_t \cdot \vec{n}_\text{Texture}$
 
 它的前三个分量是切线的朝向，第四分量表示法线和切线的**手性**（Handedness） ^**2**^。有了其中两个分量，我们只需要**叉乘**（Cross）它们，就能求得与两向量构成的平面垂直的第三向量了：
 ```glsl
 vec3 normal = normalMatrix * vaNormal;
 vec3 tangent = normalMatrix * at_tangent.xyz;
 float handedness = at_tangent.w;
-vec3 bitangent = cross(tangent, normal) * handedness;
+vec3 bitangent = normalize(cross(tangent, normal) * handedness);
 ```
-需要注意，叉乘是有序的，因此不可以调换两向量的顺序！
+需要注意，叉乘是有序的，因此不可以调换两向量的顺序，否则计算出的向量会反向。**叉乘之后的向量也一定要记得归一化**！
 
 **[2]** 由于游戏中存在一些纹理会镜像的方块（比如命令方块），如果不随着旋转变换手性，UV 的翻转就会导致叉积翻转，从而导致副切线计算出错。当 UV 被镜像时，手性会设置为 -1。
 
-这里我们求出来的向量本身是在视口空间的（因为我们乘了 `normalMatrix`），因此就可以将它们构造为一个矩阵，以便将在切线空间中绘制的法线数据旋转到它们本该在的朝向上。由于这个矩阵按照切线、副切线、法线的顺序构造（就像在视口空间的 X 朝向、Y 朝向、Z 朝向那样），这个矩阵也被称之为 **TBN 矩阵**（**T**angent **B**itangent **N**ormal Matrix）。
+这里我们求出来的向量本身是在视口空间的（因为我们乘了 `normalMatrix`），因此就可以将它们构造为一个矩阵，以便将在切线空间中绘制的法线数据旋转到它们本该在的朝向上。由于这个矩阵按照切线、副切线、法线的顺序构造（就像在视口空间的 X 朝向、Y 朝向、Z 朝向那样），因此也被称之为 **TBN 矩阵**（**T**angent **B**itangent **N**ormal Matrix），它即是我们所寻找的中间人。
 ```glsl
 [... 顶点着色器 ...]
 out VS_OUT {
@@ -570,33 +583,36 @@ mat3 tbn = mat3(tangent, bitangent, fs_in.normal);
 [... 顶点着色器 ...]
 out VS_OUT {
     [...]
-    vec3 viewDir;
+    vec3 viewPos;
 } vs_out;
 [... main ...]
 gl_Position = modelViewMatrix * vec4(vaPosition + chunkOffset, 1.0);
-vs_out.viewDir = normalize(gl_Position.xyz);
+vs_out.viewPos = gl_Position.xyz;
 gl_Position = projectionMatrix * gl_Position;
 
 [... 片段着色器 ...]
 in VS_OUT {
     [...]
-    vec3 viewDir;
+    vec3 viewPos;
 } fs_in;
 [... main ...]
-float normalFade = dot(fs_in.viewDir, surfaceNormal);
-normalFade = smoothstep(0.1, 0.0, normalFade);
+vec3 viewDir = normalize(fs_in.viewPos);
+float normalFade = dot(viewDir, surfaceNormal);
+normalFade = smoothstep(-0.5, 0.5, normalFade);
 surfaceNormal = mix(surfaceNormal, fs_in.normal, normalFade);
 ```
 
-这里使用了一个新的 GLSL 内建函数 `smoothstep(gtype a, gtype b, gtype x)` ，它将返回值 `y` 根据 `x` 的值和区间上下限 `a`、`b` 将映射后的值平滑处理到 $[0,1]$ 上。其内部实现为 $3t^2-2t^3,\ t=\mathrm{Clamp}{(\frac{x-a}{b-a}, 0, 1)}$，其中 $\frac{x-a}{b-a}$ 是很经典的线性映射，将 $(x,y)$ 的关系映射到以 $(a,0)$ 到 $(b,1)$ 的连线上，然后再使用多项式进行平滑。
+这里使用了一个新的 GLSL 内建函数 `smoothstep(gtype a, gtype b, gtype x)` ，它将返回值 `y` 根据 `x` 的值和区间上下限 `a`、`b` 将映射后的值平滑处理到 $[0,1]$ 上。其内部实现为 $[3t^2-2t^3,\ t=\mathrm{Clamp}{(\frac{x-a}{b-a}, 0, 1)}]$，其中 $\frac{x-a}{b-a}$ 是很经典的重映射函数 `remap(a,b,x)`，会将 $(x,y)$ 映射到从 $(a,0)$ 到 $(b,1)$ 的连线上。然后将区间外的值裁切之后，再使用多项式进行平滑。
 
-我们同样在 GeoGebra 中创建了一个 [演示](https://www.geogebra.org/calculator/mcnbeevs)，供你研究当使用不同 `a` 和 `b` 时映射的曲线会如何变化。
+我们同样 [在 GeoGebra 中创建了一个演示](https://www.geogebra.org/calculator/mcnbeevs)，供你研究当使用不同 `a` 和 `b` 时映射的曲线会如何变化。
 
-这样，我们就可以将法线在 $\cos\theta < 0.1$ 时将表面法线的比重缓慢降低，并在 $\cos\theta \leqslant 0$ 时彻底使用顶点法线了。
+这样，我们就可以将法线在 $\cos\theta < 0.5$ 即 $\theta \geqslant 60\degree$ 时将表面法线的比重缓慢降低，并在 $\cos\theta \leqslant -0.5$ 即 $\theta \geqslant 120\degree$ 时彻底使用顶点法线了。
+
+我们选择了在片段着色器中再处理视线方向，这是因为顶点着色器会进行透视矫正插值，会导致方向有些微偏差。
 
 ### 法线压缩
 
-在输出之前，我们还有最后一个问题：我们需要将法线数据保存在两个向量中，因为另外两个通道还需另作他用。虽然我们可以直接丢弃 $z$ 分量然后进行重建，但是 `sqrt()` 的开销还是不可忽视的，并且万一有没考虑到的边缘情况，或者你不想让法线平滑回退到顶点，这种假定式的丢弃就不可取了。
+在输出之前，我们还有最后一个问题：我们需要将法线数据保存在两个向量中，因为 BA 两个通道还需保存 AO 和高度图。虽然我们可以直接丢弃 $z$ 分量然后进行重建，但是 `sqrt()` 的开销还是不可忽视的，并且万一有没考虑到的边缘情况，或者你不想让法线平滑回退到顶点，这种假定式的丢弃就不可取了。
 
 这里我们推荐一种市面上流行的法线压缩算法：**八面体映射**（Octahedral Mapping）。它可以将向量通过神奇的数学手法投影到一个八面体的表面二维坐标上，在需要取用再将其回映射到空间中。
 
@@ -625,16 +641,99 @@ vec3 DecodeNormal(vec2 en){
 
 这是 [iterationRP](https://www.minegraph.cn/shaderpacks/54) 中所使用的八面体映射算法，很常见，因此我们就直接搬过来用了（谢谢你，Tahnass），具体的处理方法我们就不再过多展开（其实是看了半天没看懂= =||），留由大家自行查找。
 
-最后，我们将 `normalMap` 作为输出变量，将其写入 6 号（或者 7 号）缓冲区中。
+最后，我们将 `normalMap` 作为输出变量，将其写入 6 号（或者 7 号）缓冲区中，然后在需要用它们的时候传入缓冲区即可。
 ```glsl
+[... Gbuffers ...]
 /* DRAWBUFFERS:...6 */
 layout(location = [DB:6的索引]) out vec4 normalMap;
 [... main ...]
 normalMap.xy = EncodeNormal(surfaceNormal);
+[... Uniforms ...]
+uniform sampler2D colortex6;
+[... 延迟处理 ...]
+vec4 normalMap = texture(colortex6, uv);
+vec3 surfaceNormal = DecodeNormal(normalMap.xy);
 ```
-在之后任何需要使用法线的场景中，我们就可以直接使用 `DecodeNormal(encodedNormal)` 来取得它。每一个写入了顶点法线的几何缓冲都应该再次执行上述过程，没有纹理的几何缓冲也应该将顶点法线覆写进 $xy$ 通道以便同步。
+在之后任何需要使用法线的场景中，我们就可以直接使用 `DecodeNormal(encodedNormal)` 来取得它。
+
+> 之前我们在 `shadowMultiplier` 中复用了光照强度 `lit`，现在光照强度更改到表面法线，如果继续复用就可能造成偏移错误。
+
+为了保证不搞晕，我们将上述过程总结为一个流程图，**每一个写入了顶点法线的几何缓冲都应该完整执行它们**，没有纹理的几何缓冲也应该将顶点法线编码并将余下两分量设置为 `vec2(1.0)`，然后覆写进缓冲区以便同步顶点法线和表面法线所存储的对象。
+
+需要修改的程序包括 **Terrain**、**AO Less**、**Basic**（仅顶点法线）、**Entities**、**Entities Glowing** 和 **Hand**。
+
+<procedure title="表面法线计算步骤" collapsible="true" default-state="collapsed">
+
+```mermaid
+flowchart TD
+    out["顶点法线、切线和手性"]
+    out2[视口坐标] --> in[视线方向]
+    T1[/"`从 normals 中
+    取得法线纹理`"/] --> T2
+    T2[/"`将法线数据重映射
+    到 [-1,1] 上`"/] --> T3
+    T3[/重建 Z 分量/]
+    TBN1[/"重正交化法线和切线"/] --> TBN2
+    TBN2[/"计算副切线"/] --> TBN3
+    TBN3[/"构造 TBN 矩阵"/]
+    CVS{"是否背离视线？"}
+    YES[顶点法线]
+    NO[表面法线]
+    T3 --o MUL{{相乘}} --> SN[表面法线] --> CVS
+    TBN3 --o MUL
+    CVS -- 是 --> YES
+    CVS -- 否 --> NO
+    out -. 片段着色器 .-> TBN1
+    out -- 顶点着色器 --> TBN2
+    in --> CVS
+    YES & NO --> EW[/"编码到八面体合并余下
+    法线纹理数据并输出"/]
+    TL[无纹理类] -- 将 AO 和高度图设置为 1.0 --> EW
+```
+> 需要额外注意**手性的无插值传出**和**叉乘的有序性**！
+> 
+{style="warning"}
+</procedure>
 
 你也许会好奇我们为什么要保留顶点法线，这是因为顶点是位于空间中的，像我们之前给阴影采样做偏移那样的情况，使用顶点法线才能更加精确。因此当缓冲区充足（像我们目前这种水平）时，最好将顶点法线一并保留。当然，现在已经有了一个很完善的法线编解码函数，因此你完全可以把顶点法线压缩到两个通道然后将它和光照贴图放在一起（习题 2），比本章第一节习题 1 的方法更加优雅。
+
+### 纹理环境光遮蔽
+
+在上一小节中，我们还留下了法线纹理中的 BA 通道，Alpha 通道的高度图通常会用作绘制视差，但是对我们这一章来说还太早，而余下的 Blue 通道中保存的环境光遮蔽信息，我们就很熟悉了。
+
+和顶点环境光遮蔽类似，纹理环境光遮蔽也是同样的思路，我们只需要将它乘入环境光照中就行了：
+```glsl
+litSceneAmbient *= normalMap.b;
+```
+
+由于这个特性在 LabPBR 中是可选的，因此部分资源包的第三分量实际上还是法线的一部分，因此我们应该设置一个宏开关来让其他人自行决定启用与否：
+```glsl
+[... Settings ...]
+#define TXAO // TXAO 是纹理环境光遮蔽（Texture AO）的缩写
+[... final ...]
+#ifdef TXAO
+litSceneAmbient *= normalMap.b;
+#endif
+[... shaders.properties ...]
+screen = [...] TXAO
+```
+
+同时，一些资源包的纹理环境光遮蔽可能过于微妙或强烈，因此还需要额外处理。需要注意，环境光遮蔽的强度和 `normalMap.b` 是负相关的，因此当 `normalMap.b == 1.0` 时，无论如何都应当没有 AO 强度。此外，我们还需要注意环境光遮蔽的强度提前达到最大值时不能再让其继续减小，因此还需要一个钳制。
+```glsl
+[... Settings ...]
+#define TXAO_STRENGTH 1.0 // [0.2 0.6 1.0 1.4 1.8]
+[... final ...]
+float txao = normalMap.b * TXAO_STRENGTH + 1.0 - TXAO_STRENGTH;
+txao = max(txao, 0.0);
+litSceneAmbient *= txao;
+[... shaders.properties ...]
+screen = [...] TXAO_STRENGTH
+sliders = TXAO_STRENGTH
+```
+
+好了，现在就算没有纹理环境光遮蔽，你也能一眼看出表面法线带来的质量提升了！
+
+![顶点法线光照 VS 表面法线光照](advancedLighting_snvsvn_lighting.webp){width="700"}
 
 ## 阴影优化
 
@@ -648,3 +747,6 @@ normalMap.xy = EncodeNormal(surfaceNormal);
    - 计算镜面反射的 `getSpecular(vec3 normal, vec3 halfwayVec, float smoothness)`；
    - 计算总光照的 `calcLighting(vec3 fresnel, vec3 albedo, float specular)`。
 2. 将顶点法线进行编码，与光照贴图存放在同一个缓冲区中，因为编码后的法线数据进行了归一化处理，因此你可以放心继续使用归一化类型的缓冲区。
+   - 为了和表面法线做区分，今后取出来并解码之后的数据可以单独存放为 `vec3 vertexNormal` 中。
+   - 合并完成之后， 2 号缓冲区会空出来（原本用来保存原版光照强度），你可以放心将它留在原处，只更改 `DRAWBUFFERS` 序列和 `location` 索引，而不需要像强迫症那样 *空的缓冲区一定要在后面*\o/\o/\o/。
+3. GLSL 中没有内建的 `remap()` 函数，因此你可以将它添加到你的 Utilities 里。
