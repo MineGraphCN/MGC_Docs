@@ -470,3 +470,5 @@ program.world-1/composite2.enabled=BLOOM
 ```properties
 program.composite.enabled=(BLOOM || SSAO) && !GODRAYS
 ```
+
+相比宏开关，禁用整个程序能节省更多编译时间。
