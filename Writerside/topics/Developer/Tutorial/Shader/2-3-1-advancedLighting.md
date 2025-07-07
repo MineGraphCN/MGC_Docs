@@ -671,7 +671,7 @@ vec3 DecodeNormal(vec2 en){
 
 2. 我们取它们交换后绝对值的负数 $(-|y|,-|x|)$：![求解八面体映射步骤2](advancedLighting_octahedralMapping_step2.webp){style="block" width="350"}
 
-3. 然后，我们将坐标值加上 1，现在它实际上是以 $(1,1)$ 为参考系的一个向量，并且坐标值相互交换：![求解八面体映射步骤3](advancedLighting_octahedralMapping_step3.webp){style="block" width="350"}
+3. 然后，我们将坐标值加上 1，现在它实际上是以 $(1,1)$ 为参考系的一个向量，并且坐标值相对原始坐标相互交换：![求解八面体映射步骤3](advancedLighting_octahedralMapping_step3.webp){style="block" width="350"}
 
 4. 最后，我们乘上本来的符号，它们就会以符号为负数的轴为基准做一个对称向量（或者以原点为基准的中心对称图形）：![求解八面体映射步骤4](advancedLighting_octahedralMapping_step4.webp){style="block" width="350"}
 
