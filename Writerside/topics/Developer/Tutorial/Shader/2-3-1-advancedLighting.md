@@ -661,7 +661,7 @@ vec3 DecodeNormal(vec2 en){
 
 **[1]** 你可以从二维推广，$|x|+|y|=1$ 是一个顶点在 $(0,\pm1)$ 和 $(\pm1,0)$ 四个点的正方形，因此 $|x|+|y|+|z|=1$ 就是一个顶点落在 $(\pm1,0,0)$、$(0,\pm1,0)$ 和 $(0,0,\pm1)$ 六个点上的八面体。
 
-接着，它判断 $z$ 坐标，如果位于负半球，则交换 $x$ 和 $y$ 的值，并取 1 与之绝对值的差，然后乘以本来的符号。我们一步一步来分析：
+接着，它判断 $z$ 坐标，如果位于负半球，则交换 $x$ 和 $y$ 的值，并取 1 与之绝对值的差，然后乘以本来的符号。我们一步一步来分析。
 
 先看特殊情况，如果 $xy$ 坐标值之和为 1，说明 $z$ 分量为 0，因此不存在 $z$ 为负的镜像坐标，这种情况下翻转后的值也与之相同，即 $(1-|y|=|x|,1-|x|=|y|)$，由于符号没有交换，最终的坐标依然是 $(x,y)$。就像二维坐标系上的 $|x|+|y|=1$ 一样，这时它们落在八面体展开图的斜线上（我们暂且称之为象限的中轴斜线）：![XY平面上的法线](advancedLighting_octahedralMapping_step0.webp){style="block" width="350"}
 
@@ -669,11 +669,11 @@ vec3 DecodeNormal(vec2 en){
 
 1. 八面体的二维展开平面上有一个点 $(x,y)$：![求解八面体映射步骤1](advancedLighting_octahedralMapping_step1.webp){style="block" width="350"}
 
-2. 我们取它们交换后绝对值的负数 $(-|y|,-|x|)$：![求解八面体映射步骤2](advancedLighting_octahedralMapping_step2.webp){style="block" width="350"}
+2. 取它们交换后绝对值的负数 $(-|y|,-|x|)$：![求解八面体映射步骤2](advancedLighting_octahedralMapping_step2.webp){style="block" width="350"}
 
-3. 然后，我们将坐标值加上 1，现在它实际上是以 $(1,1)$ 为参考系的一个向量，并且坐标值相对原始坐标相互交换：![求解八面体映射步骤3](advancedLighting_octahedralMapping_step3.webp){style="block" width="350"}
+3. 然后，将坐标值加上 1，现在它实际上是以 $(1,1)$ 为参考系的一个向量，并且坐标值相对原始坐标相互交换：![求解八面体映射步骤3](advancedLighting_octahedralMapping_step3.webp){style="block" width="350"}
 
-4. 最后，我们乘上本来的符号，它们就会以符号为负数的轴为基准做一个对称向量（或者以原点为基准的中心对称图形）：![求解八面体映射步骤4](advancedLighting_octahedralMapping_step4.webp){style="block" width="350"}
+4. 最后，乘上本来的符号，它们就会以符号为负数的轴为基准做一个对称向量（或者以原点为基准的中心对称图形）：![求解八面体映射步骤4](advancedLighting_octahedralMapping_step4.webp){style="block" width="350"}
 
 不难看出，当 $z$ 为负值时，$(x,y)$ 坐标实际上会翻转到以其所在象限的中轴斜线为对称轴的另一个三角形内。解码法线就是逆向处理这个过程，我们就不再赘述了。
 
