@@ -693,6 +693,10 @@ vec3 surfaceNormal = DecodeNormal(normalMap.xy);
 在之后任何需要使用法线的场景中，我们就可以直接使用 `DecodeNormal(encodedNormal)` 来取得它。
 
 > 之前我们在 `shadowMultiplier` 中复用了光照强度 `lit`，现在光照强度更改到表面法线，如果继续复用就可能造成偏移错误。
+> 
+> 可以额外计算一个 `t = dot(lightDir, vertexNormal)` 替代。
+> 
+{style="note"}
 
 为了保证不搞晕，我们将上述过程总结为一个流程图，**每一个写入了顶点法线的几何缓冲都应该完整执行它们**，没有纹理的几何缓冲也应该将顶点法线编码并将余下两分量设置为 `vec2(1.0)`，然后覆写进缓冲区以便同步顶点法线和表面法线所存储的对象。
 
@@ -773,13 +777,252 @@ sliders = TXAO_STRENGTH
 
 ## 阴影优化
 
-[//]: # (矩形穹顶阴影和PCF)
+在第一章中，我们利用阴影贴图在场景中完成了阴影绘制，但是它们实在过于粗糙，如果用一张 2048x 的阴影纹理来保存数据，然后绘制 8 区块的阴影，它就已经顶不住了：
 
-## 色彩空间
+![好难看的影子！](advancedLighting_terrible_shadows.png){width="700"}
+
+你还会看到阴影的边缘有非常多难看的锯齿，这都是这一节我们将会处理的问题。
+
+### 阴影权重
+
+OptiFine 的阴影贴图始终会以摄像机所在的方块为中心，而实际游玩中，近景的占比大多数时候都会大于远景。这给我们提供了第一个阴影优化思路：假定远景在视口中的占比更少，据此改变远景和近景在阴影空间中的占比。
+
+还记得吧，进行透视除法之后，空间坐标会落在 $[-1,1]$ 上，因此当阴影空间靠近摄像机所在原点时，我们可以用下式增大它在屏幕上的占比：
+$$
+x' = \frac{|x|}{a|x|+1-a} \cdot \mathrm{Sign}(x) = \frac{x}{\mathrm{Mix}(1,|x|,a)}
+$$
+其中，$x$ 表示原本空间所在的位置，分母项表示权重强度，混合比例 $a \in [0,1)$：
+
+- 当 $a=0$ 时，分母为 1，$x'=x$，空间的位置不变；
+- 当 $0<a<1$ 时：
+  - 当 $|x|$ 一定，随着 $a$ 增大，分母逐渐靠近 $|x|$，结果会接近 1，因此小的原始坐标就会占用很大一部分映射后的坐标；
+  - 当 $a$ 一定，随着 $|x|$ 从 0 到 1，结果从 $\frac{0}{\mathrm{Mix}(1,0,a)} = 0$ 变为 $\frac{1}{\mathrm{Mix}(1,1,a)} = 1$，因此最小值和最大值不会改变。
+
+同样的，你可以在 [我们的 GeoGebra 演示](https://www.geogebra.org/calculator/dqaep8vv) 中尝试这个函数。
+
+我们的深度数据不必改变，只需要改变平面上的权重，由于 Minecraft 的体素游戏特性，我们可以对两坐标分别进行权重：
+```glsl
+vec2 shadowSquareWarp(vec2 p, float a) {
+    return p / mix(1.0, p, a);
+}
+```
+为了扭曲位置，我们需要在阴影的顶点着色器中处理它们，然后在延迟处理中将映射后的世界坐标按照同样的方式处理：
+```glsl
+[... Settings ...]
+#define SHADOW_CENTRAL_WEIGHT 0.9
+[... shadow.vsh ...]
+gl_Position.xyz /= gl_Position.w;
+gl_Position.xy = shadowSquareWarp(gl_Position.xy, SHADOW_CENTRAL_WEIGHT);
+gl_Position.xyz *= gl_Position.w;
+[... final.fsh ...]
+vec3 shadowNdcPos = shadowClipPos.xyz / shadowClipPos.w;
+shadowNdcPos.xy = shadowSquareWarp(shadowNdcPos.xy, SHADOW_CENTRAL_WEIGHT);
+vec3 shadowScreenPos = shadowNdcPos * 0.5 + 0.5;
+```
+
+可以看到，同样是 2048x 分辨率绘制 8 区块的阴影，效果立竿见影：
+
+![中央权重阴影](advancedLighting_central_weight_shadow.png){width="700"}
+
+> 目前更流行的做法是**联级阴影贴图**（**C**ascaded **S**hadow **M**aps），它会根据场景到视口的距离取用多个不同分辨率的阴影缓冲区来存储内容。
+> 
+> 另一种在单张阴影贴图上处理的方法叫**直线纹理形变阴影**（**R**ectilinear **T**exture **W**raping Shadow），它会根据视口中阴影的占比动态调整它们在阴影空间中的比例，可以在低分辨率阴影纹理上达到屏幕像素级别的阴影着色。
+
+### 柔和阴影
+
+虽然近处的阴影细节得到了细化，但是阴影边缘看起来却仍然很粗糙，看起来有许多毛刺和锯齿，这也是由阴影纹理与场景无法精确对齐导致。
+
+虽然我们无法完全避免锯齿的瑕疵，但可以设法遮掩：将阴影的边缘进行柔化。如果我们在一个阴影纹素的周围进行多次取样，每次取样之后都与当前深度进行比较，然后将遮蔽量除以采样量，就可以求到阴影的过渡，这就是所谓**百分比渐进过滤**（**P**ercentage **C**loser **F**ilter）。
+
+在阴影纹理上进行采样不能像之前的描边模糊着色器那样偷懒采样像素中间，因为采样的深度是几何信息，需要作比较之后才会进行模糊。
+
+就像第一章中的方框模糊那样，我们会处理边界情况来优化总采样次数，因此我们需要在循环中累积的量有两个：阴影数量计数和总采样次数。
+```glsl
+float sampleCount = 0.0;
+float totalShadow = 0.0;
+```
+
+进入采样循环，我们需要在二维区域上进行采样，而且没有办法在两个 Pass 中分方向进行扩散，因此需要两层循环。和之前一样，我们的从采样负半径增长到正采样半径为止，采样的数量就称为 `PCF_SAMPLES`：
+```glsl
+[... Settings ...]
+#define PCF_SAMPLES 3
+[... final ...]
+for(int i = -PCF_SAMPLES; i <= PCF_SAMPLES; ++i)
+for(int j = -PCF_SAMPLES; j <= PCF_SAMPLES; ++j) {}
+```
+
+> 编者习惯这种嵌套循环只使用一层花括号，这以你自己的编程喜好为准。
+
+接着，我们来求采样的步进，采样的方向很简单，就是 `vec2(i,j)`，我们主要看每一步应该在方向上走多远。最首先的，当然我们需要以纹素为采样尺度，这里的步进坐标是索引坐标，因此我们要将它乘上阴影贴图的纹素大小：
+```glsl
+const float shadowTexelSize = 1.0 / float(shadowMapResolution);
+vec2 steps = vec2(i,j) * shadowTexelSize;
+```
+然后，我们的 PCF 只会在阴影的边缘进行，而不会希望它扩散得太远 ^**1**^。除了除以采样数量来将采样位置进行收束以外，我们还可以使用另一个值来控制最大扩散距离：
+```glsl
+[... Settings ...]
+#define PCF_RADIUS 1.0
+[... 阴影循环 ...]
+steps = steps / PCF_SAMPLES * PCF_RADIUS;
+```
+除以 `PCF_SAMPLES` 让采样数量与扩散距离解耦，随着采样数量增多，软阴影会在 `PCF_RADIUS` 限制的区域内拥有更多的过渡。
+
+**[1]** 当然，除非你利用它做可变半影的软阴影，也就是我们常说的**百分比渐进软阴影**（**P**ercentage **C**loser **S**oft **S**hadow）除外。
+
+> 随着阴影纹理分辨率增大，PCF 会变得越来越微弱，如果你希望阴影纹理分辨率与之解耦，可以提前除以一个定值，可以以你测试到恰到好处的参数为基准，比如 `2048.0`，而不是乘以 `shadowTexelSize`。
+> 
+> 如果将阴影的渲染半径增大，PCF 的范围也会增大，如果你希望与阴影渲染半径也解耦，可以额外除以渲染距离，但是需要在之后乘一个固定系数，比如你正在测试的参数。
+> ```glsl
+> steps = vec2(i,j) / 2048.0 / shadowDistance * 128.0;
+> steps = steps / PCF_SAMPLES * PCF_RADIUS;
+> ```
+
+由于我们的阴影空间进行了形变，因此每次采样的坐标变换也需要在采样循环中实时计算，以保证阴影纹理中采样到的内容均匀，因此我们需要阴影空间的 NDC。刚才的总步进 *方向* ^**2**^ 是基于阴影屏幕空间的，因此为确保正确的扩散，可以提前将其减半：
+```glsl
+vec2 samplingNdc = shadowNdcPos.xy + step * 0.5;
+```
+**[2]** 还记得之前空间变换的内容吗？**方向不需要进行位移**，即使这个方向有长度。
+
+在进行更多操作之前，我们可以直接在这里进行边界检查，只需要简单地把 NDC 映射到阴影屏幕空间坐标上：
+```glsl
+if(uv_OutBound(samplingNdc * 0.5 + 0.5)) continue;
+```
+现在，我们我们已经拿到了要采样位置的 NDC，就像之前干的那样，我们将这个坐标也进行形变，然后变换到阴影屏幕空间坐标进行采样和比较，就像之前那样：
+```glsl
+samplingNdc = shadowSquareWarp(samplingNdc, SHADOW_CENTRAL_WEIGHT);
+vec2 uv_warped = samplingNdc * 0.5 + 0.5;
+float closestDepth = texture(shadowtex, uv_warped).r;
+```
+在进行深度比较之前，你可能已经考虑到了一个问题，如果平面朝向与光源方向夹角过大，采样周围坐标上的纹理可能导致结果和当前着色点上区别过大，从而造成遮蔽，而且采样点距离着色点越远，这个可能产生的深度差就越大。因此我们可以根据采样距离放缩偏移量：
+```glsl
+[... 循环外偏移处理 ...]
+float t = dot(lightDir, vertNormal);
+float biasDir = t > 0.0 ? max(bias * (1.0-t), bias * 0.1) : 0.0;
+[... 循环内偏移处理 ...]
+float biasScale = bias * (length(vec2(i,j)) * PCF_RADIUS + 1.0);
+```
+最后，像之前那样进行深度比较，然后将结果累积即可：
+```glsl
+for(...) for(...) {
+    [...]
+    total += step(currentDepth - biasScale, closestDepth);
+    count += 1.0;
+}
+float shadow = total / count;
+```
+
+![advancedLighting_pcf_shadow.png](advancedLighting_pcf_shadow.png){width="700"}
+
+我们将 PCF 的半径设置为了 3，用了 $(3\times2+1)^2 = 49$ 次采样获得了比较满意的成果。它的性能不会太好，特别是在低端机器上，在我们的算法中，把 `PCF_SAMPLES` 设置为 0 即可禁用 PCF。
+
+## 伽马校正
+
+现在，我们的光照优化已经接近尾声了，在结束这一节之前，让我们再来干一个比较轻松的事情。虽然说是比较轻松，但是它的原理由于网络上的各种文章互相摘抄，而作为源头之一的 LearnOpenGL 可以说是完全没解释清楚，导致大家的理解会出现很多混乱。本节将致力于用最浅显易懂的文字解释这一过程。
+
+在老式显像管（或者说阴极射线管，**C**athode **R**ay **T**ube）显示设备中，由于显像管的物理特性，导致其输入电压 $U$ 与输出亮度 $L$ 存在幂次关系，具体来说，是 $L=U^{2.35\sim2.5}$。这就导致了在受限的显示范围 $[0,1]$ 内，所有亮度都会变暗。
+
+为了纠正这一点，聪明的古人想出了在存储色彩 $C$ 时预先将原始色彩 $C_\text{Raw}$ 进行逆变换，即 $C=C_\text{Raw}^\frac{1}{2.35\sim2.5}$ 。这样，当存储色彩 $C$ 需要显示在屏幕上时，最终呈现的图像 $$C_\text{CRT} = C^{2.35\sim2.5} = {\left(C_\text{Raw}^{\frac{1}{2.35\sim2.5}}\right)}^{2.35\sim2.5} = C_\text{Raw}$$
+
+最终，原本保存的线性亮度就完美还原了，这个将原始数据通过倒数次幂处理的过程就被称为**伽马校正**（Gamma Correction）。
+
+另一个我们 [小学二年级就学过的知识](https://b23.tv/BV1VrVSz1Eme) 是，我们对世界的感知是对数的，而古人类为了生存，眼睛对弱光的变化感知更是明显大于强光，而伽马校正中，我们将线性连续的物理光强 $C_\text{Raw}$ 映射到存储色彩 $C$ 之后，还必须将数据离散化（比如八位位图的 256 个色阶）。如果你没意识到这意味着什么，当我们使用小数次幂进行映射时，$[0,1]$ 区域上的曲线看起来会“隆起”，即映射后的整体值会偏大，但起点和终点不同，也就意味着，如果将映射后的曲线在 $y$ 轴上进行均匀离散化（即将存储色彩 $C$ 离散化），那么最终靠近 $y=0$ 的一端上会有更加密集的离散值。
+
+我们同样 [在 GeoGebra 中创建了一个演示](https://www.geogebra.org/calculator/cah2uccg) 来帮助你更好地理解它，灰阶密度函数中的横线占比越短，说明原始数据在此处的占比越多，也就说明映射后的存储密度越高。你可以调整灰阶数量来观察每个灰阶所表达的原始信息范围，现代显示器常用的灰阶为 256 个（0~255）。
+
+也就是说，我们进行伽马校正时，暗部的信息也得到了更多保留（这是歪打正着），而我们人眼对这些信息又异常敏感，两边一拍即合，这个过程就被定了下来：
+$$
+\large
+\begin{aligned}
+&\text{线性颜色} \xrightarrow{C = C_\text{Raw}^\frac{1}{2.35\sim2.5}} 存储色彩 \to 显示器输出 \\
+&\xrightarrow{C_\text{CRT} = C^{2.35\sim2.5} = C_\text{Raw}} 线性亮度 \to 人眼 \xrightarrow{\log{C_\text{Raw}}} 感知
+\end{aligned}
+$$
+我们现在管这些有特定颜色分布曲线的颜色值集合叫做**色彩空间**（Color Space），而那个作为中间人的存储用色彩空间，现在被我们称为**sRGB**，只不过为了亮部信息的平衡，它变为了 $C_\text{Raw}^\frac{1}{2.2}$。由于暗部灰阶保留的特性，现代显示器虽然没了物理伽马特性，却依然会模拟这个过程。
+
+我们目前的光影中，所有使用的颜色纹理（主要是 `gtexture`）和部分颜色都是在 sRGB 空间中创作的，而我们所有的处理也都是在 sRGB 空间中进行的：
+$$
+\text{sRGB 颜色} \to \text{着色器处理} \to \text{显示器输出} \to 线性颜色
+$$
+这对于大多数常规颜色来说没有什么大不了，因为它们自始至终都在 sRGB 空间中运转。然而光照之类的物理量应当是在线性空间中的，由于我们没有进行手动处理，线性的光照被以 2.2 次幂输出了，也就是说我们目前所编写的画面实际上是光照不准确的！
+
+要想解决这个问题，办法无非其二：将光照单独提出来计算之后塞进 sRGB 空间，或者将所有颜色统统塞进线性空间，然后在输出之前转回到 sRGB。如果你还没忘了上面的光照小节，你就知道我们只有第二条路可以选了。
+
+虽然很不想承认，但是将所有输入颜色都转换到线性空间是很麻烦的（主要是操作密集型，没什么技术含量），包括我们之前使用的 `skyColor` 等等的都是调色之后显示器输出而定下的，因此我们需要留意所有已经用到了的 sRGB 纹理和颜色。但是有一点，Alpha 值通常用于保存其他信息（就像法线和高光贴图那样），它们在创作时通常会刻意设置为特定值，并且基本不参与显示，因此不必进行校正。
+
+在几何缓冲中，我们使用了颜色纹理和顶点颜色，在实体中还额外使用了 `entitiyColor`，它们都需要校正，不过我们的校正可以在颜色 *乘法* 之后统一进行，因为幂函数满足分配律：$(xy)^a = x^ay^a$（加法不可以！）。
+```glsl
+[... Settings ...]
+#define GAMMA 2.2
+#define GAMMA_REC 0.45454545
+[... Gbuffers ...]
+fragColor.rgb = pow(fragColor.rgb, vec3(GAMMA));
+  [... Entities ...]
+  vec3 entityColorG = vpow(entityColor.rgb, GAMMA);
+  fragColor.rgb = mix(fragColor.rgb, entityColorG, entityColor.a);
+```
+
+如果你实在厌烦了 `pow(gvec, vec(float))`，可以像我们一样重载一串：
+```glsl
+vec2 vpow(vec2 a, float b) {
+    return pow(a, vec2(b));
+}
+vec3 vpow(vec3 a, float b) {
+    return pow(a, vec3(b));
+}
+vec4 vpow(vec4 a, float b) {
+    return pow(a, vec4(b));
+}
+vec2 vpow(vec2 a, int b) {
+    return pow(a, vec2(b));
+}
+vec3 vpow(vec3 a, int b) {
+    return pow(a, vec3(b));
+}
+vec4 vpow(vec4 a, int b) {
+    return pow(a, vec4(b));
+}
+vec2 vpow(ivec2 a, float b) {
+    return pow(a, vec2(b));
+}
+vec3 vpow(ivec3 a, float b) {
+    return pow(a, vec3(b));
+}
+vec4 vpow(ivec4 a, float b) {
+    return pow(a, vec4(b));
+}
+vec2 vpow(ivec2 a, int b) {
+    return pow(a, vec2(b));
+}
+vec3 vpow(ivec3 a, int b) {
+    return pow(a, vec3(b));
+}
+vec4 vpow(ivec4 a, int b) {
+    return pow(a, vec4(b));
+}
+```
+{collapsible="true" default-state="collapsed" collapsed-title="gvec vpow(gvec v, float f)"}
+
+然后丢进 `Utilities.glsl` 里。
+
+最后，我们在 Final 中使用了 `skyColor`，由于它参与了光照计算，因此最好也过一遍伽马校正：
+```glsl
+vec3 skyColorG = vpow(skyColor, GAMMA);
+```
+
+在输出之前，记得把最终颜色转换回 sRGB 空间：
+```glsl
+fragColor.rgb = vpow(fragColor.rgb, GAMMA_REC);
+```
+
+![伽马校正](advancedLighting_gammaCorrection.png){width="700"}
+
+由于我们转换到了线性空间，因此光照看起来可能过于明亮，你可以适当降低它们（将环境光照强度降低到 0.3 左右就很好了）。虽然这一小节的工作量不多，但是对我们之后的渲染准确性有不可或缺的帮助。
+
+好了，至此，我们的延迟处理探索的第一阶段就正式完结了，希望你还顶得住，在下一个阶段中，我们将开始着手处理环境，并让我们今天最后所做的伽马校正发挥它的用处。
 
 ## 习题
 
-1. 整理光照模型小节中使用的函数，将菲涅尔反射之类的公式封装到 `/libs/Lighting.glsl` 中，包括
+1. 整理光照模型小节中的内容，封装到 `/libs/Lighting.glsl` 中，包括：
    - 菲涅尔函数 `f_schilck(vec3 f0, float cosTheta)` 和带粗糙度的重载 `f_schilck(vec3 f0, float cosTheta, float roughness)`；
    - 计算 $F_0$ 的 `labpbr_f0(vec3 albedo, float metallic)`；
    - 计算镜面反射的 `getSpecular(vec3 normal, vec3 halfwayVec, float smoothness)`；
@@ -788,3 +1031,7 @@ sliders = TXAO_STRENGTH
    - 为了和表面法线做区分，今后取出来并解码之后的数据可以单独存放为 `vec3 vertexNormal` 中。
    - 合并完成之后， 2 号缓冲区会空出来（原本用来保存原版光照强度），你可以放心将它留在原处，只更改 `DRAWBUFFERS` 序列和 `location` 索引，而不需要像强迫症那样 *空的缓冲区一定要在后面*\o/\o/\o/。
 3. GLSL 中没有内建的 `remap(a,b,x)`、`saturate(x)` 和 `remapSaturate(a,b,x)` 函数，因此你可以将它添加到你的 Utilities 里。
+4. 整理阴影优化小节中的内容，同样封装到 `/libs/Lighting.glsl` 中，包括：
+   - 计算阴影空间坐标系、偏移量和阴影的 `calcShadow(sampler2D tex, vec4 worldPos, vec3 lightDir, vec3 vertNormal)`；
+   - 计算 PCF 阴影的 `calcPCF(sampler2D tex, vec3 ndc, float bias)`
+
