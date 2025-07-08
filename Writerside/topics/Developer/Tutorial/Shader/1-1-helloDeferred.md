@@ -464,16 +464,19 @@ result /= 25.0; // 5*5 次采样
 
 ![模糊处理](deferred_blur.webp){width="700"}
 
-和预期一样，画面被轻微模糊了！
+和预期一样，画面被轻微模糊了！这种在矩形区域内采样，所有采样到的颜色权重一致的模糊就被称为**方框模糊**（Box Blur）。原版的菜单背景模糊就使用了这种模糊方法，我们之后会认识到的发光描边效果也用到了它。
 
-> 在编写循环时一定要注意不能写成死循环，否则会导致游戏崩溃！
+> 在着色器中编写循环时一定不能写成死循环，否则会导致游戏崩溃！
 > 
 {style="warning" title="注意"}
 
 还有一个值得注意的点是，边缘的像素偏移采样时由于超出了纹理边界，我们更期望它直接终止循环而不是继续采样。因此我们可以进行一些优化，当纹理坐标在范围外时直接跳过当前循环：
 
 ```glsl
-if(max(uv_displaced.s, uv_displaced.t) > 1.0 || min(uv_displaced.s, uv_displaced.t) < 0.0) { continue; }
+if(max(uv_displaced.s, uv_displaced.t) > 1.0 ||
+   min(uv_displaced.s, uv_displaced.t) < 0.0) {
+    continue;
+}
 ```
 
 这种边界检测我们会经常使用，因此我们也可以将它封装成函数：
@@ -483,7 +486,8 @@ bool uv_OutBound(vec2 uv) {
     return (max(uv.s, uv.t) > 1.0 || min(uv.s, uv.t) < 0.0);
 }
 bool uv_OutBound(vec3 uv) {
-    return (max(uv.s, max(uv.t, uv.p)) > 1.0 || min(uv.s, min(uv.t, uv.p)) < 0.0);
+    return (max(uv.s, max(uv.t, uv.p)) > 1.0 ||
+            min(uv.s, min(uv.t, uv.p)) < 0.0);
 }
 ```
 
