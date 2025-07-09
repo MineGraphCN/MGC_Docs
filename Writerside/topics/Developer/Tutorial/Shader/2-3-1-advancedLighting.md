@@ -549,40 +549,16 @@ in VS_OUT {
     mat3 tbn;
 } fs_in;
 [... main ...]
-surfaceNormal = tbn * surfaceNormal;
+surfaceNormal = fs_in.tbn * surfaceNormal;
 ```
 
-GLSL 在传递矩阵时不会进行插值，TBN 实际上是逐顶点固定的，因此在使用模组中的自定义高模时，可能会出现很难看的照明突变。
-
-[//]: # (一张照明突变截图)
-
-如果想获得更好的质量，我们应当在片段着色器中使用插值之后的法线和切线来计算 TBN 矩阵，但在插值之后法线和切线可能会不再垂直，我们可以使用一个名为**格拉姆-施密特过程**（Gram-Schmidt process）的数学技巧将它们重正交化：
+在连续网格的平面上，如果存在一些共享顶点，顶点法线可能会被设置为邻近表面朝向的平均值，此时法线就不再与切线正交了。我们可以使用一个名为**格拉姆-施密特过程**（Gram-Schmidt process）的数学技巧将它们重正交化：
 ```glsl
-[... 顶点着色器 ...]
-out VS_OUT {
-    [...]
-    vec3 normal;
-    vec3 tangent;
-    flat float handedness; // 手性只能为1或-1，因此需要flat限定声明不插值！
-} vs_out;
-[... main ...]
-vs_out.normal = normalMatrix * vaNormal;
-vs_out.tangent = normalize(normalMatrix * at_tangent.xyz);
-vs_out.handedness = at_tangent.w;
-
-[... 片段着色器 ...]
-in VS_OUT {
-    [...]
-    vec3 normal;
-    vec3 tangent;
-    flat float handedness; // 记得同步限定符！
-} fs_in;
-[... main ...]
-float cosTheta = dot(fs_in.tangent, fs_in.normal);
-vec3 tangent = normalize(fs_in.tangent - cosTheta * fs_in.normal);
-vec3 bitangent = normalize(cross(tangent, fs_in.normal) * fs_in.handedness);
-mat3 tbn = mat3(tangent, bitangent, fs_in.normal);
-[...]
+vec3 normal = [...];
+vec3 tangent = [...];
+tangent = normalize(tangent - dot(tangent, normal) * normal);
+float handedness = [...];
+vec3 bitangent = [...];
 ```
 
 ### 边界情况优化
