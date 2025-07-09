@@ -153,6 +153,8 @@ layout(rgba8) uniform image2D colorimg0;
 {width="700"}
 
 > 32 位通道不支持归一化浮点类型。
+> 
+{style="note"}
 
 ### 混合
 
