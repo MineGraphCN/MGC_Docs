@@ -24,6 +24,10 @@
 选择文档：左侧栏
 </tldr>
 
+> 如果你在很早之前访问过本站，可能需要使用 <shortcut>Shift</shortcut><shortcut>F5</shortcut> 来强制刷新本地目录缓存！
+>
+{style="warning"}
+
 ## 操作
 
 - 点击跳转链接时，默认在当前标签页内跳转。使用 <shortcut>鼠标中键</shortcut> 来新建标签页访问；
