@@ -1,7 +1,5 @@
 # 固体几何缓冲
 
-<secondary-label ref="wip"/>
-
 <show-structure depth="2"/>
 
 <tldr>
