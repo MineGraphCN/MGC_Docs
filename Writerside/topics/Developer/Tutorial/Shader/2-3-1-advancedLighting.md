@@ -459,7 +459,7 @@ if(lightmap.t == 0.0) lit = 0.0;
 
 和从颜色纹理上获取额外的纹素颜色、从高光纹理上获取额外的材质属性类似，法线映射从法线纹理上取到纹素的新朝向来修改片段在空间中的朝向。
 
-上一节提到过，OptiFine 会读取两种特殊后缀的纹理，也介绍了其中一种 `_s` 后缀的高光贴图。而这一小节的主角就是另一种特殊纹理，以 `_n` 为后缀的**法线纹理**（**N**ormal texture），我们在几何缓冲程序中声明 `uniform sampler2D normal;` 就可以访问它了。
+上一节提到过，OptiFine 会读取两种特殊后缀的纹理，也介绍了其中一种 `_s` 后缀的高光贴图。而这一小节的主角就是另一种特殊纹理，以 `_n` 为后缀的**法线纹理**（**N**ormal texture），我们在几何缓冲程序中声明 `uniform sampler2D normals;` 就可以访问它了。
 
 法线贴图保存了当我们从正面直视几何表面时的法线朝向，由于通道的紧缺，在 LabPBR 中，法线信息仅占用 RG 两个通道，而 B 通道则用于**环境光遮蔽**（Ambient Occlusion）来形成纹理遮蔽，A 通道则用于**视差**（Parallax）。本小节聚焦于前三个通道。
 
@@ -473,7 +473,7 @@ if(lightmap.t == 0.0) lit = 0.0;
 
 ```glsl
 [... Uniforms ...]
-uniform sampler2D normal;
+uniform sampler2D normals;
 [... Gbuffers ...]
 vec4 normalMap = texture(normals, uv);
 normalMap.xy = normalMap.xy * 2.0 - 1.0;
@@ -1055,5 +1055,5 @@ fragColor.rgb = vpow(fragColor.rgb, GAMMA_REC);
 3. GLSL 中没有内建的 `remap(a,b,x)`、`saturate(x)` 和 `remapSaturate(a,b,x)` 函数，因此你可以将它添加到你的 Utilities 里。
 4. 整理阴影优化小节中的内容，同样封装到 `/libs/Lighting.glsl` 中，包括：
    - 计算阴影空间坐标系、偏移量和阴影的 `calcShadow(sampler2D tex, vec4 worldPos, vec3 lightDir, vec3 vertNormal)`；
-   - 计算 PCF 阴影的 `calcPCF(sampler2D tex, vec3 ndc, float bias)`
+   - 计算 PCF 阴影的 `calcPCF(sampler2D tex, vec3 ndc, float bias)` 。
 
