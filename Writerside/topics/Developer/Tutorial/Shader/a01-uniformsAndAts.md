@@ -8,7 +8,7 @@
 
 本附录列出了所有 OptiFine 提供的统一变量和顶点属性，你可以直接复制并保存至一个文件以便今后直接 `#include` 。
 
-此外，我们还列出了所有标准宏，它们在链接文件时自动包含在程序中，你可以直接在着色器中随意取用这些宏。
+此外，我们还列出了所有标准宏，它们在链接文件时自动包含在程序中，你可以直接在着色器中随意取用这些宏，并且不需要（也不能）手动定义。
 
 </tldr>
 
@@ -161,7 +161,7 @@ in vec3 at_midBlock;      // 向方块中心偏移1/64m           仅方块
 
 ## 标准宏
 
-标准宏会在每个着色器文件的 `#version` 行后自动定义，可以在着色器程序中随时使用。
+标准宏会在每个着色器文件的 `#version` 行后自动定义，可以在着色器程序中随时使用，无需进行手动定义。
 
 Minecraft 版本
 :
@@ -248,8 +248,8 @@ OpenGL 扩展
 ```
 你也可以在站内找到 [LabPBR 格式的翻译版本](labpbrMaterialStandard.md){summary=""} 。
 
-渲染阶段
-: `<const>` 用于统一变量 `renderStage` ，其值按执行顺序给出。由于部分几何共用一个程序，因此可以使用形如 `if(renderStage == MC_RENDER_STAGE_XXX)` 进行当前渲染几何类型判断。
+渲染阶段 {id="renderStage"}
+: `<const>` 其值按执行顺序给出，用于统一变量 `renderStage`。由于部分几何共用一个几何缓冲程序，因此可以使用形如 `if(renderStage == MC_RENDER_STAGE_XXX)` 进行当前渲染几何类型判断。
 ```glsl
 #define MC_RENDER_STAGE_NONE <const>                    // 未定义
 #define MC_RENDER_STAGE_SKY <const>                     // 天空
@@ -260,11 +260,11 @@ OpenGL 扩展
 #define MC_RENDER_STAGE_STARS <const>                   // 星星
 #define MC_RENDER_STAGE_VOID <const>                    // 虚空
 #define MC_RENDER_STAGE_TERRAIN_SOLID <const>           // 固体地形
-#define MC_RENDER_STAGE_TERRAIN_CUTOUT_MIPPED <const>   // 多级渐进纹理裁切固体地形
-#define MC_RENDER_STAGE_TERRAIN_CUTOUT <const>          // 裁切固体地形
+#define MC_RENDER_STAGE_TERRAIN_CUTOUT_MIPPED <const>   // 带有 MipMap 的裁切地形
+#define MC_RENDER_STAGE_TERRAIN_CUTOUT <const>          // 裁切地形
 #define MC_RENDER_STAGE_ENTITIES <const>                // 实体
 #define MC_RENDER_STAGE_BLOCK_ENTITIES <const>          // 方块实体
-#define MC_RENDER_STAGE_DESTROY <const>                 // 挖掘覆盖
+#define MC_RENDER_STAGE_DESTROY <const>                 // 挖掘裂纹覆盖
 #define MC_RENDER_STAGE_OUTLINE <const>                 // 方块选择框
 #define MC_RENDER_STAGE_DEBUG <const>                   // 调试渲染
 #define MC_RENDER_STAGE_HAND_SOLID <const>              // 固体手持物品

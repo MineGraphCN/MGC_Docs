@@ -1,7 +1,5 @@
 # 新鲜事
 
-<secondary-label ref="whats_new"/>
-
 <show-structure depth="0"/>
 
 <tldr>
@@ -13,22 +11,20 @@
 
 ## 图书馆
 
-- Writerside 更新到了 2025.03.8312
-  - Writerside 的独立 IDE 坠机了😭😭😭，幸好还有插件会继续更新😋😋😋。
-- 更新了前两章共七节光影教程，以及两节附录。
-  - 光影教程已经基本校正完毕。
-- 优化了图形站的访问速度：
-  - 关闭了境外解析，不用再去沟槽的 CloudFlare 走一圈了。
-  - 将站上的大多数图片压缩为了 webp，整个站的文件容量缩小了 60%。
-- 更新了主页的图标，为部分卡片添加头图。
-- 更新了底栏链接和备案。
-- BetterRTX 已迁至 [图形站](https://minegraph.cn/be/shaderpacks/65) 。
+- 光影教程第二章已发布三节内容
+- 将知识库的文档使用说明单独提出到 [](mgcdInstructions.md){summary=""}
+- 修正光影教程中的许多内容，并统一文本叙述，部分代码已更改
+- 移除了 Herobrine
+
+> 如果你在很早之前访问过本站，可能需要使用 <shortcut>Shift</shortcut><shortcut>F5</shortcut> 来强制刷新本地目录缓存！
+>
+{style="warning"}
 
 ## 图形站
 
-- 光影包基岩版板块已上线！
-- 开发中：站内购买功能。
+- 现已支持爱发电、微信和 QQ 登录
 
 ## 视频
 
-_Maybe_
+- 正在筹备视频版光影开发教程
+- （也许）素影之下

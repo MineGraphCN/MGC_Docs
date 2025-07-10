@@ -2,7 +2,6 @@
 
 <primary-label ref="basic"/>
 
-<secondary-label ref="latest"/>
 <secondary-label ref="shader"/>
 <secondary-label ref="rt"/>
 
@@ -315,7 +314,7 @@ Complementary Shaders
 - 在论坛关闭之前该帖子已修改内容，避免了进一步的误导。
 - 新版本的 Complementary 引入了一个极简的 [](shaderTech.md#lpv) 用以渲染彩色光照，这算不算是一种一语成谶呢？
 
-<seealso>
+<seealso title="更多内容">
   <category ref="related">
     <a href="rayTracing.md" summary="光线追踪的历史、分类和轶事">科普文档 - 光线追踪专题</a>
   </category>

@@ -12,7 +12,6 @@
   <tab title="着色器开发">
 
 <chapter title="背景知识">
-<p>
 
 着色器开发至少需要三套背景知识：**线性代数**、**GLSL** 和 **OptiFine 渲染管线**
 
@@ -25,10 +24,8 @@
 
 [OptiFine 开发文档](https://github.com/sp614x/optifine/tree/master/OptiFineDoc/doc) 中也给出了不少开发细节，尤其是 `shaders.txt` 和 `shaders.properties` 。这些文档也可以在你下载的 OptiFine `.jar` 文件中找到。
 
-</p>
 </chapter>
 <chapter title="基本概念">
-<p>
 
 在编写着色器之前，我们需要了解最基础的概念。经过多个着色器作者的筛选，我们推荐观看以下视频：
 
@@ -41,12 +38,12 @@
 1. 魔改别人的光影；
 2. 从头开始制作自己的光影。
 
-你将从这两种做法中学到不同的技能，所以建议至少尝试这两种做法，但从你更喜欢的那一种开始。**注意：魔改光影前需要了解相关版权问题，至少应该知道作者是否允许别人魔改后发布他的着色器。**
+你将从这两种做法中学到不同的技能，所以建议至少尝试这两种做法，但从你更喜欢的那一种开始。**注意：魔改光影前需要了解相关版权问题，至少应该知道作者是否允许别人魔改后发布他的光影。**
 
-</p>
+如果你没有太多基础，想学习从头开始制作光影，站上的 [光影教程](shaderTutorial.md){summary=""} 是一个不错的选择，它也有背景知识中的后两者快速入门。
+
 </chapter>
 <chapter title="相关资料">
-<p>
 
 [OptiFine 开发文档 / 着色器](https://github.com/sp614x/optifine/blob/master/OptiFineDoc/doc/shaders.txt)
 : OptiFine 开发文档的着色器部分。
@@ -88,7 +85,6 @@ shaderLABS 提供的相关资料
 [Shadertoy](https://www.shadertoy.com/)
 : GLSL 沙盒，包含了很多人的示例代码。
 
-</p>
 </chapter>
 <chapter title="开发技巧">
 <deflist>

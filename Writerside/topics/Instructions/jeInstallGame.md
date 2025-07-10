@@ -2,7 +2,6 @@
 
 <primary-label ref="manual"/>
 
-<secondary-label ref="new"/>
 <secondary-label ref="je"/>
 <secondary-label ref="of"/>
 <secondary-label ref="iris"/>
@@ -37,7 +36,7 @@ _Java_ 版，顾名思义，要想运行游戏，Java 环境是不可或缺的�
 2. 下载之后，解压到任意位置（推荐解压到 `C:\Program Files\Java\` 方便管理），并在开始菜单中搜索 `path` ，打开 `编辑系统环境变量`。
    - 对于其他系统用户，请自行搜索如何修改。
    <include from="uniforms.md" element-id="recommend_unzipApp"/>
-3. 选择 `高级` > `环境变量…` > `系统变量` ，找到变量名为 `Path` 的变量。
+3. 选择 `高级` > `环境变量…` > `系统变量` ，找到名为 `Path` 的变量。
 4. 选择 `编辑` > `新建` ，然后键入 `<你的解压路径>\bin` 并保存。
 
 > 如果你需要游玩 **JE 1.8** 及以前的版本，可以安装 Java 8。  
@@ -69,7 +68,7 @@ HMCL 启动器
 - 支持离线模式和第三方验证服务器
 - 支持导入整合包
 - 镜像源加速下载
-- 国产启动器
+- 更适合国人宝宝体制的国产启动器
 
 PCL 2 启动器
 : [从爱发电获取免费版](https://afdian.com/p/0164034c016c11ebafcb52540025c377)
@@ -78,7 +77,7 @@ PCL 2 启动器
 - 支持离线模式和第三方验证服务器
 - 支持导入整合包
 - 镜像源加速下载
-- 国产启动器
+- 更适合国人宝宝体制的国产启动器
 - ~~也许无聊的时候可以玩玩启动器？~~
 
 Multi MC 启动器
@@ -113,6 +112,8 @@ Multi MC 启动器
 <var name="link">https://optifine.net/downloads</var>
 
 如果你是新手，可以先尝试安装最简单的仅安装 OptiFine。
+
+目前有最新 OptiFine 的游戏版本是 **JE %latest_je_with_of%**，最新的 OptiFine 版本是 %latest_of% 。
 
 需要安装其他模组吗？
 <tabs group="otherMods">

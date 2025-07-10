@@ -61,7 +61,7 @@ Language Server for Minecraft Shaderpacks
 
 ## 配置游戏环境
 
-我们将使用截止教程编写时的最新正式版本（**JE %latest_je_with_of%**, OptiFine %latest_of%）作为测试环境。
+我们将使用截止教程编写时的最新正式版本（**JE 1.21.4**, OptiFine J3）作为测试环境。
 
 如果你还不会安装游戏，参阅 [](jeInstallGame.md) 。
 
@@ -69,7 +69,7 @@ Language Server for Minecraft Shaderpacks
 
 右键 `shaders` ，然后点击 `通过 Code 打开`（在 Windows 11 中你需要点击 `显示更多选项` 才能找到），这就是我们的工作区了，你可以在左侧栏的 `资源管理器` 页查看工作区内的文件和文件夹，如果你找不到这个选项卡，可以按 <shortcut>Ctrl</shortcut><shortcut>Shift</shortcut><shortcut>E</shortcut> 呼出。
 
-在游戏中，为了防止原版的干扰，你可以把 `视频设置` > `细节` > `晕影` 设置为 `流畅` 。
+在游戏中，为了防止原版暗角干扰最终效果，你可以把 `视频设置` > `细节` > `晕影` 设置为 `流畅` 。
 
 ## 了解你的编辑器
 
@@ -89,10 +89,6 @@ Language Server for Minecraft Shaderpacks
 
 ## 查看日志
 
-OptiFine 会将光影报错内容输出到游戏的日志中，你可以在 `\logs\latest.log` 查看，在启动器中勾选 `查看日志` 或者将这个文件拖入 VS Code，它默认关联了 `.log` 格式。
+OptiFine 会将光影报错内容输出到游戏的日志，你可以在 `\logs\latest.log` 中找到它，在启动器中勾选 `查看日志` 或者将这个文件拖入 VS Code 就可以查看。
 
-此外，你还应该在右下角选择 `GB 2313` 编码，这样才能正确显示日志中的中文。
-
----
-
-这样我们的工作环境就配置完毕了。在下一节中，我们将了解 OptiFine 的光影加载逻辑和着色器的运行管线。
+VS Code 默认支持 Log 格式的日志，但是你还应该在右下角选择 `GB 2313` 编码，这样才能正确显示日志中的中文。

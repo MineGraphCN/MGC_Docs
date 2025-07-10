@@ -94,7 +94,7 @@ $$
 
 同理，当 $G = 1$ 时
 $$
-\frac{R}{r}= \frac{G}{g} \Rightarrow \frac{R}{r}= \frac{1}{g} \Rightarrow R = \frac{r}{g}
+\frac{R}{r}= \frac{G}{g} \Rightarrow \frac{R}{r} = \frac{1}{g} \Rightarrow R = \frac{r}{g}
 $$
 $$
 D = \sqrt{R^2+G^2} = \sqrt{1+\frac{r^2}{g^2}} = \sqrt{\frac{r^2+g^2}{g^2}}

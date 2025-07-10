@@ -2,8 +2,9 @@
 <!DOCTYPE vars SYSTEM "https://resources.jetbrains.com/writerside/1.0/vars.dtd">
 <vars>
     <var name="product" value="MGCD"/>
-    <var name="latest_pack_format" value="55"/>
+    <var name="latest_pack_format" value="64"/>
     <var name="latest_of" value="J3"/>
     <var name="latest_je_with_of" value="1.21.4"/>
-    <var name="latest_je_snapshot" value="1.21.5-pre3"/>
+    <var name="latest_je_with_snapshot" value="1.21.7-rc2"/>
+    <var name="latest_pack_format_ver_low" value="1.21.7-rc2"/>
 </vars>

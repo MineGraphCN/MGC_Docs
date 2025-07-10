@@ -17,7 +17,7 @@
 
 _暂时没有更多内容咯_
 
-<seealso style="cards">
+<seealso title="更多内容" style="cards">
     <category ref="related">
         <a href="PopOfScience.md" summary="主要的科普板块。"/>
         <a href="QAs.md" summary="总结了社区中经常有人提起的概念性问题。"/>

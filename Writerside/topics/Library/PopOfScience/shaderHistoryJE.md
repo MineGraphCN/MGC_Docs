@@ -104,7 +104,7 @@ Optimine 发布后不久，它被 _sp614x_ 接手，开始着手添加更多优�
 
 第四，不用 OptiFine，因为它*忠*。一直以来，高清修复对内都为光影纹理提供了一个稳定的开发环境，对外从来不在乎模组兼容性，对自己人不可谓不忠诚。
 
-<seealso>
+<seealso title="更多内容">
   <category ref="related">
     <a href="shaderBasic.md" summary=""/>
   </category>

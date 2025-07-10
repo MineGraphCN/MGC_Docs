@@ -14,7 +14,7 @@
 
 {columns=3}
 
-<seealso style="cards">
+<seealso title="更多内容" style="cards">
     <category ref="related">
         <a href="Correction.md" summary="总结了一些玩家中有歧义的图形学观点。"/>
         <a href="QAs.md" summary="总结了社区中经常有人提起的概念性问题。"/>

@@ -1,4 +1,4 @@
-# 术语表
+# 术语库
 
 <primary-label ref="manual"/>
 
@@ -8,65 +8,26 @@
 
 如果你有更多想要提供的术语，或者发现了术语中的疏漏，可以在 [GitHub](https://github.com/MineGraphCN/MGC_Docs/issues) 上为我们提交 Issue 和 Pull Request。
 
-<show-structure depth="3"/>
-
-## 约定 {id="约定"}
-
-**粗体**
-: 表示**强调**或**关键词**。
-
-*斜体*
-: 表示 *引用* 或 *人／团队名* 或 **_加粗时二次强调_**。
-
-[跳转](#约定){summary="跳转链接描述"}
-: 跳转到站内其他位置，或当链接后跟有 ↗ 时，表示跳转站外链接。将鼠标悬停在其上有时会有和缩写一样的提示。
-
-^角标^
-: 表示这只在对应环境中有效。
-
-<tooltip term="缩写">缩写</tooltip>
-: 鼠标悬停或点击 <sup>触屏设备</sup> 可以查看缩写全称。
-
-`代码`
-: 表示这是程序运行时显示/日志/代码内容，或计算机行为。  
-`代码块内容` 的约定：
-- `<尖括号>` ：由尖括号括起来的内容表示在这个区域内应该填写的内容。例：`<文件名>.jpg` ，其中 `<文件名>` 部分可以使用任意**符合尖括号内定义**的内容替换，例：`图片1.jpg` 。
-    - 在替换时应当将尖括号**一同替换**。
-- `[方括号]` ：由方括号括起来的内容是一个可填的数字，例：`vec[N]` 可以替换为 `vec3` 。
-    - 在数组中，方括号不需要被一同替换，此时，例：`float[a][b]` 可以替换为 `float[1][3]` 。
-    - 我们约定**替换**方括号的字母使用**大写**，**不替换**方括号的字母使用**小写**。
-- `函数()` ：函数分为原型和调用两种情况。
-    - 当函数和参数含有 [变量类型](#变量类型和修饰符){summary=""} 时，表示这是函数的**原型**。例：`float floor(float num)` 。
-      - 有些函数有多个可以传入的变量类型，此时会在变量类型处使用 `<尖括号>` 。例如 `min(<int | float> numA, <int | float> numB)` 。
-    - 当函数内参数仅有变量类型时，表示我们**调用函数**时会在这个函数内填何种参数。例：`max(float, float)` 。
-
-<shortcut>按键</shortcut>
-: 表示这是键盘或者鼠标的按键
-- <shortcut>A</shortcut><shortcut>B</shortcut> 表示同时按下 A 和 B
-- <shortcut>A</shortcut>, <shortcut>B</shortcut> 表示按下 A 并松开后再按下 B
-- <shortcut>^A</shortcut> 表示按住 A
-
-公式
-: 形如 $y = ax^2 + bx + c$ 的非衬线西文内容。
+<show-structure depth="2" for="chapter"/>
 
 ## 游戏相关 {id="游戏相关"}
 
 <deflist>
 <def id="je">
-<title><tooltip term="JE">JE</tooltip></title>
-Java 版游戏，在本文档中，也可以表示只能在 Java 版渲染模组下有效。
+<title>JE</title>
+<tooltip term="JE">Java 版</tooltip>游戏，在本文档中，也可以表示只能在 Java 版渲染模组下有效。
 <tip><b>原主机版</b>使用 C++ 编写，但特性却基于 JE，也称之为 <b><tooltip term="CE">CE</tooltip></b>。</tip>
 </def>
 
 <def id="be">
-<title><tooltip term="BE">BE</tooltip></title>
-基岩版游戏，这其中也包含了<b>原 <tooltip term="PE">PE</tooltip></b>。
+<title>BE</title>
+<tooltip term="BE">基岩版</tooltip>游戏，这其中也包含了<b>原 <tooltip term="PE">PE</tooltip></b>。
 <tip>现在的主机版也属于 BE。</tip>
 </def>
 
 <def id="ne">
-<title><tooltip term="NE">NE</tooltip></title>
-由<b>网易代理</b>的中国版游戏，也称<b>网易版</b>，表示为网易版独占，例：防沉迷 <sup>NE</sup>，延迟渲染 API <sup>BE(NE)</sup>。
+<title>NE</title>
+由<b>网易代理</b>的中国版游戏，也称<b><tooltip term="NE">网易版</tooltip></b>，表示为网易版独占，例：防沉迷 <sup>NE</sup> ，延迟渲染 API <sup>BE(NE)</sup> 。
 </def>
 </deflist>
 
@@ -135,8 +96,8 @@ Java 版游戏，在本文档中，也可以表示只能在 Java 版渲染模组
 </def>
 
 <def id="glslShaderCore">
-<title><tooltip term="GLSL">GLSL</tooltip> Shader Core</title>
-    <b>光影核心</b>模组，<b>最早</b>的 Java 版光影模组。
+<title>GLSL Shader Core</title>
+    <b><a anchor="glsl" summary="">GLSL</a> 光影核心</b>模组，<b>最早</b>的 Java 版光影模组。
     <list>
     <li>
         在 OptiFine 集成后其更新频率明显下降，不再提供新功能支持。
@@ -215,8 +176,7 @@ Java 版游戏，在本文档中，也可以表示只能在 Java 版渲染模组
 </def>
 </deflist>
 
-## 计算机相关 {id="计算机相关"}
-### 数学基础 {id="数学基础"}
+## 数学基础 {id="数学基础"}
 
 <deflist>
 <def title="标量" id="标量">
@@ -227,9 +187,9 @@ Java 版游戏，在本文档中，也可以表示只能在 Java 版渲染模组
 <def title="区间" id="区间">
 
 即取值范围
-- $x \in [a, b]$ 表示 $ a \leq x \leq b $；
+- $x \in [a, b]$ 表示 $ a \leqslant x \leqslant b $；
 - $x \in (a, b)$ 表示 $ a < x < b $；
-- $x \in [a, b)$ 表示 $ a \leq x < b $。
+- $x \in [a, b)$ 表示 $ a \leqslant x < b $。
 </def>
 
 <def title="向量" id="向量">
@@ -374,7 +334,7 @@ $$
 </def>
 </deflist>
 
-### 计算机基础 {id="计算机基础"}
+## 计算机基础 {id="计算机基础"}
 
 <deflist>
 
@@ -442,7 +402,7 @@ $$
     </li>
 </list>
 
-> 关于资源包分辨率，参阅：[](resourcepackBasic.md#资源包分辨率){summary=""}。
+有关资源包分辨率，参阅：[](resourcepackBasic.md#资源包分辨率){summary=""}。
 </def>
 
 <def title="离散和连续" id="离散和连续">
@@ -455,14 +415,14 @@ $$
 </def>
 
 <def id="应用程序接口">
-<title><tooltip term="API">API</tooltip></title>
+<title>API</title>
 
-**应用程序接口**，其提供特定的方法，让第三方代码通过它们修改程序。
+**<tooltip term="API">应用程序接口</tooltip>**，其提供特定的方法，让第三方代码通过它们修改程序。
 <tip>具象化来说，这就好比给手机（游戏本体）扩展存储（想要达到的光影效果），需要 SD 卡（第三方代码），并且手机需要有 SD 卡槽（接口）才能插入。</tip>
 </def>
 </deflist>
 
-#### 编程类 {id="编程类"}
+## 编程基础 {id="编程基础"}
 
 <deflist>
 
@@ -583,8 +543,7 @@ void main() {
 
 </procedure>
 
-### 图形学（3D） {id="图形学"}
-#### 图形基础 {id="图形基础"}
+## 图形学基础 {id="图形基础"}
 
 参阅：[着色器 基本概念和轶事](shaderBasic.md){summary=""}
 
@@ -608,6 +567,18 @@ void main() {
 - 计算机图形学约定，三角形的三个顶点以**逆时针**顺序所形成的平面就是这个形状的**正面**。
     - 垂直于这个面朝外的方向就是这个三角形的**面法线**（Surface Normal）。
 
+</def>
+<def title="纹理" id="纹理">
+
+**Texture**，由许多像素构成的集合，通常是二维的。
+
+几乎任何位图都可以以纹理的形式加载到着色器中，纹理中的每个像素也可以称为**纹素**（Texel）。
+</def>
+<def title="图像" id="图像">
+
+**Image**，类似纹理，当一个图像被采样器类型声明进入着色器时，就变成了纹理。
+
+不同于纹理在着色器中的只读和片段着色器只能向自己正在处理的像素输出，图像类型是可任意读写的。
 </def>
 <def title="着色（目标）点" id="着色目标">
 
@@ -652,7 +623,7 @@ void main() {
 </def>
 <def title="延迟渲染法" id="延迟渲染法">
 
-将画面处理分为**两趟**：
+将画面处理分为**两趟**，其因延后了大部分性能开销较大的效果到独立阶段而得名。
 <deflist>
 <def title="几何缓冲（阶段）" id="几何缓冲">
 
@@ -661,15 +632,12 @@ void main() {
 </def>
 <def title="延迟处理（阶段）" id="延迟处理">
 
-**Deferred / Composite (Stage)**，这种阶段的着色器所使用的信息都是**之前的几何缓冲**和**上一个延迟处理着色器**绘制到缓冲区的画面。在这个阶段，着色器从缓冲区中读取信息，并将计算结果绘制到*铺屏四边形*上。
+**Deferred (Stage)**，这种阶段的着色器所使用的信息都是**之前的几何缓冲**和**上一个延迟处理着色器**绘制到缓冲区的画面。在这个阶段，着色器从缓冲区中读取信息，并将计算结果绘制到*铺屏四边形*上。
 - 此阶段无法引入原本场景中额外的几何和颜色信息，不能改变原本的纹理映射坐标。
 - 在这个阶段可以通过各种*深度图*和*逆矩阵*来**重建**各种坐标。
 
 </def>
 </deflist>
-
-其因延后了大部分性能开销较大的效果到独立阶段而得名。
-
 </def>
 </deflist>
 </def>
@@ -690,7 +658,7 @@ void main() {
 <def title="颜色附件" id="颜色附件">
 
 **Color Attachments**，是负责**着色器间传递数据**的对象，每个颜色附件包含**两个**缓冲区，以逻辑名称 `main`（ `主` ）和 `alt`（ `副` ）标记，在不同系统和 GPU 上，颜色附件的数量可能有所差异。得益于双缓冲区颜色附件，着色器可以读取 `主` 缓冲区中的信息进行计算，最后再输出回同附件的 `副` 缓冲区。在 *OptiFine* 中，*阴影颜色附件*有 2 个，而*屏幕颜色附件*至多有 16 个。  
-\* 几何缓冲阶段**不会翻转缓冲区**，*延迟处理阶段*则在**每个**着色器结束后**都会翻转**。
+\* 几何缓冲阶段**不会翻转缓冲区**，并且会在写入 `alt` 后同步至 `main`，延迟处理阶段则在**每个**着色器结束后**都会翻转**。
 
 </def>
 <def title="坐标系" id="坐标系">
@@ -728,7 +696,7 @@ void main() {
 </def>
 </deflist>
 </def>
-<def title="精灵图" id="精灵图">
+<def title="精灵（图）" id="精灵图">
 
 **Sprite**，屏幕上的每个组成元素都是一个精灵。
 
@@ -737,19 +705,19 @@ void main() {
 </def>
 </deflist>
 
-#### OpenGL 相关 {id="opengl-相关"}
+## OpenGL 相关 {id="opengl-相关"}
 
 <deflist>
 <def id="opengl">
-<title><tooltip term="OpenGL">OpenGL</tooltip></title>
+<title>OpenGL</title>
 
-**开源图形库**，简称 GL。Java 版所使用的图形库。
+**<tooltip term="OpenGL">开源图形库</tooltip>**，简称 GL。Java 版所使用的图形库。
 
 </def>
 <def title="GLSL" id="glsl">
-<title><tooltip term="GLSL">GLSL</tooltip></title>
+<title>GLSL</title>
 
-**(Open)GL 着色语言**，顾名思义，它是 OpenGL 的着色器所使用的语言，语法类似 C。
+**<tooltip term="GLSL">(Open)GL 着色语言</tooltip>**，顾名思义，它是 OpenGL 的着色器所使用的语言，语法类似 C。
 - 其它的图形库还有如 Vulkan，它的着色器语言也是 GLSL；DirectX，它的着色器语言是 **<tooltip term="HLSL">HLSL</term>**（高级着色语言）。
 
 <deflist>
@@ -758,16 +726,16 @@ void main() {
 除了 [前文](#变量类型和修饰符 "C 的变量类型和修饰符") 所提到的类型外，GLSL 还有新增了一些数据类型：
 - `bool` ：布尔值，可以是 `true` (`1`) 或 `false` (`0`)。
     - C 可以使用 `stdbool.h` 引入这个类型。
-- `vec[N]` ：浮点向量，$N$ 是属于区间 $[2, 4]$ 的整数，表示该向量的维度。
-    - `ivec[N]` 为整数向量，`bvec[N]` 为布尔值向量。
+- `vec<N>` ：浮点向量，$N$ 是属于区间 $[2, 4]$ 的整数，表示该向量的维度。
+    - `ivec<N>` 为整数向量，`bvec<N>` 为布尔值向量。
     - 例：`vec3` `ivec4`。
-    - 在 OpenGL 和 GLSL 中，一个 `vec4` 类型可以被看做一个 `float[4]` 类型，但是需要注意：我们声明 `float[]` 类型的变量时，本质上是声明了一个指针，所以我们不能像 `vec[N]` 一样直接进行 [向量四则运算](#向量的普通四则运算){summary=""} 。
+    - 在 OpenGL 和 GLSL 中，一个 `vec4` 类型可以被看做一个 `float[4]` 类型，但是需要注意：我们声明 `float[]` 类型的变量时，本质上是声明了一个指针，所以我们不能像 `vec<N>` 一样直接进行 [向量四则运算](#向量的普通四则运算){summary=""} 。
     - 我们可以使用 `.xyzw` / `.rgba` / `.stpq` 来访问向量中特定的分量。
-- `mat[N]` `mat[N]x[M]` ：浮点矩阵，$N$ 、$M$ 可以为 $[2, 4]$ 的整数，表示该矩阵的大小。
-    - `mat[N]` 表示 $N \times N$ 大小的矩阵，`mat[N]x[M]` 表示 $N \times M$ 大小的矩阵。
+- `mat<N>` `mat<N>x<M>` ：浮点矩阵，$N$ 、$M$ 可以为 $[2, 4]$ 的整数，表示该矩阵的大小。
+    - `mat<N>` 表示 $N \times N$ 大小的矩阵，`mat<N>x<M>` 表示 $N \times M$ 大小的矩阵。
     - 例：`mat3` ，`mat2x4` 。
     - 假设我们现在有一个矩阵 `mat3 M` 我们可以使用 `M[1][2]` 来访问对应位置上的量。
-- `sampler[N]D` ：样本，可以通过纹理采样函数来获取样本的信息，`N` 可以为 $[1, 3]$ 的整数，表示该样本的维度。
+- `sampler<N>D` ：样本，可以通过纹理采样函数来获取样本的信息，`N` 可以为 $[1, 3]$ 的整数，表示该样本的维度。
     - `samplerCube` ：六面包围盒式的样本。
     - 例：`sampler2D` 。
 - 此外，除了 `auto`（默认）和 `const` ，GLSL 无法使用其他修饰符。
@@ -776,14 +744,14 @@ void main() {
 <def title="GLSL 函数" id="glsl函数">
 
 这里列出了一些常用的 GLSL 函数：
-- `texture(sampler[N]D texture, vec[N] texcoord)` ：纹理采样函数
-    1. `sampler[N]D texture` ：与函数维度相等的样本，通常是 `纹理` 。
-    2. `vec[N] texcoord` ：与函数维度相等的向量，通常是 `纹理坐标` 。
+- `texture(sampler<N>D texture, vec<N> texcoord)` ：纹理采样函数
+    1. `sampler<N>D texture` ：与函数维度相等的样本，通常是 `纹理` 。
+    2. `vec<N> texcoord` ：与函数维度相等的向量，通常是 `纹理坐标` 。
         - `N` 应该一致。
-        - 在 GL 上最早使用的纹理采样函数 `texture[N]D()` 已经弃用，虽然仍可以使用，但是不推荐这样做。
-- `dot(vec[N] a, vec[N] b)` ：[点乘](#点乘){summary=""} 。
-- `cross(vec[N] a, vec[N] b)` ：[叉乘](#叉乘){summary=""} 。
-- `normalize(vec[N] a)` ：[归一化](#归一化){summary=""} 。
+        - 在 GL 上最早使用的纹理采样函数 `texture<N>D()` 已经弃用，虽然仍可以使用，但是不推荐这样做。
+- `dot(vec<N> a, vec<N> b)` ：[点乘](#点乘){summary=""} 。
+- `cross(vec<N> a, vec<N> b)` ：[叉乘](#叉乘){summary=""} 。
+- `normalize(vec<N> a)` ：[归一化](#归一化){summary=""} 。
 - `smoothstep(float a, float b, float x)`，将 `x` 从 [`a`, `b`] 平滑地映射到 [`0`, `1`]。
 
 </def>
@@ -791,7 +759,7 @@ void main() {
 </def>
 </deflist>
 
-#### 纹理／贴图相关
+## 纹理／贴图相关
 
 <deflist>
 
@@ -819,7 +787,7 @@ void main() {
 </def>
 </deflist>
 
-#### 渲染技术相关 {id="渲染技术相关"}
+## 渲染技术相关 {id="渲染技术相关"}
 
 参阅 [](shaderTech.md){summary=""}
 
@@ -844,18 +812,18 @@ void main() {
 
 渲染方程用来描述场景中每个点如何物理地与光照交互，是 PBR 的核心算法。
 $$
-L_o(p,\omega_o) = \int\limits_\Omega f_r(p,\omega_i,\omega_o) L_i(p,\omega_i) n\cdot\omega_i \rm{d} \omega_i + L_e(p,\omega_o)
+L_o(p,\omega_o) = \\ \int\limits_\Omega f_r(p,\omega_i,\omega_o) L_i(p,\omega_i) n\cdot\omega_i \mathrm{d} \omega_i + L_e(p,\omega_o)
 $$
 其中：  
 $p$ 表示 [着色点](#着色目标){summary=""}；  
 $\omega_o$ 表示观察方向；  
 $\omega_i$ 表示光照方向；  
 $n$ 表示表面法线；  
-$f_r()$ 表示 <tooltip term="BRDF">BRDF</tooltip> （双向反射分布函数），表示表面材质对光照的影响；  
-$L_i()$ 表示光源的辐射率函数，表示光照的衰减；  
-$L_e()$ 表示着色点的自发光强度；  
+$f_r()$ 表示 <tooltip term="BRDF">BRDF</tooltip> （双向反射分布函数），表示表面材质对光照的响应，包括漫反射和镜面反射两部分；  
+$L_i()$ 表示光源的辐射率函数，通常用于光照的衰减；  
+$L_e()$ 表示材质的自发光强度；  
 $n \cdot \omega_i$ 表示表面方向与光线夹角对光照强度的影响；  
-$\int_{\Omega} \rm{d}\omega_i$ 表示在法半球所有方向上计算结果的积分。
+$\int_\Omega \mathrm{d}\omega_i$ 表示在表面的法半球所有方向上（即积分区域 $\Omega$）计算结果的积分。
 
 </def>
 </deflist>
@@ -864,7 +832,7 @@ $\int_{\Omega} \rm{d}\omega_i$ 表示在法半球所有方向上计算结果的�
 <def id="gi">
 <title>全局光照</title>
 
-**<tooltip term="GI">GI</tooltip>**。是直接光照和间接光照的集合。
+**<tooltip term="GI">GI</tooltip>**，是直接光照和间接光照的集合。
 
 <deflist>
 <def title="直接光照" id="直接光照">
@@ -884,8 +852,13 @@ $\int_{\Omega} \rm{d}\omega_i$ 表示在法半球所有方向上计算结果的�
 <def title="散射" id="散射">
 
 **Scattering**，是电子吸收光线（电磁波）能量，再向周围发射电磁波的物理现象。
-> - 漫反射、镜面反射本质上也是散射。空气中的杂质也会散射光线，也就形成了**体积光**。
-> - **折射**是散射的一个*特解*（表面光滑，介质透明的散射）。
+- 漫反射的本质上就是散射。空气中的杂质也会散射光线，也就形成了**体积光**，也被称为**丁达尔效应**。
+- 散射是光线在表面不平整、介质不均匀的材料内产生的**折射**（Refraction）。
+
+</def>
+<def title="反射" id="反射">
+
+**Reflection**，是在材料表面进行反弹之后直接逸出材料光线。
 
 </def>
 <def title="焦散" id="焦散">
@@ -901,33 +874,27 @@ $\int_{\Omega} \rm{d}\omega_i$ 表示在法半球所有方向上计算结果的�
 </def>
 </deflist>
 </def>
-<def title="SSS" id="sss">
-
-此简写包含以下两种概念
-<deflist>
 <def id="次表面散射">
-<title><tooltip term="SSS">次表面散射</tooltip></title>
+<title>次表面散射</title>
 
-模拟光线进入物体后在其内部经过多次散射后射出**照亮物体内部**的效果，允许某些材质（如纸、树叶、皮肤）的物体透过光线，从而产生更加通透真实的质感。
+**<tooltip term="SSS">SSS</tooltip>**，模拟光线进入物体后在其内部经过多次散射后射出**照亮物体内部**的效果，允许某些材质（如纸、树叶、皮肤）的物体透过光线，从而产生更加通透真实的质感。
 
 </def>
 <def title="屏幕空间阴影" id="屏幕空间阴影">
-<title><tooltip term="SSSh">屏幕空间阴影</tooltip></title>
+<title>屏幕空间阴影</title>
 
-由于阴影贴图的精度不足，容易在物体与表面接触的边缘产生锯齿和偏移。屏幕空间阴影就是用于这些地方来补足阴影的效果，因此也称为**接触阴影**（Contact Shadow）。
+同样简称 **<tooltip term="SSSh">SSS</tooltip>**（用得比较少），由于阴影贴图的精度不足，容易在物体与表面接触的边缘产生锯齿和偏移。屏幕空间阴影就是用于这些地方来补足阴影的效果，因此也称为**接触阴影**（Contact Shadow）。
 
-</def>
-</deflist>
 </def>
 <def id="ssr">
 <title>屏幕空间反射</title>
 
-**<tooltip term="SSR">SSR</tooltip>**。采样屏幕上的内容来绘制反射场景，其受限于 [屏幕空间](#屏幕空间){summary=""} 。
+**<tooltip term="SSR">SSR</tooltip>**，采样屏幕上的内容来绘制反射场景，其受限于 [屏幕空间](#屏幕空间){summary=""} 。
 </def>
 <def id="ao">
 <title>环境光遮蔽</title>
 
-**<tooltip term="AO">AO</tooltip>**。间接光照在场景间经过各种反射之后逐渐被场景所吸收和遮挡的效果。
+**<tooltip term="AO">AO</tooltip>**，间接光照在场景间经过各种反射之后逐渐被场景所吸收和遮挡的效果。
 
 </def>
 <def id="rt">

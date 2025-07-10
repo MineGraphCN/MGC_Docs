@@ -4,7 +4,6 @@
 
 <primary-label ref="basic"/>
 
-<secondary-label ref="latest"/>
 <secondary-label ref="shader"/>
 <secondary-label ref="rt"/>
 
@@ -181,10 +180,10 @@
 
 这里列举了一些已知光影的追踪效果信息
 
-<table style="both">
-<tr><td>光影名称</td>                   <td colspan="2">间接光照</td>               <td>直接光照</td>                <td>反射</td>    <td>折射</td>  <td><a href="terms.md" anchor="焦散" summary="">焦散</a></td>  <td>数据存储方法</td></tr>
+<table style="both" width="800">
+<tr><td>光影名称</td>                   <td colspan="2">间接光照</td>               <td>直接光照</td>                <td>反射</td>    <td>折射</td>  <td><a href="terms.md" anchor="焦散" summary="">焦散</a></td>  <td>追踪数据存储方法</td></tr>
 <tr><td>SEUS PTGI / GFME</td>         <td colspan="2">✓</td>                    <td>✕</td>                      <td>✓</td>      <td>✕</td>    <td>✕</td>                                                    <td>体素和屏幕缓冲</td></tr>
-<tr><td>Sundial</td>                  <td>✓</td><td>✕</td>                      <td>✓ <sup><b>1</b></sup></td>  <td>✓</td>      <td>✕</td>    <td>✓</td>                                                    <td>体素和屏幕缓冲</td></tr>
+<tr><td>Sundial</td>                  <td>✓</td><td>✕</td>                      <td>✓ <sup><b>1</b></sup></td>  <td>✓</td>      <td>✕</td>    <td>✓</td>                                                    <td>体素和屏幕缓冲 <sup>2</sup></td></tr>
 <tr><td>iterationRP</td>              <td colspan="2">✓</td>                    <td>✕</td>                      <td>✓</td>      <td>✕</td>    <td>✕</td>                                                    <td>体素和屏幕缓冲</td></tr>
 <tr><td>Kappa</td>                    <td>✕</td><td>✓</td>                      <td>✕</td>                      <td>✕</td>      <td>✕</td>    <td>✕</td>                                                    <td>屏幕缓冲</td></tr>
 <tr><td>Kappa PT</td>                 <td colspan="2">✓</td>                    <td>✕</td>                      <td>✓</td>      <td>✕</td>    <td>✓</td>                                                    <td>体素和屏幕缓冲</td></tr>
@@ -194,10 +193,10 @@
 <tr><td>Soft Voxels Lite</td>         <td colspan="2">✓</td>                    <td>✓</td>                      <td>✕</td>      <td>✕</td>    <td>✕</td>                                                    <td>体素和屏幕缓冲</td></tr>
 <tr><td>MollyVX</td>                  <td colspan="2">✓</td>                    <td>✓</td>                      <td>✓</td>      <td>✕</td>    <td>✓</td>                                                    <td>体素和屏幕缓冲</td></tr>
 <tr><td>ApolloRT</td>                 <td colspan="2">✓</td>                    <td>✓</td>                      <td>✓</td>      <td>✕</td>    <td>✓</td>                                                    <td>体素和屏幕缓冲</td></tr>
-<tr><td>Rethinking Voxels</td>        <td>✓ <sup><b>2</b></sup></td><td>✕</td>  <td>✓ <sup><b>3</b></sup></td>  <td>✓</td>      <td>✕</td>    <td>✕</td>                                                    <td>距离场 <sup><b>4</b></sup></td></tr>
+<tr><td>Rethinking Voxels</td>        <td>✓ <sup><b>3</b></sup></td><td>✕</td>  <td>✓ <sup><b>4</b></sup></td>  <td>✓</td>      <td>✕</td>    <td>✕</td>                                                    <td>符号距离场和哈希表 <sup><b>5</b></sup></td></tr>
 <tr><td>Chocapic13 <sup>V9</sup></td> <td>✕</td><td>✓</td>                      <td>✕</td>                      <td>✕</td>      <td>✕</td>    <td>✕</td>                                                    <td>屏幕缓冲</td></tr>
 <tr><td>Continuum RT</td>             <td>✓</td><td>✕</td>                      <td>✓</td>                      <td>✓</td>      <td>✓</td>    <td>✓</td>                                                    <td>体素</td></tr>
-<tr><td>Vanilla Pudding Tart</td>     <td>✓</td><td>✕</td>                      <td>✓</td>                      <td>✓</td>      <td>✕</td>    <td>✕</td>                                                    <td>屏幕缓冲体素 <sup><b>5</b></sup></td></tr>
+<tr><td>Vanilla Pudding Tart</td>     <td>✓</td><td>✕</td>                      <td>✓</td>                      <td>✓</td>      <td>✕</td>    <td>✕</td>                                                    <td>屏幕缓冲体素 <sup><b>6</b></sup></td></tr>
 <tr><td colspan="8">离线渲染（静帧）光影</td></tr>
 <tr><td>Chronos</td>                  <td>✓</td><td>✕</td>                      <td>✓</td>                      <td>✓</td>      <td>✓</td>    <td>✓</td>                                                    <td>体素</td></tr>
 <tr><td>Octray Rewrite</td>           <td>✓</td><td>✕</td>                      <td>✓</td>                      <td>✓</td>      <td>✓</td>    <td>✓</td>                                                    <td>稀疏体素</td></tr>
@@ -209,12 +208,13 @@
 **反射和折射** 仅针对世界空间  
 **焦散** 仅针对光线追踪  
 **[1]** 仅用于优化接触处阴影  
-**[2]** 仅使用辐照度进行间接光照  
-**[3]** 方块光源按直接光照追踪，太阳（月亮）光使用阴影贴图  
-**[4]** Rethinking Voxels 自 **r0.1-beta3** 起使用符号距离场 (<tooltip term="SDF">SDF</tooltip>) 代替体素化，可以无差别保存实体和方块数据。  
-**[5]** 原版没有提供 <tooltip term="SSBO">SSBO</tooltip> 或阴影贴图，只能将体素信息保存在屏幕缓冲中。
+**[2]** 使用曼哈顿距离场加速和扩展追踪距离，屏幕缓冲仅用于覆写反射中的内容  
+**[3]** 仅使用辐照度进行间接光照  
+**[4]** 方块光源按直接光照追踪，太阳（月亮）光使用阴影贴图  
+**[5]** Rethinking Voxels 的光源数据保存在哈希表中，自 **r0.1-beta3** 起使用符号距离场 (<tooltip term="SDF">SDF</tooltip>) 代替体素化，可以保存几乎任何实体和方块的空间信息。  
+**[6]** 原版没有提供 <tooltip term="SSBO">SSBO</tooltip> 、自定义图像或阴影贴图，只能将体素信息保存在屏幕缓冲中。
 
-<seealso>
+<seealso title="更多内容">
   <category ref="related">
     <a href="raytracingCorrection.md" summary="大众对于光线追踪的各种误区">误区纠正 - 光线追踪</a>
   </category>

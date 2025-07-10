@@ -6,11 +6,8 @@
 <!--文档类型-->
 
     <primary-label id="basic" short-name="基础" name="基础科普"/>
-
     <primary-label id="adv" short-name="技术" name="技术科普" color="tangerine"/>
-
     <primary-label id="dev" short-name="开发" name="开发文档" color="red"/>
-
     <primary-label id="manual" short-name="辅助" name="辅助文档" color="purple"/>
 
     <secondary-label id="je" name="Java 版" color="tangerine"/>
@@ -27,7 +24,6 @@
 
         <secondary-label id="old" name="⚠" color="red">这篇文档很长时间没有进行过订正，内容可能有过时。</secondary-label>
         <secondary-label id="new" name="★" color="tangerine">这是最近添加的新文档。</secondary-label>
-        <secondary-label id="latest" name="☆" color="tangerine">这篇文档中最近更新过。</secondary-label>
         <secondary-label id="wip" name="⛏" color="red">这篇文档处于施工中。</secondary-label>
         <secondary-label id="port" name="↪" color="purple">这篇文档的内容转载自其他地方。</secondary-label>
 
@@ -72,8 +68,6 @@
     </primary-label>
 
 <!--杂项-->
-
-    <secondary-label id="whats_new" name="2025.3.20">夺新↑鲜↓哪。</secondary-label>
 
     <primary-label id="example" short-name="标签" name="标签示例，默认颜色为主题色">
         标签悬停文本
