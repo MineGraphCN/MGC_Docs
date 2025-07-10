@@ -9,4 +9,4 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: |
-          git push https://${{ secrets.USERNAME }}:${{ secrets.TOKEN }}@cnb.cool/HyperCol/mgc-docs.git main
+          git push https://${{ secrets.CNB_USERNAME }}:${{ secrets.CNB_TOKEN }}@cnb.cool/HyperCol/mgc-docs.git dev
