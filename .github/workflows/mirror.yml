@@ -17,7 +17,7 @@ jobs:
 
       - name: Add CNB.cool repository as remote
         run: |
-          git remote add target https://$GITHUB_ACTOR:${{ secrets.CNB_TOKEN }}@cnb.cool/${{ secrets.CNB_USERNAME }}/mgc-docs.git
+          git remote add target https://${{ secrets.CNB_USERNAME }}:${{ secrets.CNB_TOKEN }}@cnb.cool/${{ secrets.CNB_USERNAME }}/mgc-docs.git
           git fetch target
           
       - name: Push changes to CNB.cool repository
