@@ -2,7 +2,7 @@ name: Sync to CNB.cool
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, dev ]
 
   workflow_dispatch:
     inputs:
