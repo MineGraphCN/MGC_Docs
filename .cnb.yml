@@ -1,15 +1,16 @@
 dev:
   push:
-    - name: build-writeside
-      docker:
-        image: jetbrains/writerside-builder:2025.04.8412
-      volumes:
-        - ./output:copy-on-write
+    - name: pipeline-1
       stages:
-        - name: build
-          script: |
-            /opt/writerside/bin/build.sh --input=/workspace --output=/workspace/output || {
-              echo "Fallback: Using alternative command...";
-              writerside-cli generate --source=/workspace --output=/workspace/output;
-            }
-            ls -la /workspace/output/
+        - name: stage-1
+          jobs:
+            - name: job-1
+              image: jetbrains/writerside-builder:2025.04.8412
+              args:
+                - "--rm"
+                - "-v .:/opt/sources"
+                - "-e SOURCE_DIR=/opt/sources"
+                - "-e MODULE_INSTANCE=Writerside/hi"
+                - "-e OUTPUT_DIR=/opt/sources/output"
+                - "-e RUNNER=other"
+                - "-e PDF=PDF.xml"
