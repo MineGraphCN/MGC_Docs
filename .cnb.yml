@@ -6,10 +6,11 @@ dev:
           jobs:
             - name: job-1
               image: jetbrains/writerside-builder:2025.04.8412
+              env:
+                SOURCE_DIR: /opt/sources
+                MODULE_INSTANCE: Writerside/hi
+                OUTPUT_DIR: /opt/sources/output
+                RUNNER: other
+                PDF: PDF.xml
               args:
                 - "-v .:/opt/sources"
-                - "-e SOURCE_DIR=/opt/sources"
-                - "-e MODULE_INSTANCE=Writerside/hi"
-                - "-e OUTPUT_DIR=/opt/sources/output"
-                - "-e RUNNER=other"
-                - "-e PDF=PDF.xml"
