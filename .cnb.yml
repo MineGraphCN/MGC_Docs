@@ -5,7 +5,6 @@ dev:
         - name: stage-1
           jobs:
             - name: job-1
-              image: jetbrains/writerside-builder:2025.04.8412
               env:
                 SOURCE_DIR: /opt/sources
                 MODULE_INSTANCE: Writerside/hi
@@ -14,3 +13,4 @@ dev:
                 PDF: PDF.xml
               volumes:
                 - ./:/opt/sources
+              image: jetbrains/writerside-builder:2025.04.8412
