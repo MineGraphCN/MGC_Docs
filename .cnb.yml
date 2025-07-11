@@ -6,7 +6,7 @@ dev:
           jobs:
             - name: job-1
               env:
-                SOURCE_DIR: /opt/sources
+                SOURCE_DIR: /data/orange-ci/workspace
                 MODULE_INSTANCE: Writerside/hi
                 OUTPUT_DIR: /opt/sources/output
                 RUNNER: other
