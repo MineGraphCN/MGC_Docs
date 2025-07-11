@@ -8,6 +8,8 @@ dev:
       stages:
         - name: build
           script: |
-            # 直接执行构建命令（无需docker run）
-            writerside generate --source=/workspace --output=/workspace/output
+            /opt/writerside/bin/build.sh --input=/workspace --output=/workspace/output || {
+              echo "Fallback: Using alternative command...";
+              writerside-cli generate --source=/workspace --output=/workspace/output;
+            }
             ls -la /workspace/output/
