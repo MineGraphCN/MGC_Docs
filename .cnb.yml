@@ -1,0 +1,13 @@
+main:
+  push:
+    - name: build-writeside
+      stages:
+        - name: build
+          image: jetbrains/writerside-builder:2025.04.8412
+          script: |
+            docker run --rm -v $(pwd):/opt/sources \
+              -e SOURCE_DIR=/opt/sources \
+              -e MODULE_INSTANCE=Writerside/hi \
+              -e OUTPUT_DIR=/opt/sources/output \
+              jetbrains/writerside-builder:2025.04.8412
+            ls -la ./output/
