@@ -12,5 +12,5 @@ dev:
                 OUTPUT_DIR: /opt/sources/output
                 RUNNER: other
                 PDF: PDF.xml
-              args:
-                - "-v .:/opt/sources"
+              volumes:
+                - ./:/opt/sources
