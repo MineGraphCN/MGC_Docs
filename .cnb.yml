@@ -7,14 +7,13 @@ dev:
             - name: build-html
               image: jetbrains/writerside-builder:2025.04.8412
               env:
-                SOURCE_DIR: /opt/sources
+                SOURCE_DIR: /workspace
+                OUTPUT_DIR: /workspace/output
                 MODULE_INSTANCE: Writerside/mgcd
-                OUTPUT_DIR: /opt/sources/output
                 RUNNER: other
               commands:
                 - mkdir -p "${OUTPUT_DIR}"
                 - echo "构建日志：${OUTPUT_DIR}"
-              workspace: /opt/sources
               artifacts:
                 paths:
                   - "${OUTPUT_DIR}/**"
