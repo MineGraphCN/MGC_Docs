@@ -4,14 +4,18 @@ dev:
       stages:
         - name: generate-docs
           jobs:
-            - name: build-pdf
+            - name: build-html
               image: jetbrains/writerside-builder:2025.04.8412
               env:
                 SOURCE_DIR: /opt/sources
                 MODULE_INSTANCE: Writerside/mgcd
                 OUTPUT_DIR: /opt/sources/output
                 RUNNER: other
-                PDF: PDF.xml
               commands:
-                - echo "Building PDF with Writerside..."
+                - echo "Building HTML documentation..."
+                - echo "===== 生成目录结构 ====="
+                - ls -laR "${OUTPUT_DIR}"
               workspace: /opt/sources
+              artifacts:
+                paths:
+                  - "${OUTPUT_DIR}/**"
