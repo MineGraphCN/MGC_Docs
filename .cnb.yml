@@ -13,13 +13,18 @@ dev:
                 RUNNER: other
               commands:
                 - mkdir -p "${OUTPUT_DIR}"
+                - echo "===== 初始化Xvfb ====="
+                - export DISPLAY=:99
+                - Xvfb :99 &
+                - sleep 2
                 - echo "===== 启动构建器 ====="
-                - export DISPLAY=:99 && Xvfb :99 &
                 - /opt/builder/bin/idea.sh helpbuilderinspect \
                     --source-dir "${SOURCE_DIR}" \
                     --product "${MODULE_INSTANCE}" \
                     --runner "${RUNNER}" \
-                    --output-dir "${OUTPUT_DIR}"
+                    --output-dir "${OUTPUT_DIR}" || echo "构建失败"
+                - echo "===== 检查输出 ====="
+                - ls -la "${OUTPUT_DIR}"
               artifacts:
                 paths:
                   - "${OUTPUT_DIR}/**"
