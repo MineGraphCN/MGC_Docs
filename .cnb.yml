@@ -7,10 +7,10 @@ dev:
             - name: job-1
               env:
                 SOURCE_DIR: ./
-                MODULE_INSTANCE: Writerside/hi
-                OUTPUT_DIR: /opt/sources/output
+                MODULE_INSTANCE: Writerside/mgcd
+                OUTPUT_DIR: ./output
                 RUNNER: other
                 PDF: PDF.xml
               volumes:
-                - ./:/opt/sources
+                - ./:./
               image: jetbrains/writerside-builder:2025.04.8412
