@@ -1,16 +1,17 @@
 dev:
   push:
-    - name: pipeline-1
+    - name: writerside-build
       stages:
-        - name: stage-1
+        - name: generate-docs
           jobs:
-            - name: job-1
+            - name: build-pdf
+              image: jetbrains/writerside-builder:2025.04.8412
               env:
-                SOURCE_DIR: ./
+                SOURCE_DIR: /opt/sources
                 MODULE_INSTANCE: Writerside/mgcd
-                OUTPUT_DIR: ./output
+                OUTPUT_DIR: /opt/sources/output
                 RUNNER: other
                 PDF: PDF.xml
-              volumes:
-                - ./:./
-              image: jetbrains/writerside-builder:2025.04.8412
+              commands:
+                - echo "Building PDF with Writerside..."
+              workspace: /opt/sources
