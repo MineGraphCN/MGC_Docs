@@ -12,9 +12,8 @@ dev:
                 OUTPUT_DIR: /opt/sources/output
                 RUNNER: other
               commands:
-                - echo "Building HTML documentation..."
-                - echo "===== 生成目录结构 ====="
-                - ls -laR "${OUTPUT_DIR}"
+                - mkdir -p "${OUTPUT_DIR}"
+                - echo "构建日志：${OUTPUT_DIR}"
               workspace: /opt/sources
               artifacts:
                 paths:
