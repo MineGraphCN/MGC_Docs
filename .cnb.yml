@@ -13,7 +13,13 @@ dev:
                 RUNNER: other
               commands:
                 - mkdir -p "${OUTPUT_DIR}"
-                - echo "构建日志：${OUTPUT_DIR}"
+                - echo "===== 启动构建器 ====="
+                - export DISPLAY=:99 && Xvfb :99 &
+                - /opt/builder/bin/idea.sh helpbuilderinspect \
+                    --source-dir "${SOURCE_DIR}" \
+                    --product "${MODULE_INSTANCE}" \
+                    --runner "${RUNNER}" \
+                    --output-dir "${OUTPUT_DIR}"
               artifacts:
                 paths:
                   - "${OUTPUT_DIR}/**"
