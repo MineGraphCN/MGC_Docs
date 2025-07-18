@@ -1,0 +1,27 @@
+main:
+  push:
+    - imports: https://cnb.cool/HyperCol/deploy/-/blob/master/deploy_docs.yml
+      stages:
+      - name: generate-docs
+        image: jetbrains/writerside-builder:2025.04.8412
+        allowFailure: true
+        args:
+          - /bin/bash
+          - -c
+          - "export DISPLAY=:99 && Xvfb :99 & /opt/builder/bin/idea.sh helpbuilderinspect -i ./ -o ./output -r other -p Writerside/mgcd"
+      - name: deploy
+        image: tarampampam/curl
+        args:
+          - -X
+          - POST
+          - $server
+          - -H
+          - "Content-Type: application/octet-stream"
+          - -H
+          - "key: $key"
+          - -H
+          - "service-name: frontend"
+          - -H
+          - "file-name: $location"
+          - --data-binary
+          - "@./output/webHelpMGCD2-all.zip"
