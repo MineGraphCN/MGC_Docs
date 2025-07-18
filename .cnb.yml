@@ -1,30 +1,27 @@
-dev:
+main:
   push:
-    - name: writerside-build
+    - imports: https://cnb.cool/HyperCol/deploy/-/blob/master/deploy_docs.yml
       stages:
-        - name: generate-docs
-          jobs:
-            - name: build-html
-              image: jetbrains/writerside-builder:2025.04.8412
-              env:
-                SOURCE_DIR: /workspace
-                OUTPUT_DIR: /workspace/output
-                MODULE_INSTANCE: Writerside/mgcd
-                RUNNER: other
-              commands:
-                - mkdir -p "${OUTPUT_DIR}"
-                - echo "===== 初始化Xvfb ====="
-                - export DISPLAY=:99
-                - Xvfb :99 &
-                - sleep 2
-                - echo "===== 启动构建器 ====="
-                - /opt/builder/bin/idea.sh helpbuilderinspect \
-                    --source-dir "${SOURCE_DIR}" \
-                    --product "${MODULE_INSTANCE}" \
-                    --runner "${RUNNER}" \
-                    --output-dir "${OUTPUT_DIR}" || echo "构建失败"
-                - echo "===== 检查输出 ====="
-                - ls -la "${OUTPUT_DIR}"
-              artifacts:
-                paths:
-                  - "${OUTPUT_DIR}/**"
+      - name: generate-docs
+        image: jetbrains/writerside-builder:2025.04.8412
+        allowFailure: true
+        args:
+          - /bin/bash
+          - -c
+          - "export DISPLAY=:99 && Xvfb :99 & /opt/builder/bin/idea.sh helpbuilderinspect -i ./ -o ./output -r other -p Writerside/mgcd"
+      - name: deploy
+        image: tarampampam/curl
+        args:
+          - -X
+          - POST
+          - $server
+          - -H
+          - "Content-Type: application/octet-stream"
+          - -H
+          - "key: $key"
+          - -H
+          - "service-name: frontend"
+          - -H
+          - "file-name: $location"
+          - --data-binary
+          - "@./output/webHelpMGCD2-all.zip"

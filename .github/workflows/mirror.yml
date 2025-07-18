@@ -2,15 +2,7 @@ name: Sync to CNB.cool
 
 on:
   push:
-    branches: [ main, dev ]
-
-  workflow_dispatch:
-    inputs:
-      target_branch:
-        description: 'Target branch to sync to'
-        required: false
-        default: 'dev'
-        type: string
+    branches: [ main ]
 
 jobs:
   sync:
@@ -19,17 +11,6 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
-      - name: Determine target branch
-        id: set_branch
-        run: |
-          # For manual triggers, use the input target branch (default: dev)
-          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
-            echo "TARGET_BRANCH=${{ github.event.inputs.target_branch || 'dev' }}" >> $GITHUB_OUTPUT
-          else
-            # For automatic triggers (main push), default to sync to dev
-            echo "TARGET_BRANCH=dev" >> $GITHUB_OUTPUT
-          fi
 
       - name: Sync to CNB repository
         run: |
@@ -40,7 +21,7 @@ jobs:
             -e PLUGIN_AUTH_TYPE="https" \
             -e PLUGIN_USERNAME="cnb" \
             -e PLUGIN_PASSWORD=${{ secrets.CNB_TOKEN }} \
-            -e PLUGIN_BRANCH="${{ steps.set_branch.outputs.TARGET_BRANCH }}" \
+            -e PLUGIN_BRANCH="main" \
             -e PLUGIN_GIT_USER="cnb" \
             -e PLUGIN_GIT_EMAIL="cnb@cnb.cool" \
             -e PLUGIN_FORCE="true" \
