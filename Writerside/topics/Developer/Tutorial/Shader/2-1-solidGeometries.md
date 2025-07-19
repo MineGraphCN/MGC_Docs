@@ -377,7 +377,7 @@ out VS_OUT {
     vec3 normal;
     vec2 vanillaLightStrength;
 } vs_out;
-[... 片段着色器 ...]
+[... 片元着色器 ...]
 in VS_OUT {
     vec4 color;
     vec3 normal;
@@ -403,7 +403,7 @@ else geometryID = 4;
 
 值得注意的是，信标光柱外围有一圈半透明的**负几何**，类似新版红石火把的外围方块，它们只渲染背面。你可以像实体那样直接忽略透明度或设置为不处理光照，在这里我们也暂时按照后者处理。
 ```glsl
-[... 片段着色器 ...]
+[... 片元着色器 ...]
 /* DRAWBUFFERS:03 */
 layout(location = 0) out vec4 fragColor;
 layout(location = 1) out int geometryID;
@@ -432,7 +432,7 @@ out VS_OUT {
 #ifndef TEXLESS
 vs_out.uv = vaUV0;
 #endif
-[... 片段着色器 ...]
+[... 片元着色器 ...]
 in VS_OUT {
     vec4 color;
     #ifndef TEXLESS
