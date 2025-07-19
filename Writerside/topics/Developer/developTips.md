@@ -80,7 +80,7 @@ shaderLABS 提供的相关资料
 : GLSL 的交互式教程，在测试中提升你的着色器编写技能。
 
 [The Book of Shaders](https://thebookofshaders.com/?lan=ch)
-: [片元着色器](shaderBasic.md#fs){summary=""} 入门，网站允许在浏览器中编辑示例代码以实时查看其效果。
+: [](shaderBasic.md#fs){summary=""} 入门，网站允许在浏览器中编辑示例代码以实时查看其效果。
 
 [Shadertoy](https://www.shadertoy.com/)
 : GLSL 沙盒，包含了很多人的示例代码。
