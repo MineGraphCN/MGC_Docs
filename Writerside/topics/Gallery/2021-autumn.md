@@ -5,7 +5,7 @@
 <secondary-label ref="jeGallery"/>
 <secondary-label ref="beGallery"/>
 
-<show-structure depth="0"/>
+<show-structure for="none"/>
 
 ## 比赛介绍
 

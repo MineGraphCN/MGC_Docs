@@ -4,7 +4,7 @@
 
 <secondary-label ref="jeGallery"/>
 
-<show-structure depth="0"/>
+<show-structure for="none"/>
 
 ## 前三名
 
