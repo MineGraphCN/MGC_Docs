@@ -136,7 +136,7 @@ shaderLABS 提供的相关资料
 <chapter title="相关资料">
 <p>
 
-[Minecraft 中文 Wiki - 教程:制作资源包](https://zh.minecraft.wiki/w/Tutorial:%E5%88%B6%E4%BD%9C%E8%B5%84%E6%BA%90%E5%8C%85)
+[Minecraft 中文 Wiki - 教程:制作资源包](https://zh.minecraft.wiki/w/Tutorial:制作资源包)
 : Minecraft Wiki 编写的资源包教程。
 
 [森罗万象](http://sqwatermark.com/resguide/)
