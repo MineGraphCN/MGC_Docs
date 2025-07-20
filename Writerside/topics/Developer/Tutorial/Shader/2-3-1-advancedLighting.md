@@ -651,19 +651,19 @@ vec3 DecodeNormal(vec2 en){
 
 先看特殊情况，如果 $xy$ 坐标值之和为 1，说明 $z$ 分量为 0，因此不存在 $z$ 为负的镜像坐标，这种情况下翻转后的值也与之相同，即 $(1-|y|=|x|,1-|x|=|y|)$，由于符号没有交换，最终的坐标依然是 $(x,y)$。就像二维坐标系上的 $|x|+|y|=1$ 一样，这时它们落在八面体展开图的斜线上（我们暂且称之为象限的中轴斜线）：![XY平面上的法线](advancedLighting_octahedralMapping_step0.webp){style="block" width="350"}
 
-如果 $z$ 不为零，当其为负值时，坐标就会翻转到 $(1-|y|,1-|x|)\cdot\mathrm{Sign}(x,y)$，由于其正负号与 $xy$ 本身相同，翻转之后的坐标也就落在同一个象限（八面体展开图的值域是 $[-1,1]$）。不妨这样来思考：
+如果 $z$ 不为零，当其为负值时，坐标就会翻转到 $(1-|y|,1-|x|)\cdot (x,y)_\mathrm{Sign}$，由于其正负号与 $xy$ 本身相同，翻转之后的坐标也就落在同一个象限（八面体展开图的值域是 $[-1,1]$）。不妨这样来思考：
 
 1. 八面体的二维展开平面上有一个点 $(x,y)$：![求解八面体映射步骤1](advancedLighting_octahedralMapping_step1.webp){style="block" width="350"}
 
 2. 取它们交换后绝对值的负数 $(-|y|,-|x|)$：![求解八面体映射步骤2](advancedLighting_octahedralMapping_step2.webp){style="block" width="350"}
 
-3. 然后，将坐标值加上 1，现在它实际上是以 $(1,1)$ 为参考系的一个向量，并且坐标值相对原始坐标相互交换：![求解八面体映射步骤3](advancedLighting_octahedralMapping_step3.webp){style="block" width="350"}
+3. 然后，将坐标值加上 1，$(-|y|+1,-|x|+1)=(1-|y|,1-|x|)$，现在它实际上是以 $(1,1)$ 为参考系的一个向量，并且坐标值相对原始坐标相互交换：![求解八面体映射步骤3](advancedLighting_octahedralMapping_step3.webp){style="block" width="350"}
 
-4. 最后，乘上本来的符号，它们就会以符号为负数的轴为基准做一个对称向量（或者以原点为基准的中心对称图形）：![求解八面体映射步骤4](advancedLighting_octahedralMapping_step4.webp){style="block" width="350"}
+4. 最后，乘上原本坐标的符号，它们就会翻转回对应的象限：![求解八面体映射步骤4](advancedLighting_octahedralMapping_step4.webp){style="block" width="350"}
 
-不难看出，当 $z$ 为负值时，$(x,y)$ 坐标实际上会翻转到以其所在象限的中轴斜线为对称轴的另一个三角形内。解码法线就是逆向处理这个过程，我们就不再赘述了。
+不难看出，当 $z$ 为负值时，$(x,y)$ 坐标实际上会翻转到以其所在象限的中轴斜线为对称轴的另一个三角形内。解码法线则是先逆向求得 $z$ 值，若小于 0 则说明需要翻转，我们就不再赘述了。
 
-最后，我们将 `normalMap` 作为输出变量，将其写入 6 号（或者 7 号）缓冲区中，然后在需要用它们的时候传入缓冲区即可。
+最后，我们将 `normalMap` 作为输出变量，将其写入 6 号（或者 7 号）缓冲区中，然后在需要用它们的时候读取并使用 `DecodeNormal()` 解码即可。
 ```glsl
 [... Gbuffers ...]
 /* DRAWBUFFERS:...6 */
@@ -676,7 +676,6 @@ uniform sampler2D colortex6;
 vec4 normalMap = texture(colortex6, uv);
 vec3 surfaceNormal = DecodeNormal(normalMap.xy);
 ```
-在之后任何需要使用法线的场景中，我们就可以直接使用 `DecodeNormal(encodedNormal)` 来取得它。
 
 > 之前我们在 `shadowMultiplier` 中复用了光照强度 `lit`，现在光照强度更改到表面法线，如果继续复用就可能造成偏移错误。
 > 
@@ -774,7 +773,7 @@ OptiFine 的阴影贴图始终会以摄像机所在的方块为中心，而实�
 
 还记得吧，进行透视除法之后，空间坐标会落在 $[-1,1]$ 上，因此当阴影空间靠近摄像机所在原点时，我们可以用下式增大它在屏幕上的占比：
 $$
-x' = \frac{|x|}{a|x|+1-a} \cdot \mathrm{Sign}(x) = \frac{x}{\mathrm{Mix}(1,|x|,a)}
+x' = \frac{|x|}{a|x|+1-a} \cdot (x)_\mathrm{Sign} = \frac{x}{\mathrm{Mix}(1,|x|,a)}
 $$
 其中，$x$ 表示原本空间所在的位置，分母项表示权重强度，混合比例 $a \in [0,1)$：
 
