@@ -80,7 +80,7 @@ shaderLABS 提供的相关资料
 : GLSL 的交互式教程，在测试中提升你的着色器编写技能。
 
 [The Book of Shaders](https://thebookofshaders.com/?lan=ch)
-: [片段着色器](shaderBasic.md#fs){summary=""} 入门，网站允许在浏览器中编辑示例代码以实时查看其效果。
+: [](shaderBasic.md#fs){summary=""} 入门，网站允许在浏览器中编辑示例代码以实时查看其效果。
 
 [Shadertoy](https://www.shadertoy.com/)
 : GLSL 沙盒，包含了很多人的示例代码。
@@ -136,7 +136,7 @@ shaderLABS 提供的相关资料
 <chapter title="相关资料">
 <p>
 
-[Minecraft 中文 Wiki - 教程:制作资源包](https://zh.minecraft.wiki/w/Tutorial:%E5%88%B6%E4%BD%9C%E8%B5%84%E6%BA%90%E5%8C%85)
+[Minecraft 中文 Wiki - 教程:制作资源包](https://zh.minecraft.wiki/w/Tutorial:制作资源包)
 : Minecraft Wiki 编写的资源包教程。
 
 [森罗万象](http://sqwatermark.com/resguide/)
