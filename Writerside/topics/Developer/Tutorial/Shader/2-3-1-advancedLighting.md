@@ -408,7 +408,7 @@ litSceneAmbient *= AMBIENT_BRIGHTNESS * lightmap.t; // 设置环境光照强度
 litSceneAmbient *= skyColor * albedo.a; // 上色和 AO
 
 vec3 litSceneBlock = BLOCK_BRIGHTNESS * lightmap.s; // 设置方块光照强度
-litSceneBlock *=  * albedo.rgb; // 方块光照应用 AO 与否取决于你的喜好
+litSceneBlock *= albedo.rgb; // 方块光照应用 AO 与否取决于你的喜好
 
 vec3 litSceneBase = BASE_BRIGHTNESS * albedo.rgb * albedo.a;
 
