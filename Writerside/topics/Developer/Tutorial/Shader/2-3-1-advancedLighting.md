@@ -494,7 +494,7 @@ if(lightmap.t == 0.0) lit = 0.0;
 ```glsl
 [... Uniforms ...]
 uniform sampler2D normals;
-[... Gbuffers ...]
+[... 几何缓冲 ...]
 vec4 normalMap = texture(normals, uv);
 normalMap.xy = normalMap.xy * 2.0 - 1.0;
 float normalZ = sqrt(1.0 - dot(normalMap.xy, normalMap.xy));
@@ -680,7 +680,7 @@ vec3 DecodeNormal(vec2 en){
 
 最后，我们将 `normalMap` 作为输出变量，将其写入 6 号（或者 7 号）缓冲区中，然后在需要用它们的时候读取并使用 `DecodeNormal()` 解码即可。
 ```glsl
-[... Gbuffers ...]
+[... 几何缓冲 ...]
 /* DRAWBUFFERS:...6 */
 layout(location = [DB:6的索引]) out vec4 normalMap;
 [... main ...]
@@ -691,6 +691,8 @@ uniform sampler2D colortex6;
 vec4 normalMap = texture(colortex6, uv);
 vec3 surfaceNormal = DecodeNormal(normalMap.xy);
 ```
+
+最后，我们将之前着色器中用以计算光照的 `vertexNormal` 全部替换为 `surfaceNormal` 就完工了。
 
 > 之前我们在 `shadowMultiplier` 中复用了光照强度 `lit`，现在光照强度更改到表面法线，如果继续复用就可能造成偏移错误。
 > 
@@ -734,7 +736,7 @@ flowchart TD
 {style="warning"}
 </procedure>
 
-你也许会好奇我们为什么要保留顶点法线，这是因为顶点是位于空间中的，像我们之前给阴影采样做偏移那样的情况，使用顶点法线才能更加精确。因此当缓冲区充足（像我们目前这种水平）时，最好将顶点法线一并保留。当然，现在已经有了一个很完善的法线编解码函数，因此你完全可以把顶点法线压缩到两个通道然后将它和光照贴图放在一起（习题 2），比本章第一节习题 1 的方法更加优雅。
+你也许会好奇我们为什么要保留顶点法线，这是因为顶点是位于空间中的，像我们之前给阴影采样做偏移那样的情况，使用顶点法线才能更加精确。因此当缓冲区充足（特别是像我们目前这种水平，没有太多效果导致没有太多通道需求）时，最好将顶点法线一并保留。当然，现在已经有了一个很完善的法线编解码函数，因此你完全可以把顶点法线压缩到两个通道然后将它和光照贴图放在一起（习题 2），比本章第一节习题 1 的方法更加优雅。
 
 ### 纹理环境光遮蔽
 
@@ -895,7 +897,7 @@ float closestDepth = texture(shadowtex, uv_warped).r;
 在进行深度比较之前，你可能已经考虑到了一个问题，如果平面朝向与光源方向夹角过大，采样周围坐标上的纹理可能导致结果和当前着色点上区别过大，从而造成遮蔽，而且采样点距离着色点越远，这个可能产生的深度差就越大。因此我们可以根据采样距离放缩偏移量：
 ```glsl
 [... 循环外偏移处理 ...]
-float t = dot(lightDir, vertNormal);
+float t = dot(lightDir, vertexNormal);
 float biasDir = t > 0.0 ? max(bias * (1.0-t), bias * 0.1) : 0.0;
 [... 循环内偏移处理 ...]
 float biasScale = bias * (length(vec2(i,j)) * PCF_RADIUS + 1.0);
@@ -977,7 +979,7 @@ flowchart LR
 [... Settings ...]
 #define GAMMA 2.2
 #define GAMMA_REC 0.45454545
-[... Gbuffers ...]
+[... 几何缓冲 ...]
 fragColor.rgb = pow(fragColor.rgb, vec3(GAMMA));
   [... Entities ...]
   vec3 entityColorG = pow(entityColor.rgb, vec3(GAMMA));
@@ -1057,5 +1059,5 @@ fragColor.rgb = vpow(fragColor.rgb, GAMMA_REC);
 4. 添加切换 Specular 中 Green 通道表征金属性或 $F_0$ 的开关。
 5. 将重建法向量的算法 `if(length(normalMap.xy) > 1.0) {...} else {...}` 封装到 `float calcNormalZ(inout vec2 normalXY)` 中，它会修改 `normalMap.xy` 的值，并返回 `normalZ` 的值。
 6. 整理阴影优化小节中的内容，同样封装到 `/libs/Lighting.glsl` 中，包括：
-   - 计算阴影空间坐标系、偏移量和阴影的 `calcShadow(sampler2D tex, vec4 worldPos, vec3 lightDir, vec3 vertNormal)`；
+   - 计算阴影空间坐标系、偏移量和阴影的 `calcShadow(sampler2D tex, vec4 worldPos, vec3 lightDir, vec3 vertexNormal)`；
    - 计算 PCF 阴影的 `calcPCF(sampler2D tex, vec3 ndc, float bias)` 。
