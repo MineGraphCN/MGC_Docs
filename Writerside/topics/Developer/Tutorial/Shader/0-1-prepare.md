@@ -41,7 +41,7 @@ GLSL Syntax for VS Code
 ```
 插件并安装来获取 GLSL 代码高亮功能。
 
-或者访问该插件的 [插件商店页面](https://marketplace.visualstudio.com/items?itemName=GeForceLegend.vscode-glsl) 并单击 `Install` 来呼出 VSCode 以安装。
+或者访问该插件的 [插件商店页面](https://marketplace.visualstudio.com/items?itemName=GeForceLegend.vscode-glsl) 并单击 `Install` 来呼出 VS Code 以安装。
 
 该插件会自动关联 `.vsh`、`.glsl`、`.geom`、`.frag` 等着色器文件常用后缀。
 
@@ -55,7 +55,7 @@ Language Server for Minecraft Shaderpacks
 ```
 插件并安装即可。
 
-或者访问该插件的 [插件商店页面](https://marketplace.visualstudio.com/items?itemName=GeForceLegend.vscode-mcshader) 并单击 `Install` 来呼出 VSCode 以安装。
+或者访问该插件的 [插件商店页面](https://marketplace.visualstudio.com/items?itemName=GeForceLegend.vscode-mcshader) 并单击 `Install` 来呼出 VS Code 以安装。
 
 只要工作区正确，该插件就会实时编译光影并提供驱动级查错。
 
@@ -67,7 +67,7 @@ Language Server for Minecraft Shaderpacks
 
 安装完成后，你需要在 `shaderpacks` 文件夹下新建一个文件夹，然后在该文件夹内再新建一个 `shaders` 文件夹，这就是一个光影包。你也可以建立多个光影包来分别测试不同内容。
 
-右键 `shaders` ，然后点击 `通过 Code 打开`（在 Windows 11 中你需要点击 `显示更多选项` 才能找到），这就是我们的工作区了，你可以在左侧栏的 `资源管理器` 页查看工作区内的文件和文件夹，如果你找不到这个选项卡，可以按 <shortcut>Ctrl</shortcut><shortcut>Shift</shortcut><shortcut>E</shortcut> 呼出。
+右键 `shaders` ，然后点击 `通过 Code 打开`（在 Windows 11 中你需要点击 `显示更多选项` 或者按住 <shortcut>Shift</shortcut> 点右键才能找到），这就是我们的工作区了，你可以在左侧栏的 `资源管理器` 页查看工作区内的文件和文件夹，如果你找不到这个选项卡，可以按 <shortcut>Ctrl</shortcut><shortcut>Shift</shortcut><shortcut>E</shortcut> 呼出。
 
 在游戏中，为了防止原版暗角干扰最终效果，你可以把 `视频设置` > `细节` > `晕影` 设置为 `流畅` 。
 
@@ -77,7 +77,7 @@ Language Server for Minecraft Shaderpacks
 
 除了关联后缀外，文件的高亮状态默认是 `纯文本` 模式，你可以点击右下角的 `纯文本` 来切换语言模式。
 
-你可以在编辑过程中随时按下 <shortcut>Ctrl</shortcut><shortcut>Space</shortcut> 呼出代码补全功能。
+你可以在编辑过程中随时按下 <shortcut>Ctrl</shortcut><shortcut>Space</shortcut> 呼出代码补全功能（不能使用中文输入法）。
 
 你可以按下 <shortcut>Ctrl</shortcut><shortcut>K</shortcut>, <shortcut>S</shortcut> 来保存所有文件。
 
