@@ -339,7 +339,7 @@ float closestDepth = texture(shadowtex0, uv_shadowMap).r;
 
 #### 绘制与优化
 
-最后，我们将 `closestDepth` 和 `currentDepth` 做比较，如果后者大于前者（即当前深度不是在光源连线上的最近深度），则处于阴影中。
+最后，我们将 `closestDepth` 和 `currentDepth` 做比较，如果后者大于前者（当前深度不是在光源连线上的最近深度），则处于阴影中。
 ```glsl
 float shadowMultiplier = 1.0; // 阴影乘数，0.0 表示在阴影中。
 if(currentDepth > closestDepth) shadowMultiplier = 0.0;

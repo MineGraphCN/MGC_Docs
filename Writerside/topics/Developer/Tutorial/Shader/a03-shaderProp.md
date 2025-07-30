@@ -212,7 +212,7 @@ variable.<float|int|bool|vec2|vec3|vec4>.<name>=<表达式>
 
 ### 参数
 
-一些固定标量的统一变量（即不会随着程序变更而变更的标量）也可用于参数，例如 `heldItemId`、`worldTime`、`moonPhase` 等。
+一些固定标量的统一变量（不会随着程序变更而变更的标量）也可用于参数，例如 `heldItemId`、`worldTime`、`moonPhase` 等。
 
 - 向量对象可以使用 `.x` `.y` `.z` 和 `.w` 来提取分量，例如 `sunPosition.y`；
 - 颜色对象可以使用 `.r` `.g` `.b` 和 `.a` 来提取分量，例如 `skyColor.r`；

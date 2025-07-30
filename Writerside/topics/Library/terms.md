@@ -827,7 +827,7 @@ $f_r()$ 表示 <tooltip term="BRDF">BRDF</tooltip> （双向反射分布函数�
 $L_i()$ 表示光源的辐射率函数，通常用于光照的衰减；  
 $L_e()$ 表示材质的自发光强度；  
 $n \cdot \omega_i$ 表示表面方向与光线夹角对光照强度的影响；  
-$\int_\Omega \mathrm{d}\omega_i$ 表示在表面的法半球所有方向上（即积分区域 $\Omega$）计算结果的积分。
+$\int_\Omega \mathrm{d}\omega_i$ 表示在表面的法半球所有方向上（积分区域 $\Omega$）计算结果的积分。
 
 </def>
 </deflist>
