@@ -133,7 +133,7 @@ uniform mat4 gbufferPreviousProjection;   //上一帧的 gbufferProjection
 
 除了这些固定阶段使用矩阵外，**JE 1.17+** 的核心配置中，OptiFine 还为我们提供了像内建矩阵那样根据每个程序动态设置的矩阵：
 ```glsl
-uniform mat4 modelViewMatrix;             //模型视口矩阵，替换 gl_ModelViewMatrix，下同
+uniform mat4 modelViewMatrix;             //模型视口矩阵
 uniform mat4 modelViewMatrixInverse;      //模型视口矩阵的逆
 uniform mat4 projectionMatrix;            //投影矩阵
 uniform mat4 projectionMatrixInverse;     //投影矩阵的逆
@@ -161,7 +161,7 @@ uniform mat4 projectionMatrixInverse;     //投影矩阵的逆
 
 ### 程序处理对象 {id="bufferTargets"}
 
-还记得 [](0-2-filePipeline.md) 中的几何缓冲管线吗？它们各自掌管着一方水土，同时还要照顾自己那些经常摸鱼的下属管辖的几何。
+还记得 [](0-2-filePipeline.md){summary=""} 中的几何缓冲管线吗？它们各自掌管着一方水土，同时还要照顾自己那些经常摸鱼的下属管辖的几何。
 
 `gbuffers_basic`
 : 负责无厚度线框和拴绳，无厚度线框包括调试区块边界，这个阶段没有纹理，只有顶点颜色。当该程序不存在时其所属几何交由内置管线处理。
@@ -257,11 +257,12 @@ void main() {
     gl_Position = projectionMatrix * modelViewMatrix * vec4(vaPosition, 1.0);
 }
 ```
+
 如果你跟着这样做并且重载了一番光影，你大概会得到这样一坨随着视角变化不断闪烁的东西：
 
 ![乱七八糟的一坨黑](gbuffers_whatAMess.webp){width="700"}
 
-怎么回事呢？这是因为地形是逐区块绘制的，因此我们还需要知道区块相对偏移，当然 OptiFine 也确实提供了，我们只需要进行些许修改即可：
+怎么回事呢？这是因为地形是逐区块绘制的，因此我们还需要知道每次渲染的区块的偏移坐标，当然 OptiFine 也确实提供了，我们只需要进行些许修改即可：
 ```glsl
 [...]
 uniform vec3 chunkOffset;
@@ -302,7 +303,7 @@ void main() {
 
 此外，我们还需要一个纹理矩阵用于映射运动纹理（注意不是“动画”纹理，类似附魔光效这种平滑移动的就是运动纹理），尽管它在大部分着色器中都是一个单位矩阵，但是养成良好的初始化习惯极为重要。OptiFine 为我们提供的矩阵名为 `textureMatrix` ：
 ```glsl
-[...]
+[... 顶点着色器 ...]
 uniform mat4 textureMatrix;
 in vec2 vaUV0;
 out vec2 uv;
@@ -315,7 +316,7 @@ uv = vec2(textureMatrix * vec4(vaUV0, 0.0, 1.0));
 
 几何缓冲中的颜色纹理名叫 `gtexture`，在 `terrain` 中，它由所有方块贴图拼贴而成。我们只需要在片元着色器中声明它，然后像延迟处理那样采样即可：
 ```glsl
-[...]
+[... 片元着色器 ...]
 uniform sampler2D gtexture;
 in vec2 uv;
 [... main ...]
@@ -325,7 +326,7 @@ fragColor = texture(gtexture, uv);
 
 ![纹理颜色](gbuffers_texture.webp){width="700"}
 
-> 你可能在想，`texture()` 会在纹素中间进行插值，为什么我们采样出来的低像素图像如此锐利。这是因为 Minecraft 将纹理设置为了**邻近取样**（取最靠近该位置的纹素颜色），而不进行插值。
+> 你可能注意到了，丛林树叶的纹理上除了灰度还有些橙色的果子一样的带颜色的纹理。Mojang 显然忘记了把顶点颜色给乘进去会让果子也被意外染色，导致几乎无法在通常游戏中发现这个细节……而且你丛林树叶不本来就不会掉果子吗？堪称迷惑行为……
 
 但是不要着急，还记得我们刚才传过来的 `vColor` 吗？它实际上是一个**颜色乘数**，我们只需要将它与纹理颜色相乘，魔法便出现了：
 ```glsl
@@ -334,7 +335,7 @@ fragColor = texture(gtexture, uv) * vColor;
 
 ![染色纹理](gbuffers_coloredTexture.webp){width="700"}
 
-> 你可能会注意到丛林树叶的纹理上除了灰度还有些橙色的果子一样的带颜色的纹理。Mojang 显然忘记了把顶点颜色给乘进去会让果子也被意外染色，导致几乎无法在通常游戏中发现这个细节……而且你丛林树叶不本来就不会掉果子吗？堪称迷惑行为……
+> 你或许会思考：`texture()` 会在纹素中间进行插值，为什么我们采样出来的低像素图像如此锐利？这是因为 Minecraft 将纹理设置为了**邻近取样**（取最靠近该位置的纹素颜色），不会进行插值。
 
 看起来有点内味了！除了一点……我们的藤蔓怎么是不透明的呢？！这是因为固体地形默认不会进行色彩混合（我们将在之后认识它），也不会根据不透明度进行任何处理。还记得 [](0-2-filePipeline.md) （没错，又是这一节，基础很重要！）的约定吗？我们所在的 `terrain` 传入的均为**固体几何**，没有渲染半透明的必要。再结合之前我们提到的可以用 `discard` 丢弃片元，你应该已经有思路了：
 ```glsl
@@ -355,6 +356,8 @@ if(fragColor.a == 0.0) discard;
 > if(fragColor.a <= alphaTestRef) discard;
 > ```
 > 原版着色器就将大多数值设置为了 `0.1` ，有些甚至高达了 `0.5` 。因此当你试图在固体几何上绘制半透明纹理时，几何体也只会按完全透明与否显示。
+> 
+> 你还可以在光影配置文件中手动指定每个程序 `alphaTestRef` 的值。
 >
 > 此外，当片元执行 `discard` 之后，任何其他的处理都将会停止，因为片元已经不可见了。你也可以在程序的不同位置多次判定是否执行丢弃。
 > 
@@ -657,6 +660,9 @@ layout(location = 1) out vec3 normal;
 layout(location = 0) out vec4 fragColor;
 layout(location = 1) out vec3 normal;
 ```
+
+> 你可以使用 <shortcut>Alt</shortcut><shortcut>Shift</shortcut><shortcut>A</shortcut> 快捷插入注释块，它在块的前后各自带一个空格。
+
 > 这两个指令依赖于 OptiFine 读取字符，因此要保证格式完全正确！
 > - `/* DRAWBUFFERS:0123 */` 注释符号前后必须要有一个空格，冒号之后不能有空格，数字之间不能有空格。
 > - `/* RENDERTARGETS: 0,1,2,3 */` 注释符号前后也必须要有一个空格，冒号和数字串之间要有空格，逗号和数字之间不能有空格。

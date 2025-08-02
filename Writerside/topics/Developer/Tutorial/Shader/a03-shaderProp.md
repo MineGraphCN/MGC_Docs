@@ -201,7 +201,7 @@ screen.columns=2
 screen.NAME.columns=2
 ```
 
-## 自定义统一变量
+## 自定义统一变量 {id="customUniform"}
 
 ```properties
 uniform.<float|int|bool|vec2|vec3|vec4>.<name>=<表达式>
@@ -389,6 +389,9 @@ uniform.vec3.screenDark3=vec3(screenDark, heldItemId, biome)
 ```properties
 alphaTest.<program>=<off|func ref>
 ```
+
+- `func` 可以是 `NEVER` `LESS` `EQUAL` `LEQUAL` `GREATER` `NOTEQUAL` `GEQUAL` `GL_ALWAYS`
+- `ref` 是浮点值
 
 > 仅能用于 `Compatibility` 配置。
 > 

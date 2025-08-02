@@ -229,12 +229,16 @@ blend.<程序>.<纹理ID>=<off|src dst srcA dstA>
 
 > `off` 的效果与 `ONE ZERO ONE ZERO` 相同，它们都是将源数据完全覆盖目标数据。
 
+**JE 1.21.5** 以前，原版各类几何的着色器混合模式如下：
+
 - 实体（`entities`）、发光实体（`entities_glowing`）、第一人称手部（`hand`）和有厚度线框（`line`）默认启用了前文中“与 `mix()` 相似”的混合方法（`SRC_ALPHA ONE_MINUS_SRC_ALPHA SRC_ALPHA ONE_MINUS_SRC_ALPHA`）；
-- 挖掘裂纹（`damagedblock`）而使用了相互相乘再相加的混合方法，并保留了挖掘裂纹 Alpha 值（`DST_COLOR SRC_COLOR ONE ZERO` ^**1**^ ）；
+- 挖掘裂纹（`damagedblock`）使用了相互相乘再相加的混合方法，并保留了挖掘裂纹 Alpha 值（`DST_COLOR SRC_COLOR ONE ZERO` ^**1**^ ）；
 - 第一轮的其他几何缓冲默认禁用混合；
 - 你可以在 [](a04-textureAndPx.md#texID){summary=""} 查询纹理 ID。
 
 **[1]** 即 $C_{\text{结果}} = C_{\text{源}} C_{\text{目标}} + C_{\text{目标}} C_{\text{源}} = 2 \times C_{\text{源}} C_{\text{目标}}$，最终表现为当裂纹纹理颜色值小于 0.5 时变暗，大于 0.5 时变亮。
+
+**JE 1.21.5** 以后，Mojang 移除了资源包中所有核心着色器的配置文件，因此若未来有任何新增着色器，我们只能主观推断了。
 
 ## 渲染阶段
 
@@ -474,7 +478,7 @@ blend.gbuffers_armor_glint.colortex0=SRC_ALPHA ONE ZERO ONE
 
 `damagedblock` 实际上是覆盖在正在挖掘的表面上稍大的一个几何体，我们通常只对其进行颜色混合，并忽略其他内容。
 
-挖掘裂纹的默认混合模式比较特殊，是将裂痕的颜色与之前的几何缓冲颜色相乘再相加（`DST_COLOR SRC_COLOR`），只不过裂纹区域的默认混合方式是仅保留裂纹的 Alpha 值（`ONE ZERO`）。
+挖掘裂纹的默认混合比较奇特，是将裂痕的颜色与缓冲区上的颜色相互相乘再相加（`DST_COLOR SRC_COLOR`），只不过裂纹区域的默认混合方式是仅保留裂纹的 Alpha 值（`ONE ZERO`）。
 
 我们不需要裂纹的 Alpha，也不需要它覆写几何 ID，更不需要覆写法线等信息，它们通常很贴合方块表面，因此可以让它照常写入深度。因此我们也可以像自发光类那样调用同样的程序，只是要记得把混合模式改为
 ```properties

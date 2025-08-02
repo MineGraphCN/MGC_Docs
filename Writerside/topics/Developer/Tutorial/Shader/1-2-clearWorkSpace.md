@@ -147,7 +147,11 @@ uniform vec2 pixelSize;
 ```
 记得把它们放进 `Uniforms.glsl` 中。
 
-> 自定义统一变量还有很多参数可以使用，具体可以查阅 [GitHub - OptiFineDoc "shaders.properties"](https://github.com/sp614x/optifine/blob/master/OptiFineDoc/doc/shaders.properties) 的 _Custom uniforms_ 章节。
+> 自定义统一变量还有很多参数可以使用，具体可以查阅 [](a03-shaderProp.md#customUniform)。
+
+> 在配置文件中使用 `#` 开头来编写注释可能导致 Iris 读取出错！
+> 
+{style="warning"}
 
 ### 宏定义文件
 
