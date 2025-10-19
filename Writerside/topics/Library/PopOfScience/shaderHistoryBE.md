@@ -54,11 +54,11 @@
 
 **[1]** 即 JavaScript ，能修改游戏的脚本插件，类似于模组但功能较少。
 
-![Shader1-1.webp](Shader1-1.webp "Star's Shader Mod")
+![Shader1-1.webp](Shader1-1.webp "Star's Shader Mod"){width="700"}
 
 Star's Shader Mod
 
-![Shader1-2.webp](Shader1-2.webp "Ryfol's amazing OpenGL ES 3.0 Shader")
+![Shader1-2.webp](Shader1-2.webp "Ryfol's amazing OpenGL ES 3.0 Shader"){width="700"}
 
 Ryfol's amazing OpenGL ES 3.0 Shader
 
@@ -70,7 +70,7 @@ Ryfol's amazing OpenGL ES 3.0 Shader
 
 **[1]** 指 RAS。SSM 基于 OpenGL ES 2.0。
 
-![CSPE0.14.webp](CSPE0.14.webp)
+![CSPE0.14.webp](CSPE0.14.webp){width="700"}
 
 早期苦力怕光影
 
@@ -92,11 +92,11 @@ Ryfol's amazing OpenGL ES 3.0 Shader
 
 **[1]** 也就是 GLSL PE 光影。由 _~~巴西裸男~~ Gabriel Paixão_ 创作，其与 Java 版的 SEUS 光影并无关系，后来在 Java 版光影作者们的讨伐下将名称改回 GLSL PE。
 
-![KMPE.webp](KMPE.webp)
+![KMPE.webp](KMPE.webp){width="700"}
 
 KMPE 光影，基岩版首创天空层噪声云、水反云
 
-![SEUS.webp](SEUS.webp)
+![SEUS.webp](SEUS.webp){width="700"}
 
 SEUS PE 光影，凭借着特制的水反云，在当时被誉为 ~~伪水反、真 SEUS~~
 
@@ -106,7 +106,7 @@ SEUS PE 光影，凭借着特制的水反云，在当时被誉为 ~~伪水反、
 
 伴随着国内外光影圈在这几个版本的发展，于 1.2 版本，光影效果已基本成型，大家都开始应用了天空层噪声云和水波。在物理渲染引入之前那漫长的时代里，基本也只是对云和水以及其他一些细节上再进行效果增强了。
 
-![CSPE1.2.webp](CSPE1.2.webp)
+![CSPE1.2.webp](CSPE1.2.webp){width="700"}
 
 **BE 1.2** 时期的苦力怕光影
 
@@ -137,11 +137,11 @@ SEUS PE 光影，凭借着特制的水反云，在当时被誉为 ~~伪水反、
 >
 > 本文主笔、MGC 管理组成员 _Σοβιετική Ένωση_ 也在此时期加入。
 
-![ABC.webp](ABC.webp)
+![ABC.webp](ABC.webp){width="700"}
 
 ABC 光影
 
-![DSPE.webp](DSPE.webp)
+![DSPE.webp](DSPE.webp){width="700"}
 
 DSPE 光影
 
@@ -159,7 +159,7 @@ DSPE 光影
 
 **[1]** 由于性能不足，与现在的 3D 噪声体积云相比，这时的体积云是 2D 云一层一层叠起来的，所以会出现边缘切片和形状怪异的问题。
 
-![Tint](Tint.webp)
+![Tint](Tint.webp){width="700"}
 
 Tint Shader，由青木源制作。不过也仅仅是 PC 的性能让云水内卷再上了一个台阶而已。看似华丽的效果，向地面或远处水面看去还是 BE 光影的底子（但这个是 3D 体积云）。
 
@@ -171,11 +171,11 @@ Tint Shader，由青木源制作。不过也仅仅是 PC 的性能让云水内�
 
 不过现在 SDGP 已经彻底消逝在历史长河之中了，我们也没办法继续进行深层的资料挖掘。
 
-[Minecraft Wiki - Super Duper图形包](https://zh.minecraft.wiki/w/Super_Duper图形包)
+[Minecraft Wiki - Super Duper图形包](https://zh.minecraft.wiki/w/Super_Duper图形包){width="700"}
 
-[SDPG 宣传片国内搬运](https://www.bilibili.com/video/BV15x411378i/)
+[SDPG 宣传片国内搬运](https://www.bilibili.com/video/BV15x411378i/){width="700"}
 
-![SuperDuper.webp](SuperDuper.webp)
+![SuperDuper.webp](SuperDuper.webp){width="700"}
 
 SDGP 官方演示图，可见明显的体积光方向错误
 
@@ -193,7 +193,7 @@ _理想情况下_，带有渲染龙的 Windows 10 基岩版能够通过其调用
 - 官方光追虽然在准确性上力压 Java 版一头，但其主要得益于 DirectX RayTracing，在代码质量和细节调校上做的并不尽如人意，也对主打写实风格的地图与纹理创作者造成了很大困扰。
   > 官方光追很大一部分是 [实习生面向论坛编程的产物，其代码质量极其低下](https://b23.tv/BV1614y1b7cp?t=706.6 "Bilibili《渲染龙被破解了，于是我们深挖了它的前世今生……》11:47") 。
   >
-  > 五星社区创作家*茶匙*对此评价到：英伟达这样写着色器代码，怕是脸都不要了。
+  > 五星社区创作家 _茶匙_ 对此评价到：英伟达这样写着色器代码，怕是脸都不要了。
 
 渲染龙覆盖到了各种 PC、移动设备及主机的基岩版上，替代了原本的渲染方案，而基于原始方案的第三方着色器也受到了牵连，直接导致了本时期第三方光影的灭绝。
 
@@ -219,7 +219,7 @@ _理想情况下_，带有渲染龙的 Windows 10 基岩版能够通过其调用
 
 引入物理渲染带来了诸多好处，这是基岩版光影第一次得以还原现实的色彩，并且协调了各个特效之间的变化，例如整个天空可以完全正确的反射了，阳光的朝向也不再是错误的。由于天空几乎完全由着色器生成，在整个光影中是被限制最少的，所以后期甚至还做到了 Java 版同款的星球大气的渲染（当玩家飞得足够高时可以飞出大气）。
 
-![Origin.webp](Origin.webp)
+![Origin.webp](Origin.webp){width="700"}
 
 Origin 光影
 
@@ -325,7 +325,7 @@ four_in_one.pbr是YSS用于存储四合一纹理读取标准的配置文件,你�
 
   国内由 ABC 光影率先实现，做到了直接加载法线和高光纹理，由光影自动拼合。也成功让资源包内的贴图可以像 Java 版一样分散开来，不用进行人工合并。这种方式存在着非常多的问题和限制，最后也没有出现在任何公开发布的光影中（用于 PBR）。
 
-![PBR.webp](PBR.webp)
+![PBR.webp](PBR.webp){width="700"}
 
 第一个国内公开发布的四合一材质——秦，由 _金丹哦_ 制作原 Java 版，_Σοβιετική Ένωση_ 协助移植基岩版
 
@@ -343,7 +343,7 @@ four_in_one.pbr是YSS用于存储四合一纹理读取标准的配置文件,你�
 
 在渲染龙正式实装之前，经历了一段“反复横跳”的时间，期间 Mojang 不断在测试版上引入和移除渲染龙。直至 **BE 1.16.200.51**，Mojang 率先在 Win10 版本上正式启用了渲染龙，宣告了全体 Win10 光影的覆灭，给社区造成了极大的恐慌。
 
-![FanFuHengTiao.webp](FanFuHengTiao.webp)
+![FanFuHengTiao.webp](FanFuHengTiao.webp){width="700"}
 
 “反复横跳”
 
@@ -365,11 +365,11 @@ four_in_one.pbr是YSS用于存储四合一纹理读取标准的配置文件,你�
 
 2021 年底，开发者 _红石公司_ 在模组资源区上架了第一个使用后处理特性的视觉效果增强模组，支持景深等从前被认为不可能实现的特性。VSPE 光影作者 _Vortex_ 注意到了之后，便开始了光影后处理的尝试，成功实现了反射场景，轰动了整个光影圈，基岩版光影就此开辟了新纪元，也代表着国际版光影与网易版光影的正式分离。
 
-![HouChuLi.webp](HouChuLi.webp)
+![HouChuLi.webp](HouChuLi.webp){width="700"}
 
 第一个后处理组件 by _红石公司_
 
-![VSPE.webp](VSPE.webp)
+![VSPE.webp](VSPE.webp){width="700"}
 
 VSPE 3 水反
 
@@ -421,7 +421,7 @@ VSPE 3 水反
 
 2024 年 12 月，**BE 1.21.51.01** 版本发布，但此版本是被错误地释出，在 Arm 64 位平台（安卓平台）上没有实装渲染龙。随后该版本被撤下，并发布了热修补版本 **BE 1.21.51.02**。值得一提的是，尽管该版本得以运行传统 HAL 光影，但由于游戏内部更新与传统 HAL 光影无人维护，会导致许多光影效果出错。并且该版本的游戏本体也存在着诸多性能问题。
 
-![YanChiXuanRan.webp](YanChiXuanRan.webp)
+![YanChiXuanRan.webp](YanChiXuanRan.webp){width="700"}
 
 目前的延迟渲染
 
@@ -435,7 +435,7 @@ VSPE 3 水反
 
 目前，官方再也没有对 RTX 进行任何更新，且 Better RTX 的更新也逐渐放缓，RTX 的未来将何去何从，没有人知道。
 
-![RTX.webp](RTX.webp)
+![RTX.webp](RTX.webp){width="700"}
 
 目前的 Better RTX
 
@@ -449,11 +449,11 @@ VSPE 3 水反
 
 2024 年 11 月，网易调整了资源收费政策，差点导致了光影前置也需要收费的可笑现象。但是此举仍然影响到了不少光影开发者，让他们为了光影不收费或维持原定价，而压缩代码或暂缓更新。同时由于网易的潜力又被挖掘的差不多了，且网易可能很久之后才会更新相关内容，所以网易版的形势也不是那么好，但相比国际版，仍然没得选。
 
-![Yasuo.webp](YaSuo.webp)
+![Yasuo.webp](YaSuo.webp){width="700"}
 
 为了防止收费，而疯狂压缩代码量的某光影
 
-![Netease.webp](Netease.webp)
+![Netease.webp](Netease.webp){width="700"}
 
 目前的网易后处理
 
@@ -489,7 +489,7 @@ ART 光影是早期国内光影的巅峰之作，但可惜其在 **PE 0.12** 即
 
 在那个特效匮乏的年代，ART 光影创造了很多个第一。其可能是国内第一个拥有 3D 水波（上下晃动的原版水）的光影；白天黑夜水波双色；开关精美图像可改变光影特效；创始级无限层软阴影过渡，效果甚至强于部分 **BE 1.4** 之前的光影；在当时独特的方块高光。
 
-![](ART.webp)
+![](ART.webp){width="700"}
 
 </def>
 <def default-state="collapsed">

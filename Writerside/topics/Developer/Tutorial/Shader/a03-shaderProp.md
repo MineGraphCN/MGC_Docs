@@ -16,6 +16,10 @@
 
 <include from="uniforms.md" element-id="h_note_translated"/>
 
+> 最好不要在 Iris 的配置文件中编写注释，可能导致出错
+
+{style="note"}
+
 ## 环境设置
 
 ```properties

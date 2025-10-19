@@ -81,13 +81,13 @@ Language Server for Minecraft Shaderpacks
 
 你可以按下 <shortcut>Ctrl</shortcut><shortcut>K</shortcut>, <shortcut>S</shortcut> 来保存所有文件。
 
-使用 <shortcut>Ctrl</shortcut><shortcut>/</shortcut> 或 <shortcut>Alt</shortcut><shortcut>Shift</shortcut><shortcut>A</shortcut> 可以快捷成行注释或成块注释。
+使用 <shortcut>Ctrl</shortcut><shortcut>/</shortcut> 或 <shortcut>Alt</shortcut><shortcut>Shift</shortcut><shortcut>A</shortcut> 可以快捷行注释或块注释。
 
 当你保持工作区打开并关闭 VS Code 窗口时，它会缓存工作区布局和未保存的文件，当你下次运行 VS Code 时会默认继承进度。
 
-如果你安装了前文的 LSP 插件，当你修改文件名称时，所有的包含宏都会自动修改。
+如果你安装了前文的 LSP 插件，当你修改文件名称时，所有对应的 `#include` 宏都会自动修改。
 
-将窗口标签或文件拽入已经打开的其他文件编辑界面的某一侧，可以拆分工作区。
+将窗口标签或文件拽入已经打开的其他文件编辑界面的某一侧，可以放置拆分窗口。
 
 ## 查看日志
 

@@ -27,6 +27,8 @@
 - 打开压缩包或文件夹后应**有名为 `shaders` 的文件夹。**
   <include from="uniforms.md" element-id="shaderpack_structure_simple"/>
   <include from="uniforms.md" element-id="recommend_unzipApp"/>
+  > 较新的 Iris 针对嵌套文件夹的情况做了兼容，因此可以放心加载光影。
+  {style="note"}
 - 确保不是原版光影或 Canvas 光影，否则你应当直接像 [安装资源包](jeInstallRP.md){summary=""} 那样安装光影。
 
 ## 安装光影

@@ -37,6 +37,7 @@
             <links>
                 <group>
                     <title>探索文档</title>
+                    <a href="mgcdInstructions.md"/>
                     <a href="terms.md"/>
                     <a href="irisAsOf.md"/>
                     <a href="shaderHistoryBE.md"/>

@@ -73,7 +73,7 @@ layout(r16f) uniform image2D colorimg4;
 > 
 > 而在 Iris 中，我们可以自定义至多 16 个额外的图像，不仅可以自定义其尺寸，还能在任何程序中访问。
 
-我们可以使用函数 `imageLoad(gimage image, ivec coord)` 来读取图像区域内任意坐标的内容，和 `texelFetch()` 类似，它使用索引坐标，唯一的区别是图像不可以指定细节等级，此外，也可以使用 `imageSize()` 函数来取到图像的尺寸，它直接返回整型值。
+我们可以使用函数 `imageLoad(gimage image, ivec coord)` 来读取图像区域内任意坐标的内容，和 `texelFetch()` 类似，它使用索引坐标，唯一的区别是图像不可以使用 Mipmap。此外，也可以使用 `imageSize()` 函数来取到图像的尺寸，它直接返回等维的整型尺寸。
 
 同样的，使用 `imageStore(gimage image, ivec coord, gvec4 data)` 来写入任意位置。无论几通道，第三项 `data` 均为四元数，由 GLSL 自动裁切。
 

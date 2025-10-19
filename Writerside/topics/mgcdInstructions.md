@@ -1,6 +1,8 @@
 # 文档使用说明
 
-<show-structure depth="2"/>
+<show-structure depth="2" xmlns=""/>
+
+<link-summary>文档的用法</link-summary>
 
 <tldr>
 
@@ -24,7 +26,7 @@
 选择文档：左侧栏
 </tldr>
 
-> 如果你在很早之前访问过本站，可能需要使用 <shortcut>Shift</shortcut><shortcut>F5</shortcut> 来强制刷新本地目录缓存！
+> 如果你在很早之前访问过本站，可能需要使用 <shortcut>Shift</shortcut><shortcut>F5</shortcut> 或长按刷新按钮 ^移动设备^ 来强制刷新本地目录缓存，否则左侧栏目录显示会出现错误！
 >
 {style="warning"}
 
@@ -34,9 +36,10 @@
 
 [//]: # (- 使用 <shortcut>Ctrl</shortcut><shortcut>K</shortcut> 进行高级搜索；)
 - 搜索功能的服务配置有些问题，暂不可用；
-- 点击右上角 <img src="https://resources.jetbrains.com/help/img/writerside/systemTheme_dark.svg" alt="切换深色模式按钮"/> 可以将文档切换为深色模式，大多数图片也是以深色模式为主；
+- 点击右上角 <img src="https://resources.jetbrains.com/help/img/writerside/systemTheme_dark.svg" alt="切换深色模式按钮"/> 可以将文档切换为深色模式：
   - 我们对部分文档图片进行了优化，使其可以同时适配深色和浅色模式；
-  > 在竖屏中可能不显示该按钮。
+  - 文档编写时以深色环境为准，因此切换为深色模式不仅可以缓解阅读疲劳，还可以获得最佳的阅读体验。
+  > 在竖屏中可能不显示该按钮，需要确保你的横屏宽度大于 984 像素（也是可以同时显示左侧栏、正文和页面目录的最小宽度）。
   >
   {style="note"}
 - 在**左侧栏**中选择你想阅读的文档；
@@ -88,26 +91,26 @@ $\text{LaTeX}$ 公式
 
 **省流块**
 
-省流块永远在章节顶部，总结本章节的一些内容。
+省流块永远在章节顶部，总结本章节的一些内容，或作为导语。
 </tldr>
 
-你可能会在一些文档开头或中间看见各种颜色的提示块：
+你还会在文档中看见各种颜色的提示块：
 
 > - 表示引用。
 > - 表示注解和小贴士。
 >
 {title="灰色提示块"}
 
-> 表示提示。
+> 表示提醒。
 >
 {style="note" title="绿色提示块"}
 
-> 表示注意。
+> 表示注意和警告。
 >
 {style="warning" title="红色提示块"}
 
 ```text
 代码块
 表示代码内容，你可以点击右上角进行复制。
-目前代码块有会把右上角的 Soft-warp 软换行功能文字也复制下来的问题，需要注意。
+目前代码块有会把 Soft-warp 软换行功能文字也复制下来的问题，因此我们暂时禁用了它。
 ```

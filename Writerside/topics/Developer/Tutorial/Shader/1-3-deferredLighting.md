@@ -244,6 +244,10 @@ void main() {
 
 <p id="why_1.0"/>
 
+> Iris 要求程序必须包含顶点着色器，因此要想在 Iris 环境下正确丢弃片元，你需要额外新建空白的 `.vsh` 文件。
+> 
+{style="note"}
+
 现在让我们从 `gbuffers_terrain.vsh` 开始吧。任何 GLSL 程序的第一步都一样：声明版本。接着，`gl_Position` 要求我们最终的坐标落在裁切空间中，然后交由 GL 进行透视除法。知道了这套标准程序，我们就可以实际上手将它们转写为 GLSL 代码了：
 ```glsl
 #version 330 core
