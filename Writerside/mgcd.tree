@@ -91,6 +91,7 @@
                 <toc-element topic="a03-shaderProp.md"/>
                 <toc-element topic="a04-textureAndPx.md"/>
 <!--                <toc-element topic="a05-matsElements.md"/>-->
+<!--                <toc-element topic="a06-shaderProgramConfigs.md"/>-->
             </toc-element>
         </toc-element>
         <toc-element topic="resourceTutorial.md">

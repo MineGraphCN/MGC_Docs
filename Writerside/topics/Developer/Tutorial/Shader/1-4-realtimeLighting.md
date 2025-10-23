@@ -403,7 +403,7 @@ float shadowMultiplier = step(currentDepth - bias, closestDepth);
 > 
 {style="note"}
 
-因此，我们还是请出之前已经点乘好的值 `lit` ，当光照与法线方向夹角越小，我们的偏移量应该越小，因此要取其与 1 的差。我们不关心背光面，它们本来就全是阴影 ^**1**^。同时我们应该保证一个最小的偏移量来确保某些极端角度不会产生自阴影：
+因此，我们还是请出之前已经点乘好的值 `lit` ，当光照与法线方向夹角越小，我们的偏移量应该越小，因此要取其与 1 的差。我们不关心背光面，它们本来就全是阴影 ^**1**^。同时我们应该保证一个最小的偏移量来确保某些极端角度不会产生自阴影，这样，我们的方向性偏移（**Dir**ectional **Bias**，`biasDir`）就求出来了：
 ```glsl
 float biasDir = max(bias * (1.0-lit), bias * 0.1);
 float shadowMultiplier = step(currentDepth - biasDir, closestDepth);
@@ -447,11 +447,14 @@ float maxComponent(vec2 v) {
     return max(v.x, v.y);
 }
 [... main ...]
-if(minComponent(uv_shadowMap) < 0.0 || maxComponent(uv_shadowMap) > 1.0) { shadowMultiplier = 1.0; }
+if(minComponent(uv_shadowMap) < 0.0
+|| maxComponent(uv_shadowMap) > 1.0) {
+    shadowMultiplier = 1.0;
+}
 ```
 当然，我们可以用之前封装的函数 `uv_OutBound()` 来替换它们，如果你还记得的话：
 
-<compare>
+<compare first-title="旧函数" second-title="新函数" style="top-bottom">
 
 ```glsl
 bool uv_OutBound(vec2 uv) {
@@ -472,7 +475,9 @@ if(uv_OutBound(uv_shadowMap)) shadowMultiplier = 1.0;
 
 而如果你飞向高空，你会发现大块的阴影又回来了（真难杀啊），这是因为在阴影几何缓冲中场景超出了裁切远平面，最近的阴影空间深度始终被视为了 `1.0` ，而场景的实际阴影空间深度已经超过了 `1.0` 。因此我们还需要裁切掉大于 `1.0` 深度的坐标：
 ```glsl
-if(uv_OutBound(uv_shadowMap) || currentDepth >= 1.0) { shadowMultiplier = 1.0; }
+if(uv_OutBound(uv_shadowMap) || currentDepth >= 1.0) {
+    shadowMultiplier = 1.0;
+}
 ```
 
 ![纠正对比](shadows_wrong.webp){width="700"}
@@ -497,7 +502,7 @@ if(uv_OutBound(uv_shadowMap) || currentDepth >= 1.0) { shadowMultiplier = 1.0; }
 ## 习题
 
 1. 整理你的 `final.fsh` ，将重建阴影坐标系的一大坨内容封装成函数，剔除不必要的变量。
-2. 重载 `minComponent()` 和 `maxComponent()` 函数，让它们可以返回 `vec3` 和 `vec4` 类型的最大分量。
+2. 尝试重载 `minComponent()` 和 `maxComponent()` 函数，让它们可以返回 `vec3` 和 `vec4` 类型的最大分量。
 
    重载完成后，你会发现我们之前重载的三维 UV 边界判定函数也可以写成：
    ```glsl

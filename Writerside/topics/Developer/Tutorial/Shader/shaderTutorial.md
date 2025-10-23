@@ -35,7 +35,7 @@
 
 要想流畅地阅读整个教程，需要注意以下几点：
 
-- 了解基本的 **C 语法**，熟悉在 GLSL 中可能会用到的线性代数知识（主要是矩阵乘法和变换）。如果你在寻求一个了解更加底层的 OpenGL 框架，或者快速入门矩阵相关知识的教程，我们推荐 [LearnOpenGL](https://learnopengl-cn.github.io/01%20Getting%20started/07%20Transformations/) ；
+- 了解基本的 **C 语法**，熟悉在 GLSL 中可能会用到的线性代数知识（主要是矩阵乘法和变换）。如果你在寻求一个了解更加底层的 OpenGL 框架，或者快速入门矩阵相关知识的教程，我们推荐 [Learn OpenGL](https://learnopengl-cn.github.io/01%20Getting%20started/07%20Transformations/) ；
 - 我们约定了一些 [术语](terms.md){summary=""} ，在教程中可能会用到，当它们首次出现时，我们会将其与对应术语链接；
 - 如果你对着色器的概念比较陌生，可以阅读站上的理论入门介绍文档 [](shaderBasic.md){summary=""} 和 [](shaderTech.md){summary=""} ；
 - 我们的基础教学主要集中在开发环境成熟稳定的 **OptiFine GLSL** 上：
