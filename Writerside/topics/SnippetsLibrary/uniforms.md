@@ -178,7 +178,21 @@
 <tr><td>61</td><td colspan="2">1.21.6 25w20a</td></tr>
 <tr><td>62</td><td colspan="2">1.21.6 25w21a</td></tr>
 <tr><td>63</td><td>1.21.6-pre1</td><td>1.21.7-rc1</td></tr>
-<tr><td>%latest_pack_format%</td><td>%latest_pack_format_ver_low%</td><td><i>最新</i></td></tr>
+<tr><td>64</td><td>1.21.7-rc2</td><td>1.21.8</td></tr>
+<tr><td>65.0</td><td colspan="2">1.21.9 25w31a</td></tr>
+<tr><td>65.1</td><td colspan="2">1.21.9 25w32a</td></tr>
+<tr><td>65.2</td><td colspan="2">1.21.9 25w33a</td></tr>
+<tr><td>66.0</td><td colspan="2">1.21.9 25w34a</td></tr>
+<tr><td>67.0</td><td colspan="2">1.21.9 25w35a</td></tr>
+<tr><td>68.0</td><td>1.21.9 25w36a</td><td>25w36b</td></tr>
+<tr><td>69.0</td><td>1.21.9 25w37a</td><td>1.21.10</td></tr>
+<tr><td>70.0</td><td colspan="2">1.21.11 25w41a</td></tr>
+<tr><td>70.1</td><td colspan="2">1.21.11 25w42a</td></tr>
+<tr><td>71.0</td><td colspan="2">1.21.11 25w43a</td></tr>
+<tr><td>72.0</td><td colspan="2">1.21.11 25w44a</td></tr>
+<tr><td>73.0</td><td colspan="2">1.21.11 25w45a</td></tr>
+<tr><td>74.0</td><td colspan="2">1.21.11 25w46a</td></tr>
+<tr><td>75.0</td><td>1.21.11-pre1</td><td>1.21.11</td></tr><tr><td>%latest_pack_format%</td><td>%latest_pack_format_ver_low%</td><td><i>最新</i></td></tr>
 </table>
 
 _23 和 27 不存在。_  
@@ -251,7 +265,7 @@ _截止 2025 年 6 月 12 日，数据来源于 [Minecraft Wiki](https://zh.mine
 **点击完成**，在老版本中使用 <shortcut>Esc</shortcut> 返回上一页可能导致直接取消资源包更改。
 </step>
 
-![拖拽安装](install_by_drag.gif "拖拽安装")
+![拖拽安装](install_by_drag.gif "拖拽安装"){width="700"}
 </procedure>
 </tab>
 <tab title="导入文件夹">
@@ -277,7 +291,7 @@ _截止 2025 年 6 月 12 日，数据来源于 [Minecraft Wiki](https://zh.mine
 **点击完成**，在老版本中使用 <shortcut>Esc</shortcut> 返回上一页可能导致直接取消资源包更改。
 </step>
 
-![导入文件夹](install_by_folder.gif "导入文件夹")
+![导入文件夹](install_by_folder.gif "导入文件夹"){width="700"}
 </procedure>
 </tab>
 </tabs>

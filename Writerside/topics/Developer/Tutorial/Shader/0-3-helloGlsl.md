@@ -158,27 +158,28 @@ GLSL 版本与 OpenGL 密切相关，如果平台支持的 OpenGL 版本过低�
 <tr><td>450</td><td>4.5</td><td>支持直接状态访问（Direct State Access）。</td></tr>
 </table>
 
-## `core` 还是 `compatibility` ？
+## 版本与配置
 
-在定义 `#version` 时，我们可以在版本号后选择 `core` 和 `compatibility` 。
+在定义 `#version` 时，我们可以在版本号后添加 `core` 或 `compatibility` 来启用特定的配置。
 
-使用 `core` 会完全禁用固定管线，同时大多数变量都需要用户在 OpenGL 上下文中显式提供，像我们之前的顶点着色器程序中的
+使用 `core` 会完全禁用固定管线功能，大多数变量都需要用户在 OpenGL 上下文中显式提供，像我们之前的顶点着色器程序中的
 ```glsl
 uniform mat4 modelViewMatrix;
 uniform mat4 projectionMatrix;
 ```
-就在干这个事情。同时，大多数 `gl_` 开头的内建变量都将被禁用，因为它们都来自固定管线。有关内建变量，参阅 [](a02-coreBuiltinVars.md)
+就在干这个事情。同时，大多数 `gl_` 开头的内建变量都将被禁用，因为它们都来自固定管线。当然，也有部分内建变量得到了保留，参阅 [](a02-coreBuiltinVars.md)
 
-若你选择了 `compatibility` 配置，可以直接使用 `gl_ModelViewMatrix` 和 `gl_ProjectionMartix` ，甚至 `vec4(vaPosition, 1.0)` 也可以直接用 `gl_Vertex` 代替：
+若你选择了 `compatibility` 配置，可以直接使用 `gl_ModelViewMatrix` 和 `gl_ProjectionMartix` ，`vec4(vaPosition, 1.0)` 也可以直接用 `gl_Vertex` 代替：
 ```glsl
 gl_Position = gl_ProjectionMartix * gl_ModelViewMatrix * gl_Vertex;
 ```
+甚至可以直接使用 `ftransform()` 函数直接它们：
+```glsl
+gl_Position = ftransform();
+```
+但这些内容都在固定管线中进行，我们对其的掌控能力较弱，还会造成一些不必要的开销。OptiFine 给我们提供了较为全面的变量，所以将我们尽量使用 `core` 配置。部分对应的变量需要 **JE 1.17** 及之后的 OptiFine 版本才能提供。
 
-你甚至直接使用 `ftransform()` 函数直接替换这一串乘法。
-
-但是由于这些内容都在固定管线中进行，我们对其的掌控能力较弱，而且启用固定管线也会造成一些不必要的开销。OptiFine 给我们提供了完整的数据内容，所以我们尽量使用 `core` 配置，不过部分对应变量需要 **JE 1.17** 及之后的 OptiFine 版本才能提供。
-
-> 除了上述两个配置以外，我们还可以选择 `es` ，这是嵌入式和移动平台的 OpenGL ES 兼容配置，它精简了大量特性以换取高能效，但是对桌面平台用处不大，在此我们不做讨论。
+> 除了上述两种配置以外，我们还可以选择 `es` ，这是嵌入式和移动平台的 OpenGL ES 兼容配置，它精简了大量特性以换取高能效，对桌面平台用处不大，在此我们不做讨论。
 
 ## 语法糖
 
@@ -201,7 +202,7 @@ vec4(0.5, 0.5, 0.5, 1.0);
 
 </compare>
 
-GLSL 允许使用多个向量快速构造。
+GLSL 允许使用多个向量快速构造矩阵。
 
 <compare first-title="构造矩阵" second-title="等效矩阵">
 
@@ -222,25 +223,38 @@ mat3x2(0.0, 0.0
 
 </compare>
 
-矩阵在 GLSL 内部使用**列主序**存储，因此取用矩阵值的行列会翻转，并使用先列后行进行索引。
+矩阵在 GLSL 默认使用列主序存储矩阵，参与构造的每个向量被称为列向量。其内存布局是线性代数中矩阵表达的转置，但这并不会改变内存的索引方式，因此矩阵元素的表达方式并未改变。如无说明，之后的教程中都将使用标准的线性代数矩阵。
 
+$4\times3$ 的线性代数矩阵：
+$$
+\begin{array}{@{}r@{}c@{}c@{}c@{}c@{}l@{}}
+& M\_0 & M\_1 & M\_2 \\
+\left.\begin{array}
+{c} M0\_ \\ M1\_ \\ M2\_ \\ M3\_ \end{array}\right[
+& \begin{array}{c} 1 \\ 4 \\ 7 \\ 0.1 \end{array}
+& \begin{array}{c} 2 \\ 5 \\ 8 \\ 0.2 \end{array}
+& \begin{array}{c} 3 \\ 6 \\ 9 \\ 0.3 \end{array}
+& \left]\begin{array}{c} \\ \\ \\ \\ \end{array}\right.
+\end{array}
+$$
 <compare first-title="构造矩阵" second-title="内部存储">
 
 ```glsl
-mat3(1.0, 2.0, 3.0,
-     4.0, 5.0, 6.0,
-     7.0, 8.0, 9.0);
+mat4x3(1.0, 2.0, 3.0,
+       4.0, 5.0, 6.0,
+       7.0, 8.0, 9.0,
+       0.1, 0.2, 0.3);
 ```
 ```glsl
-M[0]  M[1]  M[2]
-1.0   4.0   7.0    M[][0]
-2.0   5.0   8.0    M[][1]
-3.0   6.0   9.0    M[][2]
+M[0]  M[1]  M[2]  M[3]
+1.0   4.0   7.0   0.1   M[][0]
+2.0   5.0   8.0   0.2   M[][1]
+3.0   6.0   9.0   0.3   M[][2]
 ```
 
 </compare>
 
-> 顶点着色器向片段着色器传入矩阵时，默认会在内部存储的每列上进行坐标插值。
+> 顶点着色器向片元着色器传入矩阵时，默认会在每个列向量上进行插值。
 
 同时，GLSL 还允许简化构造对角矩阵。
 
@@ -449,15 +463,15 @@ h(v)
 
 除了上述特性，GLSL 还内置了许多方便的函数，你可以在 [这里](https://registry.khronos.org/OpenGL-Refpages/gl4/index.php) 查阅。
 
-其中也包含了大多数在 C 中属于 math 库的函数。
+其中也包含了大多数 C 中 math 库的函数。
 
 ### 函数重载
 
 GLSL 支持函数重载，即定义多个同名但不同参的函数，在调用时将会根据传参类型选择对应函数。
 ```glsl
-float f(float x, int y);
+float f(float x, vec3 y);
 float f(int x, int y);
-float f(int x, float y);
+float f(bool x, float y);
 ```
 
 ### 类型
@@ -466,4 +480,4 @@ GLSL 内置了布尔类型（ `bool` ），同时支持整型向量和布尔向�
 
 GLSL 不支持 `static` 关键字和 `char` 类型。
 
-GLSL 中没有无符号修饰符 `unsigned` ，取而代之的无符号整数类型是 `uint` 。
+GLSL 中没有无符号修饰符 `unsigned` ，取而代之的是无符号整数类型 `uint` 和 `uvec`。

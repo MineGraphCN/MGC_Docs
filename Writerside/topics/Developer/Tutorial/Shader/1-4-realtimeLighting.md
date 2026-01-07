@@ -160,12 +160,14 @@ fragColor = albedo * (lit * lightmap + 0.3 * albedo.a);
 
 > 如果成功直接输出了光照强度你就会发现，游戏中天空光照随时间变化的时候光照贴图的 UV 其实并没有变化。
 > 
-> 这是因为 `lightmap` 的内容是随着时间动态变化的，天空光照有一个随着遮挡变化的固有强度和一个世界时间系数，刷怪判定就由它们共同完成。这个系数也会改变不同时间段光照贴图的颜色，从而营造出光照随时间的变化。
+> 这是因为 `lightmap` 的内容是随着时间动态变化的，天空光照有一个随着遮挡变化的固有强度和一个世界时间系数，刷怪判定就由它们共同完成。这个系数也会改变不同时间段光照贴图的颜色，从而营造出光照随时间变化的效果。
 >
 > 因此，如果你想要脱离光照贴图，则需要自己定义根据时间段变化的光照强度和颜色。OptiFine 也为我们提供了游戏内时间的相关数据：
 > ```glsl
-> uniform int worldTime;  // <ticks> = worldTicks % 24000
-> uniform int worldDay;   // <days> = worldTicks / 24000
+> uniform int worldTime;     // <ticks> = worldTicks % 24000
+> uniform int worldDay;      // <days> = worldTicks / 24000
+> uniform float sunAngle;    // 0.0-1.0 ~ 0-23214 12785日-12786月 = .5
+> uniform float shadowAngle; // 0.0-0.5 ~ 同步 sunAngle 的前半周期
 > ```
 > 
 {title="小知识"}
@@ -482,7 +484,7 @@ if(uv_OutBound(uv_shadowMap) || currentDepth >= 1.0) {
 
 ![纠正对比](shadows_wrong.webp){width="700"}
 
-> 我们判定的核心思想就是剔除掉阴影深度图中无效的部分，因此你也可以判定 `closestDepth == 1.0` ，这样物体就可以在实际深度超出 `1.0` 的远景中投影了，这在光源角度较大的日落和日出时非常有用。
+> 我们判定的核心思想就是剔除掉阴影深度图中无效的部分，因此你也可以判定 `closestDepth == 1.0` （如果你完成了习题 2，就可以合并写成 `uv_outBound(shadowScreenPos.xyz)`），这样物体就可以在实际深度超出 `1.0` 的远景中投影了，这在光源角度较大的日落和日出时非常有用。
 > 
 {style="note"}
 
@@ -491,7 +493,7 @@ if(uv_OutBound(uv_shadowMap) || currentDepth >= 1.0) {
 {style="note"}
 
 
-> 事实上我们编写的阴影几何缓冲基本上就是 OptiFine 的内置实现，如果你不编写阴影几何缓冲而直接调用 `shadowtex` ，也是可以绘制阴影的。
+> 事实上我们编写的阴影几何缓冲基本上就是 OptiFine 的内置实现，如果你不编写阴影几何缓冲而直接调用阴影纹理，也是可以绘制阴影的。
 > 
 > 不过有一点不同的是，内置实现向 `shadowcolor0` 写入了场景，将它像阴影深度那样映射到场景中看起来就像这样：
 > ```glsl

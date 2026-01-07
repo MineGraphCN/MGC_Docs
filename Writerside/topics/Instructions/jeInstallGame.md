@@ -98,7 +98,7 @@ Multi MC 启动器
 
 <tldr>
 
-安装教程以 HMCL 的嵌入式安装（最简单）为例。
+安装教程以 HMCL 的嵌入式安装（最简单）为例，在新版 HMCL 中，游戏版本被称为 _**实例**_ 。
 
 </tldr>
 
@@ -113,7 +113,7 @@ Multi MC 启动器
 
 如果你是新手，可以先尝试安装最简单的仅安装 OptiFine。
 
-目前有最新 OptiFine 的游戏版本是 **JE %latest_je_with_of%**，最新的 OptiFine 版本是 %latest_of% 。
+目前有最新正式版 OptiFine 的游戏版本是 **JE %latest_je_with_of%**，最新的 OptiFine 正式版是 %latest_of% 。
 
 需要安装其他模组吗？
 <tabs group="otherMods">
@@ -215,10 +215,11 @@ Multi MC 启动器
 <var name="site">Iris 的 Modrinth 页面</var>
 <var name="link">https://modrinth.com/mod/iris/versions</var>
 
-Iris 能在非 Forge 的加载器环境下运行，且与模组的兼容性较好，这里以 Fabric 作为演示。  
-Iris 对一些光影存在兼容性问题，若你想用的光影没有声明需要 Iris 独占特性，我们建议你安装 OptiFine。  
-若你需要 OptiFine 的其他功能，参阅 [](irisAsOf.md) 。  
-若你想要在 Forge 下运行光影且其他模组与 OptiFine 存在冲突，可以尝试 Oculus。
+Iris 能在非 Forge 的加载器环境下运行，且与模组的兼容性较好，这里以 Fabric 作为演示，如果需要，你也可以使用 NeoForge。
+
+- Iris 对一些光影存在兼容性问题，除非你想用的光影声明需要 Iris 独占特性，例如 iterationRP、Complementary 等，否则建议安装 OptiFine。
+- 若你在 Iris 环境下需要 OptiFine 的其他功能，参阅 [](irisAsOf.md) 。
+- 若你想要在 Forge 下运行光影且其他模组与 OptiFine 存在冲突，可以尝试 Oculus。
 <procedure type="steps">
 <include from="jeInstallGameContents.md" element-id="startLoader"/>
 <br/>
@@ -281,11 +282,35 @@ Iris 对一些光影存在兼容性问题，若你想用的光影没有声明需
 
 {columns=3}
 
+## 为现有版本安装或更改加载器
+
+<procedure type="steps">
+<step>
+
+选择 `实例列表` 。
+
+![进入实例列表](change_loader_1.webp){width="700"}
+
+</step>
+<step>
+
+点击你想要更换或安装加载器的游戏版本。
+</step>
+<step>
+
+选择 `自动安装` ，你可以在此按上一节的教程更换或安装加载器以及更改游戏版本。
+
+![选择自动安装](change_loader_2.webp)
+
+</step>
+</procedure>
+
 ## 安装模组
 
 安装任一加载器后将对应加载器的模组放入 `<资源文件路径>\mods\` 下即可，资源路径请参考下文检查你是否开启了版本独立，或在启动器中直接打开模组文件夹。
 
 > Forge 可以将模组放入 `mods\<游戏版本>\` ，以便仅对应版本游戏加载，如将模组放在 `mods\1.17.2\` 下则只有安装了 Forge 的 **JE 1.17.2** 可以加载。
+
 ## 配置游戏
 
 <tldr>
@@ -298,9 +323,11 @@ Iris 对一些光影存在兼容性问题，若你想用的光影没有声明需
         <procedure>
 <step>
 
-点击版本进入游戏管理。
+点击游戏版本 ^**1**^ 进入游戏管理界面。
 
 ![游戏设置](check_hmcl_1.webp "游戏设置")
+
+**[1]** 在新版本启动器中被称为 `实例管理` 。
 </step>
 <step>
 

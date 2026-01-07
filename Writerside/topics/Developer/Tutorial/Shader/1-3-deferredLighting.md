@@ -58,9 +58,13 @@ GL 传入的顶点总是从局部坐标（Local Coordinate）开始。它代表�
 **[2]** 举起你的右手张开，让手掌面向自己，你的大拇指指向的右方是 $x+$ ，其他手指指向的上方是 $y+$ ，你的手掌所面朝的方向（你自己）就是 $z+$ 。  
 **[3]** $z_{\text{Clip}} = -\frac{f+n}{f-n} \cdot z_{\text{View}} - \frac{2fn}{f-n}$ ，其中 $n$ 和 $f$ 分别表示近裁切平面和远裁切平面，这会造成一些场景深度的线性压缩。
 
+至此，场景从正交空间（坐标轴之间两两垂直）转入了透视空间中，这里每个点的坐标都不再能直接表示点的相对关系了。
+
 > 点的局部坐标 $w$ 分量应该被设置为 $1$ ，因此当我们使用 OptiFine 提供的 `vec3 vaPosition` 时我们应该将其转换为 `vec4(vaPosition, 1.0)`。
 > 
 {style="note"}
+
+> 如果你好奇投影矩阵如何推导，可以阅读 [推导投影矩阵 - 知乎专栏](https://zhuanlan.zhihu.com/p/122411512) 。
 
 ### 标准化（归一化）设备坐标
 
@@ -70,7 +74,7 @@ GL 传入的顶点总是从局部坐标（Local Coordinate）开始。它代表�
 $$
 z_{\text{NDC}} = \frac{z_{\text{Clip}}}{w_{\text{Clip}}} = \frac{-\frac{f+n}{f-n} \cdot z_{\text{View}} - \frac{2fn}{f-n}}{-z_{\text{View}}} = \frac{f+n}{f-n} + \frac{2fn}{(f-n) \cdot z_{\text{View}}}
 $$
-觉没觉得有些熟悉？还没想起来？如果我们将它改写成 $z_{\text{NDC}}$ 关于 $z_{\text{View}}$ 的函数呢：
+觉没觉得有些熟悉？还没想起来？如果我们将它改写成 $z_{\text{NDC}}$ 关于 $z_{\text{View}}$ 的方程：
 $$
 z_{\text{View}} = \frac{2fn}{f+n-z_{\text{NDC}}(f-n)}
 $$
@@ -78,11 +82,11 @@ $$
 ```
 y=(f+n)/(f-n)+2*f*n/((f-n)*x)
 ```
-于是场景就从 $z_{\text{View}}$ 的 $[-f,-n]$ 压缩到了 $z_{\text{NDC}}$ 的 $[-1,1]$ 。而其他两个分量的边界范围与 $|z_{\text{View}}|$ 成正比：
+于是场景就从 $z_{\text{View}}$ 的值域 $[-f,-n]$ 压缩到了 $z_{\text{NDC}}$ 的值域 $[-1,1]$ 。而其他两个分量的边界范围与所在位置的 $|z_{\text{View}}|$ 成正比：
 $$
-x_{\text{Boundary}} \propto |z_{\text{View}}| , y_{\text{Boundary}} \propto |z_{\text{View}}|
+x_{\text{Boundary}} , y_{\text{Boundary}} \propto |z_{\text{View}}|
 $$
-进行投影变换和透视除法之后，它们最终会回到 $[-1,1]$ 上，因此分量的坐标值也会在转换到 NDC 上时随着 $w_{\text{Clip}}$ 的增大而压缩。
+具体倍率则与视场角（**F**ield **O**f **V**iew）有关，FOV 越大，投影空间中的顶点向中心压缩得就更多（或者说平截头体的尾部相较头部更宽），进入 NDC 的内容越多，能看到的边界就越宽。进行投影变换和透视除法之后，它们最终会回到 $[-1,1]$ 上，因此分量的坐标值也会在转换到 NDC 上时随着 $w_{\text{Clip}}$ 的增大而压缩。
 
 > 你可以在 [这个 GeoGebra 演示](https://www.geogebra.org/calculator/pa7jejre) 中尝试拖动 $n$ 和 $f$ 的值来观察函数 ${z_{\text{NDC}}}(x)$ 在 $n \leqslant x \leq f$ 上的变化。其中 $X$ 轴表示 $w_{\text{Clip}}$ ，$Y$ 轴表示映射后的 $z_{\text{NDC}}$ 。
 
@@ -591,7 +595,7 @@ vec4 vanillaMixLight(vec3 lightDir0, vec3 lightDir1, vec3 normal, vec4 color) {
 in vec3 vaNormal;
 ```
 
-和坐标一样，法线数据也需要经过空间变换。不同的是，变换法线数据时只需要改变它们的朝向，而且它们不应该受到透视投影的影响（还记得吗，透视投影在数学上是通过扭曲顶点位置实现的，因此也同时扭曲了表面朝向）。因此我们需要用到法线变换专用的**法线矩阵**（Normal Matrix），在 OptiFine 中只需要声明：
+和坐标一样，法线数据也需要经过空间变换。不同的是，变换法线数据时只需要改变它们的朝向，而且它们不应该受到透视投影的影响（还记得吗，透视投影在数学上是通过扭曲顶点位置实现的，因此也同时扭曲了表面朝向）。于是我们需要用到法线变换专用的**法线矩阵**（Normal Matrix），在 OptiFine 中只需要声明：
 ```glsl
 uniform mat3 normalMatrix;
 ```
@@ -608,7 +612,7 @@ vNormal = normalMatrix * vaNormal;
 
 ![翻转法线](gbuffers_normalFlip.webp){width="700"}
 
-因此我们只需要将它们和视点到片元的连线做点乘，如果你没看过上一节的话，它的几何意义是两个向量的模长与夹角余弦值的积 $|\vec{A}| |\vec{B}| \cos{\theta}$ 。因此当两个向量方向越接近，它们夹角就越小 ^**2**^，$\cos{\theta}$ 越接近 $1$ ，点积结果就越大。我们期望法向量始终在指向视点的半球内，因此如果我们发现了任何点积大于 $0$ 的结果，则说明它的法线方向反了。
+我们只需要将它们和视点到片元的连线做点乘，如果你没看过上一节的话，它的几何意义是两个向量的模长与夹角余弦值的积 $|\vec{A}| |\vec{B}| \cos{\theta}$ 。当两个向量方向越接近，它们夹角就越小 ^**2**^，$\cos{\theta}$ 越接近 $1$ ，点积结果就越大。我们期望法向量始终在指向视点的半球内，因此如果我们发现了任何点积大于 $0$ 的结果，则说明它的法线方向反了。
 
 **[2]** 计算向量的夹角的时候应该将向量尾尾相连。
 
@@ -620,7 +624,7 @@ if(dot(vNormal, viewPos.xyz) > 0.0) { vNormal = -vNormal; }
 gl_Position = projectionMatrix * viewPos;
 ```
 
-现在你可能会陷入一些疑惑：就算我们把它传入了片元着色器，我们能传出的也只有 `fragColor` ，那法线数据怎么办？
+现在你可能会产生一些疑惑：就算我们把它传入了片元着色器，我们能传出的也只有 `fragColor` ，那法线数据怎么办？
 
 这里就需要我们进行**多缓冲区输出**了。要想进行多缓冲区输出，最直接的办法是定义多个 `out` 值：
 ```glsl
@@ -629,22 +633,22 @@ out vec3 normal;
 ```
 默认情况下 OptiFine 会根据声明顺序将它们放入对应索引的缓冲区，但是**不要这样做**，因为当输出缓冲区变多之后如果意外更改了声明顺序，或者想跳过缓冲区输出（比如只输出到 1 号和 3 号缓冲区），会导致很多不必要的麻烦。
 
-使用 `layout` 关键字自己指定要输出的缓冲区。我们可以使用 `layout(location = X)` 来指定输出目标：
+一种办法是使用 `layout` 关键字自己指定要输出的缓冲区。我们可以使用 `layout(location = X)` 来指定输出目标：
 ```glsl
 layout(location = 0) out vec4 fragColor;
 layout(location = 1) out vec3 normal;
 ```
-这样我们就指定了 `fragColor` 输出到 0 号缓冲区，而 `normal` 会输出到 1 号缓冲区，但是仍然不够。
+这样，我们就指定了 `fragColor` 输出到 0 号缓冲区，而 `normal` 会输出到 1 号缓冲区，但这还仍然不够。
 
-**最标准的做法**是使用 `/* DRAWBUFFERS:ABC */` 和 `/* RENDERTARGETS: A,B,C */` 来**显式声明**缓冲区的索引顺序：
+**最标准的做法**是使用 `/* DRAWBUFFERS:ABC */` 和 `/* RENDERTARGETS: A,B,C */` 来**显式声明**将要输出的缓冲区以及它们的索引顺序：
 ```glsl
-/* DRAWBUFFERS:0427 */
-layout(location = 0) out vec4 output0; // 输出到 0 号缓冲区
-layout(location = 1) out vec4 output1; // 输出到 4 号缓冲区
+/* DRAWBUFFERS:9527 */
+layout(location = 0) out vec4 output0; // 输出到 9 号缓冲区
+layout(location = 1) out vec4 output1; // 输出到 5 号缓冲区
 layout(location = 2) out vec4 output2; // 输出到 2 号缓冲区
 layout(location = 3) out vec4 output3; // 输出到 7 号缓冲区
 ```
-> 如果指定了缓冲区顺序，则不要让 `location` 越界，这是未定义行为。
+> 如果指定了输出索引，则不要让 `location` 越界，这是未定义行为：
 > ```glsl
 > /* DRAWBUFFERS:01 */
 > layout(location = 2) out vec4 output0; // location = 2 未指定！
@@ -702,11 +706,11 @@ fragColor = texture(colortex1, uv);
 
 > 由于 `colortex1` 在最早的 GLSL 光影核心模组中被期望用于输出自己缓存的深度（它以前的名字叫 `gdepth` ），所以整个缓冲区默认会清除为白色（意为最远，你可以在上图的天空部分看出来）。
 
-现在，我们已经在延迟渲染中拿到了所需要的全部数据，接下来就可以在延迟渲染中处理场景光照了。
+至此，我们已经在几何缓冲中拿到了处理光照所需要的全部数据，接下来就可以进入延迟处理了。
 
-### 延迟渲染处理
+### 在延迟处理中渲染光照
 
-现在，我们就可以利用之前获得的函数和统一变量来处理光照了。由于我们的法线是视口空间，因此需要将光照方向也变换到视口空间：
+让我们直入主题，实际上手来利用之前获得的函数和统一变量处理光照。在处理任何效果之前，我们都应当先明确这些效果所处的空间。对于光照效果来说，只要所有信息都在同一正交空间中即可。由于我们的法线是视口空间，因此需要将光照方向也变换到视口空间：
 ```glsl
 vec3 lightDir0 = normalize(vec3(gbufferModelView * vec4(Light0_Direction, 0.0)));
 vec3 lightDir1 = normalize(vec3(gbufferModelView * vec4(Light1_Direction, 0.0)));
