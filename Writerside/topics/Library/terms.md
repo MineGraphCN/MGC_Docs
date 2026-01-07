@@ -172,7 +172,19 @@
 
 <def id="advancedShader">
 <title>Advanced Shader <sup>Forge</sup></title>
-    是一个 OptiFine 辅助模组，旨在让 <b>JE 1.12.2</b> 兼容更高版本的光影。
+    一个 OptiFine 辅助模组，旨在让 <b>JE 1.12.2</b> 兼容更高版本的光影。
+</def>
+
+<def id="radiance">
+<title>Radiance <sup>Fabric</sup></title>
+
+近期新兴的光线追踪模组，旨在将 Minecraft JE 的 Java OpenGL 库替换为基于 C++ 的 Vulkan 库，让游戏支持 [硬件光线追踪](rayTracing.md) 与 [硬件升采样](shaderTech.md#upscaling) 。
+
+目前正在早期测试阶段，仅支持硬件光线追踪，DLSS 和 DLSS 光线重构。
+
+发布视频：[【MC模组发布】真正的MC高性能硬件光追Mod——Radiance | 哔哩哔哩](https://b23.tv/BV1NevXBCEPg)
+
+[官方网站](https://www.minecraft-radiance.com)
 </def>
 </deflist>
 
