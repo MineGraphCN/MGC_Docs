@@ -7,7 +7,7 @@ Minecraft Graphics Community，或称 MineGraph。是一个 **Minecraft 图形�
 ## 加入创作
 
 1. Fork 本仓库并克隆至本地；
-2. 使用任意 [JetBrains IDE](https://www.jetbrains.com/zh-cn/ides/#choose-your-ide) 打开；
+2. 使用任意支持 Writerside 插件的 [JetBrains IDE](https://www.jetbrains.com/zh-cn/ides/#choose-your-ide) 打开（_推荐 [WebStorm](https://www.jetbrains.com/zh-cn/webstorm/)_）；
 3. 在 IDE 中安装 [Writerside 插件](https://plugins.jetbrains.com/plugin/20158-writerside) ；
 4. 参考 `\Writerside\topics\wsFormat.md` 进行内容创作；
 5. 提交 Pull Request。
