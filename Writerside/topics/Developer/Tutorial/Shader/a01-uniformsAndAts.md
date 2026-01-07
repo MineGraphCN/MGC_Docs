@@ -34,8 +34,8 @@ uniform int moonPhase;                    // 0-7
 uniform int frameCounter;                 // 帧索引 (0 到 720719, 然后重置为 0)
 uniform float frameTime;                  // 上一帧用时，秒
 uniform float frameTimeCounter;           // 运行时间，秒 (3600 秒后重置为 0)
-uniform float sunAngle;                   // 0.0-1.0 ~ 0-23214 12785日-12786月 = .5
-uniform float shadowAngle;                // 0.0-1.0 ~ 同步 sunAngle 的前半周期
+uniform float sunAngle;                   // 0.0-1.0 ~ 0-24000 23215 = 0.0，切换为日（日出）；12786 = 0.5，切换为月（日落）
+uniform float shadowAngle;                // 0.0-0.5 ~ 同步 sunAngle 的前半周期
 uniform float rainStrength;               // 0.0-1.0
 uniform float aspectRatio;                // viewWidth / viewHeight
 uniform float viewWidth;                  // 窗口宽
