@@ -99,7 +99,7 @@ uniform sampler2D colortex0;
 
 如果把它们就这样散乱在 `shaders` 文件夹下，如果今后库文件增多会变得麻烦，我们可以在下面新建一个文件夹 `libs` ，然后把它们拖进去。
 
-```Shell
+```shell
 └─ shaders
    ├─ libs
    │  ├─ Attributes.glsl

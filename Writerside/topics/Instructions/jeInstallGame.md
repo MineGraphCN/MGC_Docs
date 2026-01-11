@@ -259,7 +259,7 @@ Iris 能在非 Forge 的加载器环境下运行，且与模组的兼容性较�
 </tab>
 <tab title="仅游戏">
 
-不是哥们？这可跑不了绝大部分光影哦，你自己想清楚。
+不是哥们？
 <procedure type="steps">
 <include from="jeInstallGameContents.md" element-id="start"/>
 <include from="jeInstallGameContents.md" element-id="wait"/>

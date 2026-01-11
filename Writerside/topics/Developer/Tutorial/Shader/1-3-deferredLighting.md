@@ -573,6 +573,8 @@ uniform vec3 Light0_Direction;
 uniform vec3 Light1_Direction;
 ```
 
+> 对于这种完全定死的常量，我们完全可以在着色器中使用 `const` 修饰符直接设置来略微减小 CPU 与 GPU 的通信开销。
+
 最后，把原版着色器定义的光照强度和光照函数也拷贝到 `Settings.glsl` 和 `Utilities.glsl`
 ```glsl
 #define LIGHT_POWER   0.6

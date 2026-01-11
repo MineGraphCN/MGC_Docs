@@ -9,7 +9,7 @@
 ## 背景
 
 1. 法线贴图通常由软件根据纹理自动生成。然而对于低分辨率纹理，软件生成并不理想，且我们期望能精确地调控；
-2. 我们很难将手绘法线的三分量控制在理想范围内，但在某一分量上增减会导致另一分量变动，不同分量上的倾斜角度也不够直观；
+2. 我们很难将手绘法线的三分量控制在理想范围内，在某一分量上增减会导致另两分量变动，不同分量上的倾斜角度也不够直观；
 3. 尽管 LabPBR 将 $z$ 分量所在的 `b` 通道 [另作他用](labpbrMaterialStandard.md#textureAO){summary=""} 在一定程度上缓解了模长小于 $1$ 的问题，但是当 $x^2 + y^2 > 1$ 时，用于重建 $z$ 分量的算法 $ \sqrt{ 1 - (x^2 + y^2) } $ 将产生非实根，从而导致 <tooltip term="NaN">`NaN`</tooltip> 错误。
 
 ## 古人的智慧
@@ -84,22 +84,18 @@ S_{xy} = \frac{\arccos{S_z}}{\pi}
 当 $R = 1$ 时
 $$
 \frac{R}{r}= \frac{G}{g} \Rightarrow \frac{1}{r}= \frac{G}{g} \Rightarrow G = \frac{g}{r}
-$$
-$$
+$$$$
 D = \sqrt{R^2+G^2} = \sqrt{1+\frac{g^2}{r^2}} = \sqrt{\frac{r^2+g^2}{r^2}}
-$$
-$$
+$$$$
 S_z = \frac{\sqrt{r^2+g^2}}{\sqrt{\frac{r^2+g^2}{r^2}}} = r \geqslant g
 $$
 
 同理，当 $G = 1$ 时
 $$
 \frac{R}{r}= \frac{G}{g} \Rightarrow \frac{R}{r} = \frac{1}{g} \Rightarrow R = \frac{r}{g}
-$$
-$$
+$$$$
 D = \sqrt{R^2+G^2} = \sqrt{1+\frac{r^2}{g^2}} = \sqrt{\frac{r^2+g^2}{g^2}}
-$$
-$$
+$$$$
 S_z = \frac{\sqrt{r^2+g^2}}{\sqrt{\frac{r^2+g^2}{g^2}}} = g \geqslant r
 $$
 
@@ -110,7 +106,7 @@ S_{xy} = \frac{\arccos{\max(r, g)}}{\pi}
 
 为了让其适配实际在 $[-1, 1]$ 区间上的法线，我们需要对函数进行处理，于是最终的公式就变成了
 $$ \begin{equation}
-RtS(x,y) = \frac{\arccos{\max(|x|, |y|)}}{\pi} \times (x,y)_{R} = (x,y)_{S}
+RtS(x,y) = \frac{\arccos{\max(|x|, |y|)}}{\pi} \cdot (x,y)_{R} = (x,y)_{S}
 \end{equation} $$
 这样一个简洁优雅的算法。
 
@@ -118,9 +114,9 @@ RtS(x,y) = \frac{\arccos{\max(|x|, |y|)}}{\pi} \times (x,y)_{R} = (x,y)_{S}
 
 ## 绘制比率法线
 
-现在绘制就变得非常简单了，如 [](#sln){summary=""} 所说， `r` `g` 通道较大的一个值现在会作为法线 $z$ 分量与 $xy$ 平面的夹角比率，而 `r` `g` 通道值之间的比值则会作为在 $xy$ 平面上的倾角，由于后期需要重建，与几何表面垂直的比率法线应当是 `r = 0.5, g = 0.5` ，就和普通法线一样。
+现在绘制就变得非常简单了，如 [](#sln){summary=""} 所说， `r` `g` 通道较大的一个值现在会作为法线 $z$ 分量与 $xy$ 平面的夹角比率，而 `r` `g` 通道值之间的比值则会作为在 $xy$ 平面上的倾角，由于后期需要重建，与几何表面垂直的比率法线应当从 $[-1,1]$ 映射到 $[0,1]$，即 $(r,g)_\text{normalized}=\frac{(r,g)+1}{2}$，就和普通法线一样。
 
-比如当 `r = 0.25, g = 0.6` 时 $z$ 分量与 $xy$ 平面的夹角就为 $ 90 \degree \times (1 - |2r - 1|) = 45 \degree $，$xy$ 平面上的角度则可以使用基本三角函数直接计算。
+比如当 $r_\text{normalized} = 0.25, g_\text{normalized} = 0.6$，即 $r=-0.5, g=0.2$ 时 $z$ 分量与 $xy$ 平面的夹角就为 $ 90 \degree \times (1 - |2r - 1|) = 45 \degree $，$xy$ 平面上的角度则可以使用基本三角函数直接计算。
 
 
 ## 算法
@@ -142,7 +138,7 @@ void ratioNormal(float *img) {
 
 ### GLSL
 
-> 这个解决方案并未被广泛采用过，并且使用了**开销极大的反三角函数**，因此我们不推荐将此算法内置于光影中，而是作为离线转换器，在前期创作时使用。
+> 这个解决方案并未被采用过，并且使用了**开销极大的反三角函数**，因此我们不推荐将此算法内置于光影中，而是作为离线转换器，在前期创作时使用。
 >
 {style="warning" title="仅作示例"}
 ```glsl
