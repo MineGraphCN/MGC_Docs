@@ -1,4 +1,4 @@
-# 延迟光照
+# 延迟渲染中的光照 · 初识几何缓冲
 
 <show-structure depth="2"/>
 
@@ -232,7 +232,7 @@ uniform mat4 projectionMatrixInverse;     //投影矩阵的逆
 
 ### 第一个几何缓冲程序
 
-我们的第一个几何缓冲将会围绕游戏中最为主要的世界地形（Terrain）展开，因为其在画面占比中较为普遍，并且要素齐全（有顶点颜色、有实心和镂空纹理、受各种光照影响）。为了更集中精力地处理它，我们可以先将其他几何剔除掉。
+我们的第一个几何缓冲将会围绕游戏中最为主要的世界地形（Terrain）展开，因为多数方块都属于这类，并且要素齐全（有顶点颜色、有实心和镂空纹理、受各种光照影响）。为了更集中精力地处理它，我们可以先将其他几何剔除掉。
 
 回看上一节的内容，我们需要的几何大致都在 `terrain` 和 `block` 中，当几何缓冲着色器不存在时将会调用它们的父级着色器，于是我们只需要设法把 `basic` 程序设置为不输出内容，那么它下属的所有内容都会被清除。额外的，我们还需要单独将 `water` 和 `clouds` 清除，前者归属了 `terrain` ，而后者会在不存在时调用内置管线。
 
@@ -245,8 +245,6 @@ void main() {
 }
 ```
 来剔除其他几何。
-
-<p id="why_1.0"/>
 
 > Iris 要求程序必须包含顶点着色器，因此要想在 Iris 环境下正确丢弃片元，你需要额外新建空白的 `.vsh` 文件。
 > 
@@ -608,23 +606,6 @@ out vec3 vNormal;
 [... main ...]
 vNormal = normalMatrix * vaNormal;
 ```
-有些未闭合的单面片（比如鲑鱼的尾巴）可能会出现顶点法线方向反向的问题 ^**1**^ ，因此我们需要将它们翻转回来。场景中的法线应该都是朝向视点所在的半球内的，另一半球朝向的几何都会被它的其他面遮挡，即法线与观察方向的夹角不会小于 $90\degree$ 。
-
-**[1]** 因为只有一层顶点，法线数据只能有一个朝向，大多数面片模型比如矮草丛之类 Mojang 还是考虑到了的。
-
-![翻转法线](gbuffers_normalFlip.webp){width="700"}
-
-我们只需要将它们和视点到片元的连线做点乘，如果你没看过上一节的话，它的几何意义是两个向量的模长与夹角余弦值的积 $|\vec{A}| |\vec{B}| \cos{\theta}$ 。当两个向量方向越接近，它们夹角就越小 ^**2**^，$\cos{\theta}$ 越接近 $1$ ，点积结果就越大。我们期望法向量始终在指向视点的半球内，因此如果我们发现了任何点积大于 $0$ 的结果，则说明它的法线方向反了。
-
-**[2]** 计算向量的夹角的时候应该将向量尾尾相连。
-
-我们可以将视口坐标独立出来用于检查，然后再进行投影变换：
-```glsl
-vec4 viewPos = modelViewMatrix * vec4(vaPosition + chunkOffset, 1.0);
-vNormal = normalMatrix * vaNormal;
-if(dot(vNormal, viewPos.xyz) > 0.0) { vNormal = -vNormal; }
-gl_Position = projectionMatrix * viewPos;
-```
 
 现在你可能会产生一些疑惑：就算我们把它传入了片元着色器，我们能传出的也只有 `fragColor` ，那法线数据怎么办？
 
@@ -694,6 +675,18 @@ fragColor = texture(gtexture, uv) * vColor;
 normal = vNormal * 0.5 + 0.5;
 ```
 
+有些未闭合的单面片（比如某些版本鲑鱼的尾巴和一些模组物品）可能会出现顶点法线方向反向的问题 ^**1**^ ，因此我们需要将它们翻转回来。场景中的法线应该都是朝向视点所在的半球内的，另一半球朝向的几何都会被它的其他面遮挡，即法线与观察方向的夹角不会小于 $90\degree$ 。
+
+**[1]** 因为只有一层顶点，法线数据只能有一个朝向，大多数面片模型比如矮草丛之类 Mojang 还是考虑到了的。此外，正常情况下游戏都会启用背面剔除，所以那些内外都可以看到纹理的几何实际上是两层不同的面组成的。
+
+![翻转法线](gbuffers_normalFlip.webp){width="700"}
+
+OpenGL 提供了判定当前片元是否为正面的内建变量，我们只需要在片元着色器中使用 `gl_FrontFacing` 即可判定：
+```glsl
+float front = sign(float(gl_FrontFacing) - 0.5); // 正面 1，背面 -1
+normal = vNormal * front * 0.5 + 0.5;
+```
+
 回到 `final.fsh` ，如果你的操作正确，那么采样 `colortex1` 并直接输出的场景应该是这样：
 ```glsl
 [...]
@@ -723,22 +716,23 @@ M_{G\text{ModelView}} =
 \begin{bmatrix}
 \begin{bmatrix}
 \cdots&\cdots&\cdots \\
-\cdots&M_R&\cdots \\
+\cdots&M_{R\text{Sub}}&\cdots \\
 \cdots&\cdots&\cdots
 \end{bmatrix}
 &
 \begin{bmatrix}
 \cdots \\
-M_T \\
+M_{T\text{Sub}} \\
 \cdots
 \end{bmatrix}
 \\
 \matrix {0 & 0 & 0} & 1
 \end{bmatrix}
 $$
-其中 $M_R$ 子矩阵表示旋转数据，$M_T$ 子矩阵表示位移数据。从很早之前开始，我们就一直为这第四分量埋下了悬念 ^**[1](0-3-helloGlsl.md#why_1.0){summary=""}** **[2](#why_1.0){summary=""}**^，现在是时候了解为什么要这样做了。
+其中 $M_{R\text{Sub}}$ 子矩阵 ^**2**^ 表示旋转数据，$M_{T\text{Sub}}$ 子矩阵表示位移数据。从很早之前开始，我们就一直为这第四分量埋下了悬念，现在是时候了解为什么要这样做了。
 
-**[1]** 这里的归一化和缓冲区、坐标系的归一化都有所区别，向量的归一化是将其转化为单位向量，缓冲区则是将每个通道都钳制到 $[0,1]$ 内，而标准化设备坐标则是指不会被裁切的坐标全部都落在 $[-1,1]$ 内的坐标系。
+**[1]** 这里的归一化和缓冲区、坐标系的归一化都有所区别，向量的归一化是将其转化为单位向量，缓冲区则是将每个通道都钳制到 $[0,1]$ 内，而标准化设备坐标则是指不会被裁切的坐标全部都落在 $[-1,1]$ 内的坐标系。  
+**[2]** 这里的子矩阵与附录 5 中的独立矩阵有所区别。此处的子矩阵仅表示矩阵块内特定的元素，附录 5 中的独立矩阵是合并应用矩阵的拆分形式。
 
 想象一下，当一个坐标系（世界空间）的一个坐标点转换到另一个坐标系（视口空间）下时，我们应该同时应用参考坐标系（摄像机）的位移，让点的位置随着坐标系（摄像机）的移动而变化；而当这个坐标是一个方向时，由于它只是一个固有的相对方向信息，与坐标系原点无关，就算我们的摄像机移动，它的朝向也不应该因此改变。
 
@@ -748,15 +742,15 @@ $$
 
 <table width="700">
 <tr><td>数据类型</td><td><math>w</math> 分量</td><td>变换目的</td></tr>
-<tr><td>点（位置）</td><td>1.0</td><td>需要随相机位移和旋转才能获得正确的相对位置</td></tr>
-<tr><td>相对距离（方向）</td><td>0.0</td><td>只需要将其随摄像机旋转，其本身就代表了相对方向</td></tr>
+<tr><td>绝对位置（点）</td><td>1.0</td><td>需要随相机位移和旋转才能获得正确的相对位置</td></tr>
+<tr><td>相对位置（方向）</td><td>0.0</td><td>只需要将其随摄像机旋转，其本身就代表了相对位置</td></tr>
 </table>
 
 当我们将向量乘入矩阵时，如果 $w$ 分量为 $1$，则最终场景将会应用位移数据
 $$
 \vec{P}_{\text{Point}} = M_{G\text{ModelView}} \cdot \vec{P} =
 \begin{bmatrix}
-M_R \cdot \begin{bmatrix}x \\ y \\ z\end{bmatrix} + M_T \\
+M_{R\text{Sub}} \cdot \begin{bmatrix}x \\ y \\ z\end{bmatrix} + M_{T\text{Sub}} \\
 1
 \end{bmatrix}
 $$
@@ -764,7 +758,7 @@ $$
 $$
 \vec{P}_{\text{Direction}} = M_{G\text{ModelView}} \cdot \vec{P} =
 \begin{bmatrix}
-M_R \cdot \begin{bmatrix}x \\ y \\ z\end{bmatrix} \\
+M_{R\text{Sub}} \cdot \begin{bmatrix}x \\ y \\ z\end{bmatrix} \\
 0
 \end{bmatrix}
 $$
@@ -775,7 +769,7 @@ $$
 然后将它们传入之前的函数中，就能看到，场景光照回来了！
 ```glsl
 vec4 albedo = texture(colortex0, uv);
-vec3 normal = texture(colortex1, uv).rgb * 2.0 - 1.0; // 记得把法线转换回 [-1,1] 上！
+vec3 normal = texture(colortex1, uv).rgb * 2.0 - 1.0; // 记得映射值域！
 fragColor = vanillaMixLight(lightDir0, lightDir1, normal, albedo);
 ```
 

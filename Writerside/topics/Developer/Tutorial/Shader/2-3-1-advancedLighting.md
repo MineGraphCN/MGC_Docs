@@ -1,4 +1,4 @@
-# 进阶延迟处理：光照
+# 进阶延迟处理 · 光照
 
 <show-structure depth="3" for="chapter"/>
 
@@ -37,7 +37,7 @@ vec3 reflectDir = reflect(lightDir, normal);
 $$
 P_\text{View} \xleftarrow{透视除法} {P_\text{Clip}} \leftarrow M_{G\text{Projection}}^{-1} \cdot P_\text{NDC} \leftarrow P_\text{Screen} \times 2 - 1
 $$
-在 [那一节](1-4-realtimeLighting.md#rebuildCoord){summary=""} 中，我们也将 `viewPos` 进行了保留，如果你没有保留，可以回去翻找或者按上式自行计算。
+在 [那一节](1-4-dynamicLighting.md#rebuildCoord){summary=""} 中，我们也将 `viewPos` 进行了保留，如果你没有保留，可以回去翻找或者按上式自行计算。
 
 最后，我们将视口方向与反射方向进行点乘，就可以在场景中产生高光了：
 ```glsl
@@ -407,7 +407,7 @@ float roughness = pow(1.0 - material.r, 2.0);
 [... Settings ...]
 #define SUN_BRIGHTNESS 1.0
 #define AMBIENT_BRIGHTNESS 0.8
-#define BASE_BRIGHTNSS 0.1
+#define BASE_BRIGHTNSS 0.01
 #define BLOCK_BRIGHTNESS 0.5
 [... Uniforms ...]
 uniform vec3 skyColor;
@@ -416,7 +416,7 @@ uniform vec3 skyColor;
 float litScene = [... 计算直接光照 ...];
 litScene *= SUN_BRIGHTNESS;
 
-float litScene = [... 计算环境光照 ...];
+float litSceneAmbient = [... 计算环境光照 ...];
 litSceneAmbient *= AMBIENT_BRIGHTNESS * lightmap.t; // 设置环境光照强度
 litSceneAmbient *= skyColor * albedo.a; // 上色和 AO
 
@@ -425,7 +425,10 @@ litSceneBlock *= albedo.rgb; // 方块光照应用 AO 与否取决于你的喜�
 
 vec3 litSceneBase = BASE_BRIGHTNESS * albedo.rgb * albedo.a;
 
-fragColor.rgb = litScene+litSceneAmbient+litSceneBlock+litSceneBase;
+fragColor.rgb = litScene
+              + litSceneAmbient
+              + litSceneBlock
+              + litSceneBase;
 ```
 为了让大家理解我们正在干的事情，我们将每种光照产生的最终颜色都进行了拆分，因此会多出来几次可以合并的乘法，优化不是我们的首要目标。
 
@@ -435,7 +438,7 @@ fragColor.rgb = litScene+litSceneAmbient+litSceneBlock+litSceneBase;
 
 ![带粗糙菲涅尔的光照场景](advancedLighting_finalSpecular.webp){width="700"}
 
-> 你可能会觉得反射中缺了些什么，因为它并没有反射场景中的内容，只有天空光照，但这就不是我们这一节（乃至这一章）的目标了。
+> 你可能会觉得反射缺了些什么，它并没有反射场景中的内容，只有天空光照，因此显得偏蓝，但这就不是我们这一节（乃至这一章）的目标了。
 
 ### 纹理自发光
 
@@ -459,10 +462,12 @@ fragColor.rgb += albedo.rgb * (material.a == 1.0 ? 0.0 : material.a);
 [... Settings ...]
 #define EMISSIVE_BRIGHTNESS 1.0
 [... Utilities ...]
-#define intfloor8bit(x) int(floor(x * 255. + .5))
+#define f2i8(x) int(floor(x * 255. + .5)) // Normalized float to int8
 [...]
-int emissive = intfloor8bit(material.a);
-fragColor.rgb += albedo.rgb * (emissive == 255 ? 0.0 : material.a) * EMISSIVE_BRIGHTNESS;
+int emissive = f2i8(material.a);
+fragColor.rgb += albedo.rgb
+               * (emissive == 255 ? 0.0 : material.a)
+               * EMISSIVE_BRIGHTNESS;
 ```
 
 现在，配合上 SPBR 的自发光，就算在矿洞中我们也得心应手了。
@@ -552,7 +557,7 @@ in vec4 at_tangent;
 
 它的前三个分量是切线的朝向，第四分量表示法线和切线的**手性**（Handedness） ^**2**^。有了其中两个分量，我们只需要**叉乘**（Cross）它们，就能求得与两向量构成的平面垂直的第三向量了：
 ```glsl
-vec3 normal = normalMatrix * vaNormal;
+vec3 normal = vs_out.normal;
 vec3 tangent = normalize(normalMatrix * at_tangent.xyz);
 float handedness = at_tangent.w;
 vec3 bitangent = normalize(cross(tangent, normal) * handedness);
@@ -1074,7 +1079,7 @@ fragColor.rgb = vpow(fragColor.rgb, GAMMA_REC);
 
 ![伽马校正](advancedLighting_gammaCorrection.png){width="700"}
 
-由于我们转换到了线性空间计算光照，而之前的光照参数都为了适配 sRGB 空间，因此画面看起来可能过于明亮。你可以适当降低光照强度（将环境光照强度降低到 0.3 左右就很好了）。虽然这一小节的工作量不多，但是对我们今后的渲染质量保障来说不可或缺。
+由于我们转换到了线性空间计算光照，而之前的光照参数都为了适配 sRGB 空间，因此画面看起来可能过于明亮。你可以适当降低光照强度（将环境光照强度降低到 0.3 左右就很好了，想要更好的质感可以直接降到 0.1）。虽然这一小节的工作量不多，但是对我们今后的渲染质量保障来说不可或缺。
 
 好了，至此，我们的延迟处理探索的第一阶段就正式完结了，希望你还能保持清醒。在下一阶段中，我们将开始着手处理环境，并让我们今天最后所做的伽马校正发挥它更多的用处。
 
