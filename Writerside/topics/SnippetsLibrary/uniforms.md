@@ -114,7 +114,7 @@
 
 <snippet id="resourcepack_versions">
 
-<procedure collapsible="true" title="兼容性表格">
+<procedure collapsible="true" title="资源包版本号兼容性">
 
 <table>
 <tr><td><code>pack_format</code> 值</td><td>起始版本</td><td>终止版本</td></tr>
@@ -192,11 +192,16 @@
 <tr><td>72.0</td><td colspan="2">1.21.11 25w44a</td></tr>
 <tr><td>73.0</td><td colspan="2">1.21.11 25w45a</td></tr>
 <tr><td>74.0</td><td colspan="2">1.21.11 25w46a</td></tr>
-<tr><td>75.0</td><td>1.21.11-pre1</td><td>1.21.11</td></tr><tr><td>%latest_pack_format%</td><td>%latest_pack_format_ver_low%</td><td><i>最新</i></td></tr>
+<tr><td>75.0</td><td>1.21.11-pre1</td><td>1.21.11</td></tr>
+<tr><td>76.0</td><td colspan="2">26.1-snapshot-1</td></tr>
+<tr><td>77.0</td><td colspan="2">26.1-snapshot-2</td></tr>
+<tr><td>78.0</td><td colspan="2">26.1-snapshot-3</td></tr>
+<tr><td>78.1</td><td colspan="2">26.1-snapshot-4</td></tr>
+<tr><td>%latest_pack_format%</td><td>%latest_pack_format_ver_low%</td><td><i>最新</i></td></tr>
 </table>
 
-_23 和 27 不存在。_  
-_截止 2025 年 6 月 12 日，数据来源于 [Minecraft Wiki](https://zh.minecraft.wiki/w/资源包#资源包格式版本) 。_
+_23 和 27 不存在，自 65.0 开始，资源包版本号开始使用浮点数进行存储。_  
+_截止 2026 年 2 月 1 日，数据来源于 [Minecraft Wiki](https://zh.minecraft.wiki/w/资源包#资源包格式版本) 。_
 
 </procedure>
 
