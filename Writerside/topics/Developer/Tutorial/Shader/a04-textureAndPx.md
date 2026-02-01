@@ -1,5 +1,7 @@
 # 纹理和像素
 
+<secondary-label ref="port"/>
+
 <show-structure depth="2"/>
 
 <tldr>
@@ -8,6 +10,8 @@
 
 像素类型和格式用于组织二进制转储文件中的数据格式和类型，以便正确解析数据并转换到对应纹理格式中。
 </tldr>
+
+> 资料来源：[GitHub - OptiFineDoc "shaders.txt"](https://github.com/sp614x/optifine/blob/master/OptiFineDoc/doc/shaders.txt)
 
 ## 纹理单元 ID {id="texID"}
 
@@ -39,7 +43,7 @@
 | `22` | colortex14   | <自定义纹理或从延迟处理输出>           |
 | `23` | colortex15   | <自定义纹理或从延迟处理输出>           |
 
-{width="700"}
+{width="600"}
 
 ### 阴影几何缓冲
 
@@ -67,7 +71,7 @@
 | `22` | colortex14   | <自定义纹理>                   |
 | `23` | colortex15   | <自定义纹理>                   |
 
-{width="700"}
+{width="600"}
 
 ### 延迟处理
 
@@ -98,9 +102,9 @@
 | `22` | colortex14   |                           |
 | `23` | colortex15   |                           |
 
-{width="700"}
+{width="600"}
 
-### 映像读写
+### 图像读写
 
 所有程序都可以用 `colorimg<0-5>` 和 `shadowcolorimg<0-1>` 来访问 `colortex<0-5>` 和 `shadowcolor<0-1>`。
 
@@ -109,28 +113,28 @@
 layout(rgba8) uniform image2D colorimg0;
 ```
 
-读写 `image` 格式需要 `ARB_shader_image_load_store` 扩展或 GLSL 4.20 以上。
+读写 `image` 类型需要 `ARB_shader_image_load_store` 扩展或 GLSL 4.20 以上。
 
 ## 纹理格式 {id="texFormat"}
 
-### 8 位
+### 8 位每通道
 
 | 归一化   | 带符号的归一化     | 整数     | 无符号整数 * |
 |-------|-------------|--------|---------|
-| R8    | R8_SNORM    | R8I    | R8I     |
-| RG8   | RG8_SNORM   | RG8I   | RG8I    |
-| RGB8  | RGB8_SNORM  | RGB8I  | RGB8I   |
-| RGBA8 | RGBA8_SNORM | RGBA8I | RGBA8I  |
+| R8    | R8_SNORM    | R8I    | R8UI    |
+| RG8   | RG8_SNORM   | RG8I   | RG8UI   |
+| RGB8  | RGB8_SNORM  | RGB8I  | RGB8UI  |
+| RGBA8 | RGBA8_SNORM | RGBA8I | RGBA8UI |
 
-{width="700"}
+{width="600"}
 
-\* 原文如此，实际测试后应该以 `UI` 结尾（也是 [GL 的标准](https://www.khronos.org/opengl/wiki/Image_Format#Required_formats)），向这种类型写入负值时会溢出到最大值。
+\* 原文写成了以 `I` 结尾，实际应当以 `UI` 结尾（也是 [GL 的标准](https://www.khronos.org/opengl/wiki/Image_Format#Required_formats)），向这种类型写入负值时会溢出到最大值。
 
 > 8 位通道不支持非归一化浮点类型。
 > 
 {style="note"}
 
-### 16 位
+### 16 位每通道
 
 | 归一化    | 带符号的归一化      | 浮点      | 整数      | 无符号整数    |
 |--------|--------------|---------|---------|----------|
@@ -139,9 +143,9 @@ layout(rgba8) uniform image2D colorimg0;
 | RGB16  | RGB16_SNORM  | RGB16F  | RGB16I  | RGB16UI  |
 | RGBA16 | RGBA16_SNORM | RGBA16F | RGBA16I | RGBA16UI |
 
-{width="700"}
+{width="600"}
 
-### 32 位
+### 32 位每通道
 
 | 浮点      | 整数      | 无符号整数    |
 |---------|---------|----------|
@@ -150,7 +154,7 @@ layout(rgba8) uniform image2D colorimg0;
 | RGB32F  | RGB32I  | RGB32UI  |
 | RGBA32F | RGBA32I | RGBA32UI |
 
-{width="700"}
+{width="600"}
 
 > 32 位通道不支持归一化浮点类型。
 > 
@@ -158,15 +162,19 @@ layout(rgba8) uniform image2D colorimg0;
 
 ### 混合
 
-除了上述逐通道 8/16/32 位的纹理格式，还支持下列混合之后共用位数的格式：
+除了上述逐通道 8/16/32 位的纹理格式，还支持下列共用位数的格式：
 
-- R3_G3_B2（共 8 位）
-- RGB5_A1（共 16 位）
-- RGB9_E5（共 32 位）
-- R11F_G11F_B10F（共 32 位）
-- RGB10_A2（共 32 位）
+| 格式             | 位数合计 |
+|----------------|------|
+| R3_G3_B2       | 8 位  |
+| RGB9_E5 *      | 16 位 |
+| RGB5_A1        | 32 位 |
+| R11F_G11F_B10F | 32 位 |
+| RGB10_A2       | 32 位 |
 
-{columns="3"}
+{width="450"}
+
+\* 用于指数位相近的小浮点数。
 
 ## 像素格式 {id="pxFormat"}
 

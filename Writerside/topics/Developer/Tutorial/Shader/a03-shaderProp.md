@@ -11,12 +11,23 @@
 对应的视频设置选项具有更高优先级，除非是 `默认`。
 </tldr>
 
-<var name="src_name">GitHub OptiFineDoc/shaders.properties</var>
-<var name="src_link">https://github.com/sp614x/optifine/blob/master/OptiFineDoc/doc/shaders.properties</var>
+> 资料来源：[GitHub - OptiFineDoc "shaders.properties"](https://github.com/sp614x/optifine/blob/master/OptiFineDoc/doc/shaders.properties)
 
-<include from="uniforms.md" element-id="h_note_translated"/>
+OptiFine 光影配置文件支持 C 风格的宏定义，同时也是 Ini 风格的注释：
+```properties
+#if SKYBOX_RESOLUTION == 32
+    #define SKYBOX_RESOLUTION_X 96
+    #define SKYBOX_RESOLUTION_Y 64
+# ...
+#elif SKYBOX_RESOLUTION == 256
+    #define SKYBOX_RESOLUTION_X 768
+    #define SKYBOX_RESOLUTION_Y 512
+#endif
 
-> 最好不要在 Iris 的配置文件中编写注释，可能导致出错
+# 来自 ITRP 的宏示例。
+```
+
+> 在 Iris 的配置文件中编写注释可能导致出错
 
 {style="note"}
 
@@ -322,8 +333,8 @@ variable.<float|int|bool|vec2|vec3|vec4>.<name>=<表达式>
 - `tan(x)`
 - `atan(x)`
 - `atan2(y, x)`
-- `torad(deg)`
-- `todeg(rad)`
+- `torad(deg)` 或 `radians(deg)`
+- `todeg(rad)` 或 `degrees(rad)`
 - `min(x, y ,...)`
 - `max(x, y, ...)`
 - `abs(x)`

@@ -12,7 +12,7 @@
 
 </tldr>
 
-> 资料来源 [GitHub - OptiFineDoc "shaders.txt"](https://github.com/sp614x/optifine/blob/master/OptiFineDoc/doc/shaders.txt)
+> 资料来源：[GitHub - OptiFineDoc "shaders.txt"](https://github.com/sp614x/optifine/blob/master/OptiFineDoc/doc/shaders.txt)
 
 ## 统一变量 {id="uniforms"}
 

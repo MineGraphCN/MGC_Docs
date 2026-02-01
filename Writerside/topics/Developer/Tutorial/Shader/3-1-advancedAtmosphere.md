@@ -12,9 +12,13 @@
 
 ## 雾气与光照
 
+### 光线步进
+
+### 正向累积 VS 逆向累积
+
 Forward:
 $$
-\Sigma F = \sum_{i=1}^{n-1}{[(1-V_i)F_{i-1}+V_iF_i]}
+\Sigma F = \sum_{i=1}^{n-1}{(1-V_i)F_{i-1}+V_iF_i}
 $$$$
 C =
 \begin{dcases}
