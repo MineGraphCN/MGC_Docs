@@ -63,6 +63,8 @@ Language Server for Minecraft Shaderpacks
 
 我们将使用截止教程编写时的最新正式版本（**JE 1.21.4**, OptiFine J3）作为测试环境。
 
+> 目前 OptiFine 最新版本已更新到 **JE %latest_je_with_of%**, OptiFine %latest_of%。
+
 如果你还不会安装游戏，参阅 [](jeInstallGame.md) 。
 
 安装完成后，你需要在 `shaderpacks` 文件夹下新建一个文件夹，然后在该文件夹内再新建一个 `shaders` 文件夹，这就是一个光影包。你也可以建立多个光影包来分别测试不同内容。

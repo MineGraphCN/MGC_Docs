@@ -78,8 +78,6 @@ out vec3 vColor;
 
 和 C 一样，GLSL 执行时从 `main` 函数开始，但是它必须是 `void` 类型，也不接受任何输入。
 
-<p id="why_1.0"/>
-
 以 `gl_` 开头的变量都是 GLSL 的**内建变量**，`gl_Position` 表示顶点的最终位置。主函数的第一行
 ```glsl
 gl_Position = projectionMatrix * modelViewMatrix * vec4(vaPosition, 1.0);
@@ -223,33 +221,36 @@ mat3x2(0.0, 0.0
 
 </compare>
 
-矩阵在 GLSL 默认使用列主序存储矩阵，参与构造的每个向量被称为列向量。其内存布局是线性代数中矩阵表达的转置，但这并不会改变内存的索引方式，因此矩阵元素的表达方式并未改变。如无说明，之后的教程中都将使用标准的线性代数矩阵。
+GLSL 默认使用列主序构造和存储矩阵，参与构造的每个向量被称为列向量。其内存布局是线性代数中矩阵表达的转置，按照先列后行进行索引。如无说明，之后的教程中**数学公式**都使用常规的**行主序**矩阵，**GLSL 代码**都使用**列主序**矩阵。
 
-$4\times3$ 的线性代数矩阵：
+例如，对于一个 $3\times4$ 的行主序矩阵：
 $$
-\begin{array}{@{}r@{}c@{}c@{}c@{}c@{}l@{}}
-& M\_0 & M\_1 & M\_2 \\
+\begin{array}{}
+& 0列 & 1列 & 2列 & 3列 \\
 \left.\begin{array}
-{c} M0\_ \\ M1\_ \\ M2\_ \\ M3\_ \end{array}\right[
-& \begin{array}{c} 1 \\ 4 \\ 7 \\ 0.1 \end{array}
-& \begin{array}{c} 2 \\ 5 \\ 8 \\ 0.2 \end{array}
-& \begin{array}{c} 3 \\ 6 \\ 9 \\ 0.3 \end{array}
-& \left]\begin{array}{c} \\ \\ \\ \\ \end{array}\right.
+{c} 0行 \\ 1行 \\ 2行 \end{array}\right[
+& \left[\begin{array}{c} 1 \\ 2 \\ 3 \end{array}\right]
+& \left[\begin{array}{c} 4 \\ 5 \\ 6 \end{array}\right]
+& \left[\begin{array}{c} 7 \\ 8 \\ 9 \end{array}\right]
+& \left[\begin{array}{c} a \\ b \\ c \end{array}\right]
+& \left]\begin{array}{c} \\ \\ \\ \end{array}\right.
 \end{array}
 $$
+在 GLSL 中的构造矩阵和存储方式为：
 <compare first-title="构造矩阵" second-title="内部存储">
 
 ```glsl
-mat4x3(1.0, 2.0, 3.0,
-       4.0, 5.0, 6.0,
-       7.0, 8.0, 9.0,
-       0.1, 0.2, 0.3);
+mat4x3(1, 2, 3,
+       4, 5, 6,
+       7, 8, 9,
+       a, b, c);
 ```
 ```glsl
-M[0]  M[1]  M[2]  M[3]
-1.0   4.0   7.0   0.1   M[][0]
-2.0   5.0   8.0   0.2   M[][1]
-3.0   6.0   9.0   0.3   M[][2]
+M[][0] M[][1] M[][2]
+  1      2      3   M[0]
+  4      5      6   M[1]
+  7      8      9   M[2]
+  a      b      c   M[3]
 ```
 
 </compare>
