@@ -1,4 +1,4 @@
-# 进阶延迟处理：环境
+# 进阶延迟处理 · 环境
 
 <secondary-label ref="wip"/>
 
@@ -17,7 +17,7 @@
 
 ### 简单水平雾
 
-雾气有很多处理方法，让我们从最简单的深度雾开始。和之前一样，说到位置信息，我们就离不开深度图。还记得我们第一章第一节中第一次体验延迟处理效果时吗？当时我们构建了一个获取线性深度图的函数 `float LinearizeDepth(float depth)` 用来处理那个奇怪的饱和度淡入特效，~~原来你一直与我同在~~。它可以返回场景的视口空间 Z 值：
+雾气有很多处理方法，让我们从最简单的深度雾开始。和之前一样，说到位置信息，我们就离不开深度图。还记得我们第一章第一节中第一次体验延迟处理效果时吗？当时我们构建了一个获取线性深度图的函数 `float LinearizeDepth(float depth)` 用来处理那个奇怪的饱和度淡入特效 ~~，原来你一直与我同在~~。它可以返回场景的视口空间 Z 值：
 
 ```glsl
 uniform float near;
@@ -133,7 +133,7 @@ $$
 $$
 V = e^{-D_t} =
 \begin{dcases}
-e^{-\rho Le^{-fy_2}} &,\ \mathrm{如果} \ \Delta y < 10^{-12} \\
+e^{-\rho Le^{-fy_2}} &,\ \mathrm{如果} \ |\Delta y| < 10^{-12} \\
 e^{-\frac{\rho L}{f|\Delta y|}\left|e^{-fy_2}-e^{-fy_1}\right|} &,\ \mathrm{其他}
 \end{dcases}
 $$
@@ -189,23 +189,40 @@ float visibility = exp(-fogDensity);
 fragColor.rgb = mix(fogColorG, fragColor.rgb, visibility);
 ```
 
-最终，我们完成了这个（或许）艰巨的任务，让空间蒙上了一层神秘的面纱。
+最终，我们完成了这个（或许不那么）艰巨的任务，让空间蒙上了一层神秘的面纱 ~~（你知道的，雾气这玩意就跟遮瑕粉一个道理）~~。由于我们使用指数积分，因此雾气的浓度与场景的视距进行了解耦，在大视距下由于天空的视口空间 Z 值会随之增大 ^**1**^ ，天边的雾气也会随之变浓。此外，又因为我们使用了负指数的 Visibility，现在场景的遮蔽强度永远都不会超过 1 了。
 
 ![指数高度积分雾](environment_expHeightIntFog.webp){width="700"}
 
-> 在进入下一章的体积光之前，一个让雾气看起来更鲜艳有层次的小技巧是根据光源方向权重来叠加使用天空颜色和雾色，比如
-> ```glsl
-> float factor = max(dot(lightDir, -viewportDir), 0.0);
-> vec3 fog = skyColorG + fogColorG * pow(factor, 4);
-> ```
-> 
-> ![染色雾气](environment_fogColor.webp){width="700"}
+**[1]** 天空总是会将 Z 值设置为远平面的值。如果视距仅为 2 区块，则区块边界的距离为 32，视口的远平面也就会被设置在这个距离附近。如果视距为 32 区块，则天边的区块边界的距离高达 512，天空就也被拉远了。
+
+在进入下一章的体积光之前，一个让雾气看起来更鲜艳有层次的小技巧是根据光源方向权重来叠加使用天空颜色和雾色，比如：
+```glsl
+float fogFactor = max(dot(lightDir, -viewportDir), 0.0);
+vec3 fog = skyColorG + fogColorG * pow(fogFactor, 4);
+```
+
+![染色雾气](environment_fogColor.webp){width="700"}
 
 这些雾气性能逐级降低，因此你也可以视情况保留其他种类的雾气。
 
-## 大气
+此外，也别忘了让雾色也影响环境光照：
+```glsl
+float fragFactor = max(dot(lightDir, surfaceNormal), 0.0);
+// 环境光照相对来说可以更加平缓一些
+vec3 ambientColor = skyColorG + fogColorG * pow(fragFactor, 2);
+
+float litSceneAmbient = [... 计算环境光照 ...];
+litSceneAmbient *= AMBIENT_BRIGHTNESS * lightmap.t * albedo.a
+                 * ambientColor;
+```
+
+## 简单大气
 
 <secondary-label ref="wip"/>
+
+> 本小节的内容有大量直觉性的艺术表达，只旨在提供一种光照“上色”思路，不存在“业界标准”的方法，不必过于严肃对待。
+
+{style="note"}
 
 地球上有一层厚厚的大气保护着脆弱的生物圈，它不仅会散射强烈的宇宙射线，同时还会因为各种理化因素产生许多奇妙的效果。
 
@@ -217,15 +234,21 @@ fragColor.rgb = mix(fogColorG, fragColor.rgb, visibility);
 
 要想模拟大气光照就逃不开由瑞利散射（Rayleigh Scattering）和米氏散射（Mie Scattering）为基底构建的物理天空体系，但是就目前来说还是太过于复杂。在进入物理渲染之前，我们不妨先尝试一些 _俺寻思_ 之力来手动控制日光和月光的亮度与颜色。
 
-正午日光色温约为 5000K (255, 231, 204)，在傍晚时则更接近 2000K (255, 141, 11)。虽然月光在现实世界中是暖色，但在艺术化作品中我们更倾向将它设置为 8000K(227, 233, 255) 的冷色。此外，不同时间段的光照亮度也会不断变化，因此我们还需要更多有关世界时间的变量。
+正午日光色温约为 5000K (255, 231, 204)，在傍晚时则更接近 2000K (255, 141, 11)，在清晨，为了区别于日落，我们还可以将颜色设置得偏粉。虽然月光在现实世界中是暖色，但在艺术化作品中我们更倾向将它设置为 8000K (227, 233, 255) 的冷色（你也可以考虑到将傍晚和黎明的月光设置得更偏黄）。我们先将它们设置好：
+```glsl
+const vec3 SunNoonColor = vec3(1.0, .91, .8);
+const vec3 SunSetColor = vec3(1.0, .55, .04);
+const vec3 SunRiseColor = vec3(1.0, .45, .31);
+const vec3 moonColor = vec3(.89, .91, 1.0);
+```
 
-还记得我们在第一章的某个小知识中介绍的有关时间的统一变量吗？
+不同时间段的光照亮度也会不断变化，因此我们还需要更多有关世界时间的变量。还记得我们在第一章的某个小知识中介绍的有关时间的统一变量吗？
 ```glsl
 uniform int worldTime;
 uniform float sunAngle;
 uniform float shadowAngle;
 ```
-在游戏规则 `doDaylightCycle`^**1.21.11 25w43a** 及以前^ 或 `advance_time`^**1.21.11 25w44a** 及以后^ 为 `true` 的世界中，时间刻 `worldTime` 会在每游戏刻中增加 1，每个游戏日共 24000 时间刻，即现实世界 20 分钟。
+在游戏规则 `doDaylightCycle`^**1.21.11 25w43a** 及以前^ 或 `advance_time`^**1.21.11 25w44a** 及以后^ 为 `true` 的世界中，时间刻 `worldTime` 每游戏刻增加 1，每个游戏日共 24000 时间刻，即现实世界 20 分钟。
 
 表达太阳和投影源在天空中 _真·百分度_（1.0 = 360°）的 `sunAngle`（$\angle_\text{Sun}$） 和 `shadowAngle`（$\angle_\text{Shadow}$） 就基于世界时间，`sunAngle` 指示了太阳的位置，而 `shadowAngle` 则指示了目前投影源的位置。
 
@@ -236,9 +259,84 @@ uniform float shadowAngle;
 
 OptiFine 没有直接提供月光的角度，我们可以直接使用 `moonAngle = fract(sunAngle + 0.5)` 来求得，`fract(x)` 函数的内部实现为 `x - floor(x)`，对于正数，它可以返回小数部分。
 
-> `fract(x)` 本质上就是 `mod(x, 1.0)`，但是 `mod()` 函数更加昂贵，因此取小数部分更倾向于使用 `fract()`。
+> `fract(x)` 本质上就是 `mod(x, 1.0)`，但是 `mod()` 更加昂贵。
 
 {title="小知识"}
+
+有了颜色和时间，我们就可以通过插值来在指定的时间段混合出指定的颜色了。太阳和月亮在游戏中说到底还是两个不相关的光源，因此，我们会将它们的颜色进行拆分。此外，为了让光照的亮度与颜色解耦，我们还会额外单独处理两组亮度参数：
+```glsl
+vec3 sunColor;
+float sunBrightness;
+float moonBrightness;
+```
+
+根据 _经验_ 估计，日落持续时间约为 $\angle_\text{Shadow} \in [0.45, 0.55]$，而日出则是 $\angle_\text{Shadow} \in [0.9, 1.1]$，这里的 1.1 即是次日。
+
+我们依旧使用 `smoothstep(a,b,x)` 来处理它们，还记得它的用法吧，将 $x$ 在 $[a,b]$ 上平滑地映射到 $[0,1]$。对于日落来说很简单：
+```glsl
+float sunSetRatio = smoothstep(.4, .5, sunAngle);
+```
+而对于日出来说，由于其跨越了一天，`sunAngle` 会归零，因此我们需要在归零的两段都进行额外插值然后相加：
+```glsl
+float sunRiseRatioDay1 = smoothstep(.9, 1.2, sunAngle);
+float sunRiseRatioDay2 = smoothstep(-.1, .2, sunAngle);
+float sunRiseRatio = sunRiseRatioDay1 + sunRiseRatioDay2;
+```
+你会发现我们并没有完全按照日出和日落的规律设置光照颜色，这是因为在日出前半段和日落后半段，太阳已经沉入天边，场景不再受到阳光照射，你会在下面设置光照强度时看到原因。
+
+由于 $\mathrm{Smoothstep}(-0.1, 0.1, \angle_\text{Shadow})$ 在 $\angle_\text{Shadow}>0.1$ 时会为 1，进而在 $\angle_\text{Shadow}>0.9$ 时导致 $R_\text{Day1} + R_\text{Day2} > 1$，因此我们需要在 $\angle_\text{Shadow}>0.1$ 时进行归零：
+```glsl
+float sunRiseFactor = float(sunAngle <= .2);
+float sunRiseRatioDay1 = [...];
+float sunRiseRatioDay2 = [...];
+sunRiseRatioDay2 *= sunRiseFactor;
+float sunRiseRatio = [...];
+```
+
+然后就到了我们的超绝穷举时间：
+```glsl
+bool isSunRise = sunAngle >= .9 || sunAngle <= .2;
+bool isSunSet = sunAngle >= .4 && sunAngle <= .5;
+sunColor = isSunRise ? mix(SunRiseColor, SunNoonColor, sunRiseRatio)
+         : isSunSet ? mix(SunNoonColor, SunSetColor, SunSetColor)
+         : SunNoonColor;
+```
+我们不关心日落之后的时间，因为那时日光已经不再影响场景色彩了，因此我们将日出和日落之外的时间全部设置为了正午的颜色。
+
+亮度也可以使用类似的方法，因为亮度是周期性变化的，因此我们可以使用 `smoothstep()` 配合加减法来随时间调整亮度：
+```glsl
+sunBrightness = smoothstep(0.0, .1, sunAngle)
+              - smoothstep(.45, .48, sunAngle);
+sunBrightness *= SUN_BRIGHTNESS;
+```
+你或许注意到了，我们将插值时间点偏移了一些，这是为了模拟在日月交替的时候亮度骤降的效果 ~~，_所谓黎明前最黑暗的时刻_~~，并且还可以用来作为阴影空间突变的缓冲和遮瑕。这也是之前我们将光照颜色变化集中在日照区间的原因。
+
+类似的，月光亮度也可以使用这样的方法进行处理：
+```glsl
+[... Settings ...]
+#define MOON_BRIGHTNESS 0.2
+[... final.fsh ...]
+moonBrightness = smoothstep(.52, .6, sunAngle)
+               - smoothstep(.85, .97, sunAngle);
+moonBrightness *= MOON_BRIGHTNESS;
+```
+
+最后，我们将亮度和颜色乘入之前的直接光照公式中：
+```glsl
+float litScene = [... 计算直接光照 ...];
+litScene *= sunBrightness * sunColor
+          + moonBrightness * moonColor;
+```
+
+现在场景中的光照强度终于会随着时间的变化而变化了！
+
+![动态变化的光照]()
+
+为了让环境光照在日月交替 ~~_这段至暗时刻_~~ 中不那么突兀，我们也可以将日月光照作为额外系数乘入环境光强度中：
+```glsl
+litSceneAmbient *= sunBrightness + moonBrightness;
+```
+#### 月相
 
 除了时间之外，Minecraft 还存在 [月相](https://zh.minecraft.wiki/w/月亮#月相) ，当太阳被地球阻挡而无法照亮月球时，月球产生的漫反射理应减少，来自月亮的“直接”光照就会减弱。月相与世界日挂钩，从第一天的满月开始到第八天的盈凸月为一个周期。Optifine 为我们提供了月相变量：
 ```glsl
@@ -247,21 +345,28 @@ uniform int moonPhase;
 它的值域为 $[0,7]$ ，在第五天月相为新月时，`moonPhase == 4`，其余时间月相的对应光照亮度以新月为中心对称，我们可以据此计算得到月相的亮度级别 `abs(moonPhase - 4)`。
 
 当场景为满月时，$\text{亮度级别} = |\text{月相} - 4| = |0 - 4| = 4$，如果将满月时的光照系数视为 1，则可根据亮度级别求得光照系数：
-```properties
-uniform.float.moonLuminance = float(abs(moonPhase - 4)) / 4.0
+```glsl
+float moonPhaseLuminance = float(abs(moonPhase - 4)) / 4.0;
 ```
 
-> 一种更好亮度曲线是取椭圆的 $x^2+(4y)^2=4^2$ 的 $y-$ 象限弧 $y=1-\sqrt{1-\frac{\left(x-4\right)^{2}}{16}}$：
-> ```properties
-> uniform.float.moonLuminance = 1-sqrt(1-pow(float(moonPhase)-4.0, 2.0) / 16.0)
+> 一种更好亮度曲线是取椭圆 $x^2+(4y)^2=4^2$ 落在 $y-$ 半轴的弧 $y=1-\sqrt{1-\frac{\left(x-4\right)^{2}}{16}}$
+> ```glsl
+> 1.0 - sqrt(1.0 - pow(float(moonPhase)-4.0, 2.0) / 16.0)
 > ```
-> 这样可以将不同月相的亮度变化规律考虑在内，曲线在满月时亮度会产生尖峰，产生冲日效应，而新月附近的亮度则衰减得更加缓慢。
+> 这样可以将不同月相的亮度变化规律考虑在内，曲线在满月时亮度会产生尖峰，产生所谓冲日效应，而新月附近的亮度则衰减得更加缓慢。
 > 
-> 你甚至可以使用自定义的 `mod(float(worldTime - 18000) / 24000.0, 8.0)` 而不是 `moonPhase` 来让月相亮度在一天之内也不断变化。
+> 你还可以使用自定义的 `mod(float(worldTime - 18000) / 24000.0, 8.0)` 而不仅是 `moonPhase`，来让月相亮度在一天之内也不断变化。
 
-![不同月相带来的场景亮度变化]()
+最后，将月相亮度乘入月光即可：
+```glsl
+moonBrightness *= moonPhaseLuminance;
+```
+
+![不同月相带来的场景亮度变化](environment_moonPhaseLuminance.webp){width="700"}
 
 ### 天气
+
+除了日月循环，天气对光照的影响也不容忽视。在 Minecraft 中存在三种天气：晴天、雨天和雷暴。而雨天和雷暴视群系而定，又会出现降雨、降雪和阴天三种情况。
 
 ## 星空
 
@@ -273,12 +378,13 @@ uniform.float.moonLuminance = float(abs(moonPhase - 4)) / 4.0
 
 ## 习题
 
-1. 将简单高度雾的竖直方向改写为线性衰减的积分形式。我们需要进行分段积分：
-   - 如果片元和摄像机均位于 $[63,320]$，直接使用 `remap(320.0, 63.0, altitude)` 的积分式 $\int_{p_\text{cam}}^{p_\text{frag}} H_{[63,320]}=|p_\text{cam}^2-p_\text{frag}^2-640p_\text{cam}+640p_\text{frag}|$；
-   - 如果片元和摄像机均位于 $[-\infty,63]$，则使用 $\int_{p_\text{cam}}^{p_\text{frag}} H_{[\infty,63]}=|p_\text{cam}-p_\text{frag}|$；
+1. 尝试将简单高度雾的竖直方向改写为线性衰减的积分形式。我们需要进行分段积分：
+   - 如果片元和摄像机均位于 $[63,320]$，直接使用 `remap(320.0, 63.0, altitude)` 的积分式 $\int_{p_\text{Cam}}^{p_\text{Frag}} H_{[63,320]}=|p_\text{Cam}^2-p_\text{Frag}^2-640p_\text{Cam}+640p_\text{Frag}|$；
+   - 如果片元和摄像机均位于 $[-\infty,63]$，则使用 $\int_{p_\text{Cam}}^{p_\text{Frag}} H_{[\infty,63]}=|p_\text{Cam}-p_\text{Frag}|$；
    - 如果片元和摄像机有一个位于 $[-\infty,63]$：
      - 若另一个位于 $[63,320]$，则使用 $\int_{p_\text{Low}}^{63} H_{[\infty,63]}+\int_{63}^{p_\text{High}} H_{[63,320]}$，$p_\text{Low}$ 和 $p_\text{High}$ 在两个坐标之间选择；
      - 若另一个位于 $[320, +\infty]$，则使用 $\int_{p_\text{Low}}^{63} H_{[\infty,63]}+\int_{63}^{320} H_{[63,320]}$；
    - 若片元和摄像机均位于 $[320, +\infty]$ 则没有雾气。
 
    最后，将它们乘入片元距离，再像简单水平雾那样进行幂次处理即可。
+2. （主观题）在雾小节的末尾，我们用 `lightDir` 为光源附近的雾气进行了染色，然而效果并不太好，因为日月交替时 `lightDir` 会产生突变。为此，请仿效简单大气小节的内容，使用 `sunPosition` 和 `moonPosition` 求得独立的 `sunDir` 和 `moonDir`，然后用它们配合 `sunAngle` 来进行光照过渡。
