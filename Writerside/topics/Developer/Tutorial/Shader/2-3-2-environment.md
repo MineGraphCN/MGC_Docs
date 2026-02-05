@@ -588,12 +588,13 @@ float porosity = remapSaturate(0.0, 64.0, float(spec_blue))
 ```
 孔隙率增大时，水膜的反射会减弱，表面的出射光也会变弱，因此我们可以改写之前的算法：
 ```glsl
+float wetLvl = wetness * exposed;
 float diffuseDecay = remap2(0.0, 1.0,
                             1.0, POROSITY_DIFFUSE_DECAY,
-                            porosity);
+                            wetLvl * porosity);
 vec3 diffuse = [...] * diffuseDecay;
 
-float wet_smoothness = [...] * (1.0 - porosity);
+float wet_smoothness = wetLvl * (1.0 - porosity);
 ```
 
 把雨天的光照系数稍微调高一些，看起来还算不错！
