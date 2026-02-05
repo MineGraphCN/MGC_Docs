@@ -34,7 +34,7 @@ OptiFine 会遍历 `shaderpacks` 下的文件夹和 `.zip` 压缩包，将所有
 
 {style="note"}
 
-我们将 `shaders` 文件夹称为**根文件夹**，对应的 `<光影名称>\shaders\` 称为根目录。
+我们将 `shaders` 文件夹称为**根文件夹**，对应的 <path><光影名称>\shaders\\</path> 称为根目录。
 
 在 `shaders` 下， OptiFine 首先会寻找配置文件
 - `shaders.properties` ，当前光影的内部配置文件，我们称为**光影配置（属性）**。
@@ -57,12 +57,7 @@ OptiFine 允许我们使用类似 C / C++ 的 `#include` 宏来调用其不会�
 ```glsl
 #include "/libs/shadow.glsl"
 ```
-来调用
-```generic
-└─ shaders
-   └─ libs
-      └─ shadow.glsl
-```
+来调用 <path>.\shaders\libs\shadow.glsl</path>
 
 > 这样做的好处是，当我们想对某些相同的程序或函数进行修改时，只需修改一次，减少出错。在我们的教程中，自定义文件的扩展名统一为 `.glsl` ，我们的插件会自动识别 `.glsl` 后缀，省去了自己设置的麻烦。当然，你也可以按照着色器的类型将其后缀设置为 `.vert` 、`.frag` 、`.geom` 以及其他自定义后缀。
 
@@ -96,4 +91,4 @@ OptiFine 接管了从 GUI 开始直到场景输出的全部管线，并将几何
 
 </resource>
 
-你可以单击图片查看和保存附带深色背景的大图，我们将在下一章了解每个程序的处理对象。
+_<format color="Gray">可以单击图片查看和保存附带深色背景的大图，我们将在下一章了解每个程序的处理对象。</format>_

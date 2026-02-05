@@ -197,11 +197,12 @@
 <tr><td>77.0</td><td colspan="2">26.1-snapshot-2</td></tr>
 <tr><td>78.0</td><td colspan="2">26.1-snapshot-3</td></tr>
 <tr><td>78.1</td><td colspan="2">26.1-snapshot-4</td></tr>
+<tr><td>79.0</td><td colspan="2">26.1-snapshot-5</td></tr>
 <tr><td>%latest_pack_format%</td><td>%latest_pack_format_ver_low%</td><td><i>最新</i></td></tr>
 </table>
 
-_23 和 27 不存在，自 65.0 开始，资源包版本号开始使用浮点数进行存储。_  
-_截止 2026 年 2 月 1 日，数据来源于 [Minecraft Wiki](https://zh.minecraft.wiki/w/资源包#资源包格式版本) 。_
+_<format color="Gray">23 和 27 不存在，自 65.0 开始，资源包版本号开始使用浮点数进行存储。  
+截止 2026 年 2 月 6 日，数据来源于 [Minecraft Wiki](https://zh.minecraft.wiki/w/资源包#资源包格式版本) 。</format>_
 
 </procedure>
 

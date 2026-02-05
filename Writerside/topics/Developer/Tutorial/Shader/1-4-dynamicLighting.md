@@ -285,24 +285,28 @@ shadow.culling = false
 
 回到 `final` ，现在我们拥有的屏幕归一化坐标 `uv` 和场景的非线性深度 `depth` ，实际上都是 NDC 简单地线性归一化得到的，称为**屏幕空间**（Screen Space），在上一节中我们又知道了局部空间变换到 NDC 的方法，于是我们就可以利用 OptiFine 提供的逆矩阵（上一节有提到）进行**逆变换**：
 $$
-P_\text{World} \leftarrow M_{G\text{ModelView}}^{-1} \cdot P_\text{View} \xleftarrow{透视除法} {P_\text{Clip}}^* \leftarrow M_{G\text{Projection}}^{-1} \cdot P_\text{NDC} \leftarrow P_\text{Screen} \times 2 - 1
+P_\text{World} \leftarrow M_{G\text{MV}}^{-1} \cdot P_\text{View} \xleftarrow{透视除法} {P_\text{temp}}^* \leftarrow M_{G\text{Proj}}^{-1} \cdot P_\text{NDC} \leftarrow P_\text{Screen} \times 2 - 1
 $$
 
 > 和顶点着色器不同，这里我们只是将像素的坐标**信息**进行了变换，而顶点着色器则是将顶点的**实际位置**进行了变换。
 >
 {style="note"}
 
-其中 NDC 变换到裁切空间之后才进行透视除法 ^**1**^，与正变换略有差别。变换完成之后，OptiFine 还为我们提供了阴影空间的相关矩阵，于是我们就可以直接进行阴影变换：
+其中 NDC 变换到一个临时的空间之后才进行透视除法 ^**1**^，与正变换略有差别。变换完成之后，OptiFine 还为我们提供了阴影空间的相关矩阵，于是我们就可以直接进行阴影变换：
 $$
-P_{S\text{Screen}} \leftarrow \frac{P_{S\text{Clip}} + 1}{2} \xleftarrow{透视除法} P_{S\text{Clip}} \leftarrow M_{S\text{Projection}} \cdot P_{S\text{View}} \leftarrow M_{S\text{ModelView}} \cdot P_\text{World}
+P_{S\text{Screen}} \leftarrow \frac{P_{S\text{Clip}} + 1}{2} \xleftarrow{透视除法} P_{S\text{Clip}} \leftarrow M_{S\text{Proj}} \cdot P_{S\text{View}} \leftarrow M_{S\text{MV}} \cdot P_\text{World}
 $$
 虽然阴影空间是等轴的，但是我们还是需要进行“透视”除法来归一化。
 
-**[\*], [1]** NDC 的 $w$ 分量是我们人为设置的，所以如果严格按原始路径来的话我们要么除以 $1$ 要么除以 $0$，没有任何意义；而这里的裁切坐标实际上也仅是作为过渡，光影中也基本上不会在这个空间进行任何计算。
+**[\*]**, **[1]** NDC 的 $w$ 分量是我们人为设置的，所以如果严格按原始路径来的话我们要么除以 $1$ 要么除以 $0$，没有任何意义；这里的坐标实际上也仅是作为过渡，光影也基本上不会在这个空间进行任何效果处理。
 
-> 你可能会思考为什么最后变换到的是世界空间而不是局部空间。这是因为局部空间的信息实际上没有也没法包含在 $M_{G\text{ModelView}}^{-1}$ 中，它只包含视角摇晃的位移信息。
+> 你可能会思考为什么最后变换到的是世界空间而不是局部空间。这是因为局部空间的信息实际上没有也没法包含在 $M_{G\text{MV}}^{-1}$ 中，它只包含视角摇晃和玩家脚部 ^**1**^ 的位移信息。
 > 
-> 每个区块在 GL 上下文都有不同的 `chunkOffset` 统一变量，虽然我们只进行一次编程，但是大多数几何缓冲程序实际上会被运行多次，每次运行的间隙就可能更新了一些统一变量。而每个延迟处理程序只运行一次，因此我们只有一个几何缓冲逆矩阵（而且延迟处理基本上就是一块画布，几何信息可能早就丢失了，就算有多个逆矩阵也没法重建到局部坐标）。
+> 每个区块在 GL 上下文都有不同的 `chunkOffset` 统一变量，虽然我们只进行一次编程，但是大多数几何缓冲程序实际上会被运行多次，每次运行的间隙就可能更新了一些统一变量。而每个延迟处理程序只运行一次，因此我们只有一个几何缓冲逆矩阵。而且延迟处理基本上就是一块画布，几何信息可能早就丢失了，就算有多个逆矩阵也没法重建局部坐标，并且这也没有意义。
+> 
+> 我们最终所求得的世界空间坐标也是相对玩家脚部 ^**1**^ 的相对坐标，而不是绝对坐标。
+> 
+> **[1]** 高版本没有脚坐标与眼坐标的区分。
 
 那么，就让我们从屏幕空间开始吧，就像前文所述，重建 NDC 非常简单：
 ```glsl
@@ -310,11 +314,11 @@ vec4 ndcPos = vec4(uv * 2.0 - 1.0, depth * 2.0 - 1.0, 1.0);
 ```
 我们这里将 $w$ 分量设置为了 `1.0` ，与第三节有些微差别，它用于交给逆投影矩阵设置为透视除法的除数，也只能为 1。接着将它转化到裁切空间：
 ```glsl
-vec4 clipPos = gbufferProjectionInverse * ndcPos;
+vec4 tempPos = gbufferProjectionInverse * ndcPos;
 ```
 这一步使用逆矩阵与坐标相乘，同时也更改了 $w$ 分量。然后进行透视除法转换到视口空间：
 ```glsl
-vec4 viewPos = clipPos / clipPos.w;
+vec4 viewPos = tempPos / tempPos.w;
 ```
 在这一步我们直接将它的 $w$ 分量也除以了自身，以还原到点默认的 `1.0`（你也可以手动设置）。最后再转化到世界空间，我们的逆变换就结束了：
 ```glsl
@@ -327,7 +331,7 @@ uniform mat4 shadowProjection;
 [... main ...]
 vec4 shadowClipPos = shadowProjection * shadowModelView * worldPos;
 ```
-别忘记进行透视除法：
+别忘记进行透视除法，在等轴视角下实际上是除以了 $z_\max$：
 ```glsl
 shadowClipPos /= shadowClipPos.w;
 ```

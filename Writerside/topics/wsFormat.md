@@ -18,11 +18,11 @@
 
 1. 在 `Writerside` 侧栏的正确目录下创建 Topic
 
-   ![create_topic_on_correct_directory](create_topic_on_correct_directory.png)
+   ![create_topic_on_correct_directory](create_topic_on_correct_directory.webp){width="400"}
 
 2. 在 `项目` 侧栏将你的文档文件移入对应的文件夹
 
-   ![move_file_to_correct_folder](move_file_to_correct_folder.png)
+   ![move_file_to_correct_folder](move_file_to_correct_folder.webp){width="400"}
 
 ## IDE 快捷键
 
@@ -226,6 +226,24 @@ __*文字*__
 按住的按键 <shortcut>^按键</shortcut><br/>
 例： <shortcut>Ctrl</shortcut><shortcut>Shift</shortcut><shortcut>Esc</shortcut>, <shortcut>^↓</shortcut>, <shortcut>Alt</shortcut><shortcut>E</shortcut>
 </p>
+</procedure>
+<procedure>
+<path>路径</path>
+
+```xml
+<path>文字</path>
+```
+</procedure>
+<procedure>
+<format color="Red">其他</format><format color="Aqua">格式</format>
+
+使用 `<format>` 标签进行定义，使用 `color` 可以直接设置文字颜色。
+
+图片或表格下的注释统一使用 `<i><format color="Gray"></format></i>` 或 `_<format color="Gray"></format>_` 进行环绕。
+
+`style` 仅可使用已有字形（如 `bold`、`italic` 等），在 WebStorm 中会将 `style` 字段识别为 CSS 设置，从而导致编辑器内报错，一切以编译（或预览）结果为准。
+
+`<format>` 内部出现其他格式标签时会被顶掉，需要注意。
 </procedure>
 
 ### 高级文本块

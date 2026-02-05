@@ -9,7 +9,7 @@
 
 这篇文档列出了我们所知的模组和光影间兼容性冲突的解决办法。
 
-- 以下问题需要在 `.minecraft/config` 中寻找模组对应的配置文件，使用文本编辑器进行修改。
+- 以下问题需要在 <path>.minecraft\config\\</path> 中寻找模组对应的配置文件，使用文本编辑器进行修改。
 - 也可在游戏内 `模组设置` 中找到各个模组的配置项。但可能缺少必要的注释说明，默认不建议。
 
 高级火箭 Advanced Rocketry
@@ -48,7 +48,7 @@
   ```
 
 更好的末地 Better End
-: 如果它导致你使用的光影包出现问题，请在 `config/betterend/client.json` 中把 `customSky [default:true]`设置为 `false` 。
+: 如果它导致你使用的光影包出现问题，请在 <path>\config\betterend\client.json</path> 中把 `customSky [default:true]`设置为 `false` 。
 
 更好的树叶 Better Foliage ^1.12^
 : 不一定会崩溃，但在某些光影包中会导致树叶断裂。

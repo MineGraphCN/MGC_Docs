@@ -456,7 +456,7 @@ for(int i = -2; i <= 2; ++i) {
 
 一个简单的方法是把所有的值累加起来，然后在循环外除以循环次数，这样就求到了平均颜色：
 ```glsl
-vec4 result;
+vec4 result = 0.0;
 for(int i = -2; i <= 2; ++i) {
     for(int j = -2; j <= 2; ++j) {
         vec2 uv_displaced = uv + vec2(i, j) * pixelSize;

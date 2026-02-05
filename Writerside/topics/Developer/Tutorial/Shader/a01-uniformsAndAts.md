@@ -45,7 +45,7 @@ uniform float far;                        // 远平面距离
 uniform vec3 sunPosition;                 // 视口空间的太阳位置
 uniform vec3 moonPosition;                // 视口空间的月亮位置
 uniform vec3 shadowLightPosition;         // 视口空间的投影光源 (日或月) 位置，需要启用阴影，否则固定为太阳
-uniform vec3 upPosition;                  // 天顶方向
+uniform vec3 upPosition;                  // 视口空间天顶坐标
 uniform vec3 cameraPosition;              // 世界空间的摄像机位置
 uniform vec3 previousCameraPosition;      // 上一帧的摄像机位置
 uniform mat4 gbufferModelView;            // 设置了摄像机变换（包括视角摇晃）的模型视口矩阵
@@ -58,7 +58,7 @@ uniform mat4 shadowProjection;            // 生成阴影贴图时的投影矩�
 uniform mat4 shadowProjectionInverse;     // shadowProjection 的逆
 uniform mat4 shadowModelView;             // 生成阴影贴图时的模型视口矩阵
 uniform mat4 shadowModelViewInverse;      // shadowModelView 的逆
-uniform float wetness;                    // 由 wetnessHalfLife 或 drynessHalfLife 平滑的 rainStrength
+uniform float wetness;                    // 由 [[[wetnessHalfLife|a06-shaderProgramConfigs.md#others]]] 或 [[[drynessHalfLife|a06-shaderProgramConfigs.md#others]]] 平滑的 rainStrength
 uniform float eyeAltitude;                // 观察实体的 Y 坐标
 uniform ivec2 eyeBrightness;              // x = 方块亮度，y = 天空亮度，强度 0-15 = 亮度 0-240
 uniform ivec2 eyeBrightnessSmooth;        // 由 eyeBrightnessHalflife 平滑的 eyeBrightness
@@ -227,7 +227,7 @@ OpenGL 扩展
 - 只有支持且引用了的扩展才会被添加到着色器中。
 
 设置
-:
+: `<value>` 的值由光影选择页面的设置给出。
 ```glsl
 #define MC_FXAA_LEVEL <value>             // 当 FXAA 启用时，值：2、4
 #define MC_NORMAL_MAP                     // 当法线贴图启用时
@@ -246,7 +246,7 @@ OpenGL 扩展
  #define MC_TEXTURE_FORMAT_LAB_PBR       // LabPBR 纹理格式 ([[[Wiki|https://wiki.shaderlabs.org/wiki/LabPBR_Material_Standard]]])
  #define MC_TEXTURE_FORMAT_LAB_PBR_1_3   // 版本 1.3
 ```
-你也可以在站内找到 [LabPBR 格式的翻译版本](labpbrMaterialStandard.md){summary=""} 。
+你也可以在站内找到 [LabPBR 格式标准的翻译版本](labpbrMaterialStandard.md){summary=""} 。
 
 渲染阶段 {id="renderStage"}
 : `<const>` 其值按执行顺序给出，用于统一变量 `renderStage`。由于部分几何共用一个几何缓冲程序，因此可以使用形如 `if(renderStage == MC_RENDER_STAGE_XXX)` 进行当前渲染几何类型判断。

@@ -20,13 +20,13 @@
 
 ### 查询电脑 CPU 和内存容量
 
-<shortcut>右键</shortcut> `此电脑` 或 `计算机` ，点击 `属性` 即可查看 CPU 和内存。
+右击 `此电脑` 或 `计算机` ，点击 `属性` 即可查看 CPU 和内存。
 
-![在计算机属性中查询配置](check_set.png "在计算机属性中查询配置")
+![在计算机属性中查询配置](check_set.png "在计算机属性中查询配置"){width="700"}
 
 > 在 Windows 10 / 11 中，还可以 <shortcut>右键</shortcut> 任务栏或按 <shortcut>Ctrl</shortcut><shortcut>Shift</shortcut><shortcut>Esc</shortcut> 打开任务管理器，在 `性能` 选项卡中查看 **CPU**、**内存**、**硬盘**、**网络**和**显卡**信息。
 >
-> ![在任务管理器中查询配置](tskmgr_check_set.png "在任务管理器中查询配置")
+> ![在任务管理器中查询配置](tskmgr_check_set.png "在任务管理器中查询配置"){width="500"}
 > 
 > - 在 CPU 图表上 <shortcut>右键</shortcut> 即可切换查看每个 CPU 核心的占用率。
 > 
@@ -38,22 +38,24 @@
 
 **方法1**
 
-<shortcut>右键</shortcut> `开始菜单` 或按下 <shortcut>Windows</shortcut><shortcut>X</shortcut> ，选择 `设备管理器` 。
-![打开设备管理器的方法1](dvc_mgr_1.png "打开设备管理器的方法1")
+右击 `开始菜单` 或按下 <shortcut>Windows</shortcut><shortcut>X</shortcut> ，选择 `设备管理器` 。
+
+![打开设备管理器的方法1](dvc_mgr_1.png "打开设备管理器的方法1"){width="100" style="block"}
 
 **方法2**
 
-1. 打开 `开始菜单` ，搜索 `设备管理器` 或 `device manager` 或 `devmgmt` 。
-![打开设备管理器的方法2](dvc_mgr_2.png "打开设备管理器的方法2")
+1. 打开 `开始菜单` ，搜索 `设备管理器` 或 `devmgmt` 。
+   ![打开设备管理器的方法2](dvc_mgr_2.png "打开设备管理器的方法2"){width="500" style="block"}
+
 2. 进入设备管理器，向下找到 `显示适配器` ，展开即为已识别的显卡。
-![在设备管理器中查看显卡](dvc_mgr_check_gpu.png "在设备管理器中查看显卡")
+   ![在设备管理器中查看显卡](dvc_mgr_check_gpu.png "在设备管理器中查看显卡"){width="500" style="block"}
 
 > 设备管理器中显示的显卡代表其**已安装**驱动程序，如果你不确定你的电脑所使用的显卡，你可以在 [下面](#安装显卡驱动 "安装显卡驱动") 提供的制造商官网中使用他们的工具进行检查。
 >
 {style="note"}
 
 > 如果你正在运行带有 OptiFine 的游戏，你也可以在 `视频设置` > `光影` 中光影列表的下方查看你目前运行游戏所使用的显卡。
-![在 OptiFine 中查看运行显卡](optifine_check_gpu.png "在 OptiFine 中查看运行显卡")
+![在 OptiFine 中查看运行显卡](optifine_check_gpu.png "在 OptiFine 中查看运行显卡"){width="500" style="block"}
 
 ## 独立显卡没有正确启用 {id="独立显卡没有正确启用"}
 

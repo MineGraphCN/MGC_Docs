@@ -69,30 +69,24 @@ Language Server for Minecraft Shaderpacks
 
 安装完成后，你需要在 `shaderpacks` 文件夹下新建一个文件夹，然后在该文件夹内再新建一个 `shaders` 文件夹，这就是一个光影包。你也可以建立多个光影包来分别测试不同内容。
 
-右键 `shaders` ，然后点击 `通过 Code 打开`（在 Windows 11 中你需要点击 `显示更多选项` 或者按住 <shortcut>Shift</shortcut> 点右键才能找到），这就是我们的工作区了，你可以在左侧栏的 `资源管理器` 页查看工作区内的文件和文件夹，如果你找不到这个选项卡，可以按 <shortcut>Ctrl</shortcut><shortcut>Shift</shortcut><shortcut>E</shortcut> 呼出。
+右键 `shaders` ，然后点击 `通过 Code 打开`（在 Windows 11 中你需要点击 `显示更多选项` 或者按住 <shortcut>Shift</shortcut> 右键文件夹才能找到），这就是我们的工作区。你可以在左侧栏的 `资源管理器` 页查看工作区内的文件和文件夹，如果你找不到这个选项卡，可以按 <shortcut>Ctrl</shortcut><shortcut>Shift</shortcut><shortcut>E</shortcut> 呼出。
 
 在游戏中，为了防止原版暗角干扰最终效果，你可以把 `视频设置` > `细节` > `晕影` 设置为 `流畅` 。
 
 ## 了解你的编辑器
 
-在侧栏文件夹内空白区域双击可以新建文件，在主窗口空白区域双击可以新建未命名临时文件。
-
-除了关联后缀外，文件的高亮状态默认是 `纯文本` 模式，你可以点击右下角的 `纯文本` 来切换语言模式。
-
-你可以在编辑过程中随时按下 <shortcut>Ctrl</shortcut><shortcut>Space</shortcut> 呼出代码补全功能（不能使用中文输入法）。
-
-你可以按下 <shortcut>Ctrl</shortcut><shortcut>K</shortcut>, <shortcut>S</shortcut> 来保存所有文件。
-
-使用 <shortcut>Ctrl</shortcut><shortcut>/</shortcut> 或 <shortcut>Alt</shortcut><shortcut>Shift</shortcut><shortcut>A</shortcut> 可以快捷行注释或块注释。
-
-当你保持工作区打开并关闭 VS Code 窗口时，它会缓存工作区布局和未保存的文件，当你下次运行 VS Code 时会默认继承进度。
-
-如果你安装了前文的 LSP 插件，当你修改文件名称时，所有对应的 `#include` 宏都会自动修改。
-
-将窗口标签或文件拽入已经打开的其他文件编辑界面的某一侧，可以放置拆分窗口。
+- 在侧栏文件夹内空白区域双击可以新建文件，在主窗口空白区域双击可以新建未命名临时文件。
+- 除了关联后缀外，文件的高亮状态默认是 `纯文本` 模式，你可以点击右下角的 `纯文本` 来切换语言模式。
+- 你可以在编辑过程中随时按下 <shortcut>Ctrl</shortcut><shortcut>Space</shortcut> 呼出代码补全功能。中文输入法中这个快捷键被切换中英快捷键占用，因此使用时需要切换到英文输入法。
+- 你可以按下 <shortcut>Ctrl</shortcut><shortcut>K</shortcut>, <shortcut>S</shortcut> 来保存所有文件。
+- 使用 <shortcut>Ctrl</shortcut><shortcut>/</shortcut> 或 <shortcut>Alt</shortcut><shortcut>Shift</shortcut><shortcut>A</shortcut> 可以快捷行注释或块注释。
+- 使用 <shortcut>Ctrl</shortcut><shortcut>F</shortcut> 或 <shortcut>Ctrl</shortcut><shortcut>Shift</shortcut><shortcut>F</shortcut> 在当前文件或工作区内查找对应字段。后者在部分中文输入法中为切换简繁体的快捷键，因此使用时需要切换到英文输入法。
+- 当你保持工作区打开并关闭 VS Code 窗口时，它会缓存工作区布局和未保存的文件，当你下次运行 VS Code 时会默认继承进度。
+- 如果你安装了前文的 LSP 插件，当你修改文件名称时，所有对应的 `#include` 宏都会自动修改。
+- 将窗口标签或文件拽入已经打开的其他文件编辑界面的某一侧，可以放置拆分窗口。
 
 ## 查看日志
 
-OptiFine 会将光影报错内容输出到游戏的日志，你可以在 `\logs\latest.log` 中找到它，在启动器中勾选 `查看日志` 或者将这个文件拖入 VS Code 就可以查看。
+OptiFine 会将光影报错内容输出到游戏的日志，你可以在 <path>\logs\latest.log</path> 中找到它，在启动器中勾选 `查看日志` 或者将这个文件拖入 VS Code 就可以查看。
 
 VS Code 默认支持 Log 格式的日志，如果你的中文是乱码，需要在编辑器右下角切换为国标编码（`GB 2312`、`GBK` 或 `GB18030`）。

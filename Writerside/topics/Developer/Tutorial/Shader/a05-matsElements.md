@@ -1,10 +1,12 @@
 # 矩阵元素
 
+<show-structure depth="2"/>
+
 ## 模型视口矩阵
 <tldr>
 
 $$
-M_\text{ModelView} =
+M_\text{MV} =
 \begin{bmatrix}
 S_x \cdot R_{x_\text{L}\to x_\text{V}} & S_y \cdot R_{y_\text{L}\to x_\text{V}} & S_z \cdot R_{z_\text{L}\to x_\text{V}} & T_x \\
 S_x \cdot R_{x_\text{L}\to y_\text{V}} & S_y \cdot R_{y_\text{L}\to y_\text{V}} & S_z \cdot R_{z_\text{L}\to y_\text{V}} & T_y \\
@@ -76,20 +78,17 @@ $$
 $$
 M_{T} \cdot (x,y,z,1)^T =
 \begin{bmatrix}
-\begin{bmatrix}x \\ y \\ z\end{bmatrix} +
-\begin{bmatrix}T_x \\ T_y \\ T_z\end{bmatrix} \\
-1
+x + T_x \\ y + T_y \\ z + T_z \\ 1
 \end{bmatrix}
 $$
 $$
 M_{T} \cdot (x,y,z,0)^T =
 \begin{bmatrix}
-\begin{bmatrix}x \\ y \\ z\end{bmatrix} \\
-0
+x \\ y \\ z \\ 0
 \end{bmatrix}
 $$
 
-$M_\text{ModelView}$ 由三个分矩阵组合而成：$M_\text{ModelView} = M_T\cdot M_R\cdot M_S$
+$M_\text{MV}$ 由三个分矩阵组合而成：$M_\text{MV} = M_T\cdot M_R\cdot M_S$
 
 ## 投影矩阵
 
@@ -98,7 +97,7 @@ $M_\text{ModelView}$ 由三个分矩阵组合而成：$M_\text{ModelView} = M_T\
 
 $$
 \begin{aligned}
-M_\text{Projection-ortho} &=
+M_\text{Proj-ortho} &=
 \begin{bmatrix}
 \frac{2}{r-l} &0&0&\frac{l+r}{l-r} \\
 0&\frac{2}{t-b} &0&\frac{t+b}{t-b} \\
@@ -120,7 +119,7 @@ $R_\text{asp}$ 为窗口高宽比 `aspectRatio`，$\text{FOV}$ 为视场角对�
 
 阴影空间使用正交投影矩阵，每个方向上视距为 `shadowDistance`，即阴影空间投影矩阵
 $$
-M_{S\text{Projection}} =
+M_{S\text{Proj}} =
 \begin{bmatrix}
 \frac{1}{d} &0&0&0 \\
 0&\frac{1}{d} &0&0 \\
@@ -134,7 +133,7 @@ $$
 <tldr>
 
 $$
-M_\text{Projection-persp} =
+M_\text{Proj-persp} =
 \begin{bmatrix}
 \frac{F}{R_\text{asp}} &0 &0 &0 \\
 0 &F &0 &0 \\

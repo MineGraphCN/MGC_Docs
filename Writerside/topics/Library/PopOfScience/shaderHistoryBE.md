@@ -56,11 +56,11 @@
 
 ![Shader1-1.webp](Shader1-1.webp "Star's Shader Mod"){width="700"}
 
-Star's Shader Mod
+_<format color="Gray">Star's Shader Mod</format>_
 
 ![Shader1-2.webp](Shader1-2.webp "Ryfol's amazing OpenGL ES 3.0 Shader"){width="700"}
 
-Ryfol's amazing OpenGL ES 3.0 Shader
+_<format color="Gray">Ryfol's amazing OpenGL ES 3.0 Shader</format>_
 
 #### 国内光影的起步
 
@@ -72,7 +72,7 @@ Ryfol's amazing OpenGL ES 3.0 Shader
 
 ![CSPE0.14.webp](CSPE0.14.webp){width="700"}
 
-早期苦力怕光影
+_<format color="Gray">早期苦力怕光影</format>_
 
 ### 第二阶段：危机与成型
 
@@ -94,11 +94,11 @@ Ryfol's amazing OpenGL ES 3.0 Shader
 
 ![KMPE.webp](KMPE.webp){width="700"}
 
-KMPE 光影，基岩版首创天空层噪声云、水反云
+_<format color="Gray">KMPE 光影，基岩版首创天空层噪声云、水反云</format>_
 
 ![SEUS.webp](SEUS.webp){width="700"}
 
-SEUS PE 光影，凭借着特制的水反云，在当时被誉为 ~~伪水反、真 SEUS~~
+_<format color="Gray">SEUS PE 光影，凭借着特制的水反云 ~~，在当时被誉为伪水反、真 SEUS~~</format>_
 
 #### 再度启程
 
@@ -108,7 +108,7 @@ SEUS PE 光影，凭借着特制的水反云，在当时被誉为 ~~伪水反、
 
 ![CSPE1.2.webp](CSPE1.2.webp){width="700"}
 
-**BE 1.2** 时期的苦力怕光影
+_<format color="Gray"><format style="bold" color="Gray">BE 1.2</format> 时期的苦力怕光影</format>_
 
 ### 第三阶段：二次危机＆黄金时代
 
@@ -139,11 +139,11 @@ SEUS PE 光影，凭借着特制的水反云，在当时被誉为 ~~伪水反、
 
 ![ABC.webp](ABC.webp){width="700"}
 
-ABC 光影
+_<format color="Gray">ABC 光影</format>_
 
 ![DSPE.webp](DSPE.webp){width="700"}
 
-DSPE 光影
+_<format color="Gray">DSPE 光影</format>_
 
 **BE 1.7** ~ **1.8** 版本之间，Mojang 又更新了部分代码，导致光影再次失效。不过此次问题非常小，作者们迅速就能解决问题。网易版甚至做了特殊兼容，使得光影作者不需要在网易版解决这个问题，可以直接无缝过渡。
 
@@ -161,7 +161,7 @@ DSPE 光影
 
 ![Tint](Tint.webp){width="700"}
 
-Tint Shader，由青木源制作。不过也仅仅是 PC 的性能让云水内卷再上了一个台阶而已。看似华丽的效果，向地面或远处水面看去还是 BE 光影的底子（但这个是 3D 体积云）。
+_<format color="Gray">Tint Shader，由青木源制作。不过也仅仅是 PC 的性能让云水内卷再上了一个台阶而已。看似华丽的效果，向地面或远处水面看去还是 BE 光影的底子（但这个是 3D 体积云）。</format>_
 
 #### Super Duper 图形包
 
@@ -177,7 +177,7 @@ Tint Shader，由青木源制作。不过也仅仅是 PC 的性能让云水内�
 
 ![SuperDuper.webp](SuperDuper.webp){width="700"}
 
-SDGP 官方演示图，可见明显的体积光方向错误
+_<format color="Gray">SDGP 官方演示图，可见明显的体积光方向错误</format>_
 
 ## 渲染龙初临：曙光还是终末？ {id="history2"}
 
@@ -221,7 +221,7 @@ _理想情况下_，带有渲染龙的 Windows 10 基岩版能够通过其调用
 
 ![Origin.webp](Origin.webp){width="700"}
 
-Origin 光影
+_<format color="Gray">Origin 光影</format>_
 
 随着物理渲染体系的实现，PBR 材质也在基岩版被实现了。第一个将 PBR 材质特性引入的国内光影是 CSPE，不过由于 CSPE 的方案只是追求功利而被粗糙地创造出来，既不可以读取真正的 PBR 贴图，也不可以正确的渲染 PBR 效果，特性支持相当残缺。
 
@@ -327,7 +327,7 @@ four_in_one.pbr是YSS用于存储四合一纹理读取标准的配置文件,你�
 
 ![PBR.webp](PBR.webp){width="700"}
 
-第一个国内公开发布的四合一材质——秦，由 _金丹哦_ 制作原 Java 版，_Σοβιετική Ένωση_ 协助移植基岩版
+_<format color="Gray">第一个国内公开发布的四合一材质——秦，由 <format color="Gray" style="bold">金丹哦</format> 制作原 Java 版，<format color="Gray" style="bold">Σοβιετική Ένωση</format> 协助移植基岩版</format>_
 
 #### 光影独立与弃坑潮
 
@@ -345,7 +345,7 @@ four_in_one.pbr是YSS用于存储四合一纹理读取标准的配置文件,你�
 
 ![FanFuHengTiao.webp](FanFuHengTiao.webp){width="700"}
 
-“反复横跳”
+_<format color="Gray">“反复横跳”</format>_
 
 国外社区在 Minecraft 反馈网站上发布了一个投票，请求 Mojang 开放渲染龙的接口。这个投票的参与人数在当时的 Minecraft 反馈网站上属于是投票数最高的一批，哪怕是在不同的板块里。
 
@@ -367,11 +367,11 @@ four_in_one.pbr是YSS用于存储四合一纹理读取标准的配置文件,你�
 
 ![HouChuLi.webp](HouChuLi.webp){width="700"}
 
-第一个后处理组件 by _红石公司_
+_<format color="Gray">第一个后处理组件 by <format color="Gray" style="bold">红石公司</format></format>_
 
 ![VSPE.webp](VSPE.webp){width="700"}
 
-VSPE 3 水反
+_<format color="Gray">VSPE 3 水反</format>
 
 随着国际版渲染龙的迫近，一些光影作者开始向网易版转移并研究后处理光影。然而网易后处理虽然可以突破以前的限制，但提供的接口并不多，导致再次进入瓶颈期；并且由于通道数量不足，作者们不得不将整个屏幕一分为四，来存储通道制作水反，导致当时所有光影都是半分辨率的。
 
@@ -423,7 +423,7 @@ VSPE 3 水反
 
 ![YanChiXuanRan.webp](YanChiXuanRan.webp){width="700"}
 
-目前的延迟渲染
+_<format color="Gray">目前的延迟渲染</format>_
 
 ### 基岩版 RTX 的发展与未来
 
@@ -437,7 +437,7 @@ VSPE 3 水反
 
 ![RTX.webp](RTX.webp){width="700"}
 
-目前的 Better RTX
+_<format color="Gray">目前的 Better RTX</format>_
 
 ### 网易版的发展与未来
 
@@ -451,11 +451,11 @@ VSPE 3 水反
 
 ![Yasuo.webp](YaSuo.webp){width="700"}
 
-为了防止收费，而疯狂压缩代码量的某光影
+_<format color="Gray">为了防止收费，而疯狂压缩源代码体积的某光影</format>_
 
 ![Netease.webp](Netease.webp){width="700"}
 
-目前的网易后处理
+_<format color="Gray">目前的网易后处理</format>_
 
 ## 新的篇章……？
 
@@ -657,7 +657,7 @@ _青木源_ 与 _苦力怕_ 比较交好，但也比较固执，直到最后因�
 
 2021 年 5 月，_关于本人_ 接触到的一款游戏 <sup><b>1</b></sup> 奇迹般解决了几乎一切的心理问题，于是第三次回到光影圈，继续创作 DSPE 的新系列。这次回归直到现在，DSPE 第三世代共有五个主要分支系列，均作为轻量级传统光影在网易版进行更新。
 
-<b>[1]</b> 《主播女孩重度依赖》，不过这款游戏本身就比较癫 <del>黑深残</del> ，对普通人大概率会有反作用，并不推荐专门去游玩。
+**[1]** 《主播女孩重度依赖》，不过这款游戏本身就比较癫 <del>黑深残</del> ，对普通人大概率会有反作用，并不推荐专门去游玩。
 <tip>
 
 “现在的我更多是处于一种元老的身份，尽管大家仍然尊重我，我却只想做个快乐些的普通人。”  
@@ -975,7 +975,7 @@ _Gabriel Paixão_ 是一位巴西光影作者，由于其头像风格独特 ~~�
 
 <img src="GLSLPE.webp" alt=""/>
 
-“贼喊捉贼”、“荣誉认证”
+_<format color="Gray">“贼喊捉贼”、“荣誉认证”</format>_
 
 这个过程一直重复了数次，其光影才最终发布，分为光追版本和普通版本。在光追版本中，画饼王硬编码 <sup><b>3</b></sup> 了一个提前渲染好的光追效果放到了光影里，形式非常滑稽。因为这个效果是固定的，只要人物移动，这个特效就会跟着人物一起移动。
 
@@ -989,7 +989,7 @@ _Gabriel Paixão_ 是一位巴西光影作者，由于其头像风格独特 ~~�
 
 <b>[1]</b> GLSL 是 OpenGL 的着色语言，所以实际上画饼王的光影即使不叫 SEUS ，也是在碰瓷。  
 <b>[2]</b> SEUS 全名叫做 <i>Sonic Ether's Unbelievable Shaders</i> 。翻译为 <i>Sonic Ether 的难以置信的光影</i> 。其中 Sonic Ether 是光影作者，也叫 Cody。他是 JE 光影的元老级作者，SEUS 也是 JE 史上最著名的光影之一。  
-<b>[3]</b> 对于光影效果，硬编码实际就是把提前算好结果的数据直接放进光影里，使光影不用再消耗算力而是直接查表。如果巧妙利用可以空间换时间（比如预计算大气散射），但 GLSL PE 的硬编码效果是完全固定的。
+<b>[3]</b> 对于光影效果，硬编码实际就是把提前算好结果的数据直接放进光影里，使光影不用再消耗算力而是直接查表。如果巧妙利用可以空间换时间（比如预计算大气散射），但 GLSL PE “硬编码”了一张静态的截图，令人忍俊不禁。
 </def>
 </deflist>
 
