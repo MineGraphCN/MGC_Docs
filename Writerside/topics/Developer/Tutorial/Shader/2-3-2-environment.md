@@ -207,9 +207,9 @@ vec3 fog = skyColorG + fogColorG * pow(fogFactor, 4);
 
 此外，也别忘了让雾色也影响环境光照：
 ```glsl
-float fragFactor = max(dot(lightDir, surfaceNormal), 0.0);
+float fogLumiFactor = max(dot(lightDir, surfaceNormal), 0.0);
 // 环境光照相对来说可以更加平缓一些
-vec3 ambientColor = skyColorG + fogColorG * pow(fragFactor, 2);
+vec3 ambientColor = skyColorG + fogColorG * pow(fogLumiFactor, 2);
 
 float litSceneAmbient = [... 计算环境光照 ...];
 litSceneAmbient *= AMBIENT_BRIGHTNESS * lightmap.t * albedo.a
@@ -282,9 +282,9 @@ float sunRiseRatioDay1 = smoothstep(.9, 1.2, sunAngle);
 float sunRiseRatioDay2 = smoothstep(-.1, .2, sunAngle);
 float sunRiseRatio = sunRiseRatioDay1 + sunRiseRatioDay2;
 ```
-你会发现我们并没有完全按照日出和日落的规律设置光照颜色，这是因为在日出前半段和日落后半段，太阳已经沉入天边，场景不再受到阳光照射，你会在下面设置光照强度时看到原因。
+你会发现我们并没有完全按照日出和日落的规律设置光照颜色，这是因为在日出前半段和日落后半段，太阳沉入天边，场景无法受到阳光照射，下面设置光照强度时我们也会考虑到这一点。
 
-由于 $\mathrm{Smoothstep}(-0.1, 0.1, \angle_\text{Shadow})$ 在 $\angle_\text{Shadow}>0.1$ 时会为 1，进而在 $\angle_\text{Shadow}>0.9$ 时导致 $R_\text{Day1} + R_\text{Day2} > 1$，因此我们需要在 $\angle_\text{Shadow}>0.1$ 时进行归零：
+由于 $\mathrm{Smoothstep}(-0.1, 0.1, \angle_\text{Shadow})$ 在 $\angle_\text{Shadow}>0.1$ 时会为 1，进而在 $\angle_\text{Shadow}>0.9$ 时导致 $R_\text{Day1} + R_\text{Day2} > 1$，因此我们需要在 $\angle_\text{Shadow}>0.1$ 时归零 $R_\text{Day2}$：
 ```glsl
 float sunRiseFactor = float(sunAngle <= .2);
 float sunRiseRatioDay1 = [...];
@@ -298,7 +298,7 @@ float sunRiseRatio = [...];
 bool isSunRise = sunAngle >= .9 || sunAngle <= .2;
 bool isSunSet = sunAngle >= .4 && sunAngle <= .5;
 sunColor = isSunRise ? mix(SunRiseColor, SunNoonColor, sunRiseRatio)
-         : isSunSet ? mix(SunNoonColor, SunSetColor, SunSetColor)
+         : isSunSet ? mix(SunNoonColor, SunSetColor, sunSetRatio)
          : SunNoonColor;
 ```
 我们不关心日落之后的时间，因为那时日光已经不再影响场景色彩了，因此我们将日出和日落之外的时间全部设置为了正午的颜色。
@@ -309,7 +309,7 @@ sunBrightness = smoothstep(0.0, .1, sunAngle)
               - smoothstep(.45, .48, sunAngle);
 sunBrightness *= SUN_BRIGHTNESS;
 ```
-你或许注意到了，我们将插值时间点偏移了一些，这是为了模拟在日月交替的时候亮度骤降的效果 ~~，_所谓黎明前最黑暗的时刻_~~，并且还可以用来作为阴影空间突变的缓冲和遮瑕。这也是之前我们将光照颜色变化集中在日照区间的原因。
+你或许注意到了，我们将插值时间点偏移了一些，这是为了模拟在日月交替的时候亮度骤降的效果 ~~，_所谓黎明前最黑暗的时刻_~~，并且还可以用来作为阴影空间突变的缓冲和遮瑕。这也是之前我们将光照颜色变化集中在日照区间的原因之一。
 
 类似的，月光亮度也可以使用这样的方法进行处理：
 ```glsl
@@ -328,14 +328,15 @@ litScene *= sunBrightness * sunColor
           + moonBrightness * moonColor;
 ```
 
-现在场景中的光照强度终于会随着时间的变化而变化了！
-
-![动态变化的光照]()
-
 为了让环境光照在日月交替 ~~_这段至暗时刻_~~ 中不那么突兀，我们也可以将日月光照作为额外系数乘入环境光强度中：
 ```glsl
 litSceneAmbient *= sunBrightness + moonBrightness;
 ```
+
+现在场景中的光照强度终于会随着时间的变化而变化了！
+
+![动态变化的光照]()
+
 #### 月相
 
 除了时间之外，Minecraft 还存在 [月相](https://zh.minecraft.wiki/w/月亮#月相) ，当太阳被地球阻挡而无法照亮月球时，月球产生的漫反射理应减少，来自月亮的“直接”光照就会减弱。月相与世界日挂钩，从第一天的满月开始到第八天的盈凸月为一个周期。Optifine 为我们提供了月相变量：
@@ -353,7 +354,7 @@ float moonPhaseLuminance = float(abs(moonPhase - 4)) / 4.0;
 > ```glsl
 > 1.0 - sqrt(1.0 - pow(float(moonPhase)-4.0, 2.0) / 16.0)
 > ```
-> 这样可以将不同月相的亮度变化规律考虑在内，曲线在满月时亮度会产生尖峰，产生所谓冲日效应，而新月附近的亮度则衰减得更加缓慢。
+> 这样可以将不同月相的表面明亮占比考虑在内，曲线在满月时亮度还会产生尖峰，产生所谓冲日效应，而新月附近的亮度则衰减得更加缓慢。
 > 
 > 你还可以使用自定义的 `mod(float(worldTime - 18000) / 24000.0, 8.0)` 而不仅是 `moonPhase`，来让月相亮度在一天之内也不断变化。
 
@@ -368,9 +369,246 @@ moonBrightness *= moonPhaseLuminance;
 
 除了日月循环，天气对光照的影响也不容忽视。在 Minecraft 中存在三种天气：晴天、雨天和雷暴。而雨天和雷暴视群系而定，又会出现降雨、降雪和阴天三种情况。
 
-## 星空
+在本小节中，我们主要着重于光照的变化，其他效果，例如水坑和雨雪等会在今后的章节逐步添加。OptiFine 只提供了晴雨的转换，因此我们只能将雷暴按照雨天处理。
+
+当天气由晴转雨时，天空颜色会转为灰色，光照变得柔和，让场景的观感饱和度也慢慢降低，此外，露天表面的反射率也会增加。为此，我们需要获取当前的降雨强度和“湿度”：
+```glsl
+uniform float rainStrength;
+uniform float wetness;
+```
+
+`rainStrength` 表征了当前降雨的强度，而 `wetness` 则可以用于表征地表的“湿度”。`wetness` 由湿润半衰期和干燥半衰期控制：
+```glsl
+const float wetnessHalflife = 600.0f;
+const float drynessHalflife = 200.0f;
+```
+
+湿润半衰期控制**由湿转干**时的值跌落至起始值一半的游戏刻，默认为 600 刻，干燥半衰期则控制**由干转湿**，默认 200 刻。晴转雨时空气的湿度会迅速上升，而雨转晴后湿度降低会相对较慢，因此我们就沿用默认的设置了。
+
+![天气变化时降雨强度和湿度的变化动态](environment_rainStrength_and_wetness.webp){width="700"}
+
+_<format color="Gray">画面右侧显示了降雨强度和湿度在湿润半衰期为 5、干燥半衰期为 1 下晴雨切换时的值变化情况。可以看到降雨强度变化与天空色和雾色的变化直接同步。</format>_
+
+> `wetnessHalflife` 和 `drynessHalflife` 在未定义时不会自动重置！
+
+{style="warning" title="注意"}
+
+#### 被云层遮挡的光照
+
+让我们从光照开始。当降雨强度增大时，由于太阳被云层遮挡，光照会减弱，再加上云层的向内散射，阴影也会由于“光源”的扩散而逐渐模糊 ^**1**^ 。因此，我们可以在直接光照和阴影的 PCF 半径上动手脚。
+
+**[1]** 太阳附近的云层会透射更多的太阳光，从而形成一个大范围的柔和间接光源。
+
+雨天的直接光照完全消失不太好看，因此我们会保留 0.1 倍的光照强度。光照强度与降雨强度为负相关，因此我们需要手动来映射它们。在此推荐一个类似 `remap()` 的线性映射函数：
+```glsl
+#define remap2(a,b,c,d,x) ((x-a)/(b-a)*(d-c)+c)
+```
+它可以将 $x$ 从 $x\in[a,b]$ 线性映射到 $y\in[c,d]$ 上，或者说作一条过 $(a,c)$ 和 $(b,d)$ 两点的直线。
+
+还可以配合它的配套规整函数
+```glsl
+#define remap2Saturate(a,b,c,d,x) clamp(remap2(a,b,c,d,x), min(b,d), max(b,d))
+```
+来将映射后的值限制在 $y\in[c,d]$ 上。映射是无序的，因此 $a,c$ 可以与 $b,d$ 成对交换，即 $\mathrm{Remap}_{2}(\underline{a},b,\underline{c},d,x) \equiv \mathrm{Remap}_{2}(b,\underline{a},d,\underline{c},x)$
+
+我们希望在降雨强度为 0 时光照强度为 1，降雨强度为 1 时光照强度为 0.1，因此我们需要将它们的关系映射到过 $(0,1)$ 和 $(1,0.1)$ 点的直线上，我们将两点代入 `remap2Saturate()` 中，就可以求得光照强度：
+```glsl
+[... Settings ...]
+#define RAIN_BRIGHTNESS 0.1
+[... final.glsl ...]
+float litScene = [... 计算直接光照 ...];
+litScene *= sunBrightness * sunColor
+          + moonBrightness * moonColor;
+float rainFactor = remap2Saturate(0.0, 1.0,
+                                  1.0, RAIN_BRIGHTNESS, rainStrength);
+litScene *= rainFactor;
+```
+
+对于阴影的模糊，我们可以仿效光照强度，将 PCF 的半径倍率作为一个与降雨强度相关的系数：
+```glsl
+[... Settings ...]
+#define PCF_RAIN_FACTOR 5.0
+[... Lighting ...]
+float calcPCF(...) {
+    [...];
+    for(...) for(...) {
+        vec2 steps = [...];
+        steps *= remap2Saturate(0.0, 1.0,
+                                1.0, PCF_RAIN_FACTOR, rainStrength);
+    }
+}
+```
+在低亮度下，大半径小采样的 PCF 带来的亮度断层不明显，也不会产生太多穿帮。现在，雨天的光照和阴影看起来也非常不错了：
+
+![雨天的 PCF](environment_rainning_pcf.webp){width="700"}
+
+> `remap2()` 是可以改写成更加符合直觉的 `mix()` 形式的：
+> ```glsl
+> #define remap2(a,b,c,d,x) mix(c,d,(x-a)/(b-a))
+> ```
+> 记 $t = (x-a)/(b-a)$，有$$\begin{equation}\label{eq1}\mathrm{Mix}(c,d,t) = c(1-t)+dt\end{equation}$$$$\begin{equation}\label{eq2}\mathrm{Remap}_{2}(a,b,c,d,x)=\frac{x-a}{b-a}(d-c)+c=t(d-c)+c\end{equation}$$即 $\eqref{eq1}=dt-ct+c=\eqref{eq2}$。不过 $\eqref{eq2}$ 的形式会少一次乘加。
+> 
+> 此外，将 $y=\mathrm{Remap}_{2}$ 展开并移项之后得到的 $\frac{x-a}{b-a}=\frac{y-c}{d-c}$ 就是高中数学中的**直线两点式方程**。
+
+#### 被雨水打湿的材质
+
+雨水落到物体表面后可以分为两种情况：在表面滞留或者被材料吸收。在本小节，我们暂时不考虑不规则的低洼地带导致的水坑效果，而是考虑当它们均匀地覆盖在表面或被吸收的效果。
+
+在处理滞留和吸收的水之前，我们需要考虑哪些表面会在雨天被打湿。不难思索，只要是朝上且上方不存在的表面，或多或少都会沾到雨水。对于方向，我们可以使用视口空间法线与 OptiFine 提供的视口空间天顶坐标
+```glsl
+uniform vec3 upPosition;
+```
+做点积，即 `float up = dot(surfaceNormal, normalize(upPosition))`。或者，我们还可以使用世界空间法线与 $(0,1,0)$ 做点积，我们知道法线的模长总是为 1，而点积是将两向量的对应分量相乘相加，因此我们只需要世界空间法线的 $y$ 分量即可。要想求得世界空间法线，一种办法是使用模型视口空间的逆矩阵：
+```glsl
+uniform mat4 gbufferModelViewInverse;
+[... main ...]
+vec3 worldNormal = (gbufferModelViewInverse
+                    * vec4(surfaceNormal, 0.0)).xyz;
+```
+
+然而求得完整的世界空间法线非常不划算，需要一次 `float4x4 * float4` 或者 `float3x3 * float3`，我们只需要世界空间法线的 $y$ 分量。来看看 $M_{G\text{MV}}^{-1}$ 的元素如何排列：
+$$
+M_{G\text{MV}}^{-1} =
+\begin{bmatrix}
+R_{x_\text{V}\to x_\text{W}} & R_{y_\text{V}\to x_\text{W}} & R_{z_\text{V}\to x_\text{W}} & T_x \\
+R_{x_\text{V}\to y_\text{W}} & R_{y_\text{V}\to y_\text{W}} & R_{z_\text{V}\to y_\text{W}} & T_y \\
+R_{x_\text{V}\to z_\text{W}} & R_{y_\text{V}\to z_\text{W}} & R_{z_\text{V}\to z_\text{W}} & T_z \\
+0&0&0&1
+\end{bmatrix}
+$$
+逆矩阵左上角的 $3\times3$ 块意义与原矩阵类似，每一列表示视口空间中的一个轴在世界空间中的朝向，而每一行则表示视口空间中每个轴的朝向在世界空间一个轴上的投影量。
+
+要想求得世界空间法线的 $y$ 分量，我们需要将视口空间的法线全部投影到世界空间的 $y$ 轴上，也就是说我们只需要计算第二行的前三个分量，即：
+```glsl
+float up = gbufferModelViewInverse[0].y * surfaceNormal.x
+         + gbufferModelViewInverse[1].y * surfaceNormal.y
+         + gbufferModelViewInverse[2].y * surfaceNormal.z;
+```
+只需要两次乘加和一次乘法就搞定，开销与 `dot(surfaceNormal, normalize(upPosition))` 相比还少了一次 `normalize()`。
+
+求得了表面方向，我们接着来判定表面是否被遮挡。就目前来讲，我们是无法准确地知道表面的上方是否有物体遮挡的，因为每个顶点甚至都无法访问临近顶点的数据，更别说其他的方块了。不过我们确实有办法间接估计，还记得天空光照吗，Minecraft 使用 Flood Fill 算法从上至下蔓延天空光照，当路径上有 [散射光照的方块](https://zh.minecraft.wiki/w/亮度?variant=zh-cn#天空光照) 时，天空光照的亮度就会减一，**越大型的天花板下，天空光照就会越弱**。这给我们提供了一个思路：使用天空光照等级来判断光照被遮挡的情况。
+
+之前，我们将天空光照压缩到了 $[0,1]$，游戏中的天空光照一共 16 个等级，也就是 $[0,15]$，雨水不会完全竖直落下，我们可以使用最明亮的两个光照等级来进行过渡，也就是 14 ~ 15，对应到 `lightmap.t` 就是 0.933 ~ 1：
+```glsl
+float openair = smoothstep(0.933, 1.0, lightmap.t);
+```
+
+将这两个参数相乘，我们就能得到表面对雨水的“暴露”程度：
+```glsl
+float exposed = saturate(up) * openair;
+```
+
+现在，我们终于可以开始处理表面被打湿的效果了，不妨从不透水材料开始。
+
+水是无色的透明液体，因此当材料表面聚成水膜时，最简单的办法就是额外计算一层菲涅尔，反射部分取水体的反射，而折射部分则取附着材料的出射光照 ^**1**^。据此，我们额外计算一套水膜的光照，注意，水膜只有反射部分，因此没有菲涅尔的光照（方块光照和基本亮度）不必计算：
+```glsl
+[... Lighting ...]
+// 水体的菲涅尔无颜色分量差异，你也可以直接使用 f_schilck 的同名重构函数。
+float f_schilck_mono(float f0, float cosTheta) {
+    return mix(pow(1.0 - cosTheta, 5.0), 1.0, f0);
+}
+float f_schilck_mono(float f0, float cosTheta, float roughness) {
+    return f0 + (max(1.0 - roughness, f0) - f0)
+                * pow(1.0 - cosTheta, 5.0);
+}
+
+[... final.fsh ...]
+// 表面只需要计算基本的菲涅尔即可
+vec3 litScene = calcLighting(...);
+vec3 litSceneAmbient = calcLighting(...);
+
+float wet_smoothness = wetness * exposed;
+float wet_roughness = pow(1.0 - wet_smoothness, 2.0);
+const float water_f0 = 0.02;
+
+float fresnelWet = f_schilck_mono(water_f0, ndv);
+float fresnelWetR = f_schilck_mono(water_f0, ndv, wet_roughness);
+// 表面没有打湿时，菲涅尔强度降至 0
+fresnelWet *= wet_smoothness;
+fresnelWetR *= wet_smoothness;
+
+vec3 litWet = calcLighting(vec3(fresnelWet),
+                           litScene, // 使用附着材料的出射光作为折射部分
+                           getSpecular(surfaceNormal,
+                                       halfwayVec,
+                                       wet_smoothness))
+            * (sunBrightness * sunColor + moonBrightness * moonColor)
+            * (lit * rainFactor);
+vec3 litWetAmbient = calcLighting(vec3(fresnelWetR),
+                                  litSceneAmbient,
+                                  1.0)
+                   * ambientColor
+                   * (  lightmap.t
+                      * AMBIENT_BRIGHTNESS
+                      * (sunBrightness + moonBrightness)
+                      * albedo.a);
+#ifdef TXAO
+float txao = [...];
+litWetAmbient *= txao;
+#endif
+fragColor.rgb = litWet        // 将场景光照替换为水膜光照！
+              + litWetAmbient // 环境光照也要记得替换！
+              + litSceneBlock
+              + litSceneBase;
+```
+**[1]** 也许你意识到了水膜反射的光线不再会照亮附着材料，因此表面会轻微变暗，需要在入射方向和出射方向计算两次菲涅尔，但这种影响微乎其微，只有当入射光角度大时才会稍显差异，然而这时候主导表面光强的是光照的角度而不是水膜的反射，因而为此单独计算一次菲涅尔是不划算的。
+
+当然，额外计算一次光照是很昂贵的，因此我们可以仅在雨天的裸露表面处理它们：
+```glsl
+float wet_smoothness = [...];
+if(wet_smoothness > 0.0) {
+    float wet_roughness = [...];
+    float fresnelWet = [...];
+    [...]
+    litWet = calcLighting(...);
+    litWetAmbient = calcLighting(...);
+} else {
+    litWet = litScene;
+    litWetAmbient = litSceneAmbient;
+}
+litWet *= [...];
+litWetAmbient *= [...];
+```
+庞大的计算量让分支的开销变得可以接受，这样还可以直接忽略 `up < 0` 的情况。
+
+接下来轮到透水表面了，透水表面意味着材料能够吸水，材料吸水之后由于光路变化，折射出的光线会减少，因此表面会显得暗淡。因此透水材料的表面处理就很简单了：
+```glsl
+[... Settings ...]
+#define POROSITY_DIFFUSE_DECAY 0.4
+[... final.fsh ...]
+litScene *= POROSITY_DIFFUSE_DECAY;
+litSceneAmbient *= POROSITY_DIFFUSE_DECAY;
+```
+
+最后，我们来综合考虑这两种情况，如果你还记得 LabPBR 格式就再好不过了，高光纹理 Blue 通道中的 $[0, 64]$ 表示了**孔隙率**！我们将其重映射到 $[0,1]$ 上就是：
+```glsl
+int spec_blue = f2i8(material.b);
+float porosity = remapSaturate(0.0, 64.0, float(spec_blue))
+               * float(spec_blue <= 64); // 次表面散射材质的孔隙率始终为 0
+```
+孔隙率增大时，水膜的反射会减弱，表面的出射光也会变弱，因此我们可以改写之前的算法：
+```glsl
+float diffuseDecay = remap2(0.0, 1.0,
+                            1.0, POROSITY_DIFFUSE_DECAY,
+                            porosity);
+vec3 diffuse = [...] * diffuseDecay;
+
+float wet_smoothness = [...] * (1.0 - porosity);
+```
+
+把雨天的光照系数稍微调高一些，看起来还算不错！
+
+![](environment_wet_surface.webp){width="700"}
+
+_<format color="Gray">动图左侧是水膜的光滑度 <code><format color="Gray">wet_smoothness</format></code>，右下角的柱状图和之前一样，分别是降雨强度 <code><format color="Gray">rainStrength</format></code> 和湿度 <code><format color="Gray">wetness</format></code>。</format>_
+
+本小节的雨天处理就到此告一段落，你也能明显地看出，这远不是雨天效果的完全体，等之后的章节中我们完成了反射后，画面的质量还会得到飞跃。
 
 ### 群系氛围
+
+## 天顶与星空
+
+### 改写环境光照
 
 ## 高动态范围
 
@@ -379,12 +617,13 @@ moonBrightness *= moonPhaseLuminance;
 ## 习题
 
 1. 尝试将简单高度雾的竖直方向改写为线性衰减的积分形式。我们需要进行分段积分：
-   - 如果片元和摄像机均位于 $[63,320]$，直接使用 `remap(320.0, 63.0, altitude)` 的积分式 $\int_{p_\text{Cam}}^{p_\text{Frag}} H_{[63,320]}=|p_\text{Cam}^2-p_\text{Frag}^2-640p_\text{Cam}+640p_\text{Frag}|$；
-   - 如果片元和摄像机均位于 $[-\infty,63]$，则使用 $\int_{p_\text{Cam}}^{p_\text{Frag}} H_{[\infty,63]}=|p_\text{Cam}-p_\text{Frag}|$；
+   - 如果片元和摄像机均位于 $[63,320]$，直接使用 `remap(320.0, 63.0, altitude)` 的积分式 $\int_{p_\text{1}}^{p_\text{2}} H_{[63,320]}=|p_\text{1}^2-p_\text{2}^2-640p_\text{1}+640p_\text{2}|$；
+   - 如果片元和摄像机均位于 $[-\infty,63]$，则使用常量积分 $\int_{p_\text{1}}^{p_\text{2}} H_{[\infty,63]}=|p_\text{1}-p_\text{2}|$；
    - 如果片元和摄像机有一个位于 $[-\infty,63]$：
      - 若另一个位于 $[63,320]$，则使用 $\int_{p_\text{Low}}^{63} H_{[\infty,63]}+\int_{63}^{p_\text{High}} H_{[63,320]}$，$p_\text{Low}$ 和 $p_\text{High}$ 在两个坐标之间选择；
      - 若另一个位于 $[320, +\infty]$，则使用 $\int_{p_\text{Low}}^{63} H_{[\infty,63]}+\int_{63}^{320} H_{[63,320]}$；
    - 若片元和摄像机均位于 $[320, +\infty]$ 则没有雾气。
 
    最后，将它们乘入片元距离，再像简单水平雾那样进行幂次处理即可。
-2. （主观题）在雾小节的末尾，我们用 `lightDir` 为光源附近的雾气进行了染色，然而效果并不太好，因为日月交替时 `lightDir` 会产生突变。为此，请仿效简单大气小节的内容，使用 `sunPosition` 和 `moonPosition` 求得独立的 `sunDir` 和 `moonDir`，然后用它们配合 `sunAngle` 来进行光照过渡。
+2. （主观题）在雾小节的末尾，我们用 `lightDir` 为光源附近的雾气进行了染色，然而效果并不太好，因为日月交替时 `lightDir` 会产生突变。为此，请仿效简单大气小节的内容，使用 `sunPosition` 和 `moonPosition` 求得独立的 `sunDir` 和 `moonDir`，然后用它们配合 `sunAngle` 来进行光照过渡。你可以只使用雾色来叠加日光或月光颜色，而不是像之前那样还使用天空颜色。
+3. （选做）使用 `sunDir` 和 `moonDir` 将直接光照拆成两个光源，然后将日光和月光的色彩、亮度和方向分别应用到两次光照上，形成平滑切换。记得在 `sunAngle == 0.5` 时将阴影从日光切换到月光上。
